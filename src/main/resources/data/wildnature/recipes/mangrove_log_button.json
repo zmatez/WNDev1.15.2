@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:mangrove_logs"
+    },
+    {
+      "item": "wildnature:mangrove_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:mangrove_log_button",
+    "count": 2
+  }
+}

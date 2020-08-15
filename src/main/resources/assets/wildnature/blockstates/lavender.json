@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/lavender"
+        },
+        {
+          "model": "wildnature:block/lavender",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/lavender",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/lavender",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/lavender_flowering"
+        },
+        {
+          "model": "wildnature:block/lavender_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/lavender_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/lavender_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

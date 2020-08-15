@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/daisy2" },
+      { "model": "wildnature:block/daisy2", "y": 90 },
+      { "model": "wildnature:block/daisy2", "y": 180 },
+      { "model": "wildnature:block/daisy2", "y": 270 },
+      { "model": "wildnature:block/daisy22" },
+      { "model": "wildnature:block/daisy22", "y": 90 },
+      { "model": "wildnature:block/daisy22", "y": 180 },
+      { "model": "wildnature:block/daisy22", "y": 270 }
+    ]
+  }
+}

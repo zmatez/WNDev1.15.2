@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "block/spruce_planks",
+        "material": "block/stripped_spruce_log",
+        "material2": "block/spruce_planks"
+    }
+}

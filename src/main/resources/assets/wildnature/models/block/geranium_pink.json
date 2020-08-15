@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/geranium_pink",
+        "greyscale": "wildnature:blocks/flowers/geranium_stem",
+        "particle": "wildnature:blocks/flowers/geranium_stem"
+    }
+}

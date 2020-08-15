@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/maple/maple_planks",
+        "material": "wildnature:blocks/maple/maple_stripped_log",
+        "material2": "wildnature:blocks/maple/maple_planks"
+    }
+}

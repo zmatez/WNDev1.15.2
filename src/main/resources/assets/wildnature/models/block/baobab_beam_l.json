@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/l_beam",
+    "textures": {
+        "particle": "wildnature:blocks/baobab/baobab_log",
+        "side": "wildnature:blocks/baobab/baobab_log",
+        "top": "wildnature:blocks/baobab/baobab_log_top"
+    }
+}

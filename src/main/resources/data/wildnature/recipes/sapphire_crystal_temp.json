@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "crystals",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:sapphire_shard"
+    }
+  },
+  "result": {
+    "item": "wildnature:sapphire_crystal",
+    "count": 2
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/t_beam",
+    "textures": {
+        "particle": "wildnature:blocks/eucalyptus/eucalyptus_stripped_log",
+        "side": "wildnature:blocks/eucalyptus/eucalyptus_stripped_log",
+        "top": "wildnature:blocks/eucalyptus/eucalyptus_stripped_log_top"
+    }
+}

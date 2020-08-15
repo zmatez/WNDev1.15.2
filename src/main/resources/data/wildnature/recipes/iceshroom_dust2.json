@@ -1,0 +1,10 @@
+{
+    "group": "iceshroom_dust",
+    "result": {
+        "item": "wildnature:iceshroom_dust",
+        "count": 2
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:cave_lily"}}
+}

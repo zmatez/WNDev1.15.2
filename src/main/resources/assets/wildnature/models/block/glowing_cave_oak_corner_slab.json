@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "wildnature:blocks/glowing_cave_oak/glowing_cave_oak_planks",
+        "particle": "wildnature:blocks/glowing_cave_oak/glowing_cave_oak_planks"
+    }
+}

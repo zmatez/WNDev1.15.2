@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "crystals",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:amethyst_shard"
+    }
+  },
+  "result": {
+    "item": "wildnature:amethyst_crystal",
+    "count": 2
+  }
+}

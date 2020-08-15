@@ -1,0 +1,10 @@
+{
+    "group": "yellow_dye",
+    "result": {
+        "item": "minecraft:yellow_dye",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:rosevine_yellow"}}
+}

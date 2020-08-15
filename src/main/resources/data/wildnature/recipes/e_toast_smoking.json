@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "wildnature:sliced_bread"
+  },
+  "result": "wildnature:toast",
+  "experience": 0.35,
+  "cookingtime": 100
+}

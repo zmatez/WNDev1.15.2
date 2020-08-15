@@ -1,0 +1,9 @@
+{
+    "result": {
+        "item": "minecraft:light_blue_dye",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:hepatica_blue"}}
+}

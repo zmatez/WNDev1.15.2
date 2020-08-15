@@ -1,0 +1,15 @@
+{
+  "group": "wildnature:stone_pressure_plate",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_pressure_plate"
+  }
+}

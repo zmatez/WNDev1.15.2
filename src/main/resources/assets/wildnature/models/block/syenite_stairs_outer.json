@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/syenite/syenite",
+        "top": "wildnature:blocks/rocks/syenite/syenite",
+        "side": "wildnature:blocks/rocks/syenite/syenite"
+    }
+}

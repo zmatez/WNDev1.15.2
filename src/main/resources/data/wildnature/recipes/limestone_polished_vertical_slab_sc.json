@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:limestone_polished"
+  },
+  "result": "wildnature:limestone_polished_vertical_slab",
+  "count": 1
+}

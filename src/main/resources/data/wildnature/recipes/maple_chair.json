@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chairs",
+  "pattern": [
+    "#  ",
+    "###",
+    "@ @"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:maple_planks"
+    },
+    "@": {
+      "item": "wildnature:maple_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:maple_chair",
+    "count": 2
+  }
+}

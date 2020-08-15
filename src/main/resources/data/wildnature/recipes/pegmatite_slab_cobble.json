@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:cobble_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pegmatite_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:pegmatite_slab_cobble",
+    "count": 6
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/moss1" },
+      { "model": "wildnature:block/moss1","y": 90},
+      { "model": "wildnature:block/moss1","y": 180 },
+      { "model": "wildnature:block/moss1","y": 270 },
+      { "model": "wildnature:block/moss2" },
+      { "model": "wildnature:block/moss2","y": 90},
+      { "model": "wildnature:block/moss2","y": 180 },
+      { "model": "wildnature:block/moss2","y": 270 },
+      { "model": "wildnature:block/moss3" },
+      { "model": "wildnature:block/moss3","y": 90},
+      { "model": "wildnature:block/moss3","y": 180 },
+      { "model": "wildnature:block/moss3","y": 270 },
+      { "model": "wildnature:block/moss4" },
+      { "model": "wildnature:block/moss4","y": 90},
+      { "model": "wildnature:block/moss4","y": 180 },
+      { "model": "wildnature:block/moss4","y": 270 },
+      { "model": "wildnature:block/moss5" },
+      { "model": "wildnature:block/moss5","y": 90},
+      { "model": "wildnature:block/moss5","y": 180 },
+      { "model": "wildnature:block/moss5","y": 270 }
+    ]
+  }
+}

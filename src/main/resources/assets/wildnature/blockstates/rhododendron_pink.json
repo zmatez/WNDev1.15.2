@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/rhododendron_stem"
+        },
+        {
+          "model": "wildnature:block/rhododendron_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/rhododendron_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/rhododendron_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/rhododendron_pink_flowering"
+        },
+        {
+          "model": "wildnature:block/rhododendron_pink_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/rhododendron_pink_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/rhododendron_pink_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

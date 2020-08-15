@@ -1,0 +1,10 @@
+{
+    "group": "glowshroom_dust",
+    "result": {
+        "item": "wildnature:glowshroom_dust",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:glow_vine"}}
+}

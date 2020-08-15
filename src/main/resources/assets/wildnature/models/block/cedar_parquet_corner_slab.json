@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "wildnature:blocks/cedar/cedar_parquet",
+        "particle": "wildnature:blocks/cedar/cedar_parquet"
+    }
+}

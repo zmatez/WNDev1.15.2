@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:diorite_bricks"
+  },
+  "result": "wildnature:diorite_bricks_cracked_vertical_slab",
+  "count": 1
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bench",
+  "pattern": [
+    "###",
+    "@-@"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pine_planks"
+    },
+    "@": {
+      "item": "wildnature:pine_stripped_log"
+    },
+    "-": {
+      "item": "wildnature:pine_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:pine_bench",
+    "count": 3
+  }
+}

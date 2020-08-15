@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "wildnature:block/hangingshelf" },
+        "facing=west": { "model": "wildnature:block/hangingshelf", "y": 90 },
+        "facing=north": { "model": "wildnature:block/hangingshelf", "y": 180 },
+        "facing=east": { "model": "wildnature:block/hangingshelf", "y": 270 }
+    }
+}

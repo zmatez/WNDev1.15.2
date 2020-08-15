@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:plum_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:plum_stairs",
+    "count": 4
+  }
+}

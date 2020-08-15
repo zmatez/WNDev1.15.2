@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/plate",
+    "textures": {
+        "quartz_dishes_texture": "wildnature:blocks/other/dark_wooden_dishes_texture"
+    }
+}

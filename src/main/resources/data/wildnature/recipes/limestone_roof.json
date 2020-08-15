@@ -1,0 +1,20 @@
+{
+  "group": "wildnature:stone_roof",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "@@@",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone_bricks"
+    },
+    "@": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_roof"
+  }
+}

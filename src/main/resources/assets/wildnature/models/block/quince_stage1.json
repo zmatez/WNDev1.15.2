@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/bush/quince/quince_bush_stage1"
+    }
+}

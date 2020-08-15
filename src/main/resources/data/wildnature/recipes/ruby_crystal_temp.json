@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "crystals",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:ruby_shard"
+    }
+  },
+  "result": {
+    "item": "wildnature:ruby_crystal",
+    "count": 2
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/machicolation", "uvlock": true },
+    "facing=south": { "model": "wildnature:block/machicolation", "y": 180, "uvlock": true },
+    "facing=west":  { "model": "wildnature:block/machicolation", "y": 270, "uvlock": true },
+    "facing=east":  { "model": "wildnature:block/machicolation", "y": 90, "uvlock": true },
+    "facing=up":  { "model": "wildnature:block/limestone_bricks_murderhole", "uvlock": true},
+    "facing=down":  { "model": "wildnature:block/limestone_bricks_murderhole", "uvlock": true}
+  }
+}

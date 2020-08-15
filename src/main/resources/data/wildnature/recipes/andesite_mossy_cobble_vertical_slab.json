@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_slab_vertical",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:andesite_slab_cobble_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:andesite_mossy_cobble_vertical_slab",
+    "count": 3
+  }
+}

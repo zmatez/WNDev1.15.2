@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:amethyst_sword",
+        "count": 1
+    },
+    "pattern": [
+        "A",
+        "A",
+        "B"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:amethyst_crystal"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

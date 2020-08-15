@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=down":  { "model": "wildnature:block/rs_dispenser", "x": 180 },
+        "facing=up":    { "model": "wildnature:block/rs_dispenser" },
+        "facing=north": { "model": "wildnature:block/rs_dispenser" },
+        "facing=south": { "model": "wildnature:block/rs_dispenser", "y": 180 },
+        "facing=west":  { "model": "wildnature:block/rs_dispenser", "y": 270 },
+        "facing=east":  { "model": "wildnature:block/rs_dispenser", "y": 90 }
+    }
+}

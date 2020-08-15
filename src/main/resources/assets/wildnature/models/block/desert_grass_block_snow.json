@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "particle": "wildnature:blocks/grass/desert_dirt",
+        "bottom": "wildnature:blocks/grass/desert_dirt",
+        "top": "wildnature:blocks/grass/desert_grass_block_top",
+        "side": "wildnature:blocks/grass/desert_grass_block_side_snowed"
+    }
+}

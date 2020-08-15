@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/spidergrass"
+        },
+        {
+          "model": "wildnature:block/spidergrass",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/spidergrass",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/spidergrass",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/spidergrass_flowering"
+        },
+        {
+          "model": "wildnature:block/spidergrass_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/spidergrass_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/spidergrass_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

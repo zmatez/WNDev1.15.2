@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "wildnature:blocks/crops/marjoram/marjoram_stage_1"
+    }
+}

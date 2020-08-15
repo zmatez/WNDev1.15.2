@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_lilypad",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/lotus_pink",
+        "pad": "wildnature:blocks/flowers/green_waterlily"
+
+    }
+}

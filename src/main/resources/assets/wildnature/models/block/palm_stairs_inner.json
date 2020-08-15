@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/palm/palm_planks",
+        "top": "wildnature:blocks/palm/palm_planks",
+        "side": "wildnature:blocks/palm/palm_planks"
+    }
+}

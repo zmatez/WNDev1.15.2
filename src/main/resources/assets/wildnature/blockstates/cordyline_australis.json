@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/cordyline_australis" },
+      { "model": "wildnature:block/cordyline_australis", "y": 90 },
+      { "model": "wildnature:block/cordyline_australis", "y": 180 },
+      { "model": "wildnature:block/cordyline_australis", "y": 270 }
+    ]
+  }
+}

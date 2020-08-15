@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:grapes_purple"
+    },
+    {
+      "item": "wildnature:grapes_purple"
+    },
+    {
+      "item": "wildnature:grapes_purple"
+    },
+    {
+      "item": "wildnature:grapes_yellow"
+    },
+    {
+      "item": "wildnature:grapes_yellow"
+    },
+    {
+      "item": "wildnature:gooseberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:glass_cup"
+    }
+  ],
+  "result": {
+    "item": "wildnature:juice_grape",
+    "count": 1
+  }
+}

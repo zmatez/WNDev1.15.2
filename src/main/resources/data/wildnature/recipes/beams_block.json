@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "wildnature:beams_block",
+        "count": 4
+    },
+    "pattern": [
+        "AA",
+        "AA",
+        "AA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:stick_frame"}
+    }
+}

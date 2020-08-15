@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:stick_frame",
+        "count": 3
+    },
+    "pattern": [
+        "AAA",
+        "ABA",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:stick"},
+        "B": {"item": "minecraft:glass_pane"}
+    }
+}

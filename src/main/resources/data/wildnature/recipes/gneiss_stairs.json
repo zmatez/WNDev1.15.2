@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_stairs",
+    "count": 4
+  }
+}

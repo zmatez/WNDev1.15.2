@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/branch_small_none",
+    "textures": {
+        "log": "block/dark_oak_log"
+    }
+}

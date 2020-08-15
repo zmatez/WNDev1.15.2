@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "wildnature:blocks/aspen/aspen_door_door_bottom",
+        "top": "wildnature:blocks/aspen/aspen_door_door_top"
+    }
+}

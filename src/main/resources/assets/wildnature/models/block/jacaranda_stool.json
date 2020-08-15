@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/jacaranda/jacaranda_planks",
+        "material": "wildnature:blocks/jacaranda/jacaranda_stripped_log",
+        "material2": "wildnature:blocks/jacaranda/jacaranda_planks"
+    }
+}

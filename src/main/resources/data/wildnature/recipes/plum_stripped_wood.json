@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stripped_bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:plum_stripped_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:plum_stripped_wood",
+    "count": 3
+  }
+}

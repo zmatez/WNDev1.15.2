@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/poplar_slab_parquet" },
+        "type=top": { "model": "wildnature:block/poplar_slab_parquet_top" },
+        "type=double": { "model": "wildnature:block/poplar_parquet" }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/rocks/gneiss/gneiss_polished",
+        "particle": "wildnature:blocks/rocks/gneiss/gneiss_polished"
+    }
+}

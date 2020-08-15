@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "wildnature:blocks/redstone/rs_steam_generator/steam_generator2",
+        "front": "wildnature:blocks/redstone/rs_steam_generator/steam_generator_snout_on2",
+        "side": "wildnature:blocks/redstone/rs_steam_generator/steam_generator2"
+    }
+}

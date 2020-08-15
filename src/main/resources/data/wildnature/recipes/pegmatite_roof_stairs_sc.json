@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:pegmatite_roof"
+  },
+  "result": "wildnature:pegmatite_roof_stairs",
+  "count": 1
+}

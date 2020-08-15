@@ -1,0 +1,10 @@
+{
+    "group": "red_dye",
+    "result": {
+        "item": "minecraft:red_dye",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:prickly_pear_cactus"}}
+}

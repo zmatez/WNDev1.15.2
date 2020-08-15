@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "gravity=false": { "model": "wildnature:block/gravityshroom" },
+    "gravity=true": { "model": "wildnature:block/gravityshroom_light" }
+
+  }
+}

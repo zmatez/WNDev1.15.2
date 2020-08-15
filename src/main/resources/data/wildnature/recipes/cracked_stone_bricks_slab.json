@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:cracked_bricks_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cracked_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "wildnature:cracked_stone_bricks_slab",
+    "count": 6
+  }
+}

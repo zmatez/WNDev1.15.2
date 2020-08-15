@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "alcohol",
+  "ingredients": [
+    {
+      "item": "wildnature:grapes_yellow"
+    },
+    {
+      "item": "wildnature:grapes_yellow"
+    },
+    {
+      "item": "wildnature:grapes_yellow"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "wildnature:wine_bottle"
+    }
+  ],
+  "result": {
+    "item": "wildnature:white_wine",
+    "count": 1
+  }
+}

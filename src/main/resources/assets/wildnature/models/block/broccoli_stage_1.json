@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "wildnature:blocks/crops/broccoli/broccoli_stage_1"
+    }
+}

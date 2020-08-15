@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/algae" },
+      { "model": "wildnature:block/algae", "y": 90 },
+      { "model": "wildnature:block/algae", "y": 180 },
+      { "model": "wildnature:block/algae", "y": 270 }
+    ]
+  }
+}

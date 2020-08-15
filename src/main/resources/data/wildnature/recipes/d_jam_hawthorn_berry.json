@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "jams",
+  "ingredients": [
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:wild_strawberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:red_currant"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:jar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:jam_hawthorn_berry",
+    "count": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/hazel/hazel_stripped_log_top",
+        "side": "wildnature:blocks/hazel/hazel_stripped_log"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "block/birch_planks",
+        "particle": "block/birch_planks"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:amber_block"
+    }
+  ],
+  "result": {
+    "item": "wildnature:amber_crystal",
+    "count": 9
+  }
+}

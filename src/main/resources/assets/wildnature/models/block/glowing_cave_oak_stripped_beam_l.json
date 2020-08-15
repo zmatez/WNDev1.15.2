@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/l_beam",
+    "textures": {
+        "particle": "wildnature:blocks/glowing_cave_oak/glowing_cave_oak_stripped_log",
+        "side": "wildnature:blocks/glowing_cave_oak/glowing_cave_oak_stripped_log",
+        "top": "wildnature:blocks/glowing_cave_oak/glowing_cave_oak_stripped_log_top"
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "minecraft:sugar"
+  },
+  "result": "wildnature:caramel",
+  "experience": 1.0,
+  "cookingtime": 100
+}

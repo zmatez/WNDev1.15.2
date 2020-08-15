@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "parquet",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:birch_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:birch_parquet",
+    "count": 4
+  }
+}

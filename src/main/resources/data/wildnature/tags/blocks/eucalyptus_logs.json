@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:eucalyptus_branch",
+    "wildnature:eucalyptus_log",
+    "wildnature:eucalyptus_wood",
+    "wildnature:eucalyptus_stripped_log",
+    "wildnature:eucalyptus_stripped_wood"
+  ]
+}

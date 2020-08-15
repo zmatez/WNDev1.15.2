@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "wildnature:blocks/baobab/baobab_stripped_log"
+    }
+}

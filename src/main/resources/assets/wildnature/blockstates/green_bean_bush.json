@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "stage=0": { "model": "wildnature:block/green_bean_sprout" },
+        "stage=1": { "model": "wildnature:block/green_bean_vine" },
+        "stage=2": { "model": "wildnature:block/green_bean_vine_flowering" }
+
+    }
+}

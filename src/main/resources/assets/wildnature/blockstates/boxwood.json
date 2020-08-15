@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/boxwood" },
+      { "model": "wildnature:block/boxwood", "y": 90 },
+      { "model": "wildnature:block/boxwood", "y": 180 },
+      { "model": "wildnature:block/boxwood", "y": 270 }
+    ]
+  }
+}

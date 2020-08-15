@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/glowing_cave_oak/glowing_cave_oak_leaves"
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:cobble_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:diorite_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:diorite_stairs_cobble",
+    "count": 4
+  }
+}

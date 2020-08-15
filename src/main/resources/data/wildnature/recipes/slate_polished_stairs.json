@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_polished_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_polished_stairs",
+    "count": 4
+  }
+}

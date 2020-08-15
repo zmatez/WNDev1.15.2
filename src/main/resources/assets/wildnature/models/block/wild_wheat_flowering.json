@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/wild_wheat_flowering",
+        "greyscale": "wildnature:blocks/flowers/wild_wheat",
+        "particle": "wildnature:blocks/flowers/wild_wheat"
+    }
+}

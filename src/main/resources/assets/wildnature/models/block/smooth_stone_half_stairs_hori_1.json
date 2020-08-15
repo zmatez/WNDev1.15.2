@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_hori_1",
+    "textures": {
+        "material": "block/smooth_stone",
+        "particle": "block/smooth_stone"
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bench",
+  "pattern": [
+    "###",
+    "@-@"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:willow_planks"
+    },
+    "@": {
+      "item": "wildnature:willow_stripped_log"
+    },
+    "-": {
+      "item": "wildnature:willow_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:willow_bench",
+    "count": 3
+  }
+}

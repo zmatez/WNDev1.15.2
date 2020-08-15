@@ -1,0 +1,206 @@
+package com.matez.wildnature.world.gen.structures.nature.woods.beech;
+
+import com.matez.wildnature.world.gen.structures.nature.SchemFeature;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.math.BlockPos;
+
+import java.util.Set;
+
+public class leafy_beech_1 extends SchemFeature {
+    public leafy_beech_1() {
+        super();
+
+        LEAVES = notDecayingLeaf(Blocks.BIRCH_LEAVES);
+    }
+
+
+    @Override
+    public Set<BlockPos> setBlocks() {
+
+        Block(-2, 6, -4, LEAVES);
+        Block(0, 4, -3, LEAVES);
+        Block(-2, 6, -3, LEAVES);
+        Block(-1, 7, -3, LEAVES);
+        Block(1, 7, -3, LEAVES);
+        Block(-2, 8, -3, LEAVES);
+        Block(-1, 8, -3, LEAVES);
+        Block(1, 8, -3, LEAVES);
+        Block(2, 8, -3, LEAVES);
+        Block(-1, 10, -3, LEAVES);
+        Block(0, 10, -3, LEAVES);
+        Block(1, 10, -3, LEAVES);
+        Block(-2, 4, -2, LEAVES);
+        Block(-1, 4, -2, LEAVES);
+        Block(0, 4, -2, LEAVES);
+        Block(-3, 6, -2, LEAVES);
+        Block(-2, 6, -2, LEAVES);
+        Block(-1, 6, -2, LEAVES);
+        Block(0, 6, -2, LEAVES);
+        Block(1, 6, -2, LEAVES);
+        Block(1, 7, -2, LEAVES);
+        Block(-2, 8, -2, LEAVES);
+        Block(-1, 8, -2, LEAVES);
+        Block(1, 8, -2, LEAVES);
+        Block(2, 8, -2, LEAVES);
+        Block(3, 8, -2, LEAVES);
+        Block(-3, 10, -2, LEAVES);
+        Block(-2, 10, -2, LEAVES);
+        Block(-1, 10, -2, LEAVES);
+        Block(0, 10, -2, LEAVES);
+        Block(1, 10, -2, LEAVES);
+        Block(2, 10, -2, LEAVES);
+        Block(0, 12, -2, LEAVES);
+        Block(1, 12, -2, LEAVES);
+        Block(0, 13, -2, LEAVES);
+        Block(-3, 4, -1, LEAVES);
+        Block(-2, 4, -1, LEAVES);
+        Block(-1, 4, -1, LEAVES);
+        Block(0, 4, -1, LEAVES);
+        Block(1, 4, -1, LEAVES);
+        Block(-3, 6, -1, LEAVES);
+        Block(-2, 6, -1, LEAVES);
+        Block(-1, 6, -1, LEAVES);
+        Block(0, 6, -1, LEAVES);
+        Block(1, 6, -1, LEAVES);
+        Block(2, 6, -1, LEAVES);
+        Block(-2, 8, -1, LEAVES);
+        Block(-1, 8, -1, LEAVES);
+        Block(0, 8, -1, LEAVES);
+        Block(1, 8, -1, LEAVES);
+        Block(2, 8, -1, LEAVES);
+        Block(-1, 9, -1, LEAVES);
+        Block(1, 9, -1, LEAVES);
+        Block(-3, 10, -1, LEAVES);
+        Block(-2, 10, -1, LEAVES);
+        Block(-1, 10, -1, LEAVES);
+        Block(0, 10, -1, LEAVES);
+        Block(1, 10, -1, LEAVES);
+        Block(2, 10, -1, LEAVES);
+        Block(-3, 12, -1, LEAVES);
+        Block(-2, 12, -1, LEAVES);
+        Block(-1, 12, -1, LEAVES);
+        Block(0, 12, -1, LEAVES);
+        Block(1, 12, -1, LEAVES);
+        Block(2, 12, -1, LEAVES);
+        Block(0, 13, -1, LEAVES);
+        Block(0, 1, 0, "wildnature:beech_log[axis=y]");
+        Block(0, 2, 0, "wildnature:beech_log[axis=y]");
+        Block(0, 3, 0, "wildnature:beech_log[axis=y]");
+        Block(-3, 4, 0, LEAVES);
+        Block(-2, 4, 0, LEAVES);
+        Block(-1, 4, 0, LEAVES);
+        Block(0, 4, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 4, 0, LEAVES);
+        Block(2, 4, 0, LEAVES);
+        Block(-3, 5, 0, LEAVES);
+        Block(0, 5, 0, "wildnature:beech_log[axis=y]");
+        Block(-3, 6, 0, LEAVES);
+        Block(-2, 6, 0, LEAVES);
+        Block(-1, 6, 0, LEAVES);
+        Block(0, 6, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 6, 0, LEAVES);
+        Block(2, 6, 0, LEAVES);
+        Block(-1, 7, 0, LEAVES);
+        Block(0, 7, 0, "wildnature:beech_log[axis=y]");
+        Block(-2, 8, 0, LEAVES);
+        Block(-1, 8, 0, LEAVES);
+        Block(0, 8, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 8, 0, LEAVES);
+        Block(2, 8, 0, LEAVES);
+        Block(3, 8, 0, LEAVES);
+        Block(4, 8, 0, LEAVES);
+        Block(0, 9, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 9, 0, LEAVES);
+        Block(-3, 10, 0, LEAVES);
+        Block(-2, 10, 0, LEAVES);
+        Block(-1, 10, 0, LEAVES);
+        Block(0, 10, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 10, 0, LEAVES);
+        Block(2, 10, 0, LEAVES);
+        Block(0, 11, 0, "wildnature:beech_log[axis=y]");
+        Block(-1, 12, 0, LEAVES);
+        Block(0, 12, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 12, 0, LEAVES);
+        Block(-1, 13, 0, LEAVES);
+        Block(0, 13, 0, "wildnature:beech_log[axis=y]");
+        Block(1, 13, 0, LEAVES);
+        Block(-1, 14, 0, LEAVES);
+        Block(0, 14, 0, LEAVES);
+        Block(0, 15, 0, LEAVES);
+        Block(-3, 4, 1, LEAVES);
+        Block(-2, 4, 1, LEAVES);
+        Block(-1, 4, 1, LEAVES);
+        Block(0, 4, 1, LEAVES);
+        Block(1, 4, 1, LEAVES);
+        Block(2, 4, 1, LEAVES);
+        Block(-3, 5, 1, LEAVES);
+        Block(0, 5, 1, LEAVES);
+        Block(-3, 6, 1, LEAVES);
+        Block(-2, 6, 1, LEAVES);
+        Block(-1, 6, 1, LEAVES);
+        Block(0, 6, 1, LEAVES);
+        Block(1, 6, 1, LEAVES);
+        Block(2, 6, 1, LEAVES);
+        Block(-1, 7, 1, LEAVES);
+        Block(0, 7, 1, LEAVES);
+        Block(1, 7, 1, LEAVES);
+        Block(2, 7, 1, LEAVES);
+        Block(-1, 8, 1, LEAVES);
+        Block(0, 8, 1, LEAVES);
+        Block(0, 9, 1, LEAVES);
+        Block(-3, 10, 1, LEAVES);
+        Block(-2, 10, 1, LEAVES);
+        Block(-1, 10, 1, LEAVES);
+        Block(0, 10, 1, LEAVES);
+        Block(1, 10, 1, LEAVES);
+        Block(2, 10, 1, LEAVES);
+        Block(-2, 12, 1, LEAVES);
+        Block(-1, 12, 1, LEAVES);
+        Block(0, 12, 1, LEAVES);
+        Block(1, 12, 1, LEAVES);
+        Block(2, 12, 1, LEAVES);
+        Block(3, 12, 1, LEAVES);
+        Block(0, 13, 1, LEAVES);
+        Block(-2, 4, 2, LEAVES);
+        Block(-1, 4, 2, LEAVES);
+        Block(0, 4, 2, LEAVES);
+        Block(1, 4, 2, LEAVES);
+        Block(-3, 5, 2, LEAVES);
+        Block(-2, 5, 2, LEAVES);
+        Block(-2, 6, 2, LEAVES);
+        Block(-1, 6, 2, LEAVES);
+        Block(0, 6, 2, LEAVES);
+        Block(1, 6, 2, LEAVES);
+        Block(2, 6, 2, LEAVES);
+        Block(0, 7, 2, LEAVES);
+        Block(-1, 8, 2, LEAVES);
+        Block(0, 8, 2, LEAVES);
+        Block(1, 8, 2, LEAVES);
+        Block(2, 8, 2, LEAVES);
+        Block(-2, 10, 2, LEAVES);
+        Block(-1, 10, 2, LEAVES);
+        Block(0, 10, 2, LEAVES);
+        Block(1, 10, 2, LEAVES);
+        Block(-1, 12, 2, LEAVES);
+        Block(0, 12, 2, LEAVES);
+        Block(1, 12, 2, LEAVES);
+        Block(0, 4, 3, LEAVES);
+        Block(-1, 6, 3, LEAVES);
+        Block(0, 6, 3, LEAVES);
+        Block(1, 6, 3, LEAVES);
+        Block(1, 8, 3, LEAVES);
+        Block(-1, 10, 3, LEAVES);
+        Block(0, 10, 3, LEAVES);
+        Block(0, 5, 4, LEAVES);
+        Block(-1, 6, 4, LEAVES);
+        Block(0, 6, 4, LEAVES);
+        Block(1, 6, 4, LEAVES);
+        Block(1, 6, 5, LEAVES);
+
+//   wildnature mod
+//           created by matez 
+//         all rights reserved   
+//     http://bit.ly/wildnature-mod
+        return super.setBlocks();
+    }
+}

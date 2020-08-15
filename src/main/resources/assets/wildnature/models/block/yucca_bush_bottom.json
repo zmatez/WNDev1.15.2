@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/yucca_bush_bottom"
+    }
+}

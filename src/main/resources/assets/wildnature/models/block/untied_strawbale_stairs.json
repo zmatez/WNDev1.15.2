@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/other/untied_strawbale",
+        "top": "wildnature:blocks/other/untied_strawbale",
+        "side": "wildnature:blocks/other/untied_strawbale"
+    }
+}

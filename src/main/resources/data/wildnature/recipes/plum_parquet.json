@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "parquet",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:plum_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:plum_parquet",
+    "count": 4
+  }
+}

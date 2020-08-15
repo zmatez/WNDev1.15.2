@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/cross_with_double_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/crocus_purple",
+        "3": "wildnature:blocks/flowers/crocus_leaves",
+        "particle": "wildnature:blocks/flowers/crocus_stem",
+        "2": "wildnature:blocks/flowers/crocus_stem"
+    }
+}

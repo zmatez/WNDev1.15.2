@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/violet_stem"
+        },
+        {
+          "model": "wildnature:block/violet_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/violet_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/violet_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/violet_purple"
+        },
+        {
+          "model": "wildnature:block/violet_purple",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/violet_purple",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/violet_purple",
+          "y": 270
+        }
+      ]
+  }
+}

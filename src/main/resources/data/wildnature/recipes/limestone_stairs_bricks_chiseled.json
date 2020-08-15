@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:chiseled_bricks_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone_bricks_chiseled"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_stairs",
+    "count": 4
+  }
+}

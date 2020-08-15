@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/l_beam",
+    "textures": {
+        "particle": "wildnature:blocks/redwood/redwood_stripped_log",
+        "side": "wildnature:blocks/redwood/redwood_stripped_log",
+        "top": "wildnature:blocks/redwood/redwood_stripped_log_top"
+    }
+}

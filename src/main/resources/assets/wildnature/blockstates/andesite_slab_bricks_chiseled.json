@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/andesite_slab_bricks_chiseled" },
+        "type=top": { "model": "wildnature:block/andesite_slab_bricks_chiseled_top" },
+        "type=double": { "model": "wildnature:block/andesite_bricks_chiseled" }
+    }
+}

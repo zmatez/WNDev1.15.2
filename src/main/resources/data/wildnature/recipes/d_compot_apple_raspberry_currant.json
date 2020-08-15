@@ -1,0 +1,39 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:red_currant"
+    },
+    {
+      "item": "wildnature:red_currant"
+    },
+    {
+      "item": "wildnature:black_currant"
+    },
+    {
+      "item": "wildnature:black_currant"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_apple_raspberry_currant",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

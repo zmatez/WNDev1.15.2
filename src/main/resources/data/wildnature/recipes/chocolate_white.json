@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "BCB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:blue_dye"
+    },
+    "D": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "wildnature:chocolate_white",
+    "count": 2
+  }
+}

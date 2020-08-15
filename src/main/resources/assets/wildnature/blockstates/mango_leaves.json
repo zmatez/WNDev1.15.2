@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "stage=0": { "model": "wildnature:block/mango_leaves" },
+    "stage=1": { "model": "wildnature:block/mango_leaves_flowering" },
+    "stage=2": { "model": "wildnature:block/mango_leaves2" },
+    "stage=3": { "model": "wildnature:block/mango_leaves3" },
+    "stage=4": { "model": "wildnature:block/mango_leaves4" },
+    "stage=5": { "model": "wildnature:block/mango_leaves5" },
+    "stage=6": { "model": "wildnature:block/mango_leaves6" },
+    "stage=7": { "model": "wildnature:block/mango_leaves7" }
+  }
+}

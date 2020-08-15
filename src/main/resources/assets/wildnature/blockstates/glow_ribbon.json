@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "wildnature:block/glow_ribbon_bottom" },
+        "half=upper":    { "model": "wildnature:block/glow_ribbon_top" }
+    }
+}

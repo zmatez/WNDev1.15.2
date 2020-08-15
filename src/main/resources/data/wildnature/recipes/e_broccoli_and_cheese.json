@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "meals",
+  "ingredients": [
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    }
+  ],
+  "result": {
+    "item": "wildnature:broccoli_and_cheese",
+    "count": 1
+  }
+}

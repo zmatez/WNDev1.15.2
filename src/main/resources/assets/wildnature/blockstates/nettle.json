@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/nettle" },
+      { "model": "wildnature:block/nettle", "y": 90 },
+      { "model": "wildnature:block/nettle", "y": 180 },
+      { "model": "wildnature:block/nettle", "y": 270 }
+    ]
+  }
+}

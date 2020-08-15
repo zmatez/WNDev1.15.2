@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "stage=0": { "model": "wildnature:block/orange_leaves" },
+    "stage=1": { "model": "wildnature:block/orange_leaves_flowering" },
+    "stage=2": { "model": "wildnature:block/orange_leaves_2" },
+    "stage=3": { "model": "wildnature:block/orange_leaves_3" },
+    "stage=4": { "model": "wildnature:block/orange_leaves_4" },
+    "stage=5": { "model": "wildnature:block/orange_leaves_5" },
+    "stage=6": { "model": "wildnature:block/orange_leaves_6" },
+    "stage=7": { "model": "wildnature:block/orange_leaves_7" }
+  }
+}

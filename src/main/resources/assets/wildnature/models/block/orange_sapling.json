@@ -1,0 +1,7 @@
+{   "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/citrus/orange_leaves",
+    "leaves": "wildnature:blocks/citrus/orange_leaves",
+    "log": "wildnature:blocks/citrus/citrus_log"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:cream_of_broccoli_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

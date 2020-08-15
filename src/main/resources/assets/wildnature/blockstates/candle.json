@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "": [
+        {
+          "model": "wildnature:block/candle"
+        },
+        {
+          "model": "wildnature:block/candle",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/candle",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/candle",
+          "y": 270
+        }
+      ]
+    }
+}

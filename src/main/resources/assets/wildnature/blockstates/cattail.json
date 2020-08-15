@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "wildnature:block/cattail_bottom" },
+        "half=upper":    { "model": "wildnature:block/cattail_top" }
+    }
+}

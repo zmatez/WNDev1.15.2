@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/hepatica_stem"
+        },
+        {
+          "model": "wildnature:block/hepatica_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/hepatica_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/hepatica_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/hepatica_pink"
+        },
+        {
+          "model": "wildnature:block/hepatica_pink",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/hepatica_pink",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/hepatica_pink",
+          "y": 270
+        }
+      ]
+  }
+}

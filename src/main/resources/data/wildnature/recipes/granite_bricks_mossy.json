@@ -1,0 +1,15 @@
+{
+  "group": "wildnature:stone_bricks_mossy",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:granite_bricks"
+    },
+    {
+      "item": "minecraft:vine"
+    }
+  ],
+  "result": {
+    "item": "wildnature:granite_bricks_mossy"
+  }
+}

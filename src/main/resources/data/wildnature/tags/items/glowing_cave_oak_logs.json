@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:glowing_cave_oak_branch",
+    "wildnature:glowing_cave_oak_log",
+    "wildnature:glowing_cave_oak_wood",
+    "wildnature:glowing_cave_oak_stripped_log",
+    "wildnature:glowing_cave_oak_stripped_wood"
+  ]
+}

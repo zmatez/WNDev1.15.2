@@ -1,0 +1,24 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "wildnature:garlic_mushroom_gravy"
+    }
+  ],
+  "result": {
+    "item": "wildnature:steak_dinner_with_gravy",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "wildnature:blocks/block/hydrothermal_vent_bottom",
+        "top": "wildnature:blocks/block/hydrothermal_vent_top",
+        "side": "wildnature:blocks/block/hydrothermal_vent_side"
+    }
+}

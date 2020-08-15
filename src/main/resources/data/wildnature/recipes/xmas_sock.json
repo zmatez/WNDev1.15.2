@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "wildnature:xmas_sock",
+        "count": 2
+    },
+    "pattern": [
+        "WBL",
+        "RRL",
+        "LLL"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "W": {"item": "minecraft:white_wool"},
+        "L": {"item": "minecraft:leather"},
+        "B": {"item": "minecraft:white_dye"},
+        "R": {"item": "minecraft:red_dye"}
+    }
+}

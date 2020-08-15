@@ -1,0 +1,57 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "result": {
+    "item": "wildnature:cherry_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

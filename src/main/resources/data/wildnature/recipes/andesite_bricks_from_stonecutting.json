@@ -1,0 +1,9 @@
+{
+  "group": "wildnature:stone_bricks",
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:andesite"
+  },
+  "result": "wildnature:andesite_bricks",
+  "count": 1
+}

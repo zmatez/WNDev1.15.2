@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/pear/pear_leaves6"
+    }
+}

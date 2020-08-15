@@ -1,0 +1,27 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan",
+  "ingredient": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:butter"
+    }
+  ],
+  "result": {
+    "item": "wildnature:fried_egg",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

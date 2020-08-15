@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_vertical",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:acacia_slab"
+    }
+  },
+  "result": {
+    "item": "wildnature:acacia_vertical_slab",
+    "count": 3
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "wildnature:green_apple"
+    },
+    {
+      "item": "wildnature:pear"
+    },
+    {
+      "item": "wildnature:pear"
+    },
+    {
+      "item": "wildnature:pear"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_apple_pear",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

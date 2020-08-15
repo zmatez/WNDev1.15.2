@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_wall_side",
+    "textures": {
+        "wall": "wildnature:blocks/rocks/pegmatite/pegmatite_bricks_small"
+    }
+}

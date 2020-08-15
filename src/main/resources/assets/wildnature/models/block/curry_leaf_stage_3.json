@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "wildnature:blocks/crops/curry/curry_leaf_stage_3"
+    }
+}

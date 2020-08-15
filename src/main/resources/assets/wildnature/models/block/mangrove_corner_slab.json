@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "wildnature:blocks/mangrove/mangrove_planks",
+        "particle": "wildnature:blocks/mangrove/mangrove_planks"
+    }
+}

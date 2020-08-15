@@ -1,0 +1,31 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "wildnature:broccoli"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:red_wine_reduction_sauce"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:mutton_dinner_with_redwine_sauce",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

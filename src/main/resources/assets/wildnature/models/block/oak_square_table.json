@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_square_table",
+    "textures": {
+        "particle": "block/oak_planks",
+        "material": "block/stripped_oak_log",
+        "material2": "block/stripped_oak_log_top",
+        "material3": "block/oak_planks"
+    }
+}

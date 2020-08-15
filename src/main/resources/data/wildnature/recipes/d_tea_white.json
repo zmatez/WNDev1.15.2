@@ -1,0 +1,24 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;glass",
+  "ingredient": [
+    {
+      "item": "wildnature:white_tea_leaves"
+    },
+    {
+      "item": "wildnature:white_tea_leaves"
+    },
+    {
+      "item": "wildnature:white_tea_leaves"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tea_white",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/yew_bush" },
+      { "model": "wildnature:block/yew_bush", "y": 90 },
+      { "model": "wildnature:block/yew_bush", "y": 180 },
+      { "model": "wildnature:block/yew_bush", "y": 270 }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:beech_branch",
+    "wildnature:beech_log",
+    "wildnature:beech_wood",
+    "wildnature:beech_stripped_log",
+    "wildnature:beech_stripped_wood"
+  ]
+}

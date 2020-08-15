@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "age=0": { "model": "wildnature:block/cotton_plant_stem" },
+        "age=1": { "model": "wildnature:block/cotton_plant_cotton" }
+
+    }
+}

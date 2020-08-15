@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "wildnature:cacao",
+        "count": 1
+    },
+    "pattern": [
+        "A",
+        "B",
+        "C"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:cocoa_beans"},
+        "B": {"item": "minecraft:milk_bucket"},
+        "C": {"item": "wildnature:glass"}
+    }
+}

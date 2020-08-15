@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/larch_slab" },
+        "type=top": { "model": "wildnature:block/larch_slab_top" },
+        "type=double": { "model": "wildnature:block/larch_planks" }
+    }
+}

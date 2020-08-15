@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "wildnature:items/eatables/melissa_tea_leaf"
+    }
+}

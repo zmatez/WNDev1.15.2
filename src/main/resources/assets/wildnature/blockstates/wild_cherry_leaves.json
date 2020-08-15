@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "stage=0": { "model": "wildnature:block/wild_cherry_leaves" },
+    "stage=1": { "model": "wildnature:block/wild_cherry_leaves0" },
+    "stage=2": { "model": "wildnature:block/wild_cherry_leaves1" },
+    "stage=3": { "model": "wildnature:block/wild_cherry_leaves2" },
+    "stage=4": { "model": "wildnature:block/wild_cherry_leaves3" },
+    "stage=5": { "model": "wildnature:block/wild_cherry_leaves4" },
+    "stage=6": { "model": "wildnature:block/wild_cherry_leaves5" }
+  }
+}

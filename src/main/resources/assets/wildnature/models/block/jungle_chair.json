@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_chair",
+    "textures": {
+        "particle": "block/jungle_planks",
+        "material": "block/stripped_jungle_log",
+        "material2": "block/jungle_planks"
+    }
+}

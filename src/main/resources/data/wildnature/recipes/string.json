@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "string",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:cotton"
+    }
+  },
+  "result": {
+    "item": "minecraft:string",
+    "count": 3
+  }
+}

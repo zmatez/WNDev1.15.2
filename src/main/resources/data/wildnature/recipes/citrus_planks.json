@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:citrus_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:citrus_planks",
+    "count": 4
+  }
+}

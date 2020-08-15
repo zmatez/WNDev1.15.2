@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:mahogany_branch",
+    "wildnature:mahogany_log",
+    "wildnature:mahogany_wood",
+    "wildnature:mahogany_stripped_log",
+    "wildnature:mahogany_stripped_wood"
+  ]
+}

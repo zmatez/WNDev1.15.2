@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/umber/umber_roof_2",
+        "top": "wildnature:blocks/rocks/umber/umber_roof_2",
+        "side": "wildnature:blocks/rocks/umber/umber_roof_2"
+    }
+}

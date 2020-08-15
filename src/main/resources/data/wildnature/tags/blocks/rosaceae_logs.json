@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:rosaceae_branch",
+    "wildnature:rosaceae_log",
+    "wildnature:rosaceae_wood",
+    "wildnature:rosaceae_stripped_log",
+    "wildnature:rosaceae_stripped_wood"
+  ]
+}

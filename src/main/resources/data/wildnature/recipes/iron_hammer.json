@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:iron_hammer",
+        "count": 2
+    },
+    "pattern": [
+        "  A",
+        " B ",
+        "B  "
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:iron_block"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

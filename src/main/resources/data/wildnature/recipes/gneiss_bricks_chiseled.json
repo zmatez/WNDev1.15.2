@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_bricks_chiseled",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_bricks"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_bricks_chiseled"
+  }
+}

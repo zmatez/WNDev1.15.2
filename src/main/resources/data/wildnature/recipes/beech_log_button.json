@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:beech_logs"
+    },
+    {
+      "item": "wildnature:beech_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:beech_log_button",
+    "count": 2
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:butter"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:cream_of_mushroom_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

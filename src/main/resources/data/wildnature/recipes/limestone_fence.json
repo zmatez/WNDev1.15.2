@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:stone_fence",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone_wall"
+    },
+    "W": {
+      "item": "wildnature:limestone"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_fence",
+    "count": 5
+  }
+}

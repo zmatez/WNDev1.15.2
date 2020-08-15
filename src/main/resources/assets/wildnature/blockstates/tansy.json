@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/tansy" },
+      { "model": "wildnature:block/tansy", "y": 90 },
+      { "model": "wildnature:block/tansy", "y": 180 },
+      { "model": "wildnature:block/tansy", "y": 270 }
+    ]
+  }
+}

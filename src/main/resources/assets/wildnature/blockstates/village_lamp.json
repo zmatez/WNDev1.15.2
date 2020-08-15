@@ -1,0 +1,6 @@
+{
+    "variants": {
+      "lit=false": { "model": "wildnature:block/village_lamp" },
+      "lit=true": { "model": "wildnature:block/village_lamp_on"}
+    }
+}

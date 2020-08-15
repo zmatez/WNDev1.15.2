@@ -1,0 +1,66 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:butter"
+    }
+  ],
+  "result": {
+    "item": "wildnature:choco_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

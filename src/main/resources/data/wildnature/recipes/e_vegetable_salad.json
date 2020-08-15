@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:green_pepper"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:red_onion"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:cucumber"
+    },
+    {
+      "item": "wildnature:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "wildnature:vegetable_salad",
+    "count": 1
+  }
+}

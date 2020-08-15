@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/epidosite/epidosite_bricks_chiseled",
+        "top": "wildnature:blocks/rocks/epidosite/epidosite_bricks_chiseled",
+        "side": "wildnature:blocks/rocks/epidosite/epidosite_bricks_chiseled"
+    }
+}

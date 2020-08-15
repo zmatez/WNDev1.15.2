@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "log_fence",
+  "pattern": [
+    "#$#",
+    "#$#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:oak_log"
+    },
+    "$": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:oak_log_fence",
+    "count": 6
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/arrowslit" },
+    "facing=east": { "model": "wildnature:block/arrowslit", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/arrowslit", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/arrowslit", "y": 270, "uvlock": true},
+    "facing=double": { "model": "wildnature:block/limestone_bricks_arrowslit_square" }
+  }
+}

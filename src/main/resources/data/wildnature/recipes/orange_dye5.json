@@ -1,0 +1,10 @@
+{
+    "group": "orange_dye",
+    "result": {
+        "item": "minecraft:orange_dye",
+        "count": 4
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:chinese_lantern_flower"}}
+}

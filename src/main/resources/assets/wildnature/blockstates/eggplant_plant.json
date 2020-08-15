@@ -1,0 +1,18 @@
+{
+    "variants": {
+        "age=0,half=lower": { "model": "wildnature:block/eggplant_stage_1_bottom" },
+        "age=0,half=upper": { "model": "wildnature:block/eggplant_stage_1_top" },
+        "age=1,half=lower": { "model": "wildnature:block/eggplant_stage_2_bottom" },
+        "age=1,half=upper": { "model": "wildnature:block/eggplant_stage_2_top" },
+        "age=2,half=lower": { "model": "wildnature:block/eggplant_stage_3_bottom" },
+        "age=2,half=upper": { "model": "wildnature:block/eggplant_stage_3_top" },
+        "age=3,half=lower": { "model": "wildnature:block/eggplant_stage_4_bottom" },
+        "age=3,half=upper": { "model": "wildnature:block/eggplant_stage_4_top" },
+        "age=4,half=lower": { "model": "wildnature:block/eggplant_stage_5_bottom" },
+        "age=4,half=upper": { "model": "wildnature:block/eggplant_stage_5_top" },
+        "age=5,half=lower": { "model": "wildnature:block/eggplant_stage_6_bottom" },
+        "age=5,half=upper": { "model": "wildnature:block/eggplant_stage_6_top" }
+
+
+    }
+}

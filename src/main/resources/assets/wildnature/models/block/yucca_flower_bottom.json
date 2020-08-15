@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/yucca_flower_bottom",
+        "greyscale": "wildnature:blocks/flowers/yucca_bush_bottom",
+        "particle": "wildnature:blocks/flowers/yucca_bush_bottom"
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "wildnature:coffee_berry"
+  },
+  "result": "wildnature:coffee_bean",
+  "experience": 0.35,
+  "cookingtime": 100
+}

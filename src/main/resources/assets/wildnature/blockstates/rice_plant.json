@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "age=0": { "model": "wildnature:block/rice_stage_1" },
+        "age=1": { "model": "wildnature:block/rice_stage_2" },
+        "age=2": { "model": "wildnature:block/rice_stage_3" },
+        "age=3": { "model": "wildnature:block/rice_stage_4" },
+        "age=4": { "model": "wildnature:block/rice_stage_5" }
+
+
+    }
+}

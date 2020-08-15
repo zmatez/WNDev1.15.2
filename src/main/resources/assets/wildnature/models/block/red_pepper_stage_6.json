@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "wildnature:blocks/crops/red_pepper/red_pepper_stage_6"
+    }
+}

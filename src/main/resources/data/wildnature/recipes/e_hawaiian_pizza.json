@@ -1,0 +1,75 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "wildnature:raw_bacon"
+    },
+    {
+      "item": "wildnature:raw_bacon"
+    },
+    {
+      "item": "wildnature:pineapple"
+    },
+    {
+      "item": "wildnature:pineapple"
+    },
+    {
+      "item": "wildnature:pineapple"
+    }
+  ],
+  "result": {
+    "item": "wildnature:hawaiian_pizza",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

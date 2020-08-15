@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/rocks/pegmatite/pegmatite",
+        "particle": "wildnature:blocks/rocks/pegmatite/pegmatite"
+    }
+}

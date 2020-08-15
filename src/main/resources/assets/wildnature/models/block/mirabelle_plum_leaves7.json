@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/plum/mirabelle_plum_leaves7"
+    }
+}

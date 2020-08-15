@@ -1,0 +1,29 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "wildnature:leek"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:onion"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:chicken_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

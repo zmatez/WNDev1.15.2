@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/red_sea_whip" },
+      { "model": "wildnature:block/red_sea_whip", "y": 90 },
+      { "model": "wildnature:block/red_sea_whip", "y": 180 },
+      { "model": "wildnature:block/red_sea_whip", "y": 270 }
+    ]
+  }
+}

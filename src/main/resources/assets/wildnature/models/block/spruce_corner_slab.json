@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "block/spruce_planks",
+        "particle": "block/spruce_planks"
+    }
+}

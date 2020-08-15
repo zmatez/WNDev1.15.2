@@ -1,0 +1,30 @@
+{
+  "group": "wildnature:firepits",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "!$!",
+    "@$@",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_cobble"
+    },
+    "A": {
+      "item": "wildnature:gneiss_bricks_cracked"
+    },
+    "$": {
+      "tag": "minecraft:logs"
+    },
+    "@": {
+      "item": "minecraft:coal"
+    },
+    "!": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_firepit",
+    "count": 1
+  }
+}

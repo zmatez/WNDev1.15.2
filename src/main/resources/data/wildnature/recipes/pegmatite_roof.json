@@ -1,0 +1,20 @@
+{
+  "group": "wildnature:stone_roof",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "@@@",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pegmatite_bricks"
+    },
+    "@": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "result": {
+    "item": "wildnature:pegmatite_roof"
+  }
+}

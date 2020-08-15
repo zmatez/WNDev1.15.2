@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/mangrove/mangrove_stripped_log_top",
+        "side": "wildnature:blocks/mangrove/mangrove_stripped_log"
+    }
+}

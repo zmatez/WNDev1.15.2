@@ -1,0 +1,72 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:red_currant"
+    },
+    {
+      "item": "wildnature:red_currant"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "wildnature:raspberry_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

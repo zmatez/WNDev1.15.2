@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/untied_strawbale_slab" },
+        "type=top": { "model": "wildnature:block/untied_strawbale_slab_top" },
+        "type=double": { "model": "wildnature:block/untied_strawbale" }
+    }
+}

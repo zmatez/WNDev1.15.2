@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "round_table",
+  "pattern": [
+    "###",
+    " | ",
+    " | "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:spruce_planks"
+    },
+    "|": {
+      "item": "minecraft:spruce_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:spruce_round_table",
+    "count": 4
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "block/mossy_stone_bricks",
+        "particle": "block/mossy_stone_bricks"
+    }
+}

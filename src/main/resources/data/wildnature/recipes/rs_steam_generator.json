@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "wildnature:rs_steam_generator",
+        "count": 1
+    },
+    "pattern": [
+        "ADA",
+        "BCB",
+        "FEF"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:water_bucket"},
+        "B": {"item": "minecraft:iron_block"},
+        "C": {"item": "wildnature:geyser_essence"},
+        "D": {"item": "minecraft:water_bucket"},
+        "E": {"item": "minecraft:dispenser"},
+        "F": {"item": "minecraft:hopper"}
+    }
+}

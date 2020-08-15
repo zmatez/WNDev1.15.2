@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "parquet",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:jacaranda_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:jacaranda_parquet",
+    "count": 4
+  }
+}

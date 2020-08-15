@@ -1,0 +1,8 @@
+{
+    "parent": "block/template_farmland",
+    "textures": {
+        "particle": "wildnature:blocks/grass/tropical_dirt",
+        "dirt": "wildnature:blocks/grass/tropical_dirt",
+        "top": "wildnature:blocks/grass/tropical_farmland_moist"
+    }
+}

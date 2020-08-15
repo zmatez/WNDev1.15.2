@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/geranium_stem"
+        },
+        {
+          "model": "wildnature:block/geranium_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/geranium_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/geranium_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/geranium_red"
+        },
+        {
+          "model": "wildnature:block/geranium_red",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/geranium_red",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/geranium_red",
+          "y": 270
+        }
+      ]
+  }
+}

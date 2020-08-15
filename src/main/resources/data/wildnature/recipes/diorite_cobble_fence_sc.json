@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:diorite_cobble"
+  },
+  "result": "wildnature:diorite_cobble_fence",
+  "count": 1
+}

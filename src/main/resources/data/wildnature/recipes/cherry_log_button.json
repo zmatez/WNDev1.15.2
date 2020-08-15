@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:cherry_logs"
+    },
+    {
+      "item": "wildnature:cherry_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:cherry_log_button",
+    "count": 2
+  }
+}

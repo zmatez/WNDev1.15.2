@@ -1,0 +1,20 @@
+{
+  "group": "wildnature:stone_roof",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "@@@",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_bricks"
+    },
+    "@": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_roof"
+  }
+}

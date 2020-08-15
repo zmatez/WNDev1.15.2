@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/giant_hogweed_stem_top"
+    }
+}

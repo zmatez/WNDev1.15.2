@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:pegmatite_bricks"
+  },
+  "result": "wildnature:pegmatite_small_bricks_sc",
+  "count": 1
+}

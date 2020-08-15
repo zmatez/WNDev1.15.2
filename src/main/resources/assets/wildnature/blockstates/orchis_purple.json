@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/orchis"
+        },
+        {
+          "model": "wildnature:block/orchis",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/orchis",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/orchis",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/orchis_purple"
+        },
+        {
+          "model": "wildnature:block/orchis_purple",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/orchis_purple",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/orchis_purple",
+          "y": 270
+        }
+      ]
+  }
+}

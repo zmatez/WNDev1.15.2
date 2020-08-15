@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/pillar",
+    "textures": {
+        "particle": "wildnature:blocks/rocks/syenite/syenite_pillar",
+        "0": "wildnature:blocks/rocks/syenite/syenite_pillar",
+        "1": "wildnature:blocks/rocks/syenite/syenite_polished"
+    }
+}

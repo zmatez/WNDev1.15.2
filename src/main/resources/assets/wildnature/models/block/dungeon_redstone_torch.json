@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_torch",
+    "textures": {
+        "torch": "wildnature:blocks/dungeon/dungeon_redstone_torch"
+    }
+}

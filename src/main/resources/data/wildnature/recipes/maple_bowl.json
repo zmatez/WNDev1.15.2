@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:maple_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:maple_bowl",
+    "count": 4
+  }
+}

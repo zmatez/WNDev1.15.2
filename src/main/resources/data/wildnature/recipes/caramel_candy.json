@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "wildnature:caramel"
+    }
+  },
+  "result": {
+    "item": "wildnature:caramel_candy",
+    "count": 2
+  }
+}

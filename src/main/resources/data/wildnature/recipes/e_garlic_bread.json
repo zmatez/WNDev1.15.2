@@ -1,0 +1,37 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:garlic_cloves"
+    },
+    {
+      "item": "wildnature:garlic_cloves"
+    },
+    {
+      "item": "wildnature:garlic_cloves"
+    },
+    {
+      "item": "wildnature:dried_parsley"
+    },
+    {
+      "item": "wildnature:dried_parsley"
+    },
+    {
+      "item": "wildnature:sliced_bread"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:garlic_bread",
+    "count": 3
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

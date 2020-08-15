@@ -1,0 +1,30 @@
+{
+  "group": "wildnature:firepits",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "!$!",
+    "@$@",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "A": {
+      "item": "minecraft:cracked_stone_bricks"
+    },
+    "$": {
+      "tag": "minecraft:logs"
+    },
+    "@": {
+      "item": "minecraft:charcoal"
+    },
+    "!": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:stone_firepit",
+    "count": 1
+  }
+}

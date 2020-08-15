@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/crops/green_bean/green_bean_vine_flowering"
+    }
+}

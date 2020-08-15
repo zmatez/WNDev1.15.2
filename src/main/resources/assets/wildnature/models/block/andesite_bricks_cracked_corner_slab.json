@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "wildnature:blocks/rocks/andesite/andesite_bricks_cracked",
+        "particle": "wildnature:blocks/rocks/andesite/andesite_bricks_cracked"
+    }
+}

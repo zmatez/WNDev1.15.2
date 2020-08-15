@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/branch_small_inventory",
+    "textures": {
+        "log": "block/jungle_log"
+    }
+}

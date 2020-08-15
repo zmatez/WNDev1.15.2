@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_chair",
+    "textures": {
+        "particle": "wildnature:blocks/ebony/ebony_planks",
+        "material": "wildnature:blocks/ebony/ebony_stripped_log",
+        "material2": "wildnature:blocks/ebony/ebony_planks"
+    }
+}

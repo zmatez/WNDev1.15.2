@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "wildnature:blocks/chalk/chalk_polished",
+        "top": "wildnature:blocks/chalk/chalk_polished",
+        "side": "wildnature:blocks/chalk/chalk_polished"
+    }
+}

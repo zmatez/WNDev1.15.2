@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "wildnature:blocks/syenite/syenite",
+        "top": "wildnature:blocks/syenite/syenite",
+        "side": "wildnature:blocks/syenite/syenite"
+    }
+}

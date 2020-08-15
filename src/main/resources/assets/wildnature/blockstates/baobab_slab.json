@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/baobab_slab" },
+        "type=top": { "model": "wildnature:block/baobab_slab_top" },
+        "type=double": { "model": "wildnature:block/baobab_planks" }
+    }
+}

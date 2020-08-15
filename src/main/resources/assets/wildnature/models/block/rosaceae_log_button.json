@@ -1,0 +1,6 @@
+{
+    "parent": "block/button",
+    "textures": {
+        "texture": "wildnature:blocks/rosaceae/rosaceae_log"
+    }
+}

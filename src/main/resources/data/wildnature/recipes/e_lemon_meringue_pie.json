@@ -1,0 +1,52 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:lemon_meringue_pie",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

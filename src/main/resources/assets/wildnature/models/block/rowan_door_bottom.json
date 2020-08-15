@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "wildnature:blocks/rowan/rowan_door_bottom",
+        "top": "wildnature:blocks/rowan/rowan_door_top"
+    }
+}

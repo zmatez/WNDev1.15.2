@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "wildnature:block/gneiss_pillar" },
+        "axis=z":   { "model": "wildnature:block/gneiss_pillar", "x": 90 },
+        "axis=x":   { "model": "wildnature:block/gneiss_pillar", "x": 90, "y": 90 }
+    }
+}

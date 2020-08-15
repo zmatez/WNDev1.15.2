@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_parquet",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:dark_oak_parquet"
+    }
+  },
+  "result": {
+    "item": "wildnature:dark_oak_slab_parquet",
+    "count": 6
+  }
+}

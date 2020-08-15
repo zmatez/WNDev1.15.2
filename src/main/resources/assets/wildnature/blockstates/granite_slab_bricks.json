@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/granite_slab_bricks" },
+        "type=top": { "model": "wildnature:block/granite_slab_bricks_top" },
+        "type=double": { "model": "wildnature:block/granite_bricks" }
+    }
+}

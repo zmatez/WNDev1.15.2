@@ -1,0 +1,28 @@
+{
+  "variants":{
+    "facing=east,type=0":  { "model": "wildnature:block/supporting_beam", "y": 270},
+    "facing=west,type=0":  { "model": "wildnature:block/supporting_beam", "y": 90},
+    "facing=south,type=0": { "model": "wildnature:block/supporting_beam"},
+    "facing=north,type=0": { "model": "wildnature:block/supporting_beam", "y": 180},
+    "facing=east,type=1":  { "model": "wildnature:block/l_beam", "y": 270},
+    "facing=west,type=1":  { "model": "wildnature:block/l_beam", "y": 90},
+    "facing=south,type=1": { "model": "wildnature:block/l_beam"},
+    "facing=north,type=1": { "model": "wildnature:block/l_beam", "y": 180},
+    "facing=east,type=2":  { "model": "wildnature:block/straight_beam", "y": 270},
+    "facing=west,type=2":  { "model": "wildnature:block/straight_beam", "y": 90},
+    "facing=south,type=2": { "model": "wildnature:block/straight_beam"},
+    "facing=north,type=2": { "model": "wildnature:block/straight_beam", "y": 180},
+    "facing=east,type=3":  { "model": "wildnature:block/t_beam", "y": 270},
+    "facing=west,type=3":  { "model": "wildnature:block/t_beam", "y": 90},
+    "facing=south,type=3": { "model": "wildnature:block/t_beam"},
+    "facing=north,type=3": { "model": "wildnature:block/t_beam"},
+    "facing=east,type=4":  { "model": "wildnature:block/t_beam", "y": 90},
+    "facing=west,type=4":  { "model": "wildnature:block/t_beam", "y": 270},
+    "facing=south,type=4": { "model": "wildnature:block/t_beam", "y": 180},
+    "facing=north,type=4": { "model": "wildnature:block/t_beam", "y": 180},
+    "facing=east,type=5":  { "model": "wildnature:block/cross_beam", "y": 270},
+    "facing=west,type=5":  { "model": "wildnature:block/cross_beam", "y": 90},
+    "facing=south,type=5": { "model": "wildnature:block/cross_beam"},
+    "facing=north,type=5": { "model": "wildnature:block/cross_beam", "y": 180}
+  }
+}

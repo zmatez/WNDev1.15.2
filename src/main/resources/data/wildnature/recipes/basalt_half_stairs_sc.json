@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:basalt"
+  },
+  "result": "wildnature:basalt_half_stairs",
+  "count": 1
+}

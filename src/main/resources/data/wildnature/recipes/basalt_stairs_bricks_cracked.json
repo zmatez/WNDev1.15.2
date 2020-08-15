@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:cracked_bricks_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:basalt_bricks_cracked"
+    }
+  },
+  "result": {
+    "item": "wildnature:basalt_stairs_bricks_cracked",
+    "count": 4
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:peas"
+    },
+    {
+      "item": "wildnature:peas"
+    },
+    {
+      "item": "wildnature:peas"
+    },
+    {
+      "item": "wildnature:peas"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:leek"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:pea_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

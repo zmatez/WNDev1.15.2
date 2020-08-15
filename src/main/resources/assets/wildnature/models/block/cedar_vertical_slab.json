@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/cedar/cedar_planks",
+        "particle": "wildnature:blocks/cedar/cedar_planks"
+    }
+}

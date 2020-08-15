@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_wall_side",
+    "textures": {
+        "wall": "wildnature:blocks/rocks/carbonatite/carbonatite_bricks_cracked"
+    }
+}

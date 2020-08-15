@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "wildnature:garden_salad",
+    "count": 1
+  }
+}

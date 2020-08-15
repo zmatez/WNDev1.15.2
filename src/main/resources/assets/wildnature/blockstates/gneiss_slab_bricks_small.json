@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/gneiss_slab_bricks_small" },
+        "type=top": { "model": "wildnature:block/gneiss_slab_bricks_small_top" },
+        "type=double": { "model": "wildnature:block/gneiss_bricks_small" }
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "jams",
+  "ingredients": [
+    {
+      "item": "wildnature:peanut"
+    },
+    {
+      "item": "wildnature:peanut"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:jar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:peanut_butter",
+    "count": 1
+  }
+}

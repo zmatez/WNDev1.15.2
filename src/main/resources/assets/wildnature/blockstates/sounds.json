@@ -1,0 +1,47 @@
+{
+  "block.piston.2s_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/2s_open",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.3s_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/3s_open",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.2s_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/2s_close",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.3s_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/3s_close",
+        "stream": true
+      }
+    ]
+  },
+  "block.steam_generator": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/steam_generator/steam_generator",
+        "stream": true
+      }
+    ]
+  }
+}

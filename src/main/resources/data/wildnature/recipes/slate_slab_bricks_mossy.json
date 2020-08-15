@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:mossy_bricks_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_bricks_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_slab_bricks_mossy",
+    "count": 6
+  }
+}

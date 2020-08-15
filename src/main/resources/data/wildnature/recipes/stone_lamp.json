@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:lamps",
+  "pattern": [
+    " # ",
+    "#@#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "@": {
+      "item": "minecraft:redstone_lamp"
+    }
+  },
+  "result": {
+    "item": "wildnature:stone_lamp",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/pillar",
+    "textures": {
+        "particle": "wildnature:blocks/rocks/stone/stone_pillar",
+        "0": "wildnature:blocks/rocks/stone/stone_pillar",
+        "1": "block/smooth_stone"
+    }
+}

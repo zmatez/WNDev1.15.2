@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "mushroom",
+  "ingredients": [
+    {
+      "item": "wildnature:mushroom1"
+    },
+    {
+      "item": "wildnature:mushroom2"
+    },
+    {
+      "item": "wildnature:mushroom3"
+    },
+    {
+      "item": "wildnature:mushroom6"
+    },
+    {
+      "item": "wildnature:mushroom7"
+    },
+    {
+      "item": "wildnature:mushroom8"
+    },
+    {
+      "item": "wildnature:mushroom9"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "result": {
+    "item": "wildnature:mushroom_mix",
+    "count": 3
+  }
+}

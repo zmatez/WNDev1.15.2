@@ -1,0 +1,44 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:cabbage_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

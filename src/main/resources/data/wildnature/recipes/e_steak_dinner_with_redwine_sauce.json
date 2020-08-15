@@ -1,0 +1,24 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "wildnature:red_wine_reduction_sauce"
+    }
+  ],
+  "result": {
+    "item": "wildnature:steak_dinner_with_redwine_sauce",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

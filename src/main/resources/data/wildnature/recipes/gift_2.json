@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:gift_2",
+        "count": 1
+    },
+    "pattern": [
+        "C",
+        "P"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "C": {"item": "minecraft:chest"},
+        "P": {"item": "wildnature:xmas_paper_2"}
+
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_parquet_vertical",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:aspen_slab_parquet"
+    }
+  },
+  "result": {
+    "item": "wildnature:aspen_parquet_vertical_slab",
+    "count": 3
+  }
+}

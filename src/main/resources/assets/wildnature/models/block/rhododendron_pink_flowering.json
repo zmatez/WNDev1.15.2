@@ -1,0 +1,18 @@
+{
+    "parent": "wildnature:block/big_bush_flowering_model",
+    "textures": {
+        "stemBL": "wildnature:blocks/flowers/rhododendron_stem_left_bottom",
+		"stemTL": "wildnature:blocks/flowers/rhododendron_stem_left_top",
+		"stemBR": "wildnature:blocks/flowers/rhododendron_stem_right_bottom",
+		"stemTR": "wildnature:blocks/flowers/rhododendron_stem_right_top",
+		"greyscaledBL": "wildnature:blocks/flowers/rhododendron_leaves_left_bottom",
+		"greyscaledTL": "wildnature:blocks/flowers/rhododendron_leaves_left_top",
+		"greyscaledBR": "wildnature:blocks/flowers/rhododendron_leaves_right_bottom",
+		"greyscaledTR": "wildnature:blocks/flowers/rhododendron_leaves_right_top",
+		"flowerBL": "wildnature:blocks/flowers/rhododendron_pink_left_bottom",
+		"flowerTL": "wildnature:blocks/flowers/rhododendron_pink_left_top",
+		"flowerBR": "wildnature:blocks/flowers/rhododendron_pink_right_bottom",
+		"flowerTR": "wildnature:blocks/flowers/rhododendron_pink_right_top",
+		"particle":"wildnature:blocks/flowers/rhododendron_pink_right_top"
+	}
+}

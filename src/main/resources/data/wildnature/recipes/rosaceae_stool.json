@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stool",
+  "pattern": [
+    "###",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rosaceae_planks"
+    },
+    "|": {
+      "item": "wildnature:rosaceae_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:rosaceae_stool",
+    "count": 4
+  }
+}

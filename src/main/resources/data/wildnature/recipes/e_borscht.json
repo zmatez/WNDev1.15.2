@@ -1,0 +1,47 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "wildnature:horse_radish"
+    },
+    {
+      "item": "wildnature:horse_radish"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:borscht",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

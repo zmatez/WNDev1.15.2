@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:diorite_roof"
+  },
+  "result": "wildnature:diorite_roof_slab",
+  "count": 1
+}

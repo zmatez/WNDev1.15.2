@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone_bricks_cracked"
+    }
+}

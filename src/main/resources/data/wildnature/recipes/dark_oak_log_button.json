@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "minecraft:dark_oak_logs"
+    },
+    {
+      "item": "minecraft:dark_oak_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:dark_oak_log_button",
+    "count": 2
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/crops/pineapple/pineapple_plant_fruit"
+    }
+}

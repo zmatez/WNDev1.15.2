@@ -1,0 +1,200 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+"ambientocclusion": false,
+    "textures": {
+        "candle_wick": "wildnature:blocks/dungeon/candle_wick",
+        "candle_side": "wildnature:blocks/dungeon/candle_side",
+        "candle_side_melting": "wildnature:blocks/dungeon/candle_side_melting",
+        "particle": "wildnature:blocks/dungeon/candle_side"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 7, 0, 7 ], 
+            "to": [ 9, 6, 9 ], 
+            "faces": {
+                "north": { "texture": "#candle_side", "uv": [ 2, 4, 4, 10 ] },
+                "east": { "texture": "#candle_side", "uv": [ 6, 1, 8, 7 ] },
+                "south": { "texture": "#candle_side", "uv": [ 11, 2, 13, 8 ] },
+                "west": { "texture": "#candle_side", "uv": [ 8, 10, 10, 16 ] },
+                "up": { "texture": "#candle_side_melting", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#candle_side", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 6.5, 0, 7 ], 
+            "to": [ 7, 2, 8 ], 
+            "faces": {
+                "north": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 2 ] },
+                "south": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 2 ] },
+                "west": { "texture": "#candle_side", "uv": [ 0, 0, 1, 2 ] },
+                "up": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] },
+                "down": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 8, 0, 9 ], 
+            "to": [ 9, 1, 9.5 ], 
+            "faces": {
+                "east": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] },
+                "south": { "texture": "#candle_side", "uv": [ 0, 0, 1, 1 ] },
+                "west": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] },
+                "up": { "texture": "#candle_side", "uv": [ 0, 0, 1, 0.5 ] },
+                "down": { "texture": "#candle_side", "uv": [ 0, 0, 2, 0.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 7, 0, 6.5 ], 
+            "to": [ 10, 0.5, 8 ], 
+            "faces": {
+                "north": { "texture": "#candle_side", "uv": [ 0, 0, 3, 0.5 ] },
+                "east": { "texture": "#candle_side", "uv": [ 0, 0, 1.5, 0.5 ] },
+                "south": { "texture": "#candle_side", "uv": [ 0, 0, 3, 0.5 ] },
+                "west": { "texture": "#candle_side", "uv": [ 0, 0, 2.5, 0.5 ] },
+                "up": { "texture": "#candle_side", "uv": [ 0, 0, 3, 1.5 ] },
+                "down": { "texture": "#candle_side", "uv": [ 0, 0, 3, 1.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 9, 0, 7 ], 
+            "to": [ 9.5, 1, 7.5 ], 
+            "faces": {
+                "north": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] },
+                "east": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] },
+                "south": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 1 ] },
+                "up": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 0.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 8, 4, 9 ], 
+            "to": [ 9, 6, 9.5 ], 
+            "faces": {
+                "east": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 2 ] },
+                "south": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1, 2 ] },
+                "west": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 2 ] },
+                "up": { "texture": "#candle_side_melting", "uv": [ 0, 0, 2, 0.5 ] },
+                "down": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1, 0.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 6.5, 4.5, 7.5 ], 
+            "to": [ 7, 6, 8.5 ], 
+            "faces": {
+                "north": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 1.5 ] },
+                "south": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 1.5 ] },
+                "west": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1, 1.5 ] },
+                "up": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1.5, 1 ] },
+                "down": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1.5, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 9, 5, 8 ], 
+            "to": [ 9.5, 6, 9 ], 
+            "faces": {
+                "east": { "texture": "#candle_side_melting", "uv": [ 4, 6, 5, 7 ] },
+                "south": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 1 ] },
+                "up": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 1 ] },
+                "down": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 9, 4, 7 ], 
+            "to": [ 9.5, 6, 8 ], 
+            "faces": {
+                "north": { "texture": "#candle_side_melting", "uv": [ 10, 6, 10.5, 8 ] },
+                "east": { "texture": "#candle_side_melting", "uv": [ 5, 4, 6, 6 ] },
+                "south": { "texture": "#candle_side_melting", "uv": [ 2, 3, 2.5, 5 ] },
+                "up": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1.5, 1 ] },
+                "down": { "texture": "#candle_side_melting", "uv": [ 0, 0, 0.5, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 8, 5, 6.5 ], 
+            "to": [ 9, 6, 7 ], 
+            "faces": {
+                "north": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1, 1 ] },
+                "east": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1.5, 1 ] },
+                "west": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1.5, 1 ] },
+                "up": { "texture": "#candle_side_melting", "uv": [ 0, 0, 1, 0.5 ] },
+                "down": { "texture": "#candle_side_melting", "uv": [ 0, 0, 2, 0.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 7, 0, 6 ], 
+            "to": [ 9, 0.5, 6.5 ], 
+            "faces": {
+                "north": { "texture": "#candle_side", "uv": [ 0, 0, 2, 0.5 ] },
+                "east": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 0.5 ] },
+                "west": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 0.5 ] },
+                "up": { "texture": "#candle_side", "uv": [ 0, 0, 2, 0.5 ] },
+                "down": { "texture": "#candle_side", "uv": [ 0, 0, 2, 0.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 7, 0.5, 6.5 ], 
+            "to": [ 9.5, 1, 7 ], 
+            "faces": {
+                "north": { "texture": "#candle_side", "uv": [ 0, 0, 2.5, 0.5 ] },
+                "east": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 0.5 ] },
+                "south": { "texture": "#candle_side", "uv": [ 0, 0, 2.5, 0.5 ] },
+                "west": { "texture": "#candle_side", "uv": [ 0, 0, 0.5, 0.5 ] },
+                "up": { "texture": "#candle_side", "uv": [ 0, 0, 2.5, 0.5 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 7.75, 5, 7.75 ], 
+            "to": [ 8.25, 7, 8.25 ], 
+            "faces": {
+                "north": { "texture": "#candle_wick", "uv": [ 2, 4, 2.5, 6 ] },
+                "east": { "texture": "#candle_wick", "uv": [ 6, 1, 6.5, 3 ] },
+                "south": { "texture": "#candle_wick", "uv": [ 11, 2, 12.5, 4 ] },
+                "west": { "texture": "#candle_wick", "uv": [ 8, 10, 8.5, 12 ] },
+                "up": { "texture": "#candle_wick", "uv": [ 0, 0, 0.5, 0.5 ] }
+            }
+        }
+    ]
+}

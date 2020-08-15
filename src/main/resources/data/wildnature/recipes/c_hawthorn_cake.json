@@ -1,0 +1,63 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:kamchatka_berry"
+    },
+    {
+      "item": "wildnature:wild_strawberry"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "wildnature:hawthorn_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

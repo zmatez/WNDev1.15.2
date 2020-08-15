@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top",
+    "textures": {
+        "bottom": "wildnature:blocks/jacaranda/jacaranda_door_bottom",
+        "top": "wildnature:blocks/jacaranda/jacaranda_door_top"
+    }
+}

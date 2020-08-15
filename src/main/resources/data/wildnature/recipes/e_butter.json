@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "butter",
+  "ingredients": [
+    {
+      "item": "wildnature:olives"
+    },
+    {
+      "item": "wildnature:olives"
+    },
+    {
+      "item": "wildnature:olives"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "wildnature:butter",
+    "count": 3
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:cauliflower"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:grilled_cauliflower",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

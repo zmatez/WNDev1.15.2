@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_sign",
+  "pattern": [
+    "###",
+    "###",
+    " @ "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rosaceae_planks"
+    },
+    "@": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:rosaceae_sign",
+    "count": 3
+  }
+}

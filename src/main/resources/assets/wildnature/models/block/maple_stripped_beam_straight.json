@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/straight_beam",
+    "textures": {
+        "particle": "wildnature:blocks/maple/maple_stripped_log",
+        "side": "wildnature:blocks/maple/maple_stripped_log",
+        "top": "wildnature:blocks/maple/maple_stripped_log_top"
+    }
+}

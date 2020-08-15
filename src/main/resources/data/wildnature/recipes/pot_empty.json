@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:pot_empty",
+        "count": 1
+    },
+    "pattern": [
+        "A A",
+        "A A",
+        "ABA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:steel_ingot"},
+        "B": {"item": "wildnature:copper_ingot"}
+    }
+}

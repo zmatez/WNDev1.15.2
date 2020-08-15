@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "": [
+            { "model": "wildnature:block/green_waterlily" },
+            { "model": "wildnature:block/green_waterlily", "y": 90 },
+            { "model": "wildnature:block/green_waterlily", "y": 180 },
+            { "model": "wildnature:block/green_waterlily", "y": 270 },
+{ "model": "wildnature:block/green_waterlily2" },
+            { "model": "wildnature:block/green_waterlily2", "y": 90 },
+            { "model": "wildnature:block/green_waterlily2", "y": 180 },
+            { "model": "wildnature:block/green_waterlily2", "y": 270 },
+{ "model": "wildnature:block/green_waterlily3" },
+            { "model": "wildnature:block/green_waterlily3", "y": 90 },
+            { "model": "wildnature:block/green_waterlily3", "y": 180 },
+            { "model": "wildnature:block/green_waterlily3", "y": 270 },
+{ "model": "wildnature:block/green_waterlily4" },
+            { "model": "wildnature:block/green_waterlily4", "y": 90 },
+            { "model": "wildnature:block/green_waterlily4", "y": 180 },
+            { "model": "wildnature:block/green_waterlily4", "y": 270 }
+        ]
+    }
+}

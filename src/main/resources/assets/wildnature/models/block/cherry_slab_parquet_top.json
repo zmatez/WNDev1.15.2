@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "wildnature:blocks/cherry/cherry_parquet",
+        "top": "wildnature:blocks/cherry/cherry_parquet",
+        "side": "wildnature:blocks/cherry/cherry_parquet"
+    }
+}

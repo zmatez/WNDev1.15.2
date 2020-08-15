@@ -1,0 +1,54 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:yeast"
+    },
+    {
+      "item": "wildnature:yeast"
+    },
+    {
+      "item": "wildnature:yeast"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:butter"
+    }
+  ],
+  "result": {
+    "item": "wildnature:yeast_dough",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/crops/cotton/cotton_plant_cotton"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/peace_lily_stem"
+        },
+        {
+          "model": "wildnature:block/peace_lily_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/peace_lily_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/peace_lily_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/peace_lily_flower"
+        },
+        {
+          "model": "wildnature:block/peace_lily_flower",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/peace_lily_flower",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/peace_lily_flower",
+          "y": 270
+        }
+      ]
+  }
+}

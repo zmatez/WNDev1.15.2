@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/straight_beam",
+    "textures": {
+        "particle": "wildnature:blocks/mangrove/mangrove_log",
+        "side": "wildnature:blocks/mangrove/mangrove_log",
+        "top": "wildnature:blocks/mangrove/mangrove_log_top"
+    }
+}

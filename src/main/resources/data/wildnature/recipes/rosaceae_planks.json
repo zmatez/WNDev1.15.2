@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:rosaceae_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:rosaceae_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/lampgrass"
+        },
+        {
+          "model": "wildnature:block/lampgrass",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/lampgrass",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/lampgrass",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/lampgrass_flowering"
+        },
+        {
+          "model": "wildnature:block/lampgrass_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/lampgrass_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/lampgrass_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

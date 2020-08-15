@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "meals",
+  "ingredients": [
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:plate"
+    }
+  ],
+  "result": {
+    "item": "wildnature:sauerkraut",
+    "count": 1
+  }
+}

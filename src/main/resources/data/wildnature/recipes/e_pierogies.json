@@ -1,0 +1,43 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:dried_mushroom_mix"
+    },
+    {
+      "item": "wildnature:dried_mushroom_mix"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:sauerkraut"
+    },
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "minecraft:cooked_porkchop"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:pierogies",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

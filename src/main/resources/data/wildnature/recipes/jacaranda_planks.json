@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:jacaranda_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:jacaranda_planks",
+    "count": 4
+  }
+}

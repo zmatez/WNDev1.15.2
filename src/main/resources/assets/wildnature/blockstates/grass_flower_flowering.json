@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/grass_flower_flowering"
+        },
+        {
+          "model": "wildnature:block/grass_flower_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/grass_flower_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/grass_flower_flowering",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/grass_flower_flowering_flowering"
+        },
+        {
+          "model": "wildnature:block/grass_flower_flowering_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/grass_flower_flowering_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/grass_flower_flowering_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

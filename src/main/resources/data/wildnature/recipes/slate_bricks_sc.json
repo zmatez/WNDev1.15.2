@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:slate"
+  },
+  "result": "wildnature:slate_bricks",
+  "count": 1
+}

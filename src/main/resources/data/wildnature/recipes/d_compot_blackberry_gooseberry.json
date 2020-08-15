@@ -1,0 +1,42 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:gooseberry"
+    },
+    {
+      "item": "wildnature:gooseberry"
+    },
+    {
+      "item": "wildnature:gooseberry"
+    },
+    {
+      "item": "wildnature:pear"
+    },
+    {
+      "item": "wildnature:quince_fruit"
+    },
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_blackberry_gooseberry",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

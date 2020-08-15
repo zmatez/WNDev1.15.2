@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_hori_1",
+    "textures": {
+        "material": "wildnature:blocks/rocks/diorite/diorite_bricks_cracked",
+        "particle": "wildnature:blocks/rocks/diorite/diorite_bricks_cracked"
+    }
+}

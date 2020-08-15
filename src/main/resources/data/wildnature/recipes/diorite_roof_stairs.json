@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_roof_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:diorite_roof"
+    }
+  },
+  "result": {
+    "item": "wildnature:diorite_roof_stairs",
+    "count": 4
+  }
+}

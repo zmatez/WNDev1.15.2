@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence_gate",
+  "pattern": [
+    "$#$",
+    "$#$"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:eucalyptus_planks"
+    },
+    "$": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:eucalyptus_fence_gate",
+    "count": 1
+  }
+}

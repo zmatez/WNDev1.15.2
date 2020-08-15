@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/straight_beam",
+    "textures": {
+        "particle": "block/spruce_log",
+        "side": "block/spruce_log",
+        "top": "block/spruce_log_top"
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "variants": {
+      "flowering=false,half=lower": [
+        {
+          "model": "wildnature:block/gladiolus_stem_bottom"
+        },
+        {
+          "model": "wildnature:block/gladiolus_stem_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/gladiolus_stem_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/gladiolus_stem_bottom",
+          "y": 270
+        }
+      ],
+      "flowering=false,half=upper": [
+        {
+          "model": "wildnature:block/gladiolus_stem_top"
+        },
+        {
+          "model": "wildnature:block/gladiolus_stem_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/gladiolus_stem_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/gladiolus_stem_top",
+          "y": 270
+        }
+      ],
+      "flowering=true,half=lower": [
+        {
+          "model": "wildnature:block/gladiolus_yellow_bottom"
+        },
+        {
+          "model": "wildnature:block/gladiolus_yellow_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/gladiolus_yellow_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/gladiolus_yellow_bottom",
+          "y": 270
+        }
+      ],
+      "flowering=true,half=upper": [
+        {
+          "model": "wildnature:block/gladiolus_yellow_top"
+        },
+        {
+          "model": "wildnature:block/gladiolus_yellow_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/gladiolus_yellow_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/gladiolus_yellow_top",
+          "y": 270
+        }
+      ]
+  }
+}

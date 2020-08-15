@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "stage=0": [
+        {
+          "model": "wildnature:block/bush_kamchatka"
+        },
+        {
+          "model": "wildnature:block/bush_kamchatka",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/bush_kamchatka",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/bush_kamchatka",
+          "y": 270
+        }
+      ],
+      "stage=1": [
+        {
+          "model": "wildnature:block/bush_kamchatka_flowering"
+        },
+        {
+          "model": "wildnature:block/bush_kamchatka_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/bush_kamchatka_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/bush_kamchatka_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

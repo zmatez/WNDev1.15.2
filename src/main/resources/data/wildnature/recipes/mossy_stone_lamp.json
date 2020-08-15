@@ -1,0 +1,15 @@
+{
+  "group": "wildnature:lamps",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:stone_lamp"
+    },
+    {
+      "item": "minecraft:vine"
+    }
+  ],
+  "result": {
+    "item": "wildnature:mossy_stone_lamp"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "wildnature:block/cross_with_double_overlay",
+  "textures": {
+    "colored": "wildnature:blocks/flowers/honeysuckle_yellow_top",
+    "3": "wildnature:blocks/flowers/honeysuckle_leaves_top",
+    "particle": "wildnature:blocks/flowers/honeysuckle_stem_top",
+    "2": "wildnature:blocks/flowers/honeysuckle_stem_top"
+  }
+}

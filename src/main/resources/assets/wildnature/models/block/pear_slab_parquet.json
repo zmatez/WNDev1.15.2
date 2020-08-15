@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/pear/pear_parquet",
+        "top": "wildnature:blocks/pear/pear_parquet",
+        "side": "wildnature:blocks/pear/pear_parquet"
+    }
+}

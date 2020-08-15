@@ -1,0 +1,46 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:banana_bread",
+    "count": 3
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

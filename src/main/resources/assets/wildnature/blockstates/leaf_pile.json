@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/leaf_pile" },
+      { "model": "wildnature:block/leaf_pile", "y": 90 },
+      { "model": "wildnature:block/leaf_pile", "y": 180 },
+      { "model": "wildnature:block/leaf_pile", "y": 270 }
+    ]
+  }
+}

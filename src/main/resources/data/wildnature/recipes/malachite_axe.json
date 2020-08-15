@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:malachite_axe",
+        "count": 1
+    },
+    "pattern": [
+        "AA",
+        "AB",
+        " B"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:malachite_crystal"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

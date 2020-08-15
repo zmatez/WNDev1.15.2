@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=south": [ {"model": "wildnature:block/cave_star_0" },{"model": "wildnature:block/cave_star_1" },{"model": "wildnature:block/cave_star_2" },{"model": "wildnature:block/cave_star_3" }],
+    "facing=west": [ {"model": "wildnature:block/cave_star_0","y": 90},{"model": "wildnature:block/cave_star_1","y": 90 },{"model": "wildnature:block/cave_star_2","y": 90 },{"model": "wildnature:block/cave_star_3","y": 90 }],
+    "facing=north": [ {"model": "wildnature:block/cave_star_0","y": 180 },{"model": "wildnature:block/cave_star_1","y": 180 },{"model": "wildnature:block/cave_star_2","y": 180 },{"model": "wildnature:block/cave_star_3","y": 180 }],
+    "facing=east": [ {"model": "wildnature:block/cave_star_0","y": 270 },{"model": "wildnature:block/cave_star_1","y": 270 },{"model": "wildnature:block/cave_star_2","y": 270 },{"model": "wildnature:block/cave_star_3","y": 270 }],
+    "facing=up": [ {"model": "wildnature:block/cave_star_0","x": 90 },{"model": "wildnature:block/cave_star_1","x": 90 },{"model": "wildnature:block/cave_star_2","x": 90 },{"model": "wildnature:block/cave_star_3","x": 90 }],
+    "facing=down": [ {"model": "wildnature:block/cave_star_0","x": 270 },{"model": "wildnature:block/cave_star_1","x": 270 },{"model": "wildnature:block/cave_star_2","x": 270 },{"model": "wildnature:block/cave_star_3","x": 270 }]
+  }
+}

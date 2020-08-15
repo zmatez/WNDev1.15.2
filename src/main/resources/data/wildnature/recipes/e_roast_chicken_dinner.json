@@ -1,0 +1,30 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "minecraft:chicken"
+    }
+  ],
+  "result": {
+    "item": "wildnature:roast_chicken_dinner",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

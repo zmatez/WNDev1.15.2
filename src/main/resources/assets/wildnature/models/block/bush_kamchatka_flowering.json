@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/bush/kamchatka/kamchatka_bush_berries"
+    }
+}

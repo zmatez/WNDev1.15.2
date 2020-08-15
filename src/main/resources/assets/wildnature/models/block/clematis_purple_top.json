@@ -1,0 +1,9 @@
+{
+  "parent": "wildnature:block/cross_with_double_overlay",
+  "textures": {
+    "colored": "wildnature:blocks/flowers/clematis_purple_top",
+    "3": "wildnature:blocks/flowers/clematis_leaves_top",
+    "particle": "wildnature:blocks/flowers/clematis_leaves_top",
+    "2": "wildnature:blocks/flowers/clematis_stem_top"
+  }
+}

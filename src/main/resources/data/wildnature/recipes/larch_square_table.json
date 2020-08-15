@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:larch_planks"
+    },
+    "|": {
+      "item": "wildnature:larch_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:larch_square_table",
+    "count": 4
+  }
+}

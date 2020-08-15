@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "burrito",
+  "ingredients": [
+    {
+      "item": "wildnature:tortilla"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:red_onion"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    }
+  ],
+  "result": {
+    "item": "wildnature:vegetable_and_cheese_burrito",
+    "count": 1
+  }
+}

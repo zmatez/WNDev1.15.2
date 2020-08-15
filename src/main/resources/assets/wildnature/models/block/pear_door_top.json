@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top",
+    "textures": {
+        "bottom": "wildnature:blocks/pear/pear_door_bottom",
+        "top": "wildnature:blocks/pear/pear_door_top"
+    }
+}

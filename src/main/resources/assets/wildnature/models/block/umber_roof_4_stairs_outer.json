@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/umber/umber_roof_4",
+        "top": "wildnature:blocks/rocks/umber/umber_roof_4",
+        "side": "wildnature:blocks/rocks/umber/umber_roof_4"
+    }
+}

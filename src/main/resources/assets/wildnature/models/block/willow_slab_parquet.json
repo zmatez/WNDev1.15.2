@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/willow/willow_parquet",
+        "top": "wildnature:blocks/willow/willow_parquet",
+        "side": "wildnature:blocks/willow/willow_parquet"
+    }
+}

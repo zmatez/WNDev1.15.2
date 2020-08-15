@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom_rh",
+    "textures": {
+        "bottom": "wildnature:blocks/ebony/ebony_door_bottom",
+        "top": "wildnature:blocks/ebony/ebony_door_top"
+    }
+}

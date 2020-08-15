@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/miscanthus_flower_top",
+        "greyscale": "wildnature:blocks/flowers/miscanthus_grass_top",
+        "particle": "wildnature:blocks/flowers/miscanthus_grass_top"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "group": "green_dye",
+    "result": {
+        "item": "minecraft:green_dye",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:shrub_tall"}}
+}

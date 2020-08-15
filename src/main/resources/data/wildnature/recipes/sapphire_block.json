@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "wildnature:sapphire_block",
+        "count": 1
+    },
+    "pattern": [
+        "AAA",
+        "AAA",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:sapphire_crystal"}
+    }
+}

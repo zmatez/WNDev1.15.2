@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:cobble_fence",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:conglomerate_wall_cobble"
+    },
+    "W": {
+      "item": "wildnature:conglomerate_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:conglomerate_cobble_fence",
+    "count": 5
+  }
+}

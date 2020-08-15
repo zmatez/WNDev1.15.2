@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:chiseled_bricks_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:diorite_bricks_chiseled"
+    }
+  },
+  "result": {
+    "item": "minecraft:diorite_slab",
+    "count": 6
+  }
+}

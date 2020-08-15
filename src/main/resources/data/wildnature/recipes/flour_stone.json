@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "wildnature:flour",
+        "count": 2
+    },
+    "pattern": [
+        "AAA",
+        "ABA",
+        "CAC"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:wheat"},
+        "B": {"item": "wildnature:stone_hammer"},
+        "C": {"item": "wildnature:empty_bag"}
+
+    }
+}

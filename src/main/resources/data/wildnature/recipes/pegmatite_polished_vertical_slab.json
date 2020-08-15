@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_slab_vertical",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pegmatite_polished_slab"
+    }
+  },
+  "result": {
+    "item": "wildnature:pegmatite_polished_vertical_slab",
+    "count": 3
+  }
+}

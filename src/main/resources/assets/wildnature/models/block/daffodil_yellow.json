@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/daffodil_yellow",
+        "greyscale": "wildnature:blocks/flowers/daffodil_stem",
+        "particle": "wildnature:blocks/flowers/daffodil_stem"
+    }
+}

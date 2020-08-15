@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CXC",
+    "#Q#",
+    "III"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_torch"
+    },
+    "X": {
+      "item": "minecraft:redstone"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "I": {
+      "item": "minecraft:stone"
+    },
+    "C": {
+      "item": "wildnature:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "wildnature:rs_delay"
+  }
+}

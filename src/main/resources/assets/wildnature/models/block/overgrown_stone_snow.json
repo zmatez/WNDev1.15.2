@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "particle": "block/stone",
+        "bottom": "block/stone",
+        "top": "wildnature:blocks/grass/overgrown_stone_top",
+        "side": "wildnature:blocks/grass/overgrown_stone_side_snowed"
+    }
+}

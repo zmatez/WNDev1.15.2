@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bench",
+  "pattern": [
+    "###",
+    "@-@"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:oak_planks"
+    },
+    "@": {
+      "item": "minecraft:stripped_oak_log"
+    },
+    "-": {
+      "item": "minecraft:oak_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:oak_bench",
+    "count": 3
+  }
+}

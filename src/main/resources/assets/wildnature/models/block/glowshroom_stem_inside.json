@@ -1,0 +1,14 @@
+{
+    "textures": {
+        "texture": "wildnature:blocks/flowers/glowshroom_stem_block_top",
+        "particle": "wildnature:blocks/flowers/glowshroom_stem_block_top"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 0 ],
+            "faces": {
+                "north": { "texture": "#texture", "cullface":"north" }
+            }
+        }
+    ]
+}

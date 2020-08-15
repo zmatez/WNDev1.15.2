@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/chamomile_stem"
+        },
+        {
+          "model": "wildnature:block/chamomile_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/chamomile_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/chamomile_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/chamomile_white"
+        },
+        {
+          "model": "wildnature:block/chamomile_white",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/chamomile_white",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/chamomile_white",
+          "y": 270
+        }
+      ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/glowing_crystal4",
+    "textures": {
+        "glowing_crystal": "wildnature:blocks/crystals/glowing_crystal_purple"
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/dead_short_grass" },
+      { "model": "wildnature:block/dead_short_grass", "y": 90 },
+      { "model": "wildnature:block/dead_short_grass", "y": 180 },
+      { "model": "wildnature:block/dead_short_grass", "y": 270 }
+    ]
+  }
+}

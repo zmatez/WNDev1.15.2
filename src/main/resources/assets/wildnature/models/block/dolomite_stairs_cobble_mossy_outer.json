@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/dolomite/dolomite_cobble_mossy",
+        "top": "wildnature:blocks/rocks/dolomite/dolomite_cobble_mossy",
+        "side": "wildnature:blocks/rocks/dolomite/dolomite_cobble_mossy"
+    }
+}

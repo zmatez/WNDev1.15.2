@@ -1,0 +1,55 @@
+{
+    "variants": {
+      "half=lower": [
+        {
+          "model": "wildnature:block/rapeseed_bottom"
+        },
+        {
+          "model": "wildnature:block/rapeseed_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/rapeseed_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/rapeseed_bottom",
+          "y": 270
+        }
+      ],
+      "flowering=false,half=upper": [
+        {
+          "model": "wildnature:block/rapeseed_top"
+        },
+        {
+          "model": "wildnature:block/rapeseed_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/rapeseed_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/rapeseed_top",
+          "y": 270
+        }
+      ],
+      "flowering=true,half=upper": [
+        {
+          "model": "wildnature:block/rapeseed_flower"
+        },
+        {
+          "model": "wildnature:block/rapeseed_flower",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/rapeseed_flower",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/rapeseed_flower",
+          "y": 270
+        }
+      ]
+  }
+}

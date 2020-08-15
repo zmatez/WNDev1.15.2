@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "round_table",
+  "pattern": [
+    "###",
+    " | ",
+    " | "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:apple_planks"
+    },
+    "|": {
+      "item": "wildnature:apple_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:apple_round_table",
+    "count": 4
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;glass",
+  "ingredient": [
+    {
+      "item": "wildnature:mint"
+    },
+    {
+      "item": "wildnature:mint"
+    },
+    {
+      "item": "wildnature:mint"
+    },
+
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tea_mint",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

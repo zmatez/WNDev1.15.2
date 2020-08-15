@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bench",
+  "pattern": [
+    "###",
+    "@-@"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rosaceae_planks"
+    },
+    "@": {
+      "item": "wildnature:rosaceae_stripped_log"
+    },
+    "-": {
+      "item": "wildnature:rosaceae_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:rosaceae_bench",
+    "count": 3
+  }
+}

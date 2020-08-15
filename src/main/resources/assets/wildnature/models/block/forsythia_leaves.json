@@ -1,0 +1,7 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/other_leaves/forsythia_branch_leaves"
+
+    }
+}

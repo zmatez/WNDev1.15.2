@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/other/strawbale_old",
+        "top": "wildnature:blocks/other/strawbale_old",
+        "side": "wildnature:blocks/other/strawbale_old"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/branch_leaves",
+    "textures": {
+        "branch": "wildnature:blocks/other_leaves/branch_leaves",
+        "leaves": "wildnature:blocks/other_leaves/branch_leaves_overlay0"
+
+    }
+}

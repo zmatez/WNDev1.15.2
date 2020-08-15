@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "parquet",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:cherry_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:cherry_parquet",
+    "count": 4
+  }
+}

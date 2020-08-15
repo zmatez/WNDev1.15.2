@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs_parquet",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:ebony_parquet"
+    }
+  },
+  "result": {
+    "item": "wildnature:ebony_stairs_parquet",
+    "count": 4
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/gladiolus_orange_top",
+        "greyscale": "wildnature:blocks/flowers/gladiolus_stem_top",
+        "particle": "wildnature:blocks/flowers/gladiolus_stem_top"
+    }
+}

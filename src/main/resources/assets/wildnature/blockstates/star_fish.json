@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/star_fish" },
+      { "model": "wildnature:block/star_fish", "y": 90 },
+      { "model": "wildnature:block/star_fish", "y": 180 },
+      { "model": "wildnature:block/star_fish", "y": 270 }
+    ]
+  }
+}

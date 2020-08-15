@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/small_cacti" },
+      { "model": "wildnature:block/small_cacti", "y": 90 },
+      { "model": "wildnature:block/small_cacti", "y": 180 },
+      { "model": "wildnature:block/small_cacti", "y": 270 }
+    ]
+  }
+}

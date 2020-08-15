@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone_slab_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_cobble_half_stairs",
+    "count": 6
+  }
+}

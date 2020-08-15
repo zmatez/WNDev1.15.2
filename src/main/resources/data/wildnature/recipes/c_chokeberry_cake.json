@@ -1,0 +1,57 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "wildnature:black_lilac_berries"
+    },
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "wildnature:chokeberry_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

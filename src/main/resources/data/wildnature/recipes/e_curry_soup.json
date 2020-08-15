@@ -1,0 +1,38 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:curry_leaves"
+    },
+    {
+      "item": "wildnature:curry_leaves"
+    },
+    {
+      "item": "wildnature:curry_leaves"
+    },
+    {
+      "item": "wildnature:red_pepper"
+    },
+    {
+      "item": "wildnature:red_pepper"
+    },
+    {
+      "item": "wildnature:red_pepper"
+    },
+    {
+      "item": "wildnature:green_pepper"
+    },
+    {
+      "item": "wildnature:green_pepper"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:curry_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

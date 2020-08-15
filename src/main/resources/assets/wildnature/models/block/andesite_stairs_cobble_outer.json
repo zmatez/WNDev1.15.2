@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/andesite/andesite_cobble",
+        "top": "wildnature:blocks/rocks/andesite/andesite_cobble",
+        "side": "wildnature:blocks/rocks/andesite/andesite_cobble"
+    }
+}

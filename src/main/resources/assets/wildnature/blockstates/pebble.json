@@ -1,0 +1,81 @@
+{
+    "variants": {
+      "": [
+        {
+          "model": "wildnature:block/pebble1"
+        },
+        {
+          "model": "wildnature:block/pebble1",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/pebble1",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/pebble1",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble2"
+        },
+        {
+          "model": "wildnature:block/pebble2",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/pebble2",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble2",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble3"
+        },
+        {
+          "model": "wildnature:block/pebble3",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/pebble3",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble3",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble4"
+        },
+        {
+          "model": "wildnature:block/pebble4",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/pebble4",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble4",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble5"
+        },
+        {
+          "model": "wildnature:block/pebble5",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/pebble5",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/pebble5",
+          "y": 270
+        }
+      ]
+    }
+}

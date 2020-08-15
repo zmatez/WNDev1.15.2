@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:limestone_bricks"
+  },
+  "result": "wildnature:limestone_slab_bricks",
+  "count": 1
+}

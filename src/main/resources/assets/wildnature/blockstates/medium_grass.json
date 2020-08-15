@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/medium_grass" },
+      { "model": "wildnature:block/medium_grass", "y": 90 },
+      { "model": "wildnature:block/medium_grass", "y": 180 },
+      { "model": "wildnature:block/medium_grass", "y": 270 }
+    ]
+  }
+}

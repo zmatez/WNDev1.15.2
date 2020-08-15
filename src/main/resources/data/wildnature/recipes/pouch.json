@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "wildnature:pouch",
+        "count": 1
+    },
+    "pattern": [
+        "ABA",
+        "DAD",
+        "ACA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:leather"},
+        "B": {"item": "minecraft:gold_ingot"},
+        "C": {"item": "minecraft:tripwire_hook"},
+        "D": {"item": "minecraft:string"}
+    }
+}

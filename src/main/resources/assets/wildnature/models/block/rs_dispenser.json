@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "wildnature:blocks/redstone/rs_dispenser/dispenser_side",
+        "front": "wildnature:blocks/redstone/rs_dispenser/dispenser",
+        "side": "wildnature:blocks/redstone/rs_dispenser/dispenser_side"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_round_table",
+    "textures": {
+        "particle": "wildnature:blocks/beech/beech_planks",
+        "material": "wildnature:blocks/beech/beech_stripped_log",
+        "material2": "wildnature:blocks/beech/beech_stripped_log_top",
+        "material3": "wildnature:blocks/beech/beech_planks"
+    }
+}

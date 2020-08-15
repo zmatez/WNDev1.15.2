@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/palm/palm_leaves"
+    }
+}

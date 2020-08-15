@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:citrus_branch",
+    "wildnature:citrus_log",
+    "wildnature:citrus_wood",
+    "wildnature:citrus_stripped_log",
+    "wildnature:citrus_stripped_wood"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+        { "model": "wildnature:block/shrub_0" },
+        { "model": "wildnature:block/shrub_1" }
+
+
+    ]
+  }
+}

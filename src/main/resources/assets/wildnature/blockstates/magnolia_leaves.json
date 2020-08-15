@@ -1,0 +1,14 @@
+{
+    "variants": {
+      "flowering=false":
+        {
+          "model": "wildnature:block/magnolia_leaves"
+        }
+      ,
+      "flowering=true":
+        {
+          "model": "wildnature:block/magnolia_leaves_flowering"
+        }
+
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/salt_block1"
+      },
+      {
+        "model": "wildnature:block/salt_block1",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/salt_block1",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/salt_block1",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/salt_block2"
+      },
+      {
+        "model": "wildnature:block/salt_block2",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/salt_block2",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/salt_block2",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/salt_block3"
+      },
+      {
+        "model": "wildnature:block/salt_block3",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/salt_block3",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/salt_block3",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/salt_block4"
+      },
+      {
+        "model": "wildnature:block/salt_block4",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/salt_block4",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/salt_block4",
+        "y": 270
+      }
+    ]
+  }
+}

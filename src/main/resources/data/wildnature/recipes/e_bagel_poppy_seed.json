@@ -1,0 +1,40 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:yeast"
+    },
+    {
+      "item": "wildnature:poppy_seed"
+    },
+    {
+      "item": "wildnature:poppy_seed"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:bagel_poppy_seed",
+    "count": 3
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

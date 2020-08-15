@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_round_table",
+    "textures": {
+        "particle": "block/spruce_planks",
+        "material": "block/stripped_spruce_log",
+        "material2": "block/stripped_spruce_log_top",
+        "material3": "block/spruce_planks"
+    }
+}

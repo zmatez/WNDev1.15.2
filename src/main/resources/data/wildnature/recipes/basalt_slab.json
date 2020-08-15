@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:basalt"
+    }
+  },
+  "result": {
+    "item": "wildnature:basalt_slab",
+    "count": 6
+  }
+}

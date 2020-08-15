@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "jams",
+  "ingredients": [
+    {
+      "item": "wildnature:peach"
+    },
+    {
+      "item": "wildnature:peach"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:mango"
+    },
+    {
+      "item": "wildnature:mango"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:jar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:jam_peach",
+    "count": 1
+  }
+}

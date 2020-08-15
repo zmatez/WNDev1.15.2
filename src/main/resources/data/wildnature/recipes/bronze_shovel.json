@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:bronze_shovel",
+        "count": 1
+    },
+    "pattern": [
+        "A",
+        "B",
+        "B"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:bronze_ingot"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

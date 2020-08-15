@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_sign",
+  "pattern": [
+    "###",
+    "###",
+    " @ "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:citrus_planks"
+    },
+    "@": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:citrus_sign",
+    "count": 3
+  }
+}

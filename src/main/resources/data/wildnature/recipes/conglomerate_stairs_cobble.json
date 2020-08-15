@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:cobble_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:conglomerate_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:conglomerate_stairs_cobble",
+    "count": 4
+  }
+}

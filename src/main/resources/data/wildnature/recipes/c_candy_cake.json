@@ -1,0 +1,42 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:candy_1"
+    },
+    {
+      "item": "wildnature:candy_2"
+    },
+    {
+      "item": "wildnature:candy_3"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:candy_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

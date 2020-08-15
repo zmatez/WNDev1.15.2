@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/underground/stone_grass"
+    }
+}

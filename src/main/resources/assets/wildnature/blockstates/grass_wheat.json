@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/grass_wheat"
+        },
+        {
+          "model": "wildnature:block/grass_wheat",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/grass_wheat",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/grass_wheat",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/grass_wheat_flowering"
+        },
+        {
+          "model": "wildnature:block/grass_wheat_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/grass_wheat_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/grass_wheat_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

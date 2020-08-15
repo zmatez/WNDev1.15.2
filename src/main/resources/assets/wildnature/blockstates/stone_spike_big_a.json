@@ -1,0 +1,11 @@
+{
+    "variants": {
+      "type=stalagmite": {
+        "model": "wildnature:block/stone_spike_big_a",
+        "x": 180
+      },
+      "type=stalactite": {
+        "model": "wildnature:block/stone_spike_big_a"
+      }
+    }
+}

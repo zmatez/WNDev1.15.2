@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PBP",
+    "P P",
+    "PBP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "minecraft:brown_dye"
+    }
+  },
+  "result": {
+    "item": "wildnature:empty_bag",
+    "count": 2
+  }
+}

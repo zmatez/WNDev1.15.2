@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:cabbage"
+    },
+    {
+      "item": "wildnature:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "wildnature:cabbage_lettuce_salad",
+    "count": 1
+  }
+}

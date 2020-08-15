@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_vert_1",
+    "textures": {
+        "material": "block/cracked_stone_bricks",
+        "particle": "block/cracked_stone_bricks"
+    }
+}

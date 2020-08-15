@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:jacaranda_branch",
+    "wildnature:jacaranda_log",
+    "wildnature:jacaranda_wood",
+    "wildnature:jacaranda_stripped_log",
+    "wildnature:jacaranda_stripped_wood"
+  ]
+}

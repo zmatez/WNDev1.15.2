@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "crystals",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:malachite_shard"
+    }
+  },
+  "result": {
+    "item": "wildnature:malachite_crystal",
+    "count": 2
+  }
+}

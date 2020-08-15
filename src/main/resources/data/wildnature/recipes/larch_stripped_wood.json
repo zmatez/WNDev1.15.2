@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stripped_bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:larch_stripped_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:larch_stripped_wood",
+    "count": 3
+  }
+}

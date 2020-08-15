@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "log_pressure_plate",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:cedar_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:cedar_log_pressure_plate",
+    "count": 1
+  }
+}

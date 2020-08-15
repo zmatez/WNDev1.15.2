@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:willow_logs"
+    },
+    {
+      "item": "wildnature:willow_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:willow_log_button",
+    "count": 2
+  }
+}

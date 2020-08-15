@@ -1,0 +1,10 @@
+{
+  "group": "wildnature:stone",
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:limestone_cobble"
+  },
+  "result": "wildnature:limestone",
+  "experience": 0.1,
+  "cookingtime": 200
+}

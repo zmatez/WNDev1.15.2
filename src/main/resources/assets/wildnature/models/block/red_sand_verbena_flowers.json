@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/red_sand_verbena_flowers",
+        "greyscale": "wildnature:blocks/flowers/red_sand_verbena_stem",
+        "particle": "wildnature:blocks/flowers/red_sand_verbena_stem"
+    }
+}

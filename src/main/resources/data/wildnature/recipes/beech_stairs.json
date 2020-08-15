@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:beech_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:beech_stairs",
+    "count": 4
+  }
+}

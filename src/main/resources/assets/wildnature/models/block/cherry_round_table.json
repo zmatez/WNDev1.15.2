@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_round_table",
+    "textures": {
+        "particle": "wildnature:blocks/cherry/cherry_planks",
+        "material": "wildnature:blocks/cherry/cherry_stripped_log",
+        "material2": "wildnature:blocks/cherry/cherry_stripped_log_top",
+        "material3": "wildnature:blocks/cherry/cherry_planks"
+    }
+}

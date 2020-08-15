@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:rice_bag"
+    },
+    {
+      "item": "wildnature:red_pepper"
+    },
+    {
+      "item": "wildnature:green_beans"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:corn"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "wildnature:peas"
+    },
+    {
+      "item": "wildnature:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "wildnature:rice_veggie_curry_bowl",
+    "count": 1
+  }
+}

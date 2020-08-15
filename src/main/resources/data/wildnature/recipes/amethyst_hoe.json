@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:amethyst_hoe",
+        "count": 1
+    },
+    "pattern": [
+        "AA",
+        " B",
+        " B"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:amethyst_crystal"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

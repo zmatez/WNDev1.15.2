@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/prairie_grass_overlay",
+        "greyscale": "wildnature:blocks/flowers/prairie_grass_stem",
+        "particle": "wildnature:blocks/flowers/prairie_grass_stem"
+    }
+}

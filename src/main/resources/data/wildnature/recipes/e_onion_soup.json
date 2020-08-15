@@ -1,0 +1,32 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:red_onion"
+    },
+    {
+      "item": "wildnature:red_onion"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:leek"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:onion_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

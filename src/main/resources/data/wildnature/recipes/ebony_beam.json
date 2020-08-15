@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "beam",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:ebony_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:ebony_beam",
+    "count": 8
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "wildnature:white_currant"
+    },
+    {
+      "item": "wildnature:white_currant"
+    },
+    {
+      "item": "wildnature:white_currant"
+    },
+    {
+      "item": "wildnature:white_currant"
+    },
+    {
+      "item": "wildnature:green_apple"
+    },
+    {
+      "item": "wildnature:green_apple"
+    },
+    {
+      "item": "wildnature:green_apple"
+    },
+    {
+      "item": "wildnature:gooseberry"
+    },
+    {
+      "item": "wildnature:pear"
+    },
+    {
+      "item": "wildnature:quince_fruit"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_white_currant",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

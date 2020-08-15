@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "wildnature:amber_ore"
+  },
+  "result": "wildnature:amber_crystal",
+  "experience": 1.0,
+  "cookingtime": 200
+}

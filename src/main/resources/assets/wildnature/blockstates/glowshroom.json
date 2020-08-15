@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "": [
+            { "model": "wildnature:block/glowshroom" },
+            { "model": "wildnature:block/glowshroom2" },
+            { "model": "wildnature:block/glowshroom3" },
+            { "model": "wildnature:block/glowshroom4" },
+            { "model": "wildnature:block/glowshroom5" },
+            { "model": "wildnature:block/glowshroom6" }
+        ]
+    }
+}

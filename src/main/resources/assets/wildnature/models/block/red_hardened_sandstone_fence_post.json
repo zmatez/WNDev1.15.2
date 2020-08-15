@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_post",
+    "textures": {
+        "texture": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone"
+    }
+}

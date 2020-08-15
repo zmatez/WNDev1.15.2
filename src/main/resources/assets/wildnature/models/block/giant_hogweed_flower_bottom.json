@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/giant_hogweed_flower_bottom",
+        "greyscale": "wildnature:blocks/flowers/giant_hogweed_stem_bottom",
+        "particle": "wildnature:blocks/flowers/giant_hogweed_stem_bottom"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/rosaceae/rosaceae_leaves2"
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:basalt_bricks"
+  },
+  "result": "wildnature:basalt_long_bricks",
+  "count": 1
+}

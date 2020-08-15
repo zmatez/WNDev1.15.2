@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:marble_cobble"
+  },
+  "result": "wildnature:marble_cobble_half_stairs",
+  "count": 1
+}

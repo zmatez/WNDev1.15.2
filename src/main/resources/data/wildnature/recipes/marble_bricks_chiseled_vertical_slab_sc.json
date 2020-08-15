@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:marble_bricks"
+  },
+  "result": "wildnature:marble_bricks_chiseled_vertical_slab",
+  "count": 1
+}

@@ -1,0 +1,10 @@
+{
+    "group": "magenta_dye",
+    "result": {
+        "item": "minecraft:magenta_dye",
+        "count": 2
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:iris_purple"}}
+}

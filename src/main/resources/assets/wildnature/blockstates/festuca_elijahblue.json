@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/festuca_elijahblue" },
+      { "model": "wildnature:block/festuca_elijahblue", "y": 90 },
+      { "model": "wildnature:block/festuca_elijahblue", "y": 180 },
+      { "model": "wildnature:block/festuca_elijahblue", "y": 270 }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "wildnature:blocks/crops/eggplant/eggplant_stage_6_bottom"
+    }
+}

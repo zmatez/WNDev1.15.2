@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/oar_weed" },
+      { "model": "wildnature:block/oar_weed", "y": 90 },
+      { "model": "wildnature:block/oar_weed", "y": 180 },
+      { "model": "wildnature:block/oar_weed", "y": 270 }
+    ]
+  }
+}

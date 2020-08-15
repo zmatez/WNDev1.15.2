@@ -1,0 +1,37 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:sauerkraut"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:red_onion"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:sauerkraut_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

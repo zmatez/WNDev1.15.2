@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:stone_fence",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:granite_wall"
+    },
+    "W": {
+      "item": "minecraft:granite"
+    }
+  },
+  "result": {
+    "item": "wildnature:granite_fence",
+    "count": 5
+  }
+}

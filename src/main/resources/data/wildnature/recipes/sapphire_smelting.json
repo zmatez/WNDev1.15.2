@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:sapphire_ore"
+  },
+  "result": "wildnature:sapphire_crystal",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,17 @@
+{
+  "group": "wildnature:stone_polished_wall",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:basalt_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:basalt_polished_wall",
+    "count": 6
+  }
+}

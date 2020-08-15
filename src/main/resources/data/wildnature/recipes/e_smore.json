@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cookies",
+  "ingredients": [
+    {
+      "item": "wildnature:graham_cracker"
+    },
+    {
+      "item": "wildnature:graham_cracker"
+    },
+    {
+      "item": "wildnature:chocolate_milk"
+    },
+    {
+      "item": "wildnature:marshmallow"
+    },
+    {
+      "item": "wildnature:marshmallow"
+    }
+  ],
+  "result": {
+    "item": "wildnature:smore",
+    "count": 1
+  }
+}

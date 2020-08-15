@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:slate_cobble"
+  },
+  "result": "wildnature:slate_cobble_trapdoor",
+  "count": 1
+}

@@ -1,0 +1,48 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:black_currant"
+    },
+    {
+      "item": "wildnature:black_currant"
+    },
+    {
+      "item": "wildnature:black_currant"
+    },
+    {
+      "item": "wildnature:red_currant"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "wildnature:black_currant_cake",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

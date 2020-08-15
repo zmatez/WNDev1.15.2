@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/shrub_stem_tall",
+        "greyscale": "wildnature:blocks/flowers/shrub_tall_1",
+        "particle": "wildnature:blocks/flowers/shrub_tall_1"
+    }
+}

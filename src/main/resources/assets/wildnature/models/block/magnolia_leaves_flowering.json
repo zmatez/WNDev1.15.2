@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/branch_leaves_flower",
+    "textures": {
+        "branch": "wildnature:blocks/other_leaves/magnolia_branch_leaves",
+        "leaves": "wildnature:blocks/other_leaves/magnolia_leaves_overlay",
+        "flower": "wildnature:blocks/other_leaves/magnolia_flower_overlay"
+
+    }
+}

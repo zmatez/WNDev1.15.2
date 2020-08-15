@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/mahogany/mahogany_planks",
+        "material": "wildnature:blocks/mahogany/mahogany_stripped_log",
+        "material2": "wildnature:blocks/mahogany/mahogany_planks"
+    }
+}

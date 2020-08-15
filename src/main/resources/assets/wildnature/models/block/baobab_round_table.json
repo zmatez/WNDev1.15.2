@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_round_table",
+    "textures": {
+        "particle": "wildnature:blocks/baobab/baobab_planks",
+        "material": "wildnature:blocks/baobab/baobab_stripped_log",
+        "material2": "wildnature:blocks/baobab/baobab_stripped_log_top",
+        "material3": "wildnature:blocks/baobab/baobab_planks"
+    }
+}

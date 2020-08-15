@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_parquet",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:baobab_parquet"
+    }
+  },
+  "result": {
+    "item": "wildnature:baobab_slab_parquet",
+    "count": 6
+  }
+}

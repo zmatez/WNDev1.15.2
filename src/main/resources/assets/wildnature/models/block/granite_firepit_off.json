@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/fire_pit_off",
+    "textures": {
+        "particle": "wildnature:blocks/rocks/granite/granite_cobble",
+        "material1": "wildnature:blocks/rocks/granite/granite_cobble",
+        "material2": "wildnature:blocks/rocks/granite/granite_bricks_cracked"
+    }
+}

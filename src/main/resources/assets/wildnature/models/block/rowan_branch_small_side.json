@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/branch_small_side",
+    "textures": {
+        "log": "wildnature:blocks/rowan/rowan_log"
+    }
+}

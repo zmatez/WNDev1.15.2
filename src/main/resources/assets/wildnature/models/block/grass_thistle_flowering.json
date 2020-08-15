@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/grass_thistle_flowering",
+        "greyscale": "wildnature:blocks/flowers/grass_thistle",
+        "particle": "wildnature:blocks/flowers/grass_thistle"
+    }
+}

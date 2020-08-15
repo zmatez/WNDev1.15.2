@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:chef_knife",
+        "count": 1
+    },
+    "pattern": [
+        "A",
+        "A",
+        "B"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:steel_ingot"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

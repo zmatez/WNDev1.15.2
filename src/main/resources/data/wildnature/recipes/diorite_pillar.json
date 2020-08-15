@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_pillar",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:polished_diorite"
+    }
+  },
+  "result": {
+    "item": "wildnature:diorite_pillar",
+    "count": 3
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/cross_with_double_overlay",
+    "textures": {
+		"colored": "wildnature:blocks/bush/currant/currant_berry_white_overlay",
+		"3": "wildnature:blocks/bush/currant/currant_berry_stage4",
+		"particle": "wildnature:blocks/bush/currant/currant_berry_stem_stage4",
+		"2": "wildnature:blocks/bush/currant/currant_berry_stem_stage4"
+    }
+}

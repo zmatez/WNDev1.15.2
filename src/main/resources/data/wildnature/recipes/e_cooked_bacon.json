@@ -1,0 +1,22 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:raw_bacon"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:cooked_bacon",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

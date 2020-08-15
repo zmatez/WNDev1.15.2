@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "half=lower": [
+        {
+          "model": "wildnature:block/large_root_bottom"
+        },
+        {
+          "model": "wildnature:block/large_root_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/large_root_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/large_root_bottom",
+          "y": 270
+        }
+      ],
+      "half=upper": [
+        {
+          "model": "wildnature:block/large_root_top"
+        },
+        {
+          "model": "wildnature:block/large_root_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/large_root_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/large_root_top",
+          "y": 270
+        }
+      ]
+  }
+}

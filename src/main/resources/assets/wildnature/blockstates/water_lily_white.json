@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "block/lily_pad"
+        },
+        {
+          "model": "block/lily_pad",
+          "y": 90
+        },
+        {
+          "model": "block/lily_pad",
+          "y": 180
+        },
+        {
+          "model": "block/lily_pad",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/water_lily_white"
+        },
+        {
+          "model": "wildnature:block/water_lily_white",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/water_lily_white",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/water_lily_white",
+          "y": 270
+        }
+      ]
+  }
+}

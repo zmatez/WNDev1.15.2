@@ -1,0 +1,10 @@
+{
+  "group": "wildnature:stone",
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:slate_cobble"
+  },
+  "result": "wildnature:slate",
+  "experience": 0.1,
+  "cookingtime": 200
+}

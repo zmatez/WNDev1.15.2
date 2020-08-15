@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/carnation_red",
+        "greyscale": "wildnature:blocks/flowers/carnation_stem",
+        "particle": "wildnature:blocks/flowers/carnation_stem"
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "jams",
+  "ingredients": [
+    {
+      "item": "wildnature:kamchatka_berry"
+    },
+    {
+      "item": "wildnature:kamchatka_berry"
+    },
+    {
+      "item": "wildnature:bilberries"
+    },
+    {
+      "item": "wildnature:bilberries"
+    },
+    {
+      "item": "wildnature:blueberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:jar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:jam_kamchatka_berry",
+    "count": 1
+  }
+}

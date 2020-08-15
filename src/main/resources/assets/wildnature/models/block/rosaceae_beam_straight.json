@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/straight_beam",
+    "textures": {
+        "particle": "wildnature:blocks/rosaceae/rosaceae_log",
+        "side": "wildnature:blocks/rosaceae/rosaceae_log",
+        "top": "wildnature:blocks/rosaceae/rosaceae_log_top"
+    }
+}

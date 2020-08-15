@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_button",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:mahogany_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:mahogany_button",
+    "count": 1
+  }
+}

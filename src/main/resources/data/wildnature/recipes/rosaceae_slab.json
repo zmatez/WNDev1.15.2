@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rosaceae_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:rosaceae_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "textures": {
+        "particle": "wildnature:blocks/cakes/mazurek_side",
+        "bottom": "block/cake_bottom",
+        "top": "wildnature:blocks/cakes/mazurek_top",
+        "side": "wildnature:blocks/cakes/mazurek_side"
+    },
+    "elements": [
+        {   "from": [ 7, 0, 1 ],
+            "to": [ 15, 8, 15 ],
+            "faces": {
+                "down":  { "texture": "#bottom", "cullface": "down" },
+                "up":    { "texture": "#top" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#inside" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ]
+}

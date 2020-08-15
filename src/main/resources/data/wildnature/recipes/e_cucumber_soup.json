@@ -1,0 +1,41 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "wildnature:cucumber"
+    },
+    {
+      "item": "wildnature:cucumber"
+    },
+    {
+      "item": "wildnature:cucumber"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:leek"
+    },
+    {
+      "item": "wildnature:green_beans"
+    },
+    {
+      "item": "wildnature:celery"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:cucumber_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

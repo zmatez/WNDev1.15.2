@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/rosaceae/rosaceae_planks",
+        "material": "wildnature:blocks/rosaceae/rosaceae_stripped_log",
+        "material2": "wildnature:blocks/rosaceae/rosaceae_planks"
+    }
+}

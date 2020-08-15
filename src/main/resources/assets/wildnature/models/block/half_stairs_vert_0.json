@@ -1,0 +1,32 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "block/stone_bricks",
+		"material": "block/stone_bricks"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 4, 16],
+			"faces": {
+				"north": {"uv": [0, 12, 16, 16], "texture": "#material"},
+				"east": {"uv": [0, 12, 16, 16], "texture": "#material"},
+				"south": {"uv": [0, 12, 16, 16], "texture": "#material"},
+				"west": {"uv": [0, 12, 16, 16], "texture": "#material"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#material"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#material"}
+			}
+		},
+		{
+			"from": [0, 4, 8],
+			"to": [16, 8, 16],
+			"faces": {
+				"north": {"uv": [0, 12, 16, 16], "texture": "#material"},
+				"east": {"uv": [0, 8, 8, 12], "texture": "#material"},
+				"south": {"uv": [0, 8, 16, 12], "texture": "#material"},
+				"west": {"uv": [8, 8, 16, 12], "texture": "#material"},
+				"up": {"uv": [0, 0, 16, 8], "texture": "#material"}
+			}
+		}
+	]
+}

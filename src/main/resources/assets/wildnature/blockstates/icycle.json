@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "": [
+            { "model": "wildnature:block/icycle" },
+            { "model": "wildnature:block/icycle2" }
+        ]
+    }
+}

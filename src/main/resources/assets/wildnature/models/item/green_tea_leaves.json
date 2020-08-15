@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "wildnature:items/eatables/green_tea_leaves"
+    }
+}

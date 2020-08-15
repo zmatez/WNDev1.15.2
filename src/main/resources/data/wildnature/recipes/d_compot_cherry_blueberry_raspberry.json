@@ -1,0 +1,57 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:blueberry"
+    },
+    {
+      "item": "wildnature:blueberry"
+    },
+    {
+      "item": "wildnature:blueberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:raspberry"
+    },
+    {
+      "item": "wildnature:wild_strawberry"
+    },
+    {
+      "item": "wildnature:wild_strawberry"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:lingonberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_cherry_blueberry_raspberry",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -1,0 +1,43 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:celery"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:butter"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:tomato_soup",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

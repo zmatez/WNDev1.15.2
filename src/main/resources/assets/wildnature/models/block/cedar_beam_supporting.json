@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/supporting_beam",
+    "textures": {
+        "particle": "wildnature:blocks/cedar/cedar_log",
+        "side": "wildnature:blocks/cedar/cedar_log",
+        "top": "wildnature:blocks/cedar/cedar_log_top"
+    }
+}

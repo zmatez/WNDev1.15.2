@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:gneiss_roof"
+  },
+  "result": "wildnature:gneiss_roof_slab",
+  "count": 1
+}

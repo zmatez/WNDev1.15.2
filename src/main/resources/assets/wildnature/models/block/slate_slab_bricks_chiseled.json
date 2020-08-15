@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/slate/slate_bricks_chiseled",
+        "top": "wildnature:blocks/rocks/slate/slate_bricks_chiseled",
+        "side": "wildnature:blocks/rocks/slate/slate_bricks_chiseled"
+    }
+}

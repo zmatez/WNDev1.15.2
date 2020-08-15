@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_post",
+    "textures": {
+        "texture": "wildnature:blocks/fir/fir_planks"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/slate_polished_slab" },
+        "type=top": { "model": "wildnature:block/slate_polished_slab_top" },
+        "type=double": { "model": "wildnature:block/slate_polished" }
+    }
+}

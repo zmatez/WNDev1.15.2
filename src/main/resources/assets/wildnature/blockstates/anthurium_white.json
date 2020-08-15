@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/anthurium"
+        },
+        {
+          "model": "wildnature:block/anthurium",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/anthurium",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/anthurium",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/anthurium_white"
+        },
+        {
+          "model": "wildnature:block/anthurium_white",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/anthurium_white",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/anthurium_white",
+          "y": 270
+        }
+      ]
+  }
+}

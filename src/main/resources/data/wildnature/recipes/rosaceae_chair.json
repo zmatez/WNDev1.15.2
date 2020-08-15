@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chairs",
+  "pattern": [
+    "#  ",
+    "###",
+    "@ @"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rosaceae_planks"
+    },
+    "@": {
+      "item": "wildnature:rosaceae_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:rosaceae_chair",
+    "count": 2
+  }
+}

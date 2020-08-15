@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/rosaceae/rosaceae_parquet",
+        "particle": "wildnature:blocks/rosaceae/rosaceae_parquet"
+    }
+}

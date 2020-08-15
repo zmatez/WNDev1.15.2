@@ -1,0 +1,17 @@
+{
+  "group": "wildnature:mossy_cobble_wall",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_cobble_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_wall_cobble_mossy",
+    "count": 6
+  }
+}

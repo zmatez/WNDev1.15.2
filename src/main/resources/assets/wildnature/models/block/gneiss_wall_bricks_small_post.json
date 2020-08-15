@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_wall_post",
+    "textures": {
+        "wall": "wildnature:blocks/rocks/gneiss/gneiss_bricks_small"
+    }
+}

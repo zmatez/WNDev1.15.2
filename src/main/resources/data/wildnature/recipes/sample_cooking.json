@@ -1,0 +1,20 @@
+{
+  "type": "wildnature:cooking",
+  "ingredient": [
+    {
+      "item": "wildnature:cauliflower"
+    },
+    {
+      "item": "wildnature:cauliflower"
+    },
+    {
+      "item": "wildnature:red_pepper"
+    }
+  ],
+  "result": {
+    "item": "wildnature:hangingshelf",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

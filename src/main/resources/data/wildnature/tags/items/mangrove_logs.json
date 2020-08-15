@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:mangrove_log",
+    "wildnature:mangrove_wood",
+    "wildnature:mangrove_stripped_log",
+    "wildnature:mangrove_stripped_wood"
+  ]
+}

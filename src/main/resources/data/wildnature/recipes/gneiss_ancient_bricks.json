@@ -1,0 +1,21 @@
+{
+  "group": "wildnature:stone_ancient_bricks",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#?#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_bricks"
+    },
+    "?": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_ancient_bricks",
+    "count": 8
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/plum/plum_parquet",
+        "particle": "wildnature:blocks/plum/plum_parquet"
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:aspen_planks"
+    },
+    "|": {
+      "item": "wildnature:aspen_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:aspen_square_table",
+    "count": 4
+  }
+}

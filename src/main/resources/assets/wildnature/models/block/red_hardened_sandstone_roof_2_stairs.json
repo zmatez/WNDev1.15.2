@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone_roof_2",
+        "top": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone_roof_2",
+        "side": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone_roof_2"
+    }
+}

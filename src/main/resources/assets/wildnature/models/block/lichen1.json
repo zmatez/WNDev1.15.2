@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"lichen": "wildnature:blocks/flowers/lichen1",
+		"particle": "wildnature:blocks/flowers/lichen1"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 0],
+			"color": 2,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#lichen"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#lichen"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#lichen"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#lichen"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#lichen"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#lichen"}
+			}
+		}
+	]
+}

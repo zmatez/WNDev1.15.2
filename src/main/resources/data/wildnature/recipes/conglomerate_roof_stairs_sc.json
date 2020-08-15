@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:conglomerate_roof"
+  },
+  "result": "wildnature:conglomerate_roof_stairs",
+  "count": 1
+}

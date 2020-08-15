@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/sea_anemone" },
+      { "model": "wildnature:block/sea_anemone", "y": 90 },
+      { "model": "wildnature:block/sea_anemone", "y": 180 },
+      { "model": "wildnature:block/sea_anemone", "y": 270 }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/green_waterlily"
+        },
+        {
+          "model": "wildnature:block/green_waterlily",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/green_waterlily",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/green_waterlily",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/lotus_pink"
+        },
+        {
+          "model": "wildnature:block/lotus_pink",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/lotus_pink",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/lotus_pink",
+          "y": 270
+        }
+      ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_vert_0",
+    "textures": {
+        "material": "wildnature:blocks/rocks/conglomerate/conglomerate",
+        "particle": "wildnature:blocks/rocks/conglomerate/conglomerate"
+    }
+}

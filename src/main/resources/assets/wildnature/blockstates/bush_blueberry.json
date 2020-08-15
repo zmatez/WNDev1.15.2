@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "stage=0": { "model": "wildnature:block/bush_blueberry" },
+    "stage=1": { "model": "wildnature:block/bush_blueberry_flowering" }
+  }
+}

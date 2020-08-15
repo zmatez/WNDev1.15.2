@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stool",
+  "pattern": [
+    "###",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:mangrove_planks"
+    },
+    "|": {
+      "item": "wildnature:mangrove_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:mangrove_stool",
+    "count": 4
+  }
+}

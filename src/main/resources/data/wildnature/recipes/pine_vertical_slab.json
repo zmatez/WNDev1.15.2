@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_vertical",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pine_slab"
+    }
+  },
+  "result": {
+    "item": "wildnature:pine_vertical_slab",
+    "count": 3
+  }
+}

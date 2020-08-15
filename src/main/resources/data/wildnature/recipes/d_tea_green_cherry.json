@@ -1,0 +1,36 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;glass",
+  "ingredient": [
+    {
+      "item": "wildnature:green_tea_leaves"
+    },
+    {
+      "item": "wildnature:green_tea_leaves"
+    },
+    {
+      "item": "wildnature:green_tea_leaves"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:wild_strawberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tea_green_cherry",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

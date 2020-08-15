@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:mossy_cobble_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pegmatite_cobble_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:pegmatite_stairs_cobble_mossy",
+    "count": 4
+  }
+}

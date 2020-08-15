@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/eucalyptus/eucalyptus_parquet",
+        "particle": "wildnature:blocks/eucalyptus/eucalyptus_parquet"
+    }
+}

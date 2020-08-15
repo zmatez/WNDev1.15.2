@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cookies",
+  "ingredients": [
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "item": "wildnature:rice_bag"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "wildnature:cucumber"
+    },
+    {
+      "item": "wildnature:cucumber"
+    }
+  ],
+  "result": {
+    "item": "wildnature:sushi",
+    "count": 2
+  }
+}

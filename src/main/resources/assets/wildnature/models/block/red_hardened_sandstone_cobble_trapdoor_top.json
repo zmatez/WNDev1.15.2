@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_orientable_trapdoor_top",
+    "textures": {
+        "texture": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone_cobble"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "snowy=false": [
+            { "model": "wildnature:block/desert_grass_block" },
+            { "model": "wildnature:block/desert_grass_block", "y": 90 },
+            { "model": "wildnature:block/desert_grass_block", "y": 180 },
+            { "model": "wildnature:block/desert_grass_block", "y": 270 }
+        ],
+        "snowy=true":  { "model": "wildnature:block/desert_grass_block_snow" }
+    }
+}

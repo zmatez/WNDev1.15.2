@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/bones_block"
+      },
+      {
+        "model": "wildnature:block/bones_block_2"
+      },
+      {
+        "model": "wildnature:block/bones_block_3"
+      },
+      {
+        "model": "wildnature:block/bones_block_4"
+      },
+      {
+        "model": "wildnature:block/bones_block_5"
+      }
+    ]
+  }
+}

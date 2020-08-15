@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:glowing_cave_oak_logs"
+    },
+    {
+      "item": "wildnature:glowing_cave_oak_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:glowing_cave_oak_log_button",
+    "count": 2
+  }
+}

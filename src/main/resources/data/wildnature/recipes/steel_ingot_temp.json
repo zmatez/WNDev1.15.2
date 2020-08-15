@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingots",
+  "pattern": [
+    "#@",
+    "@#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "@": {
+      "item": "minecraft:coal"
+    }
+  },
+  "result": {
+    "item": "wildnature:steel_ingot",
+    "count": 2
+  }
+}

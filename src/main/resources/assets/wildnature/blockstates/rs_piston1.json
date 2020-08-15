@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "extended=false,facing=down": { "model": "wildnature:block/rs_piston1", "x": 90 },
+        "extended=false,facing=up": { "model": "wildnature:block/rs_piston1", "x": 270 },
+        "extended=false,facing=north": { "model": "wildnature:block/rs_piston1" },
+        "extended=false,facing=south": { "model": "wildnature:block/rs_piston1", "y": 180 },
+        "extended=false,facing=west": { "model": "wildnature:block/rs_piston1", "y": 270 },
+        "extended=false,facing=east": { "model": "wildnature:block/rs_piston1", "y": 90 },
+        "extended=true,facing=down": { "model": "wildnature:block/rs_piston1_base", "x": 90 },
+        "extended=true,facing=up": { "model": "wildnature:block/rs_piston1_base", "x": 270 },
+        "extended=true,facing=north": { "model": "wildnature:block/rs_piston1_base" },
+        "extended=true,facing=south": { "model": "wildnature:block/rs_piston1_base", "y": 180 },
+        "extended=true,facing=west": { "model": "wildnature:block/rs_piston1_base", "y": 270 },
+        "extended=true,facing=east": { "model": "wildnature:block/rs_piston1_base", "y": 90 }
+    }
+}

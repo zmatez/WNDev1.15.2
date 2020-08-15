@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/larch/larch_planks",
+        "top": "wildnature:blocks/larch/larch_planks",
+        "side": "wildnature:blocks/larch/larch_planks"
+    }
+}

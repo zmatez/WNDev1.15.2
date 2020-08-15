@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/basalt/basalt",
+        "top": "wildnature:blocks/rocks/basalt/basalt",
+        "side": "wildnature:blocks/rocks/basalt/basalt"
+    }
+}

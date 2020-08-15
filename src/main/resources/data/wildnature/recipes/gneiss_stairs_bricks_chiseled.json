@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:chiseled_bricks_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_bricks_chiseled"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_square_table",
+    "textures": {
+        "particle": "wildnature:blocks/ebony/ebony_planks",
+        "material": "wildnature:blocks/ebony/ebony_stripped_log",
+        "material2": "wildnature:blocks/ebony/ebony_stripped_log_top",
+        "material3": "wildnature:blocks/ebony/ebony_planks"
+    }
+}

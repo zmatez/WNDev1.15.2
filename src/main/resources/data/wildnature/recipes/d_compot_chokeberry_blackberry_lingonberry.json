@@ -1,0 +1,51 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "wildnature:chokeberry"
+    },
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:blackberry"
+    },
+    {
+      "item": "wildnature:lingonberry"
+    },
+    {
+      "item": "wildnature:lingonberry"
+    },
+    {
+      "item": "wildnature:lingonberry"
+    },
+    {
+      "item": "wildnature:hawthorn_berry"
+    },
+    {
+      "item": "wildnature:black_lilac_berries"
+    },
+    {
+      "item": "wildnature:black_lilac_berries"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_chokeberry_blackberry_lingonberry",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

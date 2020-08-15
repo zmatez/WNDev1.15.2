@@ -1,0 +1,72 @@
+{
+    "variants": {
+      "flowering=false,half=lower": [
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom"
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom",
+          "y": 270
+        }
+      ],
+      "flowering=false,half=upper": [
+        {
+          "model": "wildnature:block/miscanthus_grass_top"
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_top",
+          "y": 270
+        }
+      ],
+      "flowering=true,half=lower": [
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom"
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/miscanthus_grass_bottom",
+          "y": 270
+        }
+      ],
+      "flowering=true,half=upper": [
+        {
+          "model": "wildnature:block/miscanthus_flower_top"
+        },
+        {
+          "model": "wildnature:block/miscanthus_flower_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/miscanthus_flower_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/miscanthus_flower_top",
+          "y": 270
+        }
+      ]
+  }
+}

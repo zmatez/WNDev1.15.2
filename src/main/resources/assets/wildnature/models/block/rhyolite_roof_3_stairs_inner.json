@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/rhyolite/rhyolite_roof_3",
+        "top": "wildnature:blocks/rocks/rhyolite/rhyolite_roof_3",
+        "side": "wildnature:blocks/rocks/rhyolite/rhyolite_roof_3"
+    }
+}

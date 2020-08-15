@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "wildnature:slab_vertical",
+        "count": 4
+    },
+    "pattern": [
+        "   ",
+        "AAA",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:stick_frame"}
+    }
+}

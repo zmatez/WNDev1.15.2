@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "wildnature:poppy_seed",
+        "count": 1
+    },
+    "pattern": [
+        "AAA",
+        "ABA",
+        "ACA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:poppy"},
+        "B": {"item": "wildnature:wooden_hammer"},
+        "C": {"item": "wildnature:empty_bag"}
+
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/slate/slate_cobble",
+        "top": "wildnature:blocks/rocks/slate/slate_cobble",
+        "side": "wildnature:blocks/rocks/slate/slate_cobble"
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#J#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:caramel"
+    },
+    "J": {
+      "item": "wildnature:jar"
+    }
+  },
+  "result": {
+    "item": "wildnature:caramel_jar",
+    "count": 1
+  }
+}

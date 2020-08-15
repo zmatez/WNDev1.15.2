@@ -1,0 +1,12 @@
+{
+    "variants": {
+      "facing=south,powered=false": { "model": "wildnature:block/rs_wireless_send" },
+      "facing=west,powered=false": { "model": "wildnature:block/rs_wireless_send", "y": 90 },
+      "facing=north,powered=false": { "model": "wildnature:block/rs_wireless_send", "y": 180 },
+      "facing=east,powered=false": { "model": "wildnature:block/rs_wireless_send", "y": 270 },
+      "facing=south,powered=true": { "model": "wildnature:block/rs_wireless_send_on" },
+      "facing=west,powered=true": { "model": "wildnature:block/rs_wireless_send_on", "y": 90 },
+      "facing=north,powered=true": { "model": "wildnature:block/rs_wireless_send_on", "y": 180 },
+      "facing=east,powered=true": { "model": "wildnature:block/rs_wireless_send_on", "y": 270 }
+    }
+}

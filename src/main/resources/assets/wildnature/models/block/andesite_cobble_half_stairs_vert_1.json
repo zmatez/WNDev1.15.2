@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_vert_1",
+    "textures": {
+        "material": "wildnature:blocks/rocks/andesite/andesite_cobble",
+        "particle": "wildnature:blocks/rocks/andesite/andesite_cobble"
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "group": "wildnature:mossy_bricks_wall",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:conglomerate_bricks_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:conglomerate_wall_bricks_mossy",
+    "count": 6
+  }
+}

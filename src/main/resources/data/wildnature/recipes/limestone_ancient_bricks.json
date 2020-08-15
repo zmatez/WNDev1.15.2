@@ -1,0 +1,21 @@
+{
+  "group": "wildnature:stone_ancient_bricks",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#?#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone_bricks"
+    },
+    "?": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_ancient_bricks",
+    "count": 8
+  }
+}

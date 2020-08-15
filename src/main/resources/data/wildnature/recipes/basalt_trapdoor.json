@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:stone_trapdoor",
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:basalt"
+    }
+  },
+  "result": {
+    "item": "wildnature:basalt_trapdoor",
+    "count": 2
+  }
+}

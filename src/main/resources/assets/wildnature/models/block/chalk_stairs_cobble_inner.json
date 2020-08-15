@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/chalk/chalk_cobble",
+        "top": "wildnature:blocks/rocks/chalk/chalk_cobble",
+        "side": "wildnature:blocks/rocks/chalk/chalk_cobble"
+    }
+}

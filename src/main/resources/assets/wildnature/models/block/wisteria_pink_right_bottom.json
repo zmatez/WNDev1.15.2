@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/wisteria_pink_right_bottom"
+    }
+}

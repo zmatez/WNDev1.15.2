@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bench",
+  "pattern": [
+    "###",
+    "@-@"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_planks"
+    },
+    "@": {
+      "item": "minecraft:stripped_jungle_log"
+    },
+    "-": {
+      "item": "minecraft:jungle_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:jungle_bench",
+    "count": 3
+  }
+}

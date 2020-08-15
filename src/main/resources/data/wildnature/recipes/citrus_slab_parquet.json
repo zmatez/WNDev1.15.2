@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_parquet",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:citrus_parquet"
+    }
+  },
+  "result": {
+    "item": "wildnature:citrus_slab_parquet",
+    "count": 6
+  }
+}

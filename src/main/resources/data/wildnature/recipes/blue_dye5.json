@@ -1,0 +1,10 @@
+{
+    "group": "blue_dye",
+    "result": {
+        "item": "minecraft:blue_dye",
+        "count": 2
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:primrose_blue"}}
+}

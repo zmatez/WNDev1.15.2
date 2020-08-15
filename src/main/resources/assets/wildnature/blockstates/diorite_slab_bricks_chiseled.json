@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/diorite_slab_bricks_chiseled" },
+        "type=top": { "model": "wildnature:block/diorite_slab_bricks_chiseled_top" },
+        "type=double": { "model": "wildnature:block/diorite_bricks_chiseled" }
+    }
+}

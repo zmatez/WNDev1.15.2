@@ -1,0 +1,27 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:sauerkraut"
+    },
+    {
+      "item": "wildnature:dried_mushroom_mix"
+    },
+    {
+      "item": "wildnature:dried_mushroom_mix"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "minecraft:carrot"
+    }
+  ],
+  "result": {
+    "item": "wildnature:bigos",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

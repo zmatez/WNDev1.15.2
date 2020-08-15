@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab_parquet_vertical",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:willow_slab_parquet"
+    }
+  },
+  "result": {
+    "item": "wildnature:willow_parquet_vertical_slab",
+    "count": 3
+  }
+}

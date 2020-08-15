@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_roof_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:conglomerate_roof"
+    }
+  },
+  "result": {
+    "item": "wildnature:conglomerate_roof_slab",
+    "count": 6
+  }
+}

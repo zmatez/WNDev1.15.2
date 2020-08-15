@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/diorite/diorite_cobble",
+        "top": "wildnature:blocks/rocks/diorite/diorite_cobble",
+        "side": "wildnature:blocks/rocks/diorite/diorite_cobble"
+    }
+}

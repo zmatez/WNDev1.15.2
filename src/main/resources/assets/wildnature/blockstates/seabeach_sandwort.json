@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/seabeach_sandwort" },
+      { "model": "wildnature:block/seabeach_sandwort", "y": 90 },
+      { "model": "wildnature:block/seabeach_sandwort", "y": 180 },
+      { "model": "wildnature:block/seabeach_sandwort", "y": 270 }
+    ]
+  }
+}

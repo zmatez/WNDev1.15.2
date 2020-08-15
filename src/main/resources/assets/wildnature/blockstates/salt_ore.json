@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "type=stone": { "model": "wildnature:block/salt_ore_stone" },
+        "type=sand": { "model": "wildnature:block/salt_ore_sand" }
+    }
+}

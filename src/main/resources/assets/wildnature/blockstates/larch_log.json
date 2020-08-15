@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "wildnature:block/larch_log" },
+        "axis=z":   { "model": "wildnature:block/larch_log", "x": 90 },
+        "axis=x":   { "model": "wildnature:block/larch_log", "x": 90, "y": 90 }
+    }
+}

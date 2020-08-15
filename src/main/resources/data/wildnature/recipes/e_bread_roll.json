@@ -1,0 +1,31 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:yeast"
+    },
+    {
+      "item": "wildnature:yeast"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:bread_roll",
+    "count": 4
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

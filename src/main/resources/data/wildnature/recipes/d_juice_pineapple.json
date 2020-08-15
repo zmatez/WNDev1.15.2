@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:pineapple"
+    },
+    {
+      "item": "wildnature:pineapple"
+    },
+    {
+      "item": "wildnature:pineapple"
+    },
+    {
+      "item": "wildnature:lemon"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "wildnature:banana"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:glass_cup"
+    }
+  ],
+  "result": {
+    "item": "wildnature:juice_pineapple",
+    "count": 1
+  }
+}

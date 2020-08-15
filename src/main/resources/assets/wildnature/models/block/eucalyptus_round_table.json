@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_round_table",
+    "textures": {
+        "particle": "wildnature:blocks/eucalyptus/eucalyptus_planks",
+        "material": "wildnature:blocks/eucalyptus/eucalyptus_stripped_log",
+        "material2": "wildnature:blocks/eucalyptus/eucalyptus_stripped_log_top",
+        "material3": "wildnature:blocks/eucalyptus/eucalyptus_planks"
+    }
+}

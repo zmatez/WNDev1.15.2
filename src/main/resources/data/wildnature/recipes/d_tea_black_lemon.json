@@ -1,0 +1,27 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;glass",
+  "ingredient": [
+    {
+      "item": "wildnature:black_tea_leaves"
+    },
+    {
+      "item": "wildnature:black_tea_leaves"
+    },
+    {
+      "item": "wildnature:black_tea_leaves"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tea_black_lemon",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

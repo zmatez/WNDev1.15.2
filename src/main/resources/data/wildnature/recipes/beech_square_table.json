@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:beech_planks"
+    },
+    "|": {
+      "item": "wildnature:beech_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:beech_square_table",
+    "count": 4
+  }
+}

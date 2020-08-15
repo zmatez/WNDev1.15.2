@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/granite/granite",
+        "top": "wildnature:blocks/rocks/granite/granite",
+        "side": "wildnature:blocks/rocks/granite/granite"
+    }
+}

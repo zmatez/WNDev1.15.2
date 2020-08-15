@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:mangrove_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:mangrove_planks",
+    "count": 4
+  }
+}

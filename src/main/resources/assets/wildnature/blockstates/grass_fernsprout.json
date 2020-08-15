@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/grass_fernsprout" },
+      { "model": "wildnature:block/grass_fernsprout", "y": 90 },
+      { "model": "wildnature:block/grass_fernsprout", "y": 180 },
+      { "model": "wildnature:block/grass_fernsprout", "y": 270 }
+    ]
+  }
+}

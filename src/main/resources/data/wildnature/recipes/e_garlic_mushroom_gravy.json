@@ -1,0 +1,32 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:mushroom_mix"
+    },
+    {
+      "item": "wildnature:garlic_cloves"
+    },
+    {
+      "item": "wildnature:garlic_cloves"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:garlic_mushroom_gravy",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+		"colored": "wildnature:blocks/bush/quince/quince_bush_stage6_overlay",
+        "greyscale": "wildnature:blocks/bush/quince/quince_bush_stage4",
+        "particle": "wildnature:blocks/bush/quince/quince_bush_stage4"
+    }
+}

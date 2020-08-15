@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ADA",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "B": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:blue_dye"
+    },
+    "D": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "wildnature:chocolate_milk",
+    "count": 2
+  }
+}

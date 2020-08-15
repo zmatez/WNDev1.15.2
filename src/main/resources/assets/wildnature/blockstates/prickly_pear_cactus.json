@@ -1,0 +1,54 @@
+{
+    "variants": {
+      "age=0": [
+        {
+          "model": "wildnature:block/prickly_pear_1"
+        },
+        {
+          "model": "wildnature:block/prickly_pear_1",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/prickly_pear_1",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/prickly_pear_1",
+          "y": 270
+        }
+      ],
+      "age=1": [
+        {
+          "model": "wildnature:block/prickly_pear_2"
+        },
+        {
+          "model": "wildnature:block/prickly_pear_2",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/prickly_pear_2",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/prickly_pear_2",
+          "y": 270
+        }
+      ],"age=2": [
+        {
+          "model": "wildnature:block/prickly_pear_3"
+        },
+        {
+          "model": "wildnature:block/prickly_pear_3",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/prickly_pear_3",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/prickly_pear_3",
+          "y": 270
+        }
+      ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "group": "wildnature:cobble_wall",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:granite_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:granite_wall_cobble",
+    "count": 6
+  }
+}

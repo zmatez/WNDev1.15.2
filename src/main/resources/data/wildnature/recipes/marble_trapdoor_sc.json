@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:marble"
+  },
+  "result": "wildnature:marble_trapdoor",
+  "count": 1
+}

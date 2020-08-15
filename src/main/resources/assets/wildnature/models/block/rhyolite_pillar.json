@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/pillar",
+    "textures": {
+        "particle": "wildnature:blocks/rocks/rhyolite/rhyolite_pillar",
+        "0": "wildnature:blocks/rocks/rhyolite/rhyolite_pillar",
+        "1": "wildnature:blocks/rocks/rhyolite/rhyolite_polished"
+    }
+}

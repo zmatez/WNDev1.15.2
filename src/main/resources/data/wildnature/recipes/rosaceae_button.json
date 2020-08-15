@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_button",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rosaceae_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:rosaceae_button",
+    "count": 1
+  }
+}

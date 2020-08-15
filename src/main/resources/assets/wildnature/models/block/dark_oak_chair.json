@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_chair",
+    "textures": {
+        "particle": "block/dark_oak_planks",
+        "material": "block/stripped_dark_oak_log",
+        "material2": "block/dark_oak_planks"
+    }
+}

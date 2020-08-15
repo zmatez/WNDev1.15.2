@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:larch_log",
+    "wildnature:larch_wood",
+    "wildnature:larch_stripped_log",
+    "wildnature:larch_stripped_wood"
+  ]
+}

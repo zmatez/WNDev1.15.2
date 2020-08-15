@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:diorite_slab_bricks_chiseled"
+    }
+  },
+  "result": {
+    "item": "wildnature:diorite_bricks_chiseled_half_stairs",
+    "count": 6
+  }
+}

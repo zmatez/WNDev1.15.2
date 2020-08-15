@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "wildnature:block/limestone_pillar" },
+        "axis=z":   { "model": "wildnature:block/limestone_pillar", "x": 90 },
+        "axis=x":   { "model": "wildnature:block/limestone_pillar", "x": 90, "y": 90 }
+    }
+}

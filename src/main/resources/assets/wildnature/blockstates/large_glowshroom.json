@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "half=lower": [
+        {
+          "model": "wildnature:block/large_glowshroom_bottom"
+        },
+        {
+          "model": "wildnature:block/large_glowshroom_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/large_glowshroom_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/large_glowshroom_bottom",
+          "y": 270
+        }
+      ],
+      "half=upper": [
+        {
+          "model": "wildnature:block/large_glowshroom_top"
+        },
+        {
+          "model": "wildnature:block/large_glowshroom_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/large_glowshroom_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/large_glowshroom_top",
+          "y": 270
+        }
+      ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:rosaceae_log",
+    "wildnature:baobab_log",
+    "wildnature:beech_log",
+    "wildnature:cedar_log",
+    "wildnature:cherry_log",
+    "wildnature:ebony_log",
+    "wildnature:jacaranda_log",
+    "wildnature:larch_log",
+    "wildnature:mahogany_log",
+    "wildnature:mangrove_log",
+    "wildnature:maple_log",
+    "wildnature:palm_log",
+    "wildnature:plum_log",
+    "wildnature:redwood_log",
+    "wildnature:willow_log",
+    "wildnature:eucalyptus_log",
+    "wildnature:citrus_log",
+    "wildnature:glowing_cave_oak_log"
+
+  ]
+}

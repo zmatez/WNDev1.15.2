@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/underground/large_glowshroom_bottom"
+    }
+}

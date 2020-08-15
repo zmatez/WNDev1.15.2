@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SR"
+  ],
+  "key": {
+    "S": {
+      "item": "wildnature:candy_cane_1"
+    },
+    "R": {
+      "tag": "minecraft:leaves"
+    }
+  },
+  "result": {
+    "item": "wildnature:candy_cane_2",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/anemone_bloom_1",
+        "greyscale": "wildnature:blocks/flowers/anemone_stem",
+        "particle": "wildnature:blocks/flowers/anemone_stem"
+    }
+}

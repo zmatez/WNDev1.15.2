@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/redwood/redwood_planks",
+        "material": "wildnature:blocks/redwood/redwood_stripped_log",
+        "material2": "wildnature:blocks/redwood/redwood_planks"
+    }
+}

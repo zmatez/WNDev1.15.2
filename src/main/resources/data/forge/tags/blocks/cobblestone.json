@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:basalt_cobble",
+    "wildnature:conglomerate_cobble",
+    "wildnature:gneiss_cobble",
+    "wildnature:limestone_cobble",
+    "wildnature:marble_cobble",
+    "wildnature:pegmatite_cobble",
+    "wildnature:slate_cobble"
+  ]
+}

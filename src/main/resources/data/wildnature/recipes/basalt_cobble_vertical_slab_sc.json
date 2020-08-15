@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:basalt_cobble"
+  },
+  "result": "wildnature:basalt_cobble_vertical_slab",
+  "count": 1
+}

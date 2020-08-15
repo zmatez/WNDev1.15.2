@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/frozen_stone/frozen_stone_bricks_long",
+        "top": "wildnature:blocks/rocks/frozen_stone/frozen_stone_bricks_long",
+        "side": "wildnature:blocks/rocks/frozen_stone/frozen_stone_bricks_long"
+    }
+}

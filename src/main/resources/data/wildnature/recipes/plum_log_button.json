@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:plum_logs"
+    },
+    {
+      "item": "wildnature:plum_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:plum_log_button",
+    "count": 2
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/thuja_limegreen" },
+      { "model": "wildnature:block/thuja_limegreen", "y": 90 },
+      { "model": "wildnature:block/thuja_limegreen", "y": 180 },
+      { "model": "wildnature:block/thuja_limegreen", "y": 270 }
+    ]
+  }
+}

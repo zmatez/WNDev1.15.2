@@ -1,0 +1,14 @@
+{
+    "variants": {
+      "flowering=false":
+        {
+          "model": "wildnature:block/forsythia_leaves"
+        }
+      ,
+      "flowering=true":
+        {
+          "model": "wildnature:block/forsythia_leaves_flowering"
+        }
+
+  }
+}

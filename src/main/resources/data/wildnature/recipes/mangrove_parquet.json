@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "parquet",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:mangrove_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:mangrove_parquet",
+    "count": 4
+  }
+}

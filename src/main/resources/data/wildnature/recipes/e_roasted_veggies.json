@@ -1,0 +1,30 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+  ],
+  "result": {
+    "item": "wildnature:roasted_veggies",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

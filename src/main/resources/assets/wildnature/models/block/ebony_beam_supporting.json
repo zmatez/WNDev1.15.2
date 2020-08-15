@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/supporting_beam",
+    "textures": {
+        "particle": "wildnature:blocks/ebony/ebony_log",
+        "side": "wildnature:blocks/ebony/ebony_log",
+        "top": "wildnature:blocks/ebony/ebony_log_top"
+    }
+}

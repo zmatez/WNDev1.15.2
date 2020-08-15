@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "wildnature:block/parsley_stage_1" },
+        "age=1": { "model": "wildnature:block/parsley_stage_2" },
+        "age=2": { "model": "wildnature:block/parsley_stage_3" }
+
+    }
+}

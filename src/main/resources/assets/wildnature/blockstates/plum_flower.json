@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/plum_flower" },
+      { "model": "wildnature:block/plum_flower", "y": 90 },
+      { "model": "wildnature:block/plum_flower", "y": 180 },
+      { "model": "wildnature:block/plum_flower", "y": 270 }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/gypsum/gypsum_bricks_long",
+        "top": "wildnature:blocks/rocks/gypsum/gypsum_bricks_long",
+        "side": "wildnature:blocks/rocks/gypsum/gypsum_bricks_long"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "wildnature:block/bulb_vine_bottom" },
+        "half=upper":    { "model": "wildnature:block/bulb_vine_top" }
+    }
+}

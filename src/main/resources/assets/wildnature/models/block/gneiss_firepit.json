@@ -1,0 +1,10 @@
+{
+    "parent": "wildnature:block/fire_pit",
+    "textures": {
+        "particle": "wildnature:blocks/rocks/gneiss/gneiss_cobble",
+        "material1": "wildnature:blocks/rocks/gneiss/gneiss_cobble",
+        "material2": "wildnature:blocks/rocks/gneiss/gneiss_bricks_cracked",
+	"fire": "block/campfire_fire"
+
+    }
+}

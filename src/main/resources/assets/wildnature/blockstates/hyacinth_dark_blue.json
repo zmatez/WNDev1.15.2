@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/hyacinth_stem"
+        },
+        {
+          "model": "wildnature:block/hyacinth_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/hyacinth_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/hyacinth_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/hyacinth_dark_blue"
+        },
+        {
+          "model": "wildnature:block/hyacinth_dark_blue",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/hyacinth_dark_blue",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/hyacinth_dark_blue",
+          "y": 270
+        }
+      ]
+  }
+}

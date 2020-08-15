@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/diorite/diorite_roof_2",
+        "top": "wildnature:blocks/rocks/diorite/diorite_roof_2",
+        "side": "wildnature:blocks/rocks/diorite/diorite_roof_2"
+    }
+}

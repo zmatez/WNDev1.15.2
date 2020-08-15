@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/diorite_slab_bricks_cracked" },
+        "type=top": { "model": "wildnature:block/diorite_slab_bricks_cracked_top" },
+        "type=double": { "model": "wildnature:block/diorite_bricks_cracked" }
+    }
+}

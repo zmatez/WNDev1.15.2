@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/cedar/cedar_planks",
+        "material": "wildnature:blocks/cedar/cedar_stripped_log",
+        "material2": "wildnature:blocks/cedar/cedar_planks"
+    }
+}

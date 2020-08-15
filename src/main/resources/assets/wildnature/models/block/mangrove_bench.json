@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_bench",
+    "textures": {
+        "particle": "wildnature:blocks/mangrove/mangrove_planks",
+        "material": "wildnature:blocks/mangrove/mangrove_planks",
+        "material2": "wildnature:blocks/mangrove/mangrove_stripped_log"
+    }
+}

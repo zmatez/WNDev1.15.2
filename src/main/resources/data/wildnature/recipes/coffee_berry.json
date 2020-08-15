@@ -1,0 +1,9 @@
+{
+    "result": {
+        "item": "wildnature:coffee_berry",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:coffee_branch"}}
+}

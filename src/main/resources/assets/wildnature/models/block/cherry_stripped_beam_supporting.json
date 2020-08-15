@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/supporting_beam",
+    "textures": {
+        "particle": "wildnature:blocks/cherry/cherry_stripped_log",
+        "side": "wildnature:blocks/cherry/cherry_stripped_log",
+        "top": "wildnature:blocks/cherry/cherry_stripped_log_top"
+    }
+}

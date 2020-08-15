@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "wildnature:blocks/gabbro/gabbro_polished",
+        "top": "wildnature:blocks/gabbro/gabbro_polished",
+        "side": "wildnature:blocks/gabbro/gabbro_polished"
+    }
+}

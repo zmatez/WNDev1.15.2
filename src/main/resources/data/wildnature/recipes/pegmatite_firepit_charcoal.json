@@ -1,0 +1,30 @@
+{
+  "group": "wildnature:firepits",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "!$!",
+    "@$@",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pegmatite_cobble"
+    },
+    "A": {
+      "item": "wildnature:pegmatite_bricks_cracked"
+    },
+    "$": {
+      "tag": "minecraft:logs"
+    },
+    "@": {
+      "item": "minecraft:charcoal"
+    },
+    "!": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:pegmatite_firepit",
+    "count": 1
+  }
+}

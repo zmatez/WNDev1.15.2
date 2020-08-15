@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "shroom_lantern",
+  "pattern": [
+    "#$#",
+    "#$#",
+    "#@#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_nugget"
+    },
+    "@": {
+      "item": "wildnature:steel_ingot"
+    },
+    "$": {
+      "item": "wildnature:glowshroom_dust"
+    }
+  },
+  "result": {
+    "item": "wildnature:glowshroom_lantern",
+    "count": 1
+  }
+}

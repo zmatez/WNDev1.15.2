@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/phyllite/phyllite",
+        "top": "wildnature:blocks/rocks/phyllite/phyllite",
+        "side": "wildnature:blocks/rocks/phyllite/phyllite"
+    }
+}

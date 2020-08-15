@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "facing=down,running=false":  { "model": "wildnature:block/rs_steam_generator_off_vertical2", "x": 180 },
+        "facing=up,running=false":    { "model": "wildnature:block/rs_steam_generator_off_vertical2" },
+        "facing=north,running=false": { "model": "wildnature:block/rs_steam_generator_off2" },
+        "facing=south,running=false": { "model": "wildnature:block/rs_steam_generator_off2", "y": 180 },
+        "facing=west,running=false":  { "model": "wildnature:block/rs_steam_generator_off2", "y": 270 },
+        "facing=east,running=false":  { "model": "wildnature:block/rs_steam_generator_off2", "y": 90 },
+	"facing=down,running=true":  { "model": "wildnature:block/rs_steam_generator_on_vertical2", "x": 180 },
+        "facing=up,running=true":    { "model": "wildnature:block/rs_steam_generator_on_vertical2" },
+        "facing=north,running=true": { "model": "wildnature:block/rs_steam_generator_on2" },
+        "facing=south,running=true": { "model": "wildnature:block/rs_steam_generator_on2", "y": 180 },
+        "facing=west,running=true":  { "model": "wildnature:block/rs_steam_generator_on2", "y": 270 },
+        "facing=east,running=true":  { "model": "wildnature:block/rs_steam_generator_on2", "y": 90 }
+    }
+}

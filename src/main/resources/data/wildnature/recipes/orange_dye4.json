@@ -1,0 +1,10 @@
+{
+    "group": "orange_dye",
+    "result": {
+        "item": "minecraft:orange_dye",
+        "count": 3
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:gladiolus_orange"}}
+}

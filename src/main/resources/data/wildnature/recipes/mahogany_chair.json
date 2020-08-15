@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chairs",
+  "pattern": [
+    "#  ",
+    "###",
+    "@ @"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:mahogany_planks"
+    },
+    "@": {
+      "item": "wildnature:mahogany_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:mahogany_chair",
+    "count": 2
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/marble_slab" },
+        "type=top": { "model": "wildnature:block/marble_slab_top" },
+        "type=double": { "model": "wildnature:block/marble" }
+    }
+}

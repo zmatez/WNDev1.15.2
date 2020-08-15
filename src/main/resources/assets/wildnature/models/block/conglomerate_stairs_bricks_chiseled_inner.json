@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/conglomerate/conglomerate_bricks_chiseled",
+        "top": "wildnature:blocks/rocks/conglomerate/conglomerate_bricks_chiseled",
+        "side": "wildnature:blocks/rocks/conglomerate/conglomerate_bricks_chiseled"
+    }
+}

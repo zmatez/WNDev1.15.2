@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_inventory",
+    "textures": {
+        "wall": "wildnature:blocks/rocks/red_hardened_sandstone/red_hardened_sandstone"
+    }
+}

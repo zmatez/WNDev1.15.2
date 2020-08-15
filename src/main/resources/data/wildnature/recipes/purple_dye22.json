@@ -1,0 +1,10 @@
+{
+    "group": "purple_dye",
+    "result": {
+        "item": "minecraft:purple_dye",
+        "count": 5
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:rhododendron_purple"}}
+}

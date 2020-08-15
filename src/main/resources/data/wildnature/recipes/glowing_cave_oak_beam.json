@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "beam",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:glowing_cave_oak_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:glowing_cave_oak_beam",
+    "count": 8
+  }
+}

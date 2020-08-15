@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "broken=false": { "model": "wildnature:block/fuzzball_unbroken" },
+    "broken=true": { "model": "wildnature:block/fuzzball_broken" }
+
+  }
+}

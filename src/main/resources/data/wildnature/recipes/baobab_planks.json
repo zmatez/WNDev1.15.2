@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:baobab_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:baobab_planks",
+    "count": 4
+  }
+}

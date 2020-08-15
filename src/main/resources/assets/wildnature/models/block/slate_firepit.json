@@ -1,0 +1,10 @@
+{
+    "parent": "wildnature:block/fire_pit",
+    "textures": {
+        "particle": "wildnature:blocks/rocks/slate/slate_cobble",
+        "material1": "wildnature:blocks/rocks/slate/slate_cobble",
+        "material2": "wildnature:blocks/rocks/slate/slate_bricks_cracked",
+	"fire": "block/campfire_fire"
+
+    }
+}

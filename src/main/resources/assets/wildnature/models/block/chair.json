@@ -1,0 +1,188 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "oakplanks_linseedoil": "wildnature:blocks/fancy/oakplanks_linseedoil",
+        "particle": "wildnature:blocks/fancy/oakplanks_linseedoil"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 2, 6, 2 ], 
+            "to": [ 14, 8, 14 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 12, 2 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 12, 2 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 12, 2 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 12, 2 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 12, 12 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 12, 12 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 2, 0, 2 ], 
+            "to": [ 4, 6, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 2, 0, 12 ], 
+            "to": [ 4, 6, 14 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 12, 0, 12 ], 
+            "to": [ 14, 6, 14 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 12, 0, 2 ], 
+            "to": [ 14, 6, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 2, 8, 2 ], 
+            "to": [ 4, 19, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 12, 8, 2 ], 
+            "to": [ 14, 19, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 11 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 6, 8, 2 ], 
+            "to": [ 10, 21, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 4, 13 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 13 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 4, 13 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 13 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 4, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 10, 16, 2 ], 
+            "to": [ 15, 18, 4 ], 
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": 45.0 },
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 6, 3 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 1, 16, 2 ], 
+            "to": [ 6, 18, 4 ], 
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": -45.0 },
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] },
+                "east": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] },
+                "west": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 5, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 4, 12, 2 ], 
+            "to": [ 6, 14, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 10, 12, 2 ], 
+            "to": [ 12, 14, 4 ], 
+            "faces": {
+                "north": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "up": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#oakplanks_linseedoil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        }
+    ]
+}

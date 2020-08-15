@@ -1,0 +1,6 @@
+{
+    "parent": "block/button_inventory",
+    "textures": {
+        "texture": "wildnature:blocks/rocks/frozen_stone/frozen_stone"
+    }
+}

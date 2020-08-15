@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "": [
+            { "model": "wildnature:block/ice_shroom" },
+            { "model": "wildnature:block/ice_shroom2" },
+            { "model": "wildnature:block/ice_shroom3" },
+            { "model": "wildnature:block/ice_shroom4" },
+            { "model": "wildnature:block/ice_shroom5" }
+        ]
+    }
+}

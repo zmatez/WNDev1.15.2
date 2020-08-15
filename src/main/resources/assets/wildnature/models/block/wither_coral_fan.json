@@ -1,0 +1,6 @@
+{
+    "parent": "block/coral_fan",
+    "textures": {
+        "fan": "wildnature:blocks/flowers/wither_fan_coral"
+    }
+}

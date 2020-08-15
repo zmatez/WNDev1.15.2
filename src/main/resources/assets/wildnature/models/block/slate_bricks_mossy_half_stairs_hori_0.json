@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_hori_0",
+    "textures": {
+        "material": "wildnature:blocks/rocks/slate/slate_bricks_mossy",
+        "particle": "wildnature:blocks/rocks/slate/slate_bricks_mossy"
+    }
+}

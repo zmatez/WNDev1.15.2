@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:willow_planks"
+    },
+    "|": {
+      "item": "wildnature:willow_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:willow_square_table",
+    "count": 4
+  }
+}

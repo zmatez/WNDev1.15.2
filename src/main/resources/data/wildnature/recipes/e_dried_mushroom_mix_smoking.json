@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "wildnature:mushroom_mix"
+  },
+  "result": "wildnature:dried_mushroom_mix",
+  "experience": 0.35,
+  "cookingtime": 100
+}

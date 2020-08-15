@@ -1,0 +1,29 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;maple_bowl",
+  "ingredient": [
+    {
+      "item": "wildnature:red_wine"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    }
+
+
+  ],
+  "result": {
+    "item": "wildnature:red_wine_reduction_sauce",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

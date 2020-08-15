@@ -1,0 +1,103 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "larch": "wildnature:blocks/fancy/larch",
+        "wroughtiron": "wildnature:blocks/fancy/wroughtiron",
+        "particle": "wildnature:blocks/fancy/larch"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 0, 1, 1 ], 
+            "to": [ 16, 2, 8 ], 
+            "faces": {
+                "north": { "texture": "#larch", "uv": [ 0, 0, 16, 1 ] },
+                "east": { "texture": "#larch", "uv": [ 0, 0, 7, 1 ] },
+                "south": { "texture": "#larch", "uv": [ 0, 0, 16, 1 ] },
+                "west": { "texture": "#larch", "uv": [ 0, 0, 7, 1 ] },
+                "up": { "texture": "#larch", "uv": [ 0, 7, 16, 14 ] },
+                "down": { "texture": "#larch", "uv": [ 0, 0, 16, 7 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 2, 0, 0 ], 
+            "to": [ 4, 8, 1 ], 
+            "faces": {
+                "north": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 8 ] },
+                "east": { "texture": "#wroughtiron", "uv": [ 0, 0, 1, 8 ] },
+                "south": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 8 ] },
+                "west": { "texture": "#wroughtiron", "uv": [ 0, 0, 1, 8 ] },
+                "up": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 1 ] },
+                "down": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 2, 0, 1 ], 
+            "to": [ 4, 1, 8 ], 
+            "faces": {
+                "east": { "texture": "#wroughtiron", "uv": [ 0, 0, 7, 1 ] },
+                "south": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 1 ] },
+                "west": { "texture": "#wroughtiron", "uv": [ 0, 0, 7, 1 ] },
+                "down": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 7 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 12, 0, 0 ], 
+            "to": [ 14, 8, 1 ], 
+            "faces": {
+                "north": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 8 ] },
+                "east": { "texture": "#wroughtiron", "uv": [ 0, 0, 1, 8 ] },
+                "south": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 8 ] },
+                "west": { "texture": "#wroughtiron", "uv": [ 0, 0, 1, 8 ] },
+                "up": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 1 ] },
+                "down": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 1 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 12, 0, 1 ], 
+            "to": [ 14, 1, 8 ], 
+            "faces": {
+                "east": { "texture": "#wroughtiron", "uv": [ 0, 0, 7, 1 ] },
+                "south": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 1 ] },
+                "west": { "texture": "#wroughtiron", "uv": [ 0, 0, 7, 1 ] },
+                "down": { "texture": "#wroughtiron", "uv": [ 0, 0, 2, 7 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "wildnature:block/anvil" },
+        "facing=west": { "model": "wildnature:block/anvil", "y": 90 },
+        "facing=north": { "model": "wildnature:block/anvil", "y": 180 },
+        "facing=east": { "model": "wildnature:block/anvil", "y": 270 }
+    }
+}

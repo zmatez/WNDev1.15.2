@@ -1,0 +1,68 @@
+{
+    "variants": {
+      "facing=up": [
+        {
+          "model": "wildnature:block/lightning_bug"
+        },
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 270
+        }
+      ],
+      "facing=down": [
+        {
+          "model": "wildnature:block/lightning_bug",
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 90,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 180,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 270,
+          "x": 180
+        }
+      ],
+      "facing=east": [
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 90,
+          "x": 90
+        }
+      ],
+      "facing=south": {
+        "model": "wildnature:block/lightning_bug",
+        "y": 180,
+        "x": 90
+      },
+      "facing=west": [
+        {
+        "model": "wildnature:block/lightning_bug",
+        "y": 270,
+        "x": 90
+        }
+      ],
+      "facing=north": [
+        {
+          "model": "wildnature:block/lightning_bug",
+          "y": 0,
+          "x": 90
+        }
+      ]
+    }
+}

@@ -1,0 +1,7 @@
+{   "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/apple/apple_leaves",
+    "leaves": "wildnature:blocks/apple/apple_leaves",
+    "log": "wildnature:blocks/rosaceae/rosaceae_log"
+  }
+}

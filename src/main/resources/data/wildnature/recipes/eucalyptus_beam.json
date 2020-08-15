@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "beam",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:eucalyptus_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:eucalyptus_beam",
+    "count": 8
+  }
+}

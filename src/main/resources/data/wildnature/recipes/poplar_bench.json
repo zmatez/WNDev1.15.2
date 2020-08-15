@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bench",
+  "pattern": [
+    "###",
+    "@-@"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:poplar_planks"
+    },
+    "@": {
+      "item": "wildnature:poplar_stripped_log"
+    },
+    "-": {
+      "item": "wildnature:poplar_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:poplar_bench",
+    "count": 3
+  }
+}

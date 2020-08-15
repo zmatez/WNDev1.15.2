@@ -1,0 +1,146 @@
+{
+  "block.piston.2s_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/2s_open",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.3s_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/3s_open",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.2s_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/2s_close",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.3s_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/3s_close",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.denseforest_day_0": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_day_0",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.denseforest_day_1": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_day_1",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.denseforest_day_2": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_day_2",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.denseforest_day_3": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_day_3",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.denseforest_day_4": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_day_4",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.denseforest_night_0": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_night_0",
+        "stream": true
+      }
+    ]
+  },
+  "denseforest_openfield_day_0": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_openfield_day_0",
+        "stream": true
+      }
+    ]
+  },
+  "denseforest_openfield_day_1": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/denseforest_openfield_day_1",
+        "stream": true
+      }
+    ]
+  },
+  "denseforest_mountains_0": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/mountains_0",
+        "stream": true
+      }
+    ]
+  },
+  "denseforest_plains_0": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/plains_0",
+        "stream": true
+      }
+    ]
+  },
+  "denseforest_plains_1": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/plains_1",
+        "stream": true
+      }
+    ]
+  },
+  "denseforest_redwoodforest_day_0": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "wildnature:ambient/redwoodforest_day_0",
+        "stream": true
+      }
+    ]
+  }
+}

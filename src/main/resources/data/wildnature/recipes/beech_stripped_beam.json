@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "beam",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:beech_stripped_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:beech_stripped_beam",
+    "count": 8
+  }
+}

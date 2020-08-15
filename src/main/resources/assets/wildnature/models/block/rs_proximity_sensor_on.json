@@ -1,0 +1,38 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+"ambientocclusion": false,
+    "textures": {
+        "particle": "blocks/block/repeater",
+        "0": "block/smooth_stone",
+        "1": "wildnature:blocks/redstone/rs_proximity_sensor/rs_proximity_sensor_on",
+        "2": "block/redstone_torch"
+    },
+    "elements": [
+        {
+            "name": "Element",
+            "from": [ 0.0, 0.0, 0.0 ],
+            "to": [ 16.0, 2.0, 16.0 ],
+            "faces": {
+                "north": { "texture": "#0", "uv": [ 0.0, 14.0, 16.0, 16.0 ], "cullface": "north" },
+                "east": { "texture": "#0", "uv": [ 0.0, 14.0, 16.0, 16.0 ], "cullface": "east" },
+                "south": { "texture": "#0", "uv": [ 0.0, 14.0, 16.0, 16.0 ], "cullface": "south" },
+                "west": { "texture": "#0", "uv": [ 0.0, 14.0, 16.0, 16.0 ], "cullface": "west" },
+                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "cullface": "down" }
+            }
+        },
+        {
+            "name": "Element",
+            "from": [ 7.0, 2.0, 2.0 ],
+            "to": [ 9.0, 7.0, 4.0 ],
+            "faces": {
+                "north": { "texture": "#2", "uv": [ 7.0, 6.0, 9.0, 11.0 ] },
+                "east": { "texture": "#2", "uv": [ 7.0, 6.0, 9.0, 11.0 ] },
+                "south": { "texture": "#2", "uv": [ 7.0, 6.0, 9.0, 11.0 ] },
+                "west": { "texture": "#2", "uv": [ 7.0, 6.0, 9.0, 11.0 ] },
+                "up": { "texture": "#2", "uv": [ 7.0, 6.0, 9.0, 8.0 ] },
+                "down": { "texture": "#2", "uv": [ 7.0, 13.0, 9.0, 15.0 ] }
+            }
+        }
+    ]
+}

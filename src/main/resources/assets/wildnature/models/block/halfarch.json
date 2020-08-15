@@ -1,0 +1,128 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"wood": "blocks/stone_bricks",
+		"particle": "blocks/cobblestone",
+		"base": "blocks/cobblestone"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 14, 16, 16], "texture": "#base"},
+				"east": {"uv": [0, 12, 16, 16], "texture": "#base"},
+				"south": {"uv": [0, 14, 16, 16], "texture": "#base"},
+				"west": {"uv": [0, 14, 16, 16], "texture": "#base"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#base"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#base"}
+			}
+		},
+		{
+			"from": [14, 2, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 16], "texture": "#base"},
+				"east": {"uv": [0, 0, 16, 14], "texture": "#base"},
+				"south": {"uv": [14, 0, 16, 14], "texture": "#base"},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#base"},
+				"up": {"uv": [14.032, 0.032, 16, 16], "texture": "#base"}
+			}
+		},
+		{
+			"from": [2, 1, 0],
+			"to": [7, 4, 16],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [-1, 2, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "texture": "#wood"},
+				"east": {"uv": [0, 0, 16, 3], "texture": "#wood"},
+				"south": {"uv": [8, 0, 16, 8], "texture": "#wood"},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#wood"},
+				"up": {"uv": [8, 0, 16, 16], "texture": "#wood"},
+				"down": {"uv": [8, 0, 16, 16], "texture": "#wood"}
+			}
+		},
+		{
+			"from": [8, 2, 0],
+			"to": [14, 5, 16],
+			"rotation": {"angle": 45, "axis": "z", "origin": [6, 3, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "texture": "#wood"},
+				"east": {"uv": [0, 0, 16, 8], "texture": "#wood"},
+				"south": {"uv": [8, 0, 16, 8], "texture": "#wood"},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#wood"},
+				"up": {"uv": [4.282, 0, 12.282, 16], "texture": "#wood"},
+				"down": {"uv": [8, 0, 16, 16], "texture": "#wood"}
+			}
+		},
+		{
+			"from": [8, 10, 0],
+			"to": [11, 15, 16],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [10, 7, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "rotation": 90, "texture": "#wood"},
+				"east": {"uv": [8, 0, 16, 16], "texture": "#wood"},
+				"south": {"uv": [8, 0, 16, 8], "rotation": 270, "texture": "#wood"},
+				"west": {"uv": [0, 0.032, 8, 16], "rotation": 270, "texture": "#wood"},
+				"up": {"uv": [0.625, 0, 3.625, 16], "texture": "#wood"},
+				"down": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#wood"}
+			}
+		},
+		{
+			"from": [13, 12, 2],
+			"to": [14, 16, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 4], "texture": "#base"},
+				"south": {"uv": [12, 0, 14, 4], "texture": "#base"},
+				"west": {"uv": [0, 8, 16, 16], "texture": "#base"},
+				"up": {"uv": [12, 2, 14, 14], "texture": "#base"}
+			}
+		},
+		{
+			"from": [0, 2, 2],
+			"to": [4, 5, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 8, 8]},
+			"faces": {
+				"north": {"uv": [10, 9, 14, 12], "texture": "#base"},
+				"south": {"uv": [0, 8, 16, 16], "texture": "#base"},
+				"west": {"uv": [2, 11, 14, 14], "texture": "#base"},
+				"up": {"uv": [0, 0, 4, 12], "texture": "#base"}
+			}
+		},
+		{
+			"from": [4, 2, 2],
+			"to": [14, 6, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [17, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 8.032, 10, 12.032], "texture": "#base"},
+				"south": {"uv": [4, 10, 14, 14], "texture": "#base"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#base"}
+			}
+		},
+		{
+			"from": [10, 6, 2],
+			"to": [14, 12, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [17, 12, 8]},
+			"faces": {
+				"north": {"uv": [0, 2, 4, 8], "texture": "#base"},
+				"south": {"uv": [10, 4, 14, 10], "texture": "#base"},
+				"west": {"uv": [0, 8, 16, 16], "texture": "#base"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_lefthand": {
+			"rotation": [75, -135, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"gui": {
+			"rotation": [30, 135, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"head": {
+			"rotation": [0, -90, 0]
+		}
+	}
+}

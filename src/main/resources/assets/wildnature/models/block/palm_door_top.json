@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top",
+    "textures": {
+        "bottom": "wildnature:blocks/palm/palm_door_bottom",
+        "top": "wildnature:blocks/palm/palm_door_top"
+    }
+}

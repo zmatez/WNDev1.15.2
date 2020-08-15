@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/sea_kale" },
+      { "model": "wildnature:block/sea_kale", "y": 90 },
+      { "model": "wildnature:block/sea_kale", "y": 180 },
+      { "model": "wildnature:block/sea_kale", "y": 270 }
+    ]
+  }
+}

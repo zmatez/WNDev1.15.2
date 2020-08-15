@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/pegmatite/pegmatite_cobbe_mossy",
+        "top": "wildnature:blocks/rocks/pegmatite/pegmatite_cobbe_mossy",
+        "side": "wildnature:blocks/rocks/pegmatite/pegmatite_cobbe_mossy"
+    }
+}

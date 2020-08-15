@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/lions_paw" },
+      { "model": "wildnature:block/lions_paw", "y": 90 },
+      { "model": "wildnature:block/lions_paw", "y": 180 },
+      { "model": "wildnature:block/lions_paw", "y": 270 }
+    ]
+  }
+}

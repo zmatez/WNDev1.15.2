@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:redwood_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:redwood_trapdoor",
+    "count": 2
+  }
+}

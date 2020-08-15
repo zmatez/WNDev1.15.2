@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/doubled_cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/scotchbroom_stem_top"
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/clover" },
+      { "model": "wildnature:block/clover", "y": 90 },
+      { "model": "wildnature:block/clover", "y": 180 },
+      { "model": "wildnature:block/clover", "y": 270 }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/carbonatite/carbonatite_bricks_chiseled",
+        "top": "wildnature:blocks/rocks/carbonatite/carbonatite_bricks_chiseled",
+        "side": "wildnature:blocks/rocks/carbonatite/carbonatite_bricks_chiseled"
+    }
+}

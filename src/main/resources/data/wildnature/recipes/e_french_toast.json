@@ -1,0 +1,28 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan",
+  "ingredient": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:sliced_bread"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:french_toast",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

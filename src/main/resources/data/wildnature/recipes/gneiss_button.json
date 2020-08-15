@@ -1,0 +1,12 @@
+{
+  "group": "wildnature:stone_button",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:gneiss"
+    }
+  ],
+  "result": {
+    "item": "wildnature:gneiss_button"
+  }
+}

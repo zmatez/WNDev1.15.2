@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_small_bricks",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:granite_bricks"
+    }
+  },
+  "result": {
+    "item": "wildnature:granite_small_bricks",
+    "count": 2
+  }
+}

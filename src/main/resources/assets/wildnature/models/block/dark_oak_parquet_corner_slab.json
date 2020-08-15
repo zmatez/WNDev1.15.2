@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "wildnature:blocks/vanillatrees/dark_oak_parquet",
+        "particle": "wildnature:blocks/vanillatrees/dark_oak_parquet"
+    }
+}

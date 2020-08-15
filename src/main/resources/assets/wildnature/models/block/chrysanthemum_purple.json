@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/chrysanthemum_purple",
+        "greyscale": "wildnature:blocks/flowers/chrysanthemum_stem",
+        "particle": "wildnature:blocks/flowers/chrysanthemum_stem"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "wildnature:block/halftable" },
+        "facing=west": { "model": "wildnature:block/halftable", "y": 90 },
+        "facing=north": { "model": "wildnature:block/halftable", "y": 180 },
+        "facing=east": { "model": "wildnature:block/halftable", "y": 270 }
+    }
+}

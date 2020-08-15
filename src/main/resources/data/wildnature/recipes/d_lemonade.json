@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "wildnature:lemon"
+    },
+    {
+      "item": "wildnature:lemon"
+    },
+    {
+      "item": "wildnature:lemon"
+    },
+    {
+      "item": "wildnature:orange"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:glass_cup"
+    }
+  ],
+  "result": {
+    "item": "wildnature:lemonade",
+    "count": 1
+  }
+}

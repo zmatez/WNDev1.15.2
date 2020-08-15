@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:mossy_bricks_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:diorite_bricks_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:diorite_stairs_bricks_mossy",
+    "count": 4
+  }
+}

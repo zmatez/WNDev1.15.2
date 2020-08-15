@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/basic_round_table",
+    "textures": {
+        "particle": "block/acacia_planks",
+        "material": "block/stripped_acacia_log",
+        "material2": "block/stripped_acacia_log_top",
+        "material3": "block/acacia_planks"
+    }
+}

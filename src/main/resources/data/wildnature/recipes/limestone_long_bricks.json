@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_long_bricks",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:limestone_small_bricks"
+    }
+  },
+  "result": {
+    "item": "wildnature:limestone_long_bricks",
+    "count": 2
+  }
+}

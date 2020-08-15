@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "log_fence",
+  "pattern": [
+    "#$#",
+    "#$#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:birch_log"
+    },
+    "$": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:birch_log_fence",
+    "count": 6
+  }
+}

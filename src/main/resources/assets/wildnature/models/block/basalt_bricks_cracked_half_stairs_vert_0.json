@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/half_stairs_vert_0",
+    "textures": {
+        "material": "wildnature:blocks/rocks/basalt/basalt_bricks_cracked",
+        "particle": "wildnature:blocks/rocks/basalt/basalt_bricks_cracked"
+    }
+}

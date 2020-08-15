@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AXA",
+    "BEB",
+    "ACA"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "item": "wildnature:flour"
+    },
+    "E": {
+      "item": "minecraft:egg"
+    },
+    "X": {
+      "item": "wildnature:caramel_jar"
+    },
+    "A": {
+      "item": "wildnature:caramel"
+    }
+  },
+  "result": {
+    "item": "wildnature:mazurek"
+  }
+}

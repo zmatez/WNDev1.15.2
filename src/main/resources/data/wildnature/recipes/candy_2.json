@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABC",
+    "DDD"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "wildnature:cherry"
+    },
+    "C": {
+      "item": "minecraft:red_dye"
+    },
+    "D": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "wildnature:candy_2",
+    "count": 2
+  }
+}

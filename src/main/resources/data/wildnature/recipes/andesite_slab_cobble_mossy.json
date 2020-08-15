@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:mossy_cobble_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:andesite_cobble_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:andesite_slab_cobble_mossy",
+    "count": 6
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:dough_ball"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:asiago_cheese"
+    },
+    {
+      "item": "wildnature:asiago_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    },
+    {
+      "item": "wildnature:swiss_cheese"
+    }
+  ],
+  "result": {
+    "item": "wildnature:cheese_pizza",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

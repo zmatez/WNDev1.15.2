@@ -1,0 +1,9 @@
+{
+  "parent": "wildnature:block/cross_with_double_overlay",
+  "textures": {
+    "colored": "wildnature:blocks/flowers/monkshood_blue_top",
+    "3": "wildnature:blocks/flowers/monkshood_leaves_top",
+    "particle": "wildnature:blocks/flowers/monkshood_stem_top",
+    "2": "wildnature:blocks/flowers/monkshood_stem_top"
+  }
+}

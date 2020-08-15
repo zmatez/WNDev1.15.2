@@ -1,0 +1,34 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:maple_syrup"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:pancakes",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

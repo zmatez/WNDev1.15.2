@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:glowing_cave_oak_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:glowing_cave_oak_planks",
+    "count": 4
+  }
+}

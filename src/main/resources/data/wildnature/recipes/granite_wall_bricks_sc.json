@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:granite_bricks"
+  },
+  "result": "wildnature:granite_wall_bricks",
+  "count": 1
+}

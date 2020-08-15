@@ -1,0 +1,27 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan",
+  "ingredient": [
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:salt"
+    },
+    {
+      "item": "wildnature:salt"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tortilla",
+    "count": 2
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

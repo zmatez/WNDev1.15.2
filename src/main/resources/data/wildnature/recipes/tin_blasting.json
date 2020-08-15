@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "wildnature:tin_ore"
+  },
+  "result": "wildnature:tin_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

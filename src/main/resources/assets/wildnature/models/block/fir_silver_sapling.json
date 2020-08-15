@@ -1,0 +1,7 @@
+{   "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/fir/fir_silver_leaves",
+    "leaves": "wildnature:blocks/fir/fir_silver_leaves",
+    "log": "block/spruce_log"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "wildnature:blocks/rocks/conglomerate/conglomerate_small_bricks"
+    }
+}

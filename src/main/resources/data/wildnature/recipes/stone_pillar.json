@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_pillar",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "result": {
+    "item": "wildnature:stone_pillar",
+    "count": 3
+  }
+}

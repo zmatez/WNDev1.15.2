@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "age=0": { "model": "wildnature:block/wild_rose" },
+        "age=1": [
+            {"model": "wildnature:block/wild_rose_pink"},
+            {"model": "wildnature:block/wild_rose_white"}
+        ],
+        "age=2": { "model": "wildnature:block/wild_rose_berries" }
+    }
+}

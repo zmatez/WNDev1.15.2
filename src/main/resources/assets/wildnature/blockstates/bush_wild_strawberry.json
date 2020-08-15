@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "age=0": { "model": "wildnature:block/wild_strawberry_stage1" },
+        "age=1": { "model": "wildnature:block/wild_strawberry_stage2" },
+        "age=2": { "model": "wildnature:block/wild_strawberry_stage3" },
+        "age=3": { "model": "wildnature:block/wild_strawberry_stage4" },
+        "age=4": { "model": "wildnature:block/wild_strawberry_stage5" },
+        "age=5": { "model": "wildnature:block/wild_strawberry_stage6" }
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:bronze_block"
+    }
+  ],
+  "result": {
+    "item": "wildnature:bronze_ingot",
+    "count": 9
+  }
+}

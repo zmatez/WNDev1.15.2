@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:sand_white",
+    "wildnature:sand_red_full",
+    "wildnature:sand_red_half",
+    "wildnature:sand_red_slight",
+    "wildnature:sand_brown_full",
+    "wildnature:sand_brown_half",
+    "wildnature:sand_brown_slight",
+    "wildnature:forest_sand",
+    "wildnature:quicksand"
+
+  ]
+}

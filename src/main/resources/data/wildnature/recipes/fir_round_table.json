@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "round_table",
+  "pattern": [
+    "###",
+    " | ",
+    " | "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:fir_planks"
+    },
+    "|": {
+      "item": "wildnature:fir_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:fir_round_table",
+    "count": 4
+  }
+}

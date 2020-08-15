@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "juices",
+  "ingredients": [
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:onion"
+    },
+    {
+      "item": "wildnature:red_onion"
+    },
+    {
+      "item": "wildnature:red_onion"
+    },
+    {
+      "item": "wildnature:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "wildnature:onion_salad",
+    "count": 1
+  }
+}

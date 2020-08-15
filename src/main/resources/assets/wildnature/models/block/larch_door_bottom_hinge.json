@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom_rh",
+    "textures": {
+        "bottom": "wildnature:blocks/larch/larch_door_door_bottom",
+        "top": "wildnature:blocks/larch/larch_door_door_top"
+    }
+}

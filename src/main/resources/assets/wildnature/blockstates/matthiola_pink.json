@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/matthiola_stem"
+        },
+        {
+          "model": "wildnature:block/matthiola_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/matthiola_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/matthiola_stem",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/matthiola_pink"
+        },
+        {
+          "model": "wildnature:block/matthiola_pink",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/matthiola_pink",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/matthiola_pink",
+          "y": 270
+        }
+      ]
+  }
+}

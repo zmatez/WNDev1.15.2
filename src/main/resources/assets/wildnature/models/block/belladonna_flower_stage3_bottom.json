@@ -1,0 +1,9 @@
+{
+  "parent": "wildnature:block/cross_with_double_overlay",
+  "textures": {
+    "colored": "wildnature:blocks/flowers/belladonna_flower_stage3_bottom",
+    "3": "wildnature:blocks/flowers/belladonna_leaves_bottom",
+    "particle": "wildnature:blocks/flowers/belladonna_stem_bottom",
+    "2": "wildnature:blocks/flowers/belladonna_stem_bottom"
+  }
+}

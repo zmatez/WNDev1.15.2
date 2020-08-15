@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "wildnature:dungeon_redstone_torch",
+        "count": 4
+    },
+    "pattern": [
+        "ABA",
+        "ACA",
+        " A "
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:stick"},
+        "B": {
+            "item": "minecraft:redstone",
+            "count": 4
+        },
+        "C": {"item": "minecraft:stick"}
+    }
+}

@@ -1,0 +1,418 @@
+{
+    "variants": {
+      "": [
+        {
+          "model": "wildnature:block/succulent_1a"
+        },
+        {
+          "model": "wildnature:block/succulent_1a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_1a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_1a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_1b"
+        },
+        {
+          "model": "wildnature:block/succulent_1b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_1b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_1b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_1c"
+        },
+        {
+          "model": "wildnature:block/succulent_1c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_1c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_1c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_1d"
+        },
+        {
+          "model": "wildnature:block/succulent_1d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_1d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_1d",
+          "y": 270
+        },
+
+        {
+          "model": "wildnature:block/succulent_2a"
+        },
+        {
+          "model": "wildnature:block/succulent_2a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_2a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_2a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_2b"
+        },
+        {
+          "model": "wildnature:block/succulent_2b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_2b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_2b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_2c"
+        },
+        {
+          "model": "wildnature:block/succulent_2c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_2c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_2c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_2d"
+        },
+        {
+          "model": "wildnature:block/succulent_2d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_2d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_2d",
+          "y": 270
+        },
+
+        {
+          "model": "wildnature:block/succulent_3a"
+        },
+        {
+          "model": "wildnature:block/succulent_3a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_3a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_3a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_3b"
+        },
+        {
+          "model": "wildnature:block/succulent_3b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_3b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_3b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_3c"
+        },
+        {
+          "model": "wildnature:block/succulent_3c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_3c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_3c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_3d"
+        },
+        {
+          "model": "wildnature:block/succulent_3d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_3d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_3d",
+          "y": 270
+        },
+
+        {
+          "model": "wildnature:block/succulent_4a"
+        },
+        {
+          "model": "wildnature:block/succulent_4a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_4a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_4a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_4b"
+        },
+        {
+          "model": "wildnature:block/succulent_4b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_4b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_4b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_4c"
+        },
+        {
+          "model": "wildnature:block/succulent_4c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_4c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_4c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_4d"
+        },
+        {
+          "model": "wildnature:block/succulent_4d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_4d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_4d",
+          "y": 270
+        },
+
+        {
+          "model": "wildnature:block/succulent_5a"
+        },
+        {
+          "model": "wildnature:block/succulent_5a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_5a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_5a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_5b"
+        },
+        {
+          "model": "wildnature:block/succulent_5b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_5b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_5b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_5c"
+        },
+        {
+          "model": "wildnature:block/succulent_5c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_5c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_5c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_5d"
+        },
+        {
+          "model": "wildnature:block/succulent_5d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_5d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_5d",
+          "y": 270
+        },
+
+        {
+          "model": "wildnature:block/succulent_6a"
+        },
+        {
+          "model": "wildnature:block/succulent_6a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_6a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_6a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_6b"
+        },
+        {
+          "model": "wildnature:block/succulent_6b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_6b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_6b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_6c"
+        },
+        {
+          "model": "wildnature:block/succulent_6c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_6c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_6c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_6d"
+        },
+        {
+          "model": "wildnature:block/succulent_6d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_6d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_6d",
+          "y": 270
+        },
+
+        {
+          "model": "wildnature:block/succulent_7a"
+        },
+        {
+          "model": "wildnature:block/succulent_7a",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_7a",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_7a",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/succulent_7b"
+        },
+        {
+          "model": "wildnature:block/succulent_7b",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_7b",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_7b",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_7c"
+        },
+        {
+          "model": "wildnature:block/succulent_7c",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_7c",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_7c",
+          "y": 270
+        },{
+          "model": "wildnature:block/succulent_7d"
+        },
+        {
+          "model": "wildnature:block/succulent_7d",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/succulent_7d",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/succulent_7d",
+          "y": 270
+        }
+      ]
+  }
+}

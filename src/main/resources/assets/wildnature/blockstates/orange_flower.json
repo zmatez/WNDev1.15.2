@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/orange_flower" },
+      { "model": "wildnature:block/orange_flower", "y": 90 },
+      { "model": "wildnature:block/orange_flower", "y": 180 },
+      { "model": "wildnature:block/orange_flower", "y": 270 }
+    ]
+  }
+}

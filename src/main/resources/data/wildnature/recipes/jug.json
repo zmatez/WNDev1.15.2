@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "wildnature:jug",
+        "count": 3
+    },
+    "pattern": [
+        "A A",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:glass"}
+    }
+}

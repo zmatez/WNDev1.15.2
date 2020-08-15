@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "wildnature:block/citrus_slab" },
+        "type=top": { "model": "wildnature:block/citrus_slab_top" },
+        "type=double": { "model": "wildnature:block/citrus_planks" }
+    }
+}

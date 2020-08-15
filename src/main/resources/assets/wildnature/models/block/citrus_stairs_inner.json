@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/citrus/citrus_planks",
+        "top": "wildnature:blocks/citrus/citrus_planks",
+        "side": "wildnature:blocks/citrus/citrus_planks"
+    }
+}

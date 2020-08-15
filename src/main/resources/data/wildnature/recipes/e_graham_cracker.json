@@ -1,0 +1,28 @@
+{
+  "type": "wildnature:cooking",
+  "group": "cake_pan",
+  "ingredient": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:maple_syrup"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:graham_cracker",
+    "count": 4
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pegmatite_slab_bricks"
+    }
+  },
+  "result": {
+    "item": "wildnature:pegmatite_bricks_half_stairs",
+    "count": 6
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "wildnature:rice_bag",
+        "count": 1
+    },
+    "pattern": [
+        "AAA",
+        "AAA",
+        "ACA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:rice"},
+        "C": {"item": "wildnature:empty_bag"}
+
+    }
+}

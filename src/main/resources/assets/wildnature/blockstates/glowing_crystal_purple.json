@@ -1,0 +1,213 @@
+{
+    "variants": {
+      "facing=up": [
+        {
+          "model": "wildnature:block/glowing_crystal_purple1"
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2"
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3"
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4"
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 270
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 270
+        }
+      ],
+      "facing=down": [
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 90,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 180,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 270,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 90,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 180,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 270,
+          "x": 180
+        },{
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 90,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 180,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 270,
+          "x": 180
+        },{
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 90,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 180,
+          "x": 180
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 270,
+          "x": 180
+        }
+      ],
+      "facing=east": [
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 90,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 90,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 90,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 90,
+          "x": 90
+        }
+      ],
+      "facing=south": {
+        "model": "wildnature:block/glowing_crystal_purple1",
+        "y": 180,
+        "x": 90
+      },
+      "facing=west": [
+        {
+        "model": "wildnature:block/glowing_crystal_purple1",
+        "y": 270,
+        "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 270,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 270,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 270,
+          "x": 90
+        }
+      ],
+      "facing=north": [
+        {
+          "model": "wildnature:block/glowing_crystal_purple1",
+          "y": 0,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple2",
+          "y": 0,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple3",
+          "y": 0,
+          "x": 90
+        },
+        {
+          "model": "wildnature:block/glowing_crystal_purple4",
+          "y": 0,
+          "x": 90
+        }
+      ]
+    }
+}

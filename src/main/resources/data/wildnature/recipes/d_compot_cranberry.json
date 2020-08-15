@@ -1,0 +1,33 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:cranberries"
+    },
+    {
+      "item": "wildnature:lingonberry"
+    },
+    {
+      "item": "wildnature:cherry"
+    },
+    {
+      "item": "wildnature:wild_strawberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_cranberry",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

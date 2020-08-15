@@ -1,0 +1,33 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;glass",
+  "ingredient": [
+    {
+      "item": "wildnature:melissa_tea_leaf"
+    },
+    {
+      "item": "wildnature:melissa_tea_leaf"
+    },
+    {
+      "item": "wildnature:melissa_tea_leaf"
+    },
+    {
+      "item": "wildnature:peach"
+    },
+    {
+      "item": "wildnature:peach"
+    },
+    {
+      "item": "wildnature:pomegranate"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tea_melissa_peach",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

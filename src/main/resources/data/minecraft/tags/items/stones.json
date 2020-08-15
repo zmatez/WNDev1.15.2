@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:basalt",
+    "wildnature:conglomerate",
+    "wildnature:limestone",
+    "wildnature:marble",
+    "wildnature:gneiss",
+    "wildnature:slate"
+  ]
+}

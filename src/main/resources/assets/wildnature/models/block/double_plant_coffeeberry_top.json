@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/flowers/double_plant_coffeeberry_top"
+    }
+}

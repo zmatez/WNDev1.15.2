@@ -1,0 +1,30 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "wildnature:green_beans"
+    },
+    {
+      "item": "wildnature:green_beans"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "wildnature:garlic_mushroom_gravy"
+    }
+  ],
+  "result": {
+    "item": "wildnature:sauteed_veggies_with_gravy",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

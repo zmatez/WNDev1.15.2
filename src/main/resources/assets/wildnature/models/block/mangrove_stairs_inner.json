@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/mangrove/mangrove_planks",
+        "top": "wildnature:blocks/mangrove/mangrove_planks",
+        "side": "wildnature:blocks/mangrove/mangrove_planks"
+    }
+}

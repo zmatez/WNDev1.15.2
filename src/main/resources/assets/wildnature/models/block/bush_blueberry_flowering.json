@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wildnature:blocks/bush/blueberry/blueberry_bush_berries"
+    }
+}

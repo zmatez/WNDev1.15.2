@@ -1,0 +1,9 @@
+{
+    "parent": "wildnature:block/cross_with_double_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/hepatica_blue",
+        "3": "wildnature:blocks/flowers/hepatica_leaves",
+        "particle": "wildnature:blocks/flowers/hepatica_stem",
+        "2": "wildnature:blocks/flowers/hepatica_stem"
+    }
+}

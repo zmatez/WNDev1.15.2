@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/hornbeam/hornbeam_log_top",
+        "side": "wildnature:blocks/hornbeam/hornbeam_log"
+    }
+}

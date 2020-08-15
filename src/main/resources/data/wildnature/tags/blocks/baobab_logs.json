@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:baobab_branch",
+    "wildnature:baobab_log",
+    "wildnature:baobab_wood",
+    "wildnature:baobab_stripped_log",
+    "wildnature:baobab_stripped_wood"
+  ]
+}

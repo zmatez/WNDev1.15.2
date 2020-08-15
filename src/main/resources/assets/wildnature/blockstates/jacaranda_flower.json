@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/jacaranda_flower" },
+      { "model": "wildnature:block/jacaranda_flower", "y": 90 },
+      { "model": "wildnature:block/jacaranda_flower", "y": 180 },
+      { "model": "wildnature:block/jacaranda_flower", "y": 270 }
+    ]
+  }
+}

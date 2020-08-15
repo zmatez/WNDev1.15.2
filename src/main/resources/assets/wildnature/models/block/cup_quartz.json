@@ -1,0 +1,6 @@
+{
+    "parent": "wildnature:block/cup",
+    "textures": {
+        "quartz_dishes_texture": "wildnature:blocks/other/quartz_dishes_texture"
+    }
+}

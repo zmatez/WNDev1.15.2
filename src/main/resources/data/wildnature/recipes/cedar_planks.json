@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wildnature:cedar_logs"
+    }
+  ],
+  "result": {
+    "item": "wildnature:cedar_planks",
+    "count": 4
+  }
+}

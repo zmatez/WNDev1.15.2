@@ -1,0 +1,8 @@
+{
+    "parent": "block/template_piston_head",
+    "textures": {
+        "unsticky": "wildnature:blocks/redstone/rs_piston1/piston_top",
+        "side": "wildnature:blocks/redstone/rs_piston1/piston_side",
+        "platform": "wildnature:blocks/redstone/rs_piston1/piston_top_sticky"
+    }
+}

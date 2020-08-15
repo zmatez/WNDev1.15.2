@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/river_cane" },
+      { "model": "wildnature:block/river_cane", "y": 90 },
+      { "model": "wildnature:block/river_cane", "y": 180 },
+      { "model": "wildnature:block/river_cane", "y": 270 }
+    ]
+  }
+}

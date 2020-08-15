@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "meals",
+  "ingredients": [
+    {
+      "item": "wildnature:fried_egg"
+    },
+    {
+      "item": "wildnature:cooked_bacon"
+    },
+    {
+      "item": "wildnature:cooked_bacon"
+    },
+    {
+      "item": "wildnature:toast"
+    },
+    {
+      "item": "wildnature:plate"
+    }
+  ],
+  "result": {
+    "item": "wildnature:breakfast_meal",
+    "count": 1
+  }
+}

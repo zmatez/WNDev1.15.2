@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DAD",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "item": "wildnature:caramel"
+    },
+    "B": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:blue_dye"
+    },
+    "D": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "wildnature:chocolate_caramel",
+    "count": 2
+  }
+}

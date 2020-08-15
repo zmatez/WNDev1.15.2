@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/tansy_yellow",
+        "greyscale": "wildnature:blocks/flowers/tansy_leaves",
+        "particle": "wildnature:blocks/flowers/tansy_yellow"
+    }
+}

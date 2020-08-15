@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "wildnature:slab_corner",
+        "count": 4
+    },
+    "pattern": [
+        "A  ",
+        "A  ",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:stick_frame"}
+    }
+}

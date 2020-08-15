@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stool",
+  "pattern": [
+    "###",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pine_planks"
+    },
+    "|": {
+      "item": "wildnature:pine_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:pine_stool",
+    "count": 4
+  }
+}

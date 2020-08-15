@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "wildnature:cup",
+        "count": 3
+    },
+    "pattern": [
+        "ABA",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:clay_ball"},
+        "B": {"item": "minecraft:white_dye"}
+    }
+}

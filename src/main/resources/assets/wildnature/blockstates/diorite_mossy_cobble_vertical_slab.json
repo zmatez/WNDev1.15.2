@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/diorite_mossy_cobble_vertical_slab" },
+    "facing=east": { "model": "wildnature:block/diorite_mossy_cobble_vertical_slab", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/diorite_mossy_cobble_vertical_slab", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/diorite_mossy_cobble_vertical_slab", "y": 270, "uvlock": true}
+  }
+}

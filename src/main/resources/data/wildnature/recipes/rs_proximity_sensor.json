@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "Q#T",
+    "III"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_torch"
+    },
+    "Q": {
+      "item": "minecraft:quartz_block"
+    },
+    "I": {
+      "item": "minecraft:stone"
+    },
+    "C": {
+      "item": "wildnature:copper_block"
+    },
+    "T": {
+      "item": "wildnature:tin_block"
+    }
+  },
+  "result": {
+    "item": "wildnature:rs_proximity_sensor"
+  }
+}

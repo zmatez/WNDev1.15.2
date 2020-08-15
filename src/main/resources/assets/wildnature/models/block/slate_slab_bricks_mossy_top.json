@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/slate/slate_bricks_mossy",
+        "top": "wildnature:blocks/rocks/slate/slate_bricks_mossy",
+        "side": "wildnature:blocks/rocks/slate/slate_bricks_mossy"
+    }
+}

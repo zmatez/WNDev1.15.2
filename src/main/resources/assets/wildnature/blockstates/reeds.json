@@ -1,0 +1,55 @@
+{
+    "variants": {
+      "half=bottom": [
+        {
+          "model": "wildnature:block/reed_bottom"
+        },
+        {
+          "model": "wildnature:block/reed_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/reed_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/reed_bottom",
+          "y": 270
+        }
+      ],
+      "half=middle": [
+        {
+          "model": "wildnature:block/reed_middle"
+        },
+        {
+          "model": "wildnature:block/reed_middle",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/reed_middle",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/reed_middle",
+          "y": 270
+        }
+      ],
+      "half=top": [
+        {
+          "model": "wildnature:block/reed_top"
+        },
+        {
+          "model": "wildnature:block/reed_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/reed_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/reed_top",
+          "y": 270
+        }
+      ]
+  }
+}

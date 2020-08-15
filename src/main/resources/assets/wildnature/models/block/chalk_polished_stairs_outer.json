@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/chalk/chalk_polished",
+        "top": "wildnature:blocks/rocks/chalk/chalk_polished",
+        "side": "wildnature:blocks/rocks/chalk/chalk_polished"
+    }
+}

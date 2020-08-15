@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:stone_hammer",
+        "count": 1
+    },
+    "pattern": [
+        "  A",
+        " B ",
+        "B  "
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:stone"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

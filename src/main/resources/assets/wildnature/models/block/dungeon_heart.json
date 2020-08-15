@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "top": "wildnature:blocks/dungeon/dungeon_heart_top",
+        "bottom": "wildnature:blocks/dungeon/dungeon_heart_bottom",
+        "side": "wildnature:blocks/dungeon/dungeon_heart_side"
+    }
+}

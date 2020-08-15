@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/andesite/andesite_bricks_mossy",
+        "top": "wildnature:blocks/rocks/andesite/andesite_bricks_mossy",
+        "side": "wildnature:blocks/rocks/andesite/andesite_bricks_mossy"
+    }
+}

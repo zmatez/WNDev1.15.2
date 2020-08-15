@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "wildnature:xmas_paper_1",
+        "count": 1
+    },
+    "pattern": [
+        "CPP",
+        "CP ",
+        "PPR"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "P": {"item": "minecraft:paper"},
+        "C": {"item": "minecraft:cyan_dye"},
+        "R": {"item": "minecraft:red_dye"}
+
+
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;glass",
+  "ingredient": [
+    {
+      "item": "wildnature:mint"
+    },
+    {
+      "item": "wildnature:mint"
+    },
+    {
+      "item": "wildnature:mint"
+    },
+    {
+      "item": "wildnature:lemon_wedge"
+    },
+    {
+      "item": "wildnature:lime"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:tea_mint_lemon",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

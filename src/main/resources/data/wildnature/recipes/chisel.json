@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "wildnature:chisel",
+        "count": 1
+    },
+    "pattern": [
+        "CCC",
+        " A ",
+        " B "
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "C": {"item": "minecraft:iron_ingot"},
+        "A": {"item": "wildnature:steel_ingot"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

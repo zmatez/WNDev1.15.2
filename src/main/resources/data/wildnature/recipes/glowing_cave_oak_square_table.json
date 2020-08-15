@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:glowing_cave_oak_planks"
+    },
+    "|": {
+      "item": "wildnature:glowing_cave_oak_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:glowing_cave_oak_square_table",
+    "count": 4
+  }
+}

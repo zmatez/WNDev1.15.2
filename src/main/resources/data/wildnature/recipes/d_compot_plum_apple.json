@@ -1,0 +1,39 @@
+{
+  "type": "wildnature:cooking",
+  "group": "pot;jug",
+  "ingredient": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:plum"
+    },
+    {
+      "item": "wildnature:grapes_purple"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:compot_plum_apple",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

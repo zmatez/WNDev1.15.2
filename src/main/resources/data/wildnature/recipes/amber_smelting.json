@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:amber_ore"
+  },
+  "result": "wildnature:amber_shard",
+  "experience": 1.0,
+  "cookingtime": 200
+}

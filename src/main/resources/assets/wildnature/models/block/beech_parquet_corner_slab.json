@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_corner",
+    "textures": {
+        "material": "wildnature:blocks/beech/beech_parquet",
+        "particle": "wildnature:blocks/beech/beech_parquet"
+    }
+}

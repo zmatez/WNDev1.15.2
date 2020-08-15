@@ -1,0 +1,140 @@
+{
+    "variants": {
+      "stage=0,half=lower": [
+        {
+          "model": "wildnature:block/belladonna_stem_bottom"
+        },
+        {
+          "model": "wildnature:block/belladonna_stem_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_stem_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_stem_bottom",
+          "y": 270
+        }
+      ],
+      "stage=0,half=upper": [
+        {
+          "model": "wildnature:block/belladonna_stem_top"
+        },
+        {
+          "model": "wildnature:block/belladonna_stem_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_stem_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_stem_top",
+          "y": 270
+        }
+      ],
+      "stage=1,half=lower": [
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_bottom"
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_bottom",
+          "y": 270
+        }
+      ],
+      "stage=1,half=upper": [
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_top"
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage1_top",
+          "y": 270
+        }
+      ],
+      "stage=2,half=lower": [
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_bottom"
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_bottom",
+          "y": 270
+        }
+      ],
+      "stage=2,half=upper": [
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_top"
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage2_top",
+          "y": 270
+        }
+      ],
+      "stage=3,half=lower": [
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_bottom"
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_bottom",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_bottom",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_bottom",
+          "y": 270
+        }
+      ],
+      "stage=3,half=upper": [
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_top"
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_top",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_top",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/belladonna_flower_stage3_top",
+          "y": 270
+        }
+      ]
+  }
+}

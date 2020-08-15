@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/cross_with_overlay",
+    "textures": {
+        "colored": "wildnature:blocks/flowers/anthurium_white",
+        "greyscale": "wildnature:blocks/flowers/anthurium_stem",
+        "particle": "wildnature:blocks/flowers/anthurium_stem"
+    }
+}

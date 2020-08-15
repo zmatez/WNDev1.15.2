@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stool",
+  "pattern": [
+    "###",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:hornbeam_planks"
+    },
+    "|": {
+      "item": "wildnature:hornbeam_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:hornbeam_stool",
+    "count": 4
+  }
+}

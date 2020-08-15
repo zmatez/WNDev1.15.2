@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:wooden_hammer",
+        "count": 1
+    },
+    "pattern": [
+        "  A",
+        " B ",
+        "B  "
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"tag": "minecraft:logs"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

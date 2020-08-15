@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"star": "wildnature:blocks/flowers/cave_star_2",
+		"particle": "wildnature:blocks/flowers/cave_star_2"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 0],
+			"color": 2,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#star"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#star"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#star"},
+				"west": {"uv": [0, 0, 0, 16], "texture": "#star"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#star"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#star"}
+			}
+		}
+	]
+}

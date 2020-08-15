@@ -1,0 +1,6 @@
+{
+    "parent": "block/torch_wall",
+    "textures": {
+        "torch": "wildnature:blocks/dungeon/dungeon_redstone_torch"
+    }
+}

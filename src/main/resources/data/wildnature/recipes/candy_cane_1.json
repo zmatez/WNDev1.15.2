@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SRS",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "R": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": {
+    "item": "wildnature:candy_cane_1",
+    "count": 1
+  }
+}

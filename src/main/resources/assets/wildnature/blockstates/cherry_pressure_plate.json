@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "wildnature:block/cherry_pressure_plate" },
+        "powered=true": { "model": "wildnature:block/cherry_pressure_plate_down" }
+    }
+}

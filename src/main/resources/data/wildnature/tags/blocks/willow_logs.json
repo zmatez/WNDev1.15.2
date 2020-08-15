@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:willow_branch",
+    "wildnature:willow_log",
+    "wildnature:willow_wood",
+    "wildnature:willow_stripped_log",
+    "wildnature:willow_stripped_wood"
+  ]
+}

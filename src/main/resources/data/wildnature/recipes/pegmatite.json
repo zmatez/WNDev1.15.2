@@ -1,0 +1,10 @@
+{
+  "group": "wildnature:stone",
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:pegmatite_cobble"
+  },
+  "result": "wildnature:pegmatite",
+  "experience": 0.1,
+  "cookingtime": 200
+}

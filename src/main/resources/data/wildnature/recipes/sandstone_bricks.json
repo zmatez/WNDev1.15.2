@@ -1,0 +1,17 @@
+{
+  "group": "wildnature:sandstone_bricks",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_sandstone"
+    }
+  },
+  "result": {
+    "item": "wildnature:sandstone_bricks",
+    "count": 4
+  }
+}

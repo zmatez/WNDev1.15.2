@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_stool",
+    "textures": {
+        "particle": "wildnature:blocks/citrus/citrus_planks",
+        "material": "wildnature:blocks/citrus/citrus_stripped_log",
+        "material2": "wildnature:blocks/citrus/citrus_planks"
+    }
+}

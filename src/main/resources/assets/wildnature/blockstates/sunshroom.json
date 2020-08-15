@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "sun=true":{ "model": "wildnature:block/sun_shroom" },
+    "sun=false":{ "model": "wildnature:block/night_shroom" }
+
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "wildnature:block/basic_chair",
+    "textures": {
+        "particle": "block/acacia_planks",
+        "material": "block/stripped_acacia_log",
+        "material2": "block/acacia_planks"
+    }
+}

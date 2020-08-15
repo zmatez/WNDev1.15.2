@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/bluebell"
+        },
+        {
+          "model": "wildnature:block/bluebell",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/bluebell",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/bluebell",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/bluebell_flowering"
+        },
+        {
+          "model": "wildnature:block/bluebell_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/bluebell_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/bluebell_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

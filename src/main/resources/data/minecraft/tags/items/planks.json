@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:rosaceae_planks",
+    "wildnature:baobab_planks",
+    "wildnature:beech_planks",
+    "wildnature:cedar_planks",
+    "wildnature:cherry_planks",
+    "wildnature:ebony_planks",
+    "wildnature:jacaranda_planks",
+    "wildnature:larch_planks",
+    "wildnature:mahogany_planks",
+    "wildnature:mangrove_planks",
+    "wildnature:maple_planks",
+    "wildnature:palm_planks",
+    "wildnature:plum_planks",
+    "wildnature:redwood_planks",
+    "wildnature:willow_planks",
+    "wildnature:eucalyptus_planks",
+    "wildnature:citrus_planks",
+    "wildnature:glowing_cave_oak_planks"
+
+  ]
+}

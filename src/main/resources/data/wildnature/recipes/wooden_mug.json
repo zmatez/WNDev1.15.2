@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:wooden_mug",
+        "count": 1
+    },
+    "pattern": [
+        "   ",
+        "AAB",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"tag": "minecraft:planks"},
+        "B": {"item": "minecraft:tripwire_hook"}
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/hazel/hazel_parquet",
+        "top": "wildnature:blocks/hazel/hazel_parquet",
+        "side": "wildnature:blocks/hazel/hazel_parquet"
+    }
+}

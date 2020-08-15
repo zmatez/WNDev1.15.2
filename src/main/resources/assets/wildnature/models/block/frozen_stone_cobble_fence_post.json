@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_post",
+    "textures": {
+        "texture": "wildnature:blocks/rocks/frozen_stone/frozen_stone_cobble"
+    }
+}

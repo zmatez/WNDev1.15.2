@@ -1,0 +1,30 @@
+{
+  "group": "wildnature:firepits",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "!$!",
+    "@$@",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:basalt_cobble"
+    },
+    "A": {
+      "item": "wildnature:basalt_bricks_cracked"
+    },
+    "$": {
+      "tag": "minecraft:logs"
+    },
+    "@": {
+      "item": "minecraft:coal"
+    },
+    "!": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "wildnature:basalt_firepit",
+    "count": 1
+  }
+}

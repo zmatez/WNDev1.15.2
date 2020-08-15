@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:malachite_block"
+    }
+  ],
+  "result": {
+    "item": "wildnature:malachite_crystal",
+    "count": 9
+  }
+}

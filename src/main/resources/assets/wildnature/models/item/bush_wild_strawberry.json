@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "wildnature:blocks/bush/wild_strawberry/wild_strawberry_item"
+    }
+}

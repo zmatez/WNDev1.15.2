@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wildnature:blocks/bush/wild_blueberry/wild_blueberry_stage0"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "group": "lime_dye",
+    "result": {
+        "item": "minecraft:lime_dye",
+        "count": 1
+    },
+    "pattern": ["A"],
+    "type": "minecraft:crafting_shaped",
+    "key": {"A": {"item": "wildnature:thuja_limegreen"}}
+}

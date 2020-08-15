@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/jellyshroom_0" },
+      { "model": "wildnature:block/jellyshroom_1" }
+
+    ]
+  }
+}

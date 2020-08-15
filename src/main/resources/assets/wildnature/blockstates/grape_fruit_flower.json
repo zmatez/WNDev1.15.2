@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "":[
+      { "model": "wildnature:block/grape_fruit_flower" },
+      { "model": "wildnature:block/grape_fruit_flower", "y": 90 },
+      { "model": "wildnature:block/grape_fruit_flower", "y": 180 },
+      { "model": "wildnature:block/grape_fruit_flower", "y": 270 }
+    ]
+  }
+}

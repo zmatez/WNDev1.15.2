@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "wildnature:tomato_soup",
+        "count": 1
+    },
+    "pattern": [
+        "AAA",
+        "CBC",
+	"EDE"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:tomato"},
+        "B": {"item": "minecraft:cooked_chicken"},
+        "C": {"item": "minecraft:carrot"},
+        "D": {"item": "wildnature:maple_bowl"},
+        "E": {"item": "wildnature:jug_water"}
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "age=0": { "model": "wildnature:block/pineapple_plant_stem" },
+        "age=1": { "model": "wildnature:block/pineapple_plant_fruit" }
+
+    }
+}

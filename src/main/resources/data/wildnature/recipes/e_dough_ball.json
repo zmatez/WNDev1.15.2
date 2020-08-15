@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "butter",
+  "ingredients": [
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:butter"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "wildnature:flour"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "wildnature:dough_ball",
+    "count": 10
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_pillar",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_pillar",
+    "count": 3
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "block.piston.2s_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/2s_open",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.3s_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/3s_open",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.2s_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/2s_close",
+        "stream": true
+      }
+    ]
+  },
+  "block.piston.3s_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/piston/3s_close",
+        "stream": true
+      }
+    ]
+  },
+  "block.steam_generator": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "wildnature:block/steam_generator/steam_generator",
+        "stream": true
+      }
+    ]
+  },
+  "entity.duck.flap":{
+  "category":"entity",
+  "sounds":[{
+    "name":"wildnature:entity/duck/flap",
+    "stream":true
+  }]
+  },
+  "entity.duck.quack":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/duck/quack",
+      "stream":true
+    }]
+  },
+  "entity.duck.scared":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/duck/scared",
+      "stream":true
+    }]
+  },
+  "entity.duck.chick":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/duck/chick",
+      "stream":true
+    }]
+  },
+  "entity.boar.death":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/boar/death",
+      "stream":true
+      },
+      {
+        "name":"wildnature:entity/boar/death2",
+        "stream":true
+      }]
+  },
+  "entity.boar.oink":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/boar/oink",
+      "stream":true
+      },
+      {
+        "name":"wildnature:entity/boar/oink4",
+        "stream":true
+      },
+      {
+        "name":"wildnature:entity/boar/oink3",
+        "stream":true
+      },
+      {
+        "name":"wildnature:entity/boar/oink4",
+        "stream":true
+      }
+    ]
+  },
+  "entity.boar.scared":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/boar/scared",
+      "stream":true
+      },
+      {
+        "name":"wildnature:entity/boar/scared2",
+        "stream":true
+      }]
+  },
+  "entity.boar.snort":{
+    "category":"entity",
+    "subtitle":"entity.boar.snort",
+    "sounds":[{
+      "name":"wildnature:entity/boar/snort",
+      "stream":true
+      },
+      {
+        "name":"wildnature:entity/boar/snort2",
+        "stream":true
+      }]
+  },
+  "entity.dragonfly.hurt":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/dragonfly/hurt",
+      "stream":true
+    }]
+  },
+  "entity.dragonfly.flap":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/dragonfly/flap",
+      "stream":true
+    }]
+  },
+  "entity.deer.buckgrunt":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/buckgrunt",
+      "stream":true
+    }]
+  },
+  "entity.deer.doegrunt":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/doegrunt",
+      "stream":true
+    }]
+  },
+  "entity.deer.snort":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/snort",
+      "stream":true
+    }]
+  },
+  "entity.deer.snort2":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/snort2",
+      "stream":true
+    }]
+  },
+  "entity.deer.contact":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/contact",
+      "stream":true
+    }]
+  },
+  "entity.deer.hurt":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/hurt",
+      "stream":true
+    }]
+  },
+  "entity.deer.death":{
+    "category":"entity",
+    "sounds":[{
+      "name":"wildnature:entity/deer/death",
+      "stream":true
+    }]
+  }
+}

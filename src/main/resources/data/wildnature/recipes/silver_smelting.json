@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:silver_ore"
+  },
+  "result": "wildnature:silver_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

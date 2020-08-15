@@ -1,0 +1,72 @@
+{
+    "variants": {
+      "bloom=0": [
+        {
+          "model": "wildnature:block/anemone_stem"
+        },
+        {
+          "model": "wildnature:block/anemone_stem",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/anemone_stem",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/anemone_stem",
+          "y": 270
+        }
+      ],
+      "bloom=1": [
+        {
+          "model": "wildnature:block/anemone_bloom_1"
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_1",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_1",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_1",
+          "y": 270
+        }
+      ],
+      "bloom=2": [
+        {
+          "model": "wildnature:block/anemone_bloom_2"
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_2",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_2",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_2",
+          "y": 270
+        }
+      ],
+      "bloom=3": [
+        {
+          "model": "wildnature:block/anemone_bloom_3"
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_3",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_3",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/anemone_bloom_3",
+          "y": 270
+        }
+      ]
+    }
+}

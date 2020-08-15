@@ -1,0 +1,88 @@
+{
+  "variants": {
+    "facing=south":[
+      { "model": "wildnature:block/lichen1" },
+      { "model": "wildnature:block/lichen1", "z": 90, "y": 180},
+      { "model": "wildnature:block/lichen1", "z": 180, "y": 180 },
+      { "model": "wildnature:block/lichen1", "z": 270, "y": 180 },
+
+      { "model": "wildnature:block/lichen2" },
+      { "model": "wildnature:block/lichen2", "z": 90, "y": 180 },
+      { "model": "wildnature:block/lichen2", "z": 180, "y": 180 },
+      { "model": "wildnature:block/lichen2", "z": 270, "y": 180 },
+
+      { "model": "wildnature:block/lichen3" },
+      { "model": "wildnature:block/lichen3", "z": 90, "y": 180 },
+      { "model": "wildnature:block/lichen3", "z": 180, "y": 180 },
+      { "model": "wildnature:block/lichen3", "z": 270, "y": 180 },
+
+      { "model": "wildnature:block/lichen4" },
+      { "model": "wildnature:block/lichen4", "z": 90, "y": 180 },
+      { "model": "wildnature:block/lichen4", "z": 180, "y": 180 },
+      { "model": "wildnature:block/lichen4", "z": 270, "y": 180 }
+    ],
+    "facing=east":[
+      { "model": "wildnature:block/lichen1" },
+      { "model": "wildnature:block/lichen1", "z": 90, "y": -90},
+      { "model": "wildnature:block/lichen1", "z": 180, "y": -90 },
+      { "model": "wildnature:block/lichen1", "z": 270, "y": -90 },
+
+      { "model": "wildnature:block/lichen2" },
+      { "model": "wildnature:block/lichen2", "z": 90, "y": -90 },
+      { "model": "wildnature:block/lichen2", "z": 180, "y": -90 },
+      { "model": "wildnature:block/lichen2", "z": 270, "y": -90 },
+
+      { "model": "wildnature:block/lichen3" },
+      { "model": "wildnature:block/lichen3", "z": 90, "y": -90 },
+      { "model": "wildnature:block/lichen3", "z": 180, "y": -90 },
+      { "model": "wildnature:block/lichen3", "z": 270, "y": -90 },
+
+      { "model": "wildnature:block/lichen4" },
+      { "model": "wildnature:block/lichen4", "z": 90, "y": -90 },
+      { "model": "wildnature:block/lichen4", "z": 180, "y": -90 },
+      { "model": "wildnature:block/lichen4", "z": 270, "y": -90 }
+    ],
+    "facing=north":[
+      { "model": "wildnature:block/lichen1" },
+      { "model": "wildnature:block/lichen1", "z": 90, "y": -180},
+      { "model": "wildnature:block/lichen1", "z": 180, "y": -180 },
+      { "model": "wildnature:block/lichen1", "z": 270, "y": -180 },
+
+      { "model": "wildnature:block/lichen2" },
+      { "model": "wildnature:block/lichen2", "z": 90, "y": -180 },
+      { "model": "wildnature:block/lichen2", "z": 180, "y": -180 },
+      { "model": "wildnature:block/lichen2", "z": 270, "y": -180 },
+
+      { "model": "wildnature:block/lichen3" },
+      { "model": "wildnature:block/lichen3", "z": 90, "y": -180 },
+      { "model": "wildnature:block/lichen3", "z": 180, "y": -180 },
+      { "model": "wildnature:block/lichen3", "z": 270, "y": -180 },
+
+      { "model": "wildnature:block/lichen4" },
+      { "model": "wildnature:block/lichen4", "z": 90, "y": -180 },
+      { "model": "wildnature:block/lichen4", "z": 180, "y": -180 },
+      { "model": "wildnature:block/lichen4", "z": 270, "y": -180 }
+    ],
+    "facing=west":[
+      { "model": "wildnature:block/lichen1" },
+      { "model": "wildnature:block/lichen1", "z": 90, "y": 90},
+      { "model": "wildnature:block/lichen1", "z": 180, "y": 90 },
+      { "model": "wildnature:block/lichen1", "z": 270, "y": 90 },
+
+      { "model": "wildnature:block/lichen2" },
+      { "model": "wildnature:block/lichen2", "z": 90, "y": 90 },
+      { "model": "wildnature:block/lichen2", "z": 180, "y": 90 },
+      { "model": "wildnature:block/lichen2", "z": 270, "y": 90 },
+
+      { "model": "wildnature:block/lichen3" },
+      { "model": "wildnature:block/lichen3", "z": 90, "y": 90 },
+      { "model": "wildnature:block/lichen3", "z": 180, "y": 90 },
+      { "model": "wildnature:block/lichen3", "z": 270, "y": 90 },
+
+      { "model": "wildnature:block/lichen4" },
+      { "model": "wildnature:block/lichen4", "z": 90, "y": 90 },
+      { "model": "wildnature:block/lichen4", "z": 180, "y": 90 },
+      { "model": "wildnature:block/lichen4", "z": 270, "y": 90 }
+    ]
+  }
+}

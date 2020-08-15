@@ -1,0 +1,38 @@
+{
+    "variants": {
+      "flowering=false": [
+        {
+          "model": "wildnature:block/azalea_orange"
+        },
+        {
+          "model": "wildnature:block/azalea_orange",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/azalea_orange",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/azalea_orange",
+          "y": 270
+        }
+      ],
+      "flowering=true": [
+        {
+          "model": "wildnature:block/azalea_orange_flowering"
+        },
+        {
+          "model": "wildnature:block/azalea_orange_flowering",
+          "y": 90
+        },
+        {
+          "model": "wildnature:block/azalea_orange_flowering",
+          "y": 180
+        },
+        {
+          "model": "wildnature:block/azalea_orange_flowering",
+          "y": 270
+        }
+      ]
+  }
+}

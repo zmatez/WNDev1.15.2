@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:silver_axe",
+        "count": 1
+    },
+    "pattern": [
+        "AA",
+        "AB",
+        " B"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "wildnature:silver_ingot"},
+        "B": {"item": "minecraft:stick"}
+    }
+}

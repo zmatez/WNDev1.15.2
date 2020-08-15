@@ -1,0 +1,16 @@
+{
+    "result": {
+        "item": "wildnature:wine_bottle",
+        "count": 1
+    },
+    "pattern": [
+        " A ",
+        "BAB",
+        "AAA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:glass"},
+        "B": {"item": "minecraft:glass_pane"}
+    }
+}

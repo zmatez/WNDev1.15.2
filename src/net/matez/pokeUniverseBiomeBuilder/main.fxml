@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.matez.pokeUniverseBiomeBuilder.Controller">
+   <children>
+      <Label layoutX="384.0" layoutY="14.0" text="PokeUniverse Biome Builder" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="25.0" />
+         </font>
+      </Label>
+      <Line endX="500.0" layoutX="312.0" layoutY="48.0" />
+      <ImageView fx:id="imageTop" fitHeight="300.0" fitWidth="500.0" layoutX="603.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageBottom" fitHeight="300.0" fitWidth="500.0" layoutX="603.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="265.0" layoutY="55.0" text="Build" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="741.0" layoutY="55.0" text="Visualization" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="25.0" />
+         </font>
+      </Label>
+      <JFXTabPane layoutX="14.0" layoutY="92.0" prefHeight="724.0" prefWidth="572.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Terrain properties">
+               <content>
+                  <Pane fx:id="tab1">
+                     <children>
+                      <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="1) Terrain Properties">
+                         <font>
+                            <Font name="Consolas Bold" size="22.0" />
+                         </font>
+                      </Label>
+                      <JFXTextField fx:id="field_baseHeight" layoutX="424.0" layoutY="41.0" prefHeight="30.0" prefWidth="137.0" promptText="0.12" text="0.12">
+                         <font>
+                            <Font name="Consolas" size="16.0" />
+                         </font>
+                      </JFXTextField>
+                      <Text layoutX="9.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BASE HEIGHT" wrappingWidth="403.0">
+                         <font>
+                            <Font name="Consolas" size="16.0" />
+                         </font>
+                      </Text>
+                      <Line endX="200.0" layoutX="161.0" layoutY="57.0" />
+                      <JFXTextArea editable="false" layoutX="36.0" layoutY="79.0" prefHeight="103.0" prefWidth="450.0" text="This is base height of biome. Means that biome variation will be average of this.&#10;Examples&#10;Plains: 0.125&#10;Extreme Hills: 1.0&#10;Ocean: -1.0">
+                         <font>
+                            <Font name="Consolas" size="12.0" />
+                         </font>
+                      </JFXTextArea>
+                      <JFXTextArea editable="false" layoutX="37.0" layoutY="220.0" prefHeight="120.0" prefWidth="450.0" text="This means height variation of biome, appiled to base height. If value is 0.05, and base height 0.0, terrain will be from -0.05 to 0.05&#10;Examples&#10;Plains: 0.05&#10;Extreme Hills: 0.5&#10;Ocean: 0.1">
+                         <font>
+                            <Font name="Consolas" size="12.0" />
+                         </font>
+                      </JFXTextArea>
+                      <Line endX="200.0" layoutX="162.0" layoutY="198.0" />
+                      <Text layoutX="10.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HEIGHT VARIATION" wrappingWidth="403.0">
+                         <font>
+                            <Font name="Consolas" size="16.0" />
+                         </font>
+                      </Text>
+                      <JFXTextField fx:id="field_heightVariation" layoutX="425.0" layoutY="182.0" prefHeight="30.0" prefWidth="137.0" promptText="0.05" text="0.05">
+                         <font>
+                            <Font name="Consolas" size="16.0" />
+                         </font>
+                      </JFXTextField>
+                     </children>
+                  </Pane>
+               </content>
+          </Tab>
+          <Tab text="Temperature and rain">
+            <content>
+              <Pane fx:id="tab2">
+                     <children>
+                        <JFXTextField fx:id="field_rainfall" layoutX="426.0" layoutY="246.0" prefHeight="30.0" prefWidth="137.0" promptText="0.5">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="11.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RAINFALL" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="163.0" layoutY="262.0" />
+                        <JFXTextArea editable="false" layoutX="38.0" layoutY="284.0" prefHeight="106.0" prefWidth="450.0" text="Rain/snow chance in biome&#10;Examples&#10;Plains: 0.4&#10;Extreme Hills: 0.3&#10;Ocean: 0.5&#10;Desert: 0.0">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXTextArea editable="false" layoutX="36.0" layoutY="79.0" prefHeight="167.0" prefWidth="450.0" text="Temperature of biome. Sets tint to grass color if custom one not specified, also used in biome generator to spawn biomes with same temperature near. &#10;Please avoid temperatures in the range 0.1 - 0.2 because of snow.&#10;Examples&#10;Plains: 0.8&#10;Extreme Hills: 0.2&#10;Ocean: 0.5&#10;Desert: 2.0&#10;Jungle: 0.95">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="161.0" layoutY="57.0" />
+                        <Text layoutX="9.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEMPERATURE" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_temperature" layoutX="424.0" layoutY="41.0" prefHeight="30.0" prefWidth="137.0" promptText="0.5">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="2) Temperature and rain">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="11.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rain Enabled" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="10.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Snow Enabled" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="146.0" layoutY="429.0" />
+                        <Line endX="200.0" layoutX="145.0" layoutY="480.0" />
+                        <JFXToggleButton fx:id="toggle_rain" layoutX="488.0" layoutY="400.0" selected="true" text=" " toggleColor="#0978c3" toggleLineColor="#c2a8d0" />
+                        <JFXToggleButton fx:id="toggle_snow" layoutX="488.0" layoutY="452.0" text=" " toggleColor="#cffffa" toggleLineColor="#c2a8d0" />
+                        <JFXTextArea editable="false" layoutX="38.0" layoutY="510.0" prefHeight="70.0" prefWidth="450.0" text="Rain Enabled - can rain&#10;Snow enabled - can snow&#10;Nothing enabled - no rain and snow&#10;All enabled - crash :)">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                     </children>
+                  </Pane>
+            </content>
+          </Tab>
+            <Tab text="Colors">
+               <content>
+                  <Pane fx:id="tab3">
+                     <children>
+                        <JFXTextArea editable="false" layoutX="42.0" layoutY="118.0" prefHeight="60.0" prefWidth="450.0" text="Grass color for biome.&#10;Set two colors to get colorful blobs on grass.&#10;Don't set anything to get color based on temperature.">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="167.0" layoutY="56.0" />
+                        <Text layoutX="15.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GRASS COLOR" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="3) Colors">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXColorPicker fx:id="color_grass1" layoutX="464.0" layoutY="43.0" />
+                        <JFXToggleButton fx:id="toggle_grassColor1" layoutX="375.0" layoutY="27.0" text=" " toggleColor="#009435" toggleLineColor="#78c293" />
+                        <JFXToggleButton fx:id="toggle_grassColor2" layoutX="375.0" layoutY="68.0" text=" " toggleColor="#009435" toggleLineColor="#78c293" />
+                        <JFXColorPicker fx:id="color_grass2" layoutX="464.0" layoutY="84.0" />
+                        <JFXColorPicker fx:id="color_foliage2" layoutX="461.0" layoutY="236.0" />
+                        <JFXToggleButton fx:id="toggle_foliageColor2" layoutX="372.0" layoutY="220.0" text=" " toggleColor="#009435" toggleLineColor="#78c293" />
+                        <JFXToggleButton fx:id="toggle_foliageColor1" layoutX="372.0" layoutY="179.0" text=" " toggleColor="#009435" toggleLineColor="#78c293" />
+                        <JFXColorPicker fx:id="color_foliage1" layoutX="461.0" layoutY="195.0" />
+                        <Text layoutX="12.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FOLIAGE COLOR" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="164.0" layoutY="208.0" />
+                        <JFXTextArea editable="false" layoutX="39.0" layoutY="270.0" prefHeight="60.0" prefWidth="450.0" text="Foliage color for biome.&#10;Set two colors to get colorful blobs on grass.&#10;Don't set anything to get color based on temperature.">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXToggleButton fx:id="toggle_skyColor" layoutX="372.0" layoutY="330.0" text=" " toggleColor="#7bfff4" toggleLineColor="#78bec2" />
+                        <JFXColorPicker fx:id="color_sky" layoutX="461.0" layoutY="346.0" />
+                        <Text layoutX="12.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SKY COLOR" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="164.0" layoutY="359.0" />
+                        <JFXTextArea editable="false" layoutX="39.0" layoutY="383.0" prefHeight="42.0" prefWidth="450.0" text="Sky color for biome.&#10;Don't set anything to get color based on temperature.">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXTextArea editable="false" layoutX="39.0" layoutY="478.0" prefHeight="106.0" prefWidth="450.0" text="Water color multiplier.&#10;Don't set anything to get color based on temperature.&#10;WARNING: You can set only grayscaled colors, as in 1.12.2 version water has blue texture, not gray, and it cannot be colored in another color than shades of blue. #FFFFFF gives same color as it is in water texture&#10;">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="164.0" layoutY="454.0" startX="50.0" />
+                        <Text layoutX="14.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WATER COLOR MULTIPLIER" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXColorPicker fx:id="color_water" layoutX="461.0" layoutY="441.0" />
+                        <JFXToggleButton fx:id="toggle_waterColor" layoutX="372.0" layoutY="425.0" text=" " toggleColor="#140094" toggleLineColor="#8578c2" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Decorator Settings">
+               <content>
+                  <Pane fx:id="tab4">
+                     <children>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="4) Decorator Settings">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="field_waterLily" layoutX="424.0" layoutY="41.0" prefHeight="30.0" prefWidth="137.0" promptText="0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="9.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WATER LILY PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="161.0" layoutY="57.0" startX="50.0" />
+                        <Line endX="200.0" layoutX="162.0" layoutY="87.0" startX="50.0" />
+                        <Text layoutX="10.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CACTI PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_cacti" layoutX="425.0" layoutY="71.0" prefHeight="30.0" prefWidth="137.0" promptText="0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Line endX="200.0" layoutX="162.0" layoutY="117.0" startX="75.0" />
+                        <Text layoutX="10.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GRAVEL PATCHES PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_gravel" layoutX="425.0" layoutY="101.0" prefHeight="30.0" prefWidth="137.0" promptText="0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="field_sand" layoutX="425.0" layoutY="131.0" prefHeight="30.0" prefWidth="137.0" promptText="0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="10.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAND PATCHES PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="162.0" layoutY="147.0" startX="75.0" />
+                        <Line endX="200.0" layoutX="162.0" layoutY="177.0" startX="75.0" />
+                        <Text layoutX="10.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLAY PATCHES PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_clay" layoutX="425.0" layoutY="161.0" prefHeight="30.0" prefWidth="137.0" promptText="0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextArea fx:id="area_devComment" layoutX="61.0" layoutY="259.0" prefHeight="88.0" prefWidth="450.0" promptText="OPTIONAL: Type here addional information for dev to add, like new ores, granite patches removal etc etd.">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXToggleButton fx:id="toggle_generateFalls" layoutX="501.0" layoutY="191.0" selected="true" text=" " toggleColor="#0978c3" toggleLineColor="#b57451" />
+                        <Line endX="200.0" layoutX="159.0" layoutY="220.0" startX="100.0" />
+                        <Text layoutX="24.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate water/lava falls" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="166.0" layoutY="391.0" startX="50.0" />
+                        <Text layoutX="14.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOP SURFACE BLOCK" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_topSurfaceBlock1" layoutX="371.0" layoutY="375.0" prefHeight="30.0" prefWidth="198.0" text="minecraft:grass_block">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="field_topSurfaceBlock2" layoutX="371.0" layoutY="418.0" prefHeight="30.0" prefWidth="198.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="14.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOP SURFACE BLOCK2" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="166.0" layoutY="434.0" startX="50.0" />
+                        <JFXTextArea editable="false" layoutX="61.0" layoutY="493.0" prefHeight="88.0" prefWidth="450.0" text="TSB 2 and 3 are optional!!!&#10;Mask: &lt;type&gt;$&lt;chance&gt;$&lt;id&gt;&#10;types: random(randomly placed), noise(placed blob-like using perlin noise), blob(terrain blobs)&#10;Example: noise$-0.5$minecraft:coarse_dirt">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="166.0" layoutY="464.0" startX="50.0" />
+                        <Text layoutX="14.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOP SURFACE BLOCK3" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_topSurfaceBlock3" layoutX="371.0" layoutY="448.0" prefHeight="30.0" prefWidth="198.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="field_fillerBlock" layoutX="371.0" layoutY="590.0" prefHeight="30.0" prefWidth="198.0" text="minecraft:dirt">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="14.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FILLER BLOCK" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="166.0" layoutY="606.0" startX="50.0" />
+                        <JFXTextField fx:id="field_underwaterBlock" layoutX="371.0" layoutY="620.0" prefHeight="30.0" prefWidth="198.0" promptText="minecraft:gravel">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="14.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UNDERWATER BLOCK" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="166.0" layoutY="636.0" startX="50.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Trees">
+               <content>
+                  <Pane fx:id="tab5">
+                     <children>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="5) Trees">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="field_treesPerChunk" layoutX="424.0" layoutY="41.0" prefHeight="30.0" prefWidth="137.0" promptText="0.12">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="9.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TREES PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="161.0" layoutY="57.0" />
+                        <JFXTextArea editable="false" layoutX="37.0" layoutY="109.0" prefHeight="44.0" prefWidth="450.0" text="Extra tree chance per chunk. For example Plains biome has 0.6 tree extra, and trees per chunk 0">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="162.0" layoutY="87.0" />
+                        <Text layoutX="10.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TREE EXTRA" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_treeExtra" layoutX="425.0" layoutY="71.0" prefHeight="30.0" prefWidth="137.0" promptText="0.05">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXListView fx:id="list_trees" layoutX="14.0" layoutY="171.0" prefHeight="510.0" prefWidth="277.0" />
+                        <JFXTextField fx:id="field_treeSearch" layoutX="294.0" layoutY="171.0" prefHeight="30.0" prefWidth="270.0" promptText=" Search...">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXToggleButton fx:id="toggle_treeIndexFolder" layoutX="294.0" layoutY="207.0" prefHeight="62.0" prefWidth="264.0" selected="true" text="Index only &quot;Trees&quot; folder" toggleColor="#00941f" toggleLineColor="#82a172">
+                           <font>
+                              <Font name="Consolas" size="13.0" />
+                           </font>
+                        </JFXToggleButton>
+                        <Text layoutX="295.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected trees:" wrappingWidth="270.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXListView fx:id="list_selTrees" layoutX="295.0" layoutY="331.0" prefHeight="350.0" prefWidth="268.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Plants">
+               <content>
+                  <Pane fx:id="tab6">
+                     <children>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="6) Plants">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="field_grassPerChunk" layoutX="424.0" layoutY="41.0" prefHeight="30.0" prefWidth="137.0" promptText="10">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="9.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GRASS PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="161.0" layoutY="57.0" />
+                        <JFXTextArea editable="false" layoutX="36.0" layoutY="79.0" prefHeight="86.0" prefWidth="450.0" text="Grass amount per chunk&#10;Examples&#10;Plains: 10&#10;Extreme Hills: 1.0&#10;Ocean: 1">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXTextArea editable="false" layoutX="37.0" layoutY="249.0" prefHeight="91.0" prefWidth="450.0" text="Flower amount per chunk&#10;Examples&#10;Plains: 4&#10;Extreme Hills: 1&#10;Ocean: 1">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="162.0" layoutY="227.0" />
+                        <Text layoutX="10.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FLOWER PER CHUNK" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_flowersPerChunk" layoutX="425.0" layoutY="211.0" prefHeight="30.0" prefWidth="137.0" promptText="2">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="field_grassId" layoutX="366.0" layoutY="167.0" prefHeight="30.0" prefWidth="198.0" text="minecraft:grass">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="9.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GRASS ID" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="161.0" layoutY="183.0" startX="50.0" />
+                        <JFXListView fx:id="list_selFlowers" layoutX="14.0" layoutY="356.0" prefHeight="325.0" prefWidth="258.0" />
+                        <Text layoutX="286.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FLOWER IDS AND WEIGHT" wrappingWidth="252.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_flowerId" layoutX="286.0" layoutY="379.0" prefHeight="30.0" prefWidth="270.0" promptText="minecraft:yellow_flower">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="field_flowerWeight" layoutX="286.0" layoutY="422.0" prefHeight="30.0" prefWidth="270.0" promptText="5">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton fx:id="button_addFlower" buttonType="RAISED" layoutX="286.0" layoutY="469.0" text="Add flower">
+                           <font>
+                              <Font name="Consolas" size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Ambient Structures">
+               <content>
+                  <Pane fx:id="tab7">
+                     <children>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="8) Ambient Structures">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXTextArea editable="false" layoutX="39.0" layoutY="40.0" prefHeight="44.0" prefWidth="450.0" text="Ambient Structures like: icycles, rocks and other blobs etc. Mushroom in trees section. Dungeons and mountains not here!">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <JFXListView fx:id="list_structures" layoutX="14.0" layoutY="224.0" prefHeight="457.0" prefWidth="277.0" />
+                        <JFXTextField fx:id="field_ambientSearch" layoutX="294.0" layoutY="223.0" prefHeight="30.0" prefWidth="270.0" promptText=" Search...">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="294.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected structures:" wrappingWidth="270.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXListView fx:id="list_selStructures" layoutX="295.0" layoutY="285.0" prefHeight="396.0" prefWidth="268.0" />
+                        <JFXTextField fx:id="field_structureExtra" layoutX="435.0" layoutY="127.0" prefHeight="30.0" prefWidth="137.0" promptText="0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="20.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STRUCTURE EXTRA" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="172.0" layoutY="143.0" />
+                        <Line endX="200.0" layoutX="171.0" layoutY="113.0" />
+                        <Text layoutX="19.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STRUCTURE RARITY" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_structureRarity" layoutX="434.0" layoutY="97.0" prefHeight="30.0" prefWidth="137.0" promptText="100">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextArea editable="false" layoutX="39.0" layoutY="157.0" prefHeight="53.0" prefWidth="450.0" text="Structure rarity - rarity of spawn PER BLOCK. For example, if you type 100, chance will be 1/100, for each XZ block. Chunk has 16x16 blocks. Structure extra - extra rarity per 1000 blocks">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Build">
+               <content>
+                  <Pane fx:id="tab8">
+                     <children>
+                        <Label layoutX="9.0" layoutY="14.0" prefHeight="26.0" prefWidth="554.0" text="8) Build Biome">
+                           <font>
+                              <Font name="Consolas Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="field_biomeId" layoutX="365.0" layoutY="41.0" prefHeight="30.0" prefWidth="196.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <Text layoutX="9.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biome ID" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <Line endX="200.0" layoutX="161.0" layoutY="57.0" />
+                        <JFXTextArea editable="false" layoutX="36.0" layoutY="79.0" prefHeight="22.0" prefWidth="450.0" text="Example: pine_forest, extra_huge_big_snowy_mountains">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Text layoutX="9.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biome Dictionary" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXListView fx:id="list_biomeDictionary" layoutX="15.0" layoutY="133.0" prefHeight="266.0" prefWidth="543.0" />
+                        <Line endX="200.0" layoutX="162.0" layoutY="424.0" />
+                        <Text layoutX="10.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biome Weight" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_biomeWeight" layoutX="456.0" layoutY="408.0" prefHeight="30.0" prefWidth="106.0" text="10">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextArea editable="false" layoutX="37.0" layoutY="476.0" prefHeight="22.0" prefWidth="450.0" text="Parent biome ID, if none type &quot;null&quot; or just set it empty">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </JFXTextArea>
+                        <Line endX="200.0" layoutX="162.0" layoutY="454.0" />
+                        <Text layoutX="10.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parent Biome" wrappingWidth="403.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="field_parentBiome" layoutX="366.0" layoutY="438.0" prefHeight="30.0" prefWidth="196.0">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton fx:id="button_generate" buttonType="RAISED" layoutX="234.0" layoutY="647.0" ripplerFill="#8815a4" text="Generate" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </JFXTabPane>
+      <JFXButton fx:id="button_update" buttonType="RAISED" layoutX="992.0" layoutY="786.0" prefHeight="30.0" prefWidth="111.0" ripplerFill="#0e862e" style="-fx-background-color: #5e8508" text="Update">
+         <font>
+            <Font name="Consolas Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="field_size" layoutX="604.0" layoutY="788.0" prefHeight="30.0" prefWidth="69.0" promptText="5" text="5">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="field_seed" layoutX="680.0" layoutY="788.0" prefHeight="30.0" prefWidth="145.0" promptText="seed" text="0">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="button_seed" buttonType="RAISED" layoutX="843.0" layoutY="787.0" prefHeight="33.0" prefWidth="132.0" ripplerFill="#0e862e" style="-fx-background-color: #5e8508" text="Random Seed">
+         <font>
+            <Font name="Consolas Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_import" buttonType="RAISED" layoutX="14.0" layoutY="13.0" prefHeight="33.0" prefWidth="132.0" ripplerFill="#0e862e" style="-fx-background-color: #5e8508" text="Import">
+         <font>
+            <Font name="Consolas Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_export" buttonType="RAISED" layoutX="975.0" layoutY="13.0" prefHeight="33.0" prefWidth="132.0" ripplerFill="#0e862e" style="-fx-background-color: #5e8508" text="Export">
+         <font>
+            <Font name="Consolas Bold" size="17.0" />
+         </font>
+      </JFXButton>
+   </children>
+</Pane>

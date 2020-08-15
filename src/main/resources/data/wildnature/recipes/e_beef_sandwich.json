@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sandwich",
+  "ingredients": [
+    {
+      "item": "wildnature:sliced_bread"
+    },
+    {
+      "item": "wildnature:sliced_bread"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:lettuce"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    }
+  ],
+  "result": {
+    "item": "wildnature:beef_sandwich",
+    "count": 1
+  }
+}

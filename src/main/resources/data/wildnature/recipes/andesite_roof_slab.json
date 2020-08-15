@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_roof_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:andesite_roof"
+    }
+  },
+  "result": {
+    "item": "wildnature:andesite_roof_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_roof_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:stone_roof"
+    }
+  },
+  "result": {
+    "item": "wildnature:stone_roof_stairs",
+    "count": 4
+  }
+}

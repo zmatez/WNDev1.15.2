@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/willow/willow_parquet",
+        "particle": "wildnature:blocks/willow/willow_parquet"
+    }
+}

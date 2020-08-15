@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:mangrove_planks"
+    },
+    "|": {
+      "item": "wildnature:mangrove_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:mangrove_square_table",
+    "count": 4
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/jacaranda/jacaranda_parquet",
+        "particle": "wildnature:blocks/jacaranda/jacaranda_parquet"
+    }
+}

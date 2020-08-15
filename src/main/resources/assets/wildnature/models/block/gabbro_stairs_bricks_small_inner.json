@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/gabbro/gabbro_bricks_small",
+        "top": "wildnature:blocks/rocks/gabbro/gabbro_bricks_small",
+        "side": "wildnature:blocks/rocks/gabbro/gabbro_bricks_small"
+    }
+}

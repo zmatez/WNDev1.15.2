@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_slab_vertical",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:marble_slab_bricks_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:marble_bricks_mossy_vertical_slab",
+    "count": 3
+  }
+}

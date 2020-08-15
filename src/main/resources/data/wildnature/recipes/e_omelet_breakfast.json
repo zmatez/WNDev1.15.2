@@ -1,0 +1,34 @@
+{
+  "type": "wildnature:cooking",
+  "group": "frying_pan;plate",
+  "ingredient": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:cheddar_cheese"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:tomato"
+    },
+    {
+      "item": "wildnature:chopped_chives"
+    }
+
+  ],
+  "result": {
+    "item": "wildnature:omelet_breakfast",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

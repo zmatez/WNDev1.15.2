@@ -1,0 +1,81 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "wildnature:block/cracked_sandstone1"
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone1",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone1",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone1",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone2"
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone2",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone2",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone2",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone3"
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone3",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone3",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone3",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone4"
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone4",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone4",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone4",
+        "y": 270
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone5"
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone5",
+        "y": 90
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone5",
+        "y": 180
+      },
+      {
+        "model": "wildnature:block/cracked_sandstone5",
+        "y": 270
+      }
+    ]
+  }
+}

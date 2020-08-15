@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "wildnature:blocks/block/cracked_sandstone_bottom",
+        "top": "wildnature:blocks/block/cracked_sandstone_top2",
+        "side": "wildnature:blocks/block/cracked_sandstone"
+    }
+}

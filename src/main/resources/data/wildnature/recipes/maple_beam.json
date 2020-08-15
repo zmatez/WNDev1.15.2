@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "beam",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:maple_log"
+    }
+  },
+  "result": {
+    "item": "wildnature:maple_beam",
+    "count": 8
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/conglomerate_bricks_mossy_vertical_slab" },
+    "facing=east": { "model": "wildnature:block/conglomerate_bricks_mossy_vertical_slab", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/conglomerate_bricks_mossy_vertical_slab", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/conglomerate_bricks_mossy_vertical_slab", "y": 270, "uvlock": true}
+  }
+}

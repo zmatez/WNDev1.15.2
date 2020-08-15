@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:granite_roof"
+  },
+  "result": "wildnature:granite_roof_stairs",
+  "count": 1
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/rocks/gabbro/gabbro_cobble_mossy",
+        "top": "wildnature:blocks/rocks/gabbro/gabbro_cobble_mossy",
+        "side": "wildnature:blocks/rocks/gabbro/gabbro_cobble_mossy"
+    }
+}
