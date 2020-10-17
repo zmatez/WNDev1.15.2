@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:chamomile_double_white",
+    "wildnature:hollyhock_pink",
+    "wildnature:hollyhock_red",
+    "wildnature:gladiolus_purple",
+    "wildnature:gladiolus_red",
+    "wildnature:gladiolus_orange",
+    "wildnature:gladiolus_yellow",
+    "wildnature:columbine_blue",
+    "wildnature:columbine_purple",
+    "wildnature:columbine_red",
+    "wildnature:yucca",
+    "wildnature:chinese_lantern_flower",
+    "wildnature:scotchbroom_yellow",
+    "wildnature:scotchbroom_purple",
+    "wildnature:clematis_blue",
+    "wildnature:clematis_purple",
+    "wildnature:goldenrod",
+    "wildnature:giant_hogweed",
+    "wildnature:honeysuckle_yellow",
+    "wildnature:miscanthus_grass",
+    "wildnature:fire_weed",
+    "wildnature:monkshood_blue",
+    "wildnature:rhododendron_pink",
+    "wildnature:rhododendron_purple",
+    "wildnature:tamarisk",
+    "wildnature:wisteria_pink",
+
+    "wildnature:rapeseed"
+  ]
+}
