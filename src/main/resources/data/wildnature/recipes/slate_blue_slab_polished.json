@@ -1,0 +1,16 @@
+{
+  "group": "wildnature:stone_polished_slab",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_blue_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_blue_slab_polished",
+    "count": 6
+  }
+}

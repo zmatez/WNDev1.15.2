@@ -19,7 +19,7 @@ public class SandstoneRiver extends URBiome {
 
     @Override
     public BlockState getElevationBlock(long seed,Random rand, BlockPos pos) {
-        return URBiomeBuilders.TRIPLE_NOISE.build(Blocks.STONE.getDefaultState(),Blocks.SANDSTONE.getDefaultState(),WNBlocks.LIMESTONE_ROCK.getDefaultState(),seed,rand,pos,elevationNoise);
+        return URBiomeBuilders.TRIPLE_NOISE.build(Blocks.STONE.getDefaultState(),Blocks.SANDSTONE.getDefaultState(),WNBlocks.LIMESTONE.getDefaultState(),seed,rand,pos,elevationNoise);
     }
 
 

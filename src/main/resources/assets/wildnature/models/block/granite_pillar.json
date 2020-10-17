@@ -3,6 +3,6 @@
     "textures": {
         "particle": "wildnature:blocks/rocks/granite/granite_pillar",
         "0": "wildnature:blocks/rocks/granite/granite_pillar",
-        "1": "block/polished_granite"
+        "1": "minecraft:block/polished_granite"
     }
 }

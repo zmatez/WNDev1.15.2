@@ -20,12 +20,12 @@ public class mini_pine2 extends SchemFeature {
         Block(0, 2, -1, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
         Block(1, 2, -1, "wildnature:pine_leaves[distance=2,persistent=true,stage=0]");
         Block(0, 3, -1, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
-        Block(0, 1, 0, "minecraft:spruce_log[axis=y]");
+        Block(0, 1, 0, "wildnature:pine_log[axis=y]");
         Block(-1, 2, 0, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
-        Block(0, 2, 0, "minecraft:spruce_log[axis=y]");
+        Block(0, 2, 0, "wildnature:pine_log[axis=y]");
         Block(1, 2, 0, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
         Block(-1, 3, 0, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
-        Block(0, 3, 0, "minecraft:spruce_log[axis=y]");
+        Block(0, 3, 0, "wildnature:pine_log[axis=y]");
         Block(1, 3, 0, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
         Block(0, 4, 0, "wildnature:pine_leaves[distance=1,persistent=true,stage=0]");
         Block(0, 5, 0, "wildnature:pine_leaves[distance=2,persistent=true,stage=0]");

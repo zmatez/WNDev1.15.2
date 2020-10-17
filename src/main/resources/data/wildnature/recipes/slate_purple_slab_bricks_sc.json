@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:slate_purple_bricks"
+  },
+  "result": "wildnature:slate_purple_slab_bricks",
+  "count": 2
+}

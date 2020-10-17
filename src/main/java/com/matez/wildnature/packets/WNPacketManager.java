@@ -10,14 +10,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class WNPacketManager {
-    
     public static void handleParticle(IClientPlayNetHandler handler, WNSSpawnParticlePacket particle){
         if(handler instanceof ClientPlayNetHandler) {
             PacketThreadUtil.checkThreadAndEnqueue(particle, handler, Minecraft.getInstance());
             if (particle.getParticleCount() == 0) {
-                double d0 = (double) (particle.getParticleSpeed() * particle.getXOffset());
-                double d2 = (double) (particle.getParticleSpeed() * particle.getYOffset());
-                double d4 = (double) (particle.getParticleSpeed() * particle.getZOffset());
+                double d0 = (double) (particle.getParticleSpeed() * particle.getXSpeed());
+                double d2 = (double) (particle.getParticleSpeed() * particle.getYSpeed());
+                double d4 = (double) (particle.getParticleSpeed() * particle.getZSpeed());
 
                 try {
                     ((ClientPlayNetHandler) handler).getWorld().addParticle(particle.getParticle(), particle.isLongDistance(), particle.getXCoordinate(), particle.getYCoordinate(), particle.getZCoordinate(), d0, d2, d4);
@@ -27,7 +26,7 @@ public class WNPacketManager {
             } else {
                 for (int i = 0; i < particle.getParticleCount(); ++i) {
                     try {
-                        ((ClientPlayNetHandler) handler).getWorld().addParticle(particle.getParticle(), particle.isLongDistance(), particle.getXCoordinate(), particle.getYCoordinate(), particle.getZCoordinate(), particle.getXOffset(), particle.getYOffset(), particle.getZOffset());
+                        ((ClientPlayNetHandler) handler).getWorld().addParticle(particle.getParticle(), particle.isLongDistance(), particle.getXCoordinate(), particle.getYCoordinate(), particle.getZCoordinate(), particle.getXSpeed(), particle.getYSpeed(), particle.getZSpeed());
                     } catch (Throwable var16) {
                         Main.LOGGER.warn("Could not spawn particle effect {}", (Object) particle.getParticle());
                         return;

@@ -1,0 +1,21 @@
+{
+  "group": "wildnature:stone_ancient_bricks",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#?#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_purple_bricks"
+    },
+    "?": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_purple_bricks_ancient",
+    "count": 8
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:gneiss_slab_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:gneiss_half_stairs_polished",
+    "count": 6
+  }
+}

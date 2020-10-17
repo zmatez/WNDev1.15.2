@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.gen.biomes.biomes;
 
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -23,6 +24,7 @@ public class WNMorskieOko extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(0x38AEFF)
                 .waterFogColor(0x1EB7E4)
+                .logTypes(LogType.NONE)
                 .parent(null));
 
 

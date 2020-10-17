@@ -29,7 +29,6 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.Heightmap;
@@ -51,31 +50,29 @@ public class CaveBiomeArgument implements ArgumentType<URBiome>
         return new CaveBiomeArgument();
     }
     private static ArrayList<ResourceLocation> urURBiomeNames = new ArrayList<>();
+
     @Override
-    public URBiome parse(StringReader reader) throws CommandSyntaxException
-    {
+    public URBiome parse(StringReader reader) throws CommandSyntaxException {
         ResourceLocation location = ResourceLocation.read(reader);
 
         for (URBiome object : URBiomeManager.riverBiomes.getObjects()) {
-            if(location.getPath().equals(object.getName())){
+            if (location.getPath().equals(object.getName())) {
                 return object;
             }
         }
         throw INVALID_URBIOME_EXCEPTION.create(location);
     }
 
-    public static URBiome getValue(CommandContext<CommandSource> context, String name) throws CommandSyntaxException
-    {
+    public static URBiome getValue(CommandContext<CommandSource> context, String name) throws CommandSyntaxException {
         return context.getArgument(name, URBiome.class);
     }
 
 
     @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder suggestionsBuilder)
-    {
-        if(urURBiomeNames.isEmpty()){
+    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder suggestionsBuilder) {
+        if (urURBiomeNames.isEmpty()) {
             for (URBiome object : URBiomeManager.riverBiomes.getObjects()) {
-                urURBiomeNames.add(new ResourceLocation("wildnature",object.name));
+                urURBiomeNames.add(new ResourceLocation("wildnature", object.name));
             }
         }
 

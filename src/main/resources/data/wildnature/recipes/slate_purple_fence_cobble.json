@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:cobble_fence",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_purple_wall_cobble"
+    },
+    "W": {
+      "item": "wildnature:slate_purple_cobble"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_purple_fence_cobble",
+    "count": 5
+  }
+}

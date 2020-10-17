@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/basalt/basalt_cobbe_mossy",
-        "top": "wildnature:blocks/rocks/basalt/basalt_cobbe_mossy",
-        "side": "wildnature:blocks/rocks/basalt/basalt_cobbe_mossy"
-    }
-}

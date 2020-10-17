@@ -4,6 +4,7 @@ import com.matez.wildnature.commands.LocatePath;
 import com.matez.wildnature.customizable.CommonConfig;
 import com.matez.wildnature.lists.WNBlocks;
 import com.matez.wildnature.other.Utilities;
+import com.matez.wildnature.world.gen.generators.carves.PathGenerator;
 import com.matez.wildnature.world.gen.undergroundBiomes.setup.URBiome;
 import com.matez.wildnature.world.gen.undergroundBiomes.setup.URBiomeManager;
 import com.matez.wildnature.world.gen.noise.OpenSimplex2S;
@@ -66,13 +67,15 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
    private final INoiseGenerator surfaceDepthNoise;
    protected final BlockState defaultBlock;
    protected final BlockState defaultFluid;
-   private final OpenSimplex2S pathNoise;
    private double frequency = CommonConfig.pathFrequency.get();
 
    private final RidgedMulti ridgedMultiNoise;
    private static RidgedMulti ridgedMultiNoiseCopy;
    private final Perlin perlinNoise, biomeNoise;
    private double latestBiomeNoise = -1;
+
+   //GENERATORS
+   private final PathGenerator pathGenerator;
 
 
    public WNNoiseChunkGenerator(IWorld worldIn, BiomeProvider biomeProviderIn, int p_i49931_3_, int p_i49931_4_, int p_i49931_5_, T p_i49931_6_, boolean usePerlin) {
@@ -89,7 +92,6 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
       this.field_222569_p = new OctavesNoiseGenerator(this.randomSeed, 16,0);
       this.field_222570_q = new OctavesNoiseGenerator(this.randomSeed, 8,0);
       this.surfaceDepthNoise = (INoiseGenerator)(usePerlin ? new PerlinNoiseGenerator(this.randomSeed, 4,0) : new OctavesNoiseGenerator(this.randomSeed, 4,0));
-      this.pathNoise =new OpenSimplex2S(worldIn.getSeed());
       this.ridgedMultiNoise =new RidgedMulti();
       ridgedMultiNoise.setSeed((int)worldIn.getSeed());
       ridgedMultiNoise.setFrequency(0.005);
@@ -108,6 +110,8 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
       biomeNoise.setOctaveCount(2);
       biomeNoise.setLacunarity(0.0);
       biomeNoise.setPersistence(0.0);
+
+      pathGenerator = new PathGenerator(worldIn);
    }
 
    public static RidgedMulti getCaveNoise(){
@@ -146,15 +150,15 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
    }
 
    protected void func_222546_a(double[] p_222546_1_, int p_222546_2_, int p_222546_3_, double p_222546_4_, double p_222546_6_, double p_222546_8_, double p_222546_10_, int p_222546_12_, int p_222546_13_) {
-      double[] adouble = this.getBiomeNoiseColumn(p_222546_2_, p_222546_3_);
-      double d0 = adouble[0];
-      double d1 = adouble[1];
+      double[] biomeNoiseColumn = this.getBiomeNoiseColumn(p_222546_2_, p_222546_3_);
+      double biomeDepth = biomeNoiseColumn[0];
+      double biomeScale = biomeNoiseColumn[1];
       double d2 = this.func_222551_g();
       double d3 = this.func_222553_h();
 
       for(int i = 0; i < this.func_222550_i(); ++i) {
          double d4 = this.calcNoiseColumn(p_222546_2_, i, p_222546_3_, p_222546_4_, p_222546_6_, p_222546_8_, p_222546_10_);
-         d4 = d4 - this.func_222545_a(d0, d1, i);
+         d4 = d4 - this.func_222545_a(biomeDepth, biomeScale, i);
          if ((double)i > d2) {
             d4 = MathHelper.clampedLerp(d4, (double)p_222546_13_, ((double)i - d2) / (double)p_222546_12_);
          } else if ((double)i < d3) {
@@ -250,83 +254,8 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
             Biome biome = worldGenRegion.getBiome(blockpos$mutable.setPos(xChunkPos + relativeX, startHeight, zChunkPos + relativeZ));
             biome.buildSurface(sharedseedrandom, chunkIn, x, z, startHeight, d1, this.getSettings().getDefaultBlock(), this.getSettings().getDefaultFluid(), this.getSeaLevel(), this.world.getSeed());
 
-            if(CommonConfig.generatePaths.get()) {
-               double[] noises = getPathNoise(x,z,0.005, 0.01, 0.001,50,1);
-               double vnoise = noises[0];
-               double cnoise = noises[1];
 
-
-               if (vnoise != 1) {
-                  if (BiomeDictionary.getTypes(biome).contains(BiomeDictionary.Type.FOREST) && BiomeDictionary.getTypes(biome).contains(BiomeDictionary.Type.DENSE)) {
-                     int pathY = startHeight;
-                     //double amountToPushTerrainDownBy = 1 - vnoise / threshold;
-                     Block theme = biome.getSurfaceBuilderConfig().getTop().getBlock();
-
-                     BlockState b = chunkIn.getBlockState(new BlockPos(x, startHeight - 1, z));
-                     Block toPlace = null;
-                     if (b.getBlock() == WNBlocks.MOLD_GRASS_BLOCK) {
-                        toPlace = WNBlocks.MOLD_GRASS_PATH;
-                     } else if (b.getBlock() == WNBlocks.BROWN_GRASS_BLOCK) {
-                        toPlace = WNBlocks.BROWN_GRASS_PATH;
-                     } else if (b.getBlock() == WNBlocks.DRIED_GRASS_BLOCK) {
-                        toPlace = WNBlocks.DRIED_GRASS_PATH;
-                     } else if (b.getBlock() == WNBlocks.DESERT_GRASS_BLOCK) {
-                        toPlace = WNBlocks.DESERT_GRASS_PATH;
-                     } else if (b.getBlock() == WNBlocks.TROPICAL_GRASS_BLOCK) {
-                        toPlace = WNBlocks.TROPICAL_GRASS_PATH;
-                     } else if (b.getBlock() == WNBlocks.BROWN_PODZOL) {
-                        toPlace = WNBlocks.BROWN_GRASS_PATH;
-                     } else if (b.getBlock() == Blocks.GRASS_BLOCK) {
-                        toPlace = Blocks.GRASS_PATH;
-                     } else if (b.getBlock() == Blocks.PODZOL) {
-                        if (theme == WNBlocks.MOLD_GRASS_BLOCK) {
-                           toPlace = WNBlocks.MOLD_GRASS_PATH;
-                        } else if (theme == WNBlocks.BROWN_GRASS_BLOCK) {
-                           toPlace = WNBlocks.BROWN_GRASS_PATH;
-                        } else if (theme == WNBlocks.DRIED_GRASS_BLOCK) {
-                           toPlace = WNBlocks.DRIED_GRASS_PATH;
-                        } else if (theme == WNBlocks.DESERT_GRASS_BLOCK) {
-                           toPlace = WNBlocks.DESERT_GRASS_PATH;
-                        } else if (theme == WNBlocks.TROPICAL_GRASS_BLOCK) {
-                           toPlace = WNBlocks.TROPICAL_GRASS_PATH;
-                        } else if (theme == WNBlocks.BROWN_PODZOL) {
-                           toPlace = WNBlocks.BROWN_GRASS_PATH;
-                        } else {
-                           toPlace = Blocks.GRASS_PATH;
-                        }
-                     } else if (b.getBlock() == Blocks.COARSE_DIRT) {
-                        if (theme == WNBlocks.MOLD_GRASS_BLOCK) {
-                           toPlace = WNBlocks.MOLD_GRASS_PATH;
-                        } else if (theme == WNBlocks.BROWN_GRASS_BLOCK) {
-                           toPlace = WNBlocks.BROWN_GRASS_PATH;
-                        } else if (theme == WNBlocks.DRIED_GRASS_BLOCK) {
-                           toPlace = WNBlocks.DRIED_GRASS_PATH;
-                        } else if (theme == WNBlocks.DESERT_GRASS_BLOCK) {
-                           toPlace = WNBlocks.DESERT_GRASS_PATH;
-                        } else if (theme == WNBlocks.TROPICAL_GRASS_BLOCK) {
-                           toPlace = WNBlocks.TROPICAL_GRASS_PATH;
-                        } else if (theme == WNBlocks.BROWN_PODZOL) {
-                           toPlace = WNBlocks.BROWN_GRASS_PATH;
-                        } else {
-                           toPlace = Blocks.GRASS_PATH;
-                        }
-                     }
-
-                     if (toPlace != null) {
-                        if (Utilities.rint(0, 5) != 0) {
-                           chunkIn.setBlockState(new BlockPos(x, pathY - 1, z), toPlace.getDefaultState(), false);
-                        }
-                        if (Utilities.rint(0, 15) == 0) {
-                           chunkIn.setBlockState(new BlockPos(x, pathY - 1, z), Blocks.GRAVEL.getDefaultState(), false);
-                        }
-                        if (Utilities.rint(0, 30) == 0) {
-                           LocatePath.paths.add(new BlockPos(x, pathY, z));
-                        }
-                     }
-
-                  }
-               }
-            }
+            pathGenerator.generate(x,startHeight,z,biome,chunkIn);
 
             //underwaterRivers
             if(CommonConfig.generateUndergroundRivers.get()) {
@@ -377,31 +306,7 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
       this.makeBedrock(chunkIn, sharedseedrandom);
    }
 
-   /**
-    *
-    * @param x x
-    * @param z z
-    * @param freq frequency, def 0.005
-    * @param threshold def 0.01
-    * @param noiseMultiplier def 50
-    * @return noise, centerNoise
-    */
-   private double[] getPathNoise(int x, int z, double freq, double threshold, double centerThreshold, double noiseMultiplier, double centerNoiseMultiplier){
-      OpenSimplex2S.Values2D1 results = new OpenSimplex2S.Values2D1();
-      pathNoise.noise2(x* freq, z* freq, results);
 
-      double slope = Math.sqrt(results.dx*results.dx + results.dy*results.dy);
-      double estDistanceToZero = Math.abs(results.value / slope);
-      double vnoise = 1;
-      if (estDistanceToZero < threshold) {
-         vnoise = -(estDistanceToZero*noiseMultiplier);
-      };
-      double cnoise = 1;
-      if (estDistanceToZero < centerThreshold) {
-         cnoise = -(estDistanceToZero*centerNoiseMultiplier);
-      };
-      return new double[]{vnoise,cnoise};
-   }
 
    private int getMaxHeightNearPathBlock(int x, int y, int z, IChunk chunk){
       int highest = 0;

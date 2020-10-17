@@ -15,23 +15,23 @@ public enum WNItemTier implements IItemTier {
     BRONZE(2, 250, 7F, 2.5F, 20, () -> {
         return Ingredient.fromItems(WNItems.BRONZE_INGOT);
     }),
+    STEEL(2, 250, 7F, 2.5F, 20, () -> {
+        return Ingredient.fromItems(WNItems.STEEL_INGOT);
+    }),
     AMETHYST(3, 1337, 7.5F, 4F, 7, () -> {
-        return Ingredient.fromItems(WNItems.AMETHYST_CRYSTAL);
+        return Ingredient.fromItems(WNItems.AMETHYST_INGOT);
     }),
     SAPPHIRE(3, 2200, 8.5F, 5F, 8, () -> {
-        return Ingredient.fromItems(WNItems.SAPPHIRE_CRYSTAL);
+        return Ingredient.fromItems(WNItems.SAPPHIRE_INGOT);
     }),
     MALACHITE(4, 1410, 9.5F, 6F, 10, () -> {
-        return Ingredient.fromItems(WNItems.MALACHITE_CRYSTAL);
+        return Ingredient.fromItems(WNItems.MALACHITE_INGOT);
     }),
     SILVER(4, 1989, 11F, 5F, 12, () -> {
         return Ingredient.fromItems(WNItems.SILVER_INGOT);
     }),
-    AMBER(2, 510, 13F, 5F, 30, () -> {
-        return Ingredient.fromItems(WNItems.AMBER_CRYSTAL);
-    }),
     RUBY(5, 1234, 12F, 9F, 20, () -> {
-        return Ingredient.fromItems(WNItems.RUBY_CRYSTAL);
+        return Ingredient.fromItems(WNItems.RUBY_INGOT);
     });
 
 

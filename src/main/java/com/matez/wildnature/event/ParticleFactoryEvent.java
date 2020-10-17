@@ -2,7 +2,7 @@ package com.matez.wildnature.event;
 
 import com.matez.wildnature.Main;
 import com.matez.wildnature.particles.DungeonHeartParticle;
-import com.matez.wildnature.registry.ParticleRegistry;
+import com.matez.wildnature.registry.particles.ParticleRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 

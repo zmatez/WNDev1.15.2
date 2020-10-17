@@ -19,6 +19,8 @@ public class WNMossFeature extends Feature<CountConfig> {
       setRegistryName("wildnature","moss_feature");
    }
 
+   private int bound = 3;
+
    public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, CountConfig config) {
       int i = 0;
       if(!worldIn.getDimension().isSurfaceWorld()){
@@ -26,7 +28,7 @@ public class WNMossFeature extends Feature<CountConfig> {
       }
 
       for (int j = 0; j < config.count; ++j) {
-         BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+         BlockPos blockpos = pos.add(rand.nextInt(bound) - rand.nextInt(bound), rand.nextInt(bound/2) - rand.nextInt(bound/2), rand.nextInt(bound) - rand.nextInt(bound));
          if (worldIn.isAirBlock(blockpos) && (!worldIn.getDimension().isNether() || blockpos.getY() < worldIn.getWorld().getDimension().getHeight()) && worldIn.getBlockState(blockpos.down()).isSolid() && !BlockTags.SAND.contains(worldIn.getBlockState(blockpos.down()).getBlock())) {
             worldIn.setBlockState(blockpos, WNBlocks.MOSS.getDefaultState(), 2);
             ++i;

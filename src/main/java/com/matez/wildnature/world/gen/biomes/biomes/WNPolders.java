@@ -2,9 +2,11 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
+import com.matez.wildnature.world.gen.structures.nature.woods.oak.*;
 import com.matez.wildnature.world.gen.surface.builders.PolderSurfaceBuilder;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -29,6 +31,7 @@ public class WNPolders extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.OAK,LogType.SMALL_OAK)
                 .parent(null));
 
 
@@ -54,8 +57,15 @@ public class WNPolders extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.GRASS_FLOWER.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
         WNBiomeFeatures.addPlant(this, WNBlocks.WILD_WHEAT.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
         WNBiomeFeatures.addPlant(this, WNBlocks.GRASS_WHEAT.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
-        //TODO BigTree
-        //WNBiomeFeatures.addTree(this, new BigTree(), 1);
+
+        WNBiomeFeatures.addTree(this, new oak1(), 1);
+        WNBiomeFeatures.addTree(this, new oak2(), 1);
+        WNBiomeFeatures.addTree(this, new oak3(), 1);
+        WNBiomeFeatures.addTree(this, new pointy_oak_1(), 1);
+        WNBiomeFeatures.addTree(this, new pointy_oak_2(), 1);
+        WNBiomeFeatures.addTree(this, new pointy_oak_3(), 1);
+        WNBiomeFeatures.addTree(this, new pointy_oak_4(), 1);
+        WNBiomeFeatures.addTree(this, new pointy_oak_5(), 1);
 
         plantRate = 4;
         treeRate = 0;

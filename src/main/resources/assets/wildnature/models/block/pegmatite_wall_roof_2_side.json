@@ -1,6 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "wildnature:blocks/rocks/pegmatite/pegmatite_roof_2"
-    }
-}

@@ -1,6 +1,0 @@
-{
-    "parent": "block/template_wall_side",
-    "textures": {
-        "wall": "wildnature:blocks/rocks/marble/marble_bricks_cracked"
-    }
-}

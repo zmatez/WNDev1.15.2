@@ -5,7 +5,7 @@ import com.matez.wildnature.customizable.CommonConfig;
 import com.matez.wildnature.gui.screen.WNWorldConfigScreen;
 import com.matez.wildnature.world.gen.biomes.layer.WNBiomeLayer;
 import com.matez.wildnature.world.gen.biomes.setup.WNGenSettings;
-import com.matez.wildnature.world.gen.chunk.WNSimplexChunkGenerator;
+import com.matez.wildnature.world.gen.chunk.generation.WNSimplexChunkGenerator;
 import com.matez.wildnature.world.gen.chunk.WNChunkGeneratorOverworld;
 import com.matez.wildnature.world.gen.chunk.WNChunkGeneratorType;
 import net.minecraft.block.Blocks;
@@ -71,7 +71,7 @@ public class WNWorldType extends WorldType {
 
     public <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> getBiomeLayer(IAreaFactory<T> parentLayer, OverworldGenSettings chunkSettings, LongFunction<C> contextFactory)
     {
-        parentLayer = (new WNBiomeLayer(getWorldType(), chunkSettings)).apply(contextFactory.apply(200L), parentLayer);
+        parentLayer = (new WNBiomeLayer(getWorldType(), chunkSettings.getBiomeId())).apply(contextFactory.apply(200L), parentLayer);
         parentLayer = AddBambooForestLayer.INSTANCE.apply(contextFactory.apply(1001L), parentLayer);
         parentLayer = LayerUtil.repeat(1000L, ZoomLayer.NORMAL, parentLayer, 2, contextFactory);
         parentLayer = EdgeBiomeLayer.INSTANCE.apply(contextFactory.apply(1000L), parentLayer);

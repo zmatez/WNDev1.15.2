@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/pegmatite/pegmatite_polished",
-        "top": "wildnature:blocks/rocks/pegmatite/pegmatite_polished",
-        "side": "wildnature:blocks/rocks/pegmatite/pegmatite_polished"
-    }
-}

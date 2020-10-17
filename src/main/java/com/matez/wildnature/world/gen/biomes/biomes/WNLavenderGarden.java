@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.Main;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -31,6 +32,7 @@ public class WNLavenderGarden extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.JACARANDA)
                 .parent(null));
 
 

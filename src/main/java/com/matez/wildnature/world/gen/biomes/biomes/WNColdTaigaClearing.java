@@ -2,6 +2,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -24,7 +25,7 @@ public class WNColdTaigaClearing extends WNBiome {
     public WNColdTaigaClearing(String name) {
         super(name, (new WNBiomeBuilder())
                 .surfaceBuilder(SurfaceRegistry.CUSTOM_SURFACE_BUILDER, new CustomSurfaceBuilderConfig(new CustomSurfaceBuilder.BlockCfg(SurfaceRegistry.BROWN_PODZOL_CONFIG, 5), new CustomSurfaceBuilder.BlockCfg(SurfaceRegistry.BROWN_CONFIG, 1)))
-                .precipitation(RainType.RAIN)
+                .precipitation(RainType.SNOW)
                 .category(Category.TAIGA)
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
@@ -34,6 +35,7 @@ public class WNColdTaigaClearing extends WNBiome {
                 .downfall(0.5F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.PINE,LogType.SMALL_BIRCH, LogType.SMALL_PINE)
                 .parent(null));
 
 

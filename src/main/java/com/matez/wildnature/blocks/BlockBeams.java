@@ -221,27 +221,16 @@ public class BlockBeams extends Block implements IRenderLayer {
     @Override
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand, BlockRayTraceResult rayTraceResult) {
         if(entity.getHeldItem(hand).getItem()== WNItems.CHISEL)/*checks if held item is stick for example*/ {
-            if(entity.isSneaking()){
-                if(this!=WNBlocks.BEAMS){
-                    Block b = Main.getBlockByID("wildnature:"+state.getBlock().getRegistryName().getNamespace().replace("_beams",""));
-                    if(b!=Blocks.AIR){
-                        world.setBlockState(pos,WNBlocks.BEAMS.getDefaultState().with(FACING,state.get(FACING)).with(TYPE,state.get(TYPE)));
-                        spawnAsEntity(world,pos,new ItemStack(Item.getItemFromBlock(b)));
-                        return ActionResultType.SUCCESS;
-                    }
-                }
-            }else {
-                int currentType = state.get(TYPE);//gets current type from clicked block
-                int validType = currentType;
-                if (currentType >= getMaxTypes()) {
-                    validType = 0;//resets validType if currentType is bigger than allowed
-                } else {
-                    validType++;
-                }
-
-                world.setBlockState(pos, state.with(TYPE, validType));//replaces that block with same block but another TYPE property
-                return ActionResultType.SUCCESS;
+            int currentType = state.get(TYPE);//gets current type from clicked block
+            int validType = currentType;
+            if (currentType >= getMaxTypes()) {
+                validType = 0;//resets validType if currentType is bigger than allowed
+            } else {
+                validType++;
             }
+
+            world.setBlockState(pos, state.with(TYPE, validType));//replaces that block with same block but another TYPE property
+            return ActionResultType.SUCCESS;
         }else{
             ItemStack s = entity.getHeldItem(hand);
             Block b = Block.getBlockFromItem(s.getItem());

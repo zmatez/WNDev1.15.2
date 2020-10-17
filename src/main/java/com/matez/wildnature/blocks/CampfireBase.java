@@ -13,7 +13,7 @@ import net.minecraft.world.IBlockReader;
 public class CampfireBase extends CampfireBlock implements IRenderLayer {
     public Item item;
     public CampfireBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
-        super(properties.notSolid());
+        super(properties.lightValue(15).tickRandomly().notSolid());
 
         this.setRegistryName(regName);
         item = new BlockItem(this,builder).setRegistryName(regName);

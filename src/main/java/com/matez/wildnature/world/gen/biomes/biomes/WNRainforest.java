@@ -2,6 +2,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -30,6 +31,7 @@ public class WNRainforest extends WNBiome {
                 .downfall(0.9F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.OAK)
                 .parent("minecraft:jungle"));
 
 

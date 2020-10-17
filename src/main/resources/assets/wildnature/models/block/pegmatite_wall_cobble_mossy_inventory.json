@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_inventory",
-    "textures": {
-        "wall": "wildnature:blocks/rocks/pegmatite/pegmatite_cobble_mossy"
-    }
-}

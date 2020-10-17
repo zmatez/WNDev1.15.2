@@ -12,6 +12,7 @@ import net.minecraft.block.TallFlowerBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -105,11 +106,12 @@ public class DoubleBushBaseFlowering extends TallFlowerBlock implements IRenderL
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(state.getBlock() instanceof DoubleBushBaseFlowering && state.get(FLOWERING) && !(entityIn instanceof ItemEntity)){
+        if(state.getBlock() instanceof DoubleBushBaseFlowering && state.get(FLOWERING) && !(entityIn instanceof ItemEntity) && !(entityIn instanceof BeeEntity)){
             worldIn.setBlockState(pos,worldIn.getBlockState(pos).with(FLOWERING,false));
             worldIn.playSound(pos.getX(),pos.getY(),pos.getZ(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS,0.3F,(float) Utilities.rdoub(0.7,1.3),false);
 
         }
+
     }
 
     @Override

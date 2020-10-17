@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_slab_vertical",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:granite_slab_bricks"
+    }
+  },
+  "result": {
+    "item": "wildnature:granite_vertical_slab_bricks",
+    "count": 3
+  }
+}

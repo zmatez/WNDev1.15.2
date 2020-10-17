@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/conglomerate/conglomerate_bricks_mossy",
-        "top": "wildnature:blocks/rocks/conglomerate/conglomerate_bricks_mossy",
-        "side": "wildnature:blocks/rocks/conglomerate/conglomerate_bricks_mossy"
-    }
-}

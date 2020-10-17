@@ -1,6 +1,6 @@
 {
     "parent": "block/pressure_plate_down",
     "textures": {
-        "texture": "block/diorite"
+        "texture": "minecraft:block/diorite"
     }
 }

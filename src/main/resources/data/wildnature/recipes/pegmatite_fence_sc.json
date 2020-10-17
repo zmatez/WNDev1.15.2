@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:pegmatite"
-  },
-  "result": "wildnature:pegmatite_fence",
-  "count": 1
-}

@@ -2,6 +2,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -10,7 +11,6 @@ import com.matez.wildnature.world.gen.structures.nature.woods.baobab.*;
 import com.matez.wildnature.world.gen.surface.SurfaceRegistry;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
@@ -28,6 +28,7 @@ public class WNGiantSavanna extends WNBiome {
                 .downfall(0.0F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.BIG_ACACIA,LogType.ACACIA,LogType.BAOBAB)
                 .parent(null));
 
 

@@ -19,7 +19,7 @@ public class BasaltRiver extends URBiome {
 
     @Override
     public BlockState getElevationBlock(long seed,Random rand, BlockPos pos) {
-        return URBiomeBuilders.TRIPLE_NOISE.build(Blocks.STONE.getDefaultState(),WNBlocks.BASALT_ROCK.getDefaultState(),WNBlocks.SLATE_ROCK.getDefaultState(),seed,rand,pos,elevationNoise);
+        return URBiomeBuilders.TRIPLE_NOISE.build(Blocks.STONE.getDefaultState(),WNBlocks.BASALT.getDefaultState(),WNBlocks.GNEISS.getDefaultState(),seed,rand,pos,elevationNoise);
     }
 
 

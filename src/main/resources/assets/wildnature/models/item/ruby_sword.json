@@ -1,6 +1,118 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "wildnature:items/tools/ruby_sword"
+  "credit": "Made with Blockbench",
+  "parent": "item/handheld",
+  "texture_size": [
+    32,
+    32
+  ],
+  "textures": {
+    "particle": "wildnature:items/gems/ruby/ruby_sword",
+    "layer0": "wildnature:items/gems/ruby/ruby_sword"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        11,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        12.25,
+        2.25
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        11,
+        90,
+        -55
+      ],
+      "translation": [
+        0.25,
+        12.25,
+        1.5
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -6,
+        -90,
+        27
+      ],
+      "translation": [
+        3,
+        11.25,
+        0.38
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -6,
+        91,
+        -27
+      ],
+      "translation": [
+        3,
+        11.25,
+        0.25
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        6.25,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.7
+      ]
+    },
+    "gui": {
+      "translation": [
+        5.5,
+        5.5,
+        0
+      ],
+      "scale": [
+        1.65,
+        1.65,
+        0.7
+      ]
+    },
+    "fixed": {
+      "translation": [
+        5,
+        4.25,
+        0
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
     }
+  }
 }

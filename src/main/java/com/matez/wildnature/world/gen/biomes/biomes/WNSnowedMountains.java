@@ -3,6 +3,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -19,7 +20,7 @@ public class WNSnowedMountains extends WNBiome {
     public WNSnowedMountains(String name) {
         super(name, (new WNBiomeBuilder())
                 .surfaceBuilder(SurfaceRegistry.SNOWY_MOUNTAIN_SURFACE_BUILDER, SurfaceRegistry.BROWN_CONFIG)
-                .precipitation(RainType.RAIN)
+                .precipitation(RainType.SNOW)
                 .category(Category.EXTREME_HILLS)
                 .topography(WNBiomeBuilder.Topography.HIGH_MOUNTAINS)
                 .climate(WNBiomeBuilder.Climate.POLAR)
@@ -29,6 +30,7 @@ public class WNSnowedMountains extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.PINE,LogType.FIR,LogType.SPRUCE,LogType.BIRCH)
                 .parent(null));
 
 

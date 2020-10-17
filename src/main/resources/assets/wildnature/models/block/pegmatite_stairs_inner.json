@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/pegmatite/pegmatite",
-        "top": "wildnature:blocks/rocks/pegmatite/pegmatite",
-        "side": "wildnature:blocks/rocks/pegmatite/pegmatite"
-    }
-}

@@ -3,6 +3,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -31,6 +32,7 @@ public class WNGiantConiferousForest extends WNBiome {
                 .downfall(0.4F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.BIG_SPRUCE,LogType.BIG_FIR)
                 .parent(null));
 
 
@@ -56,22 +58,17 @@ public class WNGiantConiferousForest extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.HEATHER_PURPLE.getDefaultState().with(FloweringBushBase.FLOWERING, true), 2);
         WNBiomeFeatures.addPlant(this, WNBlocks.BLUEBELL.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
 
-        BlockState pineLog = Main.getBlockByID("minecraft:spruce_log").getDefaultState();
-        BlockState pineLeaves = tree_taiga1.notDecayingLeaf(Main.getBlockByID("wildnature:pine_leaves"));
         BlockState firLog = Main.getBlockByID("minecraft:spruce_log").getDefaultState();
         BlockState firLeaves = tree_taiga1.notDecayingLeaf(Main.getBlockByID("wildnature:fir_leaves"));
         BlockState spruceLog = Main.getBlockByID("minecraft:spruce_log").getDefaultState();
         BlockState spruceLeaves = tree_taiga1.notDecayingLeaf(Main.getBlockByID("minecraft:spruce_leaves"));
 
 
-        int x = 0;
+        int x = 1;
         while (x < 3) {
             BlockState LOG = null;
             BlockState LEAVES = null;
-            if (x == 0) {
-                LOG = pineLog;
-                LEAVES = pineLeaves;
-            } else if (x == 1) {
+            if (x == 1) {
                 LOG = firLog;
                 LEAVES = firLeaves;
             } else if (x == 2) {

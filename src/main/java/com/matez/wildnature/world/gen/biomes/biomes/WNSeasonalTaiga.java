@@ -3,6 +3,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -17,8 +18,6 @@ import com.matez.wildnature.world.gen.structures.nature.woods.pine.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.world.gen.feature.MegaPineTree;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 
 import static net.minecraft.world.gen.surfacebuilders.SurfaceBuilder.GIANT_TREE_TAIGA;
@@ -38,6 +37,7 @@ public class WNSeasonalTaiga extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.BEECH,LogType.BIRCH,LogType.PINE,LogType.PURPLE_BEECH,LogType.LARCH,LogType.SEASONAL_BIRCH_YELLOW,LogType.SEASONAL_BIRCH_BROWN,LogType.SEASONAL_BIRCH_ORANGE,LogType.SEASONAL_BIRCH_RED)
                 .parent(null));
 
 

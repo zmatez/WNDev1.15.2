@@ -1,8 +1,0 @@
-{
-    "parent": "wildnature:block/pillar",
-    "textures": {
-        "particle": "wildnature:blocks/rocks/conglomerate/conglomerate_pillar",
-        "0": "wildnature:blocks/rocks/conglomerate/conglomerate_pillar",
-        "1": "wildnature:blocks/rocks/conglomerate/conglomerate_polished"
-    }
-}

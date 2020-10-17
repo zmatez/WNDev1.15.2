@@ -1,0 +1,17 @@
+{
+  "group": "wildnature:stone_polished_wall",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_purple_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_purple_wall_polished",
+    "count": 6
+  }
+}

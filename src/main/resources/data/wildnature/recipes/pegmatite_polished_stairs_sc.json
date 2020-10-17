@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:pegmatite_polished"
-  },
-  "result": "wildnature:pegmatite_polished_stairs",
-  "count": 1
-}

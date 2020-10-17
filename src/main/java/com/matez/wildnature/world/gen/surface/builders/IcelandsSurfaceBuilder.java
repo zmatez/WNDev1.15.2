@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class IcelandsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
-    private static final BlockState WHITE_TERRACOTTA = WNBlocks.MARBLE_ROCK.getDefaultState();
+    private static final BlockState WHITE_TERRACOTTA = WNBlocks.MARBLE.getDefaultState();
     private static final BlockState ORANGE_TERRACOTTA = Blocks.SNOW_BLOCK.getDefaultState();
     private static final BlockState TERRACOTTA = Blocks.PACKED_ICE.getDefaultState();
     private static final BlockState YELLOW_TERRACOTTA = Blocks.DIORITE.getDefaultState();
@@ -112,7 +112,7 @@ public class IcelandsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     }
 
     private boolean isBlockUsed(Block block) {
-        return block == Blocks.SNOW_BLOCK || block == Blocks.ICE || block == Blocks.PACKED_ICE || block == Blocks.BLUE_ICE || block == Blocks.DIORITE || block == WNBlocks.MARBLE_ROCK
+        return block == Blocks.SNOW_BLOCK || block == Blocks.ICE || block == Blocks.PACKED_ICE || block == Blocks.BLUE_ICE || block == Blocks.DIORITE || block == WNBlocks.MARBLE
                 || block == Blocks.WHITE_TERRACOTTA || block == Blocks.ORANGE_TERRACOTTA || block == Blocks.MAGENTA_TERRACOTTA || block == Blocks.LIGHT_BLUE_TERRACOTTA || block == Blocks.YELLOW_TERRACOTTA || block == Blocks.LIME_TERRACOTTA || block == Blocks.PINK_TERRACOTTA || block == Blocks.GRAY_TERRACOTTA || block == Blocks.LIGHT_GRAY_TERRACOTTA || block == Blocks.CYAN_TERRACOTTA || block == Blocks.PURPLE_TERRACOTTA || block == Blocks.BLUE_TERRACOTTA || block == Blocks.BROWN_TERRACOTTA || block == Blocks.GREEN_TERRACOTTA || block == Blocks.RED_TERRACOTTA || block == Blocks.BLACK_TERRACOTTA;
     }
 

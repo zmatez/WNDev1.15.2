@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/marble/marble_bricks_long",
-        "top": "wildnature:blocks/rocks/marble/marble_bricks_long",
-        "side": "wildnature:blocks/rocks/marble/marble_bricks_long"
-    }
-}

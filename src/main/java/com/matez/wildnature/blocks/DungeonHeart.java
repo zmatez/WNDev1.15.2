@@ -1,7 +1,7 @@
 package com.matez.wildnature.blocks;
 
 import com.matez.wildnature.lists.WNBlocks;
-import com.matez.wildnature.registry.ParticleRegistry;
+import com.matez.wildnature.registry.particles.ParticleRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;

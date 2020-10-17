@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:conglomerate_bricks"
-  },
-  "result": "wildnature:conglomerate_wall_bricks",
-  "count": 1
-}

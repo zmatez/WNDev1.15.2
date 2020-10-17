@@ -2,10 +2,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
-import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
-import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
-import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
-import com.matez.wildnature.world.gen.biomes.setup.WNBiomes;
+import com.matez.wildnature.world.gen.biomes.setup.*;
 import com.matez.wildnature.world.gen.biomes.terrain.IHaveRiver;
 import com.matez.wildnature.world.gen.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.gen.surface.SurfaceRegistry;
@@ -32,6 +29,7 @@ public class WNLushDesert extends WNBiome implements IHaveRiver {
                 .downfall(0.2F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.ACACIA)
                 .parent(null));
 
 

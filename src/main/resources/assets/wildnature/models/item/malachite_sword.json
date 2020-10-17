@@ -1,6 +1,135 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "wildnature:items/tools/malachite_sword"
+  "credit": "Made with Blockbench",
+  "parent": "item/handheld",
+  "texture_size": [
+    32,
+    32
+  ],
+  "textures": {
+    "particle": "wildnature:items/gems/malachite/malachite_sword",
+    "layer0": "wildnature:items/gems/malachite/malachite_sword"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        11,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        12.75,
+        2.25
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        11,
+        90,
+        -55
+      ],
+      "translation": [
+        0.25,
+        13,
+        1.5
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -6,
+        -90,
+        27
+      ],
+      "translation": [
+        3.5,
+        11.75,
+        0.38
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -6,
+        91,
+        -27
+      ],
+      "translation": [
+        3.5,
+        11.75,
+        0.25
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        6.25,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.7
+      ]
+    },
+    "gui": {
+      "translation": [
+        8.75,
+        8.5,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        0.7
+      ]
+    },
+    "head": {
+      "rotation": [
+        8,
+        6,
+        -36
+      ],
+      "translation": [
+        7,
+        3.5,
+        -2.5
+      ],
+      "scale": [
+        2.25,
+        2.17,
+        1
+      ]
+    },
+    "fixed": {
+      "translation": [
+        6.25,
+        6.25,
+        0
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
     }
+  }
 }

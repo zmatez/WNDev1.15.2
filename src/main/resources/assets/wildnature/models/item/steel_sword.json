@@ -1,0 +1,135 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "item/handheld",
+  "texture_size": [
+    32,
+    32
+  ],
+  "textures": {
+    "particle": "wildnature:items/gems/steel/steel_sword",
+    "layer0": "wildnature:items/gems/steel/steel_sword"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        11,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        11.25,
+        2
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        11,
+        90,
+        -55
+      ],
+      "translation": [
+        0.25,
+        11.5,
+        1.5
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -6,
+        -90,
+        27
+      ],
+      "translation": [
+        3,
+        10.5,
+        0.38
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -6,
+        91,
+        -27
+      ],
+      "translation": [
+        3,
+        10.5,
+        0
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        6.25,
+        0
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        0.7
+      ]
+    },
+    "gui": {
+      "translation": [
+        5.25,
+        5,
+        0
+      ],
+      "scale": [
+        1.6,
+        1.6,
+        0.7
+      ]
+    },
+    "head": {
+      "rotation": [
+        8,
+        6,
+        -36
+      ],
+      "translation": [
+        7,
+        3.5,
+        -2.5
+      ],
+      "scale": [
+        2.25,
+        2.17,
+        1
+      ]
+    },
+    "fixed": {
+      "translation": [
+        5,
+        4.25,
+        0
+      ],
+      "scale": [
+        1.5,
+        1.5,
+        0.7
+      ]
+    }
+  }
+}

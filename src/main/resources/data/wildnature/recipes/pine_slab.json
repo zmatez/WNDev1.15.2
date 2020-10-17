@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:pine_planks"
+    }
+  },
+  "result": {
+    "item": "wildnature:pine_slab",
+    "count": 6
+  }
+}

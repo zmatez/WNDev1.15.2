@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/gneiss_corner_slab_cobble_mossy" },
+    "facing=east": { "model": "wildnature:block/gneiss_corner_slab_cobble_mossy", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/gneiss_corner_slab_cobble_mossy", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/gneiss_corner_slab_cobble_mossy", "y": 270, "uvlock": true}
+  }
+}

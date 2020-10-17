@@ -19,7 +19,7 @@ public class TropicalRiver extends URBiome {
 
     @Override
     public BlockState getElevationBlock(long seed,Random rand, BlockPos pos) {
-        return URBiomeBuilders.QUADRUPLE_NOISE.build(Blocks.STONE.getDefaultState(),WNBlocks.LIMESTONE_ROCK.getDefaultState(),WNBlocks.TROPICAL_DIRT.getDefaultState(),WNBlocks.MARBLE_ROCK.getDefaultState(),seed,rand,pos,elevationNoise);
+        return URBiomeBuilders.QUADRUPLE_NOISE.build(Blocks.STONE.getDefaultState(),WNBlocks.LIMESTONE.getDefaultState(),WNBlocks.TROPICAL_DIRT.getDefaultState(),WNBlocks.MARBLE.getDefaultState(),seed,rand,pos,elevationNoise);
     }
 
 

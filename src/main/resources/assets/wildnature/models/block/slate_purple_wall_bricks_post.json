@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_wall_post",
+    "textures": {
+        "wall": "wildnature:blocks/rocks/slate_purple/slate_purple_bricks"
+    }
+}

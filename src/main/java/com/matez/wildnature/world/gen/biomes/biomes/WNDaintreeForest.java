@@ -3,6 +3,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -30,7 +31,6 @@ import com.matez.wildnature.world.gen.surface.configs.CustomSurfaceBuilderConfig
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
@@ -48,6 +48,8 @@ public class WNDaintreeForest extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.OAK,LogType.JUNGLE,LogType.SMALL_EBONY,LogType.PALM,LogType.MAHOGANY,LogType.EUCALYPTUS,LogType.POMEGRANATE,LogType.PEACH,LogType.ORANGE)
+
                 .parent(null));
 
 
@@ -106,12 +108,12 @@ public class WNDaintreeForest extends WNBiome {
         WNBiomeFeatures.addTree(this, new tree_palm15().setCustomLog(Main.getBlockByID("wildnature:palm_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:palm_leaves"))), 1);
         WNBiomeFeatures.addTree(this, new tree_palm16().setCustomLog(Main.getBlockByID("wildnature:palm_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:palm_leaves"))), 1);
         WNBiomeFeatures.addTree(this, new tree_palm17().setCustomLog(Main.getBlockByID("wildnature:palm_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:palm_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new mahogany1().setCustomLog(Main.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("minecraft:mahogany_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new mahogany2().setCustomLog(Main.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("minecraft:mahogany_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new mahogany3().setCustomLog(Main.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("minecraft:mahogany_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new mahogany4().setCustomLog(Main.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("minecraft:mahogany_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new mahoganyshrub1().setCustomLog(Main.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("minecraft:mahogany_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new mahoganyshrub2().setCustomLog(Main.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("minecraft:mahogany_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new mahogany1().setCustomLog(Main.getBlockByID("wildnature:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:mahogany_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new mahogany2().setCustomLog(Main.getBlockByID("wildnature:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:mahogany_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new mahogany3().setCustomLog(Main.getBlockByID("wildnature:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:mahogany_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new mahogany4().setCustomLog(Main.getBlockByID("wildnature:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:mahogany_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new mahoganyshrub1().setCustomLog(Main.getBlockByID("wildnature:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:mahogany_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new mahoganyshrub2().setCustomLog(Main.getBlockByID("wildnature:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Main.getBlockByID("wildnature:mahogany_leaves"))), 1);
         WNBiomeFeatures.addTree(this, new eucalyptus_1(), 1);
         WNBiomeFeatures.addTree(this, new eucalyptus_2(), 1);
         WNBiomeFeatures.addTree(this, new eucalyptus_3(), 1);

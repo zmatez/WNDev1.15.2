@@ -1,13 +1,12 @@
 package com.matez.wildnature.world.gen.biomes.layer;
 
-import com.matez.wildnature.world.gen.biomes.setup.WNBiomes;
+import com.matez.wildnature.Main;
+import com.matez.wildnature.world.gen.biomes.layer.WNIslandLayer;
+import com.matez.wildnature.world.gen.biomes.layer.WNLayerUtil;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.INoiseRandom;
-import net.minecraft.world.gen.OverworldGenSettings;
-import net.minecraft.world.gen.layer.BiomeLayer;
-import net.minecraft.world.gen.layer.LayerUtil;
 import net.minecraft.world.gen.layer.traits.IC0Transformer;
 
 public class WNBiomeLayer implements IC0Transformer {
@@ -27,16 +26,11 @@ public class WNBiomeLayer implements IC0Transformer {
     private static final int SWAMP = Registry.BIOME.getId(Biomes.SWAMP);
     private static final int TAIGA = Registry.BIOME.getId(Biomes.TAIGA);
     private static final int SNOWY_TAIGA = Registry.BIOME.getId(Biomes.SNOWY_TAIGA);
-    private static final int EASTER_ISLAND = Registry.BIOME.getId(WNBiomes.EasterIsland);
-    private static final int TROPICAL_ISLAND = Registry.BIOME.getId(WNBiomes.TropicalIsland);
-
-
-
+    private final int field_227472_v_;
     @SuppressWarnings("unchecked")
     private java.util.List<net.minecraftforge.common.BiomeManager.BiomeEntry>[] biomes = new java.util.ArrayList[net.minecraftforge.common.BiomeManager.BiomeType.values().length];
-    private final OverworldGenSettings settings;
 
-    public WNBiomeLayer(WorldType p_i48641_1_, OverworldGenSettings p_i48641_2_) {
+    public WNBiomeLayer(WorldType p_i225882_1_, int p_i225882_2_) {
         for (net.minecraftforge.common.BiomeManager.BiomeType type : net.minecraftforge.common.BiomeManager.BiomeType.values()) {
             com.google.common.collect.ImmutableList<net.minecraftforge.common.BiomeManager.BiomeEntry> biomesToAdd = net.minecraftforge.common.BiomeManager.getBiomes(type);
             int idx = type.ordinal();
@@ -51,7 +45,7 @@ public class WNBiomeLayer implements IC0Transformer {
         biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.SAVANNA, 20));
         biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.PLAINS, 10));
 
-        if (p_i48641_1_ == WorldType.DEFAULT_1_1) {
+        if (p_i225882_1_ == WorldType.DEFAULT_1_1) {
             biomes[desertIdx].clear();
             biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.DESERT, 10));
             biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.FOREST, 10));
@@ -59,23 +53,24 @@ public class WNBiomeLayer implements IC0Transformer {
             biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.SWAMP, 10));
             biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.PLAINS, 10));
             biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.TAIGA, 10));
-            this.settings = null;
+            this.field_227472_v_ = -1;
         } else {
-            this.settings = p_i48641_2_;
+            this.field_227472_v_ = p_i225882_2_;
         }
 
     }
 
     public int apply(INoiseRandom context, int value) {
-        if (this.settings != null && this.settings.getBiomeId() >= 0) {
-            return this.settings.getBiomeId();
+        if (this.field_227472_v_ >= 0) {
+            return this.field_227472_v_;
         } else {
             int i = (value & 3840) >> 8;
             value = value & -3841;
-
             boolean isLikeIsland = false;
+
             for(WNIslandLayer.Island island : WNIslandLayer.islands){
                 if(island.getBiome()==value){
+                    Main.LOGGER.debug("found island " + value);
                     isLikeIsland=true;
                     break;
                 }
@@ -104,7 +99,7 @@ public class WNBiomeLayer implements IC0Transformer {
                     case 4:
                         return Registry.BIOME.getId(getWeightedBiomeEntry(net.minecraftforge.common.BiomeManager.BiomeType.ICY, context).biome);
                     default:
-                        return 0;
+                        return MUSHROOM_FIELDS;
                 }
             } else {
                 return value;

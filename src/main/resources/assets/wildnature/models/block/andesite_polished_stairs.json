@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/andesite/andesite_polished",
-        "top": "wildnature:blocks/rocks/andesite/andesite_polished",
-        "side": "wildnature:blocks/rocks/andesite/andesite_polished"
-    }
-}

@@ -7,6 +7,7 @@ import com.matez.wildnature.render.IRenderLayer;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -59,5 +60,10 @@ public class DoorBase extends DoorBlock implements IRenderLayer {
         }
 
         return list;
+    }
+
+    @Override
+    public RenderType getRenderLayer() {
+        return RenderType.getCutoutMipped();
     }
 }

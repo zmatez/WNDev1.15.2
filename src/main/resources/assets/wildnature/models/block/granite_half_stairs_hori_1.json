@@ -1,7 +1,7 @@
 {
     "parent": "wildnature:block/half_stairs_hori_1",
     "textures": {
-        "material": "block/granite",
-        "particle": "block/granite"
+        "material": "minecraft:block/granite",
+        "particle": "minecraft:block/granite"
     }
 }

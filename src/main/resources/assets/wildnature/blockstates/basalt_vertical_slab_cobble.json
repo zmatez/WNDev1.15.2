@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/basalt_vertical_slab_cobble" },
+    "facing=east": { "model": "wildnature:block/basalt_vertical_slab_cobble", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/basalt_vertical_slab_cobble", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/basalt_vertical_slab_cobble", "y": 270, "uvlock": true}
+  }
+}

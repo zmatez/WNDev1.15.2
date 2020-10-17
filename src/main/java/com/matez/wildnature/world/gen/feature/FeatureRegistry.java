@@ -10,6 +10,7 @@ import net.minecraft.world.gen.placement.CountConfig;
 import net.minecraftforge.event.RegistryEvent;
 
 public class FeatureRegistry {
+    public static Feature<CountConfig> BEEHIVE_FEATURE;
     public static Feature<NoFeatureConfig> CACTUS_FEATURE;
     public static Feature<NoFeatureConfig> CANDY_CANE_FEATURE;
     public static Feature<NoFeatureConfig> CATTAIL_FEATURE;
@@ -53,6 +54,7 @@ public class FeatureRegistry {
     public static Feature<NoFeatureConfig> FRUIT_FEATURE;
     public static Feature<CountConfig> LEAF_FREEZE_FEATURE;
     public static Feature<CountConfig> MOSS_FEATURE;
+    public static Feature<CountConfig> LICHEN_FEATURE;
     public static Feature<WNOreFeatureConfig> ORE_FEATURE;
     public static Feature<BlockFeatureConfig> SCATTERED_PLANT_FEATURE;
     public static Feature<BlockFeatureConfig> TREE_VINES_FEATURE;
@@ -63,6 +65,7 @@ public class FeatureRegistry {
     public static Feature<BlockFeatureConfig> WISTERIA_FEATURE;
 
     private static Feature<?>[] features = new Feature<?>[]{
+            BEEHIVE_FEATURE = new WNBeehiveFeature(CountConfig::deserialize),
             CACTUS_FEATURE = new CactusFeature(NoFeatureConfig::deserialize),
             CANDY_CANE_FEATURE = new CandyCaneFeature(NoFeatureConfig::deserialize),
             CATTAIL_FEATURE = new CattailFeature(NoFeatureConfig::deserialize),
@@ -106,6 +109,7 @@ public class FeatureRegistry {
             FRUIT_FEATURE = new WNFruitFeature(NoFeatureConfig::deserialize),
             LEAF_FREEZE_FEATURE = new WNLeafFreezeFeature(CountConfig::deserialize),
             MOSS_FEATURE = new WNMossFeature(CountConfig::deserialize),
+            LICHEN_FEATURE = new WNLichenFeature(CountConfig::deserialize),
             ORE_FEATURE = new WNOreFeature(WNOreFeatureConfig::deserialize),
             SCATTERED_PLANT_FEATURE = new WNScatteredPlantFeature(BlockFeatureConfig::deserialize),
             TREE_VINES_FEATURE = new WNTreeVinesFeature(BlockFeatureConfig::deserialize),

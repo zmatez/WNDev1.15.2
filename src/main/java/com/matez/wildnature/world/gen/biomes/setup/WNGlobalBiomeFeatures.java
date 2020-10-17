@@ -86,6 +86,9 @@ public class WNGlobalBiomeFeatures {
             if(CommonConfig.generateFallenTrees.get()){
                 WNBiomeFeatures.addFallenTrees(biome);
             }
+            if(CommonConfig.generateBeehives.get()){
+                WNBiomeFeatures.addBeehives(biome);
+            }
 
             //carvers
             if(CommonConfig.generateUndergroundRivers.get()){

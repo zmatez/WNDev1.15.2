@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.gen.biomes.biomes;
 
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -26,6 +27,7 @@ public class WNTintedDesert extends WNBiome {
                 .downfall(0.0F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.NONE)
                 .parent(null));//-7052122241400916496 -346 101 943
 
 

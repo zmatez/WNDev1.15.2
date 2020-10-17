@@ -1,18 +1,13 @@
 package com.matez.wildnature.blocks;
 
 import com.matez.wildnature.other.Utilities;
-import com.matez.wildnature.registry.ParticleRegistry;
+import com.matez.wildnature.registry.particles.ParticleRegistry;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 

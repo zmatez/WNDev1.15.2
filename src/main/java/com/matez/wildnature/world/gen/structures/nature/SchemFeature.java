@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.matez.wildnature.blocks.FloweringLeaves;
 import com.matez.wildnature.blocks.FruitableLeaves;
 import com.matez.wildnature.blocks.LeavesBase;
+import com.matez.wildnature.customizable.CommonConfig;
 import com.matez.wildnature.lists.WNBlocks;
 import com.matez.wildnature.other.Utilities;
 import com.mojang.brigadier.StringReader;
@@ -28,15 +29,13 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.common.IPlantable;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 
 import static net.minecraft.world.gen.feature.AbstractTreeFeature.isWater;
 
 public class SchemFeature extends Feature<NoFeatureConfig> {
+    public static final HashMap<String, SchemFeature> schemFeatures = new HashMap<>();
 
     public BlockState LEAVES = notDecayingLeaf(Blocks.OAK_LEAVES);
     public BlockState LOG = Blocks.OAK_LOG.getDefaultState();
@@ -65,6 +64,7 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         LEAVES_OVERRIDE = null;
         LOG_OVERRIDE = null;
         BRANCH = LEAVES;
+        schemFeatures.put(this.getClass().getSimpleName().toLowerCase(),this);
     }
 
 
@@ -130,26 +130,33 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        return place(worldIn,rand,pos);
+        return place(worldIn,rand,pos,true);
+    }
+
+    public boolean placeStructure(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+        return place(worldIn,rand,pos,false);
     }
 
     //For AbstractTreeFeature
     protected boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos positionIn, Set<BlockPos> changedLogs, Set<BlockPos> changedLeaves, MutableBoundingBox boundingBoxIn, NoFeatureConfig configIn) {
-        return place(generationReader,rand,positionIn);
+        return place(generationReader,rand,positionIn,true);
     }
 
-    protected boolean place(IWorldGenerationReader worldIn, Random rand, BlockPos position) {
-        if (!canGrowTree(worldIn, position.down(), getSapling())) {
-            return false;
-        }
+    protected boolean place(IWorldGenerationReader worldIn, Random rand, BlockPos position, boolean isNaturalPlace) {
         BlockPos soilPos = position.down();
-        int x = 0;
-        while (isWater(worldIn, soilPos)) {
-            soilPos = soilPos.down();
-            x++;
-        }
-        if (x >= 15) {
-            return false;
+        if(isNaturalPlace) {
+            if (!canGrowTree(worldIn, position.down(), getSapling())) {
+                return false;
+            }
+
+            int x = 0;
+            while (isWater(worldIn, soilPos)) {
+                soilPos = soilPos.down();
+                x++;
+            }
+            if (x >= 15) {
+                return false;
+            }
         }
 
         this.world = (IWorld) worldIn;
@@ -294,6 +301,10 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
 
         addedBlocks.clear();
         bottomBlocks.clear();
+    }
+
+    public ArrayList<BlockPos> getAddedBlocks() {
+        return addedBlocks;
     }
 
     private BlockPos downBlock(BlockPos blockPos, int down) {

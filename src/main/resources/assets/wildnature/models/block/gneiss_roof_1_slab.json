@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/gneiss/gneiss_roof_1",
-        "top": "wildnature:blocks/rocks/gneiss/gneiss_roof_1",
-        "side": "wildnature:blocks/rocks/gneiss/gneiss_roof_1"
-    }
-}

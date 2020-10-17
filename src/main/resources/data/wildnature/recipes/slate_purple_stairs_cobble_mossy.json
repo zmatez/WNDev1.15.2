@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:mossy_cobble_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:slate_purple_cobble_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:slate_purple_stairs_cobble_mossy",
+    "count": 4
+  }
+}

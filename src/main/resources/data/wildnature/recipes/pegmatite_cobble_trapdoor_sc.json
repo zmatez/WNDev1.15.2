@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:pegmatite_cobble"
-  },
-  "result": "wildnature:pegmatite_cobble_trapdoor",
-  "count": 1
-}

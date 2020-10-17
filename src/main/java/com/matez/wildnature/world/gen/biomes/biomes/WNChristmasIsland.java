@@ -3,6 +3,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.config.ConfigSettings;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -32,6 +33,7 @@ public class WNChristmasIsland extends WNBiome {
                 .downfall(0.9F)
                 .waterColor(ConfigSettings.coldWaterColor)
                 .waterFogColor(ConfigSettings.coldWaterFogColor)
+                .logTypes(LogType.SPRUCE)
                 .parent(null));
 
         WNBiomeFeatures.addIgloos(this);

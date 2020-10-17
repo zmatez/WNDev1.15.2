@@ -4,6 +4,7 @@ import com.matez.wildnature.blocks.BelladonnaBlock;
 import com.matez.wildnature.blocks.DoubleBushBaseFlowering;
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -40,6 +41,7 @@ public class WNSakuraJungle extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.SAKURA)
                 .parent(null));
 
 

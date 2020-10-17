@@ -115,56 +115,33 @@ public class CaveStarBlock extends EndRodBlock implements IRenderLayer {
     @Override
     public void onNeighborChange(BlockState state, IWorldReader world, BlockPos pos, BlockPos neighbor) {
 
-
-
     }
 
-    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        BlockPos stay = null;
-        if(true){
-            if(stateIn.get(FACING).getIndex()==1){
-                return Blocks.AIR.getDefaultState();
-            }
-            return stateIn;
-        }
-
-        int f = stateIn.get(FACING).getIndex();
-        if(f==0){
-            stay = currentPos.up();
-        }else if(f==1){
-            stay = currentPos.down();
-        }else if(f==2){
-            stay = currentPos.south();
-        }else if(f==3){
-            stay = currentPos.north();
-        }else if(f==4){
-            stay = currentPos.east();
-        }else if(f==5){
-            stay = currentPos.west();
-        }
-
-
-        if(stay!=null) {
-            BlockState downstate = worldIn.getBlockState(stay);
-            if (!isSolid(downstate)) {
-                return Blocks.AIR.getDefaultState();
-            } else {
-                return stateIn;
-            }
-        }else{
-            return stateIn;
-        }
+        return facing.getOpposite() == stateIn.get(FACING) && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : stateIn;
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        Direction lvt_2_1_ = context.getFace();
-        BlockState lvt_3_1_ = context.getWorld().getBlockState(context.getPos().offset(lvt_2_1_.getOpposite()));
-        if(lvt_2_1_==Direction.UP){
+        Direction dir = context.getFace();
+        BlockState state = context.getWorld().getBlockState(context.getPos().offset(dir.getOpposite()));
+        if(dir==Direction.UP){
             return null;
         }
-        return lvt_3_1_.getBlock() == this && lvt_3_1_.get(FACING) == lvt_2_1_ ? (BlockState)this.getDefaultState().with(FACING, lvt_2_1_.getOpposite()) : (BlockState)this.getDefaultState().with(FACING, lvt_2_1_);
+        BlockState s = state.getBlock() == this && state.get(FACING) == dir ? (BlockState)this.getDefaultState().with(FACING, dir.getOpposite()) : (BlockState)this.getDefaultState().with(FACING, dir);
+        if (s.isValidPosition(context.getWorld(), context.getPos())) {
+            return s;
+        }
+        return null;
     }
 
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        Direction direction = state.get(FACING);
+        if(direction==Direction.UP){
+            return false;
+        }
+        BlockPos blockpos = pos.offset(direction.getOpposite());
+        BlockState blockstate = worldIn.getBlockState(blockpos);
+        return blockstate.isSolidSide(worldIn, blockpos, direction);
+    }
 
 }

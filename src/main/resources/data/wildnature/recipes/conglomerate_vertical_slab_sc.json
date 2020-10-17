@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:conglomerate"
-  },
-  "result": "wildnature:conglomerate_vertical_slab",
-  "count": 1
-}

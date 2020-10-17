@@ -1,0 +1,12 @@
+{
+  "group": "wildnature:stone_button",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wildnature:slate_purple"
+    }
+  ],
+  "result": {
+    "item": "wildnature:slate_purple_button"
+  }
+}

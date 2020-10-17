@@ -1,11 +1,13 @@
 package com.matez.wildnature.world.gen.biomes.setup;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -39,6 +41,8 @@ public class WNBiomeBuilder extends Biome.Builder {
     private Fog fog;
     @Nullable
     private String parent;
+    @Nullable
+    private final ArrayList<LogType> treeLogTypes = new ArrayList<>();
 
     public Biome.Builder getBiomeBuilder(){
         return new Biome.Builder()
@@ -52,7 +56,6 @@ public class WNBiomeBuilder extends Biome.Builder {
                 .waterColor(waterColor)
                 .waterFogColor(waterFogColor)
                 .parent(parent);
-
     }
 
     public <SC extends ISurfaceBuilderConfig> WNBiomeBuilder surfaceBuilder(SurfaceBuilder<SC> p_222351_1_, SC p_222351_2_) {
@@ -135,10 +138,16 @@ public class WNBiomeBuilder extends Biome.Builder {
         return this;
     }
 
-    public String toString() {
-        return "WNBiomeBuilder{\nsurfaceBuilder=" + this.surfaceBuilder + ",\nprecipitation=" + this.precipitation + ",\nbiomeCategory=" + this.category + ",\ntopography=" + this.topography +",\nclimate=" + this.climate +",\ndepth=" + this.depth + ",\nscale=" + this.scale + ",\ntemperature=" + this.temperature + ",\ndownfall=" + this.downfall + ",\nwaterColor=" + this.waterColor + ",\nwaterFogColor=" + this.waterFogColor + ",\nparent='" + this.parent + '\'' + "\n" + '}';
+    public WNBiomeBuilder logTypes(LogType... type){
+        for (LogType logType : type) {
+            treeLogTypes.add(logType);
+        }
+        return this;
     }
 
+    public String toString() {
+        return "WNBiomeBuilder{\nsurfaceBuilder=" + this.surfaceBuilder + ",\nprecipitation=" + this.precipitation + ",\nbiomeCategory=" + this.category + ",\ntopography=" + this.topography +",\nclimate=" + this.climate +",\ndepth=" + this.depth + ",\nscale=" + this.scale + ",\ntemperature=" + this.temperature + ",\ndownfall=" + this.downfall + ",\nwaterColor=" + this.waterColor + ",\nwaterFogColor=" + this.waterFogColor + ",\ntreeLogTypes=" + this.treeLogTypes + ",\nparent='" + this.parent + '\'' + "\n" + '}';
+    }
 
     @Nullable
     public Float getHeightVariation() {
@@ -153,6 +162,11 @@ public class WNBiomeBuilder extends Biome.Builder {
     @Nullable
     public Float getDepth() {
         return depth;
+    }
+
+    @Nullable
+    public ArrayList<LogType> getLogTypes() {
+        return treeLogTypes;
     }
 
     public static class Fog{

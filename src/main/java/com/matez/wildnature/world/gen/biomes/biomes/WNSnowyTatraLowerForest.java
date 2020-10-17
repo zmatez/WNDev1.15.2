@@ -3,6 +3,7 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -39,6 +40,7 @@ public class WNSnowyTatraLowerForest extends WNBiome {
                 .downfall(0.9F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.FIR,LogType.SPRUCE,LogType.PINE,LogType.BEECH,LogType.LARCH,LogType.ROWAN)
                 .parent(null));
 
 
@@ -71,7 +73,7 @@ public class WNSnowyTatraLowerForest extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.HEATH_PURPLE.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.HEATHER_YELLOW.getDefaultState().with(FloweringBushBase.FLOWERING, true), 2);
         WNBiomeFeatures.addBlob(this, WNBlocks.BROWN_PODZOL.getDefaultState(), 2, true, false, 3);
-        WNBiomeFeatures.addBlob(this, WNBlocks.GRANITE_COBBLE_MOSSY.getDefaultState(), 3, false, true, 1);
+        //WNBiomeFeatures.addBlob(this, WNBlocks.GRANITE_COBBLE_MOSSY.getDefaultState(), 3, false, true, 1);
 
         WNBiomeFeatures.addTree(this, new tree_fir9().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.FIR_LEAVES)), 8);
         WNBiomeFeatures.addTree(this, new tree_fir6().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.FIR_LEAVES)), 8);

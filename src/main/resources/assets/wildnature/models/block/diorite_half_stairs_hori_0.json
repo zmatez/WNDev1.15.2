@@ -1,7 +1,7 @@
 {
     "parent": "wildnature:block/half_stairs_hori_0",
     "textures": {
-        "material": "block/diorite",
-        "particle": "block/diorite"
+        "material": "minecraft:block/diorite",
+        "particle": "minecraft:block/diorite"
     }
 }

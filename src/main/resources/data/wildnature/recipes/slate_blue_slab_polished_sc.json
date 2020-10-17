@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:slate_blue_polished"
+  },
+  "result": "wildnature:slate_blue_slab_polished",
+  "count": 2
+}

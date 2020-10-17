@@ -26,7 +26,7 @@ public class WNItemColors {
                 WNBlocks.MANGROVE_LEAVES, WNBlocks.MAPLE_LEAVES, WNBlocks.POPLAR_LEAVES, WNBlocks.WILLOW_LEAVES, WNBlocks.SMALL_BUSH_LEAVES, WNBlocks.LARGE_BUSH_LEAVES, WNBlocks.DENSE_BUSH_LEAVES);
         colors.register((p_210239_0_, p_210239_1_) -> {
             return p_210239_1_ > 0 ? -1 : ((IDyeableItem)p_210239_0_.getItem()).getColor(p_210239_0_);
-        }, WNItems.SILVER_SWORD, WNItems.SILVER_PICKAXE, WNItems.SILVER_AXE, WNItems.SILVER_SHOVEL, WNItems.SILVER_HOE, WNItems.SILVER_INGOT);
+        }, WNItems.SILVER_SWORD, WNItems.SILVER_PICKAXE, WNItems.SILVER_AXE, WNItems.SILVER_SHOVEL, WNItems.SILVER_INGOT);
     }
 
 }

@@ -1,8 +1,0 @@
-{
-    "parent": "wildnature:block/pillar",
-    "textures": {
-        "particle": "wildnature:blocks/rocks/pegmatite/pegmatite_pillar",
-        "0": "wildnature:blocks/rocks/pegmatite/pegmatite_pillar",
-        "1": "wildnature:blocks/rocks/pegmatite/pegmatite_polished"
-    }
-}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "log_button",
+  "ingredients": [
+    {
+      "tag": "wildnature:pine_logs"
+    },
+    {
+      "item": "wildnature:pine_planks"
+    }
+  ],
+  "result": {
+    "item": "wildnature:pine_log_button",
+    "count": 2
+  }
+}

@@ -2,9 +2,16 @@ package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.blocks.FloweringBushBase;
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
+import com.matez.wildnature.world.gen.structures.nature.woods.oak.oak1;
+import com.matez.wildnature.world.gen.structures.nature.woods.oak.oak2;
+import com.matez.wildnature.world.gen.structures.nature.woods.oak.oak3;
+import com.matez.wildnature.world.gen.structures.nature.woods.willow.small_willow1;
+import com.matez.wildnature.world.gen.structures.nature.woods.willow.small_willow2;
+import com.matez.wildnature.world.gen.structures.nature.woods.willow.small_willow3;
 import com.matez.wildnature.world.gen.surface.SurfaceRegistry;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -28,6 +35,7 @@ public class WNWetlands extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.SMALL_OAK,LogType.WILLOW)
                 .parent(null));
 
 
@@ -52,8 +60,13 @@ public class WNWetlands extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.WILD_WHEAT.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
         WNBiomeFeatures.addPlant(this, WNBlocks.GRASS_WHEAT.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
         WNBiomeFeatures.addCattail(this, 70);
-        //TODO BigTree
-        //WNBiomeFeatures.addTree(this, new BigTree(), 1);
+
+        WNBiomeFeatures.addTree(this, new oak1(), 1);
+        WNBiomeFeatures.addTree(this, new oak2(), 1);
+        WNBiomeFeatures.addTree(this, new oak3(), 1);
+        WNBiomeFeatures.addTree(this, new small_willow1(), 2);
+        WNBiomeFeatures.addTree(this, new small_willow2(), 2);
+        WNBiomeFeatures.addTree(this, new small_willow3(), 2);
 
         plantRate = 4;
         treeRate = 0;

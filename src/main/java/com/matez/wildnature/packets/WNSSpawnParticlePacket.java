@@ -16,9 +16,9 @@ public class WNSSpawnParticlePacket implements IPacket<IClientPlayNetHandler> {
    private float xCoord;
    private float yCoord;
    private float zCoord;
-   private float xOffset;
-   private float yOffset;
-   private float zOffset;
+   private float xSpeed;
+   private float ySpeed;
+   private float zSpeed;
    private float particleSpeed;
    private int particleCount;
    private boolean longDistance;
@@ -33,9 +33,9 @@ public class WNSSpawnParticlePacket implements IPacket<IClientPlayNetHandler> {
       this.xCoord = p_i47932_3_;
       this.yCoord = p_i47932_4_;
       this.zCoord = p_i47932_5_;
-      this.xOffset = p_i47932_6_;
-      this.yOffset = p_i47932_7_;
-      this.zOffset = p_i47932_8_;
+      this.xSpeed = p_i47932_6_;
+      this.ySpeed = p_i47932_7_;
+      this.zSpeed = p_i47932_8_;
       this.particleSpeed = p_i47932_9_;
       this.particleCount = p_i47932_10_;
    }
@@ -53,9 +53,9 @@ public class WNSSpawnParticlePacket implements IPacket<IClientPlayNetHandler> {
       this.xCoord = buf.readFloat();
       this.yCoord = buf.readFloat();
       this.zCoord = buf.readFloat();
-      this.xOffset = buf.readFloat();
-      this.yOffset = buf.readFloat();
-      this.zOffset = buf.readFloat();
+      this.xSpeed = buf.readFloat();
+      this.ySpeed = buf.readFloat();
+      this.zSpeed = buf.readFloat();
       this.particleSpeed = buf.readFloat();
       this.particleCount = buf.readInt();
       this.particle = this.readParticle(buf, particletype);
@@ -74,9 +74,9 @@ public class WNSSpawnParticlePacket implements IPacket<IClientPlayNetHandler> {
       buf.writeFloat(this.xCoord);
       buf.writeFloat(this.yCoord);
       buf.writeFloat(this.zCoord);
-      buf.writeFloat(this.xOffset);
-      buf.writeFloat(this.yOffset);
-      buf.writeFloat(this.zOffset);
+      buf.writeFloat(this.xSpeed);
+      buf.writeFloat(this.ySpeed);
+      buf.writeFloat(this.zSpeed);
       buf.writeFloat(this.particleSpeed);
       buf.writeInt(this.particleCount);
       this.particle.write(buf);
@@ -115,24 +115,24 @@ public class WNSSpawnParticlePacket implements IPacket<IClientPlayNetHandler> {
     * Gets the x coordinate offset for the particle. The particle may use the offset for particle spread.
     */
    @OnlyIn(Dist.CLIENT)
-   public float getXOffset() {
-      return this.xOffset;
+   public float getXSpeed() {
+      return this.xSpeed;
    }
 
    /**
     * Gets the y coordinate offset for the particle. The particle may use the offset for particle spread.
     */
    @OnlyIn(Dist.CLIENT)
-   public float getYOffset() {
-      return this.yOffset;
+   public float getYSpeed() {
+      return this.ySpeed;
    }
 
    /**
     * Gets the z coordinate offset for the particle. The particle may use the offset for particle spread.
     */
    @OnlyIn(Dist.CLIENT)
-   public float getZOffset() {
-      return this.zOffset;
+   public float getZSpeed() {
+      return this.zSpeed;
    }
 
    /**

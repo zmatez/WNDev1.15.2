@@ -591,21 +591,33 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
         }
     }
 
+
+
     public static void addMoss(Biome biomeIn){
         if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DENSE)){
             biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistry.MOSS_FEATURE.withConfiguration(new CountConfig(32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.mossRarityDense.get(),64,0,180))));
+            biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistry.LICHEN_FEATURE.withConfiguration(new CountConfig(32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.treeLichenRarityDense.get(),64,0,180))));
         }else if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.FOREST)) {
             biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistry.MOSS_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.mossRarity.get(), 64, 0, 180))));
-
+            biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistry.LICHEN_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.treeLichenRarityDense.get(), 64, 0, 180))));
         }
         if(biomeIn.getTempCategory()== Biome.TempCategory.WARM) {
             biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, FeatureRegistry.MOSS_FEATURE.withConfiguration(new CountConfig(64)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.mossRarityDense.get(), 10, 0, 40))));
         }
     }
 
+    public static void addBeehives(Biome biomeIn){
+        if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.FOREST)) {
+            if (BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DENSE)) {
+                biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistry.BEEHIVE_FEATURE.withConfiguration(new CountConfig(4)).withPlacement(Placement.COUNT_BIASED_RANGE.configure(new CountRangeConfig(63, 60, 0, 150))));
+            } else {
+                biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistry.BEEHIVE_FEATURE.withConfiguration(new CountConfig(8)).withPlacement(Placement.COUNT_BIASED_RANGE.configure(new CountRangeConfig(63, 60, 0, 150))));
+            }
+        }
+    }
+
     public static void addFallenTrees(Biome biomeIn) {
         if (BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.FOREST)) {
-            Main.LOGGER.info("Adding fallen trees for " + biomeIn.getRegistryName());
             boolean isDense = BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DENSE);
             boolean isConiferous = BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.CONIFEROUS);
             Biome.Category category = biomeIn.getCategory();

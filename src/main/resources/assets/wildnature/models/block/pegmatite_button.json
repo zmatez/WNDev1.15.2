@@ -1,6 +1,0 @@
-{
-    "parent": "block/button",
-    "textures": {
-        "texture": "wildnature:blocks/rocks/pegmatite/pegmatite"
-    }
-}

@@ -28,7 +28,7 @@ public class WildNatureBiomeProvider extends BiomeProvider {
 
     public WildNatureBiomeProvider(OverworldBiomeProviderSettings p_i48971_1_) {
         super(field_226847_e_);
-        this.genBiomes = LayerUtil.func_227474_a_(p_i48971_1_.getSeed(), p_i48971_1_.getWorldType(), p_i48971_1_.getGeneratorSettings());
+        this.genBiomes = WNLayerUtil.func_227474_a_(p_i48971_1_.getSeed(), p_i48971_1_.getWorldType(), p_i48971_1_.getGeneratorSettings());
     }
 
     public Biome getNoiseBiome(int p_225526_1_, int p_225526_2_, int p_225526_3_) {

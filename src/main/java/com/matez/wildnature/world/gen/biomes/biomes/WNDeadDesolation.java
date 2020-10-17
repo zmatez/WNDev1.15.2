@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.gen.biomes.biomes;
 
 import com.matez.wildnature.Main;
+import com.matez.wildnature.world.gen.biomes.setup.LogType;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiome;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomeFeatures;
@@ -28,6 +29,7 @@ public class WNDeadDesolation extends WNBiome {
                 .downfall(0.1F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
+                .logTypes(LogType.DEAD)
                 .parent(null));
 
 

@@ -1,9 +1,4 @@
 {   "parent": "block/block",
-    "textures": {
-        "particle": "",
-        "log": "",
-        "leaves": ""
-    },
     "display": {
         "fixed": {
             "rotation": [ 0, 90, 0 ],

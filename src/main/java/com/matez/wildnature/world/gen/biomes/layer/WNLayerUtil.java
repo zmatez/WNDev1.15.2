@@ -1,9 +1,7 @@
 package com.matez.wildnature.world.gen.biomes.layer;
 
-import com.google.common.collect.ImmutableList;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.customizable.CommonConfig;
-import com.matez.wildnature.world.gen.noise.sponge.module.source.Voronoi;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
@@ -52,31 +50,35 @@ public class WNLayerUtil extends LayerUtil {
     	return biomeFactory;
     }
 
-    public static <T extends IArea, C extends IExtendedNoiseRandom<T>> ImmutableList<IAreaFactory<T>> buildOverworldProcedure(WorldType worldTypeIn, OverworldGenSettings settings, LongFunction<C> contextFactory) {
+
+
+    public static <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> func_227475_a_(WorldType worldType, OverworldGenSettings settings, LongFunction<C> context) {
         Main.wnInfo("Using WNLayer");
-        IAreaFactory<T> iareafactory = IslandLayer.INSTANCE.apply(contextFactory.apply(1L));
-        iareafactory = ZoomLayer.FUZZY.apply(contextFactory.apply(2000L), iareafactory);
-        iareafactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(1L), iareafactory);
-        iareafactory = ZoomLayer.NORMAL.apply(contextFactory.apply(2001L), iareafactory);
-        iareafactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(2L), iareafactory);
-        iareafactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(50L), iareafactory);
-        iareafactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(70L), iareafactory);
-        iareafactory = RemoveTooMuchOceanLayer.INSTANCE.apply(contextFactory.apply(2L), iareafactory);
-        IAreaFactory<T> iareafactory1 = OceanLayer.INSTANCE.apply(contextFactory.apply(2L));
-        iareafactory1 = repeat(2001L, ZoomLayer.NORMAL, iareafactory1, 6, contextFactory);
-        iareafactory = AddSnowLayer.INSTANCE.apply(contextFactory.apply(2L), iareafactory);
-        iareafactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(3L), iareafactory);
-        iareafactory = EdgeLayer.CoolWarm.INSTANCE.apply(contextFactory.apply(2L), iareafactory);
-        iareafactory = EdgeLayer.HeatIce.INSTANCE.apply(contextFactory.apply(2L), iareafactory);
-        iareafactory = EdgeLayer.Special.INSTANCE.apply(contextFactory.apply(3L), iareafactory);
-        iareafactory = ZoomLayer.NORMAL.apply(contextFactory.apply(2002L), iareafactory);
-        iareafactory = ZoomLayer.NORMAL.apply(contextFactory.apply(2003L), iareafactory);
-        iareafactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(4L), iareafactory);
-        iareafactory = AddMushroomIslandLayer.INSTANCE.apply(contextFactory.apply(5L), iareafactory);
-        WNIslandLayer.applyIslands();
-        iareafactory = WNIslandLayer.INSTANCE.apply(contextFactory.apply(5L), iareafactory);
-        iareafactory = DeepOceanLayer.INSTANCE.apply(contextFactory.apply(4L), iareafactory);
-        iareafactory = repeat(1000L, ZoomLayer.NORMAL, iareafactory, 0, contextFactory);
+
+        IAreaFactory<T> terrainFactory = IslandLayer.INSTANCE.apply(context.apply(1L));
+        terrainFactory = ZoomLayer.FUZZY.apply(context.apply(2000L), terrainFactory);
+        terrainFactory = AddIslandLayer.INSTANCE.apply(context.apply(1L), terrainFactory);
+        terrainFactory = ZoomLayer.NORMAL.apply(context.apply(2001L), terrainFactory);
+        terrainFactory = AddIslandLayer.INSTANCE.apply(context.apply(2L), terrainFactory);
+        terrainFactory = AddIslandLayer.INSTANCE.apply(context.apply(50L), terrainFactory);
+        terrainFactory = AddIslandLayer.INSTANCE.apply(context.apply(70L), terrainFactory);
+        terrainFactory = RemoveTooMuchOceanLayer.INSTANCE.apply(context.apply(2L), terrainFactory);
+        IAreaFactory<T> iareafactory1 = OceanLayer.INSTANCE.apply(context.apply(2L));
+        iareafactory1 = repeat(2001L, ZoomLayer.NORMAL, iareafactory1, 6, context);
+        terrainFactory = AddSnowLayer.INSTANCE.apply(context.apply(2L), terrainFactory);
+        terrainFactory = AddIslandLayer.INSTANCE.apply(context.apply(3L), terrainFactory);
+        terrainFactory = EdgeLayer.CoolWarm.INSTANCE.apply(context.apply(2L), terrainFactory);
+        terrainFactory = EdgeLayer.HeatIce.INSTANCE.apply(context.apply(2L), terrainFactory);
+        terrainFactory = EdgeLayer.Special.INSTANCE.apply(context.apply(3L), terrainFactory);
+        terrainFactory = ZoomLayer.NORMAL.apply(context.apply(2002L), terrainFactory);
+        terrainFactory = ZoomLayer.NORMAL.apply(context.apply(2003L), terrainFactory);
+        terrainFactory = AddIslandLayer.INSTANCE.apply(context.apply(4L), terrainFactory);
+        terrainFactory = AddMushroomIslandLayer.INSTANCE.apply(context.apply(5L), terrainFactory);
+        terrainFactory = WNIslandLayer.INSTANCE.apply(context.apply(5L), terrainFactory);
+        terrainFactory = DeepOceanLayer.INSTANCE.apply(context.apply(4L), terrainFactory);
+        terrainFactory = repeat(1000L, ZoomLayer.NORMAL, terrainFactory, 0, context);
+
+
         int i = 4;
         int j = i;
         if (settings != null) {
@@ -84,69 +86,61 @@ public class WNLayerUtil extends LayerUtil {
             j = CommonConfig.riverSize.get();
         }
 
-        if (worldTypeIn == WorldType.LARGE_BIOMES) {
+        if (worldType == WorldType.LARGE_BIOMES) {
             i = 6;
         }
 
-        i = getModdedBiomeSize(worldTypeIn, i);
+        i = getModdedBiomeSize(worldType, i);
 
-        IAreaFactory<T> lvt_7_1_ = repeat(1000L, ZoomLayer.NORMAL, iareafactory, 0, contextFactory);
-        lvt_7_1_ = StartRiverLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(100L), lvt_7_1_);
 
-        IAreaFactory<T> lvt_8_1_ = null;
+        IAreaFactory<T> riverFactory = repeat(1000L, ZoomLayer.NORMAL, terrainFactory, 0, context);
+        riverFactory = StartRiverLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(100L), riverFactory);
+        IAreaFactory<T> biomeFactory = null;
 
         if(!CommonConfig.generateOnlyWildNature.get()) {
-            lvt_8_1_ = worldTypeIn.getBiomeLayer(iareafactory, settings, contextFactory);
+            biomeFactory = worldType.getBiomeLayer(terrainFactory, settings, context);
         }else {
-            lvt_8_1_ = createBiomeFactory(contextFactory, lvt_7_1_);
+            biomeFactory = createBiomeFactory(context, riverFactory);
         }
 
-        IAreaFactory<T> lvt_9_1_ = repeat(1000L, ZoomLayer.NORMAL, lvt_7_1_, 2, contextFactory);
+        IAreaFactory<T> lvt_9_1_ = repeat(1000L, ZoomLayer.NORMAL, riverFactory, 2, context);
+        biomeFactory = WNGroupLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1000L), biomeFactory, lvt_9_1_);
+        biomeFactory = HillsLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1000L), biomeFactory, lvt_9_1_);
 
-        lvt_8_1_ = GroupLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(1000L), lvt_8_1_, lvt_9_1_);
-        lvt_8_1_ = HillsLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(1000L), lvt_8_1_, lvt_9_1_);
+        riverFactory = repeat(1000L, ZoomLayer.NORMAL, riverFactory, 2, context);
+        riverFactory = repeat(1000L, ZoomLayer.NORMAL, riverFactory, j, context);
 
-        lvt_7_1_ = repeat(1000L, ZoomLayer.NORMAL, lvt_7_1_, 2, contextFactory);
-        lvt_7_1_ = repeat(1000L, ZoomLayer.NORMAL, lvt_7_1_, j, contextFactory);
-        lvt_7_1_ = WNRiverLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply((long)0.001), lvt_7_1_);
-        // bigger rivers - lvt_7_1_ = repeat(1000L, ZoomLayer.NORMAL, lvt_7_1_, 3, contextFactory);
-        lvt_7_1_ = SmoothLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(1000L), lvt_7_1_);
-        lvt_8_1_ = RareBiomeLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(1001L), lvt_8_1_);
+        riverFactory = WNRiverLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1L), riverFactory);
+        riverFactory = SmoothLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1000L), riverFactory);
+        biomeFactory = RareBiomeLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1001L), biomeFactory);
 
         for(int k = 0; k < i - (i>4 ? 4 : 0); ++k) {
-            lvt_8_1_ = ZoomLayer.NORMAL.apply((IExtendedNoiseRandom)contextFactory.apply((long)(1000 + k)), lvt_8_1_);
-
+            biomeFactory = ZoomLayer.NORMAL.apply((IExtendedNoiseRandom)context.apply((long)(1000 + k)), biomeFactory);
         }
 
         for(int k = 0; k < (i>4 ? 4 : 4-i); ++k) {
-            lvt_8_1_ = ZoomLayer.NORMAL.apply((IExtendedNoiseRandom)contextFactory.apply((long)(1000 + k)), lvt_8_1_);
+            biomeFactory = ZoomLayer.NORMAL.apply((IExtendedNoiseRandom)context.apply((long)(1000 + k)), biomeFactory);
             if (k == 0) {
-                lvt_8_1_ = AddIslandLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(3L), lvt_8_1_);
+                biomeFactory = AddIslandLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(3L), biomeFactory);
             }
 
             if (k == 1 || i == 1) {
-                lvt_8_1_ = WNShoreLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(1000L), lvt_8_1_);
+                biomeFactory = WNShoreLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1000L), biomeFactory);
             }
         }
 
-        lvt_8_1_ = SmoothLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(1000L), lvt_8_1_);
-        lvt_8_1_ = WNMixRiverLayer.INSTANCE.apply((IExtendedNoiseRandom)contextFactory.apply(100L), lvt_8_1_, lvt_7_1_);
-        lvt_8_1_ = MixOceansLayer.INSTANCE.apply(contextFactory.apply(100L), lvt_8_1_, iareafactory1);
-
-        IAreaFactory<T> iareafactory5 = FuzzedBiomeMagnifier.INSTANCE.apply(contextFactory.apply(10L), lvt_8_1_);
-
-        return ImmutableList.of(lvt_8_1_, iareafactory5, lvt_8_1_);
+        biomeFactory = SmoothLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(1000L), biomeFactory);
+        biomeFactory = WNMixRiverLayer.INSTANCE.apply((IExtendedNoiseRandom)context.apply(100L), biomeFactory, riverFactory);
+        biomeFactory = MixOceansLayer.INSTANCE.apply(context.apply(100L), biomeFactory, iareafactory1);
+        return biomeFactory;
     }
 
-    public static Layer[] buildOverworldProcedure(long seed, WorldType typeIn, OverworldGenSettings settings) {
+    public static Layer func_227474_a_(long seed, WorldType type, OverworldGenSettings settings) {
         int i = 25;
-        ImmutableList<IAreaFactory<LazyArea>> immutablelist = buildOverworldProcedure(typeIn, settings, (p_215737_2_) -> {
-            return new LazyAreaLayerContext(25, seed, p_215737_2_);
+        IAreaFactory<LazyArea> iareafactory = func_227475_a_(type, settings, (p_227473_2_) -> {
+            return new LazyAreaLayerContext(25, seed, p_227473_2_);
         });
-        Layer layer = new Layer(immutablelist.get(0));
-        Layer layer1 = new Layer(immutablelist.get(1));
-        Layer layer2 = new Layer(immutablelist.get(2));
-        return new Layer[]{layer, layer1, layer2};
+        return new Layer(iareafactory);
     }
 
     public static boolean areBiomesSimilar(int p_202826_0_, int p_202826_1_) {

@@ -1,11 +1,6 @@
 package com.matez.wildnature.particles;
 
-import com.matez.wildnature.registry.ParticleRegistry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.*;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.particles.BasicParticleType;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.World;

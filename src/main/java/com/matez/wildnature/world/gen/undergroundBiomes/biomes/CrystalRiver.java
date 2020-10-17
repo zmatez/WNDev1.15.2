@@ -4,6 +4,7 @@ import com.matez.wildnature.lists.WNBlocks;
 import com.matez.wildnature.other.Utilities;
 import com.matez.wildnature.world.gen.undergroundBiomes.setup.URBiome;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 
@@ -18,9 +19,9 @@ public class CrystalRiver extends URBiome {
     @Override
     public BlockState getElevationBlock(long seed,Random rand, BlockPos pos) {
         if(Utilities.rint(0,1,rand)==0){
-            return WNBlocks.MARBLE_ROCK.getDefaultState();
+            return WNBlocks.MARBLE.getDefaultState();
         }else{
-            return WNBlocks.CONGLOMERATE_ROCK.getDefaultState();
+            return Blocks.GRANITE.getDefaultState();
 
         }
     }

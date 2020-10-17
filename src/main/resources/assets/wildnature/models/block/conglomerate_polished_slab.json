@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "wildnature:blocks/rocks/conglomerate/conglomerate_polished",
-        "top": "wildnature:blocks/rocks/conglomerate/conglomerate_polished",
-        "side": "wildnature:blocks/rocks/conglomerate/conglomerate_polished"
-    }
-}

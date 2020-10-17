@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/basalt_corner_slab_bricks_cracked" },
+    "facing=east": { "model": "wildnature:block/basalt_corner_slab_bricks_cracked", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/basalt_corner_slab_bricks_cracked", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/basalt_corner_slab_bricks_cracked", "y": 270, "uvlock": true}
+  }
+}

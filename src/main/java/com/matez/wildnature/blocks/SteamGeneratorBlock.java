@@ -1,39 +1,28 @@
 package com.matez.wildnature.blocks;
 
 import com.matez.wildnature.Main;
-import com.matez.wildnature.event.ClientPlayerEventHandler;
 import com.matez.wildnature.other.Utilities;
 import com.matez.wildnature.packets.WNSSpawnParticlePacket;
-import com.matez.wildnature.registry.ParticleRegistry;
+import com.matez.wildnature.registry.particles.ParticleRegistry;
 import com.matez.wildnature.sounds.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.play.server.SPlaySoundPacket;
-import net.minecraft.network.play.server.SSpawnParticlePacket;
 import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.*;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.DistExecutor;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 

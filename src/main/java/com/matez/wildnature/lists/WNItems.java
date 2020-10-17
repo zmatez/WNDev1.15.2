@@ -282,14 +282,76 @@ public class WNItems {
     public static Item RS_PISTON1;
 
     public static Item GEYSER_ESSENCE;
-    public static Item TIN_INGOT,COPPER_INGOT,STEEL_INGOT;
-    public static Item BRONZE_INGOT, BRONZE_SWORD, BRONZE_PICKAXE, BRONZE_AXE, BRONZE_SHOVEL, BRONZE_HOE;
-    public static Item AMETHYST_CRYSTAL, AMETHYST_SHARD, AMETHYST_SWORD, AMETHYST_PICKAXE, AMETHYST_AXE, AMETHYST_SHOVEL, AMETHYST_HOE;
-    public static Item SAPPHIRE_CRYSTAL, SAPPHIRE_SHARD, SAPPHIRE_SWORD, SAPPHIRE_PICKAXE, SAPPHIRE_AXE, SAPPHIRE_SHOVEL, SAPPHIRE_HOE;
-    public static Item MALACHITE_CRYSTAL, MALACHITE_SHARD, MALACHITE_SWORD, MALACHITE_PICKAXE, MALACHITE_AXE, MALACHITE_SHOVEL, MALACHITE_HOE;
-    public static Item AMBER_CRYSTAL, AMBER_SHARD, AMBER_SWORD, AMBER_PICKAXE, AMBER_AXE, AMBER_SHOVEL, AMBER_HOE;
-    public static Item RUBY_CRYSTAL, RUBY_SHARD, RUBY_SWORD, RUBY_PICKAXE, RUBY_AXE, RUBY_SHOVEL, RUBY_HOE;
-    public static Item SILVER_INGOT, SILVER_SWORD, SILVER_PICKAXE, SILVER_AXE, SILVER_SHOVEL, SILVER_HOE;
+
+    //-------DECO GEMS
+    public static Item AMBER_INGOT;
+    //-------TOOL GEMS
+    //TIN
+    public static Item TIN_RAW;
+    public static Item TIN_INGOT;
+    //COPPER
+    public static Item COPPER_INGOT;
+    //BRONZE
+    public static Item BRONZE_INGOT;
+    //STEEL
+    public static Item STEEL_INGOT;
+    //SILVER
+    public static Item SILVER_INGOT;
+    //SAPPHIRE
+    public static Item SAPPHIRE_RAW;
+    public static Item SAPPHIRE_INGOT;
+    //SAPPHIRE
+    public static Item RUBY_RAW;
+    public static Item RUBY_INGOT;
+    //SAPPHIRE
+    public static Item MALACHITE_RAW;
+    public static Item MALACHITE_INGOT;
+    //SAPPHIRE
+    public static Item AMETHYST_SHARD;
+    public static Item AMETHYST_INGOT;
+
+    //-------TOOLS
+    //BRONZE
+    public static Item BRONZE_SWORD;
+    public static Item BRONZE_SHOVEL;
+    public static Item BRONZE_PICKAXE;
+    public static Item BRONZE_AXE;
+    public static Item BRONZE_HOE;
+    //STEEL
+    public static Item STEEL_SWORD;
+    public static Item STEEL_SHOVEL;
+    public static Item STEEL_PICKAXE;
+    public static Item STEEL_AXE;
+    public static Item STEEL_HOE;
+    //SILVER
+    public static Item SILVER_SWORD;
+    public static Item SILVER_SHOVEL;
+    public static Item SILVER_PICKAXE;
+    public static Item SILVER_AXE;
+    public static Item SILVER_CROSSBOW;
+    //SAPPHIRE
+    public static Item SAPPHIRE_SWORD;
+    public static Item SAPPHIRE_SHOVEL;
+    public static Item SAPPHIRE_PICKAXE;
+    public static Item SAPPHIRE_AXE;
+    //RUBY
+    public static Item RUBY_SWORD;
+    public static Item RUBY_SHOVEL;
+    public static Item RUBY_PICKAXE;
+    public static Item RUBY_AXE;
+    //MALACHITE
+    public static Item MALACHITE_SWORD;
+    public static Item MALACHITE_SHOVEL;
+    public static Item MALACHITE_PICKAXE;
+    public static Item MALACHITE_AXE;
+    //AMETHYST
+    public static Item AMETHYST_SWORD;
+    public static Item AMETHYST_SHOVEL;
+    public static Item AMETHYST_PICKAXE;
+    public static Item AMETHYST_AXE;
+    public static Item AMETHYST_HOE;
+    
+    
 
     public static Item JELLY_BALL_WHITE, JELLY_BALL_RED,JELLY_BALL_PINK,JELLY_BALL_ORANGE,JELLY_BALL_BLUE;
     public static Item GLOWSHROOM_DUST, ICESHROOM_DUST;

@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab_top",
-    "textures": {
-        "bottom": "wildnature:blocks/andesite/andesite",
-        "top": "wildnature:blocks/andesite/andesite",
-        "side": "wildnature:blocks/andesite/andesite"
-    }
-}

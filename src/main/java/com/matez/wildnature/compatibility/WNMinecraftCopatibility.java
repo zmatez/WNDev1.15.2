@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.lists.WNBlocks;
 import com.matez.wildnature.lists.WNItems;
-import com.matez.wildnature.registry.WoodRegistry;
+import com.matez.wildnature.registry.blocks.WoodRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ComposterBlock;

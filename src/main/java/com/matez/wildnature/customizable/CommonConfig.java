@@ -28,6 +28,8 @@ public class CommonConfig {
     public static ForgeConfigSpec.BooleanValue generateUndergroundPlants;
     public static ForgeConfigSpec.BooleanValue generateRiverCanes;
     public static ForgeConfigSpec.BooleanValue generatePoisonIves,generateCrystals,generateStalagmites,generatePebbles,generateCobweb,generateRockFormations,generateFruitBushes,generateVegeCrops,generateVines,generateSmallCacti,generateShells,generateMoss,generateFallenTrees;
+    public static ForgeConfigSpec.BooleanValue generateBeehives;
+    public static ForgeConfigSpec.IntValue beehiveRarity;
     public static ForgeConfigSpec.DoubleValue ambientSoundsVolume;
     public static ForgeConfigSpec.BooleanValue waterLakeGeneration,lavaLakeGeneration,waterSpringGeneration,lavaSpringGeneration;
     public static ForgeConfigSpec.BooleanValue generateGlowingCaveOaks,generateBigGlowshrooms;
@@ -44,7 +46,7 @@ public class CommonConfig {
     public static ForgeConfigSpec.BooleanValue poisonIvyHurts;
     public static ForgeConfigSpec.BooleanValue poisonIvyPoisons;
     public static ForgeConfigSpec.DoubleValue poisonIvyDamage;
-    public static ForgeConfigSpec.IntValue leafFruitChance, flowerBloomChance, flowerDropChance,fruitBushRarity,vegeCropRarity,mossRarity,mossRarityDense,riverCaneRarity,smallCactiRarity,poisonIvyRarity,riverCaneDensity,shellRarity;
+    public static ForgeConfigSpec.IntValue leafFruitChance, flowerBloomChance, flowerDropChance,fruitBushRarity,vegeCropRarity,mossRarity,mossRarityDense,treeLichenRarity,treeLichenRarityDense,riverCaneRarity,smallCactiRarity,poisonIvyRarity,riverCaneDensity,shellRarity;
     public static ForgeConfigSpec.IntValue tinRarity,copperRarity,amethystRarity,sapphireRarity,malachiteRarity,silverRarity,amberRarity,rubyRarity,saltSandRarity,saltStoneRarity;
     public static ForgeConfigSpec.BooleanValue vegeFarmFence;
     public static ForgeConfigSpec.BooleanValue generatePaths, generateUndergroundRivers;
@@ -309,6 +311,14 @@ public class CommonConfig {
                 .comment("Should generate fallen trees?\nDefault: true")
                 .define("biome.feature.fallenTrees",true);
 
+        generateBeehives = builder
+                .comment("Should generate beehives?\nDefault: true")
+                .define("biome.feature.beehives",true);
+
+        beehiveRarity = builder
+                .comment("Should generate fallen trees?\nDefault: 64")
+                .defineInRange("biome.feature.beehiveRarity",256,0,500);
+
         vegeFarmFence = builder
                 .comment("Should generate fences near wild farms?\nDefault: true")
                 .define("biome.feature.vege_farm_fence",true);
@@ -355,6 +365,14 @@ public class CommonConfig {
         mossRarityDense = builder
                 .comment("Moss spawn rarity in dense forests\nSmaller = more rare\nDefault: 8")
                 .defineInRange("biome.feature.moss_rarity_dense",8, 0, 500);
+
+        treeLichenRarity = builder
+                .comment("Tree lichen spawn rarity in forests\nSmaller = more rare\nDefault: 2")
+                .defineInRange("biome.feature.tree_lichen_rarity",2, 0, 500);
+
+        treeLichenRarityDense = builder
+                .comment("Tree lichen spawn rarity in dense forests\nSmaller = more rare\nDefault: 5")
+                .defineInRange("biome.feature.tree_lichen_rarity_dense",5, 0, 500);
 
         generatePaths = builder
                 .comment("Should generate pathways?\nDefault: true")
@@ -484,11 +502,15 @@ public class CommonConfig {
                 s = s + "";
                 Main.LOGGER.debug("Blacklisting " + s + "...");
                 Biome b = Main.getBiomeByID(s);
-                if (b != Biomes.DEFAULT) {
-                    Main.LOGGER.debug("Blacklisted Biome: " + b.getRegistryName());
-                    blacklistedBiomes.add(b);
-                } else {
-                    Main.LOGGER.debug("Invalid Blacklisted Biome: " + b.getRegistryName());
+                if(b != null) {
+                    if (b != Biomes.DEFAULT) {
+                        Main.LOGGER.debug("Blacklisted Biome: " + b.getRegistryName());
+                        blacklistedBiomes.add(b);
+                    } else {
+                        Main.LOGGER.debug("Invalid Blacklisted Biome: " + b.getRegistryName());
+                    }
+                }else{
+                    Main.LOGGER.debug("Invalid Blacklisted Biome: " + s+"");
                 }
             }catch (Exception e){
                 Main.LOGGER.debug("Invalid Blacklisted Biome: " + s+"");

@@ -1,7 +1,0 @@
-{
-    "parent": "wildnature:block/slab_corner",
-    "textures": {
-        "material": "wildnature:blocks/rocks/granite/granite_bricks_chiseled",
-        "particle": "wildnature:blocks/rocks/granite/granite_bricks_chiseled"
-    }
-}

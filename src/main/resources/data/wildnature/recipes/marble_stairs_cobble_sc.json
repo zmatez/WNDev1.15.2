@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:marble_cobble"
-  },
-  "result": "wildnature:marble_stairs_cobble",
-  "count": 1
-}

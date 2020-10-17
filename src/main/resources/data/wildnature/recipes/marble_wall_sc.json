@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:marble"
-  },
-  "result": "wildnature:marble_wall",
-  "count": 1
-}

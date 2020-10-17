@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:granite_cobble"
-  },
-  "result": "wildnature:granite_cobble_vertical_slab",
-  "count": 1
-}

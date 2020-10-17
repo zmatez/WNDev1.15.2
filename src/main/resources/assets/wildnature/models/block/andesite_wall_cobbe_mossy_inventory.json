@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_inventory",
-    "textures": {
-        "wall": "wildnature:blocks/rocks/andesite/andesite_cobbe_mossy"
-    }
-}

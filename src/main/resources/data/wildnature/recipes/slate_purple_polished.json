@@ -1,0 +1,10 @@
+{
+  "group": "wildnature:stone_polished",
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:slate_purple"
+  },
+  "result": "wildnature:slate_purple_polished",
+  "experience": 0.1,
+  "cookingtime": 200
+}

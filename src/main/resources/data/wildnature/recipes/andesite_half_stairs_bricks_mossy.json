@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:andesite_slab_bricks_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:andesite_half_stairs_bricks_mossy",
+    "count": 6
+  }
+}

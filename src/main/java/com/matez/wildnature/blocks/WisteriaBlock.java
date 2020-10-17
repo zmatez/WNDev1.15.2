@@ -1,6 +1,8 @@
 package com.matez.wildnature.blocks;
 
 import com.matez.wildnature.lists.WNBlocks;
+import com.matez.wildnature.other.Utilities;
+import com.matez.wildnature.registry.particles.ParticleRegistry;
 import com.matez.wildnature.render.IRenderLayer;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -159,5 +161,10 @@ public class WisteriaBlock extends DirectionalBlock implements IRenderLayer {
         }
     }
 
-
+    @Override
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        if(Utilities.rint(0,5,rand) == 0){
+            worldIn.addParticle(ParticleRegistry.WISTERIA_PINK, pos.getX() + 0.5 + Utilities.rdoub(-0.3,0.3), pos.getY() + Utilities.rdoub(-1,1), pos.getZ() + 0.5 + Utilities.rdoub(-0.3,0.3), 0.01, 0.01, 0.01);
+        }
+    }
 }

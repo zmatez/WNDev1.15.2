@@ -1,0 +1,7 @@
+{
+    "parent": "wildnature:block/slab_vertical",
+    "textures": {
+        "material": "wildnature:blocks/rocks/slate_blue/slate_blue_bricks",
+        "particle": "wildnature:blocks/rocks/slate_blue/slate_blue_bricks"
+    }
+}

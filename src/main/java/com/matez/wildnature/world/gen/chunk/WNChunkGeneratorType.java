@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.gen.chunk;
 
 import com.matez.wildnature.world.gen.biomes.setup.WNGenSettings;
+import com.matez.wildnature.world.gen.chunk.generation.WNSimplexChunkGenerator;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.*;
 

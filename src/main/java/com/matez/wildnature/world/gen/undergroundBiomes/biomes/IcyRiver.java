@@ -19,7 +19,7 @@ public class IcyRiver extends URBiome {
 
     @Override
     public BlockState getElevationBlock(long seed,Random rand, BlockPos pos) {
-        return URBiomeBuilders.QUADRUPLE_NOISE.build(Blocks.STONE.getDefaultState(),WNBlocks.GNEISS_ROCK.getDefaultState(),Blocks.PACKED_ICE.getDefaultState(),WNBlocks.MARBLE_ROCK.getDefaultState(),seed,rand,pos,elevationNoise);
+        return URBiomeBuilders.QUADRUPLE_NOISE.build(Blocks.STONE.getDefaultState(),WNBlocks.GNEISS.getDefaultState(),Blocks.PACKED_ICE.getDefaultState(),WNBlocks.MARBLE.getDefaultState(),seed,rand,pos,elevationNoise);
     }
 
 

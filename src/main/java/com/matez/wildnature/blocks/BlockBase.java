@@ -34,7 +34,6 @@ public class BlockBase extends Block {
 
         WNBlocks.BLOCKS.add(this);
         WNBlocks.ITEMBLOCKS.add(item);
-
     }
 
     public BlockBase(Properties properties, ResourceLocation regName) {

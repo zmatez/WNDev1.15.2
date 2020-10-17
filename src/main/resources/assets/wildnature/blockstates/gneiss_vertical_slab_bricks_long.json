@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "wildnature:block/gneiss_vertical_slab_bricks_long" },
+    "facing=east": { "model": "wildnature:block/gneiss_vertical_slab_bricks_long", "y": 90, "uvlock": true},
+    "facing=south": { "model": "wildnature:block/gneiss_vertical_slab_bricks_long", "y": 180, "uvlock": true},
+    "facing=west": { "model": "wildnature:block/gneiss_vertical_slab_bricks_long", "y": 270, "uvlock": true}
+  }
+}

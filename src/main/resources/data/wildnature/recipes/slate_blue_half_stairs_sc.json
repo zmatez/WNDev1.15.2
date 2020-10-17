@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:slate_blue"
+  },
+  "result": "wildnature:slate_blue_half_stairs",
+  "count": 2
+}

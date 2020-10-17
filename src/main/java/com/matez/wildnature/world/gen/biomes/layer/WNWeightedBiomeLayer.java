@@ -20,12 +20,19 @@ public enum WNWeightedBiomeLayer implements IAreaTransformer1, IDimOffset0Transf
 	public int func_215728_a(IExtendedNoiseRandom<?> context, IArea landFactory, int x, int z) 
 	{
 		int landSeaVal = landFactory.getValue(x, z);
+        boolean isLikeIsland = false;
+        for(WNIslandLayer.Island island : WNIslandLayer.islands){
+            if(island.getBiome()==landSeaVal){
+                isLikeIsland=true;
+                break;
+            }
+        }
 		
 		if (landSeaVal == DEEP_OCEAN)
         {
             return DEEP_OCEAN;
         }
-        else if (landSeaVal == MUSHROOM_FIELDS)
+        else if (landSeaVal == MUSHROOM_FIELDS || isLikeIsland)
         {
             return landSeaVal;
         }

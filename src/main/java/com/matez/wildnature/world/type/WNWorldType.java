@@ -11,7 +11,6 @@ import net.minecraft.world.gen.area.IArea;
 import net.minecraft.world.gen.area.IAreaFactory;
 import net.minecraft.world.gen.layer.*;
 import net.minecraftforge.common.extensions.IForgeWorldType;
-import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
 import java.util.function.LongFunction;
 
@@ -47,10 +46,9 @@ public class WNWorldType extends WorldType implements IForgeWorldType {
     }
 
     @Override
-    public <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> getBiomeLayer(IAreaFactory<T> parentLayer,
-                                                                                                   OverworldGenSettings chunkSettings, LongFunction<C> contextFactory)
+    public <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> getBiomeLayer(IAreaFactory<T> parentLayer, OverworldGenSettings chunkSettings, LongFunction<C> contextFactory)
     {
-        parentLayer = (new WNBiomeLayer(getWorldType(), chunkSettings)).apply(contextFactory.apply(200L), parentLayer);
+        parentLayer = (new WNBiomeLayer(getWorldType(), chunkSettings.getBiomeId())).apply(contextFactory.apply(200L), parentLayer);
         parentLayer = AddBambooForestLayer.INSTANCE.apply(contextFactory.apply(1001L), parentLayer);
         parentLayer = LayerUtil.repeat(1000L, ZoomLayer.NORMAL, parentLayer, 2, contextFactory);
         parentLayer = EdgeBiomeLayer.INSTANCE.apply(contextFactory.apply(1000L), parentLayer);

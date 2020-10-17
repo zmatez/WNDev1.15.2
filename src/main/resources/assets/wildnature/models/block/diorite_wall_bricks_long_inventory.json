@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_inventory",
-    "textures": {
-        "wall": "wildnature:blocks/rocks/diorite/diorite_bricks_long"
-    }
-}

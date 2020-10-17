@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "wildnature:slate_bricks"
-  },
-  "result": "wildnature:slate_stairs_bricks",
-  "count": 1
-}

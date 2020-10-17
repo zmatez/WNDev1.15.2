@@ -48,6 +48,7 @@ public class LeavesBase extends LeavesBlock implements IRenderLayer {
 
     public LeavesBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(Properties(properties));
+
         this.setRegistryName(regName);
         item = new BlockItem(this,builder).setRegistryName(regName);
 

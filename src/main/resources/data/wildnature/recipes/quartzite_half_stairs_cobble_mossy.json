@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:quartzite_slab_cobble_mossy"
+    }
+  },
+  "result": {
+    "item": "wildnature:quartzite_half_stairs_cobble_mossy",
+    "count": 6
+  }
+}

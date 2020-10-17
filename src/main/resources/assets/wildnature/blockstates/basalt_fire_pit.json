@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "facing=north,lit=true": { "model": "wildnature:block/basalt_fire_pit", "y": 180 },
+        "facing=south,lit=true": { "model": "wildnature:block/basalt_fire_pit" },
+        "facing=east,lit=true": { "model": "wildnature:block/basalt_fire_pit", "y": 270 },
+        "facing=west,lit=true": { "model": "wildnature:block/basalt_fire_pit", "y": 90 },
+        "facing=north,lit=false": { "model": "wildnature:block/basalt_fire_pit_off", "y": 180 },
+        "facing=south,lit=false": { "model": "wildnature:block/basalt_fire_pit_off" },
+        "facing=east,lit=false": { "model": "wildnature:block/basalt_fire_pit_off", "y": 270 },
+        "facing=west,lit=false": { "model": "wildnature:block/basalt_fire_pit_off", "y": 90 }
+    }
+}
