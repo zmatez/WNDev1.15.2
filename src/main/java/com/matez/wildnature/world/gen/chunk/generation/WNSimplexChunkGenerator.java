@@ -8,6 +8,7 @@ import com.matez.wildnature.world.gen.biomes.setup.WNGenSettings;
 import com.matez.wildnature.world.gen.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.gen.chunk.primers.FastChunkPrimer;
 import com.matez.wildnature.world.gen.generators.carves.PathGenerator;
+import com.matez.wildnature.world.gen.processors.TerrainProcessor;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -42,6 +43,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
+import java.util.ArrayList;
 
 public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
@@ -57,6 +59,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     private final OctavesNoiseGenerator surfaceDepthNoise;
 
+    private static ArrayList<TerrainProcessor> processors = new ArrayList<>();
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
 
@@ -78,6 +81,12 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.surfaceDepthNoise = new OctavesNoiseGenerator(this.randomSeed, 4, 0);
 
         this.pathGenerator = new PathGenerator(worldIn);
+
+        processors.forEach(processor -> processor.init(this.getSeed()));
+    }
+
+    public static void addPostProcessor(TerrainProcessor processor) {
+        processors.add(processor);
     }
 
     @Override
@@ -190,10 +199,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        this.generateTerrain(chunkIn, this.getHeightsInChunk(chunkpos,worldIn));
+        this.generateTerrain(world, chunkIn, this.getHeightsInChunk(chunkpos,worldIn));
     }
 
-    public void generateTerrain(IChunk chunk, int[] noise) {
+    public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 int height = (int) noise[(x * 16) + z];
@@ -212,6 +221,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 }
             }
         }
+
+        processors.forEach(processor -> processor.process(world, new Random(), chunk.getPos().x, chunk.getPos().z, noise));
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {

@@ -1,24 +1,16 @@
 package com.matez.wildnature.commands;
 
 import com.matez.wildnature.Main;
-import com.matez.wildnature.customizable.CommonConfig;
-import com.matez.wildnature.world.gen.biomes.setup.WNBiomes;
 import com.matez.wildnature.world.gen.structures.nature.SchemFeature;
 import javafx.util.Pair;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.loading.FMLPaths;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class StructureListCommand {

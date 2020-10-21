@@ -48,8 +48,10 @@ import com.matez.wildnature.sounds.SoundRegistry;
 import com.matez.wildnature.world.gen.biomes.setup.WNBiomes;
 import com.matez.wildnature.world.gen.carvers.CarverRegistry;
 import com.matez.wildnature.world.gen.chunk.WNChunkGeneratorType;
+import com.matez.wildnature.world.gen.chunk.generation.WNSimplexChunkGenerator;
 import com.matez.wildnature.world.gen.feature.FeatureRegistry;
 import com.matez.wildnature.world.gen.feature.features.RockGen;
+import com.matez.wildnature.world.gen.processors.ErosionProcessor;
 import com.matez.wildnature.world.gen.provider.WNBiomeProviderType;
 import com.matez.wildnature.world.gen.provider.WNWorldType;
 import com.matez.wildnature.world.gen.structures.nature.SchemFeature;
@@ -213,6 +215,9 @@ public class Main {
         WNBiomes.unregisterBlacklisted();
         proxy.init();
         wnInfo("Setup completed");
+
+        // Add the erosion processor the the chunk generator
+        WNSimplexChunkGenerator.addPostProcessor(new ErosionProcessor());
     }
 
     private void clientRegistries(final FMLClientSetupEvent event) {
