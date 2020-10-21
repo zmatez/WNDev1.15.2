@@ -43,9 +43,9 @@ public class WNWorldLoadProgressScreen extends Screen {
     public ArrayList<BlockPoint> blockPoints,coloredPoints;
     public ChunkStatus currentChunkStatus = null;
 
-    public WNWorldLoadProgressScreen(TrackingChunkStatusListener p_i51113_1_) {
+    public WNWorldLoadProgressScreen(TrackingChunkStatusListener track) {
         super(new StringTextComponent("WNWorldLoadProgressScreen"));
-        this.progress = p_i51113_1_;
+        this.progress = track;
         this.blockPoints = new ArrayList<>();
         this.coloredPoints = new ArrayList<>();
     }
@@ -55,7 +55,7 @@ public class WNWorldLoadProgressScreen extends Screen {
     }
 
     public void removed() {
-        NarratorChatListener.INSTANCE.say(I18n.format("narrator.loading.done", new Object[0]));
+        NarratorChatListener.INSTANCE.say(I18n.format("narrator.loading.done"));
     }
 
     public void render(int mouseX, int mouseY, float partialTicks) {
@@ -78,7 +78,6 @@ public class WNWorldLoadProgressScreen extends Screen {
         FontRenderer var10001 = this.font;
         this.drawCenteredString(var10001, lvt_4_1_, centerWidth, centerHeight - 9 / 2 + 30, 16777215);
         drawLoading(centerWidth,centerHeight-30);
-
     }
 
     private int points = 0;

@@ -4,6 +4,7 @@ package com.matez.wildnature.entity.render;
 import com.matez.wildnature.entity.EntityRegistry;
 import com.matez.wildnature.entity.render.animal.*;
 import com.matez.wildnature.entity.render.monster.GoblinRender;
+import com.matez.wildnature.entity.render.tileentity.ItemTileEntityRender;
 import com.matez.wildnature.entity.type.animal.bird.SparrowEntity;
 import com.matez.wildnature.entity.type.animal.boar.BoarEntity;
 import com.matez.wildnature.entity.type.animal.deer.BuckEntity;
@@ -15,10 +16,12 @@ import com.matez.wildnature.entity.type.animal.duck.DucklingEntity;
 import com.matez.wildnature.entity.type.animal.fish.PiranhaEntity;
 import com.matez.wildnature.entity.type.animal.insect.DragonflyEntity;
 import com.matez.wildnature.entity.type.monster.GoblinEntity;
+import com.matez.wildnature.gui.initGuis;
 import com.matez.wildnature.gui.tileEntities.seat.SeatEntity;
 import com.matez.wildnature.gui.tileEntities.seat.SeatEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 @OnlyIn(Dist.CLIENT)
@@ -40,5 +43,11 @@ public class RenderRegistry {
         //tiles
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SEAT,new SeatEntityRenderer.RenderFactory());
 
+        //tileentities
+
+    }
+
+    public static void registryTileEntityRenders(){
+        ClientRegistry.bindTileEntityRenderer(initGuis.ITEM_TILE_ENTITY, ItemTileEntityRender::new);
     }
 }

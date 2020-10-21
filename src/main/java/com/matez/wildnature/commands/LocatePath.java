@@ -3,8 +3,6 @@ package com.matez.wildnature.commands;
 import com.matez.wildnature.Main;
 import com.matez.wildnature.customizable.CommonConfig;
 import com.matez.wildnature.other.Utilities;
-import com.sun.javafx.geom.Vec2d;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;

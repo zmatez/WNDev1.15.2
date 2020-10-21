@@ -1396,6 +1396,7 @@ public class WNBlocks {
     public static Block MUD;
 
     public static Block SANDSTONE_BRICKS, SANDSTONE_ANCIENT_BRICKS;
+    public static Block CANVAS;
 
     public static Block GLOWING_CRYSTAL_BLUE;
     public static Block GLOWING_CRYSTAL_ORANGE;

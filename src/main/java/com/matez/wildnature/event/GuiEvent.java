@@ -4,6 +4,7 @@ import com.matez.wildnature.Main;
 import com.matez.wildnature.customizable.CommonConfig;
 import com.matez.wildnature.gui.screen.WNWorldLoadProgressScreen;
 import com.matez.wildnature.gui.screen.WildNatureScreen;
+import com.matez.wildnature.gui.screen.world.WNWorldCreateProgress;
 import com.matez.wildnature.items.recipes.cooking.CraftingTweaker;
 import com.matez.wildnature.lists.WNItems;
 import net.minecraft.client.Minecraft;
@@ -25,7 +26,7 @@ public class GuiEvent {
     private static final ResourceLocation WNLOGO = new ResourceLocation("wildnature","textures/gui/wnlogo.png");
     public GuiEvent(){}
     private boolean shown = false;
-    private WNWorldLoadProgressScreen worldRender = null;
+    private WNWorldCreateProgress worldRender = null;
 
     @SubscribeEvent
     public void guiScreenEvent(GuiScreenEvent.InitGuiEvent event){
@@ -63,11 +64,12 @@ public class GuiEvent {
         }
 
         if(event.getGui().getClass()==WorldLoadProgressScreen.class && CommonConfig.newLoadingWorldScreen.get()){
-            worldRender = new WNWorldLoadProgressScreen(Minecraft.getInstance().refChunkStatusListener.get());
+            //worldRender = new WNWorldLoadProgressScreen(Minecraft.getInstance().refChunkStatusListener.get());
+            worldRender = new WNWorldCreateProgress(Minecraft.getInstance().refChunkStatusListener.get());
             Minecraft.getInstance().displayGuiScreen(worldRender);
         }else{
-            if(worldRender!=null && event.getGui().getClass()!=WNWorldLoadProgressScreen.class){
-                worldRender.onClose();
+            if(worldRender!=null && event.getGui().getClass()!=WNWorldCreateProgress.class){
+                //worldRender.onClose();
             }
         }
 

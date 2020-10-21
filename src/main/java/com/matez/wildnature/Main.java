@@ -12,6 +12,7 @@ import com.matez.wildnature.customizable.CommonConfig;
 import com.matez.wildnature.customizable.WNConfig;
 import com.matez.wildnature.entity.EntityRegistry;
 import com.matez.wildnature.entity.render.RenderRegistry;
+import com.matez.wildnature.entity.render.tileentity.ItemTileEntityRender;
 import com.matez.wildnature.event.*;
 import com.matez.wildnature.gui.container.PouchContainer;
 import com.matez.wildnature.gui.initGuis;
@@ -19,10 +20,7 @@ import com.matez.wildnature.gui.tileEntities.CustomPistonTileEntity;
 import com.matez.wildnature.gui.tileEntities.DungeonCommanderTileEntity;
 import com.matez.wildnature.gui.tileEntities.GravityShroomTileEntity;
 import com.matez.wildnature.gui.tileEntities.HydrothermalVentTileEntity;
-import com.matez.wildnature.itemGroup.wnItemGroup;
-import com.matez.wildnature.itemGroup.wnItemGroupBuilding;
-import com.matez.wildnature.itemGroup.wnItemGroupDeco;
-import com.matez.wildnature.itemGroup.wnItemGroupUnderground;
+import com.matez.wildnature.gui.tileEntities.item.ItemTileEntity;
 import com.matez.wildnature.items.recipes.DyeableRecipe;
 import com.matez.wildnature.items.recipes.GiftCrafting;
 import com.matez.wildnature.items.recipes.KnifeCrafting;
@@ -98,6 +96,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -126,13 +125,11 @@ import java.util.List;
 @Mod("wildnature")
 public class Main {
     public static Main instance;
+
     public static final String modid = "wildnature";
     public static final String version = "2.1.7.1";
+
     public static final Logger LOGGER = LogManager.getLogger(modid);
-    public static final wnItemGroup WILDNATURE_GROUP = new wnItemGroup();
-    public static final wnItemGroupUnderground WILDNATURE_UNDERGROUND_GROUP = new wnItemGroupUnderground();
-    public static final wnItemGroupDeco WILDNATURE_DECO_GROUP = new wnItemGroupDeco();
-    public static final wnItemGroupBuilding WILDNATURE_BUILDING_GROUP = new wnItemGroupBuilding();
     public static final String WildNaturePrefix = TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "[" + TextFormatting.GREEN.toString() + TextFormatting.BOLD.toString() + "WN" + TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "] " + TextFormatting.AQUA.toString();
     public static WorldType WNWorldType = new WNWorldType("wildnature").setCustomOptions(true);
     private static WNChunkGeneratorType chunkGeneratorType = new WNChunkGeneratorType();
@@ -145,8 +142,7 @@ public class Main {
     public static StringTextComponent WNPrefix = new StringTextComponent(Main.WildNaturePrefix);
     public static boolean canShowAdvancedTooltip = false;
     public static World runningWorld;
-
-
+    
     public Main() {
         LOGGER.info("Initializing WildNature mod");
         instance = this;
@@ -226,6 +222,8 @@ public class Main {
         MinecraftForge.EVENT_BUS.addListener(new RenderCapeHandler()::onRender);
 
         RenderRegistry.registryEntityRenders();
+        RenderRegistry.registryTileEntityRenders();
+
         ForgeRegistries.BLOCKS.forEach(WNBlockRenderLayer::setProperRenderLayer);
         /*for (Item itemblock : WNBlocks.ITEMBLOCKS) {
             Block b = ((BlockItem)itemblock).getBlock();
@@ -397,7 +395,7 @@ public class Main {
             WoodRegistry woodRegistry = new WoodRegistry();
             FlowerRegistry flowerRegistry = new FlowerRegistry();
             SaplingRegistry saplingRegistry = new SaplingRegistry();
-            SignRegistry signRegistry = new SignRegistry();
+            FurnitureRegistry furnitureRegistry = new FurnitureRegistry();
             GrassRegistry grassRegistry = new GrassRegistry();
             BuildingRegistry buildingRegistry = new BuildingRegistry();
             OtherRegistry otherRegistry = new OtherRegistry();
@@ -406,7 +404,7 @@ public class Main {
 
 
             WNRegistry.registerBlocks(event, woodRegistry.getWoods());
-            WNRegistry.registerBlocks(event, signRegistry.getSign());
+            WNRegistry.registerBlocks(event, furnitureRegistry.getBlock());
             WNRegistry.registerBlocks(event, saplingRegistry.getSaplings());
             WNRegistry.registerBlocks(event, rockRegistry.getRocks());
             WNRegistry.registerBlocks(event, oreRegistry.getOres());
@@ -479,6 +477,11 @@ public class Main {
             gravityShroom.setRegistryName("wildnature", "gravityshroom");
             evt.getRegistry().register(gravityShroom);
             initGuis.GRAVITY_SHROOM_TILE_ENTITY = gravityShroom;
+
+            TileEntityType<ItemTileEntity> itemTile = TileEntityType.Builder.create(ItemTileEntity::new, ItemTileEntity.SUPPORTED_BLOCKS.toArray(new Block[0])).build(null);
+            itemTile.setRegistryName("wildnature", "item_tile_entity");
+            evt.getRegistry().register(itemTile);
+            initGuis.ITEM_TILE_ENTITY = itemTile;
         }
 
         private static final List<ContainerType<?>> CONTAINER_TYPES = new ArrayList<>();

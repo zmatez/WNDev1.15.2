@@ -2,10 +2,9 @@ package com.matez.wildnature.registry.blocks;
 
 import com.matez.wildnature.Main;
 import com.matez.wildnature.blocks.*;
+import com.matez.wildnature.itemGroup.WNTabs;
 import com.matez.wildnature.lists.WNBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
@@ -84,8 +83,11 @@ public class BuildingRegistry {
 
     public BuildingRegistry() {
         rocks = new Block[]{
-                WNBlocks.SANDSTONE_BRICKS = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.SAND).hardnessAndResistance(1.5F, 6.0F), new Item.Properties().group(Main.WILDNATURE_BUILDING_GROUP), Main.RegistryEvents.location("sandstone_bricks")),
-                WNBlocks.SANDSTONE_ANCIENT_BRICKS = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.SAND).hardnessAndResistance(0.8F), new Item.Properties().group(Main.WILDNATURE_BUILDING_GROUP), Main.RegistryEvents.location("sandstone_ancient_bricks"))
+                WNBlocks.SANDSTONE_BRICKS = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.SAND).hardnessAndResistance(1.5F, 6.0F), new Item.Properties().group(WNTabs.ROCK_BUILDING), Main.RegistryEvents.location("sandstone_bricks")),
+                WNBlocks.SANDSTONE_ANCIENT_BRICKS = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.SAND).hardnessAndResistance(0.8F), new Item.Properties().group(WNTabs.ROCK_BUILDING), Main.RegistryEvents.location("sandstone_ancient_bricks")),
+
+                WNBlocks.CANVAS = new BlockBase(Block.Properties.create(Material.WOOL, MaterialColor.WOOL).hardnessAndResistance(0.4F,0.1F), new Item.Properties().group(WNTabs.WOOD_BUILDING), Main.RegistryEvents.location("canvas"))
+
         };
     }
 
