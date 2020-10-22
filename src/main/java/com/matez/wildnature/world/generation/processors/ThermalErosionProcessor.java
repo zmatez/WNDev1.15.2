@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.gen.processors;
+package com.matez.wildnature.world.generation.processors;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;

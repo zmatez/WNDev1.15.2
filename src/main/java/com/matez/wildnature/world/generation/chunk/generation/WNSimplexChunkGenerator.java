@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
+
 import com.matez.wildnature.world.generation.biomes.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.biomes.layer.SmoothColumnBiomeMagnifier;
 import com.matez.wildnature.world.generation.biomes.setup.BiomeVariants;
@@ -7,8 +8,8 @@ import com.matez.wildnature.world.generation.biomes.setup.WNGenSettings;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.generators.carves.PathGenerator;
 import com.matez.wildnature.world.generation.generators.rivers.surface.RiverGenerator;
-import com.matez.wildnature.world.generation.processors.ErosionProcessor;
 import com.matez.wildnature.world.generation.processors.TerrainProcessor;
+import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -52,7 +53,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private final PerlinNoiseGenerator surfaceDepthNoise;
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
-    private static TerrainProcessor erosionProcessor = new ErosionProcessor();
+    // private static ArrayList<TerrainProcessor> terrainProcessors = new ArrayList<>();
+    private static TerrainProcessor thermalErosionProcessor = new ThermalErosionProcessor();
 
     private SharedSeedRandom randomSeed;
 
@@ -76,8 +78,12 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.riverGenerator = new RiverGenerator(worldIn);
 
         // terrainProcessors.forEach(processor -> processor.init(this.seed));
-        erosionProcessor.init(this.seed);
+        thermalErosionProcessor.init(this.seed);
     }
+
+    //public static void addProcessor(TerrainProcessor processor) {
+    //    terrainProcessors.add(processor);
+    //}
 
     @Override
     public void generateBiomes(IChunk chunkIn) {
@@ -214,7 +220,9 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 }
             }
         }
-        CompletableFuture.runAsync(() -> erosionProcessor.process(chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
+
+        // Terrain processors modify the world, after the base is constructed
+        CompletableFuture.runAsync(() -> thermalErosionProcessor.process(chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
