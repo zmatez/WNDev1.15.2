@@ -12,6 +12,7 @@ import com.matez.wildnature.world.gen.generators.carves.PathGenerator;
 import com.matez.wildnature.world.gen.generators.rivers.surface.RiverGenerator;
 import com.matez.wildnature.world.gen.processors.ErosionProcessor;
 import com.matez.wildnature.world.gen.processors.TerrainProcessor;
+import com.matez.wildnature.world.gen.processors.ThermalErosionProcessor;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -58,7 +59,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
     // private static ArrayList<TerrainProcessor> terrainProcessors = new ArrayList<>();
-    private static TerrainProcessor erosionProcessor = new ErosionProcessor();
+    private static TerrainProcessor erosionProcessor = new ThermalErosionProcessor();
 
     private SharedSeedRandom randomSeed;
 
