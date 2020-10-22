@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.gen.processors;
 
 import com.matez.wildnature.Main;
+import com.matez.wildnature.other.debug.TimeDebug;
 import com.matez.wildnature.world.gen.chunk.generation.WNSimplexChunkGenerator;
 import com.matez.wildnature.world.gen.noise.OctaveNoiseSampler;
 import com.matez.wildnature.world.gen.noise.OpenSimplexNoise;
@@ -74,8 +75,6 @@ public class ErosionProcessor implements TerrainProcessor {
 
         double nx = x * 0.1;
         double ny = y * 0.1;
-        x = nx;
-        y = ny;
 
         int xi = (int)Math.floor(nx);
         int yi = (int)Math.floor(ny);
@@ -104,7 +103,7 @@ public class ErosionProcessor implements TerrainProcessor {
         double yp = y;
         int vx = 0;
         int vy = 0;
-
+        TimeDebug debug = new TimeDebug();
         for (int i = 0; i < 80; ++i) {
             Vec3d surfaceNormal = sampleNormal(heightMap, x + ox, y + oy);
 
@@ -115,9 +114,7 @@ public class ErosionProcessor implements TerrainProcessor {
 
             double deposit = sediment * 0.03 * surfaceNormal.y;
             double erosion = 0.04 * (1 - surfaceNormal.y) * Math.min(1, i * 0.04);
-
-            heightMap = changeWithDelta(xp, yp, deposit - erosion, heightMap);
-
+            changeWithDelta(xp, yp, deposit - erosion, heightMap);
             vx = (int)(0.7 * vx + surfaceNormal.x * 0.15 * 0.1);
             vy = (int)(0.7 * vy + surfaceNormal.z * 0.15 * 0.1);
 
@@ -130,18 +127,25 @@ public class ErosionProcessor implements TerrainProcessor {
 
         return heightMap;
     }
-
+    TimeDebug debug = new TimeDebug();
     @Override
     // Woohoo, gotta love magic numbers!
     public void process(IChunk chunkIn, Random rand, int chunkX, int chunkZ, int[] noise) {
         Main.LOGGER.debug("Processing erosion for chunk: " + chunkIn.getPos().toString());
-        int iterations = 50000;
+        debug.start();
+        int iterations = 50_000;
         for (int i = 0; i < iterations; ++i) {
-            noise = trace(rand, rand.nextInt(17), rand.nextInt(17), noise);
+            noise = trace(rand, rand.nextInt(16), rand.nextInt(16), noise);
         }
+        debug.end();
+        Main.LOGGER.debug("Tracing: " + debug.getMillis() + "ms");
 
-        noise = gaussianBlur(noise);
+        debug.start();
+        gaussianBlur(noise);
+        debug.end();
+        Main.LOGGER.debug("GaussianBlur: " + debug.getMillis() + "ms");
 
+        debug.start();
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 int height = noise[(x * 16) + z];
@@ -152,8 +156,14 @@ public class ErosionProcessor implements TerrainProcessor {
                     if (y > height && chunkIn.getBlockState(pos) != Blocks.AIR.getDefaultState()) {
                         chunkIn.setBlockState(pos, Blocks.AIR.getDefaultState(), false);
                     }
+
+                    if (y <= 63 && chunkIn.getBlockState(pos) == Blocks.AIR.getDefaultState()) {
+                        chunkIn.setBlockState(pos, Blocks.WATER.getDefaultState(), false);
+                    }
                 }
             }
         }
+        debug.end();
+        Main.LOGGER.debug("Block place: " + debug.getMillis() + "ms");
     }
 }

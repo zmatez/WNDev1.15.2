@@ -11,11 +11,9 @@ import java.util.function.Function;
 public class BiomeBlender {
     public static double[] smoothLerp(Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor){
         // Based on total weight of all biomes included, calculate heights of a couple important groups
-        // Rivers and shores are seperated in order to force cliff generation
         double totalHeight = 0;
         double totalHeightVariation = 0;
 
-        double maxNormalWeight = 0, maxRiverWeight = 0, maxShoreWeight = 0;
         for (Object2DoubleMap.Entry<Biome> entry : weightMap1.object2DoubleEntrySet()) {
             BiomeVariants variants = variantAccessor.apply(entry.getKey());
             double weight = entry.getDoubleValue();
@@ -27,41 +25,6 @@ public class BiomeBlender {
             totalHeightVariation += heightVariation;
         }
 
-        double actualHeight = totalHeight;
-            /*if (riverWeight > 0.6 && riverBiomeAt != null) {
-                // River bottom / shore
-                double aboveWaterDelta = actualHeight - riverHeight / riverWeight;
-                if (aboveWaterDelta > 0) {
-                    if (aboveWaterDelta > 20) {
-                        aboveWaterDelta = 20;
-                    }
-                    double adjustedAboveWaterDelta = 0.02 * aboveWaterDelta * (40 - aboveWaterDelta) - 0.48;
-                    actualHeight = riverHeight / riverWeight + adjustedAboveWaterDelta;
-                }
-                biomeAt = riverBiomeAt; // Use river surface for the bottom of the river + small shore beneath cliffs
-            } else if (riverWeight > 0 && normalBiomeAt != null) {
-                double adjustedRiverWeight = 0.6 * riverWeight;
-                actualHeight = (totalHeight - riverHeight) * ((1 - adjustedRiverWeight) / (1 - riverWeight)) + riverHeight * (adjustedRiverWeight / riverWeight);
-
-                biomeAt = normalBiomeAt;
-            } else if (normalBiomeAt != null) {
-                biomeAt = normalBiomeAt;
-            }
-
-            if ((shoreWeight > 0.6 || maxShoreWeight > maxNormalWeight) && shoreBiomeAt != null) {
-                // Flatten beaches above a threshold, creates cliffs where the beach ends
-                double aboveWaterDelta = actualHeight - shoreHeight / shoreWeight;
-                if (aboveWaterDelta > 0) {
-                    if (aboveWaterDelta > 20) {
-                        aboveWaterDelta = 20;
-                    }
-                    double adjustedAboveWaterDelta = 0.02 * aboveWaterDelta * (40 - aboveWaterDelta) - 0.48;
-                    actualHeight = shoreHeight / shoreWeight + adjustedAboveWaterDelta;
-                }
-                biomeAt = shoreBiomeAt;
-            }*/
-
-        //Objects.requireNonNull(biomeAt, "Biome should not be null!");
         return new double[]{totalHeight,totalHeightVariation};
     }
 
@@ -77,6 +40,6 @@ public class BiomeBlender {
     }
 
     private static double getScale(Biome biome){
-        return biome.getScale()/4;
+        return biome.getScale();
     }
 }

@@ -17,7 +17,6 @@ import java.util.function.Function;
 
 public class ChunkLandscape {
     public static HashMap<String, Class<? extends ChunkLandscape>> landscapeCache = new HashMap<String, Class<? extends ChunkLandscape>>();
-    private static final int lerpSmoothness = 5;
     protected int x;
     protected int z;
 
@@ -101,6 +100,17 @@ public class ChunkLandscape {
         //noise += getDepth(biome);
 
         return noise;
+    }
+
+    private static int getDepth(Biome biome){
+        int max = 230; //about 180Y
+        int min = 40; //about 21Y
+        int baseValue = 75; //about 65Y
+
+        float depth = baseValue * (biome.getDepth() > 0 ? biome.getDepth() + 1 : biome.getDepth() - 1);
+        depth = Math.min(depth,max);
+        depth = Math.max(depth,min);
+        return Math.round(depth);
     }
 
     /*

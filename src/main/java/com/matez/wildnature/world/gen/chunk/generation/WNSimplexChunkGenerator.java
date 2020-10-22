@@ -227,7 +227,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         // Terrain processors modify the world, after the base is constructed
         //terrainProcessors.forEach(processor -> processor.process(chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
-        erosionProcessor.process(chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise);
+
+        CompletableFuture.runAsync(() -> erosionProcessor.process(chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
