@@ -68,7 +68,7 @@ public class ChunkArraySampler {
         for (int i = 0; i < SAMPLE_SQUARE; i++) {
             for (int j = 0; j < SAMPLE_SQUARE; j++) {
                 double weight = WEIGHT_FIELD[i + SAMPLE_SQUARE * j];
-                weightMap.mergeDouble(sampledArray[(i + localX) + CHUNK_SQUARE * (j + localZ)], weight, TileEntityMerger.ICallbackWrapper.Double::sum);
+                weightMap.mergeDouble(sampledArray[(i + localX) + CHUNK_SQUARE * (j + localZ)], weight, Double::sum);
             }
         }
     }

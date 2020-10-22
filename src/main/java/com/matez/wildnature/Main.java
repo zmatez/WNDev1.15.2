@@ -213,7 +213,7 @@ public class Main {
         wnInfo("Setup completed");
 
         // Add the erosion processor the the chunk generator
-        WNSimplexChunkGenerator.addPostProcessor(new ErosionProcessor());
+        WNSimplexChunkGenerator.addProcessor(new ErosionProcessor());
     }
 
     private void clientRegistries(final FMLClientSetupEvent event) {

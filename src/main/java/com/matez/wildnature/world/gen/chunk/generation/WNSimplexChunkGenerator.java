@@ -10,6 +10,7 @@ import com.matez.wildnature.world.gen.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.gen.chunk.primers.FastChunkPrimer;
 import com.matez.wildnature.world.gen.generators.carves.PathGenerator;
 import com.matez.wildnature.world.gen.generators.rivers.surface.RiverGenerator;
+import com.matez.wildnature.world.gen.processors.TerrainProcessor;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -37,6 +38,7 @@ import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraftforge.common.BiomeDictionary;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
@@ -57,6 +59,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private final PerlinNoiseGenerator surfaceDepthNoise;
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
+    private static ArrayList<TerrainProcessor> terrainProcessors = new ArrayList<>();
 
     private SharedSeedRandom randomSeed;
 
@@ -78,6 +81,12 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         this.pathGenerator = new PathGenerator(worldIn);
         this.riverGenerator = new RiverGenerator(worldIn);
+
+        terrainProcessors.forEach(processor -> processor.init(this.seed));
+    }
+
+    public static void addProcessor(TerrainProcessor processor) {
+        terrainProcessors.add(processor);
     }
 
     @Override
@@ -194,10 +203,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        this.generateTerrain(chunkIn, this.getHeightsInChunk(chunkpos,worldIn));
+        this.generateTerrain(worldIn, chunkIn, this.getHeightsInChunk(chunkpos,worldIn));
     }
 
-    public void generateTerrain(IChunk chunk, int[] noise) {
+    public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 int height = (int) noise[(x * 16) + z];
@@ -215,6 +224,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 }
             }
         }
+
+        terrainProcessors.forEach(processor -> processor.process(world, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
