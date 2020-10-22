@@ -16,7 +16,7 @@ import net.minecraft.world.IBlockReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicSquareTable extends HorizontalBase implements IRenderLayer {
+public class BasicSquareTable extends TableBase {
 
     public BasicSquareTable(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(properties, builder, regName);
@@ -36,7 +36,6 @@ public class BasicSquareTable extends HorizontalBase implements IRenderLayer {
         }
         return result.simplify();
     }
-
 
     @Override
     public RenderType getRenderLayer() {

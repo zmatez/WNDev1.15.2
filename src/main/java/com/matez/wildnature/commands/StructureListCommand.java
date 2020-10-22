@@ -1,8 +1,8 @@
 package com.matez.wildnature.commands;
 
 import com.matez.wildnature.Main;
+import com.matez.wildnature.other.Pair;
 import com.matez.wildnature.world.gen.structures.nature.SchemFeature;
-import javafx.util.Pair;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;

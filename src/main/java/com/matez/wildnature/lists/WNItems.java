@@ -350,12 +350,14 @@ public class WNItems {
     public static Item AMETHYST_PICKAXE;
     public static Item AMETHYST_AXE;
     public static Item AMETHYST_HOE;
-    
-    
+
+    //MISC
+    public static Item HANDLE_LEATHER;
+    public static Item HANDLE_GOLD;
 
     public static Item JELLY_BALL_WHITE, JELLY_BALL_RED,JELLY_BALL_PINK,JELLY_BALL_ORANGE,JELLY_BALL_BLUE;
     public static Item GLOWSHROOM_DUST, ICESHROOM_DUST;
-    public static Item POUCH;
+    public static Item POUCH, BACKPACK_SMALL, BACKPACK_MEDIUM, BACKPACK_BIG;
 
     //
     public static Item CHISEL;

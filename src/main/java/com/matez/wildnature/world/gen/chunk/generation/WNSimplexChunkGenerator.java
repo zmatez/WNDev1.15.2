@@ -4,11 +4,12 @@ import com.matez.wildnature.Main;
 import com.matez.wildnature.other.Utilities;
 import com.matez.wildnature.world.gen.biomes.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.gen.biomes.layer.SmoothColumnBiomeMagnifier;
+import com.matez.wildnature.world.gen.biomes.setup.BiomeVariants;
 import com.matez.wildnature.world.gen.biomes.setup.WNGenSettings;
 import com.matez.wildnature.world.gen.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.gen.chunk.primers.FastChunkPrimer;
 import com.matez.wildnature.world.gen.generators.carves.PathGenerator;
-import com.matez.wildnature.world.gen.processors.TerrainProcessor;
+import com.matez.wildnature.world.gen.generators.rivers.surface.RiverGenerator;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -25,11 +26,8 @@ import net.minecraft.world.biome.ColumnFuzzedBiomeMagnifier;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.*;
 import net.minecraft.world.gen.Heightmap.Type;
-import net.minecraft.world.gen.OctavesNoiseGenerator;
-import net.minecraft.world.gen.WorldGenRegion;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.jigsaw.JigsawJunction;
 import net.minecraft.world.gen.feature.jigsaw.JigsawPattern;
@@ -43,12 +41,11 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
-import java.util.ArrayList;
+import java.util.function.Function;
 
 public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
     protected IChunk chunk = null;
-
 
     private WNGenSettings settings;
     private final int verticalNoiseResolution;
@@ -57,15 +54,14 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private final int noiseSizeY;
     private final int noiseSizeZ;
 
-    private final OctavesNoiseGenerator surfaceDepthNoise;
-
-    private static ArrayList<TerrainProcessor> processors = new ArrayList<>();
+    private final PerlinNoiseGenerator surfaceDepthNoise;
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
 
     private SharedSeedRandom randomSeed;
 
     private PathGenerator pathGenerator;
+    private RiverGenerator riverGenerator;
 
     public WNSimplexChunkGenerator(IWorld worldIn, BiomeProvider biomeProviderIn, WNGenSettings generationSettingsIn) {
         super(worldIn, biomeProviderIn, generationSettingsIn);
@@ -78,15 +74,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.noiseSizeY = 256 / this.verticalNoiseResolution;
         this.noiseSizeZ = 16 / this.horizontalNoiseResolution;
 
-        this.surfaceDepthNoise = new OctavesNoiseGenerator(this.randomSeed, 4, 0);
+        this.surfaceDepthNoise = new PerlinNoiseGenerator(this.randomSeed, 3, 0);
 
         this.pathGenerator = new PathGenerator(worldIn);
-
-        processors.forEach(processor -> processor.init(this.getSeed()));
-    }
-
-    public static void addPostProcessor(TerrainProcessor processor) {
-        processors.add(processor);
+        this.riverGenerator = new RiverGenerator(worldIn);
     }
 
     @Override
@@ -101,9 +92,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         int j = chunkpos.z;
         SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
         sharedseedrandom.setBaseChunkSeed(i, j);
-        ChunkPos chunkpos1 = chunkIn.getPos();
-        int xChunkPos = chunkpos1.getXStart();
-        int zChunkPos = chunkpos1.getZStart();
+        int xChunkPos = chunkpos.getXStart();
+        int zChunkPos = chunkpos.getZStart();
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
 
@@ -113,8 +103,13 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 int z = zChunkPos + relativeZ;
                 int startHeight = chunkIn.getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, relativeX, relativeZ) + 1;
                 double noise = surfaceDepthNoise.noiseAt((double)x * 0.0625, (double)z * 0.0625, 0.0625, (double)startHeight * 0.0625) * 15;
-
                 Biome biome = worldGenRegion.getBiome(blockpos$mutable.setPos(xChunkPos + relativeX, startHeight, zChunkPos + relativeZ));
+
+                if(x==0 && z==0){
+                    //riverGenerator.generate(0,startHeight,0,biome,chunkIn);
+                }
+
+
                 biome.buildSurface(sharedseedrandom, chunkIn, x, z, startHeight, noise, this.getSettings().getDefaultBlock(), this.getSettings().getDefaultFluid(), this.getSeaLevel(), this.world.getSeed());
 
                 pathGenerator.generate(x,startHeight,z,biome,chunkIn);
@@ -199,10 +194,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        this.generateTerrain(world, chunkIn, this.getHeightsInChunk(chunkpos,worldIn));
+        this.generateTerrain(chunkIn, this.getHeightsInChunk(chunkpos,worldIn));
     }
 
-    public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
+    public void generateTerrain(IChunk chunk, int[] noise) {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 int height = (int) noise[(x * 16) + z];
@@ -210,7 +205,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 for (int y = 0; y < 256; y++) {
                     BlockPos pos = new BlockPos(x, y, z);
 
-                    //if (y > (height * 0.75) + (height * 0.3 * scale) + (depth * 15))
                     if (y > height) {
                         if (y < this.getSeaLevel()) {
                             chunk.setBlockState(pos, this.settings.getDefaultFluid(), false);
@@ -221,8 +215,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 }
             }
         }
-
-        processors.forEach(processor -> processor.process(world, new Random(), chunk.getPos().x, chunk.getPos().z, noise));
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
@@ -250,7 +242,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public void useNoise(int[] noise, ChunkPos pos, int start, int size, IWorld worldIn) {
-        final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(4), weightMap1 = new Object2DoubleOpenHashMap<>();
+        final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
         final ChunkArraySampler.CoordinateAccessor<Biome> biomeAccessor = (x, z) -> (Biome) SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), pos.getXStart() + x, 0, pos.getZStart() + z, worldIn);
 
@@ -265,16 +257,23 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 ChunkArraySampler.fillSampledWeightMap(sampledBiomes4, weightMap4, 2, x, z);
                 ChunkArraySampler.fillSampledWeightMap(sampledBiomes1, weightMap1, x, z);
 
-                noise[(x * 16) + z] = getTerrainHeight((pos.x * 16) + x, (pos.z * 16) + z,weightMap16,weightMap4,weightMap1);
+                Function<Biome, BiomeVariants> variantAccessor = BiomeVariants::getVariantsFor;
+
+                // Group biomes at different distances. This has the effect of making some biome transitions happen over larger distances than others.
+                // This is used to make most land biomes blend at maximum distance, while allowing biomes such as rivers to blend at short distances, creating better cliffs as river biomes are smaller width than other biomes.
+                ChunkArraySampler.reduceGroupedWeightMap(weightMap4, weightMap16, variantAccessor.andThen(BiomeVariants::getLargeGroup), BiomeVariants.LargeGroup.SIZE);
+                ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
+
+                noise[(x * 16) + z] = getTerrainHeight((pos.x * 16) + x, (pos.z * 16) + z,weightMap1,variantAccessor);
             }
         }
     }
 
-    public int getTerrainHeight(int x, int z, Object2DoubleMap<Biome> weightMap16, Object2DoubleMap<Biome> weightMap4, Object2DoubleMap<Biome> weightMap1) {
+    public int getTerrainHeight(int x, int z, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor) {
         Biome biome = this.biomeProvider.getNoiseBiome(x / 4, 1, z / 4);
         ChunkLandscape landscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
-        return (int) landscape.generateHeightmap(biomeProvider,weightMap16,weightMap4,weightMap1);
+        return (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
     }
 
 

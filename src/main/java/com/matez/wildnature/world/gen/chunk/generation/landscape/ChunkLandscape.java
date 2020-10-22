@@ -1,22 +1,17 @@
 package com.matez.wildnature.world.gen.chunk.generation.landscape;
 
-import com.matez.wildnature.Main;
 import com.matez.wildnature.world.gen.biomes.setup.BiomeVariants;
-import com.matez.wildnature.world.gen.chunk.generation.ChunkArraySampler;
-import com.matez.wildnature.world.gen.generators.functions.interpolation.Interpolator;
+import com.matez.wildnature.world.gen.generators.functions.interpolation.BiomeBlender;
 import com.matez.wildnature.world.gen.noise.OctaveNoiseSampler;
 import com.matez.wildnature.world.gen.noise.OpenSimplexNoise;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
-import net.minecraftforge.common.BiomeDictionary;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
 
@@ -62,7 +57,7 @@ public class ChunkLandscape {
         return 256 / (Math.exp(8 / 3f - noise / 48) + 1);
     }
 
-    public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<Biome> weightMap16, Object2DoubleMap<Biome> weightMap4, Object2DoubleMap<Biome> weightMap1) {
+    public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor) {
         int xLow = ((x >> 2) << 2);
         int zLow = ((z >> 2) << 2);
         int xUpper = xLow + 4;
@@ -76,10 +71,10 @@ public class ChunkLandscape {
 
         // Start of sample
         final double[] samples = new double[4];
-        samples[0] = sampleArea(xLow, zLow, biomeProvider,weightMap16,weightMap4,weightMap1);
-        samples[1] = sampleArea(xUpper, zLow, biomeProvider,weightMap16,weightMap4,weightMap1);
-        samples[2] = sampleArea(xLow, zUpper, biomeProvider,weightMap16,weightMap4,weightMap1);
-        samples[3] = sampleArea(xUpper, zUpper, biomeProvider,weightMap16,weightMap4,weightMap1);
+        samples[0] = sampleArea(xLow, zLow, biomeProvider,weightMap1,variantAccessor);
+        samples[1] = sampleArea(xUpper, zLow, biomeProvider,weightMap1,variantAccessor);
+        samples[2] = sampleArea(xLow, zUpper, biomeProvider,weightMap1,variantAccessor);
+        samples[3] = sampleArea(xUpper, zUpper, biomeProvider,weightMap1,variantAccessor);
 
         double sample = MathHelper.lerp(zProgress,
                 MathHelper.lerp(xProgress, samples[0], samples[1]),
@@ -88,17 +83,21 @@ public class ChunkLandscape {
         return sigmoid(sample);
     }
 
-    private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<Biome> weightMap16, Object2DoubleMap<Biome> weightMap4, Object2DoubleMap<Biome> weightMap1) {
-        double noise = sampleNoise(x, z);
-        noise += sampleNoise(x + 4, z);
-        noise += sampleNoise(x - 4, z);
-        noise += sampleNoise(x, z + 4);
-        noise += sampleNoise(x, z - 4);
+    private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor) {
+        double[] interpolation = BiomeBlender.smoothLerp(weightMap1,variantAccessor);
+        double height = interpolation[0];
+        double heightVariation = interpolation[1];
+
+        double noise = sampleNoise(x, z, heightVariation);
+        noise += sampleNoise(x + 4, z, heightVariation);
+        noise += sampleNoise(x - 4, z, heightVariation);
+        noise += sampleNoise(x, z + 4, heightVariation);
+        noise += sampleNoise(x, z - 4, heightVariation);
         noise *= 0.2;
 
         //80 means 69Y, 100 means 92Y as base height
         //DEPTH
-        noise += Interpolator.smoothLerp(x,z,biomeProvider,weightMap16,weightMap4,weightMap1);
+        noise += height;
         //noise += getDepth(biome);
 
         return noise;
@@ -114,11 +113,10 @@ public class ChunkLandscape {
     amplitude 0.5 = over 256 and under 0
     amplitude 0.1 = from 190 to 25
     amplitude 0 means flat terrain
-
      */
-    private double sampleNoise(int x, int z) {
-        //double frequency = this.scaleNoise.sample(x, z);
-        double frequency = 0;
+    private double sampleNoise(int x, int z, double scale) {
+        double frequency = this.scaleNoise.sampleCustom(x, z, 1, scale, scale, 2);
+        //double frequency = 0;
         double noise = this.heightNoise.sampleCustom(x, z, 1, frequency, frequency, octaves);
 
         return noise;
