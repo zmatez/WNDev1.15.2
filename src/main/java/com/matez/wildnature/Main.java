@@ -211,9 +211,6 @@ public class Main {
         WNBiomes.unregisterBlacklisted();
         proxy.init();
         wnInfo("Setup completed");
-
-        // Add the erosion processor the the chunk generator
-        WNSimplexChunkGenerator.addProcessor(new ErosionProcessor());
     }
 
     private void clientRegistries(final FMLClientSetupEvent event) {
