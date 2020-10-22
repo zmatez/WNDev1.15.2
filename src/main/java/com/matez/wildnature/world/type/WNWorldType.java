@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.type;
 
-import com.matez.wildnature.world.gen.biomes.layer.WNBiomeLayer;
+import com.matez.wildnature.world.generation.biomes.layer.WNBiomeLayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.CreateWorldScreen;
 import net.minecraft.world.World;

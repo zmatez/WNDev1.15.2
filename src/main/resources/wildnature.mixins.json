@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.matez.wildnature.mixin",
+  "package": "com.matez.wildnature.util.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "wildnature.refmap.json",
   "mixins": [
