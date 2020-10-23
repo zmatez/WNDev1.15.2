@@ -33,9 +33,8 @@ public class ThermalErosionProcessor implements TerrainProcessor {
         for (int x = 0; x < size; ++x) {
             for (int z = 0; z < size; ++z) {
                 int val = noise[x * size + z];
-                int xs, zs;
-                float ss = -1;
-                float si = -1;
+                int slopeX = -1, slopeZ = -1;
+                float maxZDiff = -1;
 
                 for (int k = 0; k < 8; k++) {
                     int[] nextVals = next(x, z, k);
@@ -46,15 +45,14 @@ public class ThermalErosionProcessor implements TerrainProcessor {
                     }
 
                     float zDiff = val - noise[xn * size + zn];
-                    if (zDiff > 0.0f && zDiff > ss) {
-                        ss = zDiff;
-                        xs = xn;
-                        zs = zn;
-                        si = xs * 16 + zs;
+                    if (zDiff > 0.0f && zDiff > maxZDiff) {
+                        maxZDiff = zDiff;
+                        slopeX = xn;
+                        slopeZ = zn;
                     }
                 }
-
-                if (ss / (size * noise[(int) si]) > threshold) {
+                // Δy / Δx ≡ slope
+                if (maxZDiff / (x - slopeX) > threshold) {
                     BlockPos pos = new BlockPos(x, noise[x * size + z], z);
                     if (chunkIn.getBlockState(pos) != Blocks.WATER.getDefaultState()) {
                         chunkIn.setBlockState(pos, Blocks.AIR.getDefaultState(), false);
@@ -67,7 +65,7 @@ public class ThermalErosionProcessor implements TerrainProcessor {
     @Override
     // O(256 * 8 * n) where n is the number of iterations
     public void process(IChunk chunkIn, Random rand, int chunkX, int chunkZ, int[] noise) {
-        int iterations = 300;
+        int iterations = 3000;
         for (int i = 0; i < iterations; i++) {
             thermalStep(chunkIn, noise);
         }
