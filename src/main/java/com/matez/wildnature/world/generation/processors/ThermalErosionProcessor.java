@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.processors;
 
 import com.matez.wildnature.world.generation.biomes.setup.WNGenSettings;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -19,10 +20,14 @@ public class ThermalErosionProcessor implements TerrainProcessor {
     private final double amplitude = 0.8f;
 
     private ChunkGenerator<WNGenSettings> generator;
+    private BlockState DEFAULT_FLUID;
     private static final int[] vertexData = new int[]{0, 1, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, -1, 1};
 
     @Override
-    public void init(long seed) {}
+    public void init(ChunkGenerator<WNGenSettings> generator, long seed) {
+        this.generator = generator;
+        this.DEFAULT_FLUID = generator.getSettings().getDefaultFluid();
+    }
 
     private IChunk[] getNeighbours(IWorld world, int x, int z) {
         // Left, Up, Right, Down (diagonals in-between)
@@ -84,11 +89,12 @@ public class ThermalErosionProcessor implements TerrainProcessor {
         noise[fX * size + fZ] += amplitude;
 
         if (k != -1) {
-            int tY = borders[k].getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, tX, tZ);
+            //int tY = borders[k].getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, tX, tZ);
+            int tY = noise[tX * 16 + tZ];
             BlockPos displacementPos = new BlockPos(tX, tY, tZ);
             // Erode the chunk border
             if (tY <= 63) {
-                borders[k].setBlockState(displacementPos, generator.getSettings().getDefaultFluid(), false);
+                borders[k].setBlockState(displacementPos, DEFAULT_FLUID, false);
             } else {
                 borders[k].setBlockState(displacementPos, Blocks.AIR.getDefaultState(), false);
             }
@@ -148,30 +154,27 @@ public class ThermalErosionProcessor implements TerrainProcessor {
 
     @Override
     // O(256 * 8 * n) where n is the number of iterations
-    public void process(IWorld world, ChunkGenerator<WNGenSettings> generator, Random rand, int chunkX, int chunkZ, int[] noise) {
-        this.generator = generator;
+    public void process(IWorld world, Random rand, int chunkX, int chunkZ, int[] noise) {
         IChunk chunkIn = world.getChunk(chunkX, chunkZ);
         // Bordering chunks (to modify)
         IChunk[] borders = getNeighbours(world, chunkX, chunkZ);
 
-        int iterations = 300;
+        int iterations = 3000;
         for (int i = 0; i < iterations; i++) {
             thermalStep(chunkIn, borders, noise);
         }
 
+
+        BlockPos.Mutable pos = new BlockPos.Mutable();
         for (int x = 0; x < size; x++) {
             for (int z = 0; z < size; z++) {
-                for (int y = 0; y < 256; y++) {
-                    BlockPos pos = new BlockPos(x, y, z);
+                for (int y = noise[x * 16 + z]; y < 256; y++) {
+                    pos.setPos(x,y,z);
 
-                    if (y > noise[x * 16 + z]) {
-                        if (y <= 63) {
-                            chunkIn.setBlockState(pos, generator.getSettings().getDefaultFluid(), false);
-                        } else {
-                            chunkIn.setBlockState(pos, Blocks.AIR.getDefaultState(), false);
-                        }
+                    if (y <= 63) {
+                        chunkIn.setBlockState(pos, DEFAULT_FLUID, false);
                     } else {
-                        chunkIn.setBlockState(pos, generator.getSettings().getDefaultFluid(), false);
+                        chunkIn.setBlockState(pos, Blocks.AIR.getDefaultState(), false);
                     }
                 }
             }

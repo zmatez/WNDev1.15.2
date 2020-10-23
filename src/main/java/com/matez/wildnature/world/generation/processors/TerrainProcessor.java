@@ -8,8 +8,8 @@ import net.minecraft.world.gen.ChunkGenerator;
 import java.util.Random;
 
 public interface TerrainProcessor {
-    void init(long seed);
+    void init(ChunkGenerator<WNGenSettings> generator, long seed);
 
     // Takes in the noise, mutates it
-    void process(IWorld world, ChunkGenerator<WNGenSettings> generator, Random rand, int chunkX, int chunkZ, int[] noise);
+    void process(IWorld world, Random rand, int chunkX, int chunkZ, int[] noise);
 }

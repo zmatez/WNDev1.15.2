@@ -53,7 +53,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private final PerlinNoiseGenerator surfaceDepthNoise;
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
-    // private static ArrayList<TerrainProcessor> terrainProcessors = new ArrayList<>();
     private static TerrainProcessor thermalErosionProcessor = new ThermalErosionProcessor();
 
     private SharedSeedRandom randomSeed;
@@ -77,13 +76,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.pathGenerator = new PathGenerator(worldIn);
         this.riverGenerator = new RiverGenerator(worldIn);
 
-        // terrainProcessors.forEach(processor -> processor.init(this.seed));
-        thermalErosionProcessor.init(this.seed);
+        thermalErosionProcessor.init(this, this.seed);
     }
-
-    //public static void addProcessor(TerrainProcessor processor) {
-    //    terrainProcessors.add(processor);
-    //}
 
     @Override
     public void generateBiomes(IChunk chunkIn) {
@@ -222,7 +216,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         }
 
         // Terrain processors modify the world, after the base is constructed
-        CompletableFuture.runAsync(() -> thermalErosionProcessor.process(world, this, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
+        //CompletableFuture.runAsync(() -> thermalErosionProcessor.process(world, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
+        thermalErosionProcessor.process(world, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise);
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {

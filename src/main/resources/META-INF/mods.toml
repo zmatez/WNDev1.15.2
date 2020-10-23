@@ -44,11 +44,6 @@ Official WildNature server! See modpack and IP at:
 
 Join our Discord!
 | http://bit.ly/wildnature-discord |
-
-+----------------------------------------------+
- |            Want a Minecraft Modded Server?               |
- | Visit server.pro! http://bit.ly/wildnature-server-pro  |
-+----------------------------------------------+
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.wildnature]] #optional
