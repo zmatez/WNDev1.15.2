@@ -222,7 +222,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         }
 
         // Terrain processors modify the world, after the base is constructed
-        CompletableFuture.runAsync(() -> thermalErosionProcessor.process(chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
+        CompletableFuture.runAsync(() -> thermalErosionProcessor.process(world, this, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
