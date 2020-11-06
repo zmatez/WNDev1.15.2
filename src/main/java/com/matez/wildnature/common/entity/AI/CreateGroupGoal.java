@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.AI;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.type.animal.IFamily;
 import com.matez.wildnature.common.entity.type.animal.duck.AbstractDuckEntity;
 import com.matez.wildnature.util.other.Utilities;
@@ -52,14 +52,14 @@ public class CreateGroupGoal extends Goal {
                 }
             }
 
-            Main.LOGGER.debug("Current group: " + group.size() + " : " + group);
+            WN.LOGGER.debug("Current group: " + group.size() + " : " + group);
 
             ArrayList<AbstractDuckEntity> entities = new ArrayList<>(duck.getEntityWorld().getEntitiesWithinAABB(AbstractDuckEntity.class, this.duck.getBoundingBox().grow(8.0D, 4.0D, 8.0D)));
             for (AbstractDuckEntity entity : entities) {
                 double dist = Utilities.getDistance(entity.getPosition(),duck.getPosition());
                 if(dist<maxGroupingDistance && !group.contains(entity) && (entity.getGroup().isEmpty() || entity.getGroup().size()==1)){
                     group.add(entity);
-                    Main.LOGGER.info("Added to group("+group.size()+") " + entity.getPosition());
+                    WN.LOGGER.info("Added to group("+group.size()+") " + entity.getPosition());
 
                 }
             }
@@ -85,7 +85,7 @@ public class CreateGroupGoal extends Goal {
                 }
                 assert e != null;
                 int index = group.indexOf(e);
-                Main.LOGGER.info("New group leader is on " + e.getPosition());
+                WN.LOGGER.info("New group leader is on " + e.getPosition());
                 e.setGroupLeader(true);
                 group.set(index,e);
                 leader=e;
@@ -99,7 +99,7 @@ public class CreateGroupGoal extends Goal {
                 abstractDuckEntity.setLeader(leader);
             }
             leader.setCustomName(new StringTextComponent(TextFormatting.GREEN+"Leader " + leader.getGroup().size()));
-            Main.LOGGER.debug("After group: " + group.size() + " : " + duck.getGroup());
+            WN.LOGGER.debug("After group: " + group.size() + " : " + duck.getGroup());
 
             runningInstances.remove(duck);
         }

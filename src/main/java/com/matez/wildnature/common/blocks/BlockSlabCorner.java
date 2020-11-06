@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
@@ -81,7 +81,7 @@ public class BlockSlabCorner extends BlockBase implements IWaterLoggable, IRende
         }else{
             if(player.getHeldItem(handIn).getItem()== WNItems.CHISEL && Utilities.getDistance(player.getPosition(),pos)>=1){
                 String verticalId = this.getRegistryName().toString().replace("corner","vertical");
-                Block b = Main.getBlockByID(verticalId);
+                Block b = WN.getBlockByID(verticalId);
                 if(b instanceof BlockSlabVertical){
                     worldIn.setBlockState(pos,b.getDefaultState().with(BlockSlabVertical.FACING,state.get(FACING).getOpposite()).with(BlockSlabVertical.WATERLOGGED,state.get(WATERLOGGED)));
                     return ActionResultType.SUCCESS;

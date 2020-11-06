@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.state.properties.DoubleBlockHalf;
@@ -32,8 +32,8 @@ public class CattailFeature extends Feature<NoFeatureConfig> {
          if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(blockpos.down()).isSolid()) {
             BlockPos blockpos1 = blockpos.down();
             if (worldIn.getFluidState(blockpos1.west()).isTagged(FluidTags.WATER) || worldIn.getFluidState(blockpos1.east()).isTagged(FluidTags.WATER) || worldIn.getFluidState(blockpos1.north()).isTagged(FluidTags.WATER) || worldIn.getFluidState(blockpos1.south()).isTagged(FluidTags.WATER)) {
-               worldIn.setBlockState(blockpos, Main.getBlockByID("wildnature:cattail").getDefaultState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER), 2);
-               worldIn.setBlockState(blockpos.up(), Main.getBlockByID("wildnature:cattail").getDefaultState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER), 2);
+               worldIn.setBlockState(blockpos, WN.getBlockByID("wildnature:cattail").getDefaultState().with(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER), 2);
+               worldIn.setBlockState(blockpos.up(), WN.getBlockByID("wildnature:cattail").getDefaultState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER), 2);
 
             }
          }

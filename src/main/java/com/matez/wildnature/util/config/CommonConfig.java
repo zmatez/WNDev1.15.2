@@ -1,6 +1,6 @@
 package com.matez.wildnature.util.config;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -16,6 +16,7 @@ public class CommonConfig {
     public static ForgeConfigSpec.ConfigValue<String> currentVersion;
     public static ForgeConfigSpec.BooleanValue changePanorama, newLoadingWorldScreen, generateOnlyWildNature;
     public static ForgeConfigSpec.BooleanValue useWNOnServer;
+    public static ForgeConfigSpec.BooleanValue generatorWarning;
     public static ForgeConfigSpec.DoubleValue riverDepth;
     public static ForgeConfigSpec.BooleanValue messageOnJoin;
     public static ForgeConfigSpec.BooleanValue effectOnJoin;
@@ -34,7 +35,7 @@ public class CommonConfig {
     public static ForgeConfigSpec.IntValue biomeSize,riverSize;
     public static ForgeConfigSpec.IntValue maxSearchRadius,biomeGroupSpawningSize, biomeGroupChance;
     public static ForgeConfigSpec.IntValue rockFormationChance;
-    public static ForgeConfigSpec.BooleanValue generateOres, generateRocks, genBasalt, genConglomerate, genGneiss, genLimestone, genMarble, genPegmatite, genSlate;
+    public static ForgeConfigSpec.BooleanValue generateOres, generateRocks, genBasalt, getQuartzite, genGneiss, genLimestone, genMarble, genBlueSlate, genPurpleSlate;
     public static ForgeConfigSpec.IntValue rockChance, rockSize;
     public static ForgeConfigSpec.DoubleValue steamMaxAge;
     public static ForgeConfigSpec.ConfigValue<String> blacklistBiome;
@@ -44,7 +45,7 @@ public class CommonConfig {
     public static ForgeConfigSpec.BooleanValue poisonIvyPoisons;
     public static ForgeConfigSpec.DoubleValue poisonIvyDamage;
     public static ForgeConfigSpec.IntValue leafFruitChance, flowerBloomChance, flowerDropChance,fruitBushRarity,vegeCropRarity,mossRarity,mossRarityDense,treeLichenRarity,treeLichenRarityDense,riverCaneRarity,smallCactiRarity,poisonIvyRarity,riverCaneDensity,shellRarity;
-    public static ForgeConfigSpec.IntValue tinRarity,copperRarity,amethystRarity,sapphireRarity,malachiteRarity,silverRarity,amberRarity,rubyRarity,saltSandRarity,saltStoneRarity;
+    public static ForgeConfigSpec.IntValue tinRarity,copperRarity,amethystSmallRarity, amethystBigRarity,sapphireSmallRarity, sapphireBigRarity,malachiteRarity,silverRarity,amberRarity,rubySmallRarity, rubyBigRarity,saltSandRarity,saltStoneRarity;
     public static ForgeConfigSpec.BooleanValue vegeFarmFence;
     public static ForgeConfigSpec.BooleanValue generatePaths, generateUndergroundRivers;
     public static ForgeConfigSpec.DoubleValue pathFrequency;
@@ -83,6 +84,9 @@ public class CommonConfig {
 
         currentVersion = builder
                 .comment("Installed mod version. Please do not change this.").define("system.version", "");
+        generatorWarning = builder
+                .comment("Installed mod version. Please do not change this.")
+                .define("system.genWarning",false);
         maxSearchRadius = builder
                 .comment("Max *nearest* biome search radius. After exceeding this number, WildNature will search for biome ignoring radius.\nDefault: 15000")
                 .defineInRange("system.max_search_radius", 15000,10,100000000);
@@ -114,7 +118,7 @@ public class CommonConfig {
         builder.push("generator");
 
         generatorType = builder
-                .comment("Generator version. \nAccepted Values: wildnature | wildnature-simplex").define("generatorType", "wildnature");
+                .comment("Generator version. \nAccepted Values: new | old").define("generatorType", "new");
 
 
         biomeSize = builder
@@ -137,10 +141,6 @@ public class CommonConfig {
                 .comment("Generate Basalt?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: true")
                 .define("rocks.define.basalt",true);
 
-        genConglomerate = builder
-                .comment("Generate Conglomerate?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: true")
-                .define("rocks.define.conglomerate",true);
-
         genGneiss = builder
                 .comment("Generate Gneiss?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: true")
                 .define("rocks.define.gneiss",true);
@@ -153,13 +153,17 @@ public class CommonConfig {
                 .comment("Generate Marble?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: true")
                 .define("rocks.define.marble",true);
 
-        genPegmatite = builder
-                .comment("Generate Pegmatite?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: true")
-                .define("rocks.define.pegmatite",true);
+        getQuartzite = builder
+                .comment("Generate Quartzite?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: false (w.i.p)")
+                .define("rocks.define.quartzite",false);
 
-        genSlate = builder
-                .comment("Generate Slate?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: true")
-                .define("rocks.define.slate",true);
+        genBlueSlate = builder
+                .comment("Generate Blue Slate?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: false (w.i.p)")
+                .define("rocks.define.slate_blue",false);
+
+        genPurpleSlate = builder
+                .comment("Generate Purple Slate?\nIf you set generator.rocks.all to FALSE, changing this has no sense\nDefault: false (w.i.p)")
+                .define("rocks.define.slate_purple",false);
 
         rockChance = builder
                 .comment("Chance of rock generation\nDefault: 33")
@@ -190,19 +194,27 @@ public class CommonConfig {
                 .defineInRange("ores.tin_rarity",8, 0, 500);
 
         copperRarity = builder
-                .comment("Copper ore rarity\nSmaller = more rare\nDefault: 8")
+                .comment("Copper ore rarity\nSmaller = more rare\nDefault: 6")
                 .defineInRange("ores.copper_rarity",8, 0, 500);
 
-        amethystRarity = builder
-                .comment("Amethyst ore rarity\nSmaller = more rare\nDefault: 4")
-                .defineInRange("ores.amethyst_rarity",4, 0, 500);
+        amethystSmallRarity = builder
+                .comment("Amethyst small gem formation rarity\nSmaller = more rare\nDefault: 1")
+                .defineInRange("ores.amethyst_small_rarity",1, 0, 500);
 
-        sapphireRarity = builder
-                .comment("Sapphire ore rarity\nSmaller = more rare\nDefault: 3")
-                .defineInRange("ores.sapphire_rarity",3, 0, 500);
+        amethystBigRarity = builder
+                .comment("Amethyst big gem formation rarity\nSmaller = more rare\nDefault: 1")
+                .defineInRange("ores.amethyst_big_rarity",1, 0, 500);
+
+        sapphireSmallRarity = builder
+                .comment("Sapphire small gem formation rarity\nSmaller = more rare\nDefault: 2")
+                .defineInRange("ores.sapphire_small_rarity",2, 0, 500);
+
+        sapphireBigRarity = builder
+                .comment("Sapphire big gem formation rarity\nSmaller = more rare\nDefault: 1")
+                .defineInRange("ores.sapphire_big_rarity",1, 0, 500);
 
         malachiteRarity = builder
-                .comment("Malachite ore rarity\nSmaller = more rare\nDefault: 2")
+                .comment("Malachite gem formation rarity\nSmaller = more rare\nDefault: 2")
                 .defineInRange("ores.malachite_rarity",2, 0, 500);
 
         silverRarity = builder
@@ -213,9 +225,13 @@ public class CommonConfig {
                 .comment("Amber ore rarity. Ambers generates on beaches only!!!\nSmaller = more rare\nDefault: 3")
                 .defineInRange("ores.amber_rarity",3, 0, 500);
 
-        rubyRarity = builder
-                .comment("Ruby ore rarity\nWarning - rubies are rare because they're generated only under oceans.\nSmaller = more rare\nDefault: 2")
-                .defineInRange("ores.ruby_rarity",2, 0, 500);
+        rubySmallRarity = builder
+                .comment("Ruby small gem formation rarity\nSmaller = more rare\nDefault: 2")
+                .defineInRange("ores.ruby_small_rarity",2, 0, 500);
+
+        rubyBigRarity = builder
+                .comment("Ruby big gem formation rarity\nSmaller = more rare\nDefault: 1")
+                .defineInRange("ores.ruby_big_rarity",1, 0, 500);
 
         saltStoneRarity = builder
                 .comment("Stone salt ore rarity\nSmaller = more rare\nDefault: 7")
@@ -451,37 +467,39 @@ public class CommonConfig {
                 .comment("Flower drop chance\nDefault: 2")
                 .defineInRange("flowerDropChance",2,0,1000);
 
+
+
+        amberOreHarvestLevel = builder
+                .comment("Amber ore harvest level\nDefault: 3 - diamond+")
+                .defineInRange("ore.amberOreHarvestLevel",3,0,100);
+
         tinOreHarvestLevel = builder
-                .comment("Tin ore harvest level\nDefault: 1")
+                .comment("Tin ore harvest level\nDefault: 1 - stone+")
                 .defineInRange("ore.tinOreHarvestLevel",1,0,100);
 
         copperOreHarvestLevel = builder
-                .comment("Copper ore harvest level\nDefault: 1")
-                .defineInRange("ore.copperOreHarvestLevel",1,0,100);
-
-        amethystOreHarvestLevel = builder
-                .comment("Amethyst ore harvest level\nDefault: 2")
-                .defineInRange("ore.amethystOreHarvestLevel",2,0,100);
-
-        sapphireOreHarvestLevel = builder
-                .comment("Sapphire ore harvest level\nDefault: 3")
-                .defineInRange("ore.sapphireOreHarvestLevel",3,0,100);
-
-        malachiteOreHarvestLevel = builder
-                .comment("Malachite ore harvest level\nDefault: 3")
-                .defineInRange("ore.malachiteOreHarvestLevel",3,0,100);
+                .comment("Copper ore harvest level\nDefault: 2 - iron+")
+                .defineInRange("ore.copperOreHarvestLevel",2,0,100);
 
         silverOreHarvestLevel = builder
-                .comment("Silver ore harvest level\nDefault: 3")
+                .comment("Silver ore harvest level\nDefault: 3 - diamond+")
                 .defineInRange("ore.silverOreHarvestLevel",3,0,100);
 
-        amberOreHarvestLevel = builder
-                .comment("Amber ore harvest level\nDefault: 3")
-                .defineInRange("ore.amberOreHarvestLevel",3,0,100);
+        sapphireOreHarvestLevel = builder
+                .comment("Sapphire ore harvest level\nDefault: 3 - diamond+")
+                .defineInRange("ore.sapphireOreHarvestLevel",3,0,100);
 
         rubyOreHarvestLevel = builder
-                .comment("Ruby ore harvest level\nDefault: 4")
-                .defineInRange("ore.rubyOreHarvestLevel",4,0,100);
+                .comment("Ruby ore harvest level\nDefault: 3 - diamond+")
+                .defineInRange("ore.rubyOreHarvestLevel",3,0,100);
+
+        malachiteOreHarvestLevel = builder
+                .comment("Malachite ore harvest level\nDefault: 4 - silver+")
+                .defineInRange("ore.malachiteOreHarvestLevel",3,0,100);
+
+        amethystOreHarvestLevel = builder
+                .comment("Amethyst ore harvest level\nDefault: 5 - ruby+/sapphire+/malachite+")
+                .defineInRange("ore.amethystOreHarvestLevel",2,0,100);
 
         vegeGrassSpawn = builder
                 .comment("Can all veggies normally spawn on normal grass?\nDefault: false")
@@ -493,24 +511,24 @@ public class CommonConfig {
 
     public static void compile(){
         ArrayList<String> strings = new ArrayList<>(Arrays.asList(blacklistBiome.get().replace(" ","").split(",")));
-        Main.LOGGER.debug("Initializing biome blacklist module...\nValues: " + strings.toString()+"\nRaw values: " + blacklistBiome.get());
+        WN.LOGGER.debug("Initializing biome blacklist module...\nValues: " + strings.toString()+"\nRaw values: " + blacklistBiome.get());
         for (String s : strings) {
             try {
                 s = s + "";
-                Main.LOGGER.debug("Blacklisting " + s + "...");
-                Biome b = Main.getBiomeByID(s);
+                WN.LOGGER.debug("Blacklisting " + s + "...");
+                Biome b = WN.getBiomeByID(s);
                 if(b != null) {
                     if (b != Biomes.DEFAULT) {
-                        Main.LOGGER.debug("Blacklisted Biome: " + b.getRegistryName());
+                        WN.LOGGER.debug("Blacklisted Biome: " + b.getRegistryName());
                         blacklistedBiomes.add(b);
                     } else {
-                        Main.LOGGER.debug("Invalid Blacklisted Biome: " + b.getRegistryName());
+                        WN.LOGGER.debug("Invalid Blacklisted Biome: " + b.getRegistryName());
                     }
                 }else{
-                    Main.LOGGER.debug("Invalid Blacklisted Biome: " + s+"");
+                    WN.LOGGER.debug("Invalid Blacklisted Biome: " + s+"");
                 }
             }catch (Exception e){
-                Main.LOGGER.debug("Invalid Blacklisted Biome: " + s+"");
+                WN.LOGGER.debug("Invalid Blacklisted Biome: " + s+"");
             }
         }
     }

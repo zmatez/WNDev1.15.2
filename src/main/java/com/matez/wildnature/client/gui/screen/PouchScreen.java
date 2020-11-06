@@ -16,7 +16,7 @@ public class PouchScreen extends ContainerScreen<PouchContainer> {
    public PouchScreen(PouchContainer pouch, PlayerInventory inv, ITextComponent text) {
       super(pouch, inv, text);
       this.passEvents = false;
-      this.ySize = 160;
+      this.ySize = 142;
    }
 
    public void render(int p_render_1_, int p_render_2_, float p_render_3_) {

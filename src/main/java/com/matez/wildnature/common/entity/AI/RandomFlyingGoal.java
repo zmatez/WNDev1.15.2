@@ -2,7 +2,7 @@ package com.matez.wildnature.common.entity.AI;
 
 import javax.annotation.Nullable;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.AI.Navigator.WNRandomPosGen;
 import com.matez.wildnature.common.entity.type.animal.duck.AbstractDuckEntity;
 import com.matez.wildnature.util.other.Utilities;
@@ -29,7 +29,7 @@ public class RandomFlyingGoal extends RandomWalkingGoal {
       Vec3d vec3d = null;
       if (this.creature.getRNG().nextFloat() >= this.executionChance || !(creature.onGround && creature.isInWater())) {
          vec3d = WNRandomPosGen.getLandPos(creature,100,30,true);
-         Main.LOGGER.debug("Flying navigation to " + vec3d);
+         WN.LOGGER.debug("Flying navigation to " + vec3d);
          if(creature instanceof AbstractDuckEntity){
             ((AbstractDuckEntity) creature).setFlying(true);
          }

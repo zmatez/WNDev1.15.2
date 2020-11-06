@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "$",
+    "$"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:bronze_ingot"
+    },
+    "$": {
+      "item": "wildnature:handle_leather"
+    }
+  },
+  "result": {
+    "item": "wildnature:bronze_shovel",
+    "count": 1
+  }
+}

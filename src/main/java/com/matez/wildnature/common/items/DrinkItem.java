@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -56,7 +56,7 @@ public class DrinkItem extends Item {
          entityLiving.clearActivePotions();
       }
 
-      return stack.isEmpty() ? new ItemStack(Main.getItemByID(onEmpty)) : stack;
+      return stack.isEmpty() ? new ItemStack(WN.getItemByID(onEmpty)) : stack;
    }
 
    /**

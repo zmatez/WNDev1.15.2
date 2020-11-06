@@ -2,7 +2,7 @@ package com.matez.wildnature.client.gui.tileEntities;
 
 import java.util.List;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.CustomPistonHeadBlock;
 import com.matez.wildnature.client.gui.initGuis;
 import com.matez.wildnature.common.blocks.CustomPistonBlock;
@@ -54,8 +54,8 @@ public class CustomPistonTileEntity extends TileEntity implements ITickableTileE
       this.pistonFacing = pistonFacingIn;
       this.extending = extendingIn;
       this.shouldHeadBeRendered = shouldHeadBeRenderedIn;
-      this.head= Main.getBlockByID("wildnature:rs_piston1_head");
-      this.moving=Main.getBlockByID("wildnature:rs_piston1_moving");
+      this.head= WN.getBlockByID("wildnature:rs_piston1_head");
+      this.moving= WN.getBlockByID("wildnature:rs_piston1_moving");
    }
 
    /**

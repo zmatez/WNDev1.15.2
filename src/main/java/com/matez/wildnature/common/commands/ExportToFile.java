@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.block.BlockState;
@@ -42,7 +42,7 @@ public class ExportToFile {
             }
         }
         StringTextComponent s3 = new StringTextComponent(TextFormatting.AQUA + "Exporting " + TextFormatting.GOLD + list.size() + TextFormatting.AQUA +" blocks to "+ TextFormatting.GOLD + name+".java"+ TextFormatting.AQUA+"...");
-        Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s3));
+        WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s3));
 
         boolean invalid = false;
         for(BlockPos blockpos1 : list) {
@@ -57,13 +57,13 @@ public class ExportToFile {
         }
         if(invalid){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Cannot export " +TextFormatting.GOLD + name+".java"+ TextFormatting.RED+" - " + "There are more than one " +TextFormatting.GOLD +centerTo.getState().getBlock().getRegistryName() + TextFormatting.RED+".");
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
             return 0;
         }
 
         if(centerBlockPos==null){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Cannot export " +TextFormatting.GOLD + name+".java"+ TextFormatting.RED+" - " + "Cannot find " +TextFormatting.GOLD +centerTo.getState().getBlock().getRegistryName() + TextFormatting.RED+".");
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
             return 0;
         }
         String start = "";
@@ -120,7 +120,7 @@ public class ExportToFile {
 
         if(f.exists()){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Cannot export " +TextFormatting.GOLD + name+".java"+ TextFormatting.RED+" - " + "File already exist.");
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
             return 0;
         }
         try {
@@ -136,16 +136,16 @@ public class ExportToFile {
             printWriter.close();
         } catch (IOException e) {
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Cannot export " +TextFormatting.GOLD + name+".java"+ TextFormatting.RED+" - " + e.getLocalizedMessage());
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
             return 0;
         }
 
         StringTextComponent s4 = new StringTextComponent(TextFormatting.AQUA + "Successfully exported " + TextFormatting.GOLD + list.size() + TextFormatting.AQUA +" blocks to "+ TextFormatting.GOLD + name+".java"+ TextFormatting.AQUA+".");
-        Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+        WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
         StringTextComponent s5 = new StringTextComponent(TextFormatting.GREEN + "Click to open file");
         s5.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD+"Click here")));
         s5.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE,f.getPath()));
-        Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s5));
+        WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s5));
 
         return 1;
     }

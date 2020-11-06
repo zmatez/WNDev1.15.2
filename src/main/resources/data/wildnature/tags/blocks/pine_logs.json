@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:pine_branch",
+    "wildnature:pine_log",
+    "wildnature:pine_wood",
+    "wildnature:pine_stripped_log",
+    "wildnature:pine_stripped_wood"
+  ]
+}

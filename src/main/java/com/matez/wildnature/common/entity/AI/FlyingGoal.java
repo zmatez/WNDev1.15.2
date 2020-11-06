@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.AI;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -38,7 +38,7 @@ public class FlyingGoal extends Goal {
             BlockPos airPos = findTarget(entity.getPosition(),entity.getEntityWorld());
             if(airPos!=null){
                 boolean isNavigating = entity.getNavigator().tryMoveToXYZ(airPos.getX(),airPos.getY(), airPos.getZ(),Utilities.rdoub(speed-speed/5,speed+speed/5));
-                Main.LOGGER.debug("navi: " + isNavigating + "   "+airPos);
+                WN.LOGGER.debug("navi: " + isNavigating + "   "+airPos);
                 startAirPos=airPos;
                 startPos=new BlockPos(entity.getPosition());
                 return isNavigating;
@@ -55,7 +55,7 @@ public class FlyingGoal extends Goal {
 
     @Override
     public void tick() {
-        Main.LOGGER.debug("tick " + Utilities.getDistance(entity.getPosition(),startAirPos) + " air: " + isInAir());
+        WN.LOGGER.debug("tick " + Utilities.getDistance(entity.getPosition(),startAirPos) + " air: " + isInAir());
         if(Utilities.getDistance(entity.getPosition(),startAirPos)<3){
             if(!lookSet){
                 double lvt_1_1_ = 6.283185307179586D * rand.nextDouble();
@@ -67,7 +67,7 @@ public class FlyingGoal extends Goal {
             if(isInAir()) {
                 entity.setMoveForward((float) Utilities.rdoub(speed - speed / 5, speed + speed / 5));
                 entity.setMoveVertical((float)Utilities.rdoub(-0.3,0.3));
-                Main.LOGGER.debug("Flying");
+                WN.LOGGER.debug("Flying");
             }
         }else{
             entity.getNavigator().tryMoveToXYZ(startAirPos.getX(),startAirPos.getY(), startAirPos.getZ(),Utilities.rdoub(speed-speed/5,speed+speed/5));
@@ -76,7 +76,7 @@ public class FlyingGoal extends Goal {
 
     @Override
     public void resetTask() {
-        Main.LOGGER.debug("reseting");
+        WN.LOGGER.debug("reseting");
         lookSet=false;
         BlockPos landPos = land(entity.getPosition(),entity.getEntityWorld());
         if(landPos!=null) {

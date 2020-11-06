@@ -22,11 +22,9 @@ public class PathGenerator {
 
     public void generate(int x, int y, int z, Biome biome, IChunk chunkIn){
         if(CommonConfig.generatePaths.get()) {
-            double[] noises = getPathNoise(x,z,0.005, 0.01, 0.001,50,1);
-            double vnoise = noises[0];
-            double cnoise = noises[1];
+            double[] pathNoises = applyPathNoise(x,z);
 
-            if (vnoise != 1) {
+            if (isPath(pathNoises)) {
                 if (BiomeDictionary.getTypes(biome).contains(BiomeDictionary.Type.FOREST) && BiomeDictionary.getTypes(biome).contains(BiomeDictionary.Type.DENSE)) {
                     int pathY = y;
                     //double amountToPushTerrainDownBy = 1 - vnoise / threshold;
@@ -98,6 +96,15 @@ public class PathGenerator {
             }
         }
     }
+
+    public double[] applyPathNoise(int x, int z){
+        return getPathNoise(x,z,0.005, 0.01, 0.001,50,1);
+    }
+
+    public boolean isPath(double[] pathNoise){
+        return pathNoise[0] != 1;
+    }
+
 
     /**
      *

@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.StoneSpikeBlock;
 import com.matez.wildnature.common.blocks.StoneSpikeType;
 import com.mojang.datafixers.Dynamic;
@@ -26,10 +26,10 @@ public class StalagmiteFeature extends Feature<NoFeatureConfig> {
        }
        if(worldIn.getBlockState(pos).isAir()) {
            if (worldIn.getBlockState(pos.down()).isSolid()) {
-               worldIn.setBlockState(pos, Main.getBlockByID("wildnature:stone_spike").getDefaultState().with(StoneSpikeBlock.type, StoneSpikeType.STALAGMITE), 2);
+               worldIn.setBlockState(pos, WN.getBlockByID("wildnature:stone_spike").getDefaultState().with(StoneSpikeBlock.type, StoneSpikeType.STALAGMITE), 2);
                return true;
            } else if (worldIn.getBlockState(pos.up()).isSolid()) {
-               worldIn.setBlockState(pos, Main.getBlockByID("wildnature:stone_spike").getDefaultState().with(StoneSpikeBlock.type, StoneSpikeType.STALACTITE), 2);
+               worldIn.setBlockState(pos, WN.getBlockByID("wildnature:stone_spike").getDefaultState().with(StoneSpikeBlock.type, StoneSpikeType.STALACTITE), 2);
                return true;
            }
        }

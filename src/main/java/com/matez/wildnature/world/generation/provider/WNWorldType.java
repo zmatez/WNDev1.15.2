@@ -1,13 +1,13 @@
 package com.matez.wildnature.world.generation.provider;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.client.gui.screen.world.WNWorldSettingsScreen;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.client.gui.screen.WNWorldConfigScreen;
-import com.matez.wildnature.world.generation.biomes.layer.WNBiomeLayer;
-import com.matez.wildnature.world.generation.biomes.setup.WNGenSettings;
+import com.matez.wildnature.world.generation.layer.WNBiomeLayer;
+import com.matez.wildnature.world.generation.biome.setup.WNGenSettings;
+import com.matez.wildnature.world.generation.chunk.deprecated.WNChunkGeneratorOverworld;
+import com.matez.wildnature.world.generation.chunk.type.WNChunkGeneratorType;
 import com.matez.wildnature.world.generation.chunk.generation.WNSimplexChunkGenerator;
-import com.matez.wildnature.world.generation.chunk.WNChunkGeneratorOverworld;
-import com.matez.wildnature.world.generation.chunk.WNChunkGeneratorType;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.CreateBuffetWorldScreen;
@@ -22,7 +22,10 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.*;
 import net.minecraft.world.gen.area.IArea;
 import net.minecraft.world.gen.area.IAreaFactory;
-import net.minecraft.world.gen.layer.*;
+import net.minecraft.world.gen.layer.AddBambooForestLayer;
+import net.minecraft.world.gen.layer.EdgeBiomeLayer;
+import net.minecraft.world.gen.layer.LayerUtil;
+import net.minecraft.world.gen.layer.ZoomLayer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -34,17 +37,16 @@ public class WNWorldType extends WorldType {
     }
 
 
-    public ChunkGenerator<?> createChunkGenerator(World world)
-    {
+    public ChunkGenerator<?> createChunkGenerator(World world) {
         System.out.println("Generating dimension: " + world.getDimension().getType().toString());
 
-        if(world.getDimension().getType()==DimensionType.OVERWORLD) {
-            Main.wnInfo("Generating WildNature World");
-            Main.runningWorld=world;
+        if (world.getDimension().getType() == DimensionType.OVERWORLD) {
+            WN.wnInfo("Generating WildNature World");
+            WN.runningWorld = world;
             ChunkGeneratorType<WNGenSettings, WNChunkGeneratorOverworld> gen = WNChunkGeneratorType.WILDNATURE;
             ChunkGeneratorType<NetherGenSettings, NetherChunkGenerator> genNether = ChunkGeneratorType.CAVES;
             ChunkGeneratorType<EndGenerationSettings, EndChunkGenerator> genEnd = ChunkGeneratorType.FLOATING_ISLANDS;
-            ChunkGeneratorType<WNGenSettings, WNSimplexChunkGenerator> genTest = WNChunkGeneratorType.SIMPLEX_TEST;
+            ChunkGeneratorType<WNGenSettings, WNSimplexChunkGenerator> genNew = WNChunkGeneratorType.SIMPLEX_TEST;
 
 
             WNGenSettings overworldgensettings1 = gen.createSettings();
@@ -58,19 +60,18 @@ public class WNWorldType extends WorldType {
             BiomeProvider provider = bpt.create(overworldbiomeprovidersettings1);
 
             // Change to genTest if you want the simplex generator (WNChunkGeneratorEarth + SmoothChunkGenerator)
-            if(CommonConfig.generatorType.get().equals("wildnature")){
+            if (CommonConfig.generatorType.get().equals("old")) {
                 return gen.create(world, provider, overworldgensettings1);
-            }else {
-                return genTest.create(world, provider, overworldgensettings1);
+            } else {
+                return genNew.create(world, provider, overworldgensettings1);
             }
-        }else{
+        } else {
             return world.getDimension().createChunkGenerator();
         }
     }
 
 
-    public <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> getBiomeLayer(IAreaFactory<T> parentLayer, OverworldGenSettings chunkSettings, LongFunction<C> contextFactory)
-    {
+    public <T extends IArea, C extends IExtendedNoiseRandom<T>> IAreaFactory<T> getBiomeLayer(IAreaFactory<T> parentLayer, OverworldGenSettings chunkSettings, LongFunction<C> contextFactory) {
         parentLayer = (new WNBiomeLayer(getWorldType(), chunkSettings.getBiomeId())).apply(contextFactory.apply(200L), parentLayer);
         parentLayer = AddBambooForestLayer.INSTANCE.apply(contextFactory.apply(1001L), parentLayer);
         parentLayer = LayerUtil.repeat(1000L, ZoomLayer.NORMAL, parentLayer, 2, contextFactory);
@@ -79,14 +80,13 @@ public class WNWorldType extends WorldType {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void onCustomizeButton(Minecraft mc, CreateWorldScreen gui)
-    {
+    public void onCustomizeButton(Minecraft mc, CreateWorldScreen gui) {
         if (this == WorldType.FLAT)
             mc.displayGuiScreen(new CreateFlatWorldScreen(gui, gui.chunkProviderSettingsJson));
         else if (this == WorldType.BUFFET)
             mc.displayGuiScreen(new CreateBuffetWorldScreen(gui, gui.chunkProviderSettingsJson));
-        else if(this == Main.WNWorldType)
-            mc.displayGuiScreen(new WNWorldConfigScreen(gui, gui.chunkProviderSettingsJson));
+        else if (this == WN.WNWorldType)
+            mc.displayGuiScreen(new WNWorldSettingsScreen(gui, gui.chunkProviderSettingsJson));
     }
 
 

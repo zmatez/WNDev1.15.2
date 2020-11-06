@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.feature.features;
 
 import com.matez.wildnature.util.other.Utilities;
-import com.matez.wildnature.world.generation.biomes.layer.WNLayerUtil;
+import com.matez.wildnature.world.generation.layer.WNLayerUtil;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;

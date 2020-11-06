@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.compatibility.WNLoot;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -89,7 +89,7 @@ public class BranchBase extends VWallBlock {
             list.add(new ItemStack(Item.getItemFromBlock(this), 1));
         }else {
             String log = getRegistryName().getPath().toString().replace("branch","log");
-            list.add(new ItemStack(Main.getBlockByID("wildnature:"+log), 1));
+            list.add(new ItemStack(WN.getBlockByID("wildnature:"+log), 1));
         }
 
         return list;

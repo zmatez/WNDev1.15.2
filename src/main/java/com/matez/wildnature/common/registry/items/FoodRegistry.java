@@ -1,13 +1,13 @@
 package com.matez.wildnature.common.registry.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.client.tabs.WNTabs;
 import com.matez.wildnature.common.items.*;
 import com.matez.wildnature.common.items.recipes.cooking.FillTool;
 import com.matez.wildnature.util.lists.WNItems;
 import net.minecraft.item.*;
 
-import static com.matez.wildnature.init.Main.RegistryEvents.location;
+import static com.matez.wildnature.init.WN.RegistryEvents.location;
 
 public class FoodRegistry {
 
@@ -71,7 +71,7 @@ public class FoodRegistry {
                 WNItems.LIME = new Item(new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("lime")),
                 WNItems.OLIVES = new Item(new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("olives")),
                 WNItems.PEACH = new Item(new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("peach")),
-                WNItems.PINEAPPLE = new BlockNamedItem(Main.getBlockByID("wildnature:pineapple_plant"),new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("pineapple")),
+                WNItems.PINEAPPLE = new BlockNamedItem(WN.getBlockByID("wildnature:pineapple_plant"),new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("pineapple")),
                 WNItems.POMEGRANATE = new Item(new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("pomegranate")),
                 WNItems.MANGO = new Item(new Item.Properties().group(WNTabs.FOOD).food(PLUM)).setRegistryName(location("mango")),
 
@@ -80,61 +80,61 @@ public class FoodRegistry {
 
 
                 //PLANTS
-                WNItems.BROCCOLI = new BlockNamedItem(Main.getBlockByID("wildnature:broccoli_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("broccoli")),
-                WNItems.CABBAGE = new BlockNamedItem(Main.getBlockByID("wildnature:cabbage_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("cabbage")),
-                WNItems.CAULIFLOWER = new BlockNamedItem(Main.getBlockByID("wildnature:cauliflower_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("cauliflower")),
-                WNItems.CELERY = new BlockNamedItem(Main.getBlockByID("wildnature:celery_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("celery")),
-                WNItems.CHIVES = new BlockNamedItem(Main.getBlockByID("wildnature:chives_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("chives")),
-                WNItems.CORN = new BlockNamedItem(Main.getBlockByID("wildnature:corn_bush"),new Item.Properties().group(WNTabs.FOOD).food(CORN)).setRegistryName(location("corn")),
-                WNItems.CUCUMBER = new BlockNamedItem(Main.getBlockByID("wildnature:cucumber_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("cucumber")),
-                WNItems.EGGPLANT = new BlockNamedItem(Main.getBlockByID("wildnature:eggplant_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("eggplant")),
-                WNItems.GARLIC = new BlockNamedItem(Main.getBlockByID("wildnature:garlic_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("garlic")),
-                WNItems.GINGER = new BlockNamedItem(Main.getBlockByID("wildnature:ginger_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("ginger")),
-                WNItems.GREEN_BEANS = new BlockNamedItem(Main.getBlockByID("wildnature:green_bean_bush"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("green_beans")),
-                WNItems.GREEN_PEPPER = new BlockNamedItem(Main.getBlockByID("wildnature:green_pepper_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("green_pepper")),
-                WNItems.HORSE_RADISH = new BlockNamedItem(Main.getBlockByID("wildnature:horse_radish_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("horse_radish")),
-                WNItems.LEEK = new BlockNamedItem(Main.getBlockByID("wildnature:leek_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("leek")),
-                WNItems.LETTUCE = new BlockNamedItem(Main.getBlockByID("wildnature:lettuce_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("lettuce")),
-                WNItems.ONION = new BlockNamedItem(Main.getBlockByID("wildnature:onion_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("onion")),
-                WNItems.PEANUT = new BlockNamedItem(Main.getBlockByID("wildnature:peanut_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("peanut")),
-                WNItems.PEAS = new BlockNamedItem(Main.getBlockByID("wildnature:pea_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("peas")),
-                WNItems.RED_ONION = new BlockNamedItem(Main.getBlockByID("wildnature:red_onion_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("red_onion")),
-                WNItems.RED_PEPPER = new BlockNamedItem(Main.getBlockByID("wildnature:red_pepper_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("red_pepper")),
-                WNItems.RHUBARB = new BlockNamedItem(Main.getBlockByID("wildnature:rhubarb_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("rhubarb")),
-                WNItems.RICE = new BlockNamedItem(Main.getBlockByID("wildnature:rice_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("rice")),
+                WNItems.BROCCOLI = new BlockNamedItem(WN.getBlockByID("wildnature:broccoli_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("broccoli")),
+                WNItems.CABBAGE = new BlockNamedItem(WN.getBlockByID("wildnature:cabbage_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("cabbage")),
+                WNItems.CAULIFLOWER = new BlockNamedItem(WN.getBlockByID("wildnature:cauliflower_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("cauliflower")),
+                WNItems.CELERY = new BlockNamedItem(WN.getBlockByID("wildnature:celery_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("celery")),
+                WNItems.CHIVES = new BlockNamedItem(WN.getBlockByID("wildnature:chives_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("chives")),
+                WNItems.CORN = new BlockNamedItem(WN.getBlockByID("wildnature:corn_bush"),new Item.Properties().group(WNTabs.FOOD).food(CORN)).setRegistryName(location("corn")),
+                WNItems.CUCUMBER = new BlockNamedItem(WN.getBlockByID("wildnature:cucumber_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("cucumber")),
+                WNItems.EGGPLANT = new BlockNamedItem(WN.getBlockByID("wildnature:eggplant_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("eggplant")),
+                WNItems.GARLIC = new BlockNamedItem(WN.getBlockByID("wildnature:garlic_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("garlic")),
+                WNItems.GINGER = new BlockNamedItem(WN.getBlockByID("wildnature:ginger_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("ginger")),
+                WNItems.GREEN_BEANS = new BlockNamedItem(WN.getBlockByID("wildnature:green_bean_bush"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("green_beans")),
+                WNItems.GREEN_PEPPER = new BlockNamedItem(WN.getBlockByID("wildnature:green_pepper_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("green_pepper")),
+                WNItems.HORSE_RADISH = new BlockNamedItem(WN.getBlockByID("wildnature:horse_radish_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("horse_radish")),
+                WNItems.LEEK = new BlockNamedItem(WN.getBlockByID("wildnature:leek_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("leek")),
+                WNItems.LETTUCE = new BlockNamedItem(WN.getBlockByID("wildnature:lettuce_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("lettuce")),
+                WNItems.ONION = new BlockNamedItem(WN.getBlockByID("wildnature:onion_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("onion")),
+                WNItems.PEANUT = new BlockNamedItem(WN.getBlockByID("wildnature:peanut_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("peanut")),
+                WNItems.PEAS = new BlockNamedItem(WN.getBlockByID("wildnature:pea_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("peas")),
+                WNItems.RED_ONION = new BlockNamedItem(WN.getBlockByID("wildnature:red_onion_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("red_onion")),
+                WNItems.RED_PEPPER = new BlockNamedItem(WN.getBlockByID("wildnature:red_pepper_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("red_pepper")),
+                WNItems.RHUBARB = new BlockNamedItem(WN.getBlockByID("wildnature:rhubarb_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("rhubarb")),
+                WNItems.RICE = new BlockNamedItem(WN.getBlockByID("wildnature:rice_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("rice")),
                 WNItems.TOMATO = new Item(new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("tomato")),
-                WNItems.TOMATO_SEEDS = new BlockNamedItem(Main.getBlockByID("wildnature:tomato_plant"),new Item.Properties().group(WNTabs.SURFACE_PLANTS)).setRegistryName(location("tomato_seeds")),
-                WNItems.TURNIP = new BlockNamedItem(Main.getBlockByID("wildnature:turnip_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("turnip")),
+                WNItems.TOMATO_SEEDS = new BlockNamedItem(WN.getBlockByID("wildnature:tomato_plant"),new Item.Properties().group(WNTabs.SURFACE_PLANTS)).setRegistryName(location("tomato_seeds")),
+                WNItems.TURNIP = new BlockNamedItem(WN.getBlockByID("wildnature:turnip_plant"),new Item.Properties().group(WNTabs.FOOD).food(TOMATO)).setRegistryName(location("turnip")),
 
 
 
-                WNItems.COTTON = new BlockNamedItem(Main.getBlockByID("wildnature:cotton_plant"),new Item.Properties().group(WNTabs.SURFACE_PLANTS)).setRegistryName(location("cotton")),
+                WNItems.COTTON = new BlockNamedItem(WN.getBlockByID("wildnature:cotton_plant"),new Item.Properties().group(WNTabs.SURFACE_PLANTS)).setRegistryName(location("cotton")),
                 
 
-                WNItems.BASIL = new BlockNamedItem(Main.getBlockByID("wildnature:basil_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("basil")),
+                WNItems.BASIL = new BlockNamedItem(WN.getBlockByID("wildnature:basil_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("basil")),
                 WNItems.CHOPPED_CHIVES = new FoodItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("chopped_chives")),
-                WNItems.CURRY_LEAVES = new BlockNamedItem(Main.getBlockByID("wildnature:curry_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("curry_leaves")),
+                WNItems.CURRY_LEAVES = new BlockNamedItem(WN.getBlockByID("wildnature:curry_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("curry_leaves")),
                 WNItems.DRIED_MARJORAM = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("dried_marjoram")),
                 WNItems.DRIED_PARSLEY = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("dried_parsley")),
                 WNItems.DRIED_SAGE = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("dried_sage")),
-                WNItems.FRESH_MARJORAM = new BlockNamedItem(Main.getBlockByID("wildnature:marjoram_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("fresh_marjoram")),
-                WNItems.FRESH_ROSEMARY = new BlockNamedItem(Main.getBlockByID("wildnature:rosemary_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("fresh_rosemary")),
+                WNItems.FRESH_MARJORAM = new BlockNamedItem(WN.getBlockByID("wildnature:marjoram_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("fresh_marjoram")),
+                WNItems.FRESH_ROSEMARY = new BlockNamedItem(WN.getBlockByID("wildnature:rosemary_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("fresh_rosemary")),
                 WNItems.GARLIC_CLOVES = new FoodItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("garlic_cloves")),
-                WNItems.TURMERIC = new BlockNamedItem(Main.getBlockByID("wildnature:tumeric_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("turmeric")),
+                WNItems.TURMERIC = new BlockNamedItem(WN.getBlockByID("wildnature:tumeric_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("turmeric")),
 
                 WNItems.SALT = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("salt")),
-                WNItems.PEPPER = new BlockNamedItem(Main.getBlockByID("wildnature:black_pepper_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("pepper")),
+                WNItems.PEPPER = new BlockNamedItem(WN.getBlockByID("wildnature:black_pepper_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("pepper")),
 
                 WNItems.BUTTER = new FoodItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("butter")),
                 WNItems.DOUGH_BALL = new FoodItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("dough_ball")),
 
 
                 //TEA LEAF
-                WNItems.BLACK_TEA_LEAVES = new BlockNamedItem(Main.getBlockByID("wildnature:black_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("black_tea_leaves")),
-                WNItems.GREEN_TEA_LEAVES = new BlockNamedItem(Main.getBlockByID("wildnature:green_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("green_tea_leaves")),
-                WNItems.MELISSA_TEA_LEAF = new BlockNamedItem(Main.getBlockByID("wildnature:melissa_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("melissa_tea_leaf")),
-                WNItems.MINT = new BlockNamedItem(Main.getBlockByID("wildnature:mint_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("mint")),
-                WNItems.WHITE_TEA_LEAVES = new BlockNamedItem(Main.getBlockByID("wildnature:white_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("white_tea_leaves")),
+                WNItems.BLACK_TEA_LEAVES = new BlockNamedItem(WN.getBlockByID("wildnature:black_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("black_tea_leaves")),
+                WNItems.GREEN_TEA_LEAVES = new BlockNamedItem(WN.getBlockByID("wildnature:green_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("green_tea_leaves")),
+                WNItems.MELISSA_TEA_LEAF = new BlockNamedItem(WN.getBlockByID("wildnature:melissa_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("melissa_tea_leaf")),
+                WNItems.MINT = new BlockNamedItem(WN.getBlockByID("wildnature:mint_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("mint")),
+                WNItems.WHITE_TEA_LEAVES = new BlockNamedItem(WN.getBlockByID("wildnature:white_tea_plant"),new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("white_tea_leaves")),
 
                 WNItems.MUSHROOM_MIX = new FoodItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("mushroom_mix")),
                 WNItems.DRIED_MUSHROOM_MIX = new FoodItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("dried_mushroom_mix")),

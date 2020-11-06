@@ -47,6 +47,11 @@
     "wildnature:mango_sapling",
     "wildnature:nuytsia_sapling",
     "wildnature:magnolia_sapling",
-    "wildnature:forsythia_sapling"
+    "wildnature:forsythia_sapling",
+    "wildnature:metasequoia_green_sapling",
+    "wildnature:metasequoia_red_sapling",
+    "wildnature:metasequoia_orange_sapling",
+    "wildnature:metasequoia_yellow_sapling",
+    "wildnature:metasequoia_brown_sapling"
   ]
 }

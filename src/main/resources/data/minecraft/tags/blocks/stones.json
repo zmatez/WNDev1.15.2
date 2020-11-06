@@ -2,10 +2,11 @@
   "replace": false,
   "values": [
     "wildnature:basalt",
-    "wildnature:conglomerate",
+    "wildnature:gneiss",
     "wildnature:limestone",
     "wildnature:marble",
-    "wildnature:gneiss",
-    "wildnature:slate"
+    "wildnature:slate_blue",
+    "wildnature:slate_purple",
+    "wildnature:quartzite"
   ]
 }

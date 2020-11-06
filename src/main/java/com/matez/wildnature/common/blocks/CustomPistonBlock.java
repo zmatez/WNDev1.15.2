@@ -5,7 +5,7 @@ import com.google.common.collect.Sets;
 import java.util.List;
 import java.util.Set;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.client.gui.tileEntities.CustomPistonTileEntity;
 import com.matez.wildnature.util.other.CustomPistonBlockStructureHelper;
 import com.matez.wildnature.client.sounds.SoundRegistry;
@@ -87,9 +87,9 @@ public class CustomPistonBlock extends DirectionalBlock {
      * Called by ItemBlocks after a block is set in the world, to allow post-place logic
      */
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        this.piston= Main.getBlockByID(loc+"");
-        this.head= Main.getBlockByID(hea+"");
-        this.moving= Main.getBlockByID(movi+"");
+        this.piston= WN.getBlockByID(loc+"");
+        this.head= WN.getBlockByID(hea+"");
+        this.moving= WN.getBlockByID(movi+"");
         if (!worldIn.isRemote) {
             this.checkForMove(worldIn, pos, state);
         }

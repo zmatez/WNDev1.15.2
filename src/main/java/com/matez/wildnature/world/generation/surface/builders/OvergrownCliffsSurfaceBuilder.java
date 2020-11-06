@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
 import com.matez.wildnature.util.other.Utilities;
-import com.matez.wildnature.world.generation.surface.SurfaceRegistry;
+import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
@@ -23,7 +23,7 @@ public class OvergrownCliffsSurfaceBuilder extends SurfaceBuilder<SurfaceBuilder
         if (i == 0) {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, config);
         } else if (i == 1) {
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.OVERGROWN_STONE_CONFIG);
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.OVERGROWN_STONE_CONFIG);
         }
 
     }

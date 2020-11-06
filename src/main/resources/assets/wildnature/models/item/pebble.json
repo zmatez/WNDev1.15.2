@@ -1,3 +1,6 @@
 {
-    "parent": "wildnature:block/pebble1"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "wildnature:items/pebble_item"
+    }
 }

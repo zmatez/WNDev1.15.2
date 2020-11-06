@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.event.PlayerEventHandler;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.command.CommandSource;
@@ -17,10 +17,10 @@ public class TestCommand {
                 //Minecraft.getInstance().getSoundHandler().play(SimpleSound.music(Main.getSoundByID("wildnature:ambient/denseforest_day_0")));
 
                 StringTextComponent s2 = new StringTextComponent(TextFormatting.GREEN + "Execution successful!");
-                Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+                WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
             }catch (Exception e){
                 StringTextComponent s2 = new StringTextComponent(TextFormatting.RED + "Execution failed. " + e.getLocalizedMessage());
-                Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+                WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
                 System.out.println(e.getStackTrace());
             }
             return 1;
@@ -38,11 +38,11 @@ public class TestCommand {
         }
         if(x==1||x==2||x==3){
             StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "Running the dev command... ");
-            Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+            WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
             return true;
         }else {
             StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "This is a developer command. It's useless for you :)");
-            Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+            WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
             return false;
         }
     }

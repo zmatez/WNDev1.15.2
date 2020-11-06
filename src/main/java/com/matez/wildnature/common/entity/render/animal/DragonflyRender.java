@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.DragonflyModel;
 import com.matez.wildnature.common.entity.type.animal.insect.DragonflyEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -25,10 +25,10 @@ public class DragonflyRender extends MobRenderer<DragonflyEntity, DragonflyModel
     @Override
     public ResourceLocation getEntityTexture(DragonflyEntity entity) {
         if(entity.getVariant()==null){
-            return Main.RegistryEvents.location("textures/entity/"+ DragonflyEntity.DragonFlyVariant.BLUE.getPath());
+            return WN.RegistryEvents.location("textures/entity/"+ DragonflyEntity.DragonFlyVariant.BLUE.getPath());
 
         }else{
-            return Main.RegistryEvents.location("textures/entity/"+entity.getVariant().getPath());
+            return WN.RegistryEvents.location("textures/entity/"+entity.getVariant().getPath());
         }
     }
 

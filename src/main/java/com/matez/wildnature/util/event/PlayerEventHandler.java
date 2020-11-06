@@ -1,9 +1,9 @@
 package com.matez.wildnature.util.event;
 
 import com.google.gson.*;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Patron;
 import com.matez.wildnature.world.generation.provider.WNWorldType;
-import com.matez.wildnature.init.Main;
 import com.matez.wildnature.common.commands.WNCommand;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Motd;
@@ -55,11 +55,11 @@ public class PlayerEventHandler {
                 if(!event.getPlayer().getEntityWorld().isRemote) {
                     StringTextComponent sg = null;
                     if (event.getEntity().getEntityWorld().getWorldType().getClass() == WNWorldType.class) {
-                        s = new StringTextComponent(TextFormatting.AQUA + "Using " + TextFormatting.YELLOW + "WildNature World Generator" + TextFormatting.AQUA + ". Version " + TextFormatting.YELLOW + Main.version + TextFormatting.AQUA + ".");
+                        s = new StringTextComponent(TextFormatting.AQUA + "Using " + TextFormatting.YELLOW + "WildNature World Generator" + TextFormatting.AQUA + ". Version " + TextFormatting.YELLOW + WN.version + TextFormatting.AQUA + ".");
                         s.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.DARK_AQUA + "WildNature World Generator" + TextFormatting.GRAY + " is needed to generate really smooth world.\nWithout it, sub-biomes wouldn't generate.")));
                         s.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"));
                     } else {
-                        s = new StringTextComponent(TextFormatting.RED + "Using WildNature " + TextFormatting.YELLOW + Main.version + TextFormatting.RED + " without " + TextFormatting.YELLOW + "WildNature World Generator" + TextFormatting.RED + ".");
+                        s = new StringTextComponent(TextFormatting.RED + "Using WildNature " + TextFormatting.YELLOW + WN.version + TextFormatting.RED + " without " + TextFormatting.YELLOW + "WildNature World Generator" + TextFormatting.RED + ".");
                         s.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.DARK_RED + "WildNature World Generator" + TextFormatting.GRAY + " is needed to generate really smooth world.\nWithout it, sub-biomes wouldn't generate.")));
                         s.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"));
                     }
@@ -67,9 +67,9 @@ public class PlayerEventHandler {
 
                     showInfo=true;
 
-                    Main.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s));
+                    WN.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s));
                     if(sg!=null){
-                        Main.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sg));
+                        WN.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sg));
                     }
                 }
 
@@ -82,7 +82,7 @@ public class PlayerEventHandler {
             Patron patron = isPatron((PlayerEntity) event.getEntity());
             if (patron != null) {
                 if (isServer(event.getEntity())) {
-                    Main.LOGGER.info("Running on server");
+                    WN.LOGGER.info("Running on server");
                 }
                 if (patron.getType() == 4) {
                     this.patron = true;
@@ -90,12 +90,12 @@ public class PlayerEventHandler {
                         StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "Joined " + TextFormatting.GREEN + "" + ((PlayerEntity) (event.getEntity())).getDisplayName().getString() + TextFormatting.AQUA + ", the WildNature patron. Hi!");
                         s2.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GREEN + "" + ((PlayerEntity) (event.getEntity())).getDisplayName().getString() + TextFormatting.DARK_AQUA + " is supporting " + TextFormatting.GREEN + "WildNature mod" + TextFormatting.DARK_AQUA + ".\nThanks to it, this mod is getting to be better." + TextFormatting.DARK_PURPLE + "\nClick to open.")));
                         s2.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://bit.ly/matez-patreon"));
-                        Main.sendServerChatMessage(event.getEntity().getServer(), (PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+                        WN.sendServerChatMessage(event.getEntity().getServer(), (PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
                     }
                     StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "Hello, " + TextFormatting.GREEN + "" + ((PlayerEntity) (event.getEntity())).getDisplayName().getString() + TextFormatting.AQUA + ", the WildNature patron.");
                     s2.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GREEN + "" + ((PlayerEntity) (event.getEntity())).getDisplayName().getString() + TextFormatting.DARK_AQUA + " is supporting " + TextFormatting.GREEN + "WildNature mod" + TextFormatting.DARK_AQUA + ".\nThanks to it, this mod is getting to be better." + TextFormatting.DARK_PURPLE + "\nClick to open.")));
                     s2.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://bit.ly/matez-patreon"));
-                    Main.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+                    WN.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
 
                 } else {
                     String textClient = "";//$PLAYER$ = player
@@ -128,12 +128,12 @@ public class PlayerEventHandler {
                         StringTextComponent s2 = new StringTextComponent(textServer);
                         s2.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(hoverServer)));
                         s2.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"));
-                        Main.sendServerChatMessage(event.getEntity().getServer(), (PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+                        WN.sendServerChatMessage(event.getEntity().getServer(), (PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
                     }
                     StringTextComponent s2 = new StringTextComponent(textClient);
                     s2.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(hoverClient)));
                     s2.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"));
-                    Main.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+                    WN.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
 
 
                 }
@@ -145,44 +145,40 @@ public class PlayerEventHandler {
                 gotMessageAboutYourself3.add(event.getPlayer());
                 Motd motd = readMOTD(event.getPlayer());
                 if(motd==null){
-                    Main.LOGGER.warn("WildNature MOTD Unavailable");
+                    WN.LOGGER.warn("WildNature MOTD Unavailable");
                 }else {
                     ITextComponent comp = null;
                     try {
                         comp = TextComponentUtils.updateForEntity(null, ITextComponent.Serializer.fromJson(motd.getText()), event.getPlayer(), 0);
                         ITextComponent t = null;
                         if (motd.getPrefix()) {
-                            t = new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(comp);
+                            t = new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(comp);
                         } else {
                             t = new StringTextComponent("").appendSibling(comp);
                         }
                         if (t != null) {
-                            Main.LOGGER.info("Sent WN MOTD");
-                            Main.sendChatMessage((PlayerEntity) event.getEntity(), t);
+                            WN.LOGGER.info("Sent WN MOTD");
+                            WN.sendChatMessage((PlayerEntity) event.getEntity(), t);
                             try {
                                 if (CommonConfig.effectOnJoin.get()) {
                                     Minecraft.getInstance().getIntegratedServer().getCommandManager().handleCommand(event.getPlayer().getCommandSource().withPermissionLevel(2), motd.getCommand());
                                 }
                             } catch (Exception e) {
-                                Main.LOGGER.warn("Cannot show MOTD");
+                                WN.LOGGER.warn("Cannot show MOTD");
                             }
                         }
                     } catch (Exception e) {
-                        Main.LOGGER.warn("Cannot show MOTD");
+                        WN.LOGGER.warn("Cannot show MOTD");
                     }
                 }
 
             }
 
             if(showInfo){
-                if(Main.loadedNewVersion) {
-                    StringTextComponent sx = new StringTextComponent(TextFormatting.GREEN+ "Loaded new WildNature version" + TextFormatting.GRAY+" - " + TextFormatting.GOLD+ Main.version);
-                    Main.sendChatMessage((PlayerEntity)event.getEntity(),new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sx));
-                    Main.sendChatMessage((PlayerEntity) event.getEntity(), WNCommand.infoComponent(event.getPlayer(), false));
-                    StringTextComponent sd = new StringTextComponent(TextFormatting.AQUA+"Want a modded server? Visit server.pro!" + TextFormatting.GREEN + " Click here");
-                    sd.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GREEN+"Click to open"+TextFormatting.DARK_AQUA+"\nPowerful game server hosting for serious gamers.\nFTP access, fully customizable, responsive control panel, free plan. \nUp and running in 55 seconds.")));
-                    sd.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://bit.ly/wildnature-server-pro"));
-                    Main.sendChatMessage((PlayerEntity) event.getEntity(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sd));
+                if(WN.loadedNewVersion) {
+                    StringTextComponent sx = new StringTextComponent(TextFormatting.GREEN+ "Loaded new WildNature version" + TextFormatting.GRAY+" - " + TextFormatting.GOLD+ WN.version);
+                    WN.sendChatMessage((PlayerEntity)event.getEntity(),new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
+                    WN.sendChatMessage((PlayerEntity) event.getEntity(), WNCommand.infoComponent(event.getPlayer(), false));
                 }
             }
 
@@ -205,15 +201,15 @@ public class PlayerEventHandler {
     public static Patron isPatron(PlayerEntity entity){
         ArrayList<Patron> patrons = readPatrons();
         if(patrons==null){
-            Main.LOGGER.warn("WildNature Patrons Unavailable");
+            WN.LOGGER.warn("WildNature Patrons Unavailable");
         }else {
             for (int i = 0; i < patrons.size(); i++) {
                 if (PlayerEntity.getUUID(entity.getGameProfile()).toString().equals(patrons.get(i).getUuid())) {
                     int type = patrons.get(i).getType();
                     if (type == 4) {
-                        Main.LOGGER.info(TextFormatting.GOLD + entity.getDisplayName().getString() + "" + TextFormatting.AQUA + " is a WildNature patron.");
+                        WN.LOGGER.info(TextFormatting.GOLD + entity.getDisplayName().getString() + "" + TextFormatting.AQUA + " is a WildNature patron.");
                     } else if (type == 1 || type == 2) {
-                        Main.LOGGER.info(TextFormatting.RED + entity.getDisplayName().getString() + "" + TextFormatting.AQUA + " is a WildNature developer.");
+                        WN.LOGGER.info(TextFormatting.RED + entity.getDisplayName().getString() + "" + TextFormatting.AQUA + " is a WildNature developer.");
                     }
                     return patrons.get(i);
                 }
@@ -223,7 +219,7 @@ public class PlayerEventHandler {
     }
 
     public static ArrayList<Patron> readPatrons(){
-        String s = Main.readFromURL("https://wildnaturemod.com/data/wildnature-uuids.json");
+        String s = WN.readFromURL("https://wildnaturemod.com/data/wildnature-uuids.json");
         if(s==null){
             return null;
         }
@@ -232,7 +228,7 @@ public class PlayerEventHandler {
     }
 
     public static Motd readMOTD(PlayerEntity entity){
-        String s = Main.readFromURL("https://wildnaturemod.com/data/wildnature-motd.json");
+        String s = WN.readFromURL("https://wildnaturemod.com/data/wildnature-motd.json");
         if(s==null){
             return null;
         }
@@ -254,9 +250,9 @@ public class PlayerEventHandler {
             if(motd.getType()==-1 || (isPatron(entity)!=null && isPatron(entity).getType()==motd.getType())){
                 return motd;
             }
-            Main.LOGGER.info("Patron type isn't like that");
+            WN.LOGGER.info("Patron type isn't like that");
         }else {
-            Main.LOGGER.info("Motd isn't today");
+            WN.LOGGER.info("Motd isn't today");
         }
         return null;
     }

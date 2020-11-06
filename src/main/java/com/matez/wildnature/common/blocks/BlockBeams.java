@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.client.render.IRenderLayer;
@@ -236,7 +236,7 @@ public class BlockBeams extends Block implements IRenderLayer {
             Block b = Block.getBlockFromItem(s.getItem());
             if(b!=null && b!= Blocks.AIR){
                 if(b.getDefaultState().isSolid()){
-                    BlockState newBlock = Main.getBlockByID("wildnature:"+b.getRegistryName().getNamespace()+"_beams").getDefaultState();
+                    BlockState newBlock = WN.getBlockByID("wildnature:"+b.getRegistryName().getNamespace()+"_beams").getDefaultState();
                     if(newBlock.getBlock()!=Blocks.AIR && newBlock.getBlock() instanceof BlockBeams){
                         world.setBlockState(pos,newBlock.with(FACING,state.get(FACING)).with(TYPE,state.get(TYPE)));
                         s.shrink(1);

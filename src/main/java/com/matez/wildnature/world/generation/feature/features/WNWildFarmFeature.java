@@ -5,7 +5,7 @@ import com.matez.wildnature.common.blocks.EggPlant;
 import com.matez.wildnature.common.blocks.GreenBeansBush;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
-import com.matez.wildnature.world.generation.feature.FeatureRegistry;
+import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.configs.BlockFeatureConfig;
 import com.matez.wildnature.world.generation.feature.configs.WNBlobConfig;
 import com.mojang.datafixers.Dynamic;
@@ -36,7 +36,7 @@ public class WNWildFarmFeature extends Feature<BlockFeatureConfig> {
            return false;
        }
        if(worldIn.getBlockState(pos).canSustainPlant(worldIn,pos.down(), Direction.UP,(IPlantable)Blocks.OAK_SAPLING)) {
-            WNBlobFeature feature = (WNBlobFeature) FeatureRegistry.BLOB_FEATURE;
+            WNBlobFeature feature = (WNBlobFeature) WNFeatures.BLOB_FEATURE;
             feature.place(worldIn,generator,rand,pos,new WNBlobConfig(Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,7),Utilities.rint(1,2),true,false));
 
             feature.getFilledBlocks().forEach(blockPos -> {
@@ -78,7 +78,7 @@ public class WNWildFarmFeature extends Feature<BlockFeatureConfig> {
                                    worldIn.setBlockState(blockpos.up(), crop.with(EggPlant.HALF, DoubleBlockHalf.UPPER), 2);
                                }
                            }else if(crop.getBlock() instanceof GreenBeansBush){
-                               FeatureRegistry.GREEN_BEAN_FEATURE.place(worldIn,generator,rand,blockpos,new NoFeatureConfig());
+                               WNFeatures.GREEN_BEAN_FEATURE.place(worldIn,generator,rand,blockpos,new NoFeatureConfig());
                            }else {
                                worldIn.setBlockState(blockpos, crop, 2);
                            }

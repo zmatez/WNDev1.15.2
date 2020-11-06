@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -61,9 +61,9 @@ public class CustomPistonHeadBlock extends DirectionalBlock {
 
    @Override
    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-      this.head= Main.getBlockByID(loc+"");
-      this.piston= Main.getBlockByID(hea+"");
-      this.moving= Main.getBlockByID(movi+"");
+      this.head= WN.getBlockByID(loc+"");
+      this.piston= WN.getBlockByID(hea+"");
+      this.moving= WN.getBlockByID(movi+"");
       super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
    }
 

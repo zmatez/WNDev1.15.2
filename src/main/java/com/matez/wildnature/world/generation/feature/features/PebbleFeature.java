@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -24,7 +24,7 @@ public class PebbleFeature extends Feature<NoFeatureConfig> {
        }
        if(worldIn.getBlockState(pos).isAir()) {
            if (worldIn.getBlockState(pos.down()).isSolid()) {
-               worldIn.setBlockState(pos, Main.getBlockByID("wildnature:pebble").getDefaultState(), 2);
+               worldIn.setBlockState(pos, WN.getBlockByID("wildnature:pebble").getDefaultState(), 2);
                return true;
            }
        }

@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.AI;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.block.Block;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.MobEntity;
@@ -107,7 +107,7 @@ public class BreakBlocksGoal extends MoveToBlockGoal {
          }
 
          if (this.breakingTime > 60) {
-            Main.LOGGER.debug("Breaking block");
+            WN.LOGGER.debug("Breaking block");
             world.destroyBlock(blockpos1, true);
             if (!world.isRemote) {
                for(int i = 0; i < 20; ++i) {

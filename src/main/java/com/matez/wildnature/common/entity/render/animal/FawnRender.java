@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.FawnModel;
 import com.matez.wildnature.common.entity.type.animal.deer.FawnEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class FawnRender extends MobRenderer<FawnEntity, FawnModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(FawnEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/deer_baby.png");
+        return WN.RegistryEvents.location("textures/entity/deer_baby.png");
     }
 
     public static class RenderFactory implements IRenderFactory<FawnEntity>{

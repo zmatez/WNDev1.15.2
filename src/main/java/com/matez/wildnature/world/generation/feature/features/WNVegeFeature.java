@@ -4,7 +4,7 @@ import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.util.other.WeightedList;
-import com.matez.wildnature.world.generation.feature.FeatureRegistry;
+import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.configs.BlockFeatureConfig;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
@@ -50,13 +50,13 @@ public class WNVegeFeature extends Feature<NoFeatureConfig> {
             try {
                 if(!CommonConfig.vegeGrassSpawn.get()) {
                     if (b.needsFarmland()) {
-                        FeatureRegistry.WILD_FARM_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
+                        WNFeatures.WILD_FARM_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
                     } else {
-                        FeatureRegistry.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
+                        WNFeatures.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
 
                     }
                 }else{
-                    FeatureRegistry.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
+                    WNFeatures.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
                 }
                 //Main.LOGGER.debug("Spawned " + b.getBush().getBlock().getNameTextComponent().toString() + " at " + pos.toString());
 

@@ -1,5 +1,6 @@
 package com.matez.wildnature.client.gui.container;
 
+import com.matez.wildnature.common.items.PouchItem;
 import com.matez.wildnature.util.lists.WNItems;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
@@ -12,6 +13,6 @@ public class PouchSlot extends Slot {
 
     @Override
     public boolean isItemValid(ItemStack stack) {
-        return stack.getItem()!= WNItems.POUCH;
+        return !(stack.getItem() instanceof PouchItem);
     }
 }

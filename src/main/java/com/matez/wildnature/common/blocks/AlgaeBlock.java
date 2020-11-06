@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.compatibility.WNLoot;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
@@ -66,12 +66,12 @@ public class AlgaeBlock extends GrassBlock implements IRenderLayer {
         int chance = Utilities.rint(0,15);
         BlockState blockstate = Blocks.GRASS.getDefaultState();
         if(chance<=7){
-            blockstate = Main.getBlockByID("minecraft:grass").getDefaultState();
+            blockstate = WN.getBlockByID("minecraft:grass").getDefaultState();
         }
         else if(chance>7 && chance<12){
-            blockstate = Main.getBlockByID("wildnature:medium_grass").getDefaultState();
+            blockstate = WN.getBlockByID("wildnature:medium_grass").getDefaultState();
         }else{
-            blockstate = Main.getBlockByID("wildnature:small_grass").getDefaultState();
+            blockstate = WN.getBlockByID("wildnature:small_grass").getDefaultState();
         }
 
         for(int i = 0; i < 128; ++i) {
@@ -137,7 +137,7 @@ public class AlgaeBlock extends GrassBlock implements IRenderLayer {
             if(WNLoot.isSilkTouch(builder)){
                 list.add(new ItemStack(Item.getItemFromBlock(this), 1));
             }else {
-                list.add(new ItemStack(Item.getItemFromBlock(Main.getBlockByID(dirt)), 1));
+                list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID(dirt)), 1));
             }
         }
 

@@ -1,13 +1,13 @@
 package com.matez.wildnature.network.proxy;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.client.gui.screen.*;
+import com.matez.wildnature.client.music.WNMusicPlayer;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.common.entity.render.cape.WNCapeLayer;
-import com.matez.wildnature.client.gui.screen.DungeonCommanderScreen;
-import com.matez.wildnature.client.gui.screen.PouchScreen;
 import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
 import com.matez.wildnature.client.gui.initGuis;
-import com.matez.wildnature.client.music.AmbientMusic;
+import com.matez.wildnature.client.music.WNMusic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.screen.MainMenuScreen;
@@ -23,13 +23,14 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 
 import java.util.Iterator;
 
 public class ClientProxy implements IProxy {
-    public static AmbientMusic music;
+    public static WNMusic music;
 
     @Override
     public void init() {
@@ -37,9 +38,13 @@ public class ClientProxy implements IProxy {
             MainMenuScreen.PANORAMA_RESOURCES = new RenderSkyboxCube(new ResourceLocation("wildnature:textures/gui/title/background/panorama"));
         }
         ScreenManager.registerFactory(initGuis.POUCH, PouchScreen::new);
+        ScreenManager.registerFactory(initGuis.BACKPACK_SMALL, BackpackSmallScreen::new);
+        ScreenManager.registerFactory(initGuis.BACKPACK_MEDIUM, BackpackMediumScreen::new);
+        ScreenManager.registerFactory(initGuis.BACKPACK_BIG, BackpackBigScreen::new);
+
         //ScreenManager.registerFactory(initGuis.CRAFTING_MANAGER_CONTAINER, CraftingManagerScreen::new);
         //music = new AmbientMusic();
-        Main.usesFancyGraphics = Minecraft.getInstance().gameSettings.fancyGraphics;
+        WN.usesFancyGraphics = Minecraft.getInstance().gameSettings.fancyGraphics;
         /*DistExecutor.runWhenOn(Dist.CLIENT, () -> new Runnable() {
             @Override
             public void run() {
@@ -47,6 +52,8 @@ public class ClientProxy implements IProxy {
             }
         });*/
 
+        music = new WNMusic();
+        MinecraftForge.EVENT_BUS.addListener(WNMusicPlayer::playerTick);
     }
 
     public void openDungeonCommander(DungeonCommanderTileEntity entity){
@@ -63,7 +70,7 @@ public class ClientProxy implements IProxy {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public void enqueueIMC(InterModEnqueueEvent event) {
-        Main.LOGGER.info("Registering capes...");
+        WN.LOGGER.info("Registering capes...");
         Minecraft.getInstance().gameSettings.setModelPartEnabled(PlayerModelPart.CAPE, true);
         Iterator var2 = Minecraft.getInstance().getRenderManager().getSkinMap().values().iterator();
         //MinecraftForge.EVENT_BUS.addListener(new ClientPlayerEventHandler()::onPlayerJoin);

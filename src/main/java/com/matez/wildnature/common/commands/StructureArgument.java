@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
@@ -27,7 +27,7 @@ import java.util.concurrent.CompletableFuture;
 public class StructureArgument implements ArgumentType<SchemFeature> {
 
     public static final DynamicCommandExceptionType INVALID_STRUCTURE_EXCEPTION = new DynamicCommandExceptionType((biome) -> {
-        return new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "This structure does not exist."));
+        return new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "This structure does not exist."));
     });
 
     public static StructureArgument createArgument() {
@@ -70,21 +70,21 @@ public class StructureArgument implements ArgumentType<SchemFeature> {
 
         ITextComponent output = null;
         if(!success){
-            output = new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "Unable to place blocks."));
-            Main.sendChatMessage(player,output);
+            output = new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "Unable to place blocks."));
+            WN.sendChatMessage(player,output);
             return 0;
         }
 
         if(feature.getAddedBlocks().isEmpty()){
-            output = new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "Placed " + TextFormatting.GOLD + "0" + TextFormatting.RED + " blocks."));
-            Main.sendChatMessage(player,output);
+            output = new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "Placed " + TextFormatting.GOLD + "0" + TextFormatting.RED + " blocks."));
+            WN.sendChatMessage(player,output);
             return 0;
         }else{
             String name = feature.getClass().getSimpleName().toLowerCase();
-            output = new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.GREEN + "Generated " + TextFormatting.LIGHT_PURPLE + name + TextFormatting.GREEN + " on " + TextFormatting.YELLOW + (pos.getX() + " " + pos.getY() + " " + pos.getZ()) + TextFormatting.GREEN + ". Placed " + TextFormatting.GOLD + feature.getAddedBlocks().size() + TextFormatting.GREEN + " blocks."));
+            output = new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.GREEN + "Generated " + TextFormatting.LIGHT_PURPLE + name + TextFormatting.GREEN + " on " + TextFormatting.YELLOW + (pos.getX() + " " + pos.getY() + " " + pos.getZ()) + TextFormatting.GREEN + ". Placed " + TextFormatting.GOLD + feature.getAddedBlocks().size() + TextFormatting.GREEN + " blocks."));
         }
 
-        Main.sendChatMessage(player,output);
+        WN.sendChatMessage(player,output);
         return 1;
     }
 

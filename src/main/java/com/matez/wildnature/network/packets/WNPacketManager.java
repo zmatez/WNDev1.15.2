@@ -1,6 +1,6 @@
 package com.matez.wildnature.network.packets;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.play.ClientPlayNetHandler;
 import net.minecraft.client.network.play.IClientPlayNetHandler;
@@ -21,14 +21,14 @@ public class WNPacketManager {
                 try {
                     ((ClientPlayNetHandler) handler).getWorld().addParticle(particle.getParticle(), particle.isLongDistance(), particle.getXCoordinate(), particle.getYCoordinate(), particle.getZCoordinate(), d0, d2, d4);
                 } catch (Throwable var17) {
-                    Main.LOGGER.warn("Could not spawn particle effect {}", (Object) particle.getParticle());
+                    WN.LOGGER.warn("Could not spawn particle effect {}", (Object) particle.getParticle());
                 }
             } else {
                 for (int i = 0; i < particle.getParticleCount(); ++i) {
                     try {
                         ((ClientPlayNetHandler) handler).getWorld().addParticle(particle.getParticle(), particle.isLongDistance(), particle.getXCoordinate(), particle.getYCoordinate(), particle.getZCoordinate(), particle.getXSpeed(), particle.getYSpeed(), particle.getZSpeed());
                     } catch (Throwable var16) {
-                        Main.LOGGER.warn("Could not spawn particle effect {}", (Object) particle.getParticle());
+                        WN.LOGGER.warn("Could not spawn particle effect {}", (Object) particle.getParticle());
                         return;
                     }
                 }

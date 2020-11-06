@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.network.packets.WNSSpawnParticlePacket;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
@@ -136,7 +136,7 @@ public class SteamGeneratorBlock extends BlockBase {
         if(Objects.requireNonNull(Minecraft.getInstance().getIntegratedServer()).getWorld(world.getDimension().getType())!=world){
             return 0;
         }}catch (Exception e){
-            Main.LOGGER.warn("I am trying to register own particle packet, but I don't know how. If you know, write to me on Discord!\nFor now, it will give you these warns on server when the particle packet needs to be sent. (when using steam generator for example) Sorry!");
+            WN.LOGGER.warn("I am trying to register own particle packet, but I don't know how. If you know, write to me on Discord!\nFor now, it will give you these warns on server when the particle packet needs to be sent. (when using steam generator for example) Sorry!");
             return 0;
         }
         WNSSpawnParticlePacket sspawnparticlepacket = new WNSSpawnParticlePacket(type, false, (float)posX, (float)posY, (float)posZ, (float)xSpeed, (float)ySpeed, (float)zSpeed, (float)speed, particleCount);

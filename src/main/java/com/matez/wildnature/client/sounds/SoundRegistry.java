@@ -1,6 +1,6 @@
 package com.matez.wildnature.client.sounds;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
@@ -49,6 +49,9 @@ public class SoundRegistry {
     public static SoundEvent PLAINS_1 = registerSound("ambient.denseforest_plains_1");
     public static SoundEvent REDWOODFOREST_DAY_0 = registerSound("ambient.redwoodforest_day_0");*/
 
+    //MUSIC
+    public static SoundEvent CAVE1 = registerSound("music.cave.cave1");
+
     public static SoundEvent[] register(){
         return new SoundEvent[]{
                 PISTON_2s_OPEN,
@@ -87,7 +90,7 @@ public class SoundRegistry {
     private static SoundEvent registerSound(String soundName)
     {
         //soundID;//SoundEvent soundID = IRegistry.field_212633_v.func_212608_b(new ResourceLocation(soundName));
-        final ResourceLocation soundID = Main.RegistryEvents.location(soundName);
+        final ResourceLocation soundID = WN.RegistryEvents.location(soundName);
         return new SoundEvent(soundID).setRegistryName(soundID);
     }
 }

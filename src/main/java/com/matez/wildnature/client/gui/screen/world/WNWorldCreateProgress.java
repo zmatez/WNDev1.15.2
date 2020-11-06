@@ -1,7 +1,8 @@
 package com.matez.wildnature.client.gui.screen.world;
 
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.client.gui.screen.ScreenUtils;
+import com.matez.wildnature.init.WN;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.chat.NarratorChatListener;
 import net.minecraft.client.gui.screen.Screen;
@@ -45,36 +46,13 @@ public class WNWorldCreateProgress extends Screen {
         this.centerWidth = this.width / 2;
         this.centerHeight = this.height / 2;
 
-        int marginWidth = 20;
-        int marginHeight = 20;
-        int widthProportion = 16;
-        int heightProportion = 9;
+        int[] proportionalSize = ScreenUtils.getByResolution(width,height,20,20,16,9);
 
-        int proportion = 0;
-        if(width > height){
-            for(int i = 0; i < height; i+=heightProportion){
-                if(i > height - marginHeight * 2){
-                    marginHeight = (height - i) / 2;
-                    break;
-                }
-                proportion++;
-            }
-            marginWidth = (width - (widthProportion * proportion)) / 2;
-        }else{
-            for(int i = 0; i < width; i+=widthProportion){
-                if(i > width - marginWidth * 2){
-                    marginWidth = (width - i) / 2;
-                    break;
-                }
-                proportion++;
-            }
-            marginHeight = (height - (heightProportion * proportion)) / 2;
-        }
+        screenX1 = proportionalSize[0];
+        screenX2 = proportionalSize[2];
+        screenY1 = proportionalSize[1];
+        screenY2 = proportionalSize[3];
 
-        screenX1 = marginWidth;
-        screenX2 = width - marginWidth;
-        screenY1 = marginHeight;
-        screenY2 = height - marginHeight;
     }
 
     @Override
@@ -82,8 +60,8 @@ public class WNWorldCreateProgress extends Screen {
         if (world == null) {
             if (Minecraft.getInstance().world != null) {
                 world = Minecraft.getInstance().world;
-            } else if (Main.runningWorld != null) {
-                world = Main.runningWorld;
+            } else if (WN.runningWorld != null) {
+                world = WN.runningWorld;
             }
         }
         if (entity == null) {

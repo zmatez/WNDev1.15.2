@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.provider;
 
 import com.google.common.collect.ImmutableSet;
-import com.matez.wildnature.world.generation.biomes.layer.WNLayerUtil;
+import com.matez.wildnature.world.generation.layer.WNLayerUtil;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.provider.BiomeProvider;

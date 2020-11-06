@@ -17,7 +17,7 @@ public class DoorBase extends DoorBlock implements IRenderLayer {
     private Item item;
 
     public DoorBase(Block.Properties properties, Item.Properties builder, ResourceLocation regName) {
-        super(properties);
+        super(properties.notSolid());
         this.setRegistryName(regName);
         item = new BlockItem(this,builder).setRegistryName(regName);
 

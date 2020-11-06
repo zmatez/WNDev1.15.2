@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.AI;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.BushBlock;
 import net.minecraft.entity.CreatureEntity;
@@ -33,7 +33,7 @@ public class BushFlyingGoal extends MoveToBlockGoal {
     @Override
     public void tick() {
         if(destinationBlock==null || destinationBlock==BlockPos.ZERO) {
-            Main.LOGGER.debug("Ticking: " + destinationBlock);
+            WN.LOGGER.debug("Ticking: " + destinationBlock);
             BlockPos target = findTarget(this.creature.getPosition(), this.creature.getEntityWorld());
             if (target != null) {
                 destinationBlock = target;
@@ -42,7 +42,7 @@ public class BushFlyingGoal extends MoveToBlockGoal {
         }else{
             super.tick();
             if(getIsAboveDestination()){
-                Main.LOGGER.debug("Reseting");
+                WN.LOGGER.debug("Reseting");
                 if(Utilities.rint(0,transportChance)==0){
                     destinationBlock=BlockPos.ZERO;
                 }
@@ -50,7 +50,7 @@ public class BushFlyingGoal extends MoveToBlockGoal {
         }
 
         if(destinationBlock!=null && destinationBlock!=BlockPos.ZERO && Utilities.getDistance(creature.getPosition(),destinationBlock)>maxDistance){
-            Main.LOGGER.debug("Reseting too big");
+            WN.LOGGER.debug("Reseting too big");
             destinationBlock=BlockPos.ZERO;
 
         }

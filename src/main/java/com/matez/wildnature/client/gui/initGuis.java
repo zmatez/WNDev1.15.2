@@ -1,8 +1,7 @@
 package com.matez.wildnature.client.gui;
 
-import com.matez.wildnature.client.gui.container.PouchContainer;
+import com.matez.wildnature.client.gui.container.*;
 import com.matez.wildnature.client.gui.tileEntities.*;
-import com.matez.wildnature.client.gui.container.CraftingManagerContainer;
 import com.matez.wildnature.client.gui.tileEntities.item.ItemTileEntity;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
@@ -29,6 +28,15 @@ public class initGuis {
 
     @ObjectHolder("wildnature:pouch")
     public static ContainerType<PouchContainer> POUCH = null;
+
+    @ObjectHolder("wildnature:backpack_small")
+    public static ContainerType<BackpackSmallContainer> BACKPACK_SMALL = null;
+
+    @ObjectHolder("wildnature:backpack_medium")
+    public static ContainerType<BackpackMediumContainer> BACKPACK_MEDIUM = null;
+
+    @ObjectHolder("wildnature:backpack_big")
+    public static ContainerType<BackpackBigContainer> BACKPACK_BIG = null;
 
     public static ContainerType<CraftingManagerContainer> CRAFTING_MANAGER_CONTAINER;
 

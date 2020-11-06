@@ -1,7 +1,7 @@
 package com.matez.wildnature.common.blocks;
 
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
@@ -108,39 +108,39 @@ public class CornPlant extends BushBlock implements IGrowable, IRenderLayer {
             int all = getAllBlocks(worldIn,pos).size();
             BlockPos high = getHighestBlock(worldIn,pos);
             BlockPos low = getLowestBlock(worldIn,pos);
-            Main.LOGGER.debug(all);
+            WN.LOGGER.debug(all);
             if(!canFlower(worldIn,pos)) {
                 if (all == 1) {
-                    worldIn.setBlockState(pos, Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(pos, WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
                     if(!(worldIn.getBlockState(low.up(1)).getBlock() instanceof CornPlant)) {
-                        worldIn.setBlockState(low.up(1), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
+                        worldIn.setBlockState(low.up(1), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
                     }
                 } else if (all == 2) {
-                    worldIn.setBlockState(low, Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                    worldIn.setBlockState(low.up(), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low, WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low.up(), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
                     if(!(worldIn.getBlockState(low.up(2)).getBlock() instanceof CornPlant)) {
-                        worldIn.setBlockState(low.up(2), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
+                        worldIn.setBlockState(low.up(2), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
                     }
                 } else if (all == 3) {
-                    worldIn.setBlockState(low, Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                    worldIn.setBlockState(low.up(), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                    worldIn.setBlockState(low.up(2), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low, WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low.up(), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low.up(2), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
                     if(!(worldIn.getBlockState(low.up(3)).getBlock() instanceof CornPlant)) {
-                        worldIn.setBlockState(low.up(3), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
+                        worldIn.setBlockState(low.up(3), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
                     }
                 } else if (all >= 4) {
-                    worldIn.setBlockState(low, Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                    worldIn.setBlockState(low.up(), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                    worldIn.setBlockState(low.up(2), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                    worldIn.setBlockState(low.up(3), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low, WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low.up(), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low.up(2), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                    worldIn.setBlockState(low.up(3), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
                     if(!(worldIn.getBlockState(low.up(4)).getBlock() instanceof CornPlant)) {
-                        worldIn.setBlockState(low.up(4), Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
+                        worldIn.setBlockState(low.up(4), WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 0));
                     }
                 }
             }else{
                 getAllBlocks(worldIn, pos).forEach(blockpos -> {
                     if(worldIn.getBlockState(blockpos).getBlock() instanceof CornPlant && worldIn.getBlockState(blockpos).get(STAGE)==1){
-                        worldIn.setBlockState(blockpos, Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 2));
+                        worldIn.setBlockState(blockpos, WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 2));
                     }
                 });
             }
@@ -152,8 +152,8 @@ public class CornPlant extends BushBlock implements IGrowable, IRenderLayer {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         getAllBlocks(worldIn, pos).forEach(blockpos -> {
             if(worldIn.getBlockState(blockpos).getBlock() instanceof CornPlant && worldIn.getBlockState(blockpos).get(STAGE)==2){
-                worldIn.setBlockState(blockpos, Main.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
-                ItemStack stack = new ItemStack(Main.getItemByID("wildnature:"+getDrop()), Utilities.rint(0,1));
+                worldIn.setBlockState(blockpos, WN.getBlockByID(getBush()).getDefaultState().with(CornPlant.STAGE, 1));
+                ItemStack stack = new ItemStack(WN.getItemByID("wildnature:"+getDrop()), Utilities.rint(0,1));
                 spawnAsEntity(worldIn,pos,stack);
                 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 
@@ -196,7 +196,7 @@ public class CornPlant extends BushBlock implements IGrowable, IRenderLayer {
         if(!bp.contains(pos)) {
             bp.add(pos);
         }
-        Main.LOGGER.debug(bp.toString());
+        WN.LOGGER.debug(bp.toString());
 
         return bp;
     }

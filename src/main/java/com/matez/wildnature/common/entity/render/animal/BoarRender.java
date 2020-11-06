@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.BoarModel;
 import com.matez.wildnature.common.entity.type.animal.boar.BoarEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class BoarRender extends MobRenderer<BoarEntity, BoarModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(BoarEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/boar.png");
+        return WN.RegistryEvents.location("textures/entity/boar.png");
     }
 
     public static class RenderFactory implements IRenderFactory<BoarEntity>{

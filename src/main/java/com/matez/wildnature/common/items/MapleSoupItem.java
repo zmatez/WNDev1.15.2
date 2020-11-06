@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.items.recipes.cooking.FillTool;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -20,6 +20,6 @@ public class MapleSoupItem extends FoodItem {
       super.onItemUseFinish(stack,worldIn,entityLiving);
 
       super.onItemUseFinish(stack, worldIn, entityLiving);
-      return new ItemStack(Main.getItemByID("wildnature:maple_bowl"));
+      return new ItemStack(WN.getItemByID("wildnature:maple_bowl"));
    }
 }

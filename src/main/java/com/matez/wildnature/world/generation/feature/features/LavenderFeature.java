@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.FloweringBushBase;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
@@ -45,6 +45,6 @@ public class LavenderFeature extends Feature<NoFeatureConfig> {
    }
 
    public BlockState getRandomFlower(Random random, BlockPos pos) {
-      return Main.getBlockByID("wildnature:lavender").getDefaultState().with(FloweringBushBase.FLOWERING,true);
+      return WN.getBlockByID("wildnature:lavender").getDefaultState().with(FloweringBushBase.FLOWERING,true);
    }
 }

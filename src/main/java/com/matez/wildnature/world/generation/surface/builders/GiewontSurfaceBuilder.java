@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
 import com.matez.wildnature.util.other.Utilities;
-import com.matez.wildnature.world.generation.surface.SurfaceRegistry;
+import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
@@ -27,19 +27,19 @@ public class GiewontSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
         int xfullysnowed = Utilities.rint(fullySnowed - snowRange, fullySnowed + snowRange, random);
         if (y < xhalfsnowed) {
             if (noise > 1.75D) {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.OVERGROWN_STONE_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.OVERGROWN_STONE_CONFIG);
             } else if (noise > -0.95D) {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.OVERGROWN_STONE_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.OVERGROWN_STONE_CONFIG);
             } else {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.OVERGROWN_STONE_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.OVERGROWN_STONE_CONFIG);
             }
         } else if (y >= xhalfsnowed && y < xfullysnowed) {
             if (noise > 1.75D) {
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, new SurfaceBuilderConfig(STONE, STONE, STONE));
             } else if (noise > -0.95D) {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.OVERGROWN_STONE_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.OVERGROWN_STONE_CONFIG);
             } else {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.OVERGROWN_STONE_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.OVERGROWN_STONE_CONFIG);
             }
         } else {
             if (noise > 1.75D) {

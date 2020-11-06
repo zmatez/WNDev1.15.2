@@ -1,3 +1,6 @@
 {
-    "parent": "wildnature:block/geyser"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "wildnature:items/geyser_item"
+    }
 }

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$#$",
+    "###",
+    "&%&"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:silver_ingot"
+    },
+    "$": {
+      "item": "wildnature:handle_gold"
+    },
+    "%": {
+      "item": "minecraft:tripwire_hook"
+    },
+    "&": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "wildnature:silver_crossbow",
+    "count": 1
+  }
+}

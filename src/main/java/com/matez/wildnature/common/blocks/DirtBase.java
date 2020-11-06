@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
@@ -35,7 +35,7 @@ public class DirtBase extends BlockBase implements IGrowable {
     @Override
     public void grow(ServerWorld world, Random random, BlockPos blockPos, BlockState blockState) {
         if(Utilities.rint(0,6)==0){
-            world.setBlockState(blockPos, Main.getBlockByID(this.getRegistryName().toString().replace("_dirt","_grass_block")).getDefaultState());
+            world.setBlockState(blockPos, WN.getBlockByID(this.getRegistryName().toString().replace("_dirt","_grass_block")).getDefaultState());
         }
     }
 

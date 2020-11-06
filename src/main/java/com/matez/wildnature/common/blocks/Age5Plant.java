@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
@@ -43,7 +43,7 @@ public class Age5Plant extends CropBase {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return Main.getItemByID(drop);
+        return WN.getItemByID(drop);
     }
     @Override
     protected int getBonemealAgeIncrease(World worldIn) {
@@ -68,7 +68,7 @@ public class Age5Plant extends CropBase {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(state.get(AGE)==getMaxAge()){
             worldIn.setBlockState(pos,worldIn.getBlockState(pos).with(AGE,getMaxAge()-Utilities.rint(1,2)));
-            spawnAsEntity(worldIn, pos, new ItemStack(Main.getItemByID(drop), Utilities.rint(1, 2)));
+            spawnAsEntity(worldIn, pos, new ItemStack(WN.getItemByID(drop), Utilities.rint(1, 2)));
             worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 
             return ActionResultType.SUCCESS;
@@ -82,7 +82,7 @@ public class Age5Plant extends CropBase {
         List<ItemStack> list = super.getDrops(state, builder);
         if(list.isEmpty() && !silkTouch){
             if(state.get(AGE)==getMaxAge()) {
-                list.add(new ItemStack(Main.getItemByID(drop), Utilities.rint(1, 2)));
+                list.add(new ItemStack(WN.getItemByID(drop), Utilities.rint(1, 2)));
 
             }
         }

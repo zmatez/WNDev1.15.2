@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.processors;
 
-import com.matez.wildnature.world.generation.biomes.setup.WNGenSettings;
+import com.matez.wildnature.world.generation.biome.setup.WNGenSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -89,8 +89,7 @@ public class ThermalErosionProcessor implements TerrainProcessor {
         noise[fX * size + fZ] += amplitude;
 
         if (k != -1) {
-            //int tY = borders[k].getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, tX, tZ);
-            int tY = noise[tX * 16 + tZ];
+            int tY = borders[k].getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, tX, tZ);
             BlockPos displacementPos = new BlockPos(tX, tY, tZ);
             // Erode the chunk border
             if (tY <= 63) {
@@ -154,7 +153,7 @@ public class ThermalErosionProcessor implements TerrainProcessor {
 
     @Override
     // O(256 * 8 * n) where n is the number of iterations
-    public void process(IWorld world, Random rand, int chunkX, int chunkZ, int[] noise) {
+    public void process(IWorld world, IChunk chunk, Random rand, int chunkX, int chunkZ,int relativeX, int relativeZ, int[] noise) {
         IChunk chunkIn = world.getChunk(chunkX, chunkZ);
         // Bordering chunks (to modify)
         IChunk[] borders = getNeighbours(world, chunkX, chunkZ);

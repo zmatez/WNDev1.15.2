@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "#$"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:ruby_ingot"
+    },
+    "$": {
+      "item": "wildnature:steel_axe"
+    }
+  },
+  "result": {
+    "item": "wildnature:ruby_axe",
+    "count": 1
+  }
+}

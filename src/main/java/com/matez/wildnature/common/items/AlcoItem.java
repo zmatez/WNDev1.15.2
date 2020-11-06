@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
@@ -48,6 +48,6 @@ public class AlcoItem extends DrinkItem {
 
         }
 
-        return stack.isEmpty() ? new ItemStack(Main.getItemByID(onEmpty)) : stack;
+        return stack.isEmpty() ? new ItemStack(WN.getItemByID(onEmpty)) : stack;
     }
 }

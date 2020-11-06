@@ -5,8 +5,8 @@ import com.matez.wildnature.common.items.*;
 import com.matez.wildnature.util.lists.WNItems;
 import net.minecraft.item.Item;
 
-import static com.matez.wildnature.init.Main.RegistryEvents.location;
-import static com.matez.wildnature.init.Main.*;
+import static com.matez.wildnature.init.WN.RegistryEvents.location;
+import static com.matez.wildnature.init.WN.*;
 
 public class WaterlilyRegistry {
 

@@ -1,6 +1,6 @@
 package com.matez.wildnature.util.event;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.common.entity.render.cape.CapeTexture;
 import com.matez.wildnature.util.event.capeBuffers.IImageBuffer;
@@ -25,7 +25,7 @@ public class ClientPlayerEventHandler {
         PlayerEntity player=event.getPlayer();
         String uuid = event.getEntity().getUniqueID().toString().replace("-", "");
 
-        Main.LOGGER.info("Loading capes for player: " + event.getPlayer().getDisplayName().getFormattedText());
+        WN.LOGGER.info("Loading capes for player: " + event.getPlayer().getDisplayName().getFormattedText());
         new Thread(new Runnable() {
             public void run() {
                 if(CommonConfig.renderCapes.get()) {
@@ -37,17 +37,17 @@ public class ClientPlayerEventHandler {
 
     public static void download(final String uuid,PlayerEntity player) {
         if(loadedCapes.contains(uuid)){
-            Main.LOGGER.debug("Cape already loaded");
+            WN.LOGGER.debug("Cape already loaded");
             return;
         }
         Patron p = PlayerEventHandler.isPatron(player);
 
         if (p !=null && uuid != null && !uuid.isEmpty()) {
             String url = "https://wildnaturemod.com/data/capes/"+uuid;
-            if(Main.is404(url)){
+            if(WN.is404(url)){
                 url = "https://wildnaturemod.com/data/capes/" + "cape-basic";
             }else{
-                Main.LOGGER.info("Found customized cape for " + player.getDisplayName());
+                WN.LOGGER.info("Found customized cape for " + player.getDisplayName());
             }
 
             ResourceLocation rl = new ResourceLocation("wildnature", "capes/" + uuid);

@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
 import com.matez.wildnature.util.other.Utilities;
-import com.matez.wildnature.world.generation.surface.SurfaceRegistry;
+import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -33,7 +33,7 @@ public class SnowyMountainSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCo
             } else if (noise > -0.95D) {
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, new SurfaceBuilderConfig(STONE, STONE, STONE));
             } else {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.BROWN_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.BROWN_CONFIG);
             }
         } else if (y >= xhalfsnowed && y < xfullysnowed) {
             if (noise > 1.75D) {
@@ -41,7 +41,7 @@ public class SnowyMountainSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCo
             } else if (noise > -0.95D) {
                 SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, new SurfaceBuilderConfig(Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, Utilities.rint(1, 4, random)), Blocks.SNOW_BLOCK.getDefaultState(), STONE));
             } else {
-                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, SurfaceRegistry.BROWN_CONFIG);
+                SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, WNSurfaceBuilders.BROWN_CONFIG);
             }
         } else {
             if (noise > 1.75D) {

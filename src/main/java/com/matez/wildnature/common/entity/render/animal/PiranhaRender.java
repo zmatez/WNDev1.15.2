@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.PiranhaModel;
 import com.matez.wildnature.common.entity.type.animal.fish.PiranhaEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -23,9 +23,9 @@ public class PiranhaRender extends MobRenderer<PiranhaEntity, PiranhaModel> {
     @Override
     public ResourceLocation getEntityTexture(PiranhaEntity entity) {
         if(!entity.isAngry()) {
-            return Main.RegistryEvents.location("textures/entity/piranha.png");
+            return WN.RegistryEvents.location("textures/entity/piranha.png");
         }else{
-            return Main.RegistryEvents.location("textures/entity/piranha_angry.png");
+            return WN.RegistryEvents.location("textures/entity/piranha_angry.png");
         }
     }
 

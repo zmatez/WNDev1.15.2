@@ -3,7 +3,7 @@ package com.matez.wildnature.common.blocks;
 import java.util.Random;
 
 import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.commands.DungeonCommanderLogic;
 import com.matez.wildnature.util.lists.WNBlocks;
 import net.minecraft.block.*;
@@ -96,7 +96,7 @@ public class DungeonCommander extends ContainerBlock {
       if (player.canUseCommandBlock() && !worldIn.isRemote) {
          //((DungeonCommanderTileEntity)tileentity).read(tileentity.getTileData());
          try {
-            Main.proxy.getClient().openDungeonCommander((DungeonCommanderTileEntity) tileentity);
+            WN.proxy.getClient().openDungeonCommander((DungeonCommanderTileEntity) tileentity);
          }catch(Exception e){
             if(player instanceof ServerPlayerEntity && player.canUseCommandBlock() ) {
                ((DungeonCommanderTileEntity) tileentity).setSendToClient(true);

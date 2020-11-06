@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
@@ -24,9 +24,9 @@ public class GenArgument implements ArgumentType {
     @Override
     public SchemFeature parse(StringReader reader) throws CommandSyntaxException {
         int x = 0;
-        while(x< Main.treesList.size()){
-            if(reader.getString().equals(Main.treesList.get(x).getClass().getSimpleName())){
-                return Main.treesList.get(x);
+        while(x< WN.treesList.size()){
+            if(reader.getString().equals(WN.treesList.get(x).getClass().getSimpleName())){
+                return WN.treesList.get(x);
             }
             x++;
         }
@@ -37,8 +37,8 @@ public class GenArgument implements ArgumentType {
     public CompletableFuture<Suggestions> listSuggestions(CommandContext context, SuggestionsBuilder builder) {
 
         int x =0;
-        while(x<Main.treesList.size()){
-            suggestions.add(new Suggestion(StringRange.at(0),Main.treesList.get(x).getClass().getSimpleName()));
+        while(x< WN.treesList.size()){
+            suggestions.add(new Suggestion(StringRange.at(0), WN.treesList.get(x).getClass().getSimpleName()));
             x++;
         }
 

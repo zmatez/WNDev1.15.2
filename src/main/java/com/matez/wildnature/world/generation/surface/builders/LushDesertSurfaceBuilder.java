@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
@@ -19,7 +19,7 @@ public class LushDesertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfi
     }
 
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
-        SurfaceBuilderConfig grassCfg = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:desert_grass_block").getDefaultState(), config.getUnderWaterMaterial(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig grassCfg = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:desert_grass_block").getDefaultState(), config.getUnderWaterMaterial(), config.getUnderWaterMaterial());
         if (noise > 1.5D) {
             int m = Utilities.rint(0, 2, random);
             if (m == 0) {

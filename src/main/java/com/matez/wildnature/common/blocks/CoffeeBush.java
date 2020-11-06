@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.util.other.Utilities;
@@ -129,10 +129,10 @@ public class CoffeeBush extends DoubleBushBase implements IGrowable {
         if(list.isEmpty()){
             int i = state.get(STAGE);
             if(i==1){
-                list.add(new ItemStack(Main.getItemByID("coffee_branch"), 1));
+                list.add(new ItemStack(WN.getItemByID("coffee_branch"), 1));
             }else if(i==2){
-                list.add(new ItemStack(Main.getItemByID("coffee_leaves"), 1));
-                list.add(new ItemStack(Main.getItemByID("coffee_berry_green"), Utilities.rint(0,1)));
+                list.add(new ItemStack(WN.getItemByID("coffee_leaves"), 1));
+                list.add(new ItemStack(WN.getItemByID("coffee_berry_green"), Utilities.rint(0,1)));
             }
         }
 

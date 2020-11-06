@@ -1,14 +1,14 @@
 package com.matez.wildnature.util.mixin;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import org.spongepowered.asm.mixin.Mixins;
 import org.spongepowered.asm.mixin.connect.IMixinConnector;
 public class MixinConnector implements IMixinConnector {
 
     @Override
     public void connect() {
-        Main.LOGGER.debug("Connecting Mixin...");
+        WN.LOGGER.debug("Connecting Mixin...");
         Mixins.addConfiguration("wildnature.mixins.json");
-        Main.LOGGER.info("Mixin Connected!");
+        WN.LOGGER.info("Mixin Connected!");
     }
 }

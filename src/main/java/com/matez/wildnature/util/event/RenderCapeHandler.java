@@ -1,6 +1,6 @@
 package com.matez.wildnature.util.event;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -24,7 +24,7 @@ public class RenderCapeHandler {
                     if (!ClientPlayerEventHandler.loadedCapes.contains(playerUUID)) {
                         if (CommonConfig.renderCapes.get()) {
                             alreadyRendered.add(playerUUID);
-                            Main.LOGGER.info("Loading cape for " + entity.getName().getFormattedText());
+                            WN.LOGGER.info("Loading cape for " + entity.getName().getFormattedText());
                             ClientPlayerEventHandler.download(playerUUID,entity);
 
                         }

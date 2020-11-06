@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.BlockState;
@@ -36,10 +36,10 @@ public class CoffeeSapling extends BushBase implements IGrowable {
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if(Utilities.chance(ConfigSettings.floweringChance)){
             if(worldIn.isAirBlock(pos.up())){
-                worldIn.setBlockState(pos, Main.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.LOWER));
-                worldIn.setBlockState(pos.up(), Main.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.LOWER));
-                worldIn.notifyNeighbors(pos,Main.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
-                worldIn.notifyNeighbors(pos.up(),Main.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
+                worldIn.setBlockState(pos, WN.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.LOWER));
+                worldIn.setBlockState(pos.up(), WN.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.LOWER));
+                worldIn.notifyNeighbors(pos, WN.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
+                worldIn.notifyNeighbors(pos.up(), WN.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
             }
         }
     }
@@ -58,10 +58,10 @@ public class CoffeeSapling extends BushBase implements IGrowable {
     @Override
     public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
         if(worldIn.isAirBlock(pos.up()) && Utilities.rint(0,4)==0){
-            worldIn.setBlockState(pos, Main.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.LOWER));
-            worldIn.setBlockState(pos.up(), Main.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.UPPER));
-            worldIn.notifyNeighbors(pos,Main.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
-            worldIn.notifyNeighbors(pos.up(),Main.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
+            worldIn.setBlockState(pos, WN.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.LOWER));
+            worldIn.setBlockState(pos.up(), WN.getBlockByID("wildnature:coffee_bush").getDefaultState().with(CoffeeBush.STAGE,0).with(CoffeeBush.HALF, DoubleBlockHalf.UPPER));
+            worldIn.notifyNeighbors(pos, WN.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
+            worldIn.notifyNeighbors(pos.up(), WN.getBlockByID("wildnature:coffee_bush").getDefaultState().getBlock());
         }
     }
 }

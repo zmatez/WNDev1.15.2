@@ -1,0 +1,7 @@
+{   "parent": "wildnature:block/sapling",
+  "textures": {
+    "particle": "wildnature:blocks/other_leaves/metasequoia_leaves_orange",
+    "leaves": "wildnature:blocks/other_leaves/metasequoia_leaves_orange",
+    "log": "wildnature:blocks/redwood/redwood_log"
+  }
+}

@@ -1,7 +1,8 @@
 package com.matez.wildnature.world.generation.chunk.generation.landscape;
 
-import com.matez.wildnature.world.generation.biomes.setup.BiomeVariants;
+import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender;
+import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
 import com.matez.wildnature.world.generation.noise.OctaveNoiseSampler;
 import com.matez.wildnature.world.generation.noise.OpenSimplexNoise;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
@@ -56,7 +57,7 @@ public class ChunkLandscape {
         return 256 / (Math.exp(8 / 3f - noise / 48) + 1);
     }
 
-    public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor) {
+    public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         int xLow = ((x >> 2) << 2);
         int zLow = ((z >> 2) << 2);
         int xUpper = xLow + 4;
@@ -82,8 +83,8 @@ public class ChunkLandscape {
         return sigmoid(sample);
     }
 
-    private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor) {
-        double[] interpolation = BiomeBlender.smoothLerp(weightMap1,variantAccessor);
+    private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
+        double[] interpolation = BiomeBlender.smoothLerp(x, z, weightMap1,variantAccessor);
         double height = interpolation[0];
         double heightVariation = interpolation[1];
 
@@ -99,18 +100,11 @@ public class ChunkLandscape {
         noise += height;
         //noise += getDepth(biome);
 
+        if(noise > 230){
+            return 230;
+        }
+
         return noise;
-    }
-
-    private static int getDepth(Biome biome){
-        int max = 230; //about 180Y
-        int min = 40; //about 21Y
-        int baseValue = 75; //about 65Y
-
-        float depth = baseValue * (biome.getDepth() > 0 ? biome.getDepth() + 1 : biome.getDepth() - 1);
-        depth = Math.min(depth,max);
-        depth = Math.max(depth,min);
-        return Math.round(depth);
     }
 
     /*
@@ -125,8 +119,7 @@ public class ChunkLandscape {
     amplitude 0 means flat terrain
      */
     private double sampleNoise(int x, int z, double scale) {
-        double frequency = this.scaleNoise.sampleCustom(x, z, 1, scale, scale, 2);
-        //double frequency = 0;
+        double frequency = this.scaleNoise.sampleCustom(x, z, 1, -scale, scale, 2);
         double noise = this.heightNoise.sampleCustom(x, z, 1, frequency, frequency, octaves);
 
         return noise;

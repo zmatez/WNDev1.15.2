@@ -1,3 +1,6 @@
 {
-    "parent": "wildnature:block/stone_spike_small_a"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "wildnature:items/stone_spike_item"
+    }
 }

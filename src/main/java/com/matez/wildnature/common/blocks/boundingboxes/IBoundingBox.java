@@ -77,7 +77,7 @@ public class IBoundingBox {
         return VoxelShapes.create(x1, y1, z1, x2, y2, z2);
     }
 
-    public VoxelShape result(List<VoxelShape> shapes){
+    public static VoxelShape result(List<VoxelShape> shapes){
         VoxelShape result = VoxelShapes.empty();
         int x=0;
         while(x<shapes.size()){

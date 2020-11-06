@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -52,11 +52,11 @@ public class WaterJugItem extends Item {
 
       if (playerentity == null || !playerentity.abilities.isCreativeMode) {
          if (stack.isEmpty()) {
-            return new ItemStack(Main.getItemByID("wildnature:jug"));
+            return new ItemStack(WN.getItemByID("wildnature:jug"));
          }
 
          if (playerentity != null) {
-            playerentity.inventory.addItemStackToInventory(new ItemStack(Main.getItemByID("wildnature:jug")));
+            playerentity.inventory.addItemStackToInventory(new ItemStack(WN.getItemByID("wildnature:jug")));
          }
       }
 

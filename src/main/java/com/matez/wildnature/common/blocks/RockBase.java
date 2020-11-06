@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -86,7 +86,7 @@ public class RockBase extends BlockBase{
         boolean silkTouch = false;
         List<ItemStack> list = new ArrayList<>();
         String rock = regName.getPath().toString();
-        list.add(new ItemStack(Main.getBlockByID("wildnature:"+rock+"_cobble"), 1));
+        list.add(new ItemStack(WN.getBlockByID("wildnature:"+rock+"_cobble"), 1));
 
 
         return list;

@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.items.recipes.cooking.CookingToolType;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
@@ -53,7 +53,7 @@ public class PotEmptyItem extends CookingItem {
 
                if (worldIn.getFluidState(blockpos).isTagged(FluidTags.WATER)) {
                   worldIn.playSound(playerIn, playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1.0F, 0.6F);
-                  return new ActionResult<>(ActionResultType.SUCCESS, this.turnBottleIntoItem(itemstack, playerIn, PotionUtils.addPotionToItemStack(new ItemStack(Main.getItemByID("wildnature:pot_water")), Potions.WATER)));
+                  return new ActionResult<>(ActionResultType.SUCCESS, this.turnBottleIntoItem(itemstack, playerIn, PotionUtils.addPotionToItemStack(new ItemStack(WN.getItemByID("wildnature:pot_water")), Potions.WATER)));
                }
             }
 

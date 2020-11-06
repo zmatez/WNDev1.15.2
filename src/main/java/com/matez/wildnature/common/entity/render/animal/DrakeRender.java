@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.DrakeModel;
 import com.matez.wildnature.common.entity.type.animal.duck.DrakeEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class DrakeRender extends MobRenderer<DrakeEntity, DrakeModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(DrakeEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/duck_male.png");
+        return WN.RegistryEvents.location("textures/entity/duck_male.png");
     }
 
     public static class RenderFactory implements IRenderFactory<DrakeEntity>{

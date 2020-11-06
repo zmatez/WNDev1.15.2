@@ -7,8 +7,8 @@ import com.matez.wildnature.common.items.tier.WNItemTier;
 import com.matez.wildnature.util.lists.WNItems;
 import net.minecraft.item.*;
 
-import static com.matez.wildnature.init.Main.*;
-import static com.matez.wildnature.init.Main.RegistryEvents.location;
+import static com.matez.wildnature.init.WN.*;
+import static com.matez.wildnature.init.WN.RegistryEvents.location;
 
 public class ItemRegistry {
 
@@ -47,9 +47,9 @@ public class ItemRegistry {
                 WNItems.XMAS_SOCK = new Item(new Item.Properties()).setRegistryName(location("xmas_sock")),
                 //BACKPACKS
                 WNItems.POUCH = new PouchItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("pouch")),
-                WNItems.BACKPACK_SMALL = new BackpackItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("backpack_small")),
-                WNItems.BACKPACK_MEDIUM = new BackpackItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("backpack_medium")),
-                WNItems.BACKPACK_BIG = new BackpackItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("backpack_big")),
+                WNItems.BACKPACK_SMALL = new BackpackSmallItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("backpack_small")),
+                WNItems.BACKPACK_MEDIUM = new BackpackMediumItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("backpack_medium")),
+                WNItems.BACKPACK_BIG = new BackpackBigItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("backpack_big")),
                 //TOOLS
                 WNItems.CHISEL = new Item(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1)).setRegistryName(location("chisel")),
                 //OTHER

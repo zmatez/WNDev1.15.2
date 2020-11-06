@@ -1,7 +1,7 @@
 package com.matez.wildnature.common.compatibility;
 
 import com.google.common.collect.Maps;
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.common.registry.blocks.WoodRegistry;
@@ -117,9 +117,9 @@ public class WNMinecraftCopatibility {
             return;
         }
 
-        Block db = Main.getBlockByID("wildnature:"+dirt+"_dirt");
-        Block dp = Main.getBlockByID("wildnature:"+dirt+"_grass_path");
-        Block dg = Main.getBlockByID("wildnature:"+dirt+"_grass_block");
+        Block db = WN.getBlockByID("wildnature:"+dirt+"_dirt");
+        Block dp = WN.getBlockByID("wildnature:"+dirt+"_grass_path");
+        Block dg = WN.getBlockByID("wildnature:"+dirt+"_grass_block");
 
         HoeItem.HOE_LOOKUP = Maps.newHashMap(HoeItem.HOE_LOOKUP);
         HoeItem.HOE_LOOKUP.put(db, farmland.getDefaultState());

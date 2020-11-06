@@ -1,15 +1,17 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
 
-import com.matez.wildnature.world.generation.biomes.layer.ColumnBiomeContainer;
-import com.matez.wildnature.world.generation.biomes.layer.SmoothColumnBiomeMagnifier;
-import com.matez.wildnature.world.generation.biomes.setup.BiomeVariants;
-import com.matez.wildnature.world.generation.biomes.setup.WNGenSettings;
+import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
+import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
+import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
+import com.matez.wildnature.world.generation.biome.setup.WNGenSettings;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.generators.carves.PathGenerator;
+import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
 import com.matez.wildnature.world.generation.generators.rivers.surface.RiverGenerator;
 import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
+import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -54,6 +56,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
     private static TerrainProcessor thermalErosionProcessor = new ThermalErosionProcessor();
+    private static TerrainProcessor thermalErosionTestProcessor = new ThermalErosionTestProcessor();
 
     private SharedSeedRandom randomSeed;
 
@@ -77,6 +80,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.riverGenerator = new RiverGenerator(worldIn);
 
         thermalErosionProcessor.init(this, this.seed);
+        thermalErosionTestProcessor.init(this, this.seed);
     }
 
     @Override
@@ -215,9 +219,29 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        // Terrain processors modify the world, after the base is constructed
-        //CompletableFuture.runAsync(() -> thermalErosionProcessor.process(world, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise));
-        thermalErosionProcessor.process(world, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, noise);
+        //erode(world,chunk,noise);
+    }
+
+    protected void erode(IWorld world, IChunk chunk, int[] noise){
+        int threads = 8;
+
+        CompletableFuture<?>[] futures = new CompletableFuture[threads];
+        for (int i = 0; i < threads; i++) {
+            int position = i;
+            futures[i] = CompletableFuture.runAsync(() -> runErosion(world,chunk,position * 16 / threads, 16 / threads,noise));
+        }
+
+        for (int i = 0; i < futures.length; i++) {
+            futures[i].join();
+        }
+    }
+
+    private void runErosion(IWorld world, IChunk chunk, int start, int size, int[] noise){
+        for (int x = start; x < start + size; x++) {
+            for (int z = 0; z < 16; z++) {
+                thermalErosionTestProcessor.process(world, chunk, new Random(this.seed), chunk.getPos().x, chunk.getPos().z, x, z, noise);
+            }
+        }
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
@@ -245,13 +269,21 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public void useNoise(int[] noise, ChunkPos pos, int start, int size, IWorld worldIn) {
-        final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
+        final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
-        final ChunkArraySampler.CoordinateAccessor<Biome> biomeAccessor = (x, z) -> (Biome) SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), pos.getXStart() + x, 0, pos.getZStart() + z, worldIn);
+        final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
+            Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), pos.getXStart() + x, 0, pos.getZStart() + z, worldIn);
 
-        final Biome[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new Biome[10 * 10], biomeAccessor, 4);
-        final Biome[] sampledBiomes4 = ChunkArraySampler.fillSampledArray(new Biome[13 * 13], biomeAccessor, 2);
-        final Biome[] sampledBiomes1 = ChunkArraySampler.fillSampledArray(new Biome[24 * 24], biomeAccessor);
+            LerpConfiguration configuration = new LerpConfiguration(biome);
+            /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
+                configuration.setCustomVariants(BiomeVariants.PATH);
+            }*/
+            return configuration;
+        };
+
+        final LerpConfiguration[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[10 * 10], biomeAccessor, 4);
+        final LerpConfiguration[] sampledBiomes4 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[13 * 13], biomeAccessor, 2);
+        final LerpConfiguration[] sampledBiomes1 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[24 * 24], biomeAccessor);
 
         for (int x = start; x < start + size; x++) {
             for (int z = 0; z < 16; z++) {
@@ -260,7 +292,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 ChunkArraySampler.fillSampledWeightMap(sampledBiomes4, weightMap4, 2, x, z);
                 ChunkArraySampler.fillSampledWeightMap(sampledBiomes1, weightMap1, x, z);
 
-                Function<Biome, BiomeVariants> variantAccessor = BiomeVariants::getVariantsFor;
+                Function<LerpConfiguration, BiomeVariants> variantAccessor = LerpConfiguration::getBiomeVariants;
 
                 // Group biomes at different distances. This has the effect of making some biome transitions happen over larger distances than others.
                 // This is used to make most land biomes blend at maximum distance, while allowing biomes such as rivers to blend at short distances, creating better cliffs as river biomes are smaller width than other biomes.
@@ -272,11 +304,24 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         }
     }
 
-    public int getTerrainHeight(int x, int z, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor) {
+    public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         Biome biome = this.biomeProvider.getNoiseBiome(x / 4, 1, z / 4);
         ChunkLandscape landscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
-        return (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
+        int height = (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
+
+        return height;
+    }
+
+    public void applyHeightBasedBiomes(int height, int x, int z, Biome currentBiome){
+        //lakes
+        if(height < getSeaLevel()){
+            float depth = currentBiome.getDepth();
+            float scale = currentBiome.getScale();
+            if((depth - scale) < 0){
+
+            }
+        }
     }
 
 

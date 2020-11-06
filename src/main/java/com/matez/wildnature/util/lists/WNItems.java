@@ -306,6 +306,7 @@ public class WNItems {
     public static Item MALACHITE_RAW;
     public static Item MALACHITE_INGOT;
     //SAPPHIRE
+    public static Item AMETHYST_RAW;
     public static Item AMETHYST_SHARD;
     public static Item AMETHYST_INGOT;
 

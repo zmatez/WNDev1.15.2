@@ -4,8 +4,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
-import com.matez.wildnature.world.generation.noise.another.Noise;
-
 /**
  * Class that helps with various octaves and other noise stuff
  */

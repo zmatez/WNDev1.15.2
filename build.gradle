@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '2.1.7.1'
+version = '3.0'
 group = 'com.matez.wildnature' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'wildnature'
 
@@ -93,6 +93,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.31'
 
     compile 'org.spongepowered:mixin:0.8'
+    compile 'javax.vecmath:vecmath:1.5.2'
+
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"

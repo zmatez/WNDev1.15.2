@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -92,7 +92,7 @@ public class PodzolBase extends BlockBase {
         boolean silkTouch = false;
         List<ItemStack> list = super.getDrops(state, builder);
         if(list.isEmpty() && !silkTouch){
-            list.add(new ItemStack(Item.getItemFromBlock(Main.getBlockByID(dirt)), 1));
+            list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID(dirt)), 1));
         }
 
         return list;

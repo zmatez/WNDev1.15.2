@@ -1,8 +1,8 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.world.generation.biomes.setup.WNBiomes;
+import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
@@ -43,7 +43,7 @@ public class BiomeListCommand {
 
     public int showPage(int page){
         if(maxPages<page){
-            Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED+"Unknown page. Use values from " + TextFormatting.GOLD + "1" + TextFormatting.RED+" to " + TextFormatting.GOLD + maxPages+TextFormatting.RED+".")));
+            WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED+"Unknown page. Use values from " + TextFormatting.GOLD + "1" + TextFormatting.RED+" to " + TextFormatting.GOLD + maxPages+TextFormatting.RED+".")));
             return 0;
         }
         StringTextComponent s = new StringTextComponent(TextFormatting.GREEN+"Biome List "+TextFormatting.GRAY+" - - - "+TextFormatting.LIGHT_PURPLE+" page " + TextFormatting.AQUA + page + TextFormatting.DARK_AQUA + "/"+TextFormatting.AQUA+maxPages);
@@ -55,11 +55,11 @@ public class BiomeListCommand {
         StringTextComponent s2 = new StringTextComponent(TextFormatting.GOLD +""+TextFormatting.BOLD + " >>>");
         s2.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new StringTextComponent(TextFormatting.GREEN+"Click to show next page")));
         s2.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/wn biome list " +(page+1)+""));
-        ITextComponent s3 = new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s);
+        ITextComponent s3 = new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s);
         if(page<maxPages){
             s3.appendSibling(s2);
         }
-        Main.sendChatMessage(entity,s3);
+        WN.sendChatMessage(entity,s3);
         int startIndex = page*10-10;
         for (int i = 0; i <10; i++){
             try {
@@ -74,7 +74,7 @@ public class BiomeListCommand {
 
     public void showListLine(Biome biome, String index){
         if(biome==null){
-            Main.sendChatMessage(entity,new StringTextComponent(TextFormatting.DARK_GRAY+"["+index+"]").appendSibling(new StringTextComponent(TextFormatting.AQUA+" ")));
+            WN.sendChatMessage(entity,new StringTextComponent(TextFormatting.DARK_GRAY+"["+index+"]").appendSibling(new StringTextComponent(TextFormatting.AQUA+" ")));
         }else {
             boolean isWildNature = WNBiomes.registerBiomes.contains(biome);
             String wiki = isWildNature ? "https://wildnaturemod.com/"+biome.getRegistryName().getPath().replace("_","-") : "";
@@ -113,7 +113,7 @@ public class BiomeListCommand {
 
             ));
 
-            Main.sendChatMessage(entity, new StringTextComponent(TextFormatting.DARK_GRAY + "[" + index + "] ")
+            WN.sendChatMessage(entity, new StringTextComponent(TextFormatting.DARK_GRAY + "[" + index + "] ")
                     .appendSibling(new StringTextComponent(TextFormatting.GOLD+""+TextFormatting.BOLD+"|"))
                     .appendSibling(wikicomponent)
                     .appendSibling(new StringTextComponent(TextFormatting.GOLD+""+TextFormatting.BOLD+":"))

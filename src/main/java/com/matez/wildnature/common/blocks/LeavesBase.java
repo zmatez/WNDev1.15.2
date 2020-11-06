@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
@@ -69,7 +69,7 @@ public class LeavesBase extends LeavesBlock implements IRenderLayer {
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         List<ItemStack> list = super.getDrops(state, builder);
         if(list.isEmpty() && Utilities.rint(0,12)==0 && !item.getRegistryName().toString().contains("wildnature:wild")){
-            list.add(new ItemStack(Main.getItemByID(item.getRegistryName().toString().replace("leaves","sapling"))));
+            list.add(new ItemStack(WN.getItemByID(item.getRegistryName().toString().replace("leaves","sapling"))));
         }
 
 

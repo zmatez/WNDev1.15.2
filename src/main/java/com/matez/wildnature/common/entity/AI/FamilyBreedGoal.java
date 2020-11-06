@@ -4,7 +4,7 @@ import java.util.EnumSet;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.type.animal.IFamily;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.AgeableEntity;
@@ -104,7 +104,7 @@ public class FamilyBreedGoal extends Goal {
      * Spawns a baby animal of the same type.
      */
     protected void spawnBaby() {
-        Main.LOGGER.debug("Spawning babe");
+        WN.LOGGER.debug("Spawning babe");
         AgeableEntity ageableentity = this.animal.createChild(this.mateWithEntity);
         AnimalEntity mother = null;
         AnimalEntity father = null;
@@ -129,7 +129,7 @@ public class FamilyBreedGoal extends Goal {
             return;
         }
         if (ageableentity != null) {
-            Main.LOGGER.debug("Spawning babe2");
+            WN.LOGGER.debug("Spawning babe2");
             ServerPlayerEntity serverplayerentity = this.animal.getLoveCause();
             if (serverplayerentity == null && this.mateWithEntity.getLoveCause() != null) {
                 serverplayerentity = this.mateWithEntity.getLoveCause();
@@ -152,7 +152,7 @@ public class FamilyBreedGoal extends Goal {
                 this.world.addEntity(new ExperienceOrbEntity(this.world, this.animal.getPosition().getX(), this.animal.getPosition().getY(), this.animal.getPosition().getZ(), mother.getRNG().nextInt(7) + 1));
             }
 
-            Main.LOGGER.debug("Spawned");
+            WN.LOGGER.debug("Spawned");
         }
     }
 }

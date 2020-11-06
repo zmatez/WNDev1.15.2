@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.items.recipes.cooking.CookingToolType;
 import com.matez.wildnature.common.items.recipes.cooking.FillTool;
 import com.matez.wildnature.common.items.recipes.cooking.WNAbstractCookingRecipe;
@@ -185,9 +185,9 @@ public class CookingItem extends Item {
                 });
                 s2[0] = s2[0].substring(0,s2[0].length()-1);
                 if(clickCount==0) {
-                    ITextComponent t = new StringTextComponent("").appendSibling(Main.WNPrefix).appendText(TextFormatting.RED + "You need " + TextFormatting.GOLD + s[0] + TextFormatting.RED + " in your inventory to take out " + TextFormatting.GOLD + s2[0]);
+                    ITextComponent t = new StringTextComponent("").appendSibling(WN.WNPrefix).appendText(TextFormatting.RED + "You need " + TextFormatting.GOLD + s[0] + TextFormatting.RED + " in your inventory to take out " + TextFormatting.GOLD + s2[0]);
                     Utilities.saveItems(nbt, itemsLeft);
-                    Main.sendChatMessage(player, t);
+                    WN.sendChatMessage(player, t);
                 }
             }
             stack.setTag(nbt);

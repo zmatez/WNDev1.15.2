@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.items.CookingItem;
 import com.matez.wildnature.common.items.recipes.PotCrafting;
 import com.matez.wildnature.common.items.recipes.cooking.WNAbstractCookingRecipe;
@@ -33,8 +33,8 @@ public class RecipeCommand {
             StringTextComponent sr = new StringTextComponent(TextFormatting.LIGHT_PURPLE + item.getDisplayName().getFormattedText());
             sr.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM,new StringTextComponent(item.write(new CompoundNBT()).toString())));
 
-            Main.sendChatMessage(p,new StringTextComponent("")
-                    .appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.GREEN+"Recipe " + x+ "/" + stacks.size()))
+            WN.sendChatMessage(p,new StringTextComponent("")
+                    .appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.GREEN+"Recipe " + x+ "/" + stacks.size()))
                     .appendSibling(new StringTextComponent(TextFormatting.GRAY+"  - - -  "))
                     .appendSibling(new StringTextComponent(TextFormatting.LIGHT_PURPLE+ "").appendSibling(sr).appendSibling(new StringTextComponent(" " + TextFormatting.DARK_PURPLE+"x"+item.getCount()))));
 
@@ -48,7 +48,7 @@ public class RecipeCommand {
                     StringTextComponent si = new StringTextComponent(TextFormatting.DARK_GREEN + itemStack.getDisplayName().getFormattedText());
                     si.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM,new StringTextComponent(itemStack.write(new CompoundNBT()).toString())));
 
-                    Main.sendChatMessage(p, new StringTextComponent(TextFormatting.GRAY + "[" + i + "] ")
+                    WN.sendChatMessage(p, new StringTextComponent(TextFormatting.GRAY + "[" + i + "] ")
                             .appendSibling(new StringTextComponent(TextFormatting.DARK_GREEN + "").appendSibling(si).appendSibling(new StringTextComponent(TextFormatting.DARK_AQUA + " x" + itemStack.getCount()))));
                 }
             }
@@ -60,17 +60,17 @@ public class RecipeCommand {
                     st.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new StringTextComponent(tool.write(new CompoundNBT()).toString())));
                 }
                 if (tool.getItem() == Item.getItemFromBlock(Blocks.CRAFTING_TABLE)) {
-                    Main.sendChatMessage(p, new StringTextComponent(TextFormatting.GRAY + "Craft it in " + TextFormatting.YELLOW+Item.getItemFromBlock(Blocks.CRAFTING_TABLE).getDisplayName(new ItemStack(Blocks.CRAFTING_TABLE,1)).getFormattedText()));
+                    WN.sendChatMessage(p, new StringTextComponent(TextFormatting.GRAY + "Craft it in " + TextFormatting.YELLOW+Item.getItemFromBlock(Blocks.CRAFTING_TABLE).getDisplayName(new ItemStack(Blocks.CRAFTING_TABLE,1)).getFormattedText()));
                 }else {
-                    Main.sendChatMessage(p, new StringTextComponent(TextFormatting.GRAY + "Cook it using ").appendSibling(st));
+                    WN.sendChatMessage(p, new StringTextComponent(TextFormatting.GRAY + "Cook it using ").appendSibling(st));
                 }
             }
 
-            Main.sendChatMessage(p,new StringTextComponent(TextFormatting.DARK_GRAY+"----------------------------------"));
+            WN.sendChatMessage(p,new StringTextComponent(TextFormatting.DARK_GRAY+"----------------------------------"));
         }
 
         if(stacks.isEmpty()){
-            Main.sendChatMessage(p,new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED+"Unable to find recipes for " + TextFormatting.GOLD+item.getDisplayName().getFormattedText()+" x" +item.getCount()+TextFormatting.RED+".")));
+            WN.sendChatMessage(p,new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED+"Unable to find recipes for " + TextFormatting.GOLD+item.getDisplayName().getFormattedText()+" x" +item.getCount()+TextFormatting.RED+".")));
 
 
         }

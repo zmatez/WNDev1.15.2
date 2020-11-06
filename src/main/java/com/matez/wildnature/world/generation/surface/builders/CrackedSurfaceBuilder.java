@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -39,7 +39,7 @@ public class CrackedSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
             chunkIn.setBlockState(new BlockPos(x, startHeight - 1, z), Blocks.AIR.getDefaultState(), false);
             chunkIn.setBlockState(new BlockPos(x, startHeight - 2, z), Blocks.AIR.getDefaultState(), false);
             chunkIn.setBlockState(new BlockPos(x, startHeight - 3, z), Blocks.AIR.getDefaultState(), false);
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight - 4, noise, Main.getBlockByID("sand_brown_full").getDefaultState(), defaultFluid, seaLevel, seed, config);
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight - 4, noise, WN.getBlockByID("sand_brown_full").getDefaultState(), defaultFluid, seaLevel, seed, config);
             return;
         } else {
 

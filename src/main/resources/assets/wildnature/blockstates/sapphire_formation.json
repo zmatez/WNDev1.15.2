@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "type=big,facing=east": { "model": "wildnature:block/sapphire_formation_big" },
+        "type=big,facing=south": { "model": "wildnature:block/sapphire_formation_big", "y": 90 },
+        "type=big,facing=west": { "model": "wildnature:block/sapphire_formation_big", "y": 180 },
+        "type=big,facing=north": { "model": "wildnature:block/sapphire_formation_big", "y": 270 },
+        "type=small,facing=east": { "model": "wildnature:block/sapphire_formation_small" },
+        "type=small,facing=south": { "model": "wildnature:block/sapphire_formation_small", "y": 90 },
+        "type=small,facing=west": { "model": "wildnature:block/sapphire_formation_small", "y": 180 },
+        "type=small,facing=north": { "model": "wildnature:block/sapphire_formation_small", "y": 270 }
+    }
+}

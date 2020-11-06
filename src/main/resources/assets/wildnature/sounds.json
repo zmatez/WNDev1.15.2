@@ -1,4 +1,13 @@
 {
+  "music.cave.cave1": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "wildnature:music/cave/cave1",
+        "stream": true
+      }
+    ]
+  },
   "block.piston.2s_open": {
     "category": "block",
     "sounds": [

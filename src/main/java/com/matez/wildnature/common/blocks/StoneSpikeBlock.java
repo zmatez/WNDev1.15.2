@@ -34,7 +34,7 @@ import java.util.Random;
 
 public class StoneSpikeBlock extends BlockBase implements IWaterLoggable, IRenderLayer {
     private IBoundingBox box;
-    public static final  EnumProperty<StoneSpikeType> type = EnumProperty.create("type", StoneSpikeType.class);
+    public static final EnumProperty<StoneSpikeType> type = EnumProperty.create("type", StoneSpikeType.class);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public StoneSpikeBlock(Properties properties, Item.Properties builder, ResourceLocation regName,IBoundingBox box) {
         super(properties, builder, regName);
@@ -84,11 +84,13 @@ public class StoneSpikeBlock extends BlockBase implements IWaterLoggable, IRende
 
         if(direction==Direction.UP){
             blockstate1=blockstate1.with(type,StoneSpikeType.STALAGMITE);
+            return blockstate1;
         }else if(direction==Direction.DOWN){
             blockstate1=blockstate1.with(type,StoneSpikeType.STALACTITE);
+            return blockstate1;
         }
 
-        return blockstate1;
+        return null;
     }
 
     @Override

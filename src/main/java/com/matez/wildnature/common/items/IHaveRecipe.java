@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.items;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
@@ -22,7 +22,7 @@ import static com.matez.wildnature.common.commands.RecipeCommand.checkIngredient
 public class IHaveRecipe {
 
     public static void addInformation(Item clazz,ItemStack itemStackInfo, @Nullable World world, List<ITextComponent> tooltips, ITooltipFlag tooltipFlag) {
-        if(Main.canShowAdvancedTooltip) {
+        if(WN.canShowAdvancedTooltip) {
             if (world != null) {
                 ArrayList<ArrayList<ItemStack>> stacks = checkIngredients(world, new ItemStack(clazz, 1));
                 int x = 0;

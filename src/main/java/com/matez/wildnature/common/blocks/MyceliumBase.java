@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MyceliumBlock;
@@ -55,7 +55,7 @@ public class MyceliumBase extends MyceliumBlock {
         boolean silkTouch = false;
         List<ItemStack> list = super.getDrops(state, builder);
         if(list.isEmpty() && !silkTouch){
-            list.add(new ItemStack(Item.getItemFromBlock(Main.getBlockByID(dirt)), 1));
+            list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID(dirt)), 1));
         }
 
         return list;

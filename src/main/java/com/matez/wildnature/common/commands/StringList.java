@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -27,7 +27,7 @@ public class StringList {
     }
 
     public void showPage(int page){
-        Main.sendChatMessage(entity,title.appendText(" " + TextFormatting.AQUA + page + TextFormatting.DARK_AQUA + "/"+TextFormatting.AQUA+maxPages));
+        WN.sendChatMessage(entity,title.appendText(" " + TextFormatting.AQUA + page + TextFormatting.DARK_AQUA + "/"+TextFormatting.AQUA+maxPages));
         int startIndex = page-1;
         for (int i = 0; i <pageLength; i++){
             showListLine((String)list.get(startIndex+i));
@@ -35,7 +35,7 @@ public class StringList {
     }
 
     public void showListLine(String x){
-        Main.sendChatMessage(entity,format.appendText(" "+x));
+        WN.sendChatMessage(entity,format.appendText(" "+x));
     }
 
 }

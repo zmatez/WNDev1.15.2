@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.event.PlayerEventHandler;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
@@ -125,7 +125,7 @@ public class WNCommand {
         if (console) {
             System.out.println(s.getUnformattedComponentText());
         } else {
-            Main.sendChatMessage(entity, s);
+            WN.sendChatMessage(entity, s);
         }
 
 
@@ -134,7 +134,7 @@ public class WNCommand {
 
     public static ITextComponent infoComponent(PlayerEntity entity, boolean console) {
         StringTextComponent s1 = new StringTextComponent(TextFormatting.GOLD + "" + TextFormatting.BOLD + TextFormatting.STRIKETHROUGH + "------------" + TextFormatting.GREEN + " WildNature " + TextFormatting.GOLD + "" + TextFormatting.BOLD + TextFormatting.STRIKETHROUGH + "------------\n");
-        StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "Version: " + TextFormatting.LIGHT_PURPLE + Main.version + "\n");
+        StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "Version: " + TextFormatting.LIGHT_PURPLE + WN.version + "\n");
         String generator = "";
         String patron = "";
         String language = "";
@@ -147,7 +147,7 @@ public class WNCommand {
             if (patron.contains("false")) {
                 patron = TextFormatting.LIGHT_PURPLE + "Become a Patron! Click.";
             }
-            if (Main.instance.getSupportedLanguages().contains(Minecraft.getInstance().getLanguageManager().getCurrentLanguage().getCode())) {
+            if (WN.instance.getSupportedLanguages().contains(Minecraft.getInstance().getLanguageManager().getCurrentLanguage().getCode())) {
                 if (Minecraft.getInstance().getLanguageManager().getCurrentLanguage().getCode().equals("en_us")) {
                     language = TextFormatting.LIGHT_PURPLE + "default";
                 } else {

@@ -1,11 +1,15 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.client.render.IRenderLayer;
+import com.matez.wildnature.common.blocks.boundingboxes.IBoundingBox;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
 import com.matez.wildnature.client.sounds.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,6 +18,9 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -24,12 +31,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GeyserBlock extends BlockBase {
+public class GeyserBlock extends BlockBase implements IRenderLayer {
     public static final IntegerProperty STEAM = IntegerProperty.create("steam",0,25);
     public static final BooleanProperty RUNNING = BooleanProperty.create("running");
     public static final IntegerProperty LOAD = IntegerProperty.create("load",0,5);
     public GeyserBlock(Properties properties, Item.Properties builder, ResourceLocation regName) {
-        super(properties, builder, regName);
+        super(properties.notSolid(), builder, regName);
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        List<VoxelShape> shapes = new ArrayList<>();
+        shapes.add(Block.makeCuboidShape(0.062, 0, 0.062, 0.938, 0.125, 0.938)); // ELEMENT
+        shapes.add(Block.makeCuboidShape(0.188, 0.125, 0.188, 0.812, 0.312, 0.375)); // ELEMENT
+        shapes.add(Block.makeCuboidShape(0.188, 0.125, 0.625, 0.812, 0.312, 0.812)); // ELEMENT
+        shapes.add(Block.makeCuboidShape(0.188, 0.125, 0.375, 0.375, 0.312, 0.625)); // ELEMENT
+        shapes.add(Block.makeCuboidShape(0.625, 0.125, 0.375, 0.812, 0.312, 0.625)); // ELEMENT
+
+        return IBoundingBox.result(shapes);
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return this.getShape(state,worldIn,pos,context);
     }
 
     @Override
@@ -82,6 +106,10 @@ public class GeyserBlock extends BlockBase {
 
     }
 
+    @Override
+    public RenderType getRenderLayer() {
+        return RenderType.getCutoutMipped();
+    }
 
     public void steam(BlockState state, ServerWorld worldIn, BlockPos pos, Random random){
         if(state.get(STEAM)>0) {

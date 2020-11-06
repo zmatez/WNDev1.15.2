@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -35,7 +35,7 @@ public class GetFiles {
 
     public int showPage(int page){
         if(maxPages<page){
-            Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED+"Unknown page. Use values from " + TextFormatting.GOLD + "1" + TextFormatting.RED+" to " + TextFormatting.GOLD + maxPages+TextFormatting.RED+".")));
+            WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED+"Unknown page. Use values from " + TextFormatting.GOLD + "1" + TextFormatting.RED+" to " + TextFormatting.GOLD + maxPages+TextFormatting.RED+".")));
             return 0;
         }
         File folder = new File(FMLPaths.CONFIGDIR.get().resolve("wildnature/export").toString());
@@ -45,11 +45,11 @@ public class GetFiles {
         StringTextComponent s2 = new StringTextComponent(TextFormatting.GOLD +""+TextFormatting.BOLD + " >>>");
         s2.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new StringTextComponent(TextFormatting.GREEN+"Click to show next page")));
         s2.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/wn dev files " +(page+1)+""));
-        ITextComponent s3 = new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s);
+        ITextComponent s3 = new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s);
         if(page<maxPages){
             s3.appendSibling(s2);
         }
-        Main.sendChatMessage(entity,s3);
+        WN.sendChatMessage(entity,s3);
         int startIndex = page*5-5;
         for (int i = 0; i <5; i++){
             try {
@@ -63,7 +63,7 @@ public class GetFiles {
     }
 
     public void showListLine(String x, String index){
-        Main.sendChatMessage(entity,new StringTextComponent(TextFormatting.GOLD+" ["+index+"]").appendSibling(new StringTextComponent(TextFormatting.AQUA+" "+x)));
+        WN.sendChatMessage(entity,new StringTextComponent(TextFormatting.GOLD+" ["+index+"]").appendSibling(new StringTextComponent(TextFormatting.AQUA+" "+x)));
     }
 
     public static ArrayList<String> getFiles() {

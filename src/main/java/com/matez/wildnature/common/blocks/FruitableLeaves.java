@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
@@ -101,9 +101,9 @@ public class FruitableLeaves extends LeavesBase {
     public ActionResultType onBlockActivated(BlockState p_220051_1_, World p_220051_2_, BlockPos p_220051_3_, PlayerEntity p_220051_4_, Hand p_220051_5_, BlockRayTraceResult p_220051_6_) {
         int c = getCurrentStage(p_220051_1_);
         ItemPortion p = getFruitFromStage(c);
-        if(p!=null && Main.getItemByID(p.item.toString())!= Items.AIR){
+        if(p!=null && WN.getItemByID(p.item.toString())!= Items.AIR){
             p_220051_2_.setBlockState(p_220051_3_,p_220051_1_.with(getStage(),0));
-            spawnAsEntity(p_220051_2_,p_220051_3_,new ItemStack(Main.getItemByID(p.item.toString()), Utilities.rint(p.min,p.max)));
+            spawnAsEntity(p_220051_2_,p_220051_3_,new ItemStack(WN.getItemByID(p.item.toString()), Utilities.rint(p.min,p.max)));
 
             p_220051_2_.playSound((PlayerEntity)null, p_220051_3_, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + p_220051_2_.rand.nextFloat() * 0.4F);
             return ActionResultType.SUCCESS;
@@ -116,8 +116,8 @@ public class FruitableLeaves extends LeavesBase {
         List<ItemStack> list = super.getDrops(state, builder);
         int c = getCurrentStage(state);
         ItemPortion p = getFruitFromStage(c);
-        if(p!=null && Main.getItemByID(p.item.toString())!= Items.AIR){
-            list.add(new ItemStack(Main.getItemByID(p.item.toString()), Utilities.rint(p.min,p.max)));
+        if(p!=null && WN.getItemByID(p.item.toString())!= Items.AIR){
+            list.add(new ItemStack(WN.getItemByID(p.item.toString()), Utilities.rint(p.min,p.max)));
         }
 
 

@@ -8,7 +8,6 @@ import java.util.Set;
 public class eucalyptus_1 extends SchemFeature {
     public eucalyptus_1() {
         super();
-
     }
 
 

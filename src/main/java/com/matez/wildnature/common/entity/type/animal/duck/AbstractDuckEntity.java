@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.type.animal.duck;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.AI.*;
 import com.matez.wildnature.common.entity.AI.Movement.FlyingMovementControllerOld;
 import com.matez.wildnature.common.entity.AI.RandomSwimmingGoal;
@@ -340,10 +340,10 @@ public abstract class AbstractDuckEntity extends AnimalEntity implements IFamily
          Entity e = ((ServerWorld)world).getEntityByUuid(UUID.fromString(compound.getString("leaderEntity")));
          if(e instanceof AbstractDuckEntity){
             leader = (AbstractDuckEntity) e;
-            Main.LOGGER.debug("My leader is " + leader==this + " " + leader);
+            WN.LOGGER.debug("My leader is " + leader==this + " " + leader);
          }
       }else{
-         Main.LOGGER.debug("Cannot get leader");
+         WN.LOGGER.debug("Cannot get leader");
 
       }
       if (compound.contains("isGroupLeader")) {
@@ -354,11 +354,11 @@ public abstract class AbstractDuckEntity extends AnimalEntity implements IFamily
             assert l != null;
 
             for(INBT nbt : l){
-               Main.LOGGER.info("Reading nbt...");
+               WN.LOGGER.info("Reading nbt...");
                String s = ((CompoundNBT)nbt).getString("uuid");
                Entity e = ((ServerWorld)world).getEntityByUuid(UUID.fromString(s));
                if(e instanceof AbstractDuckEntity){
-                  Main.LOGGER.info("Readed from uuid " + group.size() + " : " + e);
+                  WN.LOGGER.info("Readed from uuid " + group.size() + " : " + e);
 
                   group.add((AbstractDuckEntity)e);
                }
@@ -401,7 +401,7 @@ public abstract class AbstractDuckEntity extends AnimalEntity implements IFamily
 
    @Override
    public boolean canMateWith(AnimalEntity otherAnimal) {
-      Main.LOGGER.debug("breed ");
+      WN.LOGGER.debug("breed ");
       if (otherAnimal == this) {
          return false;
       }else {
@@ -412,7 +412,7 @@ public abstract class AbstractDuckEntity extends AnimalEntity implements IFamily
             if(((AbstractDuckEntity)otherAnimal).getGender()==Gender.CHILD){
                return false;
             }
-            Main.LOGGER.debug("breed y");
+            WN.LOGGER.debug("breed y");
             return this.isInLove() && otherAnimal.isInLove();
          }
          return false;
@@ -493,10 +493,10 @@ public abstract class AbstractDuckEntity extends AnimalEntity implements IFamily
 
       @Override
       public boolean shouldExecute() {
-         Main.LOGGER.debug("avoiding player");
+         WN.LOGGER.debug("avoiding player");
          if(entity instanceof AbstractDuckEntity){
             if(((AbstractDuckEntity)entity).breed){
-               Main.LOGGER.debug("false");
+               WN.LOGGER.debug("false");
                return false;
             }
          }

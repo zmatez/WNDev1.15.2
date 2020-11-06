@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.GlowingCrystalBase;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
@@ -40,11 +40,11 @@ public class CrystalFeature extends Feature<NoFeatureConfig> {
    }
 
    private BlockState getRandomCrystal(){
-      BlockState b1 = Main.getBlockByID("wildnature:glowing_crystal_blue").getDefaultState();
-      BlockState b2 = Main.getBlockByID("wildnature:glowing_crystal_red").getDefaultState();
-      BlockState b3 = Main.getBlockByID("wildnature:glowing_crystal_purple").getDefaultState();
-      BlockState b4 = Main.getBlockByID("wildnature:glowing_crystal_orange").getDefaultState();
-      BlockState b5 = Main.getBlockByID("wildnature:glowing_crystal_white").getDefaultState();
+      BlockState b1 = WN.getBlockByID("wildnature:glowing_crystal_blue").getDefaultState();
+      BlockState b2 = WN.getBlockByID("wildnature:glowing_crystal_red").getDefaultState();
+      BlockState b3 = WN.getBlockByID("wildnature:glowing_crystal_purple").getDefaultState();
+      BlockState b4 = WN.getBlockByID("wildnature:glowing_crystal_orange").getDefaultState();
+      BlockState b5 = WN.getBlockByID("wildnature:glowing_crystal_white").getDefaultState();
 
       switch (Utilities.rint(0,4)){
          case 0:

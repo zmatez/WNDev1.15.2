@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
@@ -39,7 +39,7 @@ public class WNBeehiveFeature extends Feature<CountConfig> {
             if (worldIn.getBlockState(pos).getBlock().isIn(BlockTags.LEAVES)) {
                for (Direction generateDirection : BeehiveBlock.GENERATE_DIRECTIONS) {
                   if (worldIn.isAirBlock(pos.offset(generateDirection))) {
-                     Main.LOGGER.debug("Bee nest set at " + pos);
+                     WN.LOGGER.debug("Bee nest set at " + pos);
                      worldIn.setBlockState(pos, Blocks.BEE_NEST.getDefaultState().with(BeehiveBlock.FACING, generateDirection), 2);
                      TileEntity tileentity = worldIn.getTileEntity(pos);
                      if (tileentity instanceof BeehiveTileEntity) {

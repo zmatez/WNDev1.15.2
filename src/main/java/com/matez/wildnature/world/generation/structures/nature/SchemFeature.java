@@ -43,13 +43,13 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
     public Random random;
     public int terrainIncrease = 0;
     @Expose
-    private ArrayList<BlockPos> addedBlocks = new ArrayList<>();
+    public ArrayList<BlockPos> addedBlocks = new ArrayList<>();
     @Expose
-    private ArrayList<BlockPos> bottomBlocks = new ArrayList<>();
-    private int rotation;
-    private boolean canGenerate = true;
-    private boolean virtualPlace = false;
-    private net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable)net.minecraft.block.Blocks.OAK_SAPLING;
+    public ArrayList<BlockPos> bottomBlocks = new ArrayList<>();
+    public int rotation;
+    public boolean canGenerate = true;
+    public boolean virtualPlace = false;
+    public net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable)net.minecraft.block.Blocks.OAK_SAPLING;
 
     public SchemFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactoryIn) {
         super(configFactoryIn);
@@ -301,11 +301,11 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         return addedBlocks;
     }
 
-    private BlockPos downBlock(BlockPos blockPos, int down) {
+    public BlockPos downBlock(BlockPos blockPos, int down) {
         return new BlockPos(blockPos.getX(), blockPos.getY() - down, blockPos.getZ());
     }
 
-    private boolean isLeaf(Block b) {
+    public boolean isLeaf(Block b) {
         return b instanceof LeavesBlock;
     }
 

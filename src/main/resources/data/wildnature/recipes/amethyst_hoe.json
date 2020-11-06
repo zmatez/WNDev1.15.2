@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    " $"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:amethyst_ingot"
+    },
+    "$": {
+      "item": "wildnature:steel_hoe"
+    }
+  },
+  "result": {
+    "item": "wildnature:amethyst_hoe",
+    "count": 1
+  }
+}

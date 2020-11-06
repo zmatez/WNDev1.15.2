@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -31,13 +31,13 @@ public class ImportFromFile {
             name=name+".java";
         }
         StringTextComponent s3 = new StringTextComponent(TextFormatting.AQUA + "Importing "+ TextFormatting.GOLD + name+ TextFormatting.AQUA+"...");
-        Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s3));
+        WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s3));
 
         ArrayList<BlockStatePos> list = new ArrayList<>();
         File f = new File(FMLPaths.GAMEDIR.get().resolve("wildnature/export/"+name).toString());
         if(!f.exists()){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Unable to find " +TextFormatting.GOLD + name+  TextFormatting.RED+".");
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
             return 0;
         }
 
@@ -57,7 +57,7 @@ public class ImportFromFile {
                         String blockstate = linex.substring(linex.indexOf("(") + 1, linex.indexOf(")"));
                         //System.out.println("x = " + x + "   y = " + y + "   z = " + z + "   blockstate = " + blockstate);
                         blockstate = blockstate.substring(1,blockstate.length()-1).replace("\\","");
-                        Main.LOGGER.info("Block: " + blockstate);
+                        WN.LOGGER.info("Block: " + blockstate);
                         list.add(new BlockStatePos(parse(new StringReader(blockstate)), new BlockPos(Integer.parseInt(x), Integer.parseInt(y), Integer.parseInt(z))));
                     }catch (Exception e){
                         brokenParts++;
@@ -70,30 +70,30 @@ public class ImportFromFile {
 
         if(list.isEmpty()){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Unable to decode file.");
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
             return 0;
         }
 
         if(brokenParts>0){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Found " + TextFormatting.GOLD + brokenParts + TextFormatting.RED +" broken parts in this file.");
-            Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+            WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
         }
 
         StringTextComponent s6 = new StringTextComponent(TextFormatting.AQUA + "Generating "+ TextFormatting.GOLD + list.size()+ TextFormatting.AQUA+" blocks at ");
         StringTextComponent s7 = new StringTextComponent(TextFormatting.YELLOW + ""+coords.getX()+" " + coords.getY() + " " + coords.getZ());
-        Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s6).appendSibling(s7));
+        WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s6).appendSibling(s7));
 
         for (BlockStatePos statePos : list){
             try {
                 BlockPos pos = new BlockPos(coords.getX() + statePos.getPos().getX(), coords.getY() + statePos.getPos().getY(), coords.getZ() + statePos.getPos().getZ());
                 statePos.getState().place(world, pos, 2);
             }catch (Exception e){
-                Main.LOGGER.warn(e);
+                WN.LOGGER.warn(e);
             }
         }
 
         StringTextComponent s4 = new StringTextComponent(TextFormatting.GREEN + "Operation succeed.");
-        Main.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s4));
+        WN.sendChatMessage(source.getSource().asPlayer(), new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s4));
 
         return 1;
 

@@ -3,7 +3,7 @@ package com.matez.wildnature.world.generation.feature.features;
 import com.matez.wildnature.common.blocks.CornPlant;
 import com.matez.wildnature.common.blocks.GreenBeansBush;
 import com.matez.wildnature.util.other.BlockWeighList;
-import com.matez.wildnature.world.generation.feature.FeatureRegistry;
+import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.configs.BlockFeatureConfig;
 import com.matez.wildnature.world.generation.feature.configs.BlockWeightListConfig;
 import com.mojang.datafixers.Dynamic;
@@ -30,14 +30,14 @@ public class WNBushFeature extends Feature<BlockFeatureConfig> {
       BlockState blockstate = config.state;
 
       if(config.state.getBlock() instanceof GreenBeansBush){
-         return FeatureRegistry.GREEN_BEAN_FEATURE.place(worldIn,generator,rand,pos,new NoFeatureConfig());
+         return WNFeatures.GREEN_BEAN_FEATURE.place(worldIn,generator,rand,pos,new NoFeatureConfig());
       }
       else if(config.state.getBlock() instanceof CornPlant){
-         return FeatureRegistry.CORN_FEATURE.place(worldIn,generator,rand,pos,new NoFeatureConfig());
+         return WNFeatures.CORN_FEATURE.place(worldIn,generator,rand,pos,new NoFeatureConfig());
       }else if(config.state.getBlock() instanceof DoublePlantBlock){
          BlockWeighList l = new BlockWeighList();
          l.add(config.state,1);
-         return FeatureRegistry.PLANT_FEATURE.place(worldIn,generator,rand,pos,new BlockWeightListConfig(l));
+         return WNFeatures.PLANT_FEATURE.place(worldIn,generator,rand,pos,new BlockWeightListConfig(l));
       }else {
          for (int j = 0; j < 64; ++j) {
             BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));

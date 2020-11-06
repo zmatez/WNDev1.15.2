@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
@@ -19,15 +19,15 @@ public class TintedDesertSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
 
 
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
-        SurfaceBuilderConfig rf = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_red_full").getDefaultState(), Main.getBlockByID("wildnature:sand_red_full").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig rh = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_red_half").getDefaultState(), Main.getBlockByID("wildnature:sand_red_half").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig rs = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_red_slight").getDefaultState(), Main.getBlockByID("wildnature:sand_red_slight").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig bf = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_brown_full").getDefaultState(), Main.getBlockByID("wildnature:sand_brown_full").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig bh = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_brown_half").getDefaultState(), Main.getBlockByID("wildnature:sand_brown_half").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig bs = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_brown_slight").getDefaultState(), Main.getBlockByID("wildnature:sand_brown_slight").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig w = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:sand_white").getDefaultState(), Main.getBlockByID("wildnature:sand_white").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig r = new SurfaceBuilderConfig(Main.getBlockByID("minecraft:red_sand").getDefaultState(), Main.getBlockByID("minecraft:red_sand").getDefaultState(), config.getUnderWaterMaterial());
-        SurfaceBuilderConfig n = new SurfaceBuilderConfig(Main.getBlockByID("minecraft:sand").getDefaultState(), Main.getBlockByID("minecraft:sand").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig rf = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_red_full").getDefaultState(), WN.getBlockByID("wildnature:sand_red_full").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig rh = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_red_half").getDefaultState(), WN.getBlockByID("wildnature:sand_red_half").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig rs = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_red_slight").getDefaultState(), WN.getBlockByID("wildnature:sand_red_slight").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig bf = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_brown_full").getDefaultState(), WN.getBlockByID("wildnature:sand_brown_full").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig bh = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_brown_half").getDefaultState(), WN.getBlockByID("wildnature:sand_brown_half").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig bs = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_brown_slight").getDefaultState(), WN.getBlockByID("wildnature:sand_brown_slight").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig w = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:sand_white").getDefaultState(), WN.getBlockByID("wildnature:sand_white").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig r = new SurfaceBuilderConfig(WN.getBlockByID("minecraft:red_sand").getDefaultState(), WN.getBlockByID("minecraft:red_sand").getDefaultState(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig n = new SurfaceBuilderConfig(WN.getBlockByID("minecraft:sand").getDefaultState(), WN.getBlockByID("minecraft:sand").getDefaultState(), config.getUnderWaterMaterial());
 
         SurfaceBuilderConfig result = null;
 

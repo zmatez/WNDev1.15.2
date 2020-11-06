@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.BuckModel;
 import com.matez.wildnature.common.entity.type.animal.deer.BuckEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class BuckRender extends MobRenderer<BuckEntity, BuckModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(BuckEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/deer_male.png");
+        return WN.RegistryEvents.location("textures/entity/deer_male.png");
     }
 
     public static class RenderFactory implements IRenderFactory<BuckEntity>{

@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.DucklingModel;
 import com.matez.wildnature.common.entity.type.animal.duck.DucklingEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class DucklingRender extends MobRenderer<DucklingEntity, DucklingModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(DucklingEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/duck_baby.png");
+        return WN.RegistryEvents.location("textures/entity/duck_baby.png");
     }
 
     public static class RenderFactory implements IRenderFactory<DucklingEntity>{

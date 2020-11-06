@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
@@ -89,7 +89,7 @@ public class BushBase extends BushBlock implements IShearable, IRenderLayer {
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         if(drop!=null){
             List<ItemStack> list = new ArrayList<>();
-            list.add(new ItemStack(Main.getItemByID(drop), Utilities.rint(min,max)));
+            list.add(new ItemStack(WN.getItemByID(drop), Utilities.rint(min,max)));
 
             return list;
         }else {

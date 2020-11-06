@@ -1,6 +1,6 @@
 package com.matez.wildnature.util.event;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.IStringSerializable;
@@ -20,7 +20,7 @@ public class KeySipkeEvent {
         //Main.LOGGER.debug(event.getKey() + " a" + event.getAction());
         PlayerEntity p = Minecraft.getInstance().player;
         if(event.getKey()==39 && (event.getAction()==1) && p!=null && p.isCreative()) {
-            Main.LOGGER.debug("Click");
+            WN.LOGGER.debug("Click");
             currentIndex++;
             if (currentIndex > max) {
                 currentIndex = 0;

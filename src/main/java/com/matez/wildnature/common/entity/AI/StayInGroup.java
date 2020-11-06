@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.AI;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.type.animal.duck.AbstractDuckEntity;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.entity.ai.goal.Goal;
@@ -30,9 +30,9 @@ public class StayInGroup extends Goal {
 
     @Override
     public void startExecuting() {
-        Main.LOGGER.info("Group: " + duck.getGroup().size() + duck.getGroup());
+        WN.LOGGER.info("Group: " + duck.getGroup().size() + duck.getGroup());
         boolean success = this.duck.getNavigator().tryMoveToEntityLiving(duck.getLeader(),speed);
-        Main.LOGGER.debug("success");
+        WN.LOGGER.debug("success");
     }
 
     @Override

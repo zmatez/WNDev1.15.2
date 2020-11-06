@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.DoeModel;
 import com.matez.wildnature.common.entity.type.animal.deer.DoeEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class DoeRender extends MobRenderer<DoeEntity, DoeModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(DoeEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/deer_female.png");
+        return WN.RegistryEvents.location("textures/entity/deer_female.png");
     }
 
     public static class RenderFactory implements IRenderFactory<DoeEntity>{

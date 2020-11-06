@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.compatibility.WNLoot;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
@@ -44,10 +44,10 @@ public class BlockBase extends Block {
         WNBlocks.BLOCKS.add(this);
     }
 
-    private String drop;
-    private int min = 1;
-    private int max = 1;
-    private int exp = 0;
+    public String drop;
+    public int min = 1;
+    public int max = 1;
+    public int exp = 0;
 
     public BlockBase(Properties properties, Item.Properties builder, String drop, int min, int max, int exp, ResourceLocation regName) {
         super(Properties(properties));
@@ -81,7 +81,7 @@ public class BlockBase extends Block {
             if(WNLoot.isSilkTouch(builder)){
                 list.add(new ItemStack(Item.getItemFromBlock(this), 1));
             }else {
-                list.add(new ItemStack(Main.getItemByID(drop), Utilities.rint(min,max) + Utilities.rint(0, WNLoot.getFortune(builder))));
+                list.add(new ItemStack(WN.getItemByID(drop), Utilities.rint(min,max) + Utilities.rint(0, WNLoot.getFortune(builder))));
             }
             return list;
         }else {

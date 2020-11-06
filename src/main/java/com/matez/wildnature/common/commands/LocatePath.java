@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.command.CommandSource;
@@ -24,27 +24,27 @@ public class LocatePath {
     public static int findTeleportBiome(CommandSource cs, ServerPlayerEntity player){
         if(!CommonConfig.generatePaths.get()){
             StringTextComponent sa = new StringTextComponent(TextFormatting.RED + "Generating path is OFF. Change that it config and try again.");
-            Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sa));
+            WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sa));
         }
         if(player.getEntityWorld().getDimension() instanceof OverworldDimension) {
 
             StringTextComponent s2 = new StringTextComponent(TextFormatting.AQUA + "Trying to find the nearest path");
-            Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2));
+            WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
             StringTextComponent sx = new StringTextComponent(TextFormatting.AQUA + "This will take a moment.");
-            Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sx));
+            WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
             BlockPos path = lookForPath(player);
             if(path!=null){
-                Main.LOGGER.info("Found nearest path at " + path.getX() + " " + path.getY() + " " + path.getZ());
+                WN.LOGGER.info("Found nearest path at " + path.getX() + " " + path.getY() + " " + path.getZ());
                 StringTextComponent s3 = new StringTextComponent(TextFormatting.AQUA + "Found nearest path at ");
                 StringTextComponent s4 = new StringTextComponent(TextFormatting.YELLOW + ""+path.getX() + " " + path.getY() + " " + path.getZ());
                 StringTextComponent s42 = new StringTextComponent(TextFormatting.AQUA + " - " + TextFormatting.GOLD + (int)Utilities.getDistance(new BlockPos(player.getPosition().getX(),player.getPosition().getY(),player.getPosition().getZ()),path) + TextFormatting.AQUA+" blocks away.");
                 s4.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD+"Click to copy to the command prompt")));
                 s4.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND,"" + path.getX() + " " + path.getY() + " " + path.getZ()));
-                Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s3).appendSibling(s4).appendSibling(s42));
+                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s3).appendSibling(s4).appendSibling(s42));
                 StringTextComponent s5 = new StringTextComponent(TextFormatting.GREEN + "Click to teleport");
                 s5.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD+"Click here")));
                 s5.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/tp " + player.getName().getString() + " " + path.getX() + " " + path.getY() + " " + path.getZ()));
-                Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s5));
+                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s5));
                 player.sendStatusMessage(new StringTextComponent(TextFormatting.GREEN+"Found path " + TextFormatting.AQUA+ (int)Utilities.getDistance(new BlockPos(player.getPosition().getX(),player.getPosition().getY(),player.getPosition().getZ()),path) + TextFormatting.GREEN+" blocks away"),true);
 
                 return 1;
@@ -52,9 +52,9 @@ public class LocatePath {
                 StringTextComponent sa = new StringTextComponent(TextFormatting.RED + "Unable to find path.");
                 StringTextComponent sa2 = new StringTextComponent(TextFormatting.RED + "Teleport to path-allowed biome and try again.");
                 StringTextComponent sa3 = new StringTextComponent(TextFormatting.GOLD + "Starting searching...");
-                Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sa));
-                Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sa2));
-                Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sa3));
+                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sa));
+                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sa2));
+                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sa3));
                 ArrayList<Biome> validBiomes = new ArrayList<>();
                 ArrayList<Biome> biomes = new ArrayList<>();
                 biomes.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
@@ -72,7 +72,7 @@ public class LocatePath {
             }
         }else{
             StringTextComponent sx = new StringTextComponent(TextFormatting.RED + "Paths not exist in this dimension.");
-            Main.sendChatMessage(player, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(sx));
+            WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
             return 0;
         }
         return 0;
@@ -80,7 +80,7 @@ public class LocatePath {
 
     public static BlockPos lookForPath(PlayerEntity player)
     {
-        Main.LOGGER.info("Starting searching for path... ");
+        WN.LOGGER.info("Starting searching for path... ");
         double closestDistance = 0;
         BlockPos closestPos = null;
         for(BlockPos pos : paths){

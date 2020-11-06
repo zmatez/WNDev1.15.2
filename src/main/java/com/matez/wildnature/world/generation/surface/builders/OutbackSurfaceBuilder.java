@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
@@ -23,7 +23,7 @@ public class OutbackSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> 
         if (i == 0) {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, config);
         } else if (i == 1) {
-            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, new SurfaceBuilderConfig(Main.getBlockByID("minecraft:red_sand").getDefaultState(), Main.getBlockByID("minecraft:dirt").getDefaultState(), Main.getBlockByID("minecraft:dirt").getDefaultState()));
+            SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, new SurfaceBuilderConfig(WN.getBlockByID("minecraft:red_sand").getDefaultState(), WN.getBlockByID("minecraft:dirt").getDefaultState(), WN.getBlockByID("minecraft:dirt").getDefaultState()));
 
         }
 

@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.CornPlant;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
@@ -29,13 +29,13 @@ public class CornFeature extends Feature<NoFeatureConfig> {
         if(worldIn.isAirBlock(pos.down())){
             return false;
         }
-        if(worldIn.getBlockState(pos.down()).canSustainPlant(worldIn,pos,Direction.UP,(IPlantable)Main.getBlockByID("wildnature.corn_bush").getDefaultState().with(CornPlant.STAGE,1))){
+        if(worldIn.getBlockState(pos.down()).canSustainPlant(worldIn,pos,Direction.UP,(IPlantable) WN.getBlockByID("wildnature.corn_bush").getDefaultState().with(CornPlant.STAGE,1))){
             int stage = Utilities.rint(1,2);
-            worldIn.setBlockState(pos, Main.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
-            worldIn.setBlockState(pos.up(), Main.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
-            worldIn.setBlockState(pos.up(2), Main.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
-            worldIn.setBlockState(pos.up(3), Main.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
-            worldIn.setBlockState(pos.up(4), Main.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, 0),2);
+            worldIn.setBlockState(pos, WN.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
+            worldIn.setBlockState(pos.up(), WN.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
+            worldIn.setBlockState(pos.up(2), WN.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
+            worldIn.setBlockState(pos.up(3), WN.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, stage),2);
+            worldIn.setBlockState(pos.up(4), WN.getBlockByID("wildnature:corn_bush").getDefaultState().with(CornPlant.STAGE, 0),2);
 
 
             return true;

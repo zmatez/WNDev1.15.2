@@ -505,6 +505,11 @@ public class WNBlocks {
     public static Block METASEQUOIA_ORANGE_LEAVES;
     public static Block METASEQUOIA_YELLOW_LEAVES;
     public static Block METASEQUOIA_BROWN_LEAVES;
+    public static Block METASEQUOIA_GREEN_SAPLING;
+    public static Block METASEQUOIA_RED_SAPLING;
+    public static Block METASEQUOIA_ORANGE_SAPLING;
+    public static Block METASEQUOIA_YELLOW_SAPLING;
+    public static Block METASEQUOIA_BROWN_SAPLING;
 
     public static Block NUYTSIA_LEAVES;
     public static Block NUYTSIA_SAPLING;
@@ -2393,12 +2398,12 @@ public class WNBlocks {
     public static Block COPPER_ORE, COPPER_BLOCK;
     public static Block STEEL_BLOCK;
     public static Block BRONZE_BLOCK;
-    public static Block AMETHYST_ORE, AMETHYST_BLOCK;
-    public static Block SAPPHIRE_ORE, SAPPHIRE_BLOCK;
-    public static Block MALACHITE_ORE, MALACHITE_BLOCK;
+    public static Block AMETHYST_FORMATION, AMETHYST_BLOCK;
+    public static Block SAPPHIRE_FORMATION, SAPPHIRE_BLOCK;
+    public static Block MALACHITE_FORMATION, MALACHITE_BLOCK;
     public static Block SILVER_ORE, SILVER_BLOCK;
     public static Block AMBER_ORE, AMBER_BLOCK;
-    public static Block RUBY_ORE, RUBY_BLOCK;
+    public static Block RUBY_FORMATION, RUBY_BLOCK;
     public static Block SALT_ORE;
 
 

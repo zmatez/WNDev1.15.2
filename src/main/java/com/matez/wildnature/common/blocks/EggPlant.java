@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
@@ -154,7 +154,7 @@ public class EggPlant extends CropBase{
         List<ItemStack> list = super.getDrops(state, builder);
         if(list.isEmpty() && !silkTouch){
             if(state.get(AGE)==getMaxAge()) {
-                list.add(new ItemStack(Main.getItemByID("wildnature:eggplant"), 2));
+                list.add(new ItemStack(WN.getItemByID("wildnature:eggplant"), 2));
 
             }
         }
@@ -172,7 +172,7 @@ public class EggPlant extends CropBase{
         if(state.get(AGE)==getMaxAge()){
             int min = Utilities.rint(1,2);
             worldIn.setBlockState(pos,worldIn.getBlockState(pos).with(AGE,getMaxAge()- min));
-            spawnAsEntity(worldIn, pos, new ItemStack(Main.getItemByID("wildnature:eggplant"), 1));
+            spawnAsEntity(worldIn, pos, new ItemStack(WN.getItemByID("wildnature:eggplant"), 1));
             worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 
             return ActionResultType.SUCCESS;

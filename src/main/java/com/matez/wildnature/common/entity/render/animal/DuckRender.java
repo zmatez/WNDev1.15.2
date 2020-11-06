@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.DuckModel;
 import com.matez.wildnature.common.entity.type.animal.duck.DuckEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class DuckRender extends MobRenderer<DuckEntity, DuckModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(DuckEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/duck_female.png");
+        return WN.RegistryEvents.location("textures/entity/duck_female.png");
     }
 
 

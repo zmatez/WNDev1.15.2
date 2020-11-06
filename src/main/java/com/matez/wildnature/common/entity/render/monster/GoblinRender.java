@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.monster;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.monster.GoblinModel;
 import com.matez.wildnature.common.entity.type.monster.GoblinEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -21,7 +21,7 @@ public class GoblinRender extends MobRenderer<GoblinEntity, GoblinModel> {
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(GoblinEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/goblin.png");
+        return WN.RegistryEvents.location("textures/entity/goblin.png");
     }
 
     public static class RenderFactory implements IRenderFactory<GoblinEntity>{

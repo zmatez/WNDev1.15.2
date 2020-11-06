@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.commands;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -31,18 +31,18 @@ public class RandomTeleportCommand {
         if(pos!=null) {
             BlockPos tp = BiomeArgument.getTopBlock(entity.getEntityWorld(), pos.getX(), pos.getZ());
             StringTextComponent s = new StringTextComponent(TextFormatting.AQUA + "Teleporting to " + TextFormatting.YELLOW + pos.getX() + " " + pos.getY() + " " + pos.getZ() + TextFormatting.AQUA + " - " + TextFormatting.GOLD + (int) Utilities.getDistance(entity.getPosition(), tp) + TextFormatting.AQUA + " blocks away.");
-            Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s));
+            WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s));
             entity.teleport(entity.getServerWorld(), pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, entity.getPitchYaw().x, entity.getPitchYaw().y);
             StringTextComponent s2 = new StringTextComponent(TextFormatting.GREEN + "Teleported. Click here to ");
             StringTextComponent stp = new StringTextComponent(TextFormatting.AQUA + "go back");
             stp.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GREEN + "Click here to back to " + TextFormatting.GOLD + oldPos.getX() + " " + oldPos.getY() + " " + oldPos.getZ())));
             stp.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp " + entity.getName().getString() + " " + oldPos.getX() + " " + oldPos.getY() + " " + oldPos.getZ()));
-            Main.sendChatMessage(entity, new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s2.appendSibling(stp)));
+            WN.sendChatMessage(entity, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2.appendSibling(stp)));
 
             return 1;
         }else{
             StringTextComponent s = new StringTextComponent(TextFormatting.RED + "Unable to random teleport. Try again");
-            Main.sendChatMessage(entity,new StringTextComponent("").appendSibling(Main.WNPrefix).appendSibling(s));
+            WN.sendChatMessage(entity,new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s));
 
             return 0;
         }

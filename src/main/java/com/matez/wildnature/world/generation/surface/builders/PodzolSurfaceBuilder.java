@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.surface.builders;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
@@ -20,7 +20,7 @@ public class PodzolSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
     }
 
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
-        SurfaceBuilderConfig podzolConfig = new SurfaceBuilderConfig(Main.getBlockByID("wildnature:brown_podzol").getDefaultState(), config.getUnderWaterMaterial(), config.getUnderWaterMaterial());
+        SurfaceBuilderConfig podzolConfig = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:brown_podzol").getDefaultState(), config.getUnderWaterMaterial(), config.getUnderWaterMaterial());
         SurfaceBuilderConfig coarseConfig = new SurfaceBuilderConfig(Blocks.COARSE_DIRT.getDefaultState(), config.getUnderWaterMaterial(), config.getUnderWaterMaterial());
         if (noise > -0.95D) {
             if (Utilities.rint(0, 1) == 0) {

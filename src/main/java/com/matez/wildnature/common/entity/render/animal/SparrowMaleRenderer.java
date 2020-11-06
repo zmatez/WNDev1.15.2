@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.animal;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.entity.model.animal.SparrowModel;
 import com.matez.wildnature.common.entity.type.animal.bird.SparrowEntity;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ public class SparrowMaleRenderer extends MobRenderer<SparrowEntity, SparrowModel
     @Nullable
     @Override
     public ResourceLocation getEntityTexture(SparrowEntity entity) {
-        return Main.RegistryEvents.location("textures/entity/sparrow_male.png");
+        return WN.RegistryEvents.location("textures/entity/sparrow_male.png");
     }
 
     public static class RenderFactory implements IRenderFactory<SparrowEntity>{

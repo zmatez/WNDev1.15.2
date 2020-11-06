@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ingots",
+  "pattern": [
+    " ##",
+    "## "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:malachite_raw"
+    }
+  },
+  "result": {
+    "item": "wildnature:malachite_ingot",
+    "count": 2
+  }
+}

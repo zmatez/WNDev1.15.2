@@ -7,7 +7,7 @@ import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.util.other.WeightedList;
-import com.matez.wildnature.world.generation.feature.FeatureRegistry;
+import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.configs.BlockFeatureConfig;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
@@ -55,9 +55,9 @@ public class WNFruitFeature extends Feature<NoFeatureConfig> {
                 new shrub1().setCustomLog(b.getBush()).setCustomLeaf(SchemFeature.notDecayingLeaf(b.getBush().getBlock()).with(BushBerryBase.STAGE,Utilities.rint(0,1,rand))).place(worldIn, generator, rand, pos, config);
             }else {
                 if (b.getBush().getBlock() instanceof BelladonnaBlock) {
-                    FeatureRegistry.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
+                    WNFeatures.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush()));
                 } else {
-                    FeatureRegistry.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush().with(((CropBase) b.getBush().getBlock()).getAge(), Utilities.rint(((CropBase) b.getBush().getBlock()).getMaxAge() - 1, ((CropBase) b.getBush().getBlock()).getMaxAge()))));
+                    WNFeatures.BUSH_FEATURE.place(worldIn, generator, rand, pos, new BlockFeatureConfig(b.getBush().with(((CropBase) b.getBush().getBlock()).getAge(), Utilities.rint(((CropBase) b.getBush().getBlock()).getMaxAge() - 1, ((CropBase) b.getBush().getBlock()).getMaxAge()))));
                 }
             }
 

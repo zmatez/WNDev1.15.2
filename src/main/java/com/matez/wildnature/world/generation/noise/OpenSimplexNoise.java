@@ -1,7 +1,5 @@
 package com.matez.wildnature.world.generation.noise;
 
-import com.matez.wildnature.world.generation.noise.another.Noise;
-
 /*
  * OpenSimplex Noise in Java.
  * (Using implementation by Kurt Spencer)

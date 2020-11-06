@@ -3,7 +3,7 @@ package com.matez.wildnature.common.blocks;
 import java.util.List;
 import java.util.Random;
 
-import com.matez.wildnature.init.Main;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
@@ -89,7 +89,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
    }
 
    public BlockState getStateForPlacement(BlockItemUseContext context) {
-      return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? Main.getBlockByID(dirt).getDefaultState() : super.getStateForPlacement(context);
+      return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? WN.getBlockByID(dirt).getDefaultState() : super.getStateForPlacement(context);
    }
 
    public boolean func_220074_n(BlockState state) {
@@ -122,7 +122,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
     * Block's chance to react to a living entity falling on it.
     */
    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-      if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, Main.getBlockByID(dirt).getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
+      if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, WN.getBlockByID(dirt).getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
          turnToDirt(worldIn.getBlockState(pos), worldIn, pos);
       }
 
@@ -135,7 +135,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
 
    public static void turnToDirt(BlockState state, World worldIn, BlockPos pos) {
       if(state.getBlock() instanceof FarmlandBase) {
-         worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, Main.getBlockByID(((FarmlandBase) state.getBlock()).getDirt()).getDefaultState(), worldIn, pos));
+         worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, WN.getBlockByID(((FarmlandBase) state.getBlock()).getDirt()).getDefaultState(), worldIn, pos));
       }
    }
 
@@ -167,7 +167,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
       boolean silkTouch = false;
       List<ItemStack> list = super.getDrops(state, builder);
       if(list.isEmpty() && !silkTouch){
-         list.add(new ItemStack(Main.getBlockByID(dirt), 1));
+         list.add(new ItemStack(WN.getBlockByID(dirt), 1));
       }
 
       return list;
