@@ -8,7 +8,6 @@ import com.matez.wildnature.world.generation.biome.setup.WNGenSettings;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.generators.carves.PathGenerator;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
-import com.matez.wildnature.world.generation.generators.rivers.surface.RiverGenerator;
 import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
@@ -61,7 +60,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private SharedSeedRandom randomSeed;
 
     private PathGenerator pathGenerator;
-    private RiverGenerator riverGenerator;
 
     public WNSimplexChunkGenerator(IWorld worldIn, BiomeProvider biomeProviderIn, WNGenSettings generationSettingsIn) {
         super(worldIn, biomeProviderIn, generationSettingsIn);
@@ -77,7 +75,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.surfaceDepthNoise = new PerlinNoiseGenerator(this.randomSeed, 3, 0);
 
         this.pathGenerator = new PathGenerator(worldIn);
-        this.riverGenerator = new RiverGenerator(worldIn);
 
         thermalErosionProcessor.init(this, this.seed);
         thermalErosionTestProcessor.init(this, this.seed);
