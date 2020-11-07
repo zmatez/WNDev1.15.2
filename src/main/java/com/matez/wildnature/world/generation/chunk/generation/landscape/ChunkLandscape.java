@@ -1,6 +1,11 @@
 package com.matez.wildnature.world.generation.chunk.generation.landscape;
 
+import com.matez.wildnature.init.WN;
+import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
+import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
+import com.matez.wildnature.world.generation.chunk.generation.noise.ScaleNoiseProcessor;
+import com.matez.wildnature.world.generation.chunk.generation.noise.TestNoiseProcessor;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
 import com.matez.wildnature.world.generation.noise.OctaveNoiseSampler;
@@ -12,6 +17,7 @@ import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.function.Function;
@@ -28,9 +34,10 @@ public class ChunkLandscape {
     protected float depth;
     protected float scale;
     protected int octaves = 11;
+    protected long seed;
 
-    protected OctaveNoiseSampler<OpenSimplexNoise> heightNoise;
-    protected OctaveNoiseSampler<OpenSimplexNoise> scaleNoise;
+    protected ArrayList<NoiseProcessor> noiseProcessors = new ArrayList<>();
+    protected ArrayList<NoiseProcessor> validNoiseProcessors = new ArrayList<>();
 
     public ChunkLandscape(int x, int z, long seed, Biome biome, IChunk chunkIn) {
         this.x = x;
@@ -42,15 +49,30 @@ public class ChunkLandscape {
         this.depth = biome.getDepth();
         this.scale = biome.getScale();
         this.random = new Random(seed);
+        this.seed = seed;
 
-        double amplitude = Math.pow(2, octaves);
-
-        this.heightNoise = new OctaveNoiseSampler<>(OpenSimplexNoise.class, this.random, this.octaves, 0.75 * amplitude, amplitude, amplitude);
-        this.scaleNoise = new OctaveNoiseSampler<>(OpenSimplexNoise.class, this.random, 2, Math.pow(2, 10), 0.2, 0.09);
+        //PROCESSORS - here add noise processors
+        addNoiseProcessor(new ScaleNoiseProcessor());
+        addNoiseProcessor(new TestNoiseProcessor());
+        //
+        initNoiseProcessors();
     }
 
     public static void addLandscape(Biome biome, Class<? extends ChunkLandscape> landscape) {
         ChunkLandscape.landscapeCache.put(biome.getRegistryName().getPath(), landscape);
+    }
+
+    public void addNoiseProcessor(NoiseProcessor processor){
+        noiseProcessors.add(processor);
+    }
+
+    public void initNoiseProcessors(){
+        for (NoiseProcessor noiseProcessor : noiseProcessors) {
+            if(noiseProcessor.canProcess(biome)){
+                noiseProcessor.init(seed, random,octaves);
+                validNoiseProcessors.add(noiseProcessor);
+            }
+        }
     }
 
     private double sigmoid(double noise) {
@@ -58,71 +80,54 @@ public class ChunkLandscape {
     }
 
     public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        int xLow = ((x >> 2) << 2);
-        int zLow = ((z >> 2) << 2);
-        int xUpper = xLow + 4;
-        int zUpper = zLow + 4;
-
-        double xProgress = (double) (x - xLow) * 0.25;
-        double zProgress = (double) (z - zLow) * 0.25;
-
-        xProgress = xProgress * xProgress * (3 - (xProgress * 2));
-        zProgress = zProgress * zProgress * (3 - (zProgress * 2));
-
-        // Start of sample
-        final double[] samples = new double[4];
-        samples[0] = sampleArea(xLow, zLow, biomeProvider,weightMap1,variantAccessor);
-        samples[1] = sampleArea(xUpper, zLow, biomeProvider,weightMap1,variantAccessor);
-        samples[2] = sampleArea(xLow, zUpper, biomeProvider,weightMap1,variantAccessor);
-        samples[3] = sampleArea(xUpper, zUpper, biomeProvider,weightMap1,variantAccessor);
-
-        double sample = MathHelper.lerp(zProgress,
-                MathHelper.lerp(xProgress, samples[0], samples[1]),
-                MathHelper.lerp(xProgress, samples[2], samples[3]));
-
-        return sigmoid(sample);
+        return sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor));
     }
 
     private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        double[] interpolation = BiomeBlender.smoothLerp(x, z, weightMap1,variantAccessor);
+        double[] interpolation = BiomeBlender.smoothLerp(x, z, biome, weightMap1,variantAccessor);
         double height = interpolation[0];
-        double heightVariation = interpolation[1];
+        double scale = interpolation[1];
+        double factor = interpolation[2];
 
-        double noise = sampleNoise(x, z, heightVariation);
-        noise += sampleNoise(x + 4, z, heightVariation);
-        noise += sampleNoise(x - 4, z, heightVariation);
-        noise += sampleNoise(x, z + 4, heightVariation);
-        noise += sampleNoise(x, z - 4, heightVariation);
+        /*double noise = sampleNoise(x, z, height, scale,factor,true);
+        noise += sampleNoise(x + 4, z, height, scale,factor,false);
+        noise += sampleNoise(x - 4, z, height, scale,factor,false);
+        noise += sampleNoise(x, z + 4, height, scale,factor,false);
+        noise += sampleNoise(x, z - 4, height, scale,factor,false);
         noise *= 0.2;
 
         //80 means 69Y, 100 means 92Y as base height
-        //DEPTH
         noise += height;
-        //noise += getDepth(biome);
 
+        //limiter
         if(noise > 230){
             return 230;
-        }
-
+        }*/
+        double noise = (factor * 50) + 65;
         return noise;
     }
 
-    /*
-    freqModifier high = terrain is _______________------------------ (20)
-    freqModifier low = terrain is ___--- (0.25)
-    freqModifier really low = terrain is _-_-_-_-_ (0.025)
+    private double sampleNoise(int x, int z, double height, double scale, double factor, boolean rawCoords) {
+        double output = 0;
+        double d = 0;
+        for (NoiseProcessor noiseProcessor : validNoiseProcessors) {
+            double noise = noiseProcessor.getProcessedNoise(x,z,biome,height,scale,rawCoords);
+            if(noiseProcessor.smoothedOnBorders()){
+                /*if(Utilities.rint(0,10)==0){
+                    WN.LOGGER.debug("X: " + x + " Z: " + z + " --- " + factor);
+                }*/
+                output += noise * factor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
+                d += factor;
+            }else{
+                output += noise;
+                d++;
+            }
 
-    amplitude 0.2 = Y77 +/-
-    amplitude 2 = over 256 and under 0
-    amplitude 0.5 = over 256 and under 0
-    amplitude 0.1 = from 190 to 25
-    amplitude 0 means flat terrain
-     */
-    private double sampleNoise(int x, int z, double scale) {
-        double frequency = this.scaleNoise.sampleCustom(x, z, 1, -scale, scale, 2);
-        double noise = this.heightNoise.sampleCustom(x, z, 1, frequency, frequency, octaves);
-
-        return noise;
+        }
+        if(d==0){
+            return output;
+        }
+        return output / d;
     }
 
     public ChunkLandscape applyValues(int x, int z, Long seed, Biome biome, IChunk chunkIn) {

@@ -12,15 +12,13 @@ public class WNConfig {
     public static CommonConfig common;
     private static ForgeConfigSpec commonSpec;
 
-    public static void initCommon()
-    {
+    public static void initCommon() {
         final Pair<CommonConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
         commonSpec = specPair.getRight();
         common = specPair.getLeft();
     }
 
-    public static void register(final ModLoadingContext context)
-    {
+    public static void register(final ModLoadingContext context) {
         initCommon();
         context.registerConfig(ModConfig.Type.COMMON, commonSpec);
     }
