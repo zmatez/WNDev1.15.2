@@ -1,4 +1,4 @@
-package com.matez.wildnature.api.noise.domain;
+package com.matez.wildnature.util.noise.domain;
 
 import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 

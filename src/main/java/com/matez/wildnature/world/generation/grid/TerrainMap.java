@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.grid;
 
-import com.matez.wildnature.api.noise.domain.Warp;
+import com.matez.wildnature.util.noise.domain.Warp;
 import com.matez.wildnature.util.noise.func.DistanceFunc;
 import com.matez.wildnature.util.noise.func.EdgeFunc;
 import com.matez.wildnature.util.noise.NoiseUtil;

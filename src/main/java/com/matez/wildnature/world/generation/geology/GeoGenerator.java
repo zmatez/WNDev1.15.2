@@ -166,6 +166,9 @@ public class GeoGenerator {
             }
         }
 
+        /**
+        Interesting logger name Matez - Sipke
+         */
         //Akuiria.LOGGER.debug("statesize: " + blockState.size() + " dy: " + dy);
 
     }

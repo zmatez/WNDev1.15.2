@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.geology;
 
+import com.matez.wildnature.util.noise.NoiseUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 
@@ -27,6 +28,12 @@ public class GeoManager {
         return random;
     }
 
+    /**
+     * This creates the data, use get to get the produced list.
+     * @param dx x Coord
+     * @param dy TerrainHeight
+     * @param dz Z Coord
+     */
     public void applyStrata(int dx, int dy, int dz){
 
         float index = getIndex(dx, dz);
@@ -49,14 +56,21 @@ public class GeoManager {
 
     }
 
+    //Re-Ranged FastNoiseOutput for selecting purposes.
     public float getIndex(int dx, int dz){
-        return config.selectorNoise.GetValue(dx, dz);
+        float index = config.selectorNoise.GetPerlin(dx, dz);
+        return NoiseUtil.range(index, -1, 1,0,1);
     }
 
     public GeoGenerator getGenerator(){
         return generator;
     }
 
+    /**
+     * This is the function within the decoration iterations.
+     * @param iy 1-terraineheight iterations.
+     * @return Replaces solid (aka stone)
+     */
     public BlockState get(int iy){
         if(iy < generator.blockState.size()) { //placing index at zero instead of one
             return generator.blockState.get(iy);

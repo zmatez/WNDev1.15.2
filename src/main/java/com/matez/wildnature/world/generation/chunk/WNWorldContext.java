@@ -6,7 +6,7 @@ import com.matez.wildnature.world.generation.grid.Cell;
 public class WNWorldContext {
     public final long seed;
     //public final Levels levels;
-    public final  heightmap;
+    //public final  heightmap;
     public final Cell cell;
     public final TerrainProvider terrainProvider;
 

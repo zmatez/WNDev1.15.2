@@ -46,6 +46,11 @@ public class BiomeMap {
         float edgeDistance = 999999.0F;
         float edgeDistance2 = 999999.0F;
         float valueDistance = 999999.0F;
+
+        /**
+         * Euclidian might be slightly better suited for smaller biome cells
+         */
+
         DistanceFunc dist = DistanceFunc.NATURAL;
         Vec2f center = NoiseUtil.CELL_2D[NoiseUtil.hash2D(seed, xr, yr) & 255];
 
