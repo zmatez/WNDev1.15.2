@@ -19,6 +19,9 @@ import net.minecraft.world.biome.Biome;
 
 import java.util.function.Function;
 
+import static com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender.getDepth;
+import static com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender.modifyDepth;
+
 public class TestCommand {
 
 
@@ -83,14 +86,19 @@ public class TestCommand {
         double totalNoiseFactor = 0;
         double biomeInWeight = 0;
         double biomeOutWeight = 0;
+        double totalHeight = 0;
 
         int amountIn = 0;
         int amountOut = 0;
+
+        double biomeInHeight = getDepth(LerpConfiguration.get(biomeIn).getDepth());
         for (Object2DoubleMap.Entry<Biome> entry : weightMap1.object2DoubleEntrySet()) {
             BiomeVariants variants = variantAccessor.apply(entry.getKey());
             Biome biome = entry.getKey();
             double weight = entry.getDoubleValue();
+            double height = weight * modifyDepth(weight, getDepth(biome.getDepth()),x,z);
 
+            totalHeight += height;
 
             if(biome == biomeIn){
                 biomeInWeight += weight;
@@ -111,6 +119,10 @@ public class TestCommand {
         log(entity, "MaxValue: " + maxValue);
         log(entity, "Biome: " + biomeIn.getRegistryName());
         log(entity,"Factor:" + totalNoiseFactor);
+        log(entity,"Biome Depth: " + biomeInHeight);
+        double newDepth = Math.max(biomeInHeight, totalHeight) - Math.min(biomeInHeight,totalHeight);
+        log(entity,"Depth diff:" + newDepth);
+
 
         return totalNoiseFactor;
     }

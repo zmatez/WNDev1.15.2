@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.matez.wildnature.api.noise.util;
+package com.matez.wildnature.util.noise;
 
 /**
  * Apache Commons Math

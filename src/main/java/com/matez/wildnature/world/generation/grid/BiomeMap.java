@@ -1,11 +1,11 @@
 package com.matez.wildnature.world.generation.grid;
 
-import com.matez.wildnature.util.noise.func.DistanceFunc;
-import com.matez.wildnature.util.noise.func.EdgeFunc;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.noise.Vec2f;
+import com.matez.wildnature.util.noise.func.DistanceFunc;
+import com.matez.wildnature.util.noise.func.EdgeFunc;
 
-public class TerrainMap{
+public class BiomeMap {
     protected final float frequency;
     protected final int gridScale;
 
@@ -14,13 +14,8 @@ public class TerrainMap{
     private final float edgeRange;
     private final int seed;
 
-    public TerrainMap(long seed){
-        /**
-         *  For biomes, copy pasta and add a smaller scale.
-         *  For cliffs add a FastNoise noise and add CelledgeNoise
-         *  cell.cellEdge * fastnoise output. (I placed this somewhere else (terrainlerper) as I might want to make it more configurable)
-         */
-        this.gridScale = 3500; //temp value until I make settings.
+    public BiomeMap(long seed){
+        this.gridScale = 1000; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;
 
         edgeMin = 0F;
@@ -82,10 +77,10 @@ public class TerrainMap{
             }
         }
 
-        cell.terrainCellIdentity = cellValue(seed, cellX, cellY);
-        cell.terrainCellEdge = edgeValue(edgeDistance, edgeDistance2);
-        cell.terrainCellX = (int) ((cellX + center.x) / frequency);
-        cell.terrainCellZ = (int) ((cellY + center.y) / frequency);
+        cell.biomeCellIdentity = cellValue(seed, cellX, cellY);
+        cell.biomeCellEdge = edgeValue(edgeDistance, edgeDistance2);
+        cell.biomeCellX = (int) ((cellX + center.x) / frequency);
+        cell.biomeCellZ = (int) ((cellY + center.y) / frequency);
     }
 
     private float cellValue(int seed, int cellX, int cellY) {

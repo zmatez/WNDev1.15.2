@@ -6,8 +6,9 @@ import net.minecraft.world.biome.Biomes;
 
 import java.util.Random;
 
-public class TestNoiseProcessor implements NoiseProcessor{
+public class TestNoiseProcessor extends NoiseProcessor {
     private FastNoise noise;
+
     @Override
     public void init(long seed, Random random, int octaves) {
         noise = new FastNoise();
@@ -17,9 +18,10 @@ public class TestNoiseProcessor implements NoiseProcessor{
         noise.SetFractalType(FastNoise.FractalType.RigidMulti);
     }
 
+
     @Override
     public boolean canProcess(Biome biome) {
-        return biome == Biomes.MOUNTAINS;
+        return biome == Biomes.MOUNTAINS || biome == Biomes.WOODED_MOUNTAINS;
     }
 
     @Override

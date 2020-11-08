@@ -4,8 +4,10 @@ import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
+import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessors;
 import com.matez.wildnature.world.generation.chunk.generation.noise.ScaleNoiseProcessor;
 import com.matez.wildnature.world.generation.chunk.generation.noise.TestNoiseProcessor;
+import com.matez.wildnature.world.generation.chunk.generation.noise.config.NoiseProcessorConfig;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
 import com.matez.wildnature.world.generation.noise.OctaveNoiseSampler;
@@ -27,19 +29,20 @@ public class ChunkLandscape {
     protected int x;
     protected int z;
 
-    protected IChunk chunk;
-    protected Biome biome;
-    protected Random random;
+    public IChunk chunk;
+    public Biome biome;
+    public Random random;
 
     protected float depth;
     protected float scale;
     protected int octaves = 11;
-    protected long seed;
+    public long seed;
+    public int sealevel;
 
     protected ArrayList<NoiseProcessor> noiseProcessors = new ArrayList<>();
     protected ArrayList<NoiseProcessor> validNoiseProcessors = new ArrayList<>();
 
-    public ChunkLandscape(int x, int z, long seed, Biome biome, IChunk chunkIn) {
+    public ChunkLandscape(int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.x = x;
         this.z = z;
         this.biome = biome;
@@ -50,10 +53,11 @@ public class ChunkLandscape {
         this.scale = biome.getScale();
         this.random = new Random(seed);
         this.seed = seed;
+        this.sealevel = sealevel;
 
         //PROCESSORS - here add noise processors
-        addNoiseProcessor(new ScaleNoiseProcessor());
-        addNoiseProcessor(new TestNoiseProcessor());
+        addNoiseProcessor(NoiseProcessors.SCALE);
+        addNoiseProcessor(NoiseProcessors.TEST);
         //
         initNoiseProcessors();
     }
@@ -84,10 +88,9 @@ public class ChunkLandscape {
     }
 
     private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        double[] interpolation = BiomeBlender.smoothLerp(x, z, biome, weightMap1,variantAccessor);
-        double height = interpolation[0];
-        double scale = interpolation[1];
-        double factor = interpolation[2];
+        BiomeBlender.BlendOutput output = BiomeBlender.smoothLerp(x, z, this, weightMap1,variantAccessor);
+        double height = output.getHeight();
+        double scale = output.getScale();
 
         /*double noise = sampleNoise(x, z, height, scale,factor,true);
         noise += sampleNoise(x + 4, z, height, scale,factor,false);
@@ -103,7 +106,9 @@ public class ChunkLandscape {
         if(noise > 230){
             return 230;
         }*/
-        double noise = (factor * 50) + 65;
+
+
+        double noise = ((output.getFactorFor(NoiseProcessors.TEST)) * 50) + 65;
         return noise;
     }
 
@@ -130,11 +135,16 @@ public class ChunkLandscape {
         return output / d;
     }
 
-    public ChunkLandscape applyValues(int x, int z, Long seed, Biome biome, IChunk chunkIn) {
+    public ArrayList<NoiseProcessor> getValidNoiseProcessors() {
+        return validNoiseProcessors;
+    }
+
+    public ChunkLandscape applyValues(int x, int z, Long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.x = x;
         this.z = z;
         this.random.setSeed(seed);
 
+        this.sealevel = sealevel;
         this.biome = biome;
         this.chunk = chunkIn;
 
@@ -146,12 +156,12 @@ public class ChunkLandscape {
         Class<? extends ChunkLandscape> landscape = landscapeCache.get(biome.getRegistryName().getPath());
         if (landscape != null) {
             try {
-                return landscape.getDeclaredConstructor(int.class, int.class, long.class, Biome.class, IChunk.class).newInstance(x, z, seed, biome, chunkIn);
+                return landscape.getDeclaredConstructor(int.class, int.class, long.class, int.class, Biome.class, IChunk.class).newInstance(x, z, seed, sealevel, biome, chunkIn);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
 
-        return new ChunkLandscape(x, z, seed, biome, chunkIn);
+        return new ChunkLandscape(x, z, seed,sealevel, biome, chunkIn);
     }
 }

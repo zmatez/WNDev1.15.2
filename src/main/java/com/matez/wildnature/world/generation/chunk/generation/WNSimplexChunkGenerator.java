@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
 
+import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
@@ -23,7 +24,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.ColumnFuzzedBiomeMagnifier;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunk;
@@ -59,6 +59,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private static TerrainProcessor thermalErosionTestProcessor = new ThermalErosionTestProcessor();
 
     private SharedSeedRandom randomSeed;
+    private WNWorldContext context;
 
     private PathGenerator pathGenerator;
 
@@ -76,6 +77,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.surfaceDepthNoise = new PerlinNoiseGenerator(this.randomSeed, 3, 0);
 
         this.pathGenerator = new PathGenerator(worldIn);
+        this.context = new WNWorldContext(this.seed);
 
         thermalErosionProcessor.init(this, this.seed);
         thermalErosionTestProcessor.init(this, this.seed);
@@ -249,7 +251,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         int[] vals = new int[256];
 
         // useNoise(vals, pos, 0, 16);
-        int threads = 4;
+        int threads = 1;
 
         CompletableFuture<?>[] futures = new CompletableFuture[threads];
         for (int i = 0; i < threads; i++) {
@@ -270,9 +272,9 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
-            Biome biome = ColumnFuzzedBiomeMagnifier.INSTANCE.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
+            Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
 
-            LerpConfiguration configuration = new LerpConfiguration(biome);
+            LerpConfiguration configuration = LerpConfiguration.get(biome);
             /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
                 configuration.setCustomVariants(BiomeVariants.PATH);
             }*/

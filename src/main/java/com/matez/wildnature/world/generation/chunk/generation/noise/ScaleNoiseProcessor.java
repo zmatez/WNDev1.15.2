@@ -6,11 +6,10 @@ import net.minecraft.world.biome.Biome;
 
 import java.util.Random;
 
-public class ScaleNoiseProcessor implements NoiseProcessor {
+public class ScaleNoiseProcessor extends NoiseProcessor {
     protected OctaveNoiseSampler<OpenSimplexNoise> heightNoise;
     protected OctaveNoiseSampler<OpenSimplexNoise> scaleNoise;
     protected int octaves;
-
 
     @Override
     public void init(long seed, Random random, int octaves) {

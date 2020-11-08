@@ -1,4 +1,4 @@
-package com.matez.wildnature.api.noise.func;
+package com.matez.wildnature.util.noise.func;
 
 public enum EdgeFunc {
     DISTANCE_2 {

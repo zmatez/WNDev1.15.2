@@ -3,7 +3,10 @@ package com.matez.wildnature.world.generation.generators.functions.interpolation
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import net.minecraft.world.biome.Biome;
 
+import java.util.LinkedHashMap;
+
 public class LerpConfiguration {
+    private static LinkedHashMap<Biome, LerpConfiguration> cache = new LinkedHashMap<>();
     private Biome biome;
 
     private float customDepth;
@@ -14,8 +17,17 @@ public class LerpConfiguration {
     private boolean customScaleApplied = false;
     private boolean customVariantsApplied = false;
 
+    public static LerpConfiguration get(Biome biome){
+        if (cache.containsKey(biome)) {
+            return cache.get(biome);
+        }else{
+            return new LerpConfiguration(biome);
+        }
+    }
+
     public LerpConfiguration(Biome biome) {
         this.biome = biome;
+        cache.put(biome,this);
     }
 
     public Biome getBiome() {

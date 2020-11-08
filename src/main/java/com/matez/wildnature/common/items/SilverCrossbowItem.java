@@ -66,6 +66,11 @@ public class SilverCrossbowItem extends ShootableItem {
         });
     }
 
+    @Override
+    public boolean isCrossbow(ItemStack stack) {
+        return stack.getItem() instanceof CrossbowItem;
+    }
+
     public Predicate<ItemStack> getAmmoPredicate() {
         return ARROWS_OR_FIREWORKS;
     }

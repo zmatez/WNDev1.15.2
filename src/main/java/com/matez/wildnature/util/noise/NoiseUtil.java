@@ -1,4 +1,4 @@
-package com.matez.wildnature.api.noise.util;
+package com.matez.wildnature.util.noise;
 
 /**
  * contains FastNoise source code

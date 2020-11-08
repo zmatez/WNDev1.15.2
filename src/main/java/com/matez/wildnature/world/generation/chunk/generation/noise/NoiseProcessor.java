@@ -4,24 +4,35 @@ import net.minecraft.world.biome.Biome;
 
 import java.util.Random;
 
-public interface NoiseProcessor {
-    default boolean canProcess(Biome biome){
+public abstract class NoiseProcessor {
+    protected double lerpFactor = 0;
+
+
+    public double getLerpFactor(){
+        return lerpFactor;
+    }
+
+    public void setLerpFactor(double lerpFactor){
+        this.lerpFactor = lerpFactor;
+    }
+
+    public boolean canProcess(Biome biome){
         return true;
     }
 
-    default boolean smoothedOnBorders(){
+    public boolean smoothedOnBorders(){
         return true;
     }
 
-    default int mixFactor(){
+    public int mixFactor(){
         return 1;
     }
 
-    void init(long seed, Random random, int octaves);
+    public abstract void init(long seed, Random random, int octaves);
 
-    double processNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise);
+    protected abstract double processNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise);
 
-    default double getProcessedNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise){
+    public double getProcessedNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise){
         return processNoise(x,z,biome,height,scale,rawNoise) * mixFactor();
     }
 }
