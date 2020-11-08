@@ -1,9 +1,11 @@
 package com.matez.wildnature.world.generation.grid;
 
+import com.matez.wildnature.api.noise.domain.Warp;
 import com.matez.wildnature.util.noise.func.DistanceFunc;
 import com.matez.wildnature.util.noise.func.EdgeFunc;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.noise.Vec2f;
+import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 
 public class TerrainMap{
     protected final float frequency;
@@ -13,6 +15,9 @@ public class TerrainMap{
     private final float edgeMax;
     private final float edgeRange;
     private final int seed;
+    private final FastNoise warpX;
+    private final FastNoise warpY;
+    private final Warp warp;
 
     public TerrainMap(long seed){
         /**
@@ -28,17 +33,20 @@ public class TerrainMap{
         edgeRange = edgeMax - edgeMin;
 
         this.seed = (int)seed;
+
+        this.warpX = new FastNoise();  //add custom config
+        this.warpY = new FastNoise();  //add custom config
+
+        this.warp = new Warp(warpX, warpY, 64); //Warping too intense will bring back your old lerping issue as blobs off cells will be placed in other cells.
+
     }
 
-    public void apply(Cell cell, float x, float y) {
-        /*
-        Removed the warp for now, I will add that back in later again for you.
-         */
-        float ox = x; //unwarped
-        float oz = y; //unwarped
+    public void apply(Cell cell, float x, float z) {
+        float ox = warp.getOffsetX(x, z);
+        float oz = warp.getOffsetZ(x, z);
 
         float px = x + ox;
-        float py = y + oz;
+        float py = z + oz;
 
         px *= frequency;
         py *= frequency;
