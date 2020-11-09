@@ -3,7 +3,6 @@ package com.matez.wildnature.world.generation.chunk.terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 
 public abstract class Terrain {
-
     public Terrain.Category category;
     public Terrain terrain;
     public float temparature;
@@ -20,7 +19,7 @@ public abstract class Terrain {
         VOID,
         OCEAN,
         SEA,
-        BEACH,
+        SHORE,
         LOWLANDS,
         MIDLANDS,
         HIGHLANDS,

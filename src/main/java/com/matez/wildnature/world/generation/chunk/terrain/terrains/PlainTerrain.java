@@ -1,4 +1,4 @@
-package com.sipke.akuiria.world.terrain.terrains;
+package com.matez.wildnature.world.generation.chunk.terrain.terrains;
 
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.geology.GeoConfig;

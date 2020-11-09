@@ -27,32 +27,30 @@ public class BiomeBlender {
         fastNoise.SetFractalLacunarity(2);
     }
 
-    public static BlendOutput smoothLerp(int x, int z, ChunkLandscape landscape, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor){
+    public static double[] smoothLerp(int x, int z, ChunkLandscape landscape, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor){
         // Based on total weight of all biomes included, calculate heights of a couple important groups
         double totalHeight = 0;
         double totalScale = 0;
 
-        double totalFactor = 0;
-        LinkedHashMap<NoiseProcessor, Double> configs = new LinkedHashMap<>();
+        //double totalFactor = 0;
+        //LinkedHashMap<NoiseProcessor, Double> configs = new LinkedHashMap<>();
 
         for (Object2DoubleMap.Entry<LerpConfiguration> entry : weightMap1.object2DoubleEntrySet()) {
             BiomeVariants variants = variantAccessor.apply(entry.getKey());
             LerpConfiguration configuration = entry.getKey();
             Biome biome = configuration.getBiome();
-            ChunkLandscape biomeLandscape = ChunkLandscape.getOrCreate(x, z, landscape.seed, landscape.sealevel, biome, landscape.chunk);;
+            //ChunkLandscape biomeLandscape = ChunkLandscape.getOrCreate(x, z, landscape.seed, landscape.sealevel, biome, landscape.chunk);;
 
             double weight = entry.getDoubleValue();
-            double height = weight * modifyDepth(weight, getDepth(configuration.getDepth()),x,z);
+            double height = weight * getDepth(configuration.getDepth());
             double scale = weight * getScale(configuration.getScale());
 
             totalHeight += height;
             totalScale += scale;
 
+            //totalFactor += weight * (biome == Biomes.MOUNTAINS ? 1 : -1);
 
-
-            totalFactor += weight * (biome == Biomes.MOUNTAINS ? 1 : -1);
-
-            for (NoiseProcessor noiseProcessor1 : landscape.getValidNoiseProcessors()) {
+            /*for (NoiseProcessor noiseProcessor1 : landscape.getValidNoiseProcessors()) {
                 for (NoiseProcessor noiseProcessor2 : biomeLandscape.getValidNoiseProcessors()) {
                     double old1 = 0;
                     if(configs.containsKey(noiseProcessor1)){
@@ -65,10 +63,10 @@ public class BiomeBlender {
                         configs.put(noiseProcessor1, old1 - weight);
                     }
                 }
-            }
+            }*/
         }
 
-        return new BlendOutput(totalHeight,totalScale,configs);
+        return new double[]{totalHeight,totalScale};
     }
 
     private static double scaleBetween(double unscaledNum, double minAllowed, double maxAllowed, double min, double max) {

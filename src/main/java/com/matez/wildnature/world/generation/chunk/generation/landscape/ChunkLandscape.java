@@ -88,15 +88,15 @@ public class ChunkLandscape {
     }
 
     private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        BiomeBlender.BlendOutput output = BiomeBlender.smoothLerp(x, z, this, weightMap1,variantAccessor);
-        double height = output.getHeight();
-        double scale = output.getScale();
+        double[] output = BiomeBlender.smoothLerp(x, z, this, weightMap1,variantAccessor);
+        double height = output[0];
+        double scale = output[1];
 
-        /*double noise = sampleNoise(x, z, height, scale,factor,true);
-        noise += sampleNoise(x + 4, z, height, scale,factor,false);
-        noise += sampleNoise(x - 4, z, height, scale,factor,false);
-        noise += sampleNoise(x, z + 4, height, scale,factor,false);
-        noise += sampleNoise(x, z - 4, height, scale,factor,false);
+        double noise = sampleNoise(x, z, height, scale,true);
+        noise += sampleNoise(x + 4, z, height, scale,false);
+        noise += sampleNoise(x - 4, z, height, scale,false);
+        noise += sampleNoise(x, z + 4, height, scale,false);
+        noise += sampleNoise(x, z - 4, height, scale,false);
         noise *= 0.2;
 
         //80 means 69Y, 100 means 92Y as base height
@@ -105,14 +105,14 @@ public class ChunkLandscape {
         //limiter
         if(noise > 230){
             return 230;
-        }*/
+        }
 
 
-        double noise = ((output.getFactorFor(NoiseProcessors.TEST)) * 50) + 65;
+        //double noise = ((output.getFactorFor(NoiseProcessors.TEST)) * 50) + 65;
         return noise;
     }
 
-    private double sampleNoise(int x, int z, double height, double scale, double factor, boolean rawCoords) {
+    private double sampleNoise(int x, int z, double height, double scale, boolean rawCoords) {
         double output = 0;
         double d = 0;
         for (NoiseProcessor noiseProcessor : validNoiseProcessors) {
@@ -121,8 +121,8 @@ public class ChunkLandscape {
                 /*if(Utilities.rint(0,10)==0){
                     WN.LOGGER.debug("X: " + x + " Z: " + z + " --- " + factor);
                 }*/
-                output += noise * factor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
-                d += factor;
+                //output += noise * factor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
+                //d += factor;
             }else{
                 output += noise;
                 d++;

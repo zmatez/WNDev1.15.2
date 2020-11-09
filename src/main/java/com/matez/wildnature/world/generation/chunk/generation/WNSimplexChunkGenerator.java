@@ -2,6 +2,7 @@ package com.matez.wildnature.world.generation.chunk.generation;
 
 
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
+import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
@@ -12,6 +13,7 @@ import com.matez.wildnature.world.generation.generators.functions.interpolation.
 import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
+import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -22,6 +24,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.village.VillageSiege;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
@@ -36,6 +39,11 @@ import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.StructureStart;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.spawner.CatSpawner;
+import net.minecraft.world.spawner.PatrolSpawner;
+import net.minecraft.world.spawner.PhantomSpawner;
+import net.minecraft.world.spawner.WorldEntitySpawner;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -54,6 +62,13 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     private final PerlinNoiseGenerator surfaceDepthNoise;
 
+    //mobs
+    private final PhantomSpawner phantomSpawner = new PhantomSpawner();
+    private final PatrolSpawner patrolSpawner = new PatrolSpawner();
+    private final CatSpawner catSpawner = new CatSpawner();
+    private final VillageSiege siegeSpawner = new VillageSiege();
+    //
+
     protected HashMap<Long, int[]> noiseCache = new HashMap<>();
     private static TerrainProcessor thermalErosionProcessor = new ThermalErosionProcessor();
     private static TerrainProcessor thermalErosionTestProcessor = new ThermalErosionTestProcessor();
@@ -62,11 +77,19 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private WNWorldContext context;
 
     private PathGenerator pathGenerator;
+    private final WNGridBiomeProvider gridProvider;
+
 
     public WNSimplexChunkGenerator(IWorld worldIn, BiomeProvider biomeProviderIn, WNGenSettings generationSettingsIn) {
         super(worldIn, biomeProviderIn, generationSettingsIn);
         this.settings = generationSettingsIn;
         this.randomSeed = new SharedSeedRandom(this.seed);
+
+        if(biomeProviderIn instanceof WNGridBiomeProvider){
+            this.gridProvider = (WNGridBiomeProvider) biomeProviderIn;
+        }else{
+            this.gridProvider = null;
+        }
 
         this.verticalNoiseResolution = 8;
         this.horizontalNoiseResolution = 4;
@@ -77,10 +100,17 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.surfaceDepthNoise = new PerlinNoiseGenerator(this.randomSeed, 3, 0);
 
         this.pathGenerator = new PathGenerator(worldIn);
-        this.context = new WNWorldContext(this.seed);
 
         thermalErosionProcessor.init(this, this.seed);
         thermalErosionTestProcessor.init(this, this.seed);
+    }
+
+    public WNGridBiomeProvider getGridProvider() {
+        return gridProvider;
+    }
+
+    public void setContext(WNWorldContext context){
+        this.context = context;
     }
 
     @Override
@@ -197,12 +227,16 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
+
+
         this.generateTerrain(worldIn, chunkIn, this.getHeightsInChunk(chunkpos, worldIn));
     }
 
     public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
+
+
                 int height = (int) noise[(x * 16) + z];
 
                 for (int y = 0; y < 256; y++) {
@@ -272,7 +306,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
-            Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
+            //Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
+            Biome biome = gridProvider.getNoiseBiomeRealPos((pos.x * 16) + x,1,(pos.x * 16) + z);
 
             LerpConfiguration configuration = LerpConfiguration.get(biome);
             /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
@@ -305,7 +340,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        Biome biome = this.biomeProvider.getNoiseBiome(x / 4, 1, z / 4);
+        Biome biome = gridProvider.getNoiseBiomeRealPos(x,1,z);
         ChunkLandscape landscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
         int height = (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
@@ -324,9 +359,65 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         }
     }
 
-
+    //getHeight
     @Override
-    public int func_222529_a(int x, int z, Type heightmap) {
-        return getSeaLevel();
+    public int func_222529_a(int blockX, int blockZ, Type heightmap) {
+        int chunkX = blockX >> 4;
+        int chunkZ = blockZ >> 4;
+
+        final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
+
+        final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
+            //Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
+            Biome biome = gridProvider.getNoiseBiomeRealPos((chunkX * 16) + x,1,(chunkZ * 16) + z);
+
+            LerpConfiguration configuration = LerpConfiguration.get(biome);
+            /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
+                configuration.setCustomVariants(BiomeVariants.PATH);
+            }*/
+            return configuration;
+        };
+
+        final LerpConfiguration[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[10 * 10], biomeAccessor, 4);
+        final LerpConfiguration[] sampledBiomes4 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[13 * 13], biomeAccessor, 2);
+        final LerpConfiguration[] sampledBiomes1 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[24 * 24], biomeAccessor);
+
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
+                if((chunkX * 16) + x == blockX && (chunkZ * 16) + z == blockZ) {
+                    // Sample biome weights at different distances
+                    ChunkArraySampler.fillSampledWeightMap(sampledBiomes16, weightMap16, 4, x, z);
+                    ChunkArraySampler.fillSampledWeightMap(sampledBiomes4, weightMap4, 2, x, z);
+                    ChunkArraySampler.fillSampledWeightMap(sampledBiomes1, weightMap1, x, z);
+
+                    Function<LerpConfiguration, BiomeVariants> variantAccessor = LerpConfiguration::getBiomeVariants;
+
+                    // Group biomes at different distances. This has the effect of making some biome transitions happen over larger distances than others.
+                    // This is used to make most land biomes blend at maximum distance, while allowing biomes such as rivers to blend at short distances, creating better cliffs as river biomes are smaller width than other biomes.
+                    ChunkArraySampler.reduceGroupedWeightMap(weightMap4, weightMap16, variantAccessor.andThen(BiomeVariants::getLargeGroup), BiomeVariants.LargeGroup.SIZE);
+                    ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
+
+                    return getTerrainHeight((chunkX * 16) + x, (chunkZ * 16) + z, weightMap1, variantAccessor) + 1;
+                }
+            }
+        }
+        return -1;
     }
+
+    public void spawnMobs(WorldGenRegion region) {
+        int i = region.getMainChunkX();
+        int j = region.getMainChunkZ();
+        Biome biome = region.getBiome((new ChunkPos(i, j)).asBlockPos());
+        SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
+        sharedseedrandom.setDecorationSeed(region.getSeed(), i << 4, j << 4);
+        WorldEntitySpawner.performWorldGenSpawning(region, biome, i, j, sharedseedrandom);
+    }
+
+    public void spawnMobs(ServerWorld worldIn, boolean spawnHostileMobs, boolean spawnPeacefulMobs) {
+        this.phantomSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
+        this.patrolSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
+        this.catSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
+        this.siegeSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
+    }
+
 }

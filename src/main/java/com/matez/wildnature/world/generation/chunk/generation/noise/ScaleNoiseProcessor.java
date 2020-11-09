@@ -34,7 +34,7 @@ public class ScaleNoiseProcessor extends NoiseProcessor {
         amplitude 0.5 = over 256 and under 0
         amplitude 0.1 = from 190 to 25
         amplitude 0 means flat terrain
-     */
+    */
     @Override
     public double processNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise) {
         double frequency = this.scaleNoise.sampleCustom(x, z, 1, -scale, scale, 2);

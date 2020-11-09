@@ -3,6 +3,7 @@ package com.matez.wildnature.world.generation.provider;
 import com.matez.wildnature.client.gui.screen.world.WNWorldSettingsScreen;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.layer.WNBiomeLayer;
 import com.matez.wildnature.world.generation.biome.setup.WNGenSettings;
 import com.matez.wildnature.world.generation.chunk.deprecated.WNChunkGeneratorOverworld;
@@ -32,10 +33,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.function.LongFunction;
 
 public class WNWorldType extends WorldType {
+    public static WNSimplexChunkGenerator generator;
+
     public WNWorldType(String name) {
         super(name);
     }
-
 
     public ChunkGenerator<?> createChunkGenerator(World world) {
         System.out.println("Generating dimension: " + world.getDimension().getType().toString());
@@ -43,27 +45,32 @@ public class WNWorldType extends WorldType {
         if (world.getDimension().getType() == DimensionType.OVERWORLD) {
             WN.wnInfo("Generating WildNature World");
             WN.runningWorld = world;
-            ChunkGeneratorType<WNGenSettings, WNChunkGeneratorOverworld> gen = WNChunkGeneratorType.WILDNATURE;
-            ChunkGeneratorType<NetherGenSettings, NetherChunkGenerator> genNether = ChunkGeneratorType.CAVES;
-            ChunkGeneratorType<EndGenerationSettings, EndChunkGenerator> genEnd = ChunkGeneratorType.FLOATING_ISLANDS;
+            ChunkGeneratorType<WNGenSettings, WNChunkGeneratorOverworld> genOld = WNChunkGeneratorType.WILDNATURE;
             ChunkGeneratorType<WNGenSettings, WNSimplexChunkGenerator> genNew = WNChunkGeneratorType.SIMPLEX_TEST;
 
 
-            WNGenSettings overworldgensettings1 = gen.createSettings();
-            overworldgensettings1.setDefaultBlock(Blocks.STONE.getDefaultState());
-            overworldgensettings1.setDefaultFluid(Blocks.WATER.getDefaultState());
+            WNGenSettings genSettings = genOld.createSettings();
+            genSettings.setDefaultBlock(Blocks.STONE.getDefaultState());
+            genSettings.setDefaultFluid(Blocks.WATER.getDefaultState());
 
-            BiomeProviderType<OverworldBiomeProviderSettings, WildNatureBiomeProvider> bpt = WNBiomeProviderType.WILDNATURE;
+            WNWorldContext context = new WNWorldContext(world.getSeed());
 
-            OverworldBiomeProviderSettings overworldbiomeprovidersettings1 = bpt.createSettings(world.getWorldInfo()).setGeneratorSettings(new OverworldGenSettings());
+            BiomeProviderType<OverworldBiomeProviderSettings, WNGridBiomeProvider> bpt = WNBiomeProviderType.WILDNATURE_GRID;
 
-            BiomeProvider provider = bpt.create(overworldbiomeprovidersettings1);
+            OverworldBiomeProviderSettings settings = bpt.createSettings(world.getWorldInfo()).setGeneratorSettings(new OverworldGenSettings());
+
+            WNGridBiomeProvider provider = bpt.create(settings);
+
+            provider.setContext(context);
 
             // Change to genTest if you want the simplex generator (WNChunkGeneratorEarth + SmoothChunkGenerator)
             if (CommonConfig.generatorType.get().equals("old")) {
-                return gen.create(world, provider, overworldgensettings1);
+                return genOld.create(world, provider, genSettings);
             } else {
-                return genNew.create(world, provider, overworldgensettings1);
+                WNSimplexChunkGenerator generator = genNew.create(world, provider, genSettings);
+                generator.setContext(context);
+                WNWorldType.generator = generator;
+                return generator;
             }
         } else {
             return world.getDimension().createChunkGenerator();

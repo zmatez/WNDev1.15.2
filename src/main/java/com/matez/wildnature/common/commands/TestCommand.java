@@ -4,8 +4,12 @@ import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.event.PlayerEventHandler;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import com.matez.wildnature.world.generation.chunk.generation.ChunkArraySampler;
+import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
+import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
+import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
+import com.matez.wildnature.world.generation.provider.WNWorldType;
 import com.mojang.brigadier.context.CommandContext;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -46,36 +50,54 @@ public class TestCommand {
     private void execute(PlayerEntity entity){
         World worldIn = entity.getEntityWorld();
         ChunkPos pos = worldIn.getChunkAt(entity.getPosition()).getPos();
+        if(WNWorldType.generator != null) {
+            WNGridBiomeProvider provider = WNWorldType.generator.getGridProvider();
+            int rx = entity.getPosition().getX();
+            int ry = entity.getPosition().getY();
+            int rz = entity.getPosition().getZ();
+            Cell cell = provider.getNoiseCell(rx, rz);
+            Terrain terrain = provider.getNoiseTerrain(cell, rx, rz);
+            Biome biome = provider.getNoiseBiome(rx, ry, rz);
 
-        final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
+            log(entity, "Terrain identity: " + cell.terrainCellIdentity);
+            log(entity, "Biome identity: " + cell.biomeCellIdentity);
+            log(entity, "Temperature: " + cell.temparature);
+            log(entity, "Moisture: " + cell.moisture);
+            log(entity, "Cell Temperature: " + cell.cellTemparature);
+            log(entity, "Cell Moisture: " + cell.cellMoisture);
+            log(entity, "Continent Value: " + cell.continentValue);
+            log(entity, "Cell Continent: " + cell.cellContinent);
+            log(entity, "Category: " + terrain.getCategory().name());
+            log(entity, "Biome: " + biome.getRegistryName());
 
-        final ChunkArraySampler.CoordinateAccessor<Biome> biomeAccessor = (x, z) -> {
-            return SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), pos.getXStart() + x, 0, pos.getZStart() + z, worldIn);
-        };
+            final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
-        final Biome[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new Biome[10 * 10], biomeAccessor, 4);
-        final Biome[] sampledBiomes4 = ChunkArraySampler.fillSampledArray(new Biome[13 * 13], biomeAccessor, 2);
-        final Biome[] sampledBiomes1 = ChunkArraySampler.fillSampledArray(new Biome[24 * 24], biomeAccessor);
+            final ChunkArraySampler.CoordinateAccessor<Biome> biomeAccessor = (x, z) -> {
+                return provider.getNoiseBiome((pos.x * 16) + x,1,(pos.z * 16) + z);
+            };
 
-        for (int x = 0; x < 16; x++) {
-            for (int z = 0; z < 16; z++) {
-                if((pos.x * 16) + x == entity.getPosition().getX() && (pos.z * 16) + z == entity.getPosition().getZ()){
-                    log(entity,"Position: " + entity.getPosition().getX() + ", " + entity.getPosition().getZ());
-                    // Sample biome weights at different distances
-                    ChunkArraySampler.fillSampledWeightMap(sampledBiomes16, weightMap16, 4, x, z);
-                    ChunkArraySampler.fillSampledWeightMap(sampledBiomes4, weightMap4, 2, x, z);
-                    ChunkArraySampler.fillSampledWeightMap(sampledBiomes1, weightMap1, x, z);
+            final Biome[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new Biome[10 * 10], biomeAccessor, 4);
+            final Biome[] sampledBiomes4 = ChunkArraySampler.fillSampledArray(new Biome[13 * 13], biomeAccessor, 2);
+            final Biome[] sampledBiomes1 = ChunkArraySampler.fillSampledArray(new Biome[24 * 24], biomeAccessor);
 
-                    Function<Biome, BiomeVariants> variantAccessor = BiomeVariants::getVariantsFor;
+            for (int x = 0; x < 16; x++) {
+                for (int z = 0; z < 16; z++) {
+                    if ((pos.x * 16) + x == entity.getPosition().getX() && (pos.z * 16) + z == entity.getPosition().getZ()) {
+                        log(entity, "Position: " + entity.getPosition().getX() + ", " + entity.getPosition().getZ());
+                        // Sample biome weights at different distances
+                        ChunkArraySampler.fillSampledWeightMap(sampledBiomes16, weightMap16, 4, x, z);
+                        ChunkArraySampler.fillSampledWeightMap(sampledBiomes4, weightMap4, 2, x, z);
+                        ChunkArraySampler.fillSampledWeightMap(sampledBiomes1, weightMap1, x, z);
 
-                    // Group biomes at different distances. This has the effect of making some biome transitions happen over larger distances than others.
-                    // This is used to make most land biomes blend at maximum distance, while allowing biomes such as rivers to blend at short distances, creating better cliffs as river biomes are smaller width than other biomes.
-                    ChunkArraySampler.reduceGroupedWeightMap(weightMap4, weightMap16, variantAccessor.andThen(BiomeVariants::getLargeGroup), BiomeVariants.LargeGroup.SIZE);
-                    ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
-                    Biome biome = worldIn.getNoiseBiome(((pos.x * 16) + x)/4, 1,((pos.z * 16) + z)/4);
-                    double factor = smoothLerp(entity, (pos.x * 16) + x, (pos.z * 16) + z,biome,weightMap1,variantAccessor);
-                    log(entity,"Noise: "+(factor * 50) + 65);
-                    log(entity,"Height: "+sigmoid((factor * 50) + 65));
+                        Function<Biome, BiomeVariants> variantAccessor = BiomeVariants::getVariantsFor;
+
+                        // Group biomes at different distances. This has the effect of making some biome transitions happen over larger distances than others.
+                        // This is used to make most land biomes blend at maximum distance, while allowing biomes such as rivers to blend at short distances, creating better cliffs as river biomes are smaller width than other biomes.
+                        ChunkArraySampler.reduceGroupedWeightMap(weightMap4, weightMap16, variantAccessor.andThen(BiomeVariants::getLargeGroup), BiomeVariants.LargeGroup.SIZE);
+                        ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
+                        double height = smoothLerp(entity, (pos.x * 16) + x, (pos.z * 16) + z, biome, weightMap1, variantAccessor);
+                        log(entity, "Height: " + height);
+                    }
                 }
             }
         }
@@ -83,48 +105,20 @@ public class TestCommand {
 
     public double smoothLerp(PlayerEntity entity, int x, int z, Biome biomeIn, Object2DoubleMap<Biome> weightMap1, Function<Biome, BiomeVariants> variantAccessor){
         // Based on total weight of all biomes included, calculate heights of a couple important groups
-        double totalNoiseFactor = 0;
-        double biomeInWeight = 0;
-        double biomeOutWeight = 0;
         double totalHeight = 0;
-
-        int amountIn = 0;
-        int amountOut = 0;
 
         double biomeInHeight = getDepth(LerpConfiguration.get(biomeIn).getDepth());
         for (Object2DoubleMap.Entry<Biome> entry : weightMap1.object2DoubleEntrySet()) {
-            BiomeVariants variants = variantAccessor.apply(entry.getKey());
             Biome biome = entry.getKey();
             double weight = entry.getDoubleValue();
-            double height = weight * modifyDepth(weight, getDepth(biome.getDepth()),x,z);
+            double height = weight * getDepth(biomeIn.getDepth());
 
             totalHeight += height;
-
-            if(biome == biomeIn){
-                biomeInWeight += weight;
-                amountIn ++;
-            }else{
-                biomeOutWeight += weight;
-                amountOut ++;
-            }
         }
 
-        double maxValue = biomeInWeight + biomeOutWeight;
-
-        totalNoiseFactor = scaleBetween(Math.max(biomeInWeight, biomeOutWeight),0,1,0.5,maxValue);
-        log(entity,"BiomeInWeight: " + biomeInWeight);
-        log(entity,"BiomeOutWeight: " + biomeOutWeight);
-        log(entity,"AmountIn: " + amountIn);
-        log(entity,"AmountOut: " + amountOut);
-        log(entity, "MaxValue: " + maxValue);
-        log(entity, "Biome: " + biomeIn.getRegistryName());
-        log(entity,"Factor:" + totalNoiseFactor);
         log(entity,"Biome Depth: " + biomeInHeight);
-        double newDepth = Math.max(biomeInHeight, totalHeight) - Math.min(biomeInHeight,totalHeight);
-        log(entity,"Depth diff:" + newDepth);
 
-
-        return totalNoiseFactor;
+        return totalHeight;
     }
 
     private double sigmoid(double noise) {

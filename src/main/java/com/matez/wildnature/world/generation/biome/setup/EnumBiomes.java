@@ -26,17 +26,14 @@ public enum EnumBiomes {
 		return this;
 	}
 	
-	public Biome randomBiome(INoiseRandom context)
-	{
+	public Biome randomBiome(INoiseRandom context) {
         int weight = context.random(this.totalWeight);
         Iterator<WeightedBiome> iterator = this.BIOMES.iterator();
         WeightedBiome item;
-        do
-        {
+        do {
             item = iterator.next();
             weight -= item.weight;
-        }
-        while (weight >= 0);
+        } while (weight >= 0);
         return item.biome;
 	}
 	

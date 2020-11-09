@@ -2,8 +2,9 @@ package com.matez.wildnature.world.generation.chunk.terrain;
 
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.OceanTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.PlainTerrain;
 import com.matez.wildnature.world.generation.grid.Cell;
-import com.sipke.akuiria.world.terrain.terrains.PlainTerrain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,19 @@ public class TerrainProvider {
     public TerrainProvider(WNWorldContext context) {
         this.context = context;
         this.registerTerrains();
-        this.terrainIndex = FilterTerrains(context.cell);
+        this.terrainIndex = filterTerrains(context.getCell());
     }
 
     private void registerTerrains() {
         register(new PlainTerrain());
+        register(new OceanTerrain());
     }
 
     private void register(Terrain terrain){
         terrains.add(terrain);
     }
 
-    public Terrain[] FilterTerrains(Cell cell) {
+    public Terrain[] filterTerrains(Cell cell) {
         List<Terrain> filter = new ArrayList<>();
         for (Terrain terrain : terrains) {
             if (cell.cellContinent > 0.95) {
@@ -47,7 +49,7 @@ public class TerrainProvider {
                     filter.add(terrain);
                 }
             } else if (cell.cellContinent > 0.12) {
-                if (terrain.getCategory() == Terrain.Category.BEACH) {
+                if (terrain.getCategory() == Terrain.Category.SHORE) {
                     filter.add(terrain);
                 }
             } else if (cell.cellContinent > 0.05) {
@@ -69,7 +71,7 @@ public class TerrainProvider {
 
     public Terrain get(float identity) {
         int index = NoiseUtil.round(identity * (terrainIndex.length - 1));
-        return FilterTerrains(context.cell)[index];
+        return filterTerrains(context.getCell())[index];
     }
 
     public List<Terrain> getTerrains() {
