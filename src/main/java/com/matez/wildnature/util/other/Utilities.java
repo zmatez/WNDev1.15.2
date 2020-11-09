@@ -455,4 +455,16 @@ public class Utilities {
     public static Biome getBiomeOnPos(BiomeContainer provider, int x, int z){
         return provider.getNoiseBiome(x/4,0,z/4);
     }
+
+    public static float scaleBetween(float unscaledNum, float minAllowed, float maxAllowed, float min, float max) {
+        return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
+    }
+
+    public static double scaleBetween(double unscaledNum, double minAllowed, double maxAllowed, double min, double max) {
+        return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
+    }
+
+    public static int scaleBetween(int unscaledNum, int minAllowed, int maxAllowed, int min, int max) {
+        return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
+    }
 }

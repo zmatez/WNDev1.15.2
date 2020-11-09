@@ -307,7 +307,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
             //Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
-            Biome biome = gridProvider.getNoiseBiomeRealPos((pos.x * 16) + x,1,(pos.x * 16) + z);
+            Biome biome = gridProvider.getNoiseBiomeRealPos(((pos.x * 16) + x)/4,1,((pos.z * 16) + z)/4);
 
             LerpConfiguration configuration = LerpConfiguration.get(biome);
             /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
@@ -340,7 +340,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        Biome biome = gridProvider.getNoiseBiomeRealPos(x,1,z);
+        Biome biome = gridProvider.getNoiseBiomeRealPos(x / 4,1,z / 4);
         ChunkLandscape landscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
         int height = (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
@@ -369,7 +369,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
             //Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
-            Biome biome = gridProvider.getNoiseBiomeRealPos((chunkX * 16) + x,1,(chunkZ * 16) + z);
+            Biome biome = gridProvider.getNoiseBiomeRealPos(((chunkX * 16) + x)/4,1,((chunkZ * 16) + z)/4);
 
             LerpConfiguration configuration = LerpConfiguration.get(biome);
             /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){

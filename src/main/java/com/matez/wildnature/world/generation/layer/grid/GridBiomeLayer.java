@@ -4,6 +4,8 @@ import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
+import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
+import com.matez.wildnature.world.generation.transformer.transformers.MainBiomeTransformer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 
@@ -21,23 +23,25 @@ public class GridBiomeLayer {
         Cell cell = provider.getNoiseCell(x,z);
         Terrain terrain = provider.getNoiseTerrain(cell, x,z);
 
-        return get(cell,terrain, cell.biomeCellIdentity);
+        return get(cell,terrain);
     }
 
-    public Biome[] filterBiomes(Cell cell, Terrain terrain) {
-        List<Biome> filter = new ArrayList<>();
-        if(terrain.getCategory() == Terrain.Category.OCEAN){
-            filter.add(Biomes.OCEAN);
-        }else{
-            filter.add(Biomes.PLAINS);
-        }
+    public Biome filterBiomes(Cell cell, Terrain terrain) {
+        Biome biome = applyTransformers(cell,terrain);
 
-        return filter.toArray(new Biome[0]);
+        return biome;
     }
 
-    public Biome get(Cell cell, Terrain terrain, float identity) {
-        Biome[] filtered = filterBiomes(cell,terrain);
-        int index = NoiseUtil.round(identity * (filtered.length - 1));
-        return filtered[index];
+    private final BiomeTransformer mainBiomeTransformer = new MainBiomeTransformer();
+
+    public Biome applyTransformers(Cell cell, Terrain terrain){
+        Biome biome = Biomes.OCEAN;
+        biome = mainBiomeTransformer.apply(biome,cell,terrain);
+
+        return biome;
+    }
+
+    public Biome get(Cell cell, Terrain terrain) {
+        return filterBiomes(cell,terrain);
     }
 }

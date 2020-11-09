@@ -2,8 +2,7 @@ package com.matez.wildnature.world.generation.chunk.terrain;
 
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.chunk.terrain.terrains.OceanTerrain;
-import com.matez.wildnature.world.generation.chunk.terrain.terrains.PlainTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.*;
 import com.matez.wildnature.world.generation.grid.Cell;
 
 import java.util.ArrayList;
@@ -21,7 +20,12 @@ public class TerrainProvider {
     }
 
     private void registerTerrains() {
-        register(new PlainTerrain());
+        register(new MountainsTerrain());
+        register(new HighlandsTerrain());
+        register(new MidlandsTerrain());
+        register(new LowlandsTerrain());
+        register(new ShoreTerrain());
+        register(new SeaTerrain());
         register(new OceanTerrain());
     }
 
@@ -63,7 +67,7 @@ public class TerrainProvider {
             }
         }
         if(filter.isEmpty()){
-            filter.add(new PlainTerrain());
+            filter.add(new LowlandsTerrain());
         }
 
         return filter.toArray(new Terrain[0]);

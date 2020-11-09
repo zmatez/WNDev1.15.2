@@ -2,10 +2,10 @@ package com.matez.wildnature.world.generation.chunk.terrain.terrains;
 
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 
-public class OceanTerrain extends Terrain {
-    static final Category CATEGORY = Category.OCEAN;
+public class HighlandsTerrain extends Terrain {
+    static final Category CATEGORY = Category.HIGHLANDS;
 
-    public OceanTerrain() {
+    public HighlandsTerrain() {
         super(CATEGORY);
     }
 

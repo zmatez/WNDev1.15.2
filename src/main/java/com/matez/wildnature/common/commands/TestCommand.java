@@ -57,7 +57,7 @@ public class TestCommand {
             int rz = entity.getPosition().getZ();
             Cell cell = provider.getNoiseCell(rx, rz);
             Terrain terrain = provider.getNoiseTerrain(cell, rx, rz);
-            Biome biome = provider.getNoiseBiome(rx, ry, rz);
+            Biome biome = provider.getNoiseBiome(rx / 4, ry, rz / 4);
 
             log(entity, "Terrain identity: " + cell.terrainCellIdentity);
             log(entity, "Biome identity: " + cell.biomeCellIdentity);
@@ -73,7 +73,7 @@ public class TestCommand {
             final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
             final ChunkArraySampler.CoordinateAccessor<Biome> biomeAccessor = (x, z) -> {
-                return provider.getNoiseBiome((pos.x * 16) + x,1,(pos.z * 16) + z);
+                return provider.getNoiseBiomeRealPos(((pos.x * 16) + x)/4,1,((pos.z * 16) + z)/4);
             };
 
             final Biome[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new Biome[10 * 10], biomeAccessor, 4);

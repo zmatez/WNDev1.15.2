@@ -12,10 +12,10 @@ public class ClimateMap {
         noise.SetNoiseType(FastNoise.NoiseType.Simplex);
         noise.SetFrequency(0.08F);
 
-        cell.cellTemparature = NoiseUtil.round(new Temparature(0.008f).getValue(cell.terrainCellX, cell.terrainCellZ));
-        cell.temparature = NoiseUtil.round(new Temparature(0.008f).getValue(dx, dz));
-        cell.cellMoisture = NoiseUtil.round(noise.GetSimplex(cell.terrainCellX, cell.terrainCellZ));
-        cell.moisture = NoiseUtil.round(noise.GetSimplex(dx, dz));
+        cell.cellTemparature = (new Temparature(0.008f).getValue(cell.terrainCellX, cell.terrainCellZ));
+        cell.temparature = (new Temparature(0.008f).getValue(dx, dz));
+        cell.cellMoisture = (noise.GetSimplex(cell.terrainCellX, cell.terrainCellZ));
+        cell.moisture = (noise.GetSimplex(dx, dz));
     }
 
 }

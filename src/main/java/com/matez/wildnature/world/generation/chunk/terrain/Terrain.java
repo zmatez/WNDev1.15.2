@@ -8,11 +8,9 @@ public abstract class Terrain {
     public float temparature;
     public float moisture;
 
-    public Terrain(Category category, float temparature, float moisture){
+    public Terrain(Category category){
         this.category = category;
         this.terrain = this;
-        this.temparature = temparature;
-        this.moisture = moisture;
     }
 
     public enum Category {
@@ -23,7 +21,7 @@ public abstract class Terrain {
         LOWLANDS,
         MIDLANDS,
         HIGHLANDS,
-        MOUNTAINS;
+        MOUNTAINS
     }
 
     public Terrain.Category getCategory(){
