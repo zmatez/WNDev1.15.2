@@ -15,7 +15,7 @@ public class SubBiomeMap {
     private final int seed;
 
     public SubBiomeMap(long seed){
-        this.gridScale = 300; //temp value until I make settings.
+        this.gridScale = 500; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;
 
         edgeMin = 0F;
@@ -82,10 +82,10 @@ public class SubBiomeMap {
             }
         }
 
-        cell.biomeCellIdentity = cellValue(seed, cellX, cellY);
-        cell.biomeCellEdge = edgeValue(edgeDistance, edgeDistance2);
-        cell.biomeCellX = (int) ((cellX + center.x) / frequency);
-        cell.biomeCellZ = (int) ((cellY + center.y) / frequency);
+        cell.subBiomeCellIdentity = cellValue(seed, cellX, cellY);
+        cell.subBiomeCellEdge = edgeValue(edgeDistance, edgeDistance2);
+        cell.subBiomeCellX = (int) ((cellX + center.x) / frequency);
+        cell.subBiomeCellZ = (int) ((cellY + center.y) / frequency);
     }
 
     private float cellValue(int seed, int cellX, int cellY) {

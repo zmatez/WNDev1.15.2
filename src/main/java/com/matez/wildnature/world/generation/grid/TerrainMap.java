@@ -25,7 +25,7 @@ public class TerrainMap{
          *  For cliffs add a FastNoise noise and add CelledgeNoise
          *  cell.cellEdge * fastnoise output. (I placed this somewhere else (terrainlerper) as I might want to make it more configurable)
          */
-        this.gridScale = 3500; //temp value until I make settings.
+        this.gridScale = 10_000; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;
 
         edgeMin = 0F;

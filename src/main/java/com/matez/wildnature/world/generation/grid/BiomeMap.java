@@ -15,7 +15,7 @@ public class BiomeMap {
     private final int seed;
 
     public BiomeMap(long seed){
-        this.gridScale = 1000; //temp value until I make settings.
+        this.gridScale = 2500; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;
 
         edgeMin = 0F;

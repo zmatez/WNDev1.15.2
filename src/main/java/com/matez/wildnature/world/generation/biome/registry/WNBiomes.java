@@ -7,6 +7,7 @@ import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeature
 import com.matez.wildnature.world.generation.biome.setup.*;
 import com.matez.wildnature.world.generation.manager.WNBiomeManager;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
@@ -966,6 +967,139 @@ public class WNBiomes {
         registerNonSpawn(MadagascarValley, Type.HOT, Type.WET, Type.PLAINS, Type.RARE, Type.OVERWORLD);
 
         BiomeGroups.register();
+    }
+
+    public static void registerVanilla(){
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.PLAINS,
+                                new SubBiome(Biomes.SUNFLOWER_PLAINS,1,Type.RARE)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.DESERT,
+                                new SubBiome(Biomes.DESERT_HILLS,4, Type.HILLS),
+                                new SubBiome(Biomes.DESERT_LAKES,2, Type.WATER)
+                        ),
+                Type.SANDY, Type.DRY, Type.DEAD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.MOUNTAINS,
+                                new SubBiome(Biomes.GRAVELLY_MOUNTAINS,3),
+                                new SubBiome(Biomes.MODIFIED_GRAVELLY_MOUNTAINS,3, Type.MODIFIED)
+                        ),
+                Type.MOUNTAIN);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.FOREST,
+                                new SubBiome(Biomes.WOODED_HILLS, 4, Type.HILLS),
+                                new SubBiome(Biomes.FLOWER_FOREST,1,Type.LUSH)
+                        ),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.TAIGA,
+                                new SubBiome(Biomes.TAIGA_HILLS, 4, Type.HILLS)
+                        ),
+                Type.FOREST, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.SWAMP,
+                                new SubBiome(Biomes.SWAMP_HILLS,4, Type.HILLS)
+                        ),
+                Type.SWAMP, Type.WET);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.SNOWY_TUNDRA,
+                                new SubBiome(Biomes.ICE_SPIKES,3,Type.RARE, Type.MODIFIED)
+                        ),
+                Type.COLD, Type.PLAINS, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.SNOWY_MOUNTAINS),
+                Type.MOUNTAIN, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.JUNGLE,
+                                new SubBiome(Biomes.JUNGLE_HILLS,4, Type.HILLS),
+                                new SubBiome(Biomes.MODIFIED_JUNGLE,2, Type.MODIFIED)
+                        ),
+                Type.FOREST, Type.DENSE, Type.JUNGLE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.BIRCH_FOREST,
+                                new SubBiome(Biomes.BIRCH_FOREST_HILLS,4,Type.HILLS)
+                        ),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.SNOWY_TAIGA,
+                                new SubBiome(Biomes.SNOWY_TAIGA_HILLS,4, Type.HILLS)
+                        ),
+                Type.COLD, Type.CONIFEROUS, Type.FOREST, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, Biomes.DARK_FOREST,
+                                new SubBiome(Biomes.DARK_FOREST_HILLS,4,Type.HILLS)),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, Biomes.GIANT_TREE_TAIGA,
+                                new SubBiome(Biomes.GIANT_TREE_TAIGA_HILLS,3,Type.HILLS)),
+                Type.FOREST, Type.CONIFEROUS, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.WOODED_MOUNTAINS),
+                Type.MOUNTAIN, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.SAVANNA,
+                                new SubBiome(Biomes.SAVANNA_PLATEAU,4,Type.PLATEAU)),
+                Type.SAVANNA, Type.DRY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.BADLANDS,
+                                new SubBiome(Biomes.BADLANDS_PLATEAU, 4, Type.PLATEAU),
+                                new SubBiome(Biomes.WOODED_BADLANDS_PLATEAU,3, Type.PLATEAU, Type.FOREST, Type.SPARSE),
+                                new SubBiome(Biomes.ERODED_BADLANDS,2, Type.MODIFIED),
+                                new SubBiome(Biomes.MODIFIED_BADLANDS_PLATEAU,3,Type.MODIFIED),
+                                new SubBiome(Biomes.MODIFIED_WOODED_BADLANDS_PLATEAU,3, Type.MODIFIED)
+                        ),
+                Type.MESA);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.TAIGA_MOUNTAINS),
+                Type.MOUNTAIN, Type.CONIFEROUS, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.SNOWY_TAIGA_MOUNTAINS),
+                Type.MOUNTAIN, Type.CONIFEROUS, Type.FOREST, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, Biomes.BAMBOO_JUNGLE,
+                                new SubBiome(Biomes.BAMBOO_JUNGLE_HILLS,3, Type.HILLS)
+                        ),
+                Type.JUNGLE, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.TALL_BIRCH_FOREST,
+                                new SubBiome(Biomes.TALL_BIRCH_HILLS,3, Type.HILLS)
+                        ),
+                Type.DENSE, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, Biomes.GIANT_SPRUCE_TAIGA,
+                                new SubBiome(Biomes.GIANT_SPRUCE_TAIGA_HILLS,3,Type.HILLS)),
+                Type.FOREST, Type.CONIFEROUS, Type.COLD, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, Biomes.PLAINS),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, Biomes.SHATTERED_SAVANNA,
+                                new SubBiome(Biomes.SHATTERED_SAVANNA_PLATEAU,3,Type.PLATEAU)),
+                Type.SAVANNA, Type.HILLS);
     }
 
     public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types) {

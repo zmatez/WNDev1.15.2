@@ -69,8 +69,29 @@ public class GridBiomeLayer {
         }
 
         Biome biome = mainSubBiomeTransformer.apply(biomeGroup,cell,terrain);
+        Biome northBiome, southBiome, eastBiome, westBiome;
+        if(biomeGroup == northBiomeGroup){
+            northBiome = biome;
+        }else{
+            northBiome = mainSubBiomeTransformer.apply(northBiomeGroup,northCell,northTerrain);;
+        }
+        if(biomeGroup == southBiomeGroup){
+            southBiome = biome;
+        }else{
+            southBiome = mainSubBiomeTransformer.apply(southBiomeGroup,southCell,southTerrain);;
+        }
+        if(biomeGroup == eastBiomeGroup){
+            eastBiome = biome;
+        }else{
+            eastBiome = mainSubBiomeTransformer.apply(eastBiomeGroup,eastCell,eastTerrain);;
+        }
+        if(biomeGroup == westBiomeGroup){
+            westBiome = biome;
+        }else{
+            westBiome = mainSubBiomeTransformer.apply(westBiomeGroup,westCell,westTerrain);;
+        }
 
-        //biome = shoreTransformer.apply(biome,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell,terrain);
+        biome = shoreTransformer.apply(biome,northBiome,southBiome,eastBiome,westBiome,cell,terrain);
 
 
         return biome;

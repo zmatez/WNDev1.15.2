@@ -17,11 +17,11 @@ public class DeepOceanTerrain extends Terrain {
     @Override
     public BiomeGroup[] getBiomeGroups() {
         return new BiomeGroup.Builder()
-                .add(Biomes.OCEAN)
-                .add(Biomes.COLD_OCEAN)
-                .add(Biomes.FROZEN_OCEAN)
-                .add(Biomes.LUKEWARM_OCEAN)
-                .add(Biomes.WARM_OCEAN)
+                .add(Biomes.DEEP_OCEAN)
+                .add(Biomes.DEEP_COLD_OCEAN)
+                .add(Biomes.DEEP_FROZEN_OCEAN)
+                .add(Biomes.DEEP_LUKEWARM_OCEAN)
+                .add(Biomes.DEEP_WARM_OCEAN)
                 .build();
     }
 }
