@@ -4,6 +4,7 @@ import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.terrain.TerrainProvider;
 import com.matez.wildnature.world.generation.grid.BiomeMap;
 import com.matez.wildnature.world.generation.grid.Cell;
+import com.matez.wildnature.world.generation.grid.SubBiomeMap;
 import com.matez.wildnature.world.generation.grid.TerrainMap;
 import com.matez.wildnature.world.generation.heightmap.modules.ContinentGenerator;
 import com.matez.wildnature.world.generation.maps.ClimateMap;
@@ -15,22 +16,24 @@ public class WNHeightMap {
     private final Cell cell;
     public final TerrainMap terrainMap;
     public final BiomeMap biomeMap;
+    public final SubBiomeMap subBiomeMap;
     private final TerrainProvider terrainProvider;
     private final ClimateMap climateMap;
 
-    public WNHeightMap(WNWorldContext context){
+    public WNHeightMap(WNWorldContext context) {
         this.context = context;
         this.seed = context.getSeed();
         this.cell = context.getCell();
         this.continentGenerator = new ContinentGenerator(seed);
         this.terrainMap = new TerrainMap(seed);
         this.biomeMap = new BiomeMap(seed);
+        this.subBiomeMap = new SubBiomeMap(seed);
 
         this.terrainProvider = context.getTerrainProvider();
         this.climateMap = new ClimateMap();
     }
 
-    public void applyContinent(Cell cell, int dx, int dz){
+    public void applyContinent(Cell cell, int dx, int dz) {
         cell.continentValue = continentGenerator.generateContinent(dx, dz);
         cell.cellContinent = continentGenerator.generateContinent(cell.terrainCellX, cell.terrainCellZ);
     }
@@ -39,9 +42,10 @@ public class WNHeightMap {
         climateMap.apply(cell, x, z);
     }
 
-    public void apply(Cell cell, int dx, int dz){
+    public void apply(Cell cell, int dx, int dz) {
         terrainMap.apply(cell, dx, dz);
-        biomeMap.apply(cell,dx,dz);
+        biomeMap.apply(cell, dx, dz);
+        subBiomeMap.apply(cell, dx, dz);
 
         applyContinent(cell, dx, dz);
         applyClimate(cell, dx, dz);

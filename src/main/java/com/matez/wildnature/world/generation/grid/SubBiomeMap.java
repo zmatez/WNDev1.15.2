@@ -1,13 +1,11 @@
 package com.matez.wildnature.world.generation.grid;
 
-import com.matez.wildnature.util.noise.domain.Warp;
-import com.matez.wildnature.util.noise.func.DistanceFunc;
-import com.matez.wildnature.util.noise.func.EdgeFunc;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.noise.Vec2f;
-import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
+import com.matez.wildnature.util.noise.func.DistanceFunc;
+import com.matez.wildnature.util.noise.func.EdgeFunc;
 
-public class TerrainMap{
+public class SubBiomeMap {
     protected final float frequency;
     protected final int gridScale;
 
@@ -15,17 +13,9 @@ public class TerrainMap{
     private final float edgeMax;
     private final float edgeRange;
     private final int seed;
-    private final FastNoise warpX;
-    private final FastNoise warpY;
-    private final Warp warp;
 
-    public TerrainMap(long seed){
-        /**
-         *  For biomes, copy pasta and add a smaller scale.
-         *  For cliffs add a FastNoise noise and add CelledgeNoise
-         *  cell.cellEdge * fastnoise output. (I placed this somewhere else (terrainlerper) as I might want to make it more configurable)
-         */
-        this.gridScale = 3500; //temp value until I make settings.
+    public SubBiomeMap(long seed){
+        this.gridScale = 300; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;
 
         edgeMin = 0F;
@@ -33,19 +23,17 @@ public class TerrainMap{
         edgeRange = edgeMax - edgeMin;
 
         this.seed = (int)seed;
-
-        this.warpX = new FastNoise(this.seed);  //add custom config
-        this.warpY = new FastNoise(this.seed);  //add custom config
-
-        this.warp = new Warp(warpX, warpY, 64); //Warping too intense will bring back your old lerping issue as blobs off cells will be placed in other cells.
     }
 
-    public void apply(Cell cell, float x, float z) {
-        float ox = warp.getOffsetX(x, z);
-        float oz = warp.getOffsetZ(x, z);
+    public void apply(Cell cell, float x, float y) {
+        /*
+        Removed the warp for now, I will add that back in later again for you.
+         */
+        float ox = x; //unwarped
+        float oz = y; //unwarped
 
         float px = x + ox;
-        float py = z + oz;
+        float py = y + oz;
 
         px *= frequency;
         py *= frequency;
@@ -58,6 +46,11 @@ public class TerrainMap{
         float edgeDistance = 999999.0F;
         float edgeDistance2 = 999999.0F;
         float valueDistance = 999999.0F;
+
+        /**
+         * Euclidian might be slightly better suited for smaller biome cells
+         */
+
         DistanceFunc dist = DistanceFunc.NATURAL;
         Vec2f center = NoiseUtil.CELL_2D[NoiseUtil.hash2D(seed, xr, yr) & 255];
 
@@ -89,10 +82,10 @@ public class TerrainMap{
             }
         }
 
-        cell.terrainCellIdentity = cellValue(seed, cellX, cellY);
-        cell.terrainCellEdge = edgeValue(edgeDistance, edgeDistance2);
-        cell.terrainCellX = (int) ((cellX + center.x) / frequency);
-        cell.terrainCellZ = (int) ((cellY + center.y) / frequency);
+        cell.biomeCellIdentity = cellValue(seed, cellX, cellY);
+        cell.biomeCellEdge = edgeValue(edgeDistance, edgeDistance2);
+        cell.biomeCellX = (int) ((cellX + center.x) / frequency);
+        cell.biomeCellZ = (int) ((cellY + center.y) / frequency);
     }
 
     private float cellValue(int seed, int cellX, int cellY) {

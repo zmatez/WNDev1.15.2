@@ -3,6 +3,7 @@ package com.matez.wildnature.world.generation.transformer;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.other.Utilities;
+import com.matez.wildnature.world.generation.biome.setup.BiomeGroup;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import net.minecraft.world.biome.Biome;
@@ -16,13 +17,39 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public abstract class BiomeTransformer {
-    public Biome apply(Biome oldBiome, Cell cell, Terrain terrain){
-        return apply(oldBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.category, cell.biomeCellIdentity);
+    public BiomeGroup apply( Cell cell, Terrain terrain){
+        return apply(TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.biomeCellIdentity);
     }
 
-    protected abstract Biome apply(Biome oldBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity);
+    protected BiomeGroup apply(TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
+        return null;
+    }
 
-    public Biome get(List<Biome> filteredBiomes, float identity) {
+    public Biome apply(BiomeGroup oldBiome, Cell cell, Terrain terrain){
+        return apply(oldBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
+    }
+
+    protected Biome apply(BiomeGroup oldBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
+        return oldBiome.getBaseBiome();
+    }
+
+    public Biome apply(Biome oldBiome, Cell cell, Terrain terrain){
+        return apply(oldBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
+    }
+
+    protected Biome apply(Biome oldBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
+        return oldBiome;
+    }
+
+    public Biome apply(Biome oldCenterBiome,Biome oldNorthBiome,Biome oldSouthBiome,Biome oldEastBiome,Biome oldWestBiome, Cell cell, Terrain terrain){
+        return apply(oldCenterBiome, oldNorthBiome, oldSouthBiome, oldEastBiome,oldWestBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
+    }
+
+    protected Biome apply(Biome oldCenterBiome,Biome oldNorthBiome,Biome oldSouthBiome,Biome oldEastBiome,Biome oldWestBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
+        return oldCenterBiome;
+    }
+
+    public Biome getBiome(List<Biome> filteredBiomes, float identity) {
         if(!filteredBiomes.isEmpty()) {
             Biome[] filtered = filteredBiomes.toArray(new Biome[0]);
             int index = NoiseUtil.round(identity * (filtered.length - 1));
@@ -31,6 +58,17 @@ public abstract class BiomeTransformer {
             WN.LOGGER.warn("BiomeTransformer returned empty array. That shouldn't happen!");
         }
         return Biomes.OCEAN;
+    }
+
+    public BiomeGroup getBiomeGroup(List<BiomeGroup> filteredBiomes, float identity) {
+        if(!filteredBiomes.isEmpty()) {
+            BiomeGroup[] filtered = filteredBiomes.toArray(new BiomeGroup[0]);
+            int index = NoiseUtil.round(identity * (filtered.length - 1));
+            return filtered[index];
+        }else{
+            WN.LOGGER.warn("BiomeTransformer returned empty array. That shouldn't happen!");
+        }
+        return null;
     }
 
     public static enum TempCategory {

@@ -19,10 +19,15 @@ public class Cell {
     public float biomeCellEdge;
     public float biomeCellIdentity;
 
-    public float cellTemparature = 0.5f;
-    public float temparature = 0.5f;
-    public float cellMoisture = 0.5f;
-    public float moisture = 0.5f;
+    public int subBiomeCellX;
+    public int subBiomeCellZ;
+    public float subBiomeCellEdge;
+    public float subBiomeCellIdentity;
+
+    public float cellTemparature;
+    public float temparature;
+    public float cellMoisture;
+    public float moisture;
 
     public void copy(Cell other) {
         value = other.value;
@@ -38,6 +43,11 @@ public class Cell {
         biomeCellZ = other.biomeCellZ;
         biomeCellIdentity = other.biomeCellIdentity;
         biomeCellEdge = other.biomeCellEdge;
+
+        subBiomeCellX = other.subBiomeCellX;
+        subBiomeCellZ = other.subBiomeCellZ;
+        subBiomeCellIdentity = other.subBiomeCellIdentity;
+        subBiomeCellEdge = other.subBiomeCellEdge;
 
         cellTemparature = other.cellTemparature;
         temparature = other.temparature;

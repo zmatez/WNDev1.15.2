@@ -1,8 +1,16 @@
 package com.matez.wildnature.world.generation.chunk.terrain;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.chunk.terrain.terrains.*;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.highlands.HighlandTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.lowlands.LowlandTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.midlands.MidlandTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.mountains.MountainTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.shores.ShoresTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.DeepOceanTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.OceanTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.SeaTerrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 
 import java.util.ArrayList;
@@ -11,6 +19,7 @@ import java.util.List;
 public class TerrainProvider {
     private final WNWorldContext context;
     private final List<Terrain> terrains = new ArrayList<>();
+    private boolean init = false;
     public Terrain[] terrainIndex;
 
     public TerrainProvider(WNWorldContext context) {
@@ -20,60 +29,77 @@ public class TerrainProvider {
     }
 
     private void registerTerrains() {
-        register(new MountainsTerrain());
-        register(new HighlandsTerrain());
-        register(new MidlandsTerrain());
-        register(new LowlandsTerrain());
-        register(new ShoreTerrain());
-        register(new SeaTerrain());
+        register(new HighlandTerrain());
+        register(new LowlandTerrain());
+        register(new MidlandTerrain());
+        register(new MountainTerrain());
+        register(new ShoresTerrain());
         register(new OceanTerrain());
+        register(new DeepOceanTerrain());
+        register(new SeaTerrain());
     }
 
     private void register(Terrain terrain){
         terrains.add(terrain);
     }
 
+    public void init(){
+        for (Terrain terrain : terrains) {
+            WN.LOGGER.info("Initializing terrain: " + terrain.getName());
+            terrain.init();
+        }
+    }
+
     public Terrain[] filterTerrains(Cell cell) {
         List<Terrain> filter = new ArrayList<>();
         for (Terrain terrain : terrains) {
-            if (cell.cellContinent > 0.95) {
-                if (terrain.getCategory() == Terrain.Category.MOUNTAINS) {
+            if (cell.cellContinent > 0.95F) {
+                if (terrain.getTerrainCategory() == Terrain.Category.MOUNTAINS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.85) {
-                if (terrain.getCategory() == Terrain.Category.HIGHLANDS) {
+            } else if (cell.cellContinent > 0.88F && cell.cellContinent < 0.95F) {
+                if (terrain.getTerrainCategory() == Terrain.Category.HIGHLANDS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.48) {
-                if (terrain.getCategory() == Terrain.Category.MIDLANDS) {
+            } else if (cell.cellContinent > 0.53F && cell.cellContinent < 0.88F) {
+                if (terrain.getTerrainCategory() == Terrain.Category.MIDLANDS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.24) {
-                if (terrain.getCategory() == Terrain.Category.LOWLANDS) {
+            } else if (cell.cellContinent > 0.30F && cell.cellContinent < 0.53F) {
+                if (terrain.getTerrainCategory() == Terrain.Category.LOWLANDS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.12) {
-                if (terrain.getCategory() == Terrain.Category.SHORE) {
+            } else if (cell.cellContinent > 0.15F && cell.cellContinent < 0.3F) {
+                if (terrain.getTerrainCategory() == Terrain.Category.SHORE) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.05) {
-                if (terrain.getCategory() == Terrain.Category.SEA) {
+            } else if (cell.cellContinent > 0.1F && cell.cellContinent < 0.15F) {
+                if (terrain.getTerrainCategory() == Terrain.Category.SEA) {
                     filter.add(terrain);
                 }
-            } else {
-                if (terrain.getCategory() == Terrain.Category.OCEAN) {
+            } else if(cell.cellContinent > 0.05F && cell.cellContinent < 0.1F){
+                if (terrain.getTerrainCategory() == Terrain.Category.OCEAN) {
+                    filter.add(terrain);
+                }
+            }else if(cell.cellContinent < 0.05F){
+                if (terrain.getTerrainCategory() == Terrain.Category.DEEP_OCEAN) {
                     filter.add(terrain);
                 }
             }
         }
         if(filter.isEmpty()){
-            filter.add(new LowlandsTerrain());
+            filter.add(new LowlandTerrain());
         }
 
         return filter.toArray(new Terrain[0]);
     }
 
     public Terrain get(float identity) {
+        if(!init){
+            init();
+            init = true;
+        }
+
         int index = NoiseUtil.round(identity * (terrainIndex.length - 1));
         return filterTerrains(context.getCell())[index];
     }

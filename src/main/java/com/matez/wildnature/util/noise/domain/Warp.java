@@ -20,11 +20,11 @@ public class Warp {
     }
 
     public float getOffsetX(float x, float z) {
-        return this.x.GetPerlin(x, z) * this.power;
+        return this.x.GetNoise(x, z) * this.power;
     }
 
     public float getOffsetZ(float x, float z) {
-        return this.z.GetPerlin(x, z) * this.power;
+        return this.z.GetNoise(x, z) * this.power;
     }
 
 }

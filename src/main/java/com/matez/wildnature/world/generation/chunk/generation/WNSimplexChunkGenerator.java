@@ -306,8 +306,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
-            //Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
-            Biome biome = gridProvider.getNoiseBiomeRealPos(((pos.x * 16) + x)/4,1,((pos.z * 16) + z)/4);
+            Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
+            //Biome biome = gridProvider.getNoiseBiomeRealPos(((pos.x * 16) + x)/4,1,((pos.z * 16) + z)/4);
 
             LerpConfiguration configuration = LerpConfiguration.get(biome);
             /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
@@ -369,8 +369,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
             //Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
-            Biome biome = gridProvider.getNoiseBiomeRealPos(((chunkX * 16) + x)/4,1,((chunkZ * 16) + z)/4);
-
+            Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(seed, (chunkX * 16) + x, 0, (chunkZ * 16) + z, gridProvider);
             LerpConfiguration configuration = LerpConfiguration.get(biome);
             /*if(pathGenerator.isPath(pathGenerator.applyPathNoise(x,z))){
                 configuration.setCustomVariants(BiomeVariants.PATH);

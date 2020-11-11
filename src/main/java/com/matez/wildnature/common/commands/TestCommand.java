@@ -24,7 +24,6 @@ import net.minecraft.world.biome.Biome;
 import java.util.function.Function;
 
 import static com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender.getDepth;
-import static com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender.modifyDepth;
 
 public class TestCommand {
 
@@ -67,13 +66,14 @@ public class TestCommand {
             log(entity, "Cell Moisture: " + cell.cellMoisture);
             log(entity, "Continent Value: " + cell.continentValue);
             log(entity, "Cell Continent: " + cell.cellContinent);
-            log(entity, "Category: " + terrain.getCategory().name());
+            log(entity, "Category: " + terrain.getTerrainCategory().name());
             log(entity, "Biome: " + biome.getRegistryName());
+            log(entity,"D: "+biome.getDepth()+" S: " + biome.getScale() + "DS: " + (biome.getDepth() + biome.getScale()));
 
             final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
             final ChunkArraySampler.CoordinateAccessor<Biome> biomeAccessor = (x, z) -> {
-                return provider.getNoiseBiomeRealPos(((pos.x * 16) + x)/4,1,((pos.z * 16) + z)/4);
+                return SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, worldIn);
             };
 
             final Biome[] sampledBiomes16 = ChunkArraySampler.fillSampledArray(new Biome[10 * 10], biomeAccessor, 4);

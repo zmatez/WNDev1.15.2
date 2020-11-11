@@ -10,7 +10,7 @@ public enum EnumBiomes {
 	ALL;
 	
 	public static EnumBiomes[] ALL_BIOMES = values();
-	private ArrayList<WeightedBiome> BIOMES;
+	public ArrayList<WeightedBiome> BIOMES;
 	private int totalWeight = 0;
 	
 	private EnumBiomes()

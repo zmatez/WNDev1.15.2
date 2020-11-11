@@ -1,12 +1,11 @@
 package com.matez.wildnature.world.generation.biome.registry;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.world.generation.biome.biomes.*;
-import com.matez.wildnature.world.generation.biome.setup.BiomeGroups;
-import com.matez.wildnature.world.generation.biome.setup.EnumBiomes;
-import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
-import com.matez.wildnature.world.generation.manager.WNBiomeManager;
 import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.world.generation.biome.biomes.*;
+import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
+import com.matez.wildnature.world.generation.biome.setup.*;
+import com.matez.wildnature.world.generation.manager.WNBiomeManager;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -50,8 +49,8 @@ public class WNBiomes {
     public static Biome HighForest = new WNHighForest("high_forest");
     public static Biome HighForestHills = new WNHighForestHills("high_forest_hills");
     public static Biome HighForestValley = new WNHighForestValley("high_forest_valley");
-    public static Biome ForestedMountains = new WNForestedMountains("forested_cliffs");
 
+    public static Biome ForestedMountains = new WNForestedMountains("forested_cliffs");
 
     //ASPEN
     public static Biome AspenGrove = new WNAspenGrove("aspen_grove");
@@ -149,7 +148,7 @@ public class WNBiomes {
     public static Biome Glacier = new WNGlacier("glacier");
     public static Biome Himalayas = new WNHimalayas("himalayas");
     public static Biome OvergrownCliffs = new WNOvergrownCliffs("overgrown_cliffs");
-    public static Biome MahoganyCliffs = new WNMahoganyCliffs("mahogany_cliffs");
+
 
     //BOG
     public static Biome Bog = new WNBog("bog");
@@ -307,6 +306,7 @@ public class WNBiomes {
 
     //MAHOGANY
     public static Biome MahoganyRainforest = new WNMahoganyRainforest("mahogany_rainforest");
+    public static Biome MahoganyCliffs = new WNMahoganyCliffs("mahogany_cliffs");
 
     //SAKURA
     public static Biome SakuraJungle = new WNSakuraJungle("sakura_jungle");
@@ -353,9 +353,6 @@ public class WNBiomes {
     public static Biome ThujaShield = new WNThujaShield("thuja_shield");
 
 
-    //ROOFED
-
-
     //LAKES
     public static Biome WarmLake = new WNWarmLake("warm_lake");
     public static Biome ColdLake = new WNColdLake("cold_lake");
@@ -376,181 +373,646 @@ public class WNBiomes {
     public static Biome WhiteBeach = new WNWhiteBeach("white_beach");
     //public static Biome BeachCliffs = new WNBeachCliff("beach_cliffs");
 
-    public static void registerBiomes(){
-        register(Oaklands, BiomeManager.BiomeType.WARM,8, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(DenseOaklands, BiomeManager.BiomeType.WARM,5, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(HighForest, BiomeManager.BiomeType.WARM,12, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(Forest, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(TemperateForest, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(SnowyForest, BiomeManager.BiomeType.COOL,10, Type.FOREST, Type.DENSE, Type.SNOWY, Type.OVERWORLD);
-        register(ColdForest, BiomeManager.BiomeType.COOL,5, Type.FOREST, Type.DENSE, Type.SNOWY, Type.OVERWORLD);
-        register(DeciduousForest, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(PoplarForest, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(HornbeamForest, BiomeManager.BiomeType.WARM,3, Type.FOREST, Type.DENSE, Type.RARE, Type.SPOOKY, Type.OVERWORLD);
-        register(AspenGrove, BiomeManager.BiomeType.COOL,10, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(SnowyAspenGrove, BiomeManager.BiomeType.COOL,10, Type.FOREST, Type.DENSE, Type.SNOWY, Type.OVERWORLD);
-        register(SnowyBorealForest, BiomeManager.BiomeType.ICY,10, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.SNOWY, Type.OVERWORLD);
-        register(BeechForest, BiomeManager.BiomeType.COOL,7, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(PurpleWoodland, BiomeManager.BiomeType.COOL,1, Type.FOREST, Type.DENSE, Type.MAGICAL, Type.RARE, Type.OVERWORLD);
-        register(BorealForest, BiomeManager.BiomeType.COOL,10, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.OVERWORLD);
-        register(TucholaForest, BiomeManager.BiomeType.COOL,5, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.OVERWORLD);
-        register(Taiga, BiomeManager.BiomeType.COOL,10, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.OVERWORLD);
-        register(ColdTaiga, BiomeManager.BiomeType.ICY,10, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.SNOWY, Type.OVERWORLD);
-        register(DenseTucholaForest, BiomeManager.BiomeType.COOL,3, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.OVERWORLD);
-        register(SnowyTucholaForest, BiomeManager.BiomeType.ICY,5, Type.FOREST, Type.DENSE, Type.COLD, Type.SNOWY, Type.CONIFEROUS, Type.OVERWORLD);
-        register(SnowyDenseTucholaForest, BiomeManager.BiomeType.ICY,3, Type.FOREST, Type.DENSE, Type.COLD, Type.SNOWY, Type.CONIFEROUS, Type.OVERWORLD);
-        register(ThujaShield, BiomeManager.BiomeType.COOL,3, Type.FOREST, Type.DENSE, Type.RARE, Type.WET, Type.COLD, Type.OVERWORLD);
-        register(Orchard, BiomeManager.BiomeType.WARM,4, Type.FOREST, Type.PLAINS, Type.OVERWORLD);
-        register(CitrusOrchard, BiomeManager.BiomeType.WARM,3, Type.FOREST, Type.PLAINS, Type.JUNGLE, Type.HOT, Type.OVERWORLD);
-        register(CherryParadise, BiomeManager.BiomeType.WARM,4, Type.FOREST, Type.PLAINS, Type.RARE, Type.OVERWORLD);
-        register(VibrantForest, BiomeManager.BiomeType.WARM,1, Type.FOREST, Type.PLAINS,Type.MAGICAL, Type.RARE, Type.OVERWORLD);
-        register(GoldenWoods, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.PLAINS, Type.OVERWORLD);
-        register(Steppe, BiomeManager.BiomeType.WARM,7, Type.DRY, Type.PLAINS, Type.OVERWORLD);
-        register(MapleForest, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(AutumnalMapleForest, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(Grasslands, BiomeManager.BiomeType.WARM,12, Type.PLAINS, Type.OVERWORLD);
-        register(Fields, BiomeManager.BiomeType.WARM,12, Type.PLAINS, Type.OVERWORLD);
-        register(HazelFields, BiomeManager.BiomeType.WARM,9, Type.PLAINS, Type.FOREST, Type.OVERWORLD);
-        register(Shrublands, BiomeManager.BiomeType.WARM,8, Type.PLAINS, Type.HILLS, Type.OVERWORLD);
-        register(Scrublands, BiomeManager.BiomeType.WARM,7, Type.PLAINS, Type.HILLS, Type.OVERWORLD);
-        register(ForestedGrasslands, BiomeManager.BiomeType.WARM,10, Type.PLAINS, Type.FOREST, Type.OVERWORLD);
-        register(ForestedFields, BiomeManager.BiomeType.WARM,10, Type.PLAINS, Type.FOREST, Type.OVERWORLD);
-        register(Polders, BiomeManager.BiomeType.WARM,7, Type.PLAINS, Type.OVERWORLD);
-        register(Farmlands, BiomeManager.BiomeType.WARM,8, Type.PLAINS, Type.OVERWORLD);
-        register(LavenderGarden, BiomeManager.BiomeType.WARM,4, Type.PLAINS, Type.OVERWORLD);
-        register(Prairie, BiomeManager.BiomeType.WARM,10, Type.PLAINS, Type.DRY, Type.OVERWORLD);
-        register(Masuria, BiomeManager.BiomeType.WARM,6, Type.PLAINS, Type.WET, Type.OVERWORLD);
-        register(LandOfRivers, BiomeManager.BiomeType.COOL,6, Type.PLAINS, Type.WET, Type.OVERWORLD);
-        register(Wetlands, BiomeManager.BiomeType.WARM,9, Type.PLAINS, Type.WET, Type.OVERWORLD);
-        register(TropicalBadlands, BiomeManager.BiomeType.WARM,7, Type.HILLS, Type.MESA, Type.JUNGLE, Type.OVERWORLD);
-        register(RapeseedField, BiomeManager.BiomeType.WARM,10, Type.PLAINS, Type.DRY, Type.OVERWORLD);
-        register(CornField, BiomeManager.BiomeType.WARM,5, Type.PLAINS, Type.DRY, Type.OVERWORLD);
-        register(Outback, BiomeManager.BiomeType.DESERT,10, Type.DEAD, Type.DRY, Type.SAVANNA, Type.OVERWORLD);
-        register(TatraMountains, BiomeManager.BiomeType.ICY,10, Type.MOUNTAIN, Type.FOREST, Type.HILLS, Type.OVERWORLD);
-        register(SnowyTatraMountains, BiomeManager.BiomeType.ICY,10, Type.MOUNTAIN, Type.FOREST, Type.HILLS, Type.SNOWY, Type.COLD, Type.OVERWORLD);
-        register(BialowiezaForest, BiomeManager.BiomeType.COOL,7, Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.OVERWORLD);
-        register(BialowiezaForestS, BiomeManager.BiomeType.ICY,7, Type.FOREST, Type.DENSE, Type.COLD, Type.CONIFEROUS, Type.OVERWORLD);
-        register(BialowiezaMarsh, BiomeManager.BiomeType.COOL,6, Type.SWAMP, Type.WET, Type.OVERWORLD);
-        register(BialowiezaMarshS, BiomeManager.BiomeType.ICY,6, Type.SWAMP, Type.WET, Type.COLD, Type.OVERWORLD);
-        register(OvergrownCliffs, BiomeManager.BiomeType.COOL,8, Type.MOUNTAIN, Type.HILLS, Type.WATER, Type.OVERWORLD);
-        register(ForestedMountains, BiomeManager.BiomeType.COOL,8, Type.MOUNTAIN, Type.HILLS, Type.DENSE, Type.FOREST, Type.OVERWORLD);
-        register(MahoganyCliffs, BiomeManager.BiomeType.WARM,4, Type.MOUNTAIN, Type.HILLS, Type.WATER, Type.HOT, Type.JUNGLE,Type.WET, Type.OVERWORLD);
-        register(SnowyMountains, BiomeManager.BiomeType.ICY,9, Type.MOUNTAIN, Type.HILLS, Type.COLD, Type.SNOWY, Type.OVERWORLD);
-        register(Glacier, BiomeManager.BiomeType.ICY,9, Type.MOUNTAIN, Type.HILLS, Type.COLD, Type.OVERWORLD);
-        register(Himalayas, BiomeManager.BiomeType.ICY,7, Type.MOUNTAIN, Type.HILLS, Type.COLD, Type.SNOWY, Type.OVERWORLD);
-        register(Bog, BiomeManager.BiomeType.COOL,10, Type.WET, Type.SWAMP, Type.DEAD, Type.OVERWORLD);
-        register(Highlands, BiomeManager.BiomeType.COOL,10, Type.HILLS, Type.PLAINS, Type.OVERWORLD);
-        register(Rainforest, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.JUNGLE, Type.OVERWORLD);
-        register(MahoganyRainforest, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.JUNGLE, Type.OVERWORLD);
-        register(SakuraJungle, BiomeManager.BiomeType.WARM,2, Type.FOREST, Type.JUNGLE, Type.MAGICAL, Type.RARE, Type.OVERWORLD);
-        register(Safari, BiomeManager.BiomeType.DESERT,10, Type.SAVANNA, Type.OVERWORLD);
-        register(RedwoodForest, BiomeManager.BiomeType.WARM,9, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(Greenwood, BiomeManager.BiomeType.WARM,8, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(RoofedForest, BiomeManager.BiomeType.WARM,5, Type.FOREST, Type.DENSE, Type.LUSH, Type.OVERWORLD);
-        register(OldRedwoodForest, BiomeManager.BiomeType.WARM,4, Type.FOREST, Type.DENSE, Type.RARE, Type.OVERWORLD);
-        register(SequoiaForest, BiomeManager.BiomeType.WARM,3, Type.FOREST, Type.DENSE, Type.RARE, Type.OVERWORLD);
-        register(TemperateSequoiaRainforest, BiomeManager.BiomeType.COOL,2, Type.FOREST, Type.DENSE, Type.RARE, Type.OVERWORLD);
-        register(AutumnalSequoiaRainforest, BiomeManager.BiomeType.COOL,1, Type.FOREST, Type.DENSE, Type.RARE, Type.OVERWORLD);
-        register(GiantConiferousForest, BiomeManager.BiomeType.COOL,8, Type.FOREST, Type.CONIFEROUS, Type.DENSE, Type.OVERWORLD);
-        register(SnowyGiantConiferousForest, BiomeManager.BiomeType.ICY,8, Type.FOREST, Type.CONIFEROUS, Type.SNOWY, Type.DENSE, Type.OVERWORLD);
-        register(ChristmasDream, BiomeManager.BiomeType.ICY,5, Type.PLAINS, Type.CONIFEROUS, Type.SNOWY, Type.COLD, Type.OVERWORLD);
-        register(AutumnalSpruceForest, BiomeManager.BiomeType.COOL,10, Type.PLAINS, Type.CONIFEROUS, Type.SNOWY, Type.COLD, Type.OVERWORLD);
-        register(BirchGrove, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.WET, Type.DENSE, Type.OVERWORLD);
-        register(WeepingBirchForest, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.WET, Type.DENSE, Type.OVERWORLD);
-        register(SnowyBirchGrove, BiomeManager.BiomeType.COOL,10, Type.FOREST, Type.SNOWY, Type.COLD, Type.OVERWORLD);
-        register(BirchScrubs, BiomeManager.BiomeType.WARM,10, Type.FOREST, Type.PLAINS, Type.DENSE, Type.OVERWORLD);
-        register(BirchMarsh, BiomeManager.BiomeType.COOL,7, Type.FOREST, Type.PLAINS, Type.SWAMP, Type.WET, Type.OVERWORLD);
-        register(FlowerField, BiomeManager.BiomeType.WARM,7, Type.PLAINS, Type.DENSE, Type.LUSH, Type.OVERWORLD);
-        register(Meadow, BiomeManager.BiomeType.WARM,3, Type.PLAINS, Type.DENSE, Type.LUSH, Type.OVERWORLD);
-        register(WoodedMeadow, BiomeManager.BiomeType.WARM,5, Type.PLAINS, Type.DENSE, Type.LUSH, Type.FOREST, Type.OVERWORLD);
-        register(MarigoldFields, BiomeManager.BiomeType.WARM,3, Type.PLAINS, Type.DENSE, Type.LUSH, Type.OVERWORLD);
-        register(HyacinthFields, BiomeManager.BiomeType.WARM,1, Type.PLAINS, Type.DENSE, Type.LUSH, Type.RARE, Type.OVERWORLD);
-        register(Sahara, BiomeManager.BiomeType.DESERT,10, Type.DEAD, Type.DRY, Type.SANDY, Type.OVERWORLD);
-        register(Badlands, BiomeManager.BiomeType.DESERT,8, Type.DEAD, Type.DRY, Type.SANDY, Type.OVERWORLD);
-        register(Canyons, BiomeManager.BiomeType.DESERT,5, Type.DEAD, Type.DRY, Type.MESA, Type.PLATEAU, Type.OVERWORLD);
-        register(GrandCanyon, BiomeManager.BiomeType.DESERT,1, Type.DEAD, Type.DRY, Type.MESA, Type.PLATEAU, Type.MOUNTAIN, Type.OVERWORLD);
-        register(Icelands, BiomeManager.BiomeType.ICY,2, Type.DEAD, Type.MESA, Type.PLATEAU, Type.MOUNTAIN, Type.SNOWY, Type.COLD, Type.WASTELAND, Type.OVERWORLD);
-        register(TintedDesert, BiomeManager.BiomeType.DESERT,5, Type.DEAD, Type.DRY, Type.SANDY, Type.OVERWORLD);
-        register(TintedDesertHills, BiomeManager.BiomeType.DESERT,3, Type.DEAD, Type.DRY, Type.SANDY, Type.MOUNTAIN, Type.HILLS, Type.OVERWORLD);
-        register(LushDesert, BiomeManager.BiomeType.DESERT,5, Type.LUSH, Type.DRY, Type.SANDY, Type.OVERWORLD);
-        register(CrackedDesert, BiomeManager.BiomeType.DESERT,2, Type.LUSH, Type.DRY, Type.SANDY, Type.OVERWORLD);
-        register(SaltFlats, BiomeManager.BiomeType.COOL,1, Type.WASTELAND, Type.DRY, Type.COLD, Type.OVERWORLD);
-        register(MangroveForest, BiomeManager.BiomeType.WARM,5, Type.FOREST, Type.SWAMP, Type.JUNGLE, Type.OVERWORLD);
-        register(Backwaters, BiomeManager.BiomeType.WARM,5, Type.FOREST, Type.SWAMP, Type.LUSH, Type.OVERWORLD);
-        register(PrehistoricValley, BiomeManager.BiomeType.WARM,1, Type.PLAINS, Type.FOREST, Type.RARE, Type.OVERWORLD);
-        register(ErodedFields, BiomeManager.BiomeType.WARM,4, Type.PLAINS, Type.HILLS, Type.FOREST,Type.RARE, Type.OVERWORLD);
-        register(SeasonalTaiga, BiomeManager.BiomeType.COOL,8, Type.FOREST, Type.CONIFEROUS, Type.DENSE, Type.OVERWORLD);
-        register(PineMixedForest, BiomeManager.BiomeType.COOL,8, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(PineMixedMarsh, BiomeManager.BiomeType.COOL,6, Type.FOREST, Type.DENSE, Type.SWAMP, Type.WET, Type.COLD, Type.OVERWORLD);
-        register(TemperatePineMixedForest, BiomeManager.BiomeType.WARM,8, Type.FOREST, Type.DENSE, Type.OVERWORLD);
-        register(Moor, BiomeManager.BiomeType.COOL,2, Type.FOREST, Type.LUSH, Type.OVERWORLD);
-        register(DenseMoor, BiomeManager.BiomeType.COOL,5, Type.FOREST, Type.DENSE, Type.LUSH, Type.OVERWORLD);
-        register(BaobabSavanna, BiomeManager.BiomeType.DESERT,5, Type.SAVANNA, Type.OVERWORLD);
-        register(GiantSavanna, BiomeManager.BiomeType.DESERT,4, Type.SAVANNA, Type.OVERWORLD);
-        register(DeadDesolation, BiomeManager.BiomeType.DESERT,6, Type.DEAD, Type.OVERWORLD);
-        register(CedarForest, BiomeManager.BiomeType.COOL,9, Type.FOREST, Type.DENSE, Type.COLD, Type.OVERWORLD);
-        register(SnowyCedarForest, BiomeManager.BiomeType.ICY,9, Type.FOREST, Type.DENSE, Type.COLD, Type.SNOWY, Type.OVERWORLD);
-        register(TemperateCedarScrubs, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.DENSE, Type.PLAINS, Type.OVERWORLD);
-        register(TemperateRedwoodScrubs, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.DENSE, Type.PLAINS, Type.OVERWORLD);
-        register(CypressFields, BiomeManager.BiomeType.WARM,7, Type.FOREST, Type.PLAINS, Type.OVERWORLD);
-        register(EucalyptusForest, BiomeManager.BiomeType.WARM,5, Type.FOREST, Type.DENSE, Type.JUNGLE, Type.HOT, Type.OVERWORLD);
-        register(OliveGarden, BiomeManager.BiomeType.WARM,5, Type.FOREST, Type.HILLS, Type.JUNGLE, Type.HOT, Type.OVERWORLD);
-        register(Mirkwood, BiomeManager.BiomeType.COOL,3, Type.FOREST, Type.DENSE, Type.SPOOKY, Type.RARE, Type.OVERWORLD);
-        register(DaintreeForest, BiomeManager.BiomeType.WARM,2, Type.FOREST, Type.HILLS, Type.JUNGLE, Type.HOT, Type.DENSE, Type.WET, Type.RARE, Type.OVERWORLD);
-        register(DaintreeCliffs, BiomeManager.BiomeType.WARM,1, Type.FOREST, Type.HILLS, Type.MOUNTAIN, Type.JUNGLE, Type.HOT, Type.DENSE, Type.WET, Type.RARE, Type.OVERWORLD);
-        register(BananaThicket, BiomeManager.BiomeType.WARM,3, Type.FOREST, Type.JUNGLE, Type.HOT, Type.DENSE, Type.WET, Type.OVERWORLD);
+    public static void registerBiomes() {
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.Oaklands,
+                                new SubBiome(WNBiomes.OaklandHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.DenseOaklands, 4, Type.DENSE),
+                                new SubBiome(WNBiomes.OakValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.PoplarForest,
+                                new SubBiome(WNBiomes.PoplarForestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.PoplarForestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.HighForest,
+                                new SubBiome(WNBiomes.HighForestHills, 6, Type.HILLS),
+                                new SubBiome(WNBiomes.HighForestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.ForestedMountains),
+                Type.FOREST, Type.DENSE, Type.MOUNTAIN, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.AspenGrove),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.SnowyAspenGrove),
+                Type.FOREST, Type.DENSE, Type.SNOWY, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.BeechForest,
+                                new SubBiome(WNBiomes.BeechForestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.BeechValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(4, WNBiomes.PurpleWoodland),
+                Type.FOREST, Type.DENSE, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.BeechForest,
+                                new SubBiome(WNBiomes.BeechForestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.BeechValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.Orchard,
+                                new SubBiome(WNBiomes.OrchardPlum, 3)
+                        ),
+                Type.FOREST, Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(4, WNBiomes.CherryParadise),
+                Type.PLAINS, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.CitrusOrchard),
+                Type.PLAINS, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.VibrantForest),
+                Type.FOREST, Type.RARE, Type.MAGICAL);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.MapleForest),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.AutumnalMapleForest),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(12, WNBiomes.Grasslands,
+                                new SubBiome(WNBiomes.GrasslandsHills, 7, Type.HILLS)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(11, WNBiomes.ForestedGrasslands,
+                                new SubBiome(WNBiomes.ForestedGrasslandsHills, 7, Type.HILLS)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(1, WNBiomes.Polders),
+                Type.PLAINS, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.Shrublands,
+                                new SubBiome(WNBiomes.HillyShrublands, 8, Type.HILLS)
+                        ),
+                Type.PLAINS, Type.PLATEAU);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.Scrublands),
+                Type.PLAINS, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.HazelFields),
+                Type.PLAINS, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(12, WNBiomes.Fields,
+                                new SubBiome(WNBiomes.SunflowerFields, 1, Type.RARE),
+                                new SubBiome(WNBiomes.PoppyFields, 5),
+                                new SubBiome(WNBiomes.ForestedFields,4)
+                        ),
+                Type.PLAINS, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(1, WNBiomes.PrehistoricValley),
+                Type.FOREST, Type.RARE, Type.MAGICAL, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.ErodedFields,
+                                new SubBiome(WNBiomes.ErodedHills, 4, Type.HILLS)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Prairie,
+                                new SubBiome(WNBiomes.PrairieHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.CottonFields, 1, Type.RARE)
+                        ),
+                Type.PLAINS, Type.DRY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.RapeseedField),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.CornField),
+                Type.PLAINS, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Outback,
+                                new SubBiome(WNBiomes.WoodedOutback, 3, Type.FOREST)
+                        ),
+                Type.PLAINS, Type.SANDY, Type.MESA, Type.DRY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.TatraMountains,
+                                new SubBiome(WNBiomes.TatraLowerForest, 4, Type.FOREST),
+                                new SubBiome(WNBiomes.TatraUpperForest, 3, Type.FOREST),
+                                new SubBiome(WNBiomes.TatraGreenedPeak,6),
+                                new SubBiome(WNBiomes.TatraRedPeak,2),
+                                new SubBiome(WNBiomes.TatraKasprowyPeak,3, Type.COLD),
+                                new SubBiome(WNBiomes.ChocholowskaGlade, 3, Type.PLAINS),
+                                new SubBiome(WNBiomes.FireweedValley, 4, Type.PLAINS),
+                                new SubBiome(WNBiomes.Giewont,2)
+                        ), false,
+                Type.MOUNTAIN);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.SnowyTatraMountains,
+                                new SubBiome(WNBiomes.SnowyTatraLowerForest, 4, Type.FOREST),
+                                new SubBiome(WNBiomes.SnowyTatraUpperForest, 3, Type.FOREST),
+                                new SubBiome(WNBiomes.SnowyTatraKasprowyPeak,3, Type.COLD),
+                                new SubBiome(WNBiomes.SnowyChocholowskaGlade, 3, Type.PLAINS),
+                                new SubBiome(WNBiomes.SnowyFireweedValley, 4, Type.PLAINS),
+                                new SubBiome(WNBiomes.SnowyGiewont,2),
+                                new SubBiome(WNBiomes.Rysy,1, Type.RARE)
+                        ), false,
+                Type.MOUNTAIN, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7,WNBiomes.BialowiezaForest,
+                                new SubBiome(WNBiomes.BialowiezaMarsh,2, Type.SWAMP, Type.LUSH)
+                        ),
+                Type.FOREST, Type.DENSE, Type.WET, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.BialowiezaForestS,
+                                new SubBiome(WNBiomes.BialowiezaMarshS, 2, Type.SWAMP, Type.LUSH)
+                        ),
+                Type.FOREST, Type.DENSE, Type.WET, Type.COLD, Type.SNOWY, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.SnowyMountains),
+                Type.MOUNTAIN, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.Glacier),
+                Type.MOUNTAIN, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.Himalayas),
+                Type.MOUNTAIN);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.OvergrownCliffs),
+                Type.HILLS, Type.PLATEAU);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.Bog),
+                Type.PLAINS, Type.FOREST, Type.WET, Type.LUSH, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.BorealForest,
+                                new SubBiome(WNBiomes.BorealForestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.BorealValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.SnowyBorealForest,
+                                new SubBiome(WNBiomes.SnowyBorealForestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.SnowyBorealValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.SNOWY, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.SeasonalTaiga),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.PineMixedForest,
+                                new SubBiome(WNBiomes.PineMixedMarsh, 4, Type.SWAMP, Type.LUSH, Type.WET)
+                        ),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.TemperatePineMixedForest),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.Moor,
+                                new SubBiome(WNBiomes.DenseMoor, 3, Type.DENSE, Type.FOREST)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.TucholaForest,
+                                new SubBiome(WNBiomes.DenseTucholaForest, 6, Type.DENSE),
+                                new SubBiome(WNBiomes.TucholaForestHill, 3, Type.HILLS),
+                                new SubBiome(WNBiomes.TucholaValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.SnowyTucholaForest,
+                                new SubBiome(WNBiomes.SnowyDenseTucholaForest, 6, Type.DENSE),
+                                new SubBiome(WNBiomes.SnowyTucholaForestHill, 3, Type.HILLS),
+                                new SubBiome(WNBiomes.SnowyTucholaValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.CONIFEROUS, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Taiga,
+                                new SubBiome(WNBiomes.TaigaHills, 5, Type.HILLS),
+                                new SubBiome(WNBiomes.TaigaValley, 3, Type.PLAINS),
+                                new SubBiome(WNBiomes.TaigaClearing,3, Type.PLAINS),
+                                new SubBiome(WNBiomes.WetTaiga,2,Type.WET, Type.LUSH),
+                                new SubBiome(WNBiomes.TaigaMarsh, 2, Type.WET, Type.LUSH, Type.SWAMP),
+                                new SubBiome(WNBiomes.BerryTaiga, 2, Type.RARE),
+                                new SubBiome(WNBiomes.RockyTaiga,4, Type.HILLS)
+                        ), false,
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.ColdTaiga,
+                                new SubBiome(WNBiomes.ColdTaigaHills, 5, Type.HILLS),
+                                new SubBiome(WNBiomes.ColdTaigaValley, 3, Type.PLAINS),
+                                new SubBiome(WNBiomes.ColdTaigaClearing,3, Type.PLAINS),
+                                new SubBiome(WNBiomes.FrozenTaiga,2,Type.WET, Type.LUSH),
+                                new SubBiome(WNBiomes.ColdTaigaMarsh, 2, Type.WET, Type.LUSH, Type.SWAMP),
+                                new SubBiome(WNBiomes.ColdBerryTaiga, 2, Type.RARE),
+                                new SubBiome(WNBiomes.ColdRockyTaiga,4, Type.HILLS)
+                        ), false,
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.COLD, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Highlands),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Rainforest,
+                                new SubBiome(WNBiomes.RainforestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.RainforestMoor, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.JUNGLE, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Safari,
+                                new SubBiome(WNBiomes.SafariHills, 4, Type.HILLS)
+                        ),
+                Type.PLAINS, Type.DRY, Type.SAVANNA);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.GiantSavanna),
+                Type.FOREST, Type.DRY, Type.SAVANNA);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.BaobabSavanna),
+                Type.SAVANNA, Type.DRY, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.RedwoodForest,
+                                new SubBiome(WNBiomes.RedwoodHills, 4, Type.HILLS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(1, WNBiomes.OldRedwoodForest),
+                Type.FOREST, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.CedarForest),
+                Type.FOREST, Type.DENSE, Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.SnowyCedarForest),
+                Type.FOREST, Type.DENSE, Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.TemperateCedarScrubs),
+                Type.FOREST, Type.DENSE, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.TemperateRedwoodScrubs),
+                Type.FOREST, Type.DENSE, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.CypressFields,
+                                new SubBiome(WNBiomes.CypressHills, 4, Type.HILLS)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.SequoiaForest,
+                                new SubBiome(WNBiomes.SequoiaHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.SequoiaValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.TemperateSequoiaRainforest,
+                                new SubBiome(WNBiomes.TemperateSequoiaRainforestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.TemperateSequoiaRainforestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.WET, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(2, WNBiomes.AutumnalSequoiaRainforest,
+                                new SubBiome(WNBiomes.AutumnalSequoiaRainforestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.AutumnalSequoiaRainforestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.WET, Type.LUSH, Type.COLD, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.Greenwood,
+                                new SubBiome(WNBiomes.GreenwoodHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.GreenwoodValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.RoofedForest,
+                                new SubBiome(WNBiomes.RoofedValley, 4, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.MUSHROOM);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(2, WNBiomes.ChristmasDream),
+                Type.FOREST, Type.DENSE, Type.SNOWY, Type.COLD, Type.CONIFEROUS, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.GiantConiferousForest),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.SnowyGiantConiferousForest),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.COLD, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.AutumnalSpruceForest),
+                Type.FOREST, Type.DENSE, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.BirchGrove),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.SnowyBirchGrove),
+                Type.FOREST, Type.DENSE, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.WeepingBirchForest),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.BirchScrubs,
+                                new SubBiome(WNBiomes.BirchMarsh, 4, Type.HILLS)
+                        ),
+                Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.FlowerField),
+                Type.PLAINS, Type.MAGICAL);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(2, WNBiomes.HyacinthFields),
+                Type.PLAINS, Type.MAGICAL);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(2, WNBiomes.MarigoldFields),
+                Type.PLAINS, Type.MAGICAL);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Meadow,
+                                new SubBiome(WNBiomes.WoodedMeadow, 5, Type.FOREST)
+                        ),
+                Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Sahara,
+                                new SubBiome(WNBiomes.Oasis, 1, Type.WET, Type.LUSH, Type.JUNGLE)),
+                Type.DEAD, Type.SANDY, Type.DRY, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.LushDesert),
+                Type.SANDY, Type.DRY, Type.WET, Type.PLAINS, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.CrackedDesert),
+                Type.DEAD, Type.SANDY, Type.DRY, Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.TintedDesert,
+                                new SubBiome(WNBiomes.TintedDesertHills, 7, Type.HILLS)
+                        ),
+                Type.SANDY, Type.DRY, Type.MAGICAL, Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Badlands,
+                                new SubBiome(WNBiomes.TropicalBadlands, 3, Type.JUNGLE, Type.LUSH)
+                        ),
+                Type.PLAINS, Type.SANDY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.DeadDesolation),
+                Type.PLAINS, Type.DEAD, Type.DRY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.Canyons,
+                                new SubBiome(WNBiomes.GrandCanyon, 4, Type.MOUNTAIN)
+                        ),
+                Type.MESA, Type.SANDY, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.DeciduousForest,
+                                new SubBiome(WNBiomes.ForestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Forest,
+                                new SubBiome(WNBiomes.ForestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.SnowyForest),
+                Type.FOREST, Type.DENSE, Type.SNOWY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.ColdForest),
+                Type.FOREST, Type.DENSE, Type.SNOWY, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.TemperateForest),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.GoldenWoods),
+                Type.FOREST, Type.MAGICAL, Type.PLAINS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(4, WNBiomes.LavenderGarden),
+                Type.FOREST, Type.PLAINS, Type.MAGICAL, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.SaltFlats),
+                Type.PLAINS, Type.DEAD, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.Farmlands),
+                Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(9, WNBiomes.MahoganyRainforest,
+                                new SubBiome(WNBiomes.MahoganyCliffs,4)
+                        ),
+                Type.FOREST, Type.JUNGLE, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.SakuraJungle),
+                Type.FOREST, Type.JUNGLE, Type.MAGICAL, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(10, WNBiomes.Steppe),
+                Type.PLAINS, Type.DRY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.Icelands),
+                Type.MOUNTAIN, Type.COLD);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.Masuria),
+                Type.FOREST, Type.RIVER, Type.WATER, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.Wetlands),
+                Type.PLAINS, Type.WET, Type.LUSH, Type.WATER);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.MangroveForest),
+                Type.FOREST, Type.WATER);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(7, WNBiomes.Backwaters),
+                Type.FOREST, Type.WATER);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.EucalyptusForest),
+                Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.DaintreeForest,
+                                new SubBiome(WNBiomes.DaintreePlateau,3, Type.PLATEAU)
+                        ),
+                Type.FOREST, Type.LUSH, Type.JUNGLE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.DaintreeCliffs,
+                                new SubBiome(WNBiomes.DaintreeForest,2)
+                        ),
+                Type.FOREST, Type.LUSH, Type.JUNGLE, Type.HILLS);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(4, WNBiomes.BananaThicket),
+                Type.JUNGLE, Type.FOREST);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.OliveGarden,
+                                new SubBiome(WNBiomes.OliveHills, 3,Type.HILLS)
+                        ),
+                Type.PLAINS, Type.HOT, Type.SPARSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(8, WNBiomes.HornbeamForest,
+                                new SubBiome(WNBiomes.HornbeamHills,4, Type.HILLS),
+                                new SubBiome(WNBiomes.HornbeamValley,3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.LUSH);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(2, WNBiomes.Mirkwood,
+                                new SubBiome(WNBiomes.DarkMirkwood,3)),
+                Type.FOREST, Type.DENSE, Type.RARE, Type.SPOOKY);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.ThujaShield),
+                Type.FOREST, Type.LUSH, Type.WET);
+
 
         //DICTIONARY
-        registerNonSpawn(River,Type.RIVER,Type.WET,Type.WATER, Type.OVERWORLD);
-        registerNonSpawn(FrozenRiver,Type.RIVER,Type.WET,Type.COLD, Type.SNOWY,Type.WATER, Type.OVERWORLD);
-        registerNonSpawn(NileRiver,Type.RIVER,Type.WET,Type.DRY,Type.HOT,Type.WATER,Type.SANDY, Type.OVERWORLD);
-        registerNonSpawn(AmazonRiver,Type.RIVER,Type.WET,Type.JUNGLE,Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(River, Type.RIVER, Type.WET, Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(FrozenRiver, Type.RIVER, Type.WET, Type.COLD, Type.SNOWY, Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(NileRiver, Type.RIVER, Type.WET, Type.DRY, Type.HOT, Type.WATER, Type.SANDY, Type.OVERWORLD);
+        registerNonSpawn(AmazonRiver, Type.RIVER, Type.WET, Type.JUNGLE, Type.WATER, Type.OVERWORLD);
 
-        registerNonSpawn(WarmLake,Type.RIVER,Type.WET,Type.WATER, Type.OVERWORLD);
-        registerNonSpawn(TropicalLake,Type.RIVER,Type.WET,Type.JUNGLE,Type.WATER, Type.OVERWORLD);
-        registerNonSpawn(FrozenLake,Type.RIVER,Type.WET,Type.COLD, Type.SNOWY,Type.WATER, Type.OVERWORLD);
-        registerNonSpawn(ColdLake,Type.RIVER,Type.WET,Type.COLD,Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(WarmLake, Type.RIVER, Type.WET, Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(TropicalLake, Type.RIVER, Type.WET, Type.JUNGLE, Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(FrozenLake, Type.RIVER, Type.WET, Type.COLD, Type.SNOWY, Type.WATER, Type.OVERWORLD);
+        registerNonSpawn(ColdLake, Type.RIVER, Type.WET, Type.COLD, Type.WATER, Type.OVERWORLD);
 
         //islands
-        registerNonSpawn(ChristmasIsland,Type.SNOWY,Type.COLD,Type.MAGICAL,Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(EasterIsland,Type.PLAINS,Type.WASTELAND,Type.MAGICAL,Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(TropicalIsland,Type.HOT,Type.WET,Type.FOREST,Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(Madagascar,Type.HOT,Type.WET,Type.FOREST,Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(MadagascarValley,Type.HOT,Type.WET,Type.PLAINS,Type.RARE, Type.OVERWORLD);
+        registerNonSpawn(ChristmasIsland, Type.SNOWY, Type.COLD, Type.MAGICAL, Type.RARE, Type.OVERWORLD);
+        registerNonSpawn(EasterIsland, Type.PLAINS, Type.WASTELAND, Type.MAGICAL, Type.RARE, Type.OVERWORLD);
+        registerNonSpawn(TropicalIsland, Type.HOT, Type.WET, Type.FOREST, Type.RARE, Type.OVERWORLD);
+        registerNonSpawn(Madagascar, Type.HOT, Type.WET, Type.FOREST, Type.RARE, Type.OVERWORLD);
+        registerNonSpawn(MadagascarValley, Type.HOT, Type.WET, Type.PLAINS, Type.RARE, Type.OVERWORLD);
 
         BiomeGroups.register();
     }
 
+    public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types) {
+        BiomeTerrain.register(group, canGuess, types);
+    }
 
+    public static void register(BiomeGroup group, BiomeDictionary.Type... types) {
+        BiomeTerrain.register(group, types);
+    }
 
-    public static void register(Biome biome, WNBiomeManager.BiomeType type, int weight, Type... types){//adds biome to biome list that have to spawn naturally.
+    public static void register(BiomeGroup group, boolean canGuess) {
+        BiomeTerrain.register(group, canGuess);
+    }
+
+    public static void register(BiomeGroup group) {
+        BiomeTerrain.register(group);
+    }
+
+    @Deprecated
+    public static void register(Biome biome, WNBiomeManager.BiomeType type, int weight, Type... types) {//adds biome to biome list that have to spawn naturally.
         WN.LOGGER.info("Preparing for registering " + biome.getRegistryName() + " biome to generate naturally...");
-        if(CommonConfig.generateBiomes.get()) {
+        if (CommonConfig.generateBiomes.get()) {
             biomesToRegister.add(new BiomeToRegister(biome, type, weight, types));
             BiomeDictionary.addTypes(biome, types);
         }
         generatorBiomes.add(biome);
     }
 
-    public static void registerNonSpawn(Biome biome, Type... types){//adds biome to biome list that have to spawn naturally.
-        if(CommonConfig.generateBiomes.get()) {
+    public static void registerNonSpawn(Biome biome, Type... types) {//adds biome to biome list that have to spawn naturally.
+        if (CommonConfig.generateBiomes.get()) {
             WN.LOGGER.info("Registering dictionary for unusual biome: " + biome.getRegistryName() + " " + new ArrayList<Type>(Arrays.asList(types)).toString());
             BiomeDictionary.addTypes(biome, types);
         }
         generatorBiomes.add(biome);
     }
 
-    public static void registerAll(){ //adds biome to biome list that have to spawn naturally.
+    public static void registerAll() { //adds biome to biome list that have to spawn naturally.
         WN.LOGGER.info(" ----- Registering " + biomesToRegister.size() + " biomes ----- ");
         biomesToRegister.forEach(BiomeToRegister::registerIt);
         WNGlobalBiomeFeatures.setup();
-        if(!CommonConfig.generateBiomes.get()){
+        if (!CommonConfig.generateBiomes.get()) {
             WN.LOGGER.info("Biome generation is not active");
         }
         WN.LOGGER.info(" -------------------------------------------------------------- ");
     }
 
-    public static void unregisterBlacklisted(){
+    public static void unregisterBlacklisted() {
         ArrayList<BiomeManager.BiomeEntry> b = new ArrayList<>();
         try {
             b.addAll(Objects.requireNonNull(WNBiomeManager.getBiomes(BiomeManager.BiomeType.ICY)));
@@ -564,33 +1026,35 @@ public class WNBiomes {
             WN.LOGGER.debug("entries: " + b.size());
             WN.LOGGER.debug(" -------------------------------------------------------------- ");
             for (BiomeManager.BiomeEntry biomeEntry : b) {
-                if(CommonConfig.blacklistedBiomes.contains(biomeEntry.biome)){
+                if (CommonConfig.blacklistedBiomes.contains(biomeEntry.biome)) {
                     WN.LOGGER.info("Removed blacklisted " + biomeEntry.biome.getRegistryName() + " biome from generation.");
                     WNBiomeManager.removeSpawnBiome(biomeEntry.biome);
-                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.ICY,biomeEntry);
-                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.COOL,biomeEntry);
-                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.WARM,biomeEntry);
-                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.DESERT,biomeEntry);
+                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.ICY, biomeEntry);
+                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.COOL, biomeEntry);
+                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.WARM, biomeEntry);
+                    WNBiomeManager.removeBiome(BiomeManager.BiomeType.DESERT, biomeEntry);
                 }
             }
-        }catch (Exception e){
-            WN.LOGGER.warn("Unable to unregister blacklisted biomes. " + e.getLocalizedMessage());}
+        } catch (Exception e) {
+            WN.LOGGER.warn("Unable to unregister blacklisted biomes. " + e.getLocalizedMessage());
+        }
     }
 
-    public static class BiomeToRegister{
+    public static class BiomeToRegister {
         private Biome biome;
         private WNBiomeManager.BiomeType type;
         private int weight;
         private Type[] types;
-        public BiomeToRegister(Biome biome, WNBiomeManager.BiomeType type, int weight, Type... types){
-            this.biome=biome;
-            this.type=type;
-            this.weight=weight;
-            this.types=types;
+
+        public BiomeToRegister(Biome biome, WNBiomeManager.BiomeType type, int weight, Type... types) {
+            this.biome = biome;
+            this.type = type;
+            this.weight = weight;
+            this.types = types;
         }
 
-        public void registerIt(){
-            if(CommonConfig.blacklistedBiomes.contains(biome)){
+        public void registerIt() {
+            if (CommonConfig.blacklistedBiomes.contains(biome)) {
                 WN.LOGGER.info(biome.getRegistryName() + " is blacklisted.");
 
                 return;

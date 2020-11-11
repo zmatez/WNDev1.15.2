@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.generators.functions.interpolation;
 
+import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
@@ -85,14 +86,14 @@ public class BiomeBlender {
     }
 
     public static double getDepth(float depth){
-        int max = 200; //about 170Y
-        int min = 40; //about 21Y
-        int baseValue = 75; //about 65Y
-
-        float sampledDepth = baseValue * (depth > 0 ? depth + 1 : depth - 1);
-        sampledDepth = Math.min(sampledDepth,max);
-        sampledDepth = Math.max(sampledDepth,min);
-        return sampledDepth;
+        int seaLevel = 63;
+        int maxHeight = 230;
+        int minHeight = 10;
+        if(depth > 0){
+            return Utilities.scaleBetween(depth,seaLevel,maxHeight,0,2);
+        }else{
+            return Utilities.scaleBetween(depth,minHeight,seaLevel,-2,0);
+        }
     }
 
     public static double getScale(float scale){
