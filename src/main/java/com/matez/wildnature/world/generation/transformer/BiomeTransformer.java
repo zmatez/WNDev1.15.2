@@ -17,38 +17,50 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public abstract class BiomeTransformer {
-    public BiomeGroup apply( Cell cell, Terrain terrain){
+    /**
+     * Gets BiomeGroup from BiomeMap (biomeCellIdentity)
+     * @return
+     */
+    public BiomeGroup apply(Cell cell, Terrain terrain){
         return apply(TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.biomeCellIdentity);
     }
-
     protected BiomeGroup apply(TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
         return null;
     }
 
+    /**
+     * Gets Biome from weighted biome list from BiomeGroup (baseBiome * 10, subBiome * subBiome weight). Uses SubBiomeMap
+     * @return Biome
+     */
     public Biome apply(BiomeGroup oldBiome, Cell cell, Terrain terrain){
         return apply(oldBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
     }
-
     protected Biome apply(BiomeGroup oldBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
         return oldBiome.getBaseBiome();
     }
 
+    //Not used anytime yet
     public Biome apply(Biome oldBiome, Cell cell, Terrain terrain){
         return apply(oldBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
     }
-
     protected Biome apply(Biome oldBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
         return oldBiome;
     }
 
+    /**
+     * Used for beaches and other edge biomes
+     * @return
+     */
     public Biome apply(Biome oldCenterBiome,Biome oldNorthBiome,Biome oldSouthBiome,Biome oldEastBiome,Biome oldWestBiome, Cell cell, Terrain terrain){
         return apply(oldCenterBiome, oldNorthBiome, oldSouthBiome, oldEastBiome,oldWestBiome, TempCategory.getFromTemperature(-1,1,cell.temparature), WetCategory.getFromMoisture(-1,1,cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
     }
-
     protected Biome apply(Biome oldCenterBiome,Biome oldNorthBiome,Biome oldSouthBiome,Biome oldEastBiome,Biome oldWestBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity){
         return oldCenterBiome;
     }
 
+    /**
+     * Gets biome from specified identity (mostly SubBiomeIdentity)
+     */
     public Biome getBiome(List<Biome> filteredBiomes, float identity) {
         if(!filteredBiomes.isEmpty()) {
             Biome[] filtered = filteredBiomes.toArray(new Biome[0]);
@@ -60,6 +72,9 @@ public abstract class BiomeTransformer {
         return Biomes.OCEAN;
     }
 
+    /**
+     * Gets biome group from specified identity (mostly BiomeIdentity)
+     */
     public BiomeGroup getBiomeGroup(List<BiomeGroup> filteredBiomes, float identity) {
         if(!filteredBiomes.isEmpty()) {
             BiomeGroup[] filtered = filteredBiomes.toArray(new BiomeGroup[0]);

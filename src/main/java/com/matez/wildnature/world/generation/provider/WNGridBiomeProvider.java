@@ -5,7 +5,6 @@ import com.matez.wildnature.world.generation.biome.setup.EnumBiomes;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
-import com.matez.wildnature.world.generation.layer.cell.WNGridLayerUtil;
 import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
@@ -45,10 +44,6 @@ public class WNGridBiomeProvider extends BiomeProvider {
             }
         }
         return biomeSet;
-    }
-
-    public Layer initLayer(){
-        return WNGridLayerUtil.createLayer(settings.getSeed(), settings.getWorldType(), settings.getGeneratorSettings());
     }
 
     public Cell getNoiseCell(int x, int z){

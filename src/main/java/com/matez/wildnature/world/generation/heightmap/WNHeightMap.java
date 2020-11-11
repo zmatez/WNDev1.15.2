@@ -42,6 +42,9 @@ public class WNHeightMap {
         climateMap.apply(cell, x, z);
     }
 
+    /**
+     * Applies identifies in cell for all specified maps.
+     */
     public void apply(Cell cell, int dx, int dz) {
         terrainMap.apply(cell, dx, dz);
         biomeMap.apply(cell, dx, dz);

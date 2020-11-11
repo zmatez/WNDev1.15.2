@@ -8,6 +8,11 @@ public class SubBiome {
     private final int weight;
     private BiomeDictionary.Type[] addionalTypes;
 
+    /**
+     * @param biome specified biome
+     * @param weight biome * weight later in weighted array (biome rarity)
+     * @param addionalTypes biome dictionary types applied to BiomeGroup types (so biomegroup types + addionalTypes *only* for this biome)
+     */
     public SubBiome(Biome biome, int weight, BiomeDictionary.Type... addionalTypes){
         this.biome = biome;
         this.weight = weight;

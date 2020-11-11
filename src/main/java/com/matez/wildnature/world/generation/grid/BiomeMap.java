@@ -14,6 +14,10 @@ public class BiomeMap {
     private final float edgeRange;
     private final int seed;
 
+    /**
+     * Used to produce BiomeGroup cells (base biomes + subbiomes (used in SubBiomeMap later))
+     * @param seed world seed
+     */
     public BiomeMap(long seed){
         this.gridScale = 2500; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;

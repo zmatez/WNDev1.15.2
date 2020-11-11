@@ -21,6 +21,12 @@ public class GridBiomeLayer {
         this.provider = provider;
     }
 
+    /**
+     * Get biomes at certain position, applying transformers
+     * @param x
+     * @param z
+     * @return
+     */
     public Biome getBiome(int x, int z){
         Cell cell = provider.getNoiseCell(x,z);
         Terrain terrain = provider.getNoiseTerrain(cell, x,z);
@@ -38,15 +44,21 @@ public class GridBiomeLayer {
         return biome;
     }
 
+    //BiomeTransformers here
     private final BiomeTransformer mainBiomeTransformer = new MainBiomeTransformer();
     private final BiomeTransformer mainSubBiomeTransformer = new MainSubbiomeTransformer();
     private final BiomeTransformer shoreTransformer = new ShoreTransformer();
 
+    /**
+     * Used to apply biomes from biome/subbiome maps
+     * Directional Cells are used to determine nearby biomes. For example for edge transformers (to produce Beaches)
+     * @return final biome
+     */
     public Biome applyTransformers(int x, int z, Cell cell, Cell northCell, Cell southCell, Cell eastCell, Cell westCell, Terrain terrain, Terrain northTerrain, Terrain southTerrain, Terrain eastTerrain, Terrain westTerrain){
         BiomeGroup biomeGroup = null, northBiomeGroup, southBiomeGroup, westBiomeGroup, eastBiomeGroup;
 
+        //Gets BiomeGroup (so baseBiome + all subbiomes) to filter terrain later. Uses BiomeMap. BiomeGroups are registered in WNBiomes by BiomeTerrain.
         biomeGroup = mainBiomeTransformer.apply(cell,terrain);
-
         if(northCell == cell && northTerrain == terrain){
             northBiomeGroup = biomeGroup;
         }else {
@@ -68,6 +80,7 @@ public class GridBiomeLayer {
             westBiomeGroup = mainBiomeTransformer.apply(westCell, westTerrain);
         }
 
+        //Gets final Biome from BiomeGroup. Uses SubbiomeMap
         Biome biome = mainSubBiomeTransformer.apply(biomeGroup,cell,terrain);
         Biome northBiome, southBiome, eastBiome, westBiome;
         if(biomeGroup == northBiomeGroup){
@@ -91,6 +104,7 @@ public class GridBiomeLayer {
             westBiome = mainSubBiomeTransformer.apply(westBiomeGroup,westCell,westTerrain);;
         }
 
+        //Applies beaches to ocean edges (W.I.P)
         biome = shoreTransformer.apply(biome,northBiome,southBiome,eastBiome,westBiome,cell,terrain);
 
 

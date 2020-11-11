@@ -9,11 +9,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BiomeGroup {
+
     private int weight;
     private Biome baseBiome;
     private SubBiome[] subBiomes;
     private Biome[] weightedBiomes;
 
+    /**
+     * @param weight group weight. Later makes this entry * weight in weighted array (basically BiomeGroup rarity)
+     * @param baseBiome base biome of the group
+     * @param subBiomes all subBiomes in the group
+     */
     private BiomeGroup(int weight, Biome baseBiome, SubBiome... subBiomes){
         this.weight = weight;
         this.baseBiome = baseBiome;
@@ -33,6 +39,10 @@ public class BiomeGroup {
         return weight;
     }
 
+    /**
+     * Initializes WeightedBiomeArray
+     * @return biome array. BaseBiome * 10 + for each subbiome: subBiome * it's weight.
+     */
     public Biome[] initWeightedBiomes(){
         ArrayList<Biome> biomeGroups = new ArrayList<>();
         for (SubBiome subBiome : getSubBiomes()) {
@@ -48,6 +58,9 @@ public class BiomeGroup {
         return biomeGroups.toArray(new Biome[0]);
     }
 
+    /**
+     * @return weighted biome array from initWeightedBiomes() method.
+     */
     public Biome[] getWeightedBiomes(){
         return weightedBiomes;
     }
@@ -61,6 +74,15 @@ public class BiomeGroup {
                 '}';
     }
 
+    /**
+     * Guesses BiomeGroups for certain terrain type. For example for LOWLANDS will be guessed only BiomeGroups with certain depth
+     * However if some of BiomeGroups subbiome matches one terrain category more or less, then it starts being biome group baseBiome (basically switches baseBiome with matching biome).
+     * It's complicated
+     * @param category Terrain category
+     * @param allowedTypes allowed types that baseBiome *must* contain *all*.
+     * @param deniedTypes denied types. BaseBiome from group cannot contain *any* of them in order to be passed.
+     * @return guessed biome groups
+     */
     public static BiomeGroup[] guess(Terrain.Category category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes){
         ArrayList<BiomeGroup> groups = new ArrayList<>();
         //Terrain.Category categoryBefore = category.getIndex() == 0 ? category : Terrain.Category.getByIndex(category.getIndex() - 1);
@@ -189,6 +211,9 @@ public class BiomeGroup {
         }
     }
 
+    /**
+     * Biome groups builder. See OceanTerrain for usages
+     */
     public static class Builder{
         private ArrayList<BiomeGroup> groups = new ArrayList<>();
 
@@ -210,6 +235,9 @@ public class BiomeGroup {
         }
     }
 
+    /**
+     * Biome group builder. See WNBiomes for usages (registerALl method)
+     */
     public static class SingleBuilder{
         public static BiomeGroup configure(int weight, Biome baseBiome, SubBiome... subBiomes){
             return new BiomeGroup(weight,baseBiome,subBiomes);

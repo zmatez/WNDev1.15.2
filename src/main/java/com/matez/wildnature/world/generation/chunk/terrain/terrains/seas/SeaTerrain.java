@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans;
+package com.matez.wildnature.world.generation.chunk.terrain.terrains.seas;
 
 import com.matez.wildnature.world.generation.biome.setup.BiomeGroup;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
@@ -14,7 +14,7 @@ public class SeaTerrain extends Terrain {
     @Override
     public BiomeGroup[] getBiomeGroups() {
         return new BiomeGroup.Builder()
-                .add(Biomes.LUKEWARM_OCEAN)
+                .add(Biomes.LUKEWARM_OCEAN)/*temporary biome*/
                 .build();
     }
 }

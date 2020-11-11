@@ -19,12 +19,11 @@ public class TerrainMap{
     private final FastNoise warpY;
     private final Warp warp;
 
+    /**
+     * Used to produce terrains
+     * @param seed world seed
+     */
     public TerrainMap(long seed){
-        /**
-         *  For biomes, copy pasta and add a smaller scale.
-         *  For cliffs add a FastNoise noise and add CelledgeNoise
-         *  cell.cellEdge * fastnoise output. (I placed this somewhere else (terrainlerper) as I might want to make it more configurable)
-         */
         this.gridScale = 10_000; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;
 

@@ -10,7 +10,7 @@ import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.mountai
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.shores.ShoresTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.DeepOceanTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.OceanTerrain;
-import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.SeaTerrain;
+import com.matez.wildnature.world.generation.chunk.terrain.terrains.seas.SeaTerrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 
 import java.util.ArrayList;

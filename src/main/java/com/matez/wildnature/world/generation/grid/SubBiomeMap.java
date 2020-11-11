@@ -14,6 +14,10 @@ public class SubBiomeMap {
     private final float edgeRange;
     private final int seed;
 
+    /**
+     * Used to produce output biomes, based on BiomeGroups from BiomeMap.
+     * @param seed world seed
+     */
     public SubBiomeMap(long seed){
         this.gridScale = 500; //temp value until I make settings.
         this.frequency = 1F / gridScale * 4;

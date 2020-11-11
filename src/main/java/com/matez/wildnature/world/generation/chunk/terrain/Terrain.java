@@ -9,10 +9,10 @@ import java.util.ArrayList;
 public abstract class Terrain {
     private final String name;
     private final Category terrainCategory;
-    private final BiomeTransformer.TempCategory tempCategory;
-    private final BiomeTransformer.WetCategory wetCategory;
-    public float temparature;
-    public float moisture;
+    private final BiomeTransformer.TempCategory tempCategory; //used nowhere
+    private final BiomeTransformer.WetCategory wetCategory; //used nowhere
+    public float temparature; //used nowhere
+    public float moisture; //used nowhere
     public BiomeGroup[] weightedBiomeGroups;
 
     public Terrain(String name, TerrainBuilder builder){
@@ -22,6 +22,9 @@ public abstract class Terrain {
         this.wetCategory = builder.getWetCategory();
     }
 
+    /**
+     * Init of terrain
+     */
     public void init(){
         initWeightedBiomeGroups();
     }
@@ -34,18 +37,26 @@ public abstract class Terrain {
         return terrainCategory;
     }
 
+    @Deprecated
     public BiomeTransformer.TempCategory getTempCategory() {
         return tempCategory;
     }
 
+    @Deprecated
     public BiomeTransformer.WetCategory getWetCategory() {
         return wetCategory;
     }
 
+    /**
+     * @return BiomeGroups for certain Terrain (base biome + all subbiomes)
+     */
     public BiomeGroup[] getBiomeGroups(){
         return new BiomeGroup[0];
     }
 
+    /**
+     * Initializes biome groups - creates a weighted array (each entry * it's weight) and saves to weightedBiomeGroups
+     */
     private void initWeightedBiomeGroups(){
         WN.LOGGER.debug("Init weighted biome groups");
         ArrayList<BiomeGroup> biomeGroups = new ArrayList<>();
@@ -58,6 +69,9 @@ public abstract class Terrain {
         WN.LOGGER.debug("Inited: " + weightedBiomeGroups.hashCode());
     }
 
+    /**
+     * @return Biome groups (base biome + subbiomes), as a weighted array (see initWeightedBiomeGroups method)
+     */
     public BiomeGroup[] getWeightedBiomeGroups(){
         if(weightedBiomeGroups == null){
             WN.LOGGER.fatal("WeightedBiomeGroups is null!");
@@ -65,6 +79,10 @@ public abstract class Terrain {
         return weightedBiomeGroups;
     }
 
+    /**
+     * TerrainBuilder - used for constructing each terrain class
+     * note: tempCategory and wetCategory are deprecated atm, they do nothing
+     */
     public static class TerrainBuilder{
         private Category terrainCategory;
         private BiomeTransformer.TempCategory tempCategory;

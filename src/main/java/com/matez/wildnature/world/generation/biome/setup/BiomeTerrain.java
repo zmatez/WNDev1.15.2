@@ -7,16 +7,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BiomeTerrain {
+    /**
+     * Terrain registry
+     */
     public static ArrayList<BiomeTerrain> terrains = new ArrayList<>();
 
+    /**
+     * Registeres a BiomeGroup
+     * @param group BiomeGroup (baseBiome + all subbiomes)
+     * @param canGuess can be guessed by BiomeGroup.guess()
+     * @param types biome dictionary. Applies to all biomes in group
+     */
     public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types){
         ArrayList<BiomeDictionary.Type> ovTypes = new ArrayList<>(Arrays.asList(types));
+        //terraforged needs it:
         ovTypes.add(BiomeDictionary.Type.OVERWORLD);
         terrains.add(new BiomeTerrain(group,canGuess,ovTypes.toArray(new BiomeDictionary.Type[0])));
     }
 
     public static void register(BiomeGroup group, BiomeDictionary.Type... types){
         ArrayList<BiomeDictionary.Type> ovTypes = new ArrayList<>(Arrays.asList(types));
+        //terraforged needs it:
         ovTypes.add(BiomeDictionary.Type.OVERWORLD);
         terrains.add(new BiomeTerrain(group,true,ovTypes.toArray(new BiomeDictionary.Type[0])));
     }
