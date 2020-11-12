@@ -2,10 +2,8 @@ package com.matez.wildnature.world.generation.heightmap;
 
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.terrain.TerrainProvider;
-import com.matez.wildnature.world.generation.grid.BiomeMap;
+import com.matez.wildnature.world.generation.grid.maps.*;
 import com.matez.wildnature.world.generation.grid.Cell;
-import com.matez.wildnature.world.generation.grid.SubBiomeMap;
-import com.matez.wildnature.world.generation.grid.TerrainMap;
 import com.matez.wildnature.world.generation.heightmap.modules.ContinentGenerator;
 import com.matez.wildnature.world.generation.maps.ClimateMap;
 
@@ -14,9 +12,14 @@ public class WNHeightMap {
     private final long seed;
     private final ContinentGenerator continentGenerator;
     private final Cell cell;
-    public final TerrainMap terrainMap;
-    public final BiomeMap biomeMap;
-    public final SubBiomeMap subBiomeMap;
+
+    //maps
+    public final GridMap terrainMap;
+    public final GridMap biomeMap;
+    public final GridMap subBiomeMap;
+    public final GridMap smallIslandMap;
+    public final GridMap bigIslandMap;
+
     private final TerrainProvider terrainProvider;
     private final ClimateMap climateMap;
 
@@ -25,9 +28,12 @@ public class WNHeightMap {
         this.seed = context.getSeed();
         this.cell = context.getCell();
         this.continentGenerator = new ContinentGenerator(seed);
+
         this.terrainMap = new TerrainMap(seed);
         this.biomeMap = new BiomeMap(seed);
         this.subBiomeMap = new SubBiomeMap(seed);
+        this.smallIslandMap = new SmallIslandMap(seed);
+        this.bigIslandMap = new BigIslandMap(seed);
 
         this.terrainProvider = context.getTerrainProvider();
         this.climateMap = new ClimateMap();
@@ -49,6 +55,8 @@ public class WNHeightMap {
         terrainMap.apply(cell, dx, dz);
         biomeMap.apply(cell, dx, dz);
         subBiomeMap.apply(cell, dx, dz);
+        smallIslandMap.apply(cell,dx,dz);
+        bigIslandMap.apply(cell,dx,dz);
 
         applyContinent(cell, dx, dz);
         applyClimate(cell, dx, dz);

@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.setup;
+package com.matez.wildnature.world.generation.biome.setup.deprecated;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.BiomeWeighList;

@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.setup;
+package com.matez.wildnature.world.generation.biome.setup.deprecated;
 
 import java.util.ArrayList;
 import java.util.Iterator;

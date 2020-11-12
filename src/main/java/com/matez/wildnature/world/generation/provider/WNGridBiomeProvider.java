@@ -1,7 +1,5 @@
 package com.matez.wildnature.world.generation.provider;
 
-import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.world.generation.biome.setup.EnumBiomes;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
@@ -9,8 +7,6 @@ import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.biome.provider.OverworldBiomeProviderSettings;
-import net.minecraft.world.gen.layer.Layer;
-import net.minecraft.world.gen.layer.LayerUtil;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.registries.ForgeRegistries;
 

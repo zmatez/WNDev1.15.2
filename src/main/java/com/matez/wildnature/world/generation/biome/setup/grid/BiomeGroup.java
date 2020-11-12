@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.setup;
+package com.matez.wildnature.world.generation.biome.setup.grid;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BiomeGroup {
-
+    private String name;
     private int weight;
     private Biome baseBiome;
     private SubBiome[] subBiomes;
@@ -20,11 +20,16 @@ public class BiomeGroup {
      * @param baseBiome base biome of the group
      * @param subBiomes all subBiomes in the group
      */
-    private BiomeGroup(int weight, Biome baseBiome, SubBiome... subBiomes){
+    private BiomeGroup(String name, int weight, Biome baseBiome, SubBiome... subBiomes){
+        this.name = name;
         this.weight = weight;
         this.baseBiome = baseBiome;
         this.subBiomes = subBiomes;
         this.weightedBiomes = initWeightedBiomes();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Biome getBaseBiome() {
@@ -148,7 +153,7 @@ public class BiomeGroup {
                 }else if(weight < 0){
                     continue;
                 }
-                newGroup = new BiomeGroup(weight, maxBiome.getBiome(), subBiomes.toArray(new SubBiome[0]));
+                newGroup = new BiomeGroup(group.getName(), weight, maxBiome.getBiome(), subBiomes.toArray(new SubBiome[0]));
             }else if(minBiomeCategory == category){
                 subBiomes.remove(minBiome);
                 subBiomes.add(new SubBiome(group.getBaseBiome(),minBiome.getWeight()));
@@ -158,7 +163,7 @@ public class BiomeGroup {
                 }else if(weight < 0){
                     continue;
                 }
-                newGroup = new BiomeGroup(weight, minBiome.getBiome(), subBiomes.toArray(new SubBiome[0]));
+                newGroup = new BiomeGroup(group.getName(), weight, minBiome.getBiome(), subBiomes.toArray(new SubBiome[0]));
             }
 
             if(newGroup != null){
@@ -218,7 +223,7 @@ public class BiomeGroup {
         private ArrayList<BiomeGroup> groups = new ArrayList<>();
 
         public Builder add(int weight, Biome baseBiome, SubBiome... subBiomes){
-            groups.add(new BiomeGroup(weight,baseBiome, subBiomes));
+            add("",weight,baseBiome,subBiomes);
             return this;
         }
 
@@ -226,7 +231,20 @@ public class BiomeGroup {
          * default weight = 10
          */
         public Builder add(Biome baseBiome, SubBiome... subBiomes){
-            groups.add(new BiomeGroup(10,baseBiome, subBiomes));
+            add("",baseBiome,subBiomes);
+            return this;
+        }
+
+        public Builder add(String groupName, int weight, Biome baseBiome, SubBiome... subBiomes){
+            groups.add(new BiomeGroup(groupName,weight,baseBiome, subBiomes));
+            return this;
+        }
+
+        /**
+         * default weight = 10
+         */
+        public Builder add(String groupName, Biome baseBiome, SubBiome... subBiomes){
+            groups.add(new BiomeGroup(groupName,10,baseBiome, subBiomes));
             return this;
         }
 
@@ -240,14 +258,25 @@ public class BiomeGroup {
      */
     public static class SingleBuilder{
         public static BiomeGroup configure(int weight, Biome baseBiome, SubBiome... subBiomes){
-            return new BiomeGroup(weight,baseBiome,subBiomes);
+            return configure("",weight,baseBiome,subBiomes);
         }
 
         /**
          * default weight = 10
          */
         public static BiomeGroup configure(Biome baseBiome, SubBiome... subBiomes){
-            return new BiomeGroup(10,baseBiome,subBiomes);
+            return configure("",baseBiome,subBiomes);
+        }
+
+        public static BiomeGroup configure(String groupName, int weight, Biome baseBiome, SubBiome... subBiomes){
+            return new BiomeGroup(groupName,weight,baseBiome,subBiomes);
+        }
+
+        /**
+         * default weight = 10
+         */
+        public static BiomeGroup configure(String groupName, Biome baseBiome, SubBiome... subBiomes){
+            return new BiomeGroup(groupName,10,baseBiome,subBiomes);
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.chunk.terrain;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.world.generation.biome.setup.BiomeGroup;
+import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public abstract class Terrain {
      */
     public BiomeGroup[] getWeightedBiomeGroups(){
         if(weightedBiomeGroups == null){
-            WN.LOGGER.fatal("WeightedBiomeGroups is null!");
+            WN.LOGGER.fatal("WeightedBiomeGroups is null: " + terrainCategory + " " + getName());
         }
         return weightedBiomeGroups;
     }

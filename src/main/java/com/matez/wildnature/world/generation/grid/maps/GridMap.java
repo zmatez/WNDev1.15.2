@@ -1,11 +1,14 @@
-package com.matez.wildnature.world.generation.grid;
+package com.matez.wildnature.world.generation.grid.maps;
 
-import com.matez.wildnature.util.noise.NoiseUtil;
-import com.matez.wildnature.util.noise.Vec2f;
+import com.matez.wildnature.util.noise.domain.Warp;
 import com.matez.wildnature.util.noise.func.DistanceFunc;
 import com.matez.wildnature.util.noise.func.EdgeFunc;
+import com.matez.wildnature.util.noise.NoiseUtil;
+import com.matez.wildnature.util.noise.Vec2f;
+import com.matez.wildnature.world.generation.grid.Cell;
+import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 
-public class SubBiomeMap {
+public abstract class GridMap{
     protected final float frequency;
     protected final int gridScale;
 
@@ -13,31 +16,46 @@ public class SubBiomeMap {
     private final float edgeMax;
     private final float edgeRange;
     private final int seed;
+    private final FastNoise warpX;
+    private final FastNoise warpY;
+    private final Warp warp;
 
     /**
-     * Used to produce output biomes, based on BiomeGroups from BiomeMap.
+     * Used to produce terrains
      * @param seed world seed
      */
-    public SubBiomeMap(long seed){
-        this.gridScale = 500; //temp value until I make settings.
-        this.frequency = 1F / gridScale * 4;
+    public GridMap(long seed, int gridScale, float frequency){
+        this.gridScale = gridScale;
+        this.frequency = frequency;
 
         edgeMin = 0F;
         edgeMax = 1F;
         edgeRange = edgeMax - edgeMin;
 
         this.seed = (int)seed;
+
+        this.warpX = getWarpX();
+        this.warpY = getWarpY();
+
+        this.warp = new Warp(warpX, warpY, 64); //Warping too intense will bring back your old lerping issue as blobs off cells will be placed in other cells.
     }
 
-    public void apply(Cell cell, float x, float y) {
-        /*
-        Removed the warp for now, I will add that back in later again for you.
-         */
-        float ox = x; //unwarped
-        float oz = y; //unwarped
+    public GridMap(long seed, int gridScale){
+        this(seed,gridScale,1F / gridScale * 4);
+    }
+
+    public abstract FastNoise getWarpX();
+
+    public abstract FastNoise getWarpY();
+
+    public abstract CellValues applyOutput();
+
+    public void apply(Cell cell, float x, float z) {
+        float ox = warp.getOffsetX(x, z);
+        float oz = warp.getOffsetZ(x, z);
 
         float px = x + ox;
-        float py = y + oz;
+        float py = z + oz;
 
         px *= frequency;
         py *= frequency;
@@ -50,11 +68,6 @@ public class SubBiomeMap {
         float edgeDistance = 999999.0F;
         float edgeDistance2 = 999999.0F;
         float valueDistance = 999999.0F;
-
-        /**
-         * Euclidian might be slightly better suited for smaller biome cells
-         */
-
         DistanceFunc dist = DistanceFunc.NATURAL;
         Vec2f center = NoiseUtil.CELL_2D[NoiseUtil.hash2D(seed, xr, yr) & 255];
 
@@ -86,10 +99,17 @@ public class SubBiomeMap {
             }
         }
 
-        cell.subBiomeCellIdentity = cellValue(seed, cellX, cellY);
-        cell.subBiomeCellEdge = edgeValue(edgeDistance, edgeDistance2);
-        cell.subBiomeCellX = (int) ((cellX + center.x) / frequency);
-        cell.subBiomeCellZ = (int) ((cellY + center.y) / frequency);
+        /*cell.terrainCellIdentity = cellValue(seed, cellX, cellY);
+        cell.terrainCellEdge = edgeValue(edgeDistance, edgeDistance2);
+        cell.terrainCellX = (int) ((cellX + center.x) / frequency);
+        cell.terrainCellZ = (int) ((cellY + center.y) / frequency);*/
+
+        applyOutput().apply(cell,
+                cellValue(seed, cellX, cellY),
+                edgeValue(edgeDistance, edgeDistance2),
+                (int) ((cellX + center.x) / frequency),
+                (int) ((cellY + center.y) / frequency)
+                );
     }
 
     private float cellValue(int seed, int cellX, int cellY) {
@@ -114,4 +134,8 @@ public class SubBiomeMap {
         return (edgeValue - edgeMin) / edgeRange;
     }
 
+
+    public static interface CellValues{
+        public void apply(Cell cell, float cellIdentity, float cellEdge, int cellX, int cellZ);
+    }
 }

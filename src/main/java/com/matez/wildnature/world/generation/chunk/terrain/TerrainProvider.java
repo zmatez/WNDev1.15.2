@@ -29,14 +29,14 @@ public class TerrainProvider {
     }
 
     private void registerTerrains() {
-        register(new HighlandTerrain());
+        register(new DeepOceanTerrain());
+        register(new OceanTerrain());
+        register(new SeaTerrain());
+        register(new ShoresTerrain());
         register(new LowlandTerrain());
         register(new MidlandTerrain());
+        register(new HighlandTerrain());
         register(new MountainTerrain());
-        register(new ShoresTerrain());
-        register(new OceanTerrain());
-        register(new DeepOceanTerrain());
-        register(new SeaTerrain());
     }
 
     private void register(Terrain terrain){
@@ -53,31 +53,31 @@ public class TerrainProvider {
     public Terrain[] filterTerrains(Cell cell) {
         List<Terrain> filter = new ArrayList<>();
         for (Terrain terrain : terrains) {
-            if (cell.cellContinent > 0.95F) {
+            if (cell.cellContinent >= 0.95F) {
                 if (terrain.getTerrainCategory() == Terrain.Category.MOUNTAINS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.88F && cell.cellContinent < 0.95F) {
+            } else if (cell.cellContinent >= 0.88F && cell.cellContinent < 0.95F) {
                 if (terrain.getTerrainCategory() == Terrain.Category.HIGHLANDS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.53F && cell.cellContinent < 0.88F) {
+            } else if (cell.cellContinent >= 0.53F && cell.cellContinent < 0.88F) {
                 if (terrain.getTerrainCategory() == Terrain.Category.MIDLANDS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.30F && cell.cellContinent < 0.53F) {
+            } else if (cell.cellContinent >= 0.30F && cell.cellContinent < 0.53F) {
                 if (terrain.getTerrainCategory() == Terrain.Category.LOWLANDS) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.15F && cell.cellContinent < 0.3F) {
+            } else if (cell.cellContinent >= 0.15F && cell.cellContinent < 0.3F) {
                 if (terrain.getTerrainCategory() == Terrain.Category.SHORE) {
                     filter.add(terrain);
                 }
-            } else if (cell.cellContinent > 0.1F && cell.cellContinent < 0.15F) {
+            } else if (cell.cellContinent >= 0.1F && cell.cellContinent < 0.15F) {
                 if (terrain.getTerrainCategory() == Terrain.Category.SEA) {
                     filter.add(terrain);
                 }
-            } else if(cell.cellContinent > 0.05F && cell.cellContinent < 0.1F){
+            } else if(cell.cellContinent >= 0.05F && cell.cellContinent < 0.1F){
                 if (terrain.getTerrainCategory() == Terrain.Category.OCEAN) {
                     filter.add(terrain);
                 }
@@ -88,7 +88,8 @@ public class TerrainProvider {
             }
         }
         if(filter.isEmpty()){
-            filter.add(new LowlandTerrain());
+            WN.LOGGER.warn("Terrain list is empty - continent: " + cell.cellContinent + " | Applying " + terrains.get(0).getName());
+            filter.add(terrains.get(0));
         }
 
         return filter.toArray(new Terrain[0]);

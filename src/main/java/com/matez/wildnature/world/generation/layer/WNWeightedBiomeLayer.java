@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.layer;
 
-import com.matez.wildnature.world.generation.biome.setup.EnumBiomes;
+import com.matez.wildnature.world.generation.biome.setup.deprecated.EnumBiomes;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.IExtendedNoiseRandom;

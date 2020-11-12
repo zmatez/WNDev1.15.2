@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.transformer.transformers;
 
-import com.matez.wildnature.world.generation.biome.setup.BiomeGroup;
+import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;

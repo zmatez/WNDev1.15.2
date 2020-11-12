@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.setup;
+package com.matez.wildnature.world.generation.biome.setup.grid;
 
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;

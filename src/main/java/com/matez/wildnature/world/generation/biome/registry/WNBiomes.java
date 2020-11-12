@@ -4,17 +4,18 @@ import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.biome.biomes.*;
 import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
-import com.matez.wildnature.world.generation.biome.setup.*;
+import com.matez.wildnature.world.generation.biome.setup.deprecated.BiomeGroups;
+import com.matez.wildnature.world.generation.biome.setup.deprecated.EnumBiomes;
+import com.matez.wildnature.world.generation.biome.setup.grid.*;
 import com.matez.wildnature.world.generation.manager.WNBiomeManager;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.biome.ColumnFuzzedBiomeMagnifier;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 public class WNBiomes {
     public static ArrayList<Biome> biomes = new ArrayList<>();
@@ -374,7 +375,14 @@ public class WNBiomes {
     public static Biome WhiteBeach = new WNWhiteBeach("white_beach");
     //public static Biome BeachCliffs = new WNBeachCliff("beach_cliffs");
 
-    public static void registerBiomes() {
+    public static void registerAllBiomes(){
+        registerWildNature();
+        registerVanilla();
+        registerEdges();
+        registerIslands();
+    }
+
+    private static void registerWildNature() {
         register(BiomeGroup.SingleBuilder
                         .configure(8, WNBiomes.Oaklands,
                                 new SubBiome(WNBiomes.OaklandHills, 4, Type.HILLS),
@@ -969,7 +977,7 @@ public class WNBiomes {
         BiomeGroups.register();
     }
 
-    public static void registerVanilla(){
+    private static void registerVanilla(){
         register(BiomeGroup.SingleBuilder
                         .configure(10, Biomes.PLAINS,
                                 new SubBiome(Biomes.SUNFLOWER_PLAINS,1,Type.RARE)
@@ -1020,7 +1028,7 @@ public class WNBiomes {
                 Type.MOUNTAIN, Type.SNOWY);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(10, Biomes.JUNGLE,
+                        .configure("jungle",10, Biomes.JUNGLE,
                                 new SubBiome(Biomes.JUNGLE_HILLS,4, Type.HILLS),
                                 new SubBiome(Biomes.MODIFIED_JUNGLE,2, Type.MODIFIED)
                         ),
@@ -1076,7 +1084,7 @@ public class WNBiomes {
                 Type.MOUNTAIN, Type.CONIFEROUS, Type.FOREST, Type.SNOWY);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(5, Biomes.BAMBOO_JUNGLE,
+                        .configure("bamboo_jungle",5, Biomes.BAMBOO_JUNGLE,
                                 new SubBiome(Biomes.BAMBOO_JUNGLE_HILLS,3, Type.HILLS)
                         ),
                 Type.JUNGLE, Type.LUSH);
@@ -1102,31 +1110,94 @@ public class WNBiomes {
                 Type.SAVANNA, Type.HILLS);
     }
 
+    private static void registerEdges(){
+        EdgeBiome.register(Biomes.JUNGLE_EDGE,BiomeTerrain.getGroupByName("jungle"));
+        EdgeBiome.register(Biomes.JUNGLE_EDGE,BiomeTerrain.getGroupByName("bamboo_jungle"));
+    }
+
+    private static void registerIslands(){
+        Biome[] hot_deep_oceans = new Biome[]{
+                Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_WARM_OCEAN
+        };
+        Biome[] cold_deep_oceans = new Biome[]{
+                Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN
+        };
+        Biome[] temperate_deep_oceans = new Biome[]{
+                Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_COLD_OCEAN
+        };
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure(WNBiomes.EasterIsland), 2, IslandBiome.IslandType.BIG, temperate_deep_oceans, Type.PLAINS, Type.RARE, Type.WATER
+        );
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure(WNBiomes.TropicalIsland,
+                    new SubBiome(WNBiomes.TropicalCliffs,4,Type.HILLS)
+                ), 5, IslandBiome.IslandType.BIG, hot_deep_oceans, Type.JUNGLE, Type.LUSH, Type.WET, Type.RARE, Type.WATER
+        );
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure(WNBiomes.ChristmasIsland), 5, IslandBiome.IslandType.BIG, cold_deep_oceans, Type.COLD, Type.CONIFEROUS, Type.MAGICAL, Type.SNOWY, Type.WATER
+        );
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure(WNBiomes.Madagascar,
+                        new SubBiome(WNBiomes.MadagascarValley,3,Type.PLAINS)
+                ), 4, IslandBiome.IslandType.BIG, hot_deep_oceans, Type.FOREST, Type.DENSE, Type.JUNGLE, Type.LUSH
+        );
+
+    }
+
     public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types) {
+        putToRegistry(group);
         BiomeTerrain.register(group, canGuess, types);
     }
 
     public static void register(BiomeGroup group, BiomeDictionary.Type... types) {
+        putToRegistry(group);
         BiomeTerrain.register(group, types);
     }
 
     public static void register(BiomeGroup group, boolean canGuess) {
+        putToRegistry(group);
         BiomeTerrain.register(group, canGuess);
     }
 
     public static void register(BiomeGroup group) {
+        putToRegistry(group);
         BiomeTerrain.register(group);
     }
 
-    @Deprecated
-    public static void register(Biome biome, WNBiomeManager.BiomeType type, int weight, Type... types) {//adds biome to biome list that have to spawn naturally.
-        WN.LOGGER.info("Preparing for registering " + biome.getRegistryName() + " biome to generate naturally...");
-        if (CommonConfig.generateBiomes.get()) {
-            biomesToRegister.add(new BiomeToRegister(biome, type, weight, types));
-            BiomeDictionary.addTypes(biome, types);
+    private static void putToRegistry(BiomeGroup group, BiomeDictionary.Type... types){
+        boolean containsBaseBiome = false;
+        for (BiomeToRegister biomeToRegister : biomesToRegister) {
+            if(biomeToRegister.biome == group.getBaseBiome()){
+                containsBaseBiome = true;
+                break;
+            }
         }
-        generatorBiomes.add(biome);
+
+        if(!containsBaseBiome && group.getBaseBiome().getRegistryName().getNamespace().equals("wildnature")) {
+            BiomeDictionary.addTypes(group.getBaseBiome(), types);
+            biomesToRegister.add(new BiomeToRegister(group.getBaseBiome(), null, group.getWeight()));
+        }
+
+        for (SubBiome subBiome : group.getSubBiomes()) {
+            boolean containsSubBiome = false;
+            for (BiomeToRegister biomeToRegister : biomesToRegister) {
+                if(biomeToRegister.biome == subBiome.getBiome()){
+                    containsSubBiome = true;
+                    break;
+                }
+            }
+
+            if(!containsSubBiome && subBiome.getBiome().getRegistryName().getNamespace().equals("wildnature")) {
+                //BiomeDictionary.addTypes(subBiome.getBiome(), subTypes.toArray(new Type[0])); TODO types crash
+                biomesToRegister.add(new BiomeToRegister(subBiome.getBiome(), null, subBiome.getWeight()));
+            }
+        }
     }
+
 
     public static void registerNonSpawn(Biome biome, Type... types) {//adds biome to biome list that have to spawn naturally.
         if (CommonConfig.generateBiomes.get()) {
@@ -1185,8 +1256,23 @@ public class WNBiomes {
             this.type = type;
             this.weight = weight;
             this.types = types;
+
+            if(type==null){
+                if(biome.getDefaultTemperature() < 0){
+                    this.type = BiomeManager.BiomeType.ICY;
+                }else if(biome.getDefaultTemperature() < 0.4){
+                    this.type = BiomeManager.BiomeType.COOL;
+                }else if(biome.getDefaultTemperature() < 0.8){
+                    this.type = BiomeManager.BiomeType.WARM;
+                }else{
+                    this.type = BiomeManager.BiomeType.DESERT;
+                }
+            }
         }
 
+        /**
+         * Registers addional biomes, only for other generator compatibility
+         */
         public void registerIt() {
             if (CommonConfig.blacklistedBiomes.contains(biome)) {
                 WN.LOGGER.info(biome.getRegistryName() + " is blacklisted.");

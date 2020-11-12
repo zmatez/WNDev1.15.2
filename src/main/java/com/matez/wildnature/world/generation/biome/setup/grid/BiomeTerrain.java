@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.setup;
+package com.matez.wildnature.world.generation.biome.setup.grid;
 
 import com.matez.wildnature.init.WN;
 import net.minecraftforge.common.BiomeDictionary;
@@ -38,6 +38,15 @@ public class BiomeTerrain {
 
     public static void register(BiomeGroup group){
         terrains.add(new BiomeTerrain(group,true,BiomeDictionary.getTypes(group.getBaseBiome()).toArray(new BiomeDictionary.Type[0])));
+    }
+
+    public static BiomeGroup getGroupByName(String name){
+        for (BiomeTerrain terrain : terrains) {
+            if(terrain.getGroup().getName().equals(name)){
+                return terrain.getGroup();
+            }
+        }
+        return null;
     }
 
     private BiomeGroup group;

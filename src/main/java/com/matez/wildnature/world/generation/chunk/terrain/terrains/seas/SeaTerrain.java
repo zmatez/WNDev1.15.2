@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.chunk.terrain.terrains.seas;
 
-import com.matez.wildnature.world.generation.biome.setup.BiomeGroup;
+import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import net.minecraft.world.biome.Biomes;
 

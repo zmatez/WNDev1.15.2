@@ -58,7 +58,6 @@ import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.ClientResourcePackInfo;
 import net.minecraft.command.arguments.ArgumentSerializer;
 import net.minecraft.command.arguments.ArgumentTypes;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -421,7 +420,7 @@ public class WN {
                 x++;
             }
 
-            WNBiomes.registerBiomes();
+            WNBiomes.registerAllBiomes();
 
             //WNBiomeManager.removeAllBiomes("minecraft:");
 

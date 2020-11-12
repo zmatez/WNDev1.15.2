@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.layer;
 
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.world.generation.biome.setup.BiomeGroups;
+import com.matez.wildnature.world.generation.biome.setup.deprecated.BiomeGroups;
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
