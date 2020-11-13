@@ -6,9 +6,7 @@ import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 
 public class ClimateMap {
     public void apply(Cell cell, float dx, float dz){
-        int seed = 369;
-
-        FastNoise noise = new FastNoise(seed);
+        FastNoise noise = new FastNoise();
         noise.SetNoiseType(FastNoise.NoiseType.Simplex);
         noise.SetFrequency(0.08F);
 

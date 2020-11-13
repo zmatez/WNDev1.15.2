@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.transformer.transformers;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.biome.setup.grid.IslandBiome;
@@ -27,23 +28,30 @@ public class IslandTransformer extends BiomeTransformer {
 
     @Override
     protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
-        Random random = new Random((long)(type== IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity) * 1000);
-        if(Utilities.rint(0,IslandBiome.RARITY,random)==0) {
-            ArrayList<BiomeGroup> passingBiomeGroups = new ArrayList<>();
-            for (IslandBiome islandBiome : islandBiomes) {
-                boolean passing = false;
-                for (Biome ocean : islandBiome.getOceans()) {
-                    if (oldBiomeGroup.getBaseBiome() == ocean) {
-                        passing = true;
-                        break;
+        if(!islandBiomes.isEmpty()) {
+            Random random = new Random((long) (type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity) * 1000);
+            if (Utilities.rint(0, IslandBiome.RARITY, random) == 0) {
+                ArrayList<BiomeGroup> passingBiomeGroups = new ArrayList<>();
+                for (IslandBiome islandBiome : islandBiomes) {
+                    boolean passing = false;
+                    for (Biome ocean : islandBiome.getOceans()) {
+                        if (oldBiomeGroup.getBaseBiome() == ocean) {
+                            passing = true;
+                            break;
+                        }
+                    }
+                    if (passing) {
+                        passingBiomeGroups.add(islandBiome.getIslandBiome());
                     }
                 }
-                if (passing) {
-                    passingBiomeGroups.add(islandBiome.getIslandBiome());
-                }
-            }
 
-            return getBiomeGroup(passingBiomeGroups, type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity);
+                if(passingBiomeGroups.isEmpty()){
+                    return oldBiomeGroup;
+                }
+
+                WN.LOGGER.debug("Spawned island");
+                return getBiomeGroup(passingBiomeGroups, type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity);
+            }
         }
         return oldBiomeGroup;
     }

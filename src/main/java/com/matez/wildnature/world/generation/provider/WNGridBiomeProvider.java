@@ -43,8 +43,10 @@ public class WNGridBiomeProvider extends BiomeProvider {
     }
 
     public Cell getNoiseCell(int x, int z){
-        context.getHeightmap().apply(context.getCell(), x, z);
-        return context.getCell();
+        synchronized (context.getCell()) {
+            context.getHeightmap().apply(context.getCell(), x, z);
+            return context.getCell();
+        }
     }
 
     public Terrain getNoiseTerrain(int x, int z){

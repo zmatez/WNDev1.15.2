@@ -17,7 +17,7 @@ public class EdgeTransformer extends BiomeTransformer {
         for (EdgeBiome edgeBiome : EdgeBiome.getEdgeBiomes()) {
             boolean matches = false;
             for (BiomeGroup matchingBiome : edgeBiome.getMatchingBiomes()) {
-                if(oldNorthBiomeGroup.getName() == matchingBiome.getName() || oldSouthBiomeGroup.getName() == matchingBiome.getName() || oldEastBiomeGroup.getName() == matchingBiome.getName() || oldWestBiomeGroup.getName() == matchingBiome.getName()){
+                if((oldNorthBiomeGroup.getName().equals(matchingBiome.getName()) && !oldNorthBiomeGroup.getName().isEmpty()) || (oldSouthBiomeGroup.getName().equals(matchingBiome.getName()) && !oldSouthBiomeGroup.getName().isEmpty()) || (oldEastBiomeGroup.getName().equals(matchingBiome.getName()) && !oldEastBiomeGroup.getName().isEmpty()) || (oldWestBiomeGroup.getName().equals(matchingBiome.getName()) && !oldWestBiomeGroup.getName().isEmpty())){
                     matches = true;
                     break;
                 }

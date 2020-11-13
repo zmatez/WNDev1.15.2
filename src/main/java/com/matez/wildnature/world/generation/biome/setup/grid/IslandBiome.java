@@ -7,7 +7,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import java.util.ArrayList;
 
 public class IslandBiome {
-    public static int RARITY = 15;
+    public static int RARITY = 4;
     private static ArrayList<IslandBiome> islandBiomes = new ArrayList<>();
     public static void register(BiomeGroup islandBiome, int weight, IslandType type, Biome[] oceans, BiomeDictionary.Type... types){
         islandBiomes.add(new IslandBiome(islandBiome,weight,type,oceans));

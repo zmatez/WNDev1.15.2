@@ -340,7 +340,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        Biome biome = gridProvider.getNoiseBiomeRealPos(x / 4,1,z / 4);
+        Biome biome = gridProvider.getNoiseBiomeRealPos(x >> 2, 1, z >> 2);
         ChunkLandscape landscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
         int height = (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);

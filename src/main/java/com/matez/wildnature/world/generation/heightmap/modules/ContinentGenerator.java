@@ -4,11 +4,9 @@ import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 
 public class ContinentGenerator {
     protected final int continentScale;
-    private final long seed;
     private final FastNoise noise;
     public ContinentGenerator(long seed){
         this.continentScale = 2048; //temp value until I make settings.
-        this.seed = seed;
         this.noise = new FastNoise((int)seed);
         this.noise.SetNoiseType(FastNoise.NoiseType.SimplexFractal);
         this.noise.SetFrequency(0.005f);

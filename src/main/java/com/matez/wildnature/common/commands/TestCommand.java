@@ -20,6 +20,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.ColumnFuzzedBiomeMagnifier;
 
 import java.util.function.Function;
 
@@ -57,9 +58,15 @@ public class TestCommand {
             Cell cell = provider.getNoiseCell(rx, rz);
             Terrain terrain = provider.getNoiseTerrain(cell, rx, rz);
             Biome biome = provider.getNoiseBiome(rx / 4, ry, rz / 4);
+            Biome biome2 = provider.getNoiseBiome(rx >> 2, ry, rz >> 2);
+            Biome biome3 = ColumnFuzzedBiomeMagnifier.INSTANCE.getBiome(worldIn.getSeed(),rx,0,rz,worldIn);
+            Biome biome4 = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(),rx,0,rz,worldIn);
 
             log(entity, "Terrain identity: " + cell.terrainCellIdentity);
             log(entity, "Biome identity: " + cell.biomeCellIdentity);
+            log(entity, "SubBiome identity: " + cell.subBiomeCellIdentity);
+            log(entity, "SmallIsland identity: " + cell.smallIslandCellIdentity);
+            log(entity, "BigIsland identity: " + cell.bigIslandCellIdentity);
             log(entity, "Temperature: " + cell.temparature);
             log(entity, "Moisture: " + cell.moisture);
             log(entity, "Cell Temperature: " + cell.cellTemparature);
@@ -67,7 +74,10 @@ public class TestCommand {
             log(entity, "Continent Value: " + cell.continentValue);
             log(entity, "Cell Continent: " + cell.cellContinent);
             log(entity, "Category: " + terrain.getTerrainCategory().name());
-            log(entity, "Biome: " + biome.getRegistryName());
+            log(entity, "Biome/4: " + biome.getRegistryName());
+            log(entity, "Biome>>2: " + biome2.getRegistryName());
+            log(entity, "BiomeCF: " + biome3.getRegistryName());
+            log(entity, "BiomeSF: " + biome4.getRegistryName());
             log(entity,"D: "+biome.getDepth()+" S: " + biome.getScale() + "DS: " + (biome.getDepth() + biome.getScale()));
 
             final Object2DoubleMap<Biome> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();

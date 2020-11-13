@@ -4,7 +4,6 @@ package com.matez.wildnature.world.generation.maps;
 import com.matez.wildnature.util.noise.NoiseUtil;
 
 public class Temparature{
-
     private final float frequency;
 
     public Temparature(float frequency) {

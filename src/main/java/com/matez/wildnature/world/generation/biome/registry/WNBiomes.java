@@ -2,6 +2,7 @@ package com.matez.wildnature.world.generation.biome.registry;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.biomes.*;
 import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.BiomeGroups;

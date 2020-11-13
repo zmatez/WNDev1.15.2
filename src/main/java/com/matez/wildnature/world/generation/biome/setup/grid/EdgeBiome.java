@@ -5,9 +5,12 @@ import net.minecraft.world.biome.Biome;
 import java.util.ArrayList;
 
 public class EdgeBiome {
-    private static ArrayList<EdgeBiome> edgeBiomes = new ArrayList<>();
+    private static final ArrayList<EdgeBiome> edgeBiomes = new ArrayList<>();
     public static void register(Biome edge, BiomeGroup... matchingBiomes){
         edgeBiomes.add(new EdgeBiome(edge, matchingBiomes));
+        if(matchingBiomes.length == 0){
+            throw new NullPointerException("Biome groups in EdgeBiome can't be empty");
+        }
     }
 
     public static ArrayList<EdgeBiome> getEdgeBiomes() {

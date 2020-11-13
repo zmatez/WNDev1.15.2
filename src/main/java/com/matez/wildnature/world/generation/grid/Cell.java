@@ -43,41 +43,4 @@ public class Cell {
     public float temparature;
     public float cellMoisture;
     public float moisture;
-
-    public void copy(Cell other) {
-        value = other.value;
-        cellContinent = other.cellContinent;
-        continentValue = other.continentValue;
-
-        terrainCellX = other.terrainCellX;
-        terrainCellZ = other.terrainCellZ;
-        terrainCellIdentity = other.terrainCellIdentity;
-        terrainCellEdge = other.terrainCellEdge;
-
-        biomeCellX = other.biomeCellX;
-        biomeCellZ = other.biomeCellZ;
-        biomeCellIdentity = other.biomeCellIdentity;
-        biomeCellEdge = other.biomeCellEdge;
-
-        subBiomeCellX = other.subBiomeCellX;
-        subBiomeCellZ = other.subBiomeCellZ;
-        subBiomeCellIdentity = other.subBiomeCellIdentity;
-        subBiomeCellEdge = other.subBiomeCellEdge;
-        
-        smallIslandCellX = other.smallIslandCellX;
-        smallIslandCellZ = other.smallIslandCellZ;
-        smallIslandCellIdentity = other.smallIslandCellIdentity;
-        smallIslandCellEdge = other.smallIslandCellEdge;
-
-        bigIslandCellX = other.bigIslandCellX;
-        bigIslandCellZ = other.bigIslandCellZ;
-        bigIslandCellIdentity = other.bigIslandCellIdentity;
-        bigIslandCellEdge = other.bigIslandCellEdge;
-
-        cellTemparature = other.cellTemparature;
-        temparature = other.temparature;
-        cellMoisture = other.cellMoisture;
-        moisture = other.moisture;
-    }
-
 }
