@@ -85,7 +85,12 @@ public class WNCommand {
                         }).executes((context -> {
                             ServerPlayerEntity player = context.getSource().asPlayer();
                             return new TestCommand().test(player, context);
-                        }))).then(Commands.literal("craft").executes((context -> {
+                        }))).then(Commands.literal("gen").requires((perm) -> {
+                            return perm.hasPermissionLevel(2);
+                        }).then(Commands.argument("function",StringArgumentType.string()).executes((context -> {
+                            ServerPlayerEntity player = context.getSource().asPlayer();
+                            return new GenDevCommand().gen(player, context,StringArgumentType.getString(context,"function"));
+                        })))).then(Commands.literal("craft").executes((context -> {
                             return new CraftingCreator().craft(context);
                         })))
                         .then(Commands.literal("import")
@@ -99,15 +104,15 @@ public class WNCommand {
                         })))))
                 .then(Commands.literal("structure").requires((perm) -> {
                     return perm.hasPermissionLevel(2);
-                }).then(Commands.literal("generate").then(Commands.argument("pos",new BlockPosArgument()).then(Commands.argument("name", new StructureArgument()).executes((context -> {
+                }).then(Commands.literal("generate").then(Commands.argument("pos", new BlockPosArgument()).then(Commands.argument("name", new StructureArgument()).executes((context -> {
                     ServerPlayerEntity player = context.getSource().asPlayer();
-                    return StructureArgument.generateStructure(context.getSource(), player, BlockPosArgument.getBlockPos(context,"pos"), StructureArgument.getValue(context, "name"));
+                    return StructureArgument.generateStructure(context.getSource(), player, BlockPosArgument.getBlockPos(context, "pos"), StructureArgument.getValue(context, "name"));
                 })))))
                         .then(Commands.literal("list").then(Commands.argument("page", IntegerArgumentType.integer(1)).executes((context -> {
-                    return new StructureListCommand((PlayerEntity) context.getSource().getEntity()).showPage(IntegerArgumentType.getInteger(context, "page"));
-                }))).executes(context -> {
-                    return new StructureListCommand((PlayerEntity) context.getSource().getEntity()).showPage(1);
-                }))));
+                            return new StructureListCommand((PlayerEntity) context.getSource().getEntity()).showPage(IntegerArgumentType.getInteger(context, "page"));
+                        }))).executes(context -> {
+                            return new StructureListCommand((PlayerEntity) context.getSource().getEntity()).showPage(1);
+                        }))));
     }
 
 

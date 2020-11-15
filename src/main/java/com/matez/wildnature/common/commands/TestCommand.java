@@ -140,7 +140,7 @@ public class TestCommand {
         return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
     }
 
-    private boolean checkPlayer(PlayerEntity entity){
+    public static boolean checkPlayer(PlayerEntity entity){
         int x = 0;
         try{
             x = PlayerEventHandler.isPatron(entity).getType();

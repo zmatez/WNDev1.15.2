@@ -29,7 +29,7 @@ public class IslandTransformer extends BiomeTransformer {
     @Override
     protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
         if(!islandBiomes.isEmpty()) {
-            Random random = new Random((long) (type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity) * 1000);
+            Random random = new Random((long) ((type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity) * 1000000));
             if (Utilities.rint(0, IslandBiome.RARITY, random) == 0) {
                 ArrayList<BiomeGroup> passingBiomeGroups = new ArrayList<>();
                 for (IslandBiome islandBiome : islandBiomes) {
@@ -49,7 +49,6 @@ public class IslandTransformer extends BiomeTransformer {
                     return oldBiomeGroup;
                 }
 
-                WN.LOGGER.debug("Spawned island");
                 return getBiomeGroup(passingBiomeGroups, type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity);
             }
         }

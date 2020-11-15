@@ -373,6 +373,7 @@ public class WNBiomes {
     public static Biome MadagascarValley = new WNMadagascarValley("madagascar_valley");
 
     //BEACHES
+    public static Biome Beach = new WNBeach("beach");
     public static Biome WhiteBeach = new WNWhiteBeach("white_beach");
     //public static Biome BeachCliffs = new WNBeachCliff("beach_cliffs");
 
@@ -381,6 +382,7 @@ public class WNBiomes {
         registerVanilla();
         registerEdges();
         registerIslands();
+        registerNonSpawns();
     }
 
     private static void registerWildNature() {
@@ -1128,25 +1130,34 @@ public class WNBiomes {
         };
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure(WNBiomes.EasterIsland), 2, IslandBiome.IslandType.BIG, temperate_deep_oceans, Type.PLAINS, Type.RARE, Type.WATER
+                BiomeGroup.SingleBuilder.configure("easter_island", WNBiomes.EasterIsland), 2, IslandBiome.IslandType.BIG, temperate_deep_oceans, Type.PLAINS, Type.RARE, Type.WATER
         );
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure(WNBiomes.TropicalIsland,
+                BiomeGroup.SingleBuilder.configure("tropical_island",WNBiomes.TropicalIsland,
                     new SubBiome(WNBiomes.TropicalCliffs,4,Type.HILLS)
                 ), 5, IslandBiome.IslandType.BIG, hot_deep_oceans, Type.JUNGLE, Type.LUSH, Type.WET, Type.RARE, Type.WATER
         );
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure(WNBiomes.ChristmasIsland), 5, IslandBiome.IslandType.BIG, cold_deep_oceans, Type.COLD, Type.CONIFEROUS, Type.MAGICAL, Type.SNOWY, Type.WATER
+                BiomeGroup.SingleBuilder.configure("christmas_island",WNBiomes.ChristmasIsland), 5, IslandBiome.IslandType.BIG, cold_deep_oceans, Type.COLD, Type.CONIFEROUS, Type.MAGICAL, Type.SNOWY, Type.WATER
         );
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure(WNBiomes.Madagascar,
+                BiomeGroup.SingleBuilder.configure("madagascar",WNBiomes.Madagascar,
                         new SubBiome(WNBiomes.MadagascarValley,3,Type.PLAINS)
                 ), 4, IslandBiome.IslandType.BIG, hot_deep_oceans, Type.FOREST, Type.DENSE, Type.JUNGLE, Type.LUSH
         );
 
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure("mushroom_island",Biomes.MUSHROOM_FIELDS),3, IslandBiome.IslandType.BIG, temperate_deep_oceans,Type.MUSHROOM, Type.MAGICAL, Type.PLAINS
+        );
+
+    }
+
+    private static void registerNonSpawns(){
+        registerNonSpawn(WNBiomes.Beach, Type.SANDY, Type.BEACH, Type.WATER);
+        registerNonSpawn(WNBiomes.WhiteBeach, Type.SANDY, Type.BEACH, Type.WATER, Type.HOT);
     }
 
     public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types) {

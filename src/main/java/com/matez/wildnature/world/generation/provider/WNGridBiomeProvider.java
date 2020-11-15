@@ -57,6 +57,10 @@ public class WNGridBiomeProvider extends BiomeProvider {
         return context.getTerrainProvider().get(cell.terrainCellIdentity);
     }
 
+    public Terrain getNoiseTerrain(Cell cell){
+        return context.getTerrainProvider().get(cell.terrainCellIdentity);
+    }
+
     public Biome getNoiseBiomeRealPos(int x, int y, int z) {
         return layer.getBiome(x,z);
     }

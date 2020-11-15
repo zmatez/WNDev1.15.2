@@ -7,6 +7,7 @@ import net.minecraft.util.Util;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
+//Thanks to AlcatrazEscapee for providing this code. See GitHub at: https://github.com/TerraFirmaCraft/TerraFirmaCraft/
 /**
  * Used to sample biomes within a chunk region. This performs three main functions:
  * 1) Efficient sampling - biomes at the same coordinate are not sampled more than once per chunk, they are built into arrays and initialized as necessary

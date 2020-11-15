@@ -3,6 +3,7 @@ package com.matez.wildnature.world.generation.chunk.generation;
 
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
@@ -279,6 +280,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     protected int[] getHeightsInChunk(ChunkPos pos, IWorld worldIn) {
+        //Thanks to SuperCoder79 for providing this code. See GitHub at: https://github.com/SuperCoder7979/simplexterrain
         int[] res = noiseCache.get(pos.asLong());
         if (res != null) return res;
 
@@ -303,6 +305,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public void useNoise(int[] noise, ChunkPos pos, int start, int size, IWorld worldIn) {
+        //Thanks to AlcatrazEscapee for providing this lerp code. See GitHub at: https://github.com/TerraFirmaCraft/TerraFirmaCraft/
         final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
 
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
@@ -340,8 +343,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
     public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
+        Cell cell = gridProvider.getNoiseCell(x >> 2,z >> 2);
+        Terrain terrain = gridProvider.getNoiseTerrain(cell);
         Biome biome = gridProvider.getNoiseBiomeRealPos(x >> 2, 1, z >> 2);
-        ChunkLandscape landscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
+        ChunkLandscape landscape = ChunkLandscape.getOrCreate(cell,terrain,x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
         int height = (int) landscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
 

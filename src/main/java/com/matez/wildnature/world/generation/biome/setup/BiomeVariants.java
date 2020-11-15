@@ -49,7 +49,7 @@ public class BiomeVariants {
         }else if(biome == WNBiomes.ColdLake || biome == WNBiomes.DriedLake || biome == WNBiomes.FrozenLake || biome == WNBiomes.TropicalLake || biome == WNBiomes.WarmLake){
             return LAKE;
         }else if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.BEACH)){
-            return RIVER;
+            return SHORE;
         }else if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.RIVER)){
             return RIVER;
         }else{

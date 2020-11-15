@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.transformer.transformers;
 
 import com.google.common.collect.ImmutableSet;
+import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
@@ -10,7 +11,7 @@ import net.minecraft.world.biome.Biomes;
 import java.util.ArrayList;
 
 public class ShoreTransformer extends BiomeTransformer {
-    private ArrayList<Biome> OCEANS;
+    private final ArrayList<Biome> OCEANS;
     public ShoreTransformer(){
         OCEANS = new ArrayList<>(ImmutableSet.of(Biomes.OCEAN, Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_WARM_OCEAN, Biomes.FROZEN_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.WARM_OCEAN));;
     }
@@ -28,6 +29,6 @@ public class ShoreTransformer extends BiomeTransformer {
             return oldCenterBiome;
         }
 
-        return Biomes.BEACH;
+        return WNBiomes.Beach;
     }
 }

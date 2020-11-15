@@ -8,8 +8,10 @@ import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcess
 import com.matez.wildnature.world.generation.chunk.generation.noise.ScaleNoiseProcessor;
 import com.matez.wildnature.world.generation.chunk.generation.noise.TestNoiseProcessor;
 import com.matez.wildnature.world.generation.chunk.generation.noise.config.NoiseProcessorConfig;
+import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
+import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.noise.OctaveNoiseSampler;
 import com.matez.wildnature.world.generation.noise.OpenSimplexNoise;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
@@ -26,6 +28,9 @@ import java.util.function.Function;
 
 public class ChunkLandscape {
     public static HashMap<String, Class<? extends ChunkLandscape>> landscapeCache = new HashMap<String, Class<? extends ChunkLandscape>>();
+
+    protected Cell cell;
+    protected Terrain terrain;
     protected int x;
     protected int z;
 
@@ -42,7 +47,9 @@ public class ChunkLandscape {
     protected ArrayList<NoiseProcessor> noiseProcessors = new ArrayList<>();
     protected ArrayList<NoiseProcessor> validNoiseProcessors = new ArrayList<>();
 
-    public ChunkLandscape(int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
+    public ChunkLandscape(Cell cell, Terrain terrain, int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
+        this.cell = cell;
+        this.terrain = terrain;
         this.x = x;
         this.z = z;
         this.biome = biome;
@@ -84,7 +91,13 @@ public class ChunkLandscape {
     }
 
     public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        return sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor));
+        return applyRiver(sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor)));//remove applyRiver to get not bugged world for now
+    }
+
+    public double applyRiver(double sigmoid){
+        float scale = Utilities.scaleBetween(cell.riverValleyValue,66F,(float)sigmoid,0F,1F);
+        float scale2 = Utilities.scaleBetween(cell.riverValue,55F,scale,0F,1F);
+        return scale2;
     }
 
     private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
@@ -139,7 +152,7 @@ public class ChunkLandscape {
         return validNoiseProcessors;
     }
 
-    public ChunkLandscape applyValues(int x, int z, Long seed, int sealevel, Biome biome, IChunk chunkIn) {
+    public ChunkLandscape applyValues(Cell cell, Terrain terrain, int x, int z, Long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.x = x;
         this.z = z;
         this.random.setSeed(seed);
@@ -152,16 +165,16 @@ public class ChunkLandscape {
     }
 
     // This way, if we have a biome that would require different terrain we can create a class that extends ChunkLandscape and add it by calling "ChunkLandscape.addLandscape(WNBiomes.THE_BIOME, THE_CHUNK_LANDSCAPE.class);"
-    public static ChunkLandscape getOrCreate(int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
+    public static ChunkLandscape getOrCreate(Cell cell, Terrain terrain, int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
         Class<? extends ChunkLandscape> landscape = landscapeCache.get(biome.getRegistryName().getPath());
         if (landscape != null) {
             try {
-                return landscape.getDeclaredConstructor(int.class, int.class, long.class, int.class, Biome.class, IChunk.class).newInstance(x, z, seed, sealevel, biome, chunkIn);
+                return landscape.getDeclaredConstructor(Cell.class, Terrain.class, int.class, int.class, long.class, int.class, Biome.class, IChunk.class).newInstance(cell, terrain, x, z, seed, sealevel, biome, chunkIn);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
 
-        return new ChunkLandscape(x, z, seed,sealevel, biome, chunkIn);
+        return new ChunkLandscape(cell, terrain, x, z, seed,sealevel, biome, chunkIn);
     }
 }

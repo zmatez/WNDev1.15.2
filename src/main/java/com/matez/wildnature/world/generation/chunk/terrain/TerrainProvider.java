@@ -94,6 +94,26 @@ public class TerrainProvider {
 
         return filter.toArray(new Terrain[0]);
     }
+    
+    public static Terrain.Category getCategoryFromContinent(float cellContinent){
+        if (cellContinent >= 0.95F) {
+            return Terrain.Category.MOUNTAINS;
+        } else if (cellContinent >= 0.88F && cellContinent < 0.95F) {
+            return Terrain.Category.HIGHLANDS;
+        } else if (cellContinent >= 0.53F && cellContinent < 0.88F) {
+            return Terrain.Category.MIDLANDS;
+        } else if (cellContinent >= 0.30F && cellContinent < 0.53F) {
+            return Terrain.Category.LOWLANDS;
+        } else if (cellContinent >= 0.15F && cellContinent < 0.3F) {
+            return Terrain.Category.SHORE;
+        } else if (cellContinent >= 0.1F && cellContinent < 0.15F) {
+            return Terrain.Category.SEA;
+        } else if(cellContinent >= 0.05F && cellContinent < 0.1F){
+            return Terrain.Category.OCEAN;
+        }else{
+            return Terrain.Category.DEEP_OCEAN;
+        }
+    }
 
     public Terrain get(float identity) {
         if(!init){

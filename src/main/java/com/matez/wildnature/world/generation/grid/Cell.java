@@ -68,4 +68,8 @@ public class Cell {
     public float temparature;
     public float cellMoisture;
     public float moisture;
+
+    //rivers
+    public float riverValue;
+    public float riverValleyValue;
 }
