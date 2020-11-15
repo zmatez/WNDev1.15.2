@@ -18,6 +18,7 @@ public class ThermalErosionTestProcessor implements TerrainProcessor {
     private BlockState DEFAULT_FLUID;
     private ChunkGenerator<WNGenSettings> generator;
 
+
     @Override
     public void init(ChunkGenerator<WNGenSettings> generator, long seed) {
         this.generator = generator;
@@ -70,7 +71,7 @@ public class ThermalErosionTestProcessor implements TerrainProcessor {
     }
 
     private int[] applyAmplitude(IChunk chunk, int fX, int fZ, int tX, int tZ, int[] noise) {
-        //noise[fX * size + fZ] += amplitude;
+        noise[fX * size + fZ] += amplitude;
 
         BlockPos pos = new BlockPos(tX, noise[tX * size + tZ], tZ);
         if (chunk.getBlockState(pos) != DEFAULT_FLUID) {
@@ -83,7 +84,7 @@ public class ThermalErosionTestProcessor implements TerrainProcessor {
     @Override
     // O(256 * 8 * n) where n is the number of iterations
     public void process(IWorld world, IChunk chunk, Random rand, int chunkX, int chunkZ,int relativeX, int relativeZ, int[] noise) {
-        int iterations = 1_000;
+        int iterations = 3_000_000;
         for (int i = 0; i < iterations; i++) {
             thermalStep(chunk, relativeX, relativeZ, noise);
         }

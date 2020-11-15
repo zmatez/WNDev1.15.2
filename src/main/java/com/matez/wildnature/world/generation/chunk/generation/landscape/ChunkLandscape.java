@@ -91,7 +91,7 @@ public class ChunkLandscape {
     }
 
     public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        return applyRiver(sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor)));//remove applyRiver to get not bugged world for now
+        return (sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor)));//remove applyRiver to get not bugged world for now
     }
 
     public double applyRiver(double sigmoid){

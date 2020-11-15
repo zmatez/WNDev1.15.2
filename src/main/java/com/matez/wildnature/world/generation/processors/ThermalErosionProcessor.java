@@ -22,6 +22,7 @@ public class ThermalErosionProcessor implements TerrainProcessor {
     private ChunkGenerator<WNGenSettings> generator;
     private BlockState DEFAULT_FLUID;
     private static final int[] vertexData = new int[]{0, 1, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, -1, 1};
+    private Heightmap.Type heightmap = Heightmap.Type.MOTION_BLOCKING_NO_LEAVES;
 
     @Override
     public void init(ChunkGenerator<WNGenSettings> generator, long seed) {
@@ -89,7 +90,7 @@ public class ThermalErosionProcessor implements TerrainProcessor {
         noise[fX * size + fZ] += amplitude;
 
         if (k != -1) {
-            int tY = borders[k].getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, tX, tZ);
+            int tY = borders[k].getTopBlockY(heightmap, tX, tZ);
             BlockPos displacementPos = new BlockPos(tX, tY, tZ);
             // Erode the chunk border
             if (tY <= 63) {
@@ -125,7 +126,7 @@ public class ThermalErosionProcessor implements TerrainProcessor {
                         kthBorder = wrappedData[0];
                         xn = wrappedData[1];
                         zn = wrappedData[2];
-                        height = borders[kthBorder].getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, xn, zn);
+                        height = borders[kthBorder].getTopBlockY(heightmap, xn, zn);
                     }
 
                     // If we don't know the height, it is inside the current chunk, not an adjacent one
