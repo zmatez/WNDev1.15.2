@@ -45,7 +45,7 @@ public class BiomeBlender {
             double height = weight * getDepth(configuration.getDepth());
             double scale = weight * getScale(configuration.getScale());
 
-            if (variants == BiomeVariants.SHORE) {
+            /*if (variants == BiomeVariants.SHORE) {
                 shoreHeight += height;
                 shoreWeight += weight;
                 if (maxShoreWeight < weight) {
@@ -54,12 +54,12 @@ public class BiomeBlender {
                 }
             }else if (maxNormalWeight < weight) {
                 maxNormalWeight = weight;
-            }
+            }*/
 
             totalHeight += height;
             totalScale += scale;
 
-            double actualHeight = totalHeight;
+            /*double actualHeight = totalHeight;
 
             if ((shoreWeight > 0.6 || maxShoreWeight > maxNormalWeight) && shoreBiomeAt != null) {
                 // Flatten beaches above a threshold, creates cliffs where the beach ends
@@ -73,14 +73,10 @@ public class BiomeBlender {
                 }
             }
 
-            totalHeight = actualHeight;
+            totalHeight = actualHeight;*/
         }
 
         return new double[]{totalHeight, totalScale};
-    }
-
-    private static double scaleBetween(double unscaledNum, double minAllowed, double maxAllowed, double min, double max) {
-        return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
     }
 
     private static double lerp(double a, double b, double alpha) {

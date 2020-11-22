@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "wildnature:blocks/eucalyptus/rainbow_eucalyptus_planks",
+        "top": "wildnature:blocks/eucalyptus/rainbow_eucalyptus_planks",
+        "side": "wildnature:blocks/eucalyptus/rainbow_eucalyptus_planks"
+    }
+}

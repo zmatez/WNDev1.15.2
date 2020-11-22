@@ -64,7 +64,7 @@ public class ChunkLandscape {
 
         //PROCESSORS - here add noise processors
         addNoiseProcessor(NoiseProcessors.SCALE);
-        addNoiseProcessor(NoiseProcessors.TEST);
+        addNoiseProcessor(NoiseProcessors.MOUNTAIN_RANGE);
         //
         initNoiseProcessors();
     }
@@ -94,22 +94,16 @@ public class ChunkLandscape {
         return (sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor)));//remove applyRiver to get not bugged world for now
     }
 
-    public double applyRiver(double sigmoid){
-        float scale = Utilities.scaleBetween(cell.riverValleyValue,66F,(float)sigmoid,0F,1F);
-        float scale2 = Utilities.scaleBetween(cell.riverValue,55F,scale,0F,1F);
-        return scale2;
-    }
-
     private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         double[] output = BiomeBlender.smoothLerp(x, z, this, weightMap1,variantAccessor);
         double height = output[0];
         double scale = output[1];
 
-        double noise = sampleNoise(x, z, height, scale,true);
-        noise += sampleNoise(x + 4, z, height, scale,false);
-        noise += sampleNoise(x - 4, z, height, scale,false);
-        noise += sampleNoise(x, z + 4, height, scale,false);
-        noise += sampleNoise(x, z - 4, height, scale,false);
+        double noise = sampleNoise(cell,x, z, height, scale,true);
+        noise += sampleNoise(cell,x + 4, z, height, scale,false);
+        noise += sampleNoise(cell,x - 4, z, height, scale,false);
+        noise += sampleNoise(cell,x, z + 4, height, scale,false);
+        noise += sampleNoise(cell,x, z - 4, height, scale,false);
         noise *= 0.2;
 
         //80 means 69Y, 100 means 92Y as base height
@@ -125,22 +119,20 @@ public class ChunkLandscape {
         return noise;
     }
 
-    private double sampleNoise(int x, int z, double height, double scale, boolean rawCoords) {
+    private double sampleNoise(Cell cell, int x, int z, double height, double scale, boolean rawCoords) {
         double output = 0;
         double d = 0;
+        double f = Utilities.scaleBetween(cell.biomeCellEdge,0,1,0,0.1);
+        double factor = cell.biomeCellEdge > 0.1 ? 1 : f;
         for (NoiseProcessor noiseProcessor : validNoiseProcessors) {
             double noise = noiseProcessor.getProcessedNoise(x,z,biome,height,scale,rawCoords);
             if(noiseProcessor.smoothedOnBorders()){
-                /*if(Utilities.rint(0,10)==0){
-                    WN.LOGGER.debug("X: " + x + " Z: " + z + " --- " + factor);
-                }*/
-                //output += noise * factor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
-                //d += factor;
+                output += noise * factor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
+                d += factor;
             }else{
                 output += noise;
                 d++;
             }
-
         }
         if(d==0){
             return output;

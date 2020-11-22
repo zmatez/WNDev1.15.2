@@ -35,8 +35,8 @@ public class BiomeVariants {
     }
 
     public static BiomeVariants LAND = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAND);
-    public static BiomeVariants RIVER = new BiomeVariants(SmallGroup.BODY,LargeGroup.RIVER);
-    public static BiomeVariants LAKE = new BiomeVariants(SmallGroup.BODY,LargeGroup.RIVER);
+    public static BiomeVariants RIVER = new BiomeVariants(SmallGroup.RIVER,LargeGroup.RIVER);
+    public static BiomeVariants LAKE = new BiomeVariants(SmallGroup.RIVER,LargeGroup.LAKE);
     public static BiomeVariants SHORE = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAND);
     public static BiomeVariants OCEAN = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
 
@@ -44,6 +44,12 @@ public class BiomeVariants {
     public static BiomeVariants PATH = new BiomeVariants(SmallGroup.RIVER,LargeGroup.RIVER);
 
     public static BiomeVariants getVariantsFor(Biome biome){
+        if(biome == WNBiomes.RiverValleySharp){
+            return SHORE;
+        }else if(biome == WNBiomes.RiverValleySmooth){
+            return LAND;
+        }
+
         if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN)){
             return OCEAN;
         }else if(biome == WNBiomes.ColdLake || biome == WNBiomes.DriedLake || biome == WNBiomes.FrozenLake || biome == WNBiomes.TropicalLake || biome == WNBiomes.WarmLake){

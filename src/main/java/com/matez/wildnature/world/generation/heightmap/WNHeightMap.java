@@ -55,7 +55,7 @@ public class WNHeightMap {
         this.seed = context.getSeed();
         this.cell = context.getCell();
         this.continentGenerator = new ContinentGenerator(seed);
-        this.riverGenerator = new RiverGenerator();
+        this.riverGenerator = new RiverGenerator((int)seed);
 
         this.terrainMap = new TerrainMap(seed);
         this.biomeMap = new BiomeMap(seed);
@@ -76,8 +76,8 @@ public class WNHeightMap {
         climateMap.apply(cell, x, z);
     }
 
-    public void applyRiver(Cell cell) {
-        riverGenerator.generate(cell);
+    public void applyRiver(Cell cell, int x, int z) {
+        riverGenerator.generate(cell,x,z);
     }
 
 
@@ -93,6 +93,7 @@ public class WNHeightMap {
 
         applyContinent(cell, dx, dz);
         applyClimate(cell, dx, dz);
+        applyRiver(cell,dx,dz);
     }
 
     public ClimateMap getClimateMap() {

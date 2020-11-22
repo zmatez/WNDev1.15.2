@@ -69,7 +69,51 @@ public class Cell {
     public float cellMoisture;
     public float moisture;
 
-    //rivers
-    public float riverValue;
-    public float riverValleyValue;
+    public float mainRiverValue;
+    public float mainRiverLandscapeValue;
+    public float streamRiverValue;
+    public float streamRiverLandscapeValue;
+
+    public Cell copy(){
+        Cell cell = new Cell();
+        cell.value = value;
+        cell.cellContinent = cellContinent;
+        cell.continentValue = continentValue;
+        
+        cell.terrainCellX = terrainCellX;
+        cell.terrainCellZ = terrainCellZ;
+        cell.terrainCellEdge = terrainCellEdge;
+        cell.terrainCellIdentity = terrainCellIdentity;
+
+        cell.biomeCellX = biomeCellX;
+        cell.biomeCellZ = biomeCellZ;
+        cell.biomeCellEdge = biomeCellEdge;
+        cell.biomeCellIdentity = biomeCellIdentity;
+
+        cell.subBiomeCellX = subBiomeCellX;
+        cell.subBiomeCellZ = subBiomeCellZ;
+        cell.subBiomeCellEdge = subBiomeCellEdge;
+        cell.subBiomeCellIdentity = subBiomeCellIdentity;
+
+        cell.smallIslandCellX = smallIslandCellX;
+        cell.smallIslandCellZ = smallIslandCellZ;
+        cell.smallIslandCellEdge = smallIslandCellEdge;
+        cell.smallIslandCellIdentity = smallIslandCellIdentity;
+
+        cell.bigIslandCellX = bigIslandCellX;
+        cell.bigIslandCellZ = bigIslandCellZ;
+        cell.bigIslandCellEdge = bigIslandCellEdge;
+        cell.bigIslandCellIdentity = bigIslandCellIdentity;
+
+        cell.temparature = temparature;
+        cell.cellTemparature = cellTemparature;
+        cell.moisture = moisture;
+        cell.cellMoisture = cellMoisture;
+
+        cell.mainRiverValue = mainRiverValue;
+        cell.mainRiverLandscapeValue = mainRiverLandscapeValue;
+        cell.streamRiverValue = streamRiverValue;
+        cell.streamRiverLandscapeValue = streamRiverLandscapeValue;
+        return cell;
+    }
 }

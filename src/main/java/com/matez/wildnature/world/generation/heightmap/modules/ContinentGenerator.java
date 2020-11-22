@@ -9,7 +9,7 @@ public class ContinentGenerator {
     public ContinentGenerator(long seed){
         this.noise = new FastNoise((int)seed);
         this.noise.SetNoiseType(FastNoise.NoiseType.Simplex);
-        this.noise.SetFrequency(0.005f);
+        this.noise.SetFrequency(0.0005f);
     }
 
     public float generateContinent(int dx, int dz){

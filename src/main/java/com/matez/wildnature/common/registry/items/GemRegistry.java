@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.registry.items;
 
-import com.matez.wildnature.common.items.SilverCrossbowItem;
+import com.matez.wildnature.common.items.weapons.SilverCrossbowItem;
 import com.matez.wildnature.common.items.weapons.SilverAxeItem;
 import com.matez.wildnature.common.items.weapons.SilverPickaxeItem;
 import com.matez.wildnature.common.items.weapons.SilverShovelItem;
@@ -56,7 +56,7 @@ public class GemRegistry {
                 WNItems.SILVER_PICKAXE = new SilverPickaxeItem(WNItemTier.SILVER, 0, -2.8F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("silver_pickaxe")),
                 WNItems.SILVER_AXE = new SilverAxeItem(WNItemTier.SILVER, 4.8f, -3F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("silver_axe")),
                 WNItems.SILVER_SHOVEL = new SilverShovelItem(WNItemTier.SILVER, 0.8F, -3F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("silver_shovel")),
-                WNItems.SILVER_CROSSBOW = new SilverCrossbowItem((new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("silver_crossbow")),
+                WNItems.SILVER_CROSSBOW = new SilverCrossbowItem((new Item.Properties()).group(WNTabs.EQUIPMENT).maxStackSize(1).maxDamage(512)).setRegistryName(WN.RegistryEvents.location("silver_crossbow")),
 
                 WNItems.SAPPHIRE_SWORD = new SwordItem(WNItemTier.SAPPHIRE, 3, -2.4F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("sapphire_sword")),
                 WNItems.SAPPHIRE_PICKAXE = new PickaxeItem(WNItemTier.SAPPHIRE, 1, -2.8F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("sapphire_pickaxe")),

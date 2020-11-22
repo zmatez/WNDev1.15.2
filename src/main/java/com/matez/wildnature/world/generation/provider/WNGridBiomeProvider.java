@@ -45,7 +45,7 @@ public class WNGridBiomeProvider extends BiomeProvider {
     public Cell getNoiseCell(int x, int z){
         synchronized (context.getCell()) {
             context.getHeightmap().apply(context.getCell(), x, z);
-            return context.getCell();
+            return context.getCell().copy();
         }
     }
 
@@ -61,12 +61,20 @@ public class WNGridBiomeProvider extends BiomeProvider {
         return context.getTerrainProvider().get(cell.terrainCellIdentity);
     }
 
-    public Biome getNoiseBiomeRealPos(int x, int y, int z) {
-        return layer.getBiome(x,z);
+    public Biome getNoiseBiome(int x, int y, int z, boolean fakeBiomes) {
+        return layer.getBiome(x,z,fakeBiomes);
+    }
+
+    public Biome getNoiseBiome(Cell cell, Terrain terrain, int x, int y, int z) {
+        return layer.getBiome(cell, terrain, x,z,false);
+    }
+
+    public Biome getNoiseBiome(Cell cell, Terrain terrain, int x, int y, int z, boolean fakeBiomes) {
+        return layer.getBiome(cell, terrain, x,z,fakeBiomes);
     }
 
     @Override
     public Biome getNoiseBiome(int x, int y, int z) {
-        return layer.getBiome(x,z);
+        return layer.getBiome(x,z,false);
     }
 }

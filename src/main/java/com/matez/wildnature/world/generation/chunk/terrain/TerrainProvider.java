@@ -53,38 +53,9 @@ public class TerrainProvider {
     public Terrain[] filterTerrains(Cell cell) {
         List<Terrain> filter = new ArrayList<>();
         for (Terrain terrain : terrains) {
-            if (cell.cellContinent >= 0.95F) {
-                if (terrain.getTerrainCategory() == Terrain.Category.MOUNTAINS) {
-                    filter.add(terrain);
-                }
-            } else if (cell.cellContinent >= 0.88F && cell.cellContinent < 0.95F) {
-                if (terrain.getTerrainCategory() == Terrain.Category.HIGHLANDS) {
-                    filter.add(terrain);
-                }
-            } else if (cell.cellContinent >= 0.53F && cell.cellContinent < 0.88F) {
-                if (terrain.getTerrainCategory() == Terrain.Category.MIDLANDS) {
-                    filter.add(terrain);
-                }
-            } else if (cell.cellContinent >= 0.30F && cell.cellContinent < 0.53F) {
-                if (terrain.getTerrainCategory() == Terrain.Category.LOWLANDS) {
-                    filter.add(terrain);
-                }
-            } else if (cell.cellContinent >= 0.15F && cell.cellContinent < 0.3F) {
-                if (terrain.getTerrainCategory() == Terrain.Category.SHORE) {
-                    filter.add(terrain);
-                }
-            } else if (cell.cellContinent >= 0.1F && cell.cellContinent < 0.15F) {
-                if (terrain.getTerrainCategory() == Terrain.Category.SEA) {
-                    filter.add(terrain);
-                }
-            } else if(cell.cellContinent >= 0.05F && cell.cellContinent < 0.1F){
-                if (terrain.getTerrainCategory() == Terrain.Category.OCEAN) {
-                    filter.add(terrain);
-                }
-            }else if(cell.cellContinent < 0.05F){
-                if (terrain.getTerrainCategory() == Terrain.Category.DEEP_OCEAN) {
-                    filter.add(terrain);
-                }
+            Terrain.Category category = getCategoryFromContinent(cell.cellContinent);
+            if(terrain.getTerrainCategory() == category){
+                filter.add(terrain);
             }
         }
         if(filter.isEmpty()){

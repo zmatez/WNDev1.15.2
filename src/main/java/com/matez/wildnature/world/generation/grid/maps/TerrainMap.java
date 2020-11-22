@@ -35,18 +35,22 @@ Idea for GridMap comes from TerraForged. However it was bit modified, still, app
  */
 public class TerrainMap extends GridMap{
     public TerrainMap(long seed) {
-        super(seed, 10_000);
+        super(seed, 2500);
     }
 
     @Override
     public FastNoise getWarpX() {
         FastNoise noise = new FastNoise();
+        noise.SetNoiseType(FastNoise.NoiseType.Simplex);
+        noise.SetFrequency(0.002f);
         return noise;
     }
 
     @Override
     public FastNoise getWarpY() {
         FastNoise noise = new FastNoise();
+        noise.SetNoiseType(FastNoise.NoiseType.Simplex);
+        noise.SetFrequency(0.002f);
         return noise;
     }
 

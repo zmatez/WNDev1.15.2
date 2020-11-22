@@ -29,18 +29,22 @@ Idea for GridMap comes from TerraForged. However it was bit modified, still, app
  */
 public class SubBiomeMap extends GridMap {
     public SubBiomeMap(long seed) {
-        super(seed, 500);
+        super(seed, 300);
     }
 
     @Override
     public FastNoise getWarpX() {
         FastNoise noise = new FastNoise();
+        noise.SetNoiseType(FastNoise.NoiseType.Simplex);
+        noise.SetFrequency(0.002f);
         return noise;
     }
 
     @Override
     public FastNoise getWarpY() {
         FastNoise noise = new FastNoise();
+        noise.SetNoiseType(FastNoise.NoiseType.Simplex);
+        noise.SetFrequency(0.002f);
         return noise;
     }
 

@@ -274,6 +274,33 @@ public class WNBlocks {
     public static Block EUCALYPTUS_BRANCH;
     public static Block EUCALYPTUS_BRANCH_SMALL;
 
+    public static Block RAINBOW_EUCALYPTUS_LOG;
+    public static Block RAINBOW_EUCALYPTUS_WOOD;
+    public static Block RAINBOW_EUCALYPTUS_STRIPPED_LOG;
+    public static Block RAINBOW_EUCALYPTUS_STRIPPED_WOOD;
+    public static Block RAINBOW_EUCALYPTUS_LEAVES;
+    public static Block RAINBOW_EUCALYPTUS_SAPLING;
+    public static Block RAINBOW_EUCALYPTUS_PLANKS;
+    public static Block RAINBOW_EUCALYPTUS_PARQUET;
+    public static Block RAINBOW_EUCALYPTUS_STAIRS_PLANKS;
+    public static Block RAINBOW_EUCALYPTUS_STAIRS_PARQUET;
+    public static Block RAINBOW_EUCALYPTUS_SLABS_PLANKS;
+    public static Block RAINBOW_EUCALYPTUS_SLABS_PARQUET;
+    public static Block RAINBOW_EUCALYPTUS_FENCE;
+    public static Block RAINBOW_EUCALYPTUS_FENCE_GATE;
+    public static Block RAINBOW_EUCALYPTUS_LOG_FENCE;
+    public static Block RAINBOW_EUCALYPTUS_LOG_FENCE_GATE;
+    public static Block RAINBOW_EUCALYPTUS_BUTTON;
+    public static Block RAINBOW_EUCALYPTUS_LOG_BUTTON;
+    public static Block RAINBOW_EUCALYPTUS_PRESSURE_PLATE;
+    public static Block RAINBOW_EUCALYPTUS_LOG_PRESSURE_PLATE;
+    public static Block RAINBOW_EUCALYPTUS_TRAPDOOR;
+    public static Block RAINBOW_EUCALYPTUS_DOOR;
+    public static Block RAINBOW_EUCALYPTUS_SIGN;
+    public static Block RAINBOW_EUCALYPTUS_WALL_SIGN;
+    public static Block RAINBOW_EUCALYPTUS_BRANCH;
+    public static Block RAINBOW_EUCALYPTUS_BRANCH_SMALL;
+
     public static Block FIR_LOG;
     public static Block FIR_WOOD;
     public static Block FIR_STRIPPED_LOG;
@@ -1176,6 +1203,7 @@ public class WNBlocks {
     public static Block CITRUS_VERTICAL_SLAB;
     public static Block EBONY_VERTICAL_SLAB;
     public static Block EUCALYPTUS_VERTICAL_SLAB;
+    public static Block RAINBOW_EUCALYPTUS_VERTICAL_SLAB;
     public static Block JACARANDA_VERTICAL_SLAB;
     public static Block LARCH_VERTICAL_SLAB;
     public static Block MAHOGANY_VERTICAL_SLAB;
@@ -1197,6 +1225,7 @@ public class WNBlocks {
     public static Block CITRUS_PARQUET_VERTICAL_SLAB;
     public static Block EBONY_PARQUET_VERTICAL_SLAB;
     public static Block EUCALYPTUS_PARQUET_VERTICAL_SLAB;
+    public static Block RAINBOW_EUCALYPTUS_PARQUET_VERTICAL_SLAB;
     public static Block JACARANDA_PARQUET_VERTICAL_SLAB;
     public static Block LARCH_PARQUET_VERTICAL_SLAB;
     public static Block MAHOGANY_PARQUET_VERTICAL_SLAB;
@@ -1225,6 +1254,7 @@ public class WNBlocks {
     public static Block CITRUS_CORNER_SLAB;
     public static Block EBONY_CORNER_SLAB;
     public static Block EUCALYPTUS_CORNER_SLAB;
+    public static Block RAINBOW_EUCALYPTUS_CORNER_SLAB;
     public static Block JACARANDA_CORNER_SLAB;
     public static Block LARCH_CORNER_SLAB;
     public static Block MAHOGANY_CORNER_SLAB;
@@ -1246,6 +1276,7 @@ public class WNBlocks {
     public static Block CITRUS_PARQUET_CORNER_SLAB;
     public static Block EBONY_PARQUET_CORNER_SLAB;
     public static Block EUCALYPTUS_PARQUET_CORNER_SLAB;
+    public static Block RAINBOW_EUCALYPTUS_PARQUET_CORNER_SLAB;
     public static Block JACARANDA_PARQUET_CORNER_SLAB;
     public static Block LARCH_PARQUET_CORNER_SLAB;
     public static Block MAHOGANY_PARQUET_CORNER_SLAB;
@@ -1273,6 +1304,7 @@ public class WNBlocks {
     public static Block CITRUS_BEAM;
     public static Block EBONY_BEAM;
     public static Block EUCALYPTUS_BEAM;
+    public static Block RAINBOW_EUCALYPTUS_BEAM;
     public static Block JACARANDA_BEAM;
     public static Block LARCH_BEAM;
     public static Block MAHOGANY_BEAM;
@@ -1299,6 +1331,7 @@ public class WNBlocks {
     public static Block CITRUS_STRIPPED_BEAM;
     public static Block EBONY_STRIPPED_BEAM;
     public static Block EUCALYPTUS_STRIPPED_BEAM;
+    public static Block RAINBOW_EUCALYPTUS_STRIPPED_BEAM;
     public static Block JACARANDA_STRIPPED_BEAM;
     public static Block LARCH_STRIPPED_BEAM;
     public static Block MAHOGANY_STRIPPED_BEAM;
@@ -2275,6 +2308,7 @@ public class WNBlocks {
     public static Block CITRUS_BENCH;
     public static Block EBONY_BENCH;
     public static Block EUCALYPTUS_BENCH;
+    public static Block RAINBOW_EUCALYPTUS_BENCH;
     public static Block JACARANDA_BENCH;
     public static Block LARCH_BENCH;
     public static Block MAHOGANY_BENCH;
@@ -2301,6 +2335,7 @@ public class WNBlocks {
     public static Block CITRUS_CHAIR;
     public static Block EBONY_CHAIR;
     public static Block EUCALYPTUS_CHAIR;
+    public static Block RAINBOW_EUCALYPTUS_CHAIR;
     public static Block JACARANDA_CHAIR;
     public static Block LARCH_CHAIR;
     public static Block MAHOGANY_CHAIR;
@@ -2327,6 +2362,7 @@ public class WNBlocks {
     public static Block CITRUS_ROUND_TABLE;
     public static Block EBONY_ROUND_TABLE;
     public static Block EUCALYPTUS_ROUND_TABLE;
+    public static Block RAINBOW_EUCALYPTUS_ROUND_TABLE;
     public static Block JACARANDA_ROUND_TABLE;
     public static Block LARCH_ROUND_TABLE;
     public static Block MAHOGANY_ROUND_TABLE;
@@ -2353,6 +2389,7 @@ public class WNBlocks {
     public static Block CITRUS_SQUARE_TABLE;
     public static Block EBONY_SQUARE_TABLE;
     public static Block EUCALYPTUS_SQUARE_TABLE;
+    public static Block RAINBOW_EUCALYPTUS_SQUARE_TABLE;
     public static Block JACARANDA_SQUARE_TABLE;
     public static Block LARCH_SQUARE_TABLE;
     public static Block MAHOGANY_SQUARE_TABLE;
@@ -2379,6 +2416,7 @@ public class WNBlocks {
     public static Block CITRUS_STOOL;
     public static Block EBONY_STOOL;
     public static Block EUCALYPTUS_STOOL;
+    public static Block RAINBOW_EUCALYPTUS_STOOL;
     public static Block JACARANDA_STOOL;
     public static Block LARCH_STOOL;
     public static Block MAHOGANY_STOOL;

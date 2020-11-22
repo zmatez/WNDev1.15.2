@@ -2,6 +2,8 @@ package com.matez.wildnature.world.generation.chunk.generation;
 
 import java.util.function.Function;
 
+import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.grid.Cell;
 import net.minecraft.util.Util;
 
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
@@ -127,5 +129,9 @@ public class ChunkArraySampler {
 
     public interface CoordinateAccessor<T> {
         T get(int x, int z);
+    }
+
+    public interface CoordinateCellAccessor<T> {
+        T get(Cell cell, Terrain terrain, int x, int z);
     }
 }

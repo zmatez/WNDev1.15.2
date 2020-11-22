@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "square_table",
+  "pattern": [
+    "###",
+    "| |",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:rainbow_eucalyptus_planks"
+    },
+    "|": {
+      "item": "wildnature:rainbow_eucalyptus_fence"
+    }
+  },
+  "result": {
+    "item": "wildnature:rainbow_eucalyptus_square_table",
+    "count": 4
+  }
+}

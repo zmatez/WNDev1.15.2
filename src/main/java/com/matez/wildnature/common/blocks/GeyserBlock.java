@@ -57,6 +57,16 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
     }
 
     @Override
+    public VoxelShape getRaytraceShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return this.getShape(state,worldIn,pos,null);
+    }
+
+    @Override
+    public VoxelShape getRenderShape(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return this.getShape(state,worldIn,pos,null);
+    }
+
+    @Override
     public boolean ticksRandomly(BlockState state) {
         return true;
     }

@@ -1,5 +1,5 @@
 {
-    "parent": "item/crossbow",
+    "parent": "wildnature:item/silver_crossbow",
     "textures": {
         "layer0": "wildnature:items/gems/silver/silver_crossbow_firework"
     }

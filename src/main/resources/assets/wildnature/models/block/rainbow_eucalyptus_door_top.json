@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top",
+    "textures": {
+        "bottom": "wildnature:blocks/eucalyptus/rainbow_eucalyptus_door_bottom",
+        "top": "wildnature:blocks/eucalyptus/rainbow_eucalyptus_door_top"
+    }
+}

@@ -26,6 +26,10 @@ public class WNBiomes {
     public static ArrayList<String> biomesString = new ArrayList<String>();
 
     //RIVERS
+    //fake biome
+    public static Biome RiverValleySharp = new WNRiverValley("river_valley_sharp");
+    public static Biome RiverValleySmooth = new WNRiverValley("river_valley_smooth");
+
     public static Biome River = new WNRiverBiome();
     public static Biome FrozenRiver = new WNFrozenRiverBiome();
     public static Biome AmazonRiver = new WNAmazonRiver();
