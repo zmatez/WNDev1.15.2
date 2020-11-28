@@ -711,8 +711,7 @@ public class WNBlocks {
     public static Block ROWAN_WOOD;
     public static Block ROWAN_STRIPPED_LOG;
     public static Block ROWAN_STRIPPED_WOOD;
-    public static Block ROWAN_LEAVES_RED;
-    public static Block ROWAN_LEAVES_ORANGE;
+    public static Block ROWAN_LEAVES;
     public static Block ROWAN_SAPLING_RED;
     public static Block ROWAN_SAPLING_ORANGE;
     public static Block ROWAN_PLANKS;
@@ -2389,7 +2388,6 @@ public class WNBlocks {
     public static Block CITRUS_SQUARE_TABLE;
     public static Block EBONY_SQUARE_TABLE;
     public static Block EUCALYPTUS_SQUARE_TABLE;
-    public static Block RAINBOW_EUCALYPTUS_SQUARE_TABLE;
     public static Block JACARANDA_SQUARE_TABLE;
     public static Block LARCH_SQUARE_TABLE;
     public static Block MAHOGANY_SQUARE_TABLE;

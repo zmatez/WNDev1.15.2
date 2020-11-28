@@ -254,7 +254,7 @@ public class BiomeArgument implements ArgumentType<Biome>
             dist = a * rootN;
             x = startX + (dist * Math.sin(b * rootN));
             z = startZ + (dist * Math.cos(b * rootN));
-            Biome[] biomesAtSample = chunkManager.getBiomes((int)x, (int)z, 1, 1).toArray(new Biome[0]);
+            Biome[] biomesAtSample = chunkManager.getBiomes((int)x/4, 1, (int)z/4, 1).toArray(new Biome[0]);
             if (biomesAtSample[0] == biomeToFind)
             {
                 return new BiomePos(new BlockPos((int)x, 0, (int)z),biomeToFind);

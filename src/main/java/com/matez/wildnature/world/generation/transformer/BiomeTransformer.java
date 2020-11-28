@@ -73,6 +73,18 @@ public abstract class BiomeTransformer {
     }
 
     /**
+     * Used for edge biomes, shores etc
+     *
+     * @return
+     */
+    public BiomeGroup apply(BiomeGroup oldBiomeGroup, BiomeGroup northBiomeGroup, BiomeGroup southBiomeGroup, BiomeGroup eastBiomeGroup, BiomeGroup westBiomeGroup, Cell cell, Terrain terrain) {
+        return apply(oldBiomeGroup, northBiomeGroup, southBiomeGroup, eastBiomeGroup, westBiomeGroup, TempCategory.getFromTemperature(-1, 1, cell.temparature), WetCategory.getFromMoisture(-1, 1, cell.moisture), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
+    }
+    protected BiomeGroup apply(BiomeGroup oldBiomeGroup, BiomeGroup northBiomeGroup, BiomeGroup southBiomeGroup, BiomeGroup eastBiomeGroup, BiomeGroup westBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
+        return oldBiomeGroup;
+    }
+
+    /**
      * Used for shores
      *
      * @return
@@ -124,6 +136,7 @@ public abstract class BiomeTransformer {
         }));
 
         private final String name;
+
 
         private TempCategory(String nameIn) {
             this.name = nameIn;
@@ -252,4 +265,8 @@ public abstract class BiomeTransformer {
 
         return biomes;
     }
+
+    /*private double calculateDistance(Biome biome){
+        return WetCategory.getFromMoisture(0, 1, biome.getDownfall()) + TempCategory.getFromTemperature(-0.5f,1,biome.getDefaultTemperature());
+    }*/
 }

@@ -359,6 +359,12 @@ public class WNItems {
     public static Item GLOWSHROOM_DUST, ICESHROOM_DUST;
     public static Item POUCH, BACKPACK_SMALL, BACKPACK_MEDIUM, BACKPACK_BIG;
 
+    //BLOWPIPES
+    public static Item ANCIENT_BLOWPIPE;
+
+    //ammo
+    public static Item ROWANBERRY_RED, ROWANBERRY_ORANGE;
+
     //
     public static Item CHISEL;
 

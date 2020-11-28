@@ -169,7 +169,7 @@ public class OpenSimplex2S {
 		
 		noise2_Base(yy + xx, yy - xx, output);
 		
-		// TODO we would need to rotate the derivative in this one for it to be correct.
+
 		// Commented it out for now since this is probably a niche-use-case evaluator.
 	}*/
 	

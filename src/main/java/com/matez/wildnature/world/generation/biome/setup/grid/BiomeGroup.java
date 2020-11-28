@@ -7,6 +7,7 @@ import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class BiomeGroup {
     private String name;
@@ -77,6 +78,26 @@ public class BiomeGroup {
                 ", baseBiome=" + baseBiome +
                 ", subBiomes=" + Arrays.toString(subBiomes) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BiomeGroup that = (BiomeGroup) o;
+        return weight == that.weight &&
+                name.equals(that.name) &&
+                baseBiome.equals(that.baseBiome) &&
+                Arrays.equals(subBiomes, that.subBiomes) &&
+                Arrays.equals(weightedBiomes, that.weightedBiomes);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, weight, baseBiome);
+        result = 31 * result + Arrays.hashCode(subBiomes);
+        result = 31 * result + Arrays.hashCode(weightedBiomes);
+        return result;
     }
 
     /**

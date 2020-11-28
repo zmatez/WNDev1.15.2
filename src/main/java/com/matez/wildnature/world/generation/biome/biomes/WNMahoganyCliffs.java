@@ -8,10 +8,7 @@ import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus1;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus2;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus3;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus4;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.mahogany.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
@@ -76,10 +73,13 @@ public class WNMahoganyCliffs extends WNBiome {
         WNBiomeFeatures.addTree(this, new mahoganyshrub1().setCustomLog(WN.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WN.getBlockByID("minecraft:mahogany_leaves"))), 3);
         WNBiomeFeatures.addTree(this, new mahoganyshrub2().setCustomLog(WN.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WN.getBlockByID("minecraft:mahogany_leaves"))), 3);
         WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(WN.getBlockByID("minecraft:mahogany_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WN.getBlockByID("minecraft:mahogany_leaves"))), 4);
-        WNBiomeFeatures.addTree(this, new citrus1().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.POMEGRANATE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus2().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.POMEGRANATE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus3().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ORANGE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus4().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ORANGE_LEAVES)), 1);
+        WNBiomeFeatures.addTree(this, new pomegranate1(), 1);
+        WNBiomeFeatures.addTree(this, new pomegranate2(), 1);
+        WNBiomeFeatures.addTree(this, new pomegranate3(), 1);
+        WNBiomeFeatures.addTree(this, new orange1(), 1);
+        WNBiomeFeatures.addTree(this, new orange2(), 1);
+        WNBiomeFeatures.addTree(this, new orange3(), 1);
+
         plantRate = 2;
         treeRate = 15;
 

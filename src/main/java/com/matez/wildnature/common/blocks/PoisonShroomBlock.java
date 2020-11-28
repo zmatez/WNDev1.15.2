@@ -1,5 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.common.effect.WNEffects;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.BlockState;
@@ -24,7 +25,7 @@ public class PoisonShroomBlock extends CaveShroomBase {
             if(CommonConfig.poisonIvyPoisons.get() && (!(entityIn instanceof PlayerEntity) || !((PlayerEntity) entityIn).isCreative())) {
                 ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.BLINDNESS, Utilities.rint(200, 500), 0, true, false));
                 ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.GLOWING, Utilities.rint(200, 500), 0, true, false));
-                ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.POISON, Utilities.rint(60, 200), 0, true, false));
+                ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(WNEffects.SHROOM_POISON, Utilities.rint(60, 200), 0, true, false));
                 worldIn.destroyBlock(pos,false);
             }
         }

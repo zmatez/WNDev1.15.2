@@ -2,8 +2,15 @@ package com.matez.wildnature.world.generation.biome.registry;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.biomes.*;
+import com.matez.wildnature.world.generation.biome.biomes.beach.*;
+import com.matez.wildnature.world.generation.biome.biomes.island.*;
+import com.matez.wildnature.world.generation.biome.biomes.lake.WNColdLake;
+import com.matez.wildnature.world.generation.biome.biomes.lake.WNDriedLake;
+import com.matez.wildnature.world.generation.biome.biomes.lake.WNFrozenLake;
+import com.matez.wildnature.world.generation.biome.biomes.lake.WNWarmLake;
+import com.matez.wildnature.world.generation.biome.biomes.ocean.WNDeepJellyOcean;
+import com.matez.wildnature.world.generation.biome.biomes.river.*;
 import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.BiomeGroups;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.EnumBiomes;
@@ -11,7 +18,6 @@ import com.matez.wildnature.world.generation.biome.setup.grid.*;
 import com.matez.wildnature.world.generation.manager.WNBiomeManager;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.ColumnFuzzedBiomeMagnifier;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
@@ -25,12 +31,30 @@ public class WNBiomes {
     public static ArrayList<BiomeToRegister> biomesToRegister = new ArrayList<>();
     public static ArrayList<String> biomesString = new ArrayList<String>();
 
+    //OCEANS
+    public static Biome DeepJellyOcean = new WNDeepJellyOcean("deep_jelly_ocean");
+
+    public static BiomeGroup OCEAN = BiomeGroup.SingleBuilder.configure("ocean",Biomes.OCEAN);
+    public static BiomeGroup COLD_OCEAN = BiomeGroup.SingleBuilder.configure("cold_ocean",Biomes.COLD_OCEAN);
+    public static BiomeGroup FROZEN_OCEAN = BiomeGroup.SingleBuilder.configure("frozen_ocean",Biomes.FROZEN_OCEAN);
+    public static BiomeGroup LUKEWARM_OCEAN = BiomeGroup.SingleBuilder.configure("lukewarm_ocean",Biomes.LUKEWARM_OCEAN,
+            new SubBiome(DeepJellyOcean,1, Type.MAGICAL, Type.RARE, Type.LUSH),
+            new SubBiome(Biomes.WARM_OCEAN,10));
+    public static BiomeGroup WARM_OCEAN = BiomeGroup.SingleBuilder.configure("warm_ocean",Biomes.WARM_OCEAN,
+            new SubBiome(DeepJellyOcean,2, Type.MAGICAL, Type.RARE, Type.LUSH),
+            new SubBiome(Biomes.WARM_OCEAN,10));
+    public static BiomeGroup DEEP_OCEAN = BiomeGroup.SingleBuilder.configure("deep_ocean",Biomes.DEEP_OCEAN);
+    public static BiomeGroup DEEP_COLD_OCEAN = BiomeGroup.SingleBuilder.configure("deep_cold_ocean",Biomes.DEEP_COLD_OCEAN);
+    public static BiomeGroup DEEP_FROZEN_OCEAN = BiomeGroup.SingleBuilder.configure("deep_frozen_ocean",Biomes.DEEP_FROZEN_OCEAN);
+    public static BiomeGroup DEEP_LUKEWARM_OCEAN = BiomeGroup.SingleBuilder.configure("deep_lukewarm_ocean",Biomes.DEEP_LUKEWARM_OCEAN);
+    public static BiomeGroup DEEP_WARM_OCEAN = BiomeGroup.SingleBuilder.configure("deep_warm_ocean",Biomes.DEEP_WARM_OCEAN);
+
     //RIVERS
     //fake biome
     public static Biome RiverValleySharp = new WNRiverValley("river_valley_sharp");
     public static Biome RiverValleySmooth = new WNRiverValley("river_valley_smooth");
 
-    public static Biome River = new WNRiverBiome();
+    public static Biome River = new WNRiverBiome("river");
     public static Biome FrozenRiver = new WNFrozenRiverBiome();
     public static Biome AmazonRiver = new WNAmazonRiver();
     public static Biome NileRiver = new WNNileRiver();
@@ -51,6 +75,10 @@ public class WNBiomes {
     public static Biome PoplarForest = new WNPoplarForest("poplar_forest");
     public static Biome PoplarForestValley = new WNPoplarForestValley("poplar_forest_valley");
     public static Biome PoplarForestHills = new WNPoplarForestHills("poplar_forest_hills");
+    public static Biome AutumnalPoplarForest = new WNAutumnalPoplarForest("autumnal_poplar_forest");
+    public static Biome AutumnalPoplarForestValley = new WNAutumnalPoplarForestValley("autumnal_poplar_forest_valley");
+    public static Biome AutumnalPoplarForestHills = new WNAutumnalPoplarForestHills("autumnal_poplar_forest_hills");
+
 
     //HIGH
     public static Biome HighForest = new WNHighForest("high_forest");
@@ -67,6 +95,8 @@ public class WNBiomes {
     public static Biome BeechForest = new WNBeechForest("beech_forest");
     public static Biome BeechForestHills = new WNBeechForestHills("beech_hills");
     public static Biome BeechValley = new WNBeechValley("beech_valley");
+    public static Biome BeechForestTall = new WNBeechForestTall("beech_tall_forest");
+    public static Biome BeechGrove = new WNBeechGrove("beech_grove");
 
     public static Biome PurpleWoodland = new WNPurpleWoodland("purple_woodland");
 
@@ -216,6 +246,9 @@ public class WNBiomes {
     public static Biome BaobabSavanna = new WNBaobabSavanna("baobab_savanna");
     public static Biome GiantSavanna = new WNGiantSavanna("giant_savanna");
 
+    public static Biome CaatingaScrubs = new WNCaatingaScrubs("caatinga_scrubs");
+    public static Biome CaatingaHills = new WNCaatingaHills("caatinga_hills");
+
     //REDWOOD
     public static Biome RedwoodForest = new WNRedwoodForest("redwood_forest");
     public static Biome RedwoodHills = new WNRedwoodHills("redwood_hills");
@@ -337,6 +370,8 @@ public class WNBiomes {
 
     //TROPICAL
     public static Biome EucalyptusForest = new WNEucalyptusForest("eucalyptus_forest");
+    public static Biome GiantEucalyptusForest = new WNGiantEucalyptusForest("giant_eucalyptus_forest");
+
     public static Biome DaintreeForest = new WNDaintreeForest("daintree_forest");
     public static Biome DaintreePlateau = new WNDaintreePlateau("daintree_plateau");
     public static Biome DaintreeCliffs = new WNDaintreeCliffs("daintree_cliffs");
@@ -378,8 +413,26 @@ public class WNBiomes {
 
     //BEACHES
     public static Biome Beach = new WNBeach("beach");
+    public static Biome PalmBeach = new WNPalmBeach("palm_beach");
     public static Biome WhiteBeach = new WNWhiteBeach("white_beach");
-    //public static Biome BeachCliffs = new WNBeachCliff("beach_cliffs");
+    public static Biome WhitePalmBeach = new WNWhitePalmBeach("white_palm_beach");
+    public static Biome BeachDunes = new WNDuneBeach("dune_beach");
+    public static Biome ColdBeach = new WNWhiteBeach("cold_beach");
+    public static Biome StoneShore = new WNStoneShore("stone_shore");
+    public static Biome ColdStoneShore = new WNColdStoneShore("cold_stone_shore");
+
+    public static BiomeGroup TEMPERATE_BEACH = BiomeGroup.SingleBuilder.configure("temperate_beach",10,Beach,
+            new SubBiome(BeachDunes,3));
+    public static BiomeGroup WARM_BEACH = BiomeGroup.SingleBuilder.configure("warm_beach",10,Beach,
+            new SubBiome(PalmBeach,3),
+            new SubBiome(WhiteBeach,2),
+            new SubBiome(BeachDunes,2));
+    public static BiomeGroup TROPICAL_BEACH = BiomeGroup.SingleBuilder.configure("tropical_beach",10,WhiteBeach,
+            new SubBiome(WhitePalmBeach,5));
+    public static BiomeGroup COLD_BEACH = BiomeGroup.SingleBuilder.configure("cold_beach",10,Beach);
+    public static BiomeGroup ICY_BEACH = BiomeGroup.SingleBuilder.configure("cold_beach",10,ColdBeach);
+    public static BiomeGroup STONE_SHORE = BiomeGroup.SingleBuilder.configure("stone_shore",10,StoneShore);
+    public static BiomeGroup COLD_STONE_SHORE = BiomeGroup.SingleBuilder.configure("cold_stone_shore",10,ColdStoneShore);
 
     public static void registerAllBiomes(){
         registerWildNature();
@@ -404,6 +457,13 @@ public class WNBiomes {
                                 new SubBiome(WNBiomes.PoplarForestValley, 3, Type.PLAINS)
                         ),
                 Type.FOREST, Type.DENSE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(6, WNBiomes.AutumnalPoplarForest,
+                                new SubBiome(WNBiomes.AutumnalPoplarForestHills, 4, Type.HILLS),
+                                new SubBiome(WNBiomes.AutumnalPoplarForestValley, 3, Type.PLAINS)
+                        ),
+                Type.FOREST, Type.DENSE, Type.COLD);
 
         register(BiomeGroup.SingleBuilder
                         .configure(10, WNBiomes.HighForest,
@@ -438,7 +498,9 @@ public class WNBiomes {
         register(BiomeGroup.SingleBuilder
                         .configure(9, WNBiomes.BeechForest,
                                 new SubBiome(WNBiomes.BeechForestHills, 4, Type.HILLS),
-                                new SubBiome(WNBiomes.BeechValley, 3, Type.PLAINS)
+                                new SubBiome(WNBiomes.BeechValley, 3, Type.PLAINS),
+                                new SubBiome(WNBiomes.BeechForestTall,3),
+                                new SubBiome(WNBiomes.BeechGrove,1, Type.RARE, Type.MAGICAL)
                         ),
                 Type.FOREST, Type.DENSE);
 
@@ -690,6 +752,11 @@ public class WNBiomes {
                 Type.FOREST, Type.DRY, Type.SAVANNA);
 
         register(BiomeGroup.SingleBuilder
+                        .configure(5, WNBiomes.CaatingaScrubs,
+                                new SubBiome(WNBiomes.CaatingaHills, 3, Type.HILLS, Type.PLATEAU)),
+                Type.DRY, Type.SAVANNA);
+
+        register(BiomeGroup.SingleBuilder
                         .configure(7, WNBiomes.BaobabSavanna),
                 Type.SAVANNA, Type.DRY, Type.FOREST);
 
@@ -925,6 +992,10 @@ public class WNBiomes {
                 Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET, Type.LUSH);
 
         register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.GiantEucalyptusForest),
+                Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET, Type.LUSH, Type.MAGICAL, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
                         .configure(3, WNBiomes.DaintreeForest,
                                 new SubBiome(WNBiomes.DaintreePlateau,3, Type.PLATEAU)
                         ),
@@ -1118,8 +1189,9 @@ public class WNBiomes {
     }
 
     private static void registerEdges(){
-        EdgeBiome.register(Biomes.JUNGLE_EDGE,BiomeTerrain.getGroupByName("jungle"));
-        EdgeBiome.register(Biomes.JUNGLE_EDGE,BiomeTerrain.getGroupByName("bamboo_jungle"));
+        BiomeGroup jungleEdge = BiomeGroup.SingleBuilder.configure("jungle_edge",Biomes.JUNGLE_EDGE);
+        EdgeBiome.register(jungleEdge,BiomeTerrain.getGroupByName("jungle"));
+        EdgeBiome.register(jungleEdge,BiomeTerrain.getGroupByName("bamboo_jungle"));
     }
 
     private static void registerIslands(){
@@ -1161,7 +1233,15 @@ public class WNBiomes {
 
     private static void registerNonSpawns(){
         registerNonSpawn(WNBiomes.Beach, Type.SANDY, Type.BEACH, Type.WATER);
+        registerNonSpawn(WNBiomes.PalmBeach, Type.SANDY, Type.BEACH, Type.WATER, Type.FOREST);
         registerNonSpawn(WNBiomes.WhiteBeach, Type.SANDY, Type.BEACH, Type.WATER, Type.HOT);
+        registerNonSpawn(WNBiomes.WhitePalmBeach, Type.SANDY, Type.BEACH, Type.WATER, Type.HOT, Type.FOREST);
+        registerNonSpawn(WNBiomes.BeachDunes, Type.SANDY, Type.BEACH, Type.WATER, Type.LUSH, Type.MODIFIED);
+        registerNonSpawn(WNBiomes.ColdBeach, Type.SANDY, Type.BEACH, Type.WATER, Type.COLD, Type.SNOWY);
+        registerNonSpawn(WNBiomes.StoneShore, Type.BEACH, Type.WATER, Type.COLD);
+        registerNonSpawn(WNBiomes.ColdStoneShore, Type.BEACH, Type.WATER, Type.COLD, Type.SNOWY);
+
+        registerNonSpawn(WNBiomes.DeepJellyOcean, Type.OCEAN, Type.WATER, Type.MAGICAL, Type.RARE);
     }
 
     public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types) {

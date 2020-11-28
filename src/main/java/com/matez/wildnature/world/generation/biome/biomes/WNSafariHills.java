@@ -58,8 +58,6 @@ public class WNSafariHills extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.LUPINE_BLUE.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.GRASS_FLOWER.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
 
-        //TODO SavannaTreeFeature
-        //WNBiomeFeatures.addTree(this, new SavannaTreeFeature(NoFeatureConfig::deserialize, false), 5);
         WNBiomeFeatures.addTree(this, new acacia1(), 3);
         WNBiomeFeatures.addTree(this, new acacia2(), 3);
         WNBiomeFeatures.addTree(this, new acacia3(), 3);

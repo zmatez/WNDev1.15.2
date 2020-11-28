@@ -24,7 +24,7 @@ public class WNRiverValley extends WNBiome {
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
                 .depth(0.15F)
-                .scale(0.00F)
+                .scale(0.03F)
                 .temperature(0.6F)
                 .downfall(0.8F)
                 .waterColor(4159204)
@@ -50,18 +50,6 @@ public class WNRiverValley extends WNBiome {
 
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);
-
-        WNBiomeFeatures.addPlant(this, WNBlocks.CATTAIL.getDefaultState(), 4);
-
-        WNBiomeFeatures.addTree(this, new pointy_oak_1(), 1);
-        WNBiomeFeatures.addTree(this, new pointy_oak_2(), 1);
-        WNBiomeFeatures.addTree(this, new pointy_oak_3(), 1);
-        WNBiomeFeatures.addTree(this, new pointy_oak_4(), 1);
-        WNBiomeFeatures.addTree(this, new pointy_oak_5(), 1);
-
-        treeRate = 0;
-
-        applyTrees();
 
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.PIG, 10, 4, 4));
         this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.CHICKEN, 10, 4, 4));

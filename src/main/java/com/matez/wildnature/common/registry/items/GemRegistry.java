@@ -1,5 +1,6 @@
 package com.matez.wildnature.common.registry.items;
 
+import com.matez.wildnature.common.items.blowpipe.BlowpipeItem;
 import com.matez.wildnature.common.items.weapons.SilverCrossbowItem;
 import com.matez.wildnature.common.items.weapons.SilverAxeItem;
 import com.matez.wildnature.common.items.weapons.SilverPickaxeItem;
@@ -79,6 +80,14 @@ public class GemRegistry {
                 WNItems.AMETHYST_AXE = new AxeItem(WNItemTier.AMETHYST, 6, -3F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("amethyst_axe")),
                 WNItems.AMETHYST_SHOVEL = new ShovelItem(WNItemTier.AMETHYST, 0F, -3F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("amethyst_shovel")),
                 WNItems.AMETHYST_HOE = new HoeItem(WNItemTier.AMETHYST,  0F, (new Item.Properties()).group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("amethyst_hoe")),
+
+                //BLOWPIPES
+                WNItems.ANCIENT_BLOWPIPE = new BlowpipeItem(new Item.Properties().group(WNTabs.EQUIPMENT).maxStackSize(1).maxDamage(128)).setRegistryName(WN.RegistryEvents.location("ancient_blowpipe")),
+
+                //      ammos
+                WNItems.ROWANBERRY_RED = new Item(new Item.Properties().group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("rowanberry_red")),
+                WNItems.ROWANBERRY_ORANGE = new Item(new Item.Properties().group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("rowanberry_orange")),
+
 
                 //MISC
                 WNItems.HANDLE_LEATHER = new Item(new Item.Properties().group(WNTabs.EQUIPMENT)).setRegistryName(WN.RegistryEvents.location("handle_leather")),

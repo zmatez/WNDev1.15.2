@@ -2,7 +2,7 @@ package com.matez.wildnature.util.event;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.common.entity.render.cape.CapeTexture;
+import com.matez.wildnature.common.entity.render.layer.cape.CapeTexture;
 import com.matez.wildnature.util.event.capeBuffers.IImageBuffer;
 import com.matez.wildnature.util.other.Patron;
 import net.minecraft.client.Minecraft;

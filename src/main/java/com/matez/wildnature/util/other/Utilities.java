@@ -4,11 +4,15 @@ import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.nbt.ListNBT;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -466,5 +470,47 @@ public class Utilities {
 
     public static int scaleBetween(int unscaledNum, int minAllowed, int maxAllowed, int min, int max) {
         return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
+    }
+
+    public static PlayerEntity getPlayerByUUID(String uuid, World world){
+        try {
+            return world.getPlayerByUuid(UUID.fromString(uuid));
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    public static PlayerEntity getPlayerByUUID(String uuid, MinecraftServer server){
+        try {
+            return server.getPlayerList().getPlayerByUUID(UUID.fromString(uuid));
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+
+    public static PlayerEntity getPlayerByUUID(UUID uuid, MinecraftServer server){
+        try {
+            return server.getPlayerList().getPlayerByUUID(uuid);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    public static boolean canPlantHurt(Entity entity){
+        if(entity instanceof LivingEntity){
+            if(entity instanceof PlayerEntity){
+                return true;
+            }
+            if(entity.hasCustomName()){
+                return false;
+            }
+            if(entity instanceof TameableEntity){
+                if(((TameableEntity) entity).isTamed()){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

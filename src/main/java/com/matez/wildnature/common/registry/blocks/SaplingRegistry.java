@@ -341,13 +341,9 @@ public class SaplingRegistry {
         SchemTree redwoodTrees = new SchemTree(weighList);
         weighList = new TreeWeighList();
 
-        weighList.add(new tree_oak18().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ROWAN_LEAVES_RED)),10);
-        weighList.add(new tree_oak19().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ROWAN_LEAVES_RED)),10);
-        SchemTree rowanTreesRed = new SchemTree(weighList);
-
-        weighList.add(new tree_oak18().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ROWAN_LEAVES_ORANGE)),10);
-        weighList.add(new tree_oak19().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ROWAN_LEAVES_ORANGE)),10);
-        SchemTree rowanTreesOrange = new SchemTree(weighList);
+        weighList.add(new tree_oak18().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ROWAN_LEAVES)),10);
+        weighList.add(new tree_oak19().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ROWAN_LEAVES)),10);
+        SchemTree rowanTrees = new SchemTree(weighList);
         weighList = new TreeWeighList();
         weighList.add(new tree_willow1().setCustomLog(WNBlocks.WILLOW_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.WILLOW_LEAVES)),10);
         weighList.add(new tree_willow2().setCustomLog(WNBlocks.WILLOW_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.WILLOW_LEAVES)),10);
@@ -515,8 +511,8 @@ public class SaplingRegistry {
                 WNBlocks.MIRABELLE_PLUM_SAPLING = new SaplingBase(mirabellePlumTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(), new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("mirabelle_plum_sapling")),
                 WNBlocks.POPLAR_SAPLING = new SaplingBase(poplarTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(), new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("poplar_sapling")),
                 WNBlocks.REDWOOD_SAPLING = new SaplingBase(redwoodTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("redwood_sapling")),
-                WNBlocks.ROWAN_SAPLING_RED = new SaplingBase(rowanTreesRed, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("rowan_sapling_red")),
-                WNBlocks.ROWAN_SAPLING_ORANGE = new SaplingBase(rowanTreesOrange, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("rowan_sapling_orange")),
+                WNBlocks.ROWAN_SAPLING_RED = new SaplingBase(rowanTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("rowan_sapling_red")),
+                WNBlocks.ROWAN_SAPLING_ORANGE = new SaplingBase(rowanTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("rowan_sapling_orange")),
                 WNBlocks.WILLOW_SAPLING = new SaplingBase(willowTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("willow_sapling")),
                 WNBlocks.LEMON_SAPLING = new SaplingBase(lemonTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("lemon_sapling")),
                 WNBlocks.ORANGE_SAPLING = new SaplingBase(orangeTrees, Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement(),new Item.Properties().group(WNTabs.SURFACE_PLANTS), WN.RegistryEvents.location("orange_sapling")),

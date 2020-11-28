@@ -174,8 +174,8 @@ public class CommonConfig {
                 .defineInRange("rocks.size",10, 0, 100);
 
         riverDepth=builder
-                .comment("Depth of all of rivers\nDefault: -1.0")
-                .defineInRange("biome.river.depth",-1.0,-10.0,10);
+                .comment("Depth of all of rivers\nDefault: -0.5")
+                .defineInRange("biome.river.depth",-0.5,-10.0,10);
 
         biomeGroupSpawningSize=builder
                 .comment("Size of sub-biomes\nbigger sub-biomes = lower number\nDefault: 3")

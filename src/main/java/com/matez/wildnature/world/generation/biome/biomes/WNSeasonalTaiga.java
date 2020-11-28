@@ -140,9 +140,6 @@ public class WNSeasonalTaiga extends WNBiome {
         WNBiomeFeatures.addTree(this, new weeping_beech_3(), 1);
         WNBiomeFeatures.addTree(this, new weeping_beech_4(), 1);
 
-        //TODO MegaPineTree
-        //WNBiomeFeatures.addTree(this, new MegaPineTree(NoFeatureConfig::deserialize, true, true), 12);
-        //WNBiomeFeatures.addTree(this, new MegaPineTree(NoFeatureConfig::deserialize, true, true), 12);
         WNBiomeFeatures.addTree(this, new tree_fir31().setCustomLog(WN.getBlockByID("minecraft:spruce_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("minecraft:spruce_leaves"))), 4);
 
 

@@ -7,10 +7,7 @@ import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus1;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus2;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus3;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus4;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.oak.oak1;
 import com.matez.wildnature.world.generation.structures.nature.woods.oak.oak2;
 import com.matez.wildnature.world.generation.structures.nature.woods.oak.oak3;
@@ -74,16 +71,17 @@ public class WNCitrusOrchard extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.CLOVER.getDefaultState(), 3);
         WNBiomeFeatures.addPlant(this, WNBlocks.LEAF_PILE.getDefaultState(), 3);
 
-        WNBiomeFeatures.addTree(this, new oak1(), 3);
+        WNBiomeFeatures.addTree(this, new oak1(), 4);
         WNBiomeFeatures.addTree(this, new oak2(), 3);
         WNBiomeFeatures.addTree(this, new oak3(), 3);
 
-        WNBiomeFeatures.addTree(this, new citrus3().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.LEMON_LEAVES)), 2);
-        WNBiomeFeatures.addTree(this, new citrus4().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.LEMON_LEAVES)), 2);
+        WNBiomeFeatures.addTree(this, new lemon1(), 2);
+        WNBiomeFeatures.addTree(this, new lemon2(), 2);
+        WNBiomeFeatures.addTree(this, new lemon3(), 2);
 
-        WNBiomeFeatures.addTree(this, new citrus1().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.LIME_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus2().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.LIME_LEAVES)), 1);
-
+        WNBiomeFeatures.addTree(this, new lime1(), 1);
+        WNBiomeFeatures.addTree(this, new lime2(), 1);
+        WNBiomeFeatures.addTree(this, new lime3(), 1);
 
         WNBiomeFeatures.addTree(this, new shrub1(), 9);
         WNBiomeFeatures.addBlob(this, Blocks.STONE.getDefaultState(), 2, true, false, 4);

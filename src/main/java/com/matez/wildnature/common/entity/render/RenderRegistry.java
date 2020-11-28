@@ -3,6 +3,7 @@ package com.matez.wildnature.common.entity.render;
 
 import com.matez.wildnature.common.entity.EntityRegistry;
 import com.matez.wildnature.common.entity.render.animal.*;
+import com.matez.wildnature.common.entity.render.misc.blowpipe.RowanBlowdartRender;
 import com.matez.wildnature.common.entity.render.monster.GoblinRender;
 import com.matez.wildnature.common.entity.render.tileentity.ItemTileEntityRender;
 import com.matez.wildnature.client.gui.initGuis;
@@ -30,6 +31,9 @@ public class RenderRegistry {
 
         //tiles
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SEAT,new SeatEntityRenderer.RenderFactory());
+
+        //misc
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.ROWAN_BLOWDART,new RowanBlowdartRender.RenderFactory());
 
         //tileentities
 

@@ -147,7 +147,7 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
             double speedX = Utilities.rdoub(-res,res);
             double speedY = Utilities.rdoub(0.3,1.2);
             double speedZ = Utilities.rdoub(-res,res);
-            SteamGeneratorBlock.spawnParticle(world,ParticleRegistry.STEAM,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ,0.1);
+            SteamGeneratorBlock.spawnParticle(world,ParticleRegistry.STEAM,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
 
         }
     }

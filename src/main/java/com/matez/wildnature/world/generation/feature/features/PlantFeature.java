@@ -1,15 +1,11 @@
 package com.matez.wildnature.world.generation.feature.features;
 
-import com.matez.wildnature.common.blocks.BelladonnaBlock;
-import com.matez.wildnature.common.blocks.CropBase;
-import com.matez.wildnature.common.blocks.FloweringBushBase;
-import com.matez.wildnature.common.blocks.YuccaBlock;
+import com.matez.wildnature.common.blocks.*;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.feature.configs.BlockWeightListConfig;
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DoublePlantBlock;
-import net.minecraft.block.TallFlowerBlock;
+import net.minecraft.block.*;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.tags.BlockTags;
@@ -39,11 +35,12 @@ public class PlantFeature extends Feature<BlockWeightListConfig> {
             }
 
             int i = 0;
+            boolean waterPlant = state.getBlock() instanceof UnderwaterBushBase || state.getBlock() == Blocks.SEAGRASS || state.getBlock() == Blocks.TALL_SEAGRASS || state.getBlock() == Blocks.SEA_PICKLE || state.getBlock() == Blocks.KELP_PLANT;
 
             for (int j = 0; j < 128; ++j) {
                 BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
                 try {
-                    if (worldIn.isAirBlock(blockpos) && state.isValidPosition(worldIn, blockpos)) {
+                    if ((waterPlant ? worldIn.getFluidState(blockpos).getFluid() == Fluids.WATER : worldIn.isAirBlock(blockpos)) && state.isValidPosition(worldIn, blockpos)) {
                         if(state.getProperties().contains(FloweringBushBase.FLOWERING)){
                             if(!state.get(FloweringBushBase.FLOWERING)){
                                 if(Utilities.rint(0,1)==0){

@@ -55,8 +55,6 @@ public class WNGiantSavanna extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.LUPINE_BLUE.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.GRASS_FLOWER.getDefaultState().with(FloweringBushBase.FLOWERING, true), 4);
 
-        //TODO SavannaTreeFeature
-        //WNBiomeFeatures.addTree(this, new SavannaTreeFeature(NoFeatureConfig::deserialize, true), 5);
         WNBiomeFeatures.addTree(this, new acacia1(), 3);
         WNBiomeFeatures.addTree(this, new acacia2(), 3);
         WNBiomeFeatures.addTree(this, new acacia3(), 3);
@@ -69,6 +67,10 @@ public class WNGiantSavanna extends WNBiome {
         WNBiomeFeatures.addTree(this, new baobab5(), 1);
         WNBiomeFeatures.addTree(this, new big_acacia1(), 10);
         WNBiomeFeatures.addTree(this, new big_acacia2(), 10);
+        WNBiomeFeatures.addTree(this, new giant_baobab1(), 7);
+        WNBiomeFeatures.addTree(this, new giant_baobab2(), 7);
+        WNBiomeFeatures.addTree(this, new giant_baobab3(), 7);
+        WNBiomeFeatures.addTree(this, new giant_baobab4(), 7);
 
         plantRate = 1;
         treeRate = 5;

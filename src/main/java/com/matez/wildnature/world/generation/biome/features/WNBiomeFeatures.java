@@ -232,10 +232,6 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new SeaGrassConfig(count, 0.4D)).withPlacement(Placement.TOP_SOLID_HEIGHTMAP.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
     }
 
-    public static void addSeagrass(Biome biomeIn, int count, double tallProbability){
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new SeaGrassConfig(count, tallProbability)).withPlacement(Placement.TOP_SOLID_HEIGHTMAP.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
-    }
-
     public static void addMushrooms(Biome biomeIn) {
         if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.FOREST)) {
             biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.BUSH_FEATURE.withConfiguration(new BlockFeatureConfig(Blocks.BROWN_MUSHROOM.getDefaultState())).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(2))));
@@ -586,11 +582,17 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addShells(Biome biomeIn){
-        if(biomeIn==Biomes.BEACH || biomeIn==WNBiomes.WhiteBeach) {
+        if(biomeIn==Biomes.BEACH || biomeIn==WNBiomes.Beach || biomeIn==WNBiomes.WhiteBeach) {
             biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.SHELL_FEATURE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.shellRarity.get(), 50, 0, 69))));
         }
     }
 
+    public static void addRiverFeatures(Biome biomeIn){
+        if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.RIVER)) {
+            biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.RIVER_ROCK_FEATURE.withConfiguration(new CountConfig(32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(2, 60, 0, 72))));
+            biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.RIVER_LILY_FEATURE.withConfiguration(new CountConfig(32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(7, 60, 0, 72))));
+        }
+    }
 
 
     public static void addMoss(Biome biomeIn){

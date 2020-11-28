@@ -40,6 +40,8 @@ public class WNFeatures {
     public static Feature<BlockWeightListConfig> PLANT_FEATURE;
     public static Feature<NoFeatureConfig> REEDS_FEATURE;
     public static Feature<NoFeatureConfig> RIVER_CANE_FEATURE;
+    public static Feature<CountConfig> RIVER_LILY_FEATURE;
+    public static Feature<CountConfig> RIVER_ROCK_FEATURE;
     public static Feature<NoFeatureConfig> SHELL_FEATURE;
     public static Feature<BlockWeightListAndSpawnChanceConfig> SINGLE_PLANT_FEATURE;
     public static Feature<BlockFeatureConfig> SLIME_CAVE_BUSH_FEATURE;
@@ -96,6 +98,8 @@ public class WNFeatures {
             PLANT_FEATURE = new PlantFeature(BlockWeightListConfig::deserialize),
             REEDS_FEATURE = new ReedsFeature(NoFeatureConfig::deserialize),
             RIVER_CANE_FEATURE = new RiverCaneFeature(NoFeatureConfig::deserialize),
+            RIVER_LILY_FEATURE = new RiverLilyFeature(CountConfig::deserialize),
+            RIVER_ROCK_FEATURE = new RiverRockFeature(CountConfig::deserialize),
             SHELL_FEATURE = new ShellFeature(NoFeatureConfig::deserialize),
             SINGLE_PLANT_FEATURE = new SinglePlantFeature(BlockWeightListAndSpawnChanceConfig::deserialize),
             SLIME_CAVE_BUSH_FEATURE = new SlimeCaveBushFeature(BlockFeatureConfig::deserialize),

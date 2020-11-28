@@ -1,8 +1,8 @@
 package com.matez.wildnature.common.blocks;
 
 import com.matez.wildnature.init.WN;
+import com.matez.wildnature.network.packet.packets.WNParticlePacket;
 import com.matez.wildnature.util.other.Utilities;
-import com.matez.wildnature.network.packets.WNSSpawnParticlePacket;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
 import com.matez.wildnature.client.sounds.SoundRegistry;
 import net.minecraft.block.Block;
@@ -117,7 +117,7 @@ public class SteamGeneratorBlock extends BlockBase {
             double speedX = -((oldPos.getX()-X)/divider)+ Utilities.rdoub(-res,res);
             double speedY = -((oldPos.getY()-Y)/divider)+ Utilities.rdoub(-res,res);
             double speedZ = -((oldPos.getZ()-Z)/divider)+ Utilities.rdoub(-res,res);
-            spawnParticle(world,ParticleRegistry.STEAM,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ,0.1);
+            spawnParticle(world,ParticleRegistry.STEAM,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
 
         }
     }
@@ -131,22 +131,13 @@ public class SteamGeneratorBlock extends BlockBase {
         builder.add(FACING,RUNNING,POWERED,STEAM);
     }
 
-    public static <T extends IParticleData> int spawnParticle(ServerWorld world, T type, double posX, double posY, double posZ, int particleCount, double xSpeed, double ySpeed, double zSpeed, double speed) {
-        try{
-        if(Objects.requireNonNull(Minecraft.getInstance().getIntegratedServer()).getWorld(world.getDimension().getType())!=world){
-            return 0;
-        }}catch (Exception e){
-            WN.LOGGER.warn("I am trying to register own particle packet, but I don't know how. If you know, write to me on Discord!\nFor now, it will give you these warns on server when the particle packet needs to be sent. (when using steam generator for example) Sorry!");
-            return 0;
-        }
-        WNSSpawnParticlePacket sspawnparticlepacket = new WNSSpawnParticlePacket(type, false, (float)posX, (float)posY, (float)posZ, (float)xSpeed, (float)ySpeed, (float)zSpeed, (float)speed, particleCount);
+    public static <T extends IParticleData> int spawnParticle(ServerWorld world, T type, double posX, double posY, double posZ, int particleCount, double xSpeed, double ySpeed, double zSpeed) {
+        WNParticlePacket packet = new WNParticlePacket(type, false, (float)posX, (float)posY, (float)posZ, (float)xSpeed, (float)ySpeed, (float)zSpeed, particleCount);
 
         int i = 0;
-
-
         for(int j = 0; j < world.getPlayers().size(); ++j) {
             ServerPlayerEntity serverplayerentity = world.getPlayers().get(j);
-            if (sendPacketWithinDistance(world, serverplayerentity, false, posX, posY, posZ, sspawnparticlepacket)) {
+            if (sendPacketWithinDistance(world, serverplayerentity, false, posX, posY, posZ, packet)) {
                 ++i;
             }
         }
@@ -154,13 +145,13 @@ public class SteamGeneratorBlock extends BlockBase {
         return i;
     }
 
-    public static boolean sendPacketWithinDistance(ServerWorld world, ServerPlayerEntity player, boolean longDistance, double posX, double posY, double posZ, IPacket<?> packet) {
+    public static boolean sendPacketWithinDistance(ServerWorld world, ServerPlayerEntity player, boolean longDistance, double posX, double posY, double posZ, WNParticlePacket packet) {
         if (player.getServerWorld() != world) {
             return false;
         } else {
             BlockPos blockpos = player.getPosition();
             if (blockpos.withinDistance(new Vec3d(posX, posY, posZ), longDistance ? 512.0D : 32.0D)) {
-                player.connection.sendPacket(packet);
+                WNParticlePacket.sendToClient(player,packet);
                 return true;
             } else {
                 return false;

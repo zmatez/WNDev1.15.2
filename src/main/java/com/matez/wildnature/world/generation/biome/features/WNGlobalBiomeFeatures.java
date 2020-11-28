@@ -86,6 +86,8 @@ public class WNGlobalBiomeFeatures {
                 WNBiomeFeatures.addBeehives(biome);
             }
 
+            WNBiomeFeatures.addRiverFeatures(biome);
+
             //carvers
             if(CommonConfig.generateUndergroundRivers.get()){
                 //biome.addCarver(GenerationStage.Carving.LIQUID,Biome.createCarver(new RiverCarver(null,256),new EmptyCarverConfig()));

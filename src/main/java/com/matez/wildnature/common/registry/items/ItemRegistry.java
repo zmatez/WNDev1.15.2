@@ -17,16 +17,16 @@ public class ItemRegistry {
     public ItemRegistry(){
         items = new Item[]{
                 //PLATES JUGS ETC
-                WNItems.CUP = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("cup")),
-                WNItems.JUG = new JugItem(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("jug")),
-                WNItems.GLASS = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("glass")),
-                WNItems.JAR = new JarItem(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("jar")),
-                WNItems.GLASS_CUP = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("glass_cup")),
-                WNItems.WINE_BOTTLE = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("wine_bottle")),
-                WNItems.WOODEN_MUG = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("wooden_mug")),
-                WNItems.PLATE = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("plate")),
-                WNItems.MAPLE_BOWL = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("maple_bowl")),
-                WNItems.DEEP_BOWL = new Item(new Item.Properties().group(ItemGroup.FOOD)).setRegistryName(location("deep_bowl")),
+                WNItems.CUP = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("cup")),
+                WNItems.JUG = new JugItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("jug")),
+                WNItems.GLASS = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("glass")),
+                WNItems.JAR = new JarItem(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("jar")),
+                WNItems.GLASS_CUP = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("glass_cup")),
+                WNItems.WINE_BOTTLE = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("wine_bottle")),
+                WNItems.WOODEN_MUG = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("wooden_mug")),
+                WNItems.PLATE = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("plate")),
+                WNItems.MAPLE_BOWL = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("maple_bowl")),
+                WNItems.DEEP_BOWL = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("deep_bowl")),
                 //HAMMERS
                 WNItems.WOODEN_HAMMER = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("wooden_hammer")),
                 WNItems.STONE_HAMMER = new Item(new Item.Properties().group(WNTabs.FOOD)).setRegistryName(location("stone_hammer")),

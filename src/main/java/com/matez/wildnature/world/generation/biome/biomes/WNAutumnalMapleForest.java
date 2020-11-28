@@ -8,10 +8,7 @@ import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.structures.nature.woods.birch.tree_birch1;
-import com.matez.wildnature.world.generation.structures.nature.woods.oak.tree_oak10;
-import com.matez.wildnature.world.generation.structures.nature.woods.oak.tree_oak11;
-import com.matez.wildnature.world.generation.structures.nature.woods.oak.tree_oak8;
-import com.matez.wildnature.world.generation.structures.nature.woods.oak.tree_oak9;
+import com.matez.wildnature.world.generation.structures.nature.woods.oak.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.entity.EntityClassification;
@@ -90,8 +87,7 @@ public class WNAutumnalMapleForest extends WNBiome {
         WNBiomeFeatures.addTree(this, new tree_oak9().setCustomLog(WN.getBlockByID(idLog + "_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID(idLeaf + "_leaves"))), 2);
         WNBiomeFeatures.addTree(this, new tree_oak10().setCustomLog(WN.getBlockByID(idLog + "_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID(idLeaf + "_leaves"))), 2);
         WNBiomeFeatures.addTree(this, new tree_oak11().setCustomLog(WN.getBlockByID(idLog + "_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID(idLeaf + "_leaves"))), 2);
-        //TODO BigTree
-        //WNBiomeFeatures.addTree(this, new BigTree().setCustomLog(Main.getBlockByID(idLog + "_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(Main.getBlockByID(idLeaf + "_leaves"))), 16);
+        WNBiomeFeatures.addTree(this, new tree_oak5().setCustomLog(WN.getBlockByID(idLog + "_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID(idLeaf + "_leaves"))), 3);
 
     }
 

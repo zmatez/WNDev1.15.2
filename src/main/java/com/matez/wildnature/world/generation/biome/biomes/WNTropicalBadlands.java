@@ -4,6 +4,7 @@ import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import com.matez.wildnature.world.generation.surface.configs.Noise3SurfaceBuilderConfig;
@@ -30,7 +31,7 @@ public class WNTropicalBadlands extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.JUNGLE)
+                .logTypes(LogType.JUNGLE_MEDIUM, LogType.JUNGLE_SMALL)
                 .parent(null));
 
 
@@ -53,15 +54,16 @@ public class WNTropicalBadlands extends WNBiome {
         WNBiomeFeatures.addJungleGrass(this);
         WNBiomeFeatures.addBambooJungleVegetation(this);
 
-        //TODO JungleTreeFeature
-        //WNBiomeFeatures.addTree(this, new JungleTreeFeature(NoFeatureConfig::deserialize, true, 8, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState(), true), 6);
-        WNBiomeFeatures.addTree(this, new shrub1(), 3);
-        //TODO MegaJungleFeature
-        //WNBiomeFeatures.addTree(this, new MegaJungleFeature(NoFeatureConfig::deserialize, true, 10, 20, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState()), 2);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(), 2);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(), 2);
+        WNBiomeFeatures.addTree(this, new jungle_small1(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small2(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small3(), 3);
+        WNBiomeFeatures.addTree(this, new shrub1(), 5);
 
 
         plantRate = 4;
-        treeRate = 8;
+        treeRate = 9;
 
         applyPlants();
         applyTrees();

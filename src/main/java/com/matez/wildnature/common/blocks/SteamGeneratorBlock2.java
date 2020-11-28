@@ -31,7 +31,7 @@ public class SteamGeneratorBlock2 extends SteamGeneratorBlock {
             double speedX = -((oldPos.getX()-X)/divider)+ Utilities.rdoub(-res,res);
             double speedY = -((oldPos.getY()-Y)/divider)+ Utilities.rdoub(-0.02,dividerY);
             double speedZ = -((oldPos.getZ()-Z)/divider)+ Utilities.rdoub(-res,res);
-            spawnParticle(world,ParticleRegistry.STEAM,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ,0.1);
+            spawnParticle(world,ParticleRegistry.STEAM,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
 
 
         }

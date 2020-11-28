@@ -25,7 +25,10 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.common.IPlantable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Set;
 import java.util.function.Function;
 
 public class SchemFeature extends Feature<NoFeatureConfig> {
@@ -49,7 +52,7 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
     public int rotation;
     public boolean canGenerate = true;
     public boolean virtualPlace = false;
-    public net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable)net.minecraft.block.Blocks.OAK_SAPLING;
+    public net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable) net.minecraft.block.Blocks.OAK_SAPLING;
 
     public SchemFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactoryIn) {
         super(configFactoryIn);
@@ -58,7 +61,7 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         LEAVES_OVERRIDE = null;
         LOG_OVERRIDE = null;
         BRANCH = LEAVES;
-        schemFeatures.put(this.getClass().getSimpleName().toLowerCase(),this);
+        schemFeatures.put(this.getClass().getSimpleName().toLowerCase(), this);
     }
 
 
@@ -71,6 +74,12 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
             return block.getDefaultState().with(LeavesBlock.PERSISTENT, true);
         }
         return block.getDefaultState();
+    }
+
+    public static boolean isWater(IWorldGenerationBaseReader worldIn, BlockPos pos) {
+        return worldIn.hasBlockState(pos, (p_214583_0_) -> {
+            return p_214583_0_.getBlock() == Blocks.WATER;
+        });
     }
 
     public SchemFeature setCustomLog(BlockState log) {
@@ -86,6 +95,7 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
 
     /**
      * use it if LEAVES or LOG isnt defined in the log, just strings with leaves and log
+     *
      * @param log
      * @return
      */
@@ -97,6 +107,7 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
 
     /**
      * use it if LEAVES or LOG isnt defined in the log, just strings with leaves and log
+     *
      * @param leaf
      * @return
      */
@@ -124,21 +135,21 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        return place(worldIn,rand,pos,true);
+        return place(worldIn, rand, pos, true);
     }
 
     public boolean placeStructure(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        return place(worldIn,rand,pos,false);
+        return place(worldIn, rand, pos, false);
     }
 
     //For AbstractTreeFeature
     protected boolean place(IWorldGenerationReader generationReader, Random rand, BlockPos positionIn, Set<BlockPos> changedLogs, Set<BlockPos> changedLeaves, MutableBoundingBox boundingBoxIn, NoFeatureConfig configIn) {
-        return place(generationReader,rand,positionIn,true);
+        return place(generationReader, rand, positionIn, true);
     }
 
     protected boolean place(IWorldGenerationReader worldIn, Random rand, BlockPos position, boolean isNaturalPlace) {
         BlockPos soilPos = position.down();
-        if(isNaturalPlace) {
+        if (isNaturalPlace) {
             if (!canGrowTree(worldIn, position.down(), getSapling())) {
                 return false;
             }
@@ -173,21 +184,15 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         return world.hasBlockState(pos, state -> state.canSustainPlant((net.minecraft.world.IBlockReader) world, pos, Direction.UP, sapling));
     }
 
-    public static boolean isWater(IWorldGenerationBaseReader worldIn, BlockPos pos) {
-        return worldIn.hasBlockState(pos, (p_214583_0_) -> {
-            return p_214583_0_.getBlock() == Blocks.WATER;
-        });
-    }
-
     public Set<BlockPos> setBlocks() {
         return Sets.newHashSet(addedBlocks);
     }
 
     public void Block(int x, int y, int z, BlockState state) {
-        if(LOG_OVERRIDE!=null && state.getBlock() instanceof LogBlock){
+        if (LOG_OVERRIDE != null && state.getBlock() instanceof LogBlock) {
             state = LOG_OVERRIDE;
         }
-        if(LEAVES_OVERRIDE!=null && state.getBlock() instanceof LeavesBlock){
+        if (LEAVES_OVERRIDE != null && state.getBlock() instanceof LeavesBlock) {
             state = LEAVES_OVERRIDE;
         }
         if (state.getBlock() == WNBlocks.MAGNOLIA_LEAVES || state.getBlock() == WNBlocks.FORSYTHIA_LEAVES || Utilities.rint(0, 10) == 0) {
@@ -227,7 +232,7 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         if (!virtualPlace) {
             if ((isLeaf(state.getBlock()) && !world.getBlockState(pos).isSolid())) {
                 world.setBlockState(pos, state, 19);
-            }else if(!isLeaf(state.getBlock())){
+            } else if (!isLeaf(state.getBlock())) {
                 world.setBlockState(pos, state, 19);
             }
         }
@@ -310,8 +315,8 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
     }
 
     public static class BlockStatePos {
-        private BlockState state;
-        private BlockPos pos;
+        private final BlockState state;
+        private final BlockPos pos;
 
         public BlockStatePos(BlockState state, BlockPos pos) {
             this.state = state;

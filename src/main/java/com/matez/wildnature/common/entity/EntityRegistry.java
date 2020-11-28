@@ -8,6 +8,8 @@ import com.matez.wildnature.common.entity.type.animal.deer.FawnEntity;
 import com.matez.wildnature.common.entity.type.animal.duck.*;
 import com.matez.wildnature.common.entity.type.animal.fish.PiranhaEntity;
 import com.matez.wildnature.common.entity.type.animal.insect.DragonflyEntity;
+import com.matez.wildnature.common.entity.type.misc.blowpipe.BlowdartEntity;
+import com.matez.wildnature.common.entity.type.misc.blowpipe.darts.RowanBlowdartEntity;
 import com.matez.wildnature.common.entity.type.monster.GoblinEntity;
 import com.matez.wildnature.client.gui.tileEntities.seat.SeatEntity;
 import com.matez.wildnature.util.lists.WNItems;
@@ -49,7 +51,11 @@ public class EntityRegistry {
     public static EntityType<SparrowEntity> SPARROW_MALE = (EntityType<SparrowEntity>) EntityType.Builder.<SparrowEntity>create(SparrowEntity::new, EntityClassification.CREATURE).size(0.3F, 0.4F).build("wildnature:sparrow_male").setRegistryName("wildnature:sparrow_female");
 
     //SEAT
-    public static EntityType<SeatEntity> SEAT = (EntityType<SeatEntity>) EntityType.Builder.<SeatEntity>create(SeatEntity::new, EntityClassification.CREATURE).size(0.3F, 0.4F).build("wildnature:seat").setRegistryName("wildnature:seat");
+    public static EntityType<SeatEntity> SEAT = (EntityType<SeatEntity>) EntityType.Builder.<SeatEntity>create(SeatEntity::new, EntityClassification.MISC).size(0.3F, 0.4F).build("wildnature:seat").setRegistryName("wildnature:seat");
+
+    //MISC
+    //blowdarts
+    public static EntityType<RowanBlowdartEntity> ROWAN_BLOWDART = (EntityType<RowanBlowdartEntity>) EntityType.Builder.<RowanBlowdartEntity>create(RowanBlowdartEntity::new, EntityClassification.MISC).size(0.5F, 0.5F).build("wildnature:rowan_blowdart").setRegistryName("rowan_blowdart");
 
 
     public static void registerSpawningEggs(final RegistryEvent.Register<Item> register){

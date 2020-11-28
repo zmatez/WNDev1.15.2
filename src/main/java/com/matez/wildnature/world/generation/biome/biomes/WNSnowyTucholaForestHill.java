@@ -25,7 +25,7 @@ public class WNSnowyTucholaForestHill extends WNBiome {
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_COOL)
                 .depth(1F)
                 .scale(0.4F)
-                .temperature(0.5F)
+                .temperature(-0.5F)
                 .downfall(0.3F)
                 .waterColor(4159204)
                 .waterFogColor(329011)

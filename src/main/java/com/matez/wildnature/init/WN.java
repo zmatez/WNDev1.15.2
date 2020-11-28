@@ -3,6 +3,7 @@ package com.matez.wildnature.init;
 import com.matez.wildnature.client.gui.container.BackpackBigContainer;
 import com.matez.wildnature.client.gui.container.BackpackMediumContainer;
 import com.matez.wildnature.client.gui.container.BackpackSmallContainer;
+import com.matez.wildnature.client.gui.tileEntities.*;
 import com.matez.wildnature.common.colors.WNBlockColors;
 import com.matez.wildnature.common.colors.WNItemColors;
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
@@ -11,6 +12,9 @@ import com.matez.wildnature.common.commands.WNCommand;
 import com.matez.wildnature.common.compatibility.WNMinecraftCopatibility;
 import com.matez.wildnature.common.compatibility.WNMobSpawnFix;
 import com.matez.wildnature.common.compatibility.WNMobSpawning;
+import com.matez.wildnature.common.effect.WNEffects;
+import com.matez.wildnature.common.items.blowpipe.BlowpipeAmmo;
+import com.matez.wildnature.network.packet.WNPackets;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.config.WNConfig;
 import com.matez.wildnature.common.entity.EntityRegistry;
@@ -19,10 +23,6 @@ import com.matez.wildnature.util.dataFixer.WNDataFixer;
 import com.matez.wildnature.util.event.*;
 import com.matez.wildnature.client.gui.container.PouchContainer;
 import com.matez.wildnature.client.gui.initGuis;
-import com.matez.wildnature.client.gui.tileEntities.CustomPistonTileEntity;
-import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
-import com.matez.wildnature.client.gui.tileEntities.GravityShroomTileEntity;
-import com.matez.wildnature.client.gui.tileEntities.HydrothermalVentTileEntity;
 import com.matez.wildnature.client.gui.tileEntities.item.ItemTileEntity;
 import com.matez.wildnature.common.items.recipes.DyeableRecipe;
 import com.matez.wildnature.common.items.recipes.GiftCrafting;
@@ -176,8 +176,6 @@ public class WN {
         WNPrefix.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"));
 
         dataFixer = new WNDataFixer();
-
-        //ProtocolType.PLAY.registerPacket(PacketDirection.CLIENTBOUND, WNSSpawnParticlePacket.class); TODO Registering packets
     }
 
 
@@ -213,6 +211,7 @@ public class WN {
 
         WNBiomes.unregisterBlacklisted();
         proxy.init();
+        WNPackets.registerAll();
         wnInfo("Setup completed");
     }
 
@@ -225,6 +224,7 @@ public class WN {
         MinecraftForge.EVENT_BUS.addListener(new FogEvent()::fogEvent);
         MinecraftForge.EVENT_BUS.addListener(new FogEvent()::fogColorEvent);
         MinecraftForge.EVENT_BUS.addListener(new RenderCapeHandler()::onRender);
+        MinecraftForge.EVENT_BUS.addListener(new PlayerClickEvent()::onPlayerClick);
 
         RenderRegistry.registryEntityRenders();
         RenderRegistry.registryTileEntityRenders();
@@ -323,6 +323,7 @@ public class WN {
 
 
             EntityRegistry.registerSpawningEggs(event);
+            BlowpipeAmmo.registerAll();
         }
 
         @SubscribeEvent
@@ -345,7 +346,7 @@ public class WN {
         public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
             LOGGER.info("Registering entities...");
             event.getRegistry().registerAll(
-                    EntityRegistry.SEAT, EntityRegistry.GOBLIN, EntityRegistry.DRAKE, EntityRegistry.DUCK, EntityRegistry.DUCKLING, EntityRegistry.BOAR, EntityRegistry.PIRANHA, EntityRegistry.DRAGONFLY, EntityRegistry.SPARROW_MALE, EntityRegistry.BUCK, EntityRegistry.DOE, EntityRegistry.FAWN
+                    EntityRegistry.ROWAN_BLOWDART, EntityRegistry.SEAT, EntityRegistry.GOBLIN, EntityRegistry.DRAKE, EntityRegistry.DUCK, EntityRegistry.DUCKLING, EntityRegistry.BOAR, EntityRegistry.PIRANHA, EntityRegistry.DRAGONFLY, EntityRegistry.SPARROW_MALE, EntityRegistry.BUCK, EntityRegistry.DOE, EntityRegistry.FAWN
             );
 
         }
@@ -354,6 +355,12 @@ public class WN {
         public static void registerFeatures(final RegistryEvent.Register<Feature<?>> event) {
             LOGGER.info("Registering features...");
             WNFeatures.registerAll(event);
+        }
+
+        @SubscribeEvent
+        public static void registerEffects(final RegistryEvent.Register<Effect> event) {
+            LOGGER.info("Registering effects...");
+            WNEffects.registerAll(event);
         }
 
         @SubscribeEvent
@@ -460,6 +467,12 @@ public class WN {
             gravityShroom.setRegistryName("wildnature", "gravityshroom");
             evt.getRegistry().register(gravityShroom);
             initGuis.GRAVITY_SHROOM_TILE_ENTITY = gravityShroom;
+
+            TileEntityType<CaveLilyTileEntity> caveLily = TileEntityType.Builder.create(CaveLilyTileEntity::new, WNBlocks.CAVE_LILY_FLOWER).build(null);
+            caveLily.setRegistryName("wildnature", "cave_lily");
+            evt.getRegistry().register(caveLily);
+            initGuis.CAVE_LILY_TILE_ENTITY = caveLily;
+
 
             TileEntityType<ItemTileEntity> itemTile = TileEntityType.Builder.create(ItemTileEntity::new, ItemTileEntity.SUPPORTED_BLOCKS.toArray(new Block[0])).build(null);
             itemTile.setRegistryName("wildnature", "item_tile_entity");

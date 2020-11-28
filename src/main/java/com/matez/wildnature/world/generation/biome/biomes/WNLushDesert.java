@@ -6,12 +6,14 @@ import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.*;
+import com.matez.wildnature.world.generation.structures.nature.woods.acacia.acacia1;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
@@ -59,9 +61,11 @@ public class WNLushDesert extends WNBiome{
         WNBiomeFeatures.addPlant(this, WNBlocks.LUPINE_RED.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.LUPINE_VIOLET.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.MARIGOLD_YELLOW.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
-        //TODO Savanna Tree
-        //WNBiomeFeatures.addTree(this, new SavannaTreeFeature(NoFeatureConfig::deserialize, true), 1);
-        WNBiomeFeatures.addTree(this, new shrub1(), 3);
+
+        WNBiomeFeatures.addTree(this, new acacia1(), 1);
+        WNBiomeFeatures.addTree(this, new acacia1(), 1);
+        WNBiomeFeatures.addTree(this, new acacia1(), 1);
+        WNBiomeFeatures.addTree(this, new shrub1(), 6);
         plantRate = 12;
         treeRate = 3;
 

@@ -4,6 +4,10 @@ import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.structures.nature.woods.acacia.*;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle_medium1;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle_medium2;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle_medium3;
 import com.matez.wildnature.world.generation.structures.nature.woods.nuytsia.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
@@ -53,9 +57,11 @@ public class WNWoodedOutback extends WNBiome {
         WNBiomeFeatures.addTree(this, new nuytsia4(), 1);
         WNBiomeFeatures.addTree(this, new nuytsia5(), 1);
         WNBiomeFeatures.addTree(this, new nuytsia6(), 1);
-        //TODO SavannaTreeFeature
-        //WNBiomeFeatures.addTree(this, new SavannaTreeFeature(NoFeatureConfig::deserialize, false), 5);
-
+        WNBiomeFeatures.addTree(this, new acacia1(), 1);
+        WNBiomeFeatures.addTree(this, new acacia2(), 1);
+        WNBiomeFeatures.addTree(this, new acacia3(), 1);
+        WNBiomeFeatures.addTree(this, new acacia4(), 1);
+        WNBiomeFeatures.addTree(this, new acacia5(), 1);
         WNBiomeFeatures.addTree(this, new nuytsia_shrub1(), 1);
         WNBiomeFeatures.addTree(this, new nuytsia_shrub2(), 1);
         WNBiomeFeatures.addTree(this, new nuytsia_shrub3(), 1);

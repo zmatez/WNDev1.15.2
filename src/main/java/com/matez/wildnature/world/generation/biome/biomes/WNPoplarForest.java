@@ -7,12 +7,21 @@ import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.structures.nature.woods.beech.beech1;
+import com.matez.wildnature.world.generation.structures.nature.woods.beech.beech2;
+import com.matez.wildnature.world.generation.structures.nature.woods.beech.beech3;
 import com.matez.wildnature.world.generation.structures.nature.woods.birch.tree_birch1;
 import com.matez.wildnature.world.generation.structures.nature.woods.birch.tree_birch10;
+import com.matez.wildnature.world.generation.structures.nature.woods.deco.forsythia1;
+import com.matez.wildnature.world.generation.structures.nature.woods.deco.forsythia4;
+import com.matez.wildnature.world.generation.structures.nature.woods.deco.forsythia5;
+import com.matez.wildnature.world.generation.structures.nature.woods.rowan.rowan1;
+import com.matez.wildnature.world.generation.structures.nature.woods.rowan.rowan3;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import com.matez.wildnature.world.generation.surface.builders.CustomSurfaceBuilder;
 import com.matez.wildnature.world.generation.surface.configs.CustomSurfaceBuilderConfig;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +44,7 @@ public class WNPoplarForest extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.POPLAR)
+                .logTypes(LogType.POPLAR, LogType.BEECH, LogType.FORSYTHIA, LogType.ROWAN)
                 .parent(null));
 
 
@@ -63,8 +72,15 @@ public class WNPoplarForest extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.HOLLYHOCK_RED.getDefaultState(), 2);
         WNBiomeFeatures.addPlant(this, WNBlocks.CARNATION_RED.getDefaultState(), 2);
         WNBiomeFeatures.addPlant(this, WNBlocks.GLADIOLUS_ORANGE.getDefaultState(), 1);
-        WNBiomeFeatures.addTree(this, new tree_birch10().setCustomLog(WN.getBlockByID("minecraft:oak_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:poplar_leaves"))), 6);
-        WNBiomeFeatures.addTree(this, new tree_birch1().setCustomLog(WN.getBlockByID("minecraft:oak_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:poplar_leaves"))), 4);
+
+        WNBiomeFeatures.addTree(this, new tree_birch10().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WNBlocks.POPLAR_LEAVES)), 8);
+        WNBiomeFeatures.addTree(this, new tree_birch1().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WNBlocks.POPLAR_LEAVES)), 6);
+        WNBiomeFeatures.addTree(this, new beech1(), 1);
+        WNBiomeFeatures.addTree(this, new beech2(), 1);
+        WNBiomeFeatures.addTree(this, new beech3(), 1);
+        WNBiomeFeatures.addTree(this, new forsythia4(), 1);
+        WNBiomeFeatures.addTree(this, new forsythia5(), 1);
+        WNBiomeFeatures.addTree(this, new rowan3(), 1);
         WNBiomeFeatures.addTree(this, new shrub1(), 10);
 
         treeRate = 18;

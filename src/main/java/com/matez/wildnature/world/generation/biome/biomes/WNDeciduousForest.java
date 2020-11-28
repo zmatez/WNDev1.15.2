@@ -68,8 +68,7 @@ public class WNDeciduousForest extends WNBiome {
         WNBiomeFeatures.addTree(this, new tree_oak27(), 2);
         WNBiomeFeatures.addTree(this, new tree_oak28(), 2);
         WNBiomeFeatures.addTree(this, new tree_oak11(), 2);
-        //TODO BigTree
-        //WNBiomeFeatures.addTree(this, new BigTree(), 6);
+        WNBiomeFeatures.addTree(this, new tree_oak5(), 3);
         WNBiomeFeatures.addTree(this, new tree_birch3().setCustomLog(Blocks.BIRCH_LOG.getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(Blocks.BIRCH_LEAVES)), 1);
         WNBiomeFeatures.addTree(this, new tree_birch4().setCustomLog(Blocks.BIRCH_LOG.getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(Blocks.BIRCH_LEAVES)), 1);
         WNBiomeFeatures.addTree(this, new tree_birch5().setCustomLog(Blocks.BIRCH_LOG.getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(Blocks.BIRCH_LEAVES)), 1);

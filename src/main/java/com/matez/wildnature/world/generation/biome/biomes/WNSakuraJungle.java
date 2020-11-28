@@ -12,10 +12,7 @@ import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import com.matez.wildnature.world.generation.structures.nature.woods.cherry.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus1;
 import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus2;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle1;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle2;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle3;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle4;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Blocks;
@@ -41,7 +38,7 @@ public class WNSakuraJungle extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.SAKURA)
+                .logTypes(LogType.SAKURA, LogType.JUNGLE_SMALL, LogType.JUNGLE_MEDIUM, LogType.JUNGLE_BIG)
                 .parent(null));
 
 
@@ -78,12 +75,14 @@ public class WNSakuraJungle extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.BIRD_OF_PARADISE.getDefaultState().with(DoubleBushBaseFlowering.FLOWERING, true), 2);
 
 
-        WNBiomeFeatures.addTree(this, new jungle1(), 5);
-        WNBiomeFeatures.addTree(this, new jungle2(), 5);
-        WNBiomeFeatures.addTree(this, new jungle3(), 5);
-        WNBiomeFeatures.addTree(this, new jungle4(), 5);
-        //TODO JungleTreeFeature
-        //WNBiomeFeatures.addTree(this, new JungleTreeFeature(NoFeatureConfig::deserialize, true, 4, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState(), true), 8);
+        WNBiomeFeatures.addTree(this, new jungle_big1(), 6);
+        WNBiomeFeatures.addTree(this, new jungle_big2(), 6);
+        WNBiomeFeatures.addTree(this, new jungle_big3(), 6);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(), 4);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(), 4);
+        WNBiomeFeatures.addTree(this, new jungle_small1(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small2(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small3(), 3);
         WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 15);
         WNBiomeFeatures.addTree(this, new citrus1().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.POMEGRANATE_LEAVES)), 1);
         WNBiomeFeatures.addTree(this, new citrus2().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.POMEGRANATE_LEAVES)), 1);

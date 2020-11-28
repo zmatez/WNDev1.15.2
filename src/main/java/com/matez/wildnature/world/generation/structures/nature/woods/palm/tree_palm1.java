@@ -1,7 +1,11 @@
 package com.matez.wildnature.world.generation.structures.nature.woods.palm;
 
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.gen.IWorldGenerationReader;
+import net.minecraftforge.common.IPlantable;
 
 import java.util.Set;
 
@@ -11,6 +15,12 @@ public class tree_palm1 extends SchemFeature {
 
     }
 
+    @Override
+    public boolean canGrowTree(IWorldGenerationReader world, BlockPos pos, IPlantable sapling) {
+        return world.hasBlockState(pos, state -> {
+            return state.getBlock() == Blocks.SAND || state.getBlock() == WNBlocks.WHITE_SAND;
+        }) || super.canGrowTree(world, pos, sapling);
+    }
 
     @Override
     public Set<BlockPos> setBlocks() {

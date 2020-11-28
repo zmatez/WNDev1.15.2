@@ -34,7 +34,7 @@ public class RiverCaneFeature extends Feature<NoFeatureConfig> {
             int k = 2 + rand.nextInt(rand.nextInt(3) + 1);
             for(int l = 0; l < k; ++l) {
                if (Blocks.SUGAR_CANE.getDefaultState().isValidPosition(worldIn, blockpos)) {
-                  worldIn.setBlockState(blockpos.up(l), Blocks.SUGAR_CANE.getDefaultState(), 2);
+                  worldIn.setBlockState(blockpos.up(l), WNBlocks.RIVER_CANE.getDefaultState(), 2);
                   ++i;
                }
             }

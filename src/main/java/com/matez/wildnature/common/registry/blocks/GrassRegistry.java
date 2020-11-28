@@ -54,16 +54,13 @@ public class GrassRegistry {
                 WNBlocks.SAND_BROWN_SLIGHT = new SandBase(Block.Properties.create(Material.SAND, MaterialColor.BROWN).harvestTool(ToolType.SHOVEL), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("sand_brown_slight")),
                 WNBlocks.WHITE_SAND = new SandBase(Block.Properties.create(Material.SAND, MaterialColor.WHITE_TERRACOTTA).harvestTool(ToolType.SHOVEL), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("sand_white")),
                 WNBlocks.FOREST_SAND = new SandBase(Block.Properties.create(Material.SAND, MaterialColor.YELLOW).harvestTool(ToolType.SHOVEL), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("forest_sand")),
-                WNBlocks.QUICKSAND = new SandBase(Block.Properties.create(Material.SAND, MaterialColor.YELLOW_TERRACOTTA).harvestTool(ToolType.SHOVEL), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("quicksand")),
+                WNBlocks.QUICKSAND = new QuicksandBlock(Block.Properties.create(Material.SAND, MaterialColor.YELLOW_TERRACOTTA).harvestTool(ToolType.SHOVEL).hardnessAndResistance(5.0F), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("quicksand")),
 
                 WNBlocks.WHITE_SANDSTONE = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.WHITE_TERRACOTTA).hardnessAndResistance(0.8F,0.5F), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("white_sandstone")),
                 WNBlocks.CRACKED_SANDSTONE = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.YELLOW_TERRACOTTA).hardnessAndResistance(0.8F,0.5F), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("cracked_sandstone")),
                 WNBlocks.SALT_BLOCK = new BlockBase(Block.Properties.create(Material.ROCK, MaterialColor.WHITE_TERRACOTTA).hardnessAndResistance(0.8F,0.5F), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("salt_block")),
 
                 WNBlocks.MUD = new MudBlock(Block.Properties.create(Material.EARTH, MaterialColor.BROWN).sound(SoundType.SLIME).hardnessAndResistance(1.2F,0.3F).harvestTool(ToolType.SHOVEL).doesNotBlockMovement(), new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("mud")),
-
-
-
         };
     }
 

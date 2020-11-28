@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans;
 
+import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
 import net.minecraft.world.biome.Biomes;
@@ -13,12 +14,12 @@ public class DeepOceanTerrain extends Terrain {
 
     @Override
     public BiomeGroup[] getBiomeGroups() {
-        return new BiomeGroup.Builder()
-                .add(Biomes.DEEP_OCEAN)
-                .add(Biomes.DEEP_COLD_OCEAN)
-                .add(Biomes.DEEP_FROZEN_OCEAN)
-                .add(Biomes.DEEP_LUKEWARM_OCEAN)
-                .add(Biomes.DEEP_WARM_OCEAN)
-                .build();
+        return new BiomeGroup[]{
+                WNBiomes.DEEP_OCEAN,
+                WNBiomes.DEEP_COLD_OCEAN,
+                WNBiomes.DEEP_FROZEN_OCEAN,
+                WNBiomes.DEEP_LUKEWARM_OCEAN,
+                WNBiomes.DEEP_WARM_OCEAN
+        };
     }
 }

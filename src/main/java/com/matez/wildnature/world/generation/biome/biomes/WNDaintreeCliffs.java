@@ -8,17 +8,11 @@ import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus1;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus2;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus3;
-import com.matez.wildnature.world.generation.structures.nature.woods.citrus.citrus4;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.ebony.ebony_shrub1;
 import com.matez.wildnature.world.generation.structures.nature.woods.ebony.ebony_shrub2;
 import com.matez.wildnature.world.generation.structures.nature.woods.eucalyptus.*;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle1;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle2;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle3;
-import com.matez.wildnature.world.generation.structures.nature.woods.jungle.jungle4;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.mahogany.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.oak.oak1;
 import com.matez.wildnature.world.generation.structures.nature.woods.oak.oak2;
@@ -47,7 +41,7 @@ public class WNDaintreeCliffs extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.OAK,LogType.JUNGLE,LogType.SMALL_EBONY,LogType.PALM,LogType.MAHOGANY,LogType.EUCALYPTUS,LogType.POMEGRANATE,LogType.PEACH,LogType.ORANGE)
+                .logTypes(LogType.OAK,LogType.JUNGLE_BIG,LogType.JUNGLE_MEDIUM,LogType.JUNGLE_SMALL,LogType.SMALL_EBONY,LogType.PALM,LogType.MAHOGANY,LogType.EUCALYPTUS,LogType.POMEGRANATE,LogType.PEACH,LogType.ORANGE)
                 .parent(null));
 
 
@@ -80,12 +74,14 @@ public class WNDaintreeCliffs extends WNBiome {
         WNBiomeFeatures.addTree(this, new oak1(), 1);
         WNBiomeFeatures.addTree(this, new oak2(), 1);
         WNBiomeFeatures.addTree(this, new oak3(), 1);
-        WNBiomeFeatures.addTree(this, new jungle1(), 10);
-        WNBiomeFeatures.addTree(this, new jungle2(), 10);
-        WNBiomeFeatures.addTree(this, new jungle3(), 10);
-        WNBiomeFeatures.addTree(this, new jungle4(), 10);
-        //TODO JungleTreeFeature
-        //WNBiomeFeatures.addTree(this, new JungleTreeFeature(NoFeatureConfig::deserialize, true, 4, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState(), true), 15);
+        WNBiomeFeatures.addTree(this, new jungle_big1(), 6);
+        WNBiomeFeatures.addTree(this, new jungle_big2(), 6);
+        WNBiomeFeatures.addTree(this, new jungle_big3(), 6);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(), 4);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(), 4);
+        WNBiomeFeatures.addTree(this, new jungle_small1(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small2(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small3(), 3);
         WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 20);
         WNBiomeFeatures.addTree(this, new ebony_shrub1(), 1);
         WNBiomeFeatures.addTree(this, new ebony_shrub2(), 1);
@@ -122,12 +118,17 @@ public class WNDaintreeCliffs extends WNBiome {
         WNBiomeFeatures.addTree(this, new eucalyptus_8(), 1);
         WNBiomeFeatures.addTree(this, new eucalyptus_9(), 1);
         WNBiomeFeatures.addTree(this, new eucalyptus_10(), 1);
-        WNBiomeFeatures.addTree(this, new citrus1().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.POMEGRANATE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus2().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.POMEGRANATE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus3().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ORANGE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus4().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.ORANGE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus1().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PEACH_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus4().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PEACH_LEAVES)), 1);
+
+        WNBiomeFeatures.addTree(this, new pomegranate1(), 1);
+        WNBiomeFeatures.addTree(this, new pomegranate2(), 1);
+        WNBiomeFeatures.addTree(this, new pomegranate3(), 1);
+        WNBiomeFeatures.addTree(this, new orange1(), 1);
+        WNBiomeFeatures.addTree(this, new orange2(), 1);
+        WNBiomeFeatures.addTree(this, new orange3(), 1);
+        WNBiomeFeatures.addTree(this, new peach1(), 1);
+        WNBiomeFeatures.addTree(this, new peach2(), 1);
+        WNBiomeFeatures.addTree(this, new peach3(), 1);
+
 
         WNBiomeFeatures.addBlob(this, Blocks.PODZOL.getDefaultState(), 2, true, false, 8);
 

@@ -58,7 +58,7 @@ public class GravityShroom extends MushroomBase {
             double speedX = Utilities.rdoub(-res,res);
             double speedY = Utilities.rdoub(0.03,0.06);
             double speedZ = Utilities.rdoub(-res,res);
-            SteamGeneratorBlock.spawnParticle(world, ParticleRegistry.FUZZBALL_EXPLOSION,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ,0.05);
+            SteamGeneratorBlock.spawnParticle(world, ParticleRegistry.FUZZBALL_EXPLOSION,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
 
         }
 

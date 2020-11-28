@@ -16,7 +16,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class GlowshroomSpawner extends SchemFeature {
-    private ArrayList<SchemFeature> glowshrooms = new ArrayList<SchemFeature>();
+    private final ArrayList<SchemFeature> glowshrooms = new ArrayList<SchemFeature>();
 
     public GlowshroomSpawner(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49920_1_, boolean doBlockNofityOnPlace) {
         super();
@@ -41,7 +41,7 @@ public class GlowshroomSpawner extends SchemFeature {
         }
 
         int index = Utilities.rint(0, glowshrooms.size() - 1, rand);
-        return glowshrooms.get(index).place((IWorld) worldIn, generator, rand, position, new NoFeatureConfig());
+        return glowshrooms.get(index).place(worldIn, generator, rand, position, new NoFeatureConfig());
 
     }
 }

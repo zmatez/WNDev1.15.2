@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TerrainProvider {
+    public static Terrain DEEP_OCEAN_TERRAIN = new DeepOceanTerrain();
+    public static Terrain OCEAN_TERRAIN = new OceanTerrain();
+    public static Terrain SEA_TERRAIN = new SeaTerrain();
+
     private final WNWorldContext context;
     private final List<Terrain> terrains = new ArrayList<>();
     private boolean init = false;
@@ -52,14 +56,14 @@ public class TerrainProvider {
 
     public Terrain[] filterTerrains(Cell cell) {
         List<Terrain> filter = new ArrayList<>();
+        Terrain.Category category = getCategoryFromContinent(cell.cellContinent);
         for (Terrain terrain : terrains) {
-            Terrain.Category category = getCategoryFromContinent(cell.cellContinent);
             if(terrain.getTerrainCategory() == category){
                 filter.add(terrain);
             }
         }
         if(filter.isEmpty()){
-            WN.LOGGER.warn("Terrain list is empty - continent: " + cell.cellContinent + " | Applying " + terrains.get(0).getName());
+            WN.LOGGER.warn("Terrain list is empty - continent: " + cell.cellContinent + ", category: " + category.getName() +" | Applying " + terrains.get(0).getName());
             filter.add(terrains.get(0));
         }
 

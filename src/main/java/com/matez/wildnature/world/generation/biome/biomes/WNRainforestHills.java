@@ -6,6 +6,7 @@ import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Blocks;
@@ -31,7 +32,7 @@ public class WNRainforestHills extends WNBiome {
                 .downfall(0.9F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.OAK)
+                .logTypes(LogType.JUNGLE_BIG,LogType.JUNGLE_MEDIUM)
                 .parent("minecraft:jungle"));
 
 
@@ -57,8 +58,13 @@ public class WNRainforestHills extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.GERANIUM_PINK.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.LEAF_PILE.getDefaultState(), 3);
         WNBiomeFeatures.addPlant(this, WNBlocks.CLOVER.getDefaultState(), 3);
-        //TODO BigTree
-        //WNBiomeFeatures.addTree(this, new BigTree(), 3);
+
+        WNBiomeFeatures.addTree(this, new jungle_big1(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_big2(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_big3(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_medium3(), 3);
         WNBiomeFeatures.addTree(this, new shrub1(), 1);
         WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(shrub1.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 1);
 

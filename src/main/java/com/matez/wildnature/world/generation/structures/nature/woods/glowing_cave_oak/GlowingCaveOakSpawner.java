@@ -18,8 +18,8 @@ import java.util.function.Predicate;
 
 public class GlowingCaveOakSpawner extends SchemFeature {
     private boolean icy = false;
-    private ArrayList<SchemFeature> normalCaveOaks = new ArrayList<SchemFeature>();
-    private ArrayList<SchemFeature> icyCaveOaks = new ArrayList<SchemFeature>();
+    private final ArrayList<SchemFeature> normalCaveOaks = new ArrayList<SchemFeature>();
+    private final ArrayList<SchemFeature> icyCaveOaks = new ArrayList<SchemFeature>();
 
     public GlowingCaveOakSpawner(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49920_1_, boolean doBlockNofityOnPlace, boolean icy) {
         super();
@@ -54,10 +54,10 @@ public class GlowingCaveOakSpawner extends SchemFeature {
 
         if (icy) {
             int index = Utilities.rint(0, icyCaveOaks.size() - 1, rand);
-            return icyCaveOaks.get(index).place((IWorld) worldIn, generator, rand, position, new NoFeatureConfig());
+            return icyCaveOaks.get(index).place(worldIn, generator, rand, position, new NoFeatureConfig());
         } else {
             int index = Utilities.rint(0, normalCaveOaks.size() - 1, rand);
-            return normalCaveOaks.get(index).place((IWorld) worldIn, generator, rand, position, new NoFeatureConfig());
+            return normalCaveOaks.get(index).place(worldIn, generator, rand, position, new NoFeatureConfig());
         }
     }
 }

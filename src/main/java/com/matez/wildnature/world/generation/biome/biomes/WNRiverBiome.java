@@ -1,8 +1,13 @@
 package com.matez.wildnature.world.generation.biome.biomes;
 
-import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
+import com.matez.wildnature.init.WN;
+import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.util.lists.WNBlocks;
+import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.biome.setup.WNBiome;
+import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -10,24 +15,54 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
-public class WNRiverBiome extends Biome {
-    public WNRiverBiome() {
-        super((new Biome.Builder()).surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG).precipitation(Biome.RainType.RAIN).category(Biome.Category.RIVER).depth(ConfigSettings.riverDepth).scale(0F).temperature(0.5F).downfall(0.5F).waterColor(ConfigSettings.riverWaterColor).waterFogColor(ConfigSettings.riverWaterFogColor).parent(null));
+public class WNRiverBiome extends WNBiome {
+    public WNRiverBiome(String name) {
+        super(name, (new WNBiomeBuilder())
+                .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
+                .precipitation(RainType.RAIN)
+                .category(Category.RIVER)
+                .topography(WNBiomeBuilder.Topography.LOWLANDS)
+                .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
+                .depth(CommonConfig.riverDepth.get().floatValue())
+                .scale(0.03F)
+                .temperature(0.5F)
+                .downfall(0.5F)
+                .waterColor(4159204)
+                .waterFogColor(329011)
+                .logTypes(LogType.RIVER_TREE)
+                .parent(null));
+
+
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
-        DefaultBiomeFeatures.addCarvers(this);
-        DefaultBiomeFeatures.addStructures(this);
-        DefaultBiomeFeatures.addLakes(this);
-        DefaultBiomeFeatures.addMonsterRooms(this);
-        DefaultBiomeFeatures.addStoneVariants(this);
-        DefaultBiomeFeatures.addOres(this);
-        DefaultBiomeFeatures.addSedimentDisks(this);
-        DefaultBiomeFeatures.addScatteredOakTrees(this);
-        DefaultBiomeFeatures.addDefaultFlowers(this);
-        DefaultBiomeFeatures.addSparseGrass(this);
-        DefaultBiomeFeatures.addMushrooms(this);
-        DefaultBiomeFeatures.addReedsAndPumpkins(this);
-        DefaultBiomeFeatures.addSprings(this);
-        WNBiomeFeatures.addSeagrass(this, 48);
+        WNBiomeFeatures.addStrongholds(this);
+        WNBiomeFeatures.addFreezeTopLayer(this);
+
+        WNBiomeFeatures.addCarvers(this);
+        WNBiomeFeatures.addStructures(this);
+        WNBiomeFeatures.addLakes(this);
+        WNBiomeFeatures.addMonsterRooms(this);
+        WNBiomeFeatures.addDoubleFlowers(this);
+        WNBiomeFeatures.addStoneVariants(this);
+        WNBiomeFeatures.addOres(this);
+        WNBiomeFeatures.addSedimentDisks(this);
+        WNBiomeFeatures.addDefaultFlowers(this);
+        WNBiomeFeatures.addGrass(this, 18);
+
+        WNBiomeFeatures.addReedsAndPumpkins(this);
+        WNBiomeFeatures.addSprings(this);
+        WNBiomeFeatures.addSeagrass(this,48);
+
+        WNBiomeFeatures.addPlant(this, WNBlocks.WATER_WEED.getDefaultState(), 4);
+        WNBiomeFeatures.addPlant(this, WNBlocks.OAR_WEED.getDefaultState(), 1);
+        WNBiomeFeatures.addPlant(this, WNBlocks.ALGAE.getDefaultState(), 4);
+
+        applyPlants();
+        plantRate = 4;
+
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.DUCKWEED, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_WHITE, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_YELLOW, 1);
+
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SQUID, 2, 1, 4));
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SALMON, 5, 1, 5));
         this.addSpawn(EntityClassification.AMBIENT, new Biome.SpawnListEntry(EntityType.BAT, 10, 8, 8));
@@ -40,6 +75,6 @@ public class WNRiverBiome extends Biome {
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.SLIME, 100, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.WITCH, 5, 1, 1));
-        setRegistryName(WN.RegistryEvents.location("river"));
+
     }
 }

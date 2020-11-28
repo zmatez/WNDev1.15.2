@@ -1,5 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.common.damage.WNDamageSource;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.BlockState;
@@ -23,7 +24,7 @@ public class ThistleBlock extends FloweringBushBase {
         if(state.getBlock() instanceof FloweringBushBase && state.get(FLOWERING) && (entityIn instanceof LivingEntity)){
             worldIn.setBlockState(pos,worldIn.getBlockState(pos).with(FLOWERING,false));
             worldIn.playSound(pos.getX(),pos.getY(),pos.getZ(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS,0.3F,(float) Utilities.rdoub(0.7,1.3),false);
-            ((LivingEntity)entityIn).attackEntityFrom(DamageSource.SWEET_BERRY_BUSH,(float)(0.0F+CommonConfig.poisonIvyDamage.get()));
+            ((LivingEntity)entityIn).attackEntityFrom(WNDamageSource.THISTLE,(float)(0.0F+CommonConfig.poisonIvyDamage.get()));
 
         }
     }

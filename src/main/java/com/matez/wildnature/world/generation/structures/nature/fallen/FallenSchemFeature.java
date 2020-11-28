@@ -16,12 +16,12 @@ import net.minecraft.world.gen.IWorldGenerationReader;
 import java.util.Random;
 
 public class FallenSchemFeature extends SchemFeature {
-    private int maxFall = 25;
+    private final int maxFall = 25;
 
     @Override
     protected boolean place(IWorldGenerationReader worldIn, Random rand, BlockPos position, boolean isNaturalPlace) {
         BlockPos soilPos = position.down();
-        if(isNaturalPlace) {
+        if (isNaturalPlace) {
             if (!canGrowTree(worldIn, position.down(), getSapling())) {
                 return false;
             }
@@ -49,10 +49,10 @@ public class FallenSchemFeature extends SchemFeature {
 
     @Override
     public void Block(int x, int y, int z, BlockState state) {
-        if(LOG_OVERRIDE!=null && state.getBlock() instanceof LogBlock){
+        if (LOG_OVERRIDE != null && state.getBlock() instanceof LogBlock) {
             state = LOG_OVERRIDE;
         }
-        if(LEAVES_OVERRIDE!=null && state.getBlock() instanceof LeavesBlock){
+        if (LEAVES_OVERRIDE != null && state.getBlock() instanceof LeavesBlock) {
             state = LEAVES_OVERRIDE;
         }
         if (state.getBlock() == WNBlocks.MAGNOLIA_LEAVES || state.getBlock() == WNBlocks.FORSYTHIA_LEAVES || Utilities.rint(0, 10) == 0) {
@@ -89,10 +89,10 @@ public class FallenSchemFeature extends SchemFeature {
             state = state.with(BlockStateProperties.WATERLOGGED, true);
         }
 
-        pos = fallBlock(world,state, pos);
+        pos = fallBlock(world, state, pos);
 
-        if(!state.isSolid()){
-            if(world.getBlockState(pos).isSolid() || world.getBlockState(pos).getFluidState().getFluid() == Fluids.WATER|| world.getBlockState(pos).getFluidState().getFluid() == Fluids.LAVA){
+        if (!state.isSolid()) {
+            if (world.getBlockState(pos).isSolid() || world.getBlockState(pos).getFluidState().getFluid() == Fluids.WATER || world.getBlockState(pos).getFluidState().getFluid() == Fluids.LAVA) {
                 return;
             }
         }
@@ -100,7 +100,7 @@ public class FallenSchemFeature extends SchemFeature {
         if (!virtualPlace) {
             if ((isLeaf(state.getBlock()) && !world.getBlockState(pos).isSolid())) {
                 world.setBlockState(pos, state, 19);
-            }else if(!isLeaf(state.getBlock())){
+            } else if (!isLeaf(state.getBlock())) {
                 world.setBlockState(pos, state, 19);
             }
         }
@@ -110,18 +110,30 @@ public class FallenSchemFeature extends SchemFeature {
 
     }
 
-    private BlockPos fallBlock(IWorld world,BlockState state, BlockPos pos){
+    private BlockPos fallBlock(IWorld world, BlockState state, BlockPos pos) {
         BlockPos.Mutable mutable = new BlockPos.Mutable(pos);
-        for(int i = 0; i < maxFall; i++){
-            if(mutable.down().getY() <= 5){
+        for (int i = 0; i < maxFall; i++) {
+            if (mutable.down().getY() <= 5) {
                 return mutable;
             }
-            if(!world.getBlockState(mutable.down()).isSolid()){
-                mutable.setY(mutable.getY()-1);
-            }else{
+            if (!world.getBlockState(mutable.down()).isSolid()) {
+                mutable.setY(mutable.getY() - 1);
+            } else {
                 break;
             }
         }
         return mutable;
+    }
+
+    @Override
+    public FallenSchemFeature setCustomLeafOverride(BlockState leaf) {
+        super.setCustomLeafOverride(leaf);
+        return this;
+    }
+
+    @Override
+    public FallenSchemFeature setCustomLogOverride(BlockState log) {
+        super.setCustomLogOverride(log);
+        return this;
     }
 }

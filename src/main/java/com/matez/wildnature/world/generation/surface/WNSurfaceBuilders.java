@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.surface;
 
 import com.matez.wildnature.init.WN;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.surface.builders.*;
 import com.matez.wildnature.world.generation.surface.configs.CanyonSurfaceBuilderConfig;
@@ -28,6 +29,7 @@ public class WNSurfaceBuilders {
     public static SurfaceBuilderConfig SNOW_CONFIG = new SurfaceBuilderConfig(Blocks.SNOW.getDefaultState().with(SnowBlock.LAYERS, Utilities.rint(1, 3, new Random())), Blocks.SNOW_BLOCK.getDefaultState(), WN.getBlockByID("minecraft:gravel").getDefaultState());
     public static SurfaceBuilderConfig FARMLANDS_CONFIG = new SurfaceBuilderConfig(WN.getBlockByID("wildnature:mold_grass_block").getDefaultState(), WN.getBlockByID("wildnature:mold_dirt").getDefaultState(), WN.getBlockByID("minecraft:gravel").getDefaultState());
     public static CustomSurfaceBuilderConfig BROWN_PODZOL_GRAVEL = new CustomSurfaceBuilderConfig(new CustomSurfaceBuilder.BlockCfg(WNSurfaceBuilders.BROWN_CONFIG, 17), new CustomSurfaceBuilder.BlockCfg(WNSurfaceBuilders.BROWN_PODZOL_CONFIG, 6), new CustomSurfaceBuilder.BlockCfg(SurfaceBuilder.GRAVEL_CONFIG, 1));
+    public static SurfaceBuilderConfig ALGAE_CONFIG = new SurfaceBuilderConfig(WNBlocks.ALGAE_BLOCK.getDefaultState(), Blocks.GRAVEL.getDefaultState(), WN.getBlockByID("minecraft:gravel").getDefaultState());
 
     public static SurfaceBuilder<SurfaceBuilderConfig> CANYON_RIVER_SURFACE_BUILDER;
     public static SurfaceBuilder<CanyonSurfaceBuilderConfig> CANYON_SURFACE_BUILDER;

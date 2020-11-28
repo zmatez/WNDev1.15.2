@@ -7,6 +7,9 @@ import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
+import com.matez.wildnature.world.generation.structures.nature.fallen.citrus.grapefruit1;
+import com.matez.wildnature.world.generation.structures.nature.fallen.citrus.grapefruit2;
+import com.matez.wildnature.world.generation.structures.nature.fallen.citrus.grapefruit3;
 import com.matez.wildnature.world.generation.structures.nature.woods.citrus.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
@@ -63,14 +66,15 @@ public class WNOliveGarden extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.LEAF_PILE.getDefaultState(), 3);
 
 
-        WNBiomeFeatures.addTree(this, new olive1(), 3);
-        WNBiomeFeatures.addTree(this, new olive2(), 3);
-        WNBiomeFeatures.addTree(this, new olive3(), 3);
-        WNBiomeFeatures.addTree(this, new olive4(), 3);
+        WNBiomeFeatures.addTree(this, new olive1(), 4);
+        WNBiomeFeatures.addTree(this, new olive2(), 4);
+        WNBiomeFeatures.addTree(this, new olive3(), 4);
+        WNBiomeFeatures.addTree(this, new olive4(), 4);
 
-        WNBiomeFeatures.addTree(this, new shrub1(), 6);
-        WNBiomeFeatures.addTree(this, new citrus3().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.GRAPE_FRUIT_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new citrus4().setCustomLog(WNBlocks.CITRUS_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.GRAPE_FRUIT_LEAVES)), 1);
+        WNBiomeFeatures.addTree(this, new shrub1(), 7);
+        WNBiomeFeatures.addTree(this, new grapefruit1(), 1);
+        WNBiomeFeatures.addTree(this, new grapefruit2(), 1);
+        WNBiomeFeatures.addTree(this, new grapefruit3(), 1);
 
         treeRate = 7;
 

@@ -1,5 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.common.damage.WNDamageSource;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.BlockState;
@@ -21,12 +22,14 @@ public class NettleBlock extends FloweringBushBase {
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(state.getBlock() instanceof FloweringBushBase && entityIn instanceof LivingEntity && state.get(FLOWERING) && CommonConfig.poisonIvyHurts.get()){
-            if(CommonConfig.poisonIvyPoisons.get()) {
-                ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.WEAKNESS, Utilities.rint(30, 90), 1, true, false));
-            }
-            if(Utilities.rint(0,100)==0){
-                ((LivingEntity)entityIn).attackEntityFrom(DamageSource.SWEET_BERRY_BUSH,(float)(0.0F+CommonConfig.poisonIvyDamage.get()));
+        if(Utilities.canPlantHurt(entityIn)) {
+            if (state.getBlock() instanceof FloweringBushBase && entityIn instanceof LivingEntity && state.get(FLOWERING) && CommonConfig.poisonIvyHurts.get()) {
+                if (CommonConfig.poisonIvyPoisons.get()) {
+                    ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.WEAKNESS, Utilities.rint(30, 90), 1, true, false));
+                }
+                if (Utilities.rint(0, 30) == 0) {
+                    ((LivingEntity) entityIn).attackEntityFrom(WNDamageSource.NETTLE, (float) (0.0F + CommonConfig.poisonIvyDamage.get()));
+                }
             }
         }
         entityIn.setMotionMultiplier(state, new Vec3d(0.96D, (double) 0.99F, 0.96D));

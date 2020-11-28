@@ -2,9 +2,10 @@ package com.matez.wildnature.network.proxy;
 
 import com.matez.wildnature.client.gui.screen.*;
 import com.matez.wildnature.client.music.WNMusicPlayer;
+import com.matez.wildnature.common.entity.render.layer.blowdarts.RowanBlowdartLayer;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.common.entity.render.cape.WNCapeLayer;
+import com.matez.wildnature.common.entity.render.layer.cape.WNCapeLayer;
 import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
 import com.matez.wildnature.client.gui.initGuis;
 import com.matez.wildnature.client.music.WNMusic;
@@ -70,7 +71,7 @@ public class ClientProxy implements IProxy {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public void enqueueIMC(InterModEnqueueEvent event) {
-        WN.LOGGER.info("Registering capes...");
+        WN.LOGGER.info("Registering custom layer models...");
         Minecraft.getInstance().gameSettings.setModelPartEnabled(PlayerModelPart.CAPE, true);
         Iterator var2 = Minecraft.getInstance().getRenderManager().getSkinMap().values().iterator();
         //MinecraftForge.EVENT_BUS.addListener(new ClientPlayerEventHandler()::onPlayerJoin);
@@ -96,7 +97,7 @@ public class ClientProxy implements IProxy {
 
             render.addLayer(new WNCapeLayer(render));
             render.addLayer(new CapeLayer(render));
-
+            render.addLayer(new RowanBlowdartLayer<>(render));
         }
 
     }

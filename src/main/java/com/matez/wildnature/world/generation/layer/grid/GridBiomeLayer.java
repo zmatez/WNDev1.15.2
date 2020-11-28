@@ -36,7 +36,7 @@ public class GridBiomeLayer {
 
     public Biome filterBiomes(int x, int z, Cell cell, Terrain terrain, boolean fakeBiomes) {
         int directionMove = 20;
-        Cell northCell = provider.getNoiseCell(x + directionMove, z), southCell = provider.getNoiseCell(x - directionMove, z), eastCell = provider.getNoiseCell(x, z + directionMove), westCell = provider.getNoiseCell(x, z - directionMove);
+        Cell northCell = provider.getNoiseCell(x + directionMove, z).copy(), southCell = provider.getNoiseCell(x - directionMove, z).copy(), eastCell = provider.getNoiseCell(x, z + directionMove).copy(), westCell = provider.getNoiseCell(x, z - directionMove).copy();
         Terrain northTerrain = provider.getNoiseTerrain(northCell, x + directionMove, z), southTerrain = provider.getNoiseTerrain(southCell, x - directionMove, z), eastTerrain = provider.getNoiseTerrain(eastCell, x, z + directionMove), westTerrain = provider.getNoiseTerrain(westCell, x, z - directionMove);
 
         Biome biome = applyTransformers(x, z, cell, northCell, southCell, eastCell, westCell, terrain, northTerrain, southTerrain, eastTerrain, westTerrain,fakeBiomes);
@@ -64,6 +64,7 @@ public class GridBiomeLayer {
 
         //Gets BiomeGroup (so baseBiome + all subbiomes) to filter terrain later. Uses BiomeMap. BiomeGroups are registered in WNBiomes by BiomeTerrain.
         biomeGroup = mainBiomeTransformer.bgApply(cell, terrain);
+
         if (northCell == cell && northTerrain == terrain) {
             northBiomeGroup = biomeGroup;
         } else {
@@ -104,47 +105,24 @@ public class GridBiomeLayer {
             westBiomeGroup = smallIslandTransformer.bgApply(westBiomeGroup, westCell, westTerrain);
             westBiomeGroup = bigIslandTransformer.bgApply(westBiomeGroup, westCell, westTerrain);
         }
+
+        biomeGroup = edgeTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell,terrain);
+        biomeGroup = shoreTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell,terrain);
+
         if(fakeBiomes) {
             biomeGroup = riverValleyTransformer.bgApply(biomeGroup, cell, terrain);
         }
         biomeGroup = riverTransformer.bgApply(biomeGroup,cell,terrain);
 
 
-        //Gets final Biome from BiomeGroup. Uses SubbiomeMap
+
+
+        //Gets final Biome from transformed BiomeGroup. Uses SubbiomeMap
         Biome biome = mainSubBiomeTransformer.apply(biomeGroup, cell, terrain);
-        Biome northBiome, southBiome, eastBiome, westBiome;
-        if (biomeGroup == northBiomeGroup) {
-            northBiome = biome;
-        } else {
-            northBiome = mainSubBiomeTransformer.apply(northBiomeGroup, northCell, northTerrain);
-        }
-        if (biomeGroup == southBiomeGroup) {
-            southBiome = biome;
-        } else {
-            southBiome = mainSubBiomeTransformer.apply(southBiomeGroup, southCell, southTerrain);
-        }
-        if (biomeGroup == eastBiomeGroup) {
-            eastBiome = biome;
-        } else {
-            eastBiome = mainSubBiomeTransformer.apply(eastBiomeGroup, eastCell, eastTerrain);
-        }
-        if (biomeGroup == westBiomeGroup) {
-            westBiome = biome;
-        } else {
-            westBiome = mainSubBiomeTransformer.apply(westBiomeGroup, westCell, westTerrain);
-        }
-
-        //Applies biome edges from EdgeBiome.edgeBiomes
-        //biome = edgeTransformer.apply(biome, biomeGroup, northBiomeGroup, southBiomeGroup, eastBiomeGroup, westBiomeGroup, cell, terrain);
-
-        //Applies beaches to ocean edges (W.I.P)
-        biome = shoreTransformer.apply(biome, northBiome, southBiome, eastBiome, westBiome, cell, terrain);
-
-
         return biome;
     }
 
     public Biome get(int x, int z, Cell cell, Terrain terrain, boolean fakeBiomes) {
-        return filterBiomes(x, z, cell, terrain, fakeBiomes);
+        return filterBiomes(x, z, cell.copy(), terrain, fakeBiomes);
     }
 }

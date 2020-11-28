@@ -13,21 +13,17 @@ import java.util.ArrayList;
 
 public class EdgeTransformer extends BiomeTransformer {
     @Override
-    protected Biome apply(Biome oldBiome, BiomeGroup oldCenterBiomeGroup, BiomeGroup oldNorthBiomeGroup, BiomeGroup oldSouthBiomeGroup, BiomeGroup oldEastBiomeGroup, BiomeGroup oldWestBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
+    protected BiomeGroup apply(BiomeGroup oldBiomeGroup, BiomeGroup northBiomeGroup, BiomeGroup southBiomeGroup, BiomeGroup eastBiomeGroup, BiomeGroup westBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
         for (EdgeBiome edgeBiome : EdgeBiome.getEdgeBiomes()) {
-            boolean matches = false;
             for (BiomeGroup matchingBiome : edgeBiome.getMatchingBiomes()) {
-                if(((oldNorthBiomeGroup.getName().equals(matchingBiome.getName()) && !oldNorthBiomeGroup.getName().isEmpty()) || (oldSouthBiomeGroup.getName().equals(matchingBiome.getName()) && !oldSouthBiomeGroup.getName().isEmpty()) || (oldEastBiomeGroup.getName().equals(matchingBiome.getName()) && !oldEastBiomeGroup.getName().isEmpty()) || (oldWestBiomeGroup.getName().equals(matchingBiome.getName()) && !oldWestBiomeGroup.getName().isEmpty()))){
-                    matches = true;
-                    break;
+                if(northBiomeGroup == matchingBiome || southBiomeGroup == matchingBiome || eastBiomeGroup == matchingBiome || westBiomeGroup == matchingBiome){
+                    if(oldBiomeGroup != matchingBiome){
+                        return edgeBiome.getEdge();
+                    }
                 }
-            }
-
-            if(matches){
-                return edgeBiome.getEdge();
             }
         }
 
-        return oldBiome;
+        return oldBiomeGroup;
     }
 }

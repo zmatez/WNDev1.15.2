@@ -11,6 +11,7 @@ import com.matez.wildnature.world.generation.structures.nature.woods.citrus.bana
 import com.matez.wildnature.world.generation.structures.nature.woods.citrus.banana2;
 import com.matez.wildnature.world.generation.structures.nature.woods.citrus.banana3;
 import com.matez.wildnature.world.generation.structures.nature.woods.citrus.banana4;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Blocks;
@@ -36,7 +37,7 @@ public class WNBananaThicket extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.JUNGLE,LogType.BANANA)
+                .logTypes(LogType.JUNGLE_SMALL, LogType.JUNGLE_MEDIUM,LogType.BANANA)
                 .parent(null));
 
 
@@ -65,11 +66,12 @@ public class WNBananaThicket extends WNBiome {
         WNBiomeFeatures.addTree(this, new banana3(), 3);
         WNBiomeFeatures.addTree(this, new banana4(), 3);
 
-        //TODO JungleTreeFeature
-        //WNBiomeFeatures.addTree(this, new JungleTreeFeature(NoFeatureConfig::deserialize, true, 4, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState(), true), 6);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(), 1);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(), 1);
+        WNBiomeFeatures.addTree(this, new jungle_small1(), 5);
+        WNBiomeFeatures.addTree(this, new jungle_small2(), 5);
+        WNBiomeFeatures.addTree(this, new jungle_small3(), 5);
         WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 14);
-        //TODO MegaJungleTreeFeature
-        //WNBiomeFeatures.addTree(this, new MegaJungleFeature(NoFeatureConfig::deserialize, true, 10, 20, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState()), 2);
 
         treeRate = 13;
 

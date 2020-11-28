@@ -72,7 +72,7 @@ public class GravityShroomTileEntity extends TileEntity implements ITickableTile
             double speedX = Utilities.rdoub(-res,res);
             double speedY = Utilities.rdoub(0.03,0.06);
             double speedZ = Utilities.rdoub(-res,res);
-            SteamGeneratorBlock.spawnParticle(world, ParticleTypes.ENCHANT,X, Y+0.5, Z, 1,speedX,speedY,speedZ,0.1);
+            SteamGeneratorBlock.spawnParticle(world, ParticleTypes.ENCHANT,X, Y+0.5, Z, 1,speedX,speedY,speedZ);
 
         }
     }

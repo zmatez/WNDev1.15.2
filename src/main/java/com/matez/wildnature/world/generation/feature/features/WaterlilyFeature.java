@@ -31,7 +31,7 @@ public class WaterlilyFeature extends Feature<BlockFeatureConfig> {
       }
 
       for(int i = 0; i < 10; ++i) {
-         BlockPos blockpos2 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+         BlockPos blockpos2 = pos.add(rand.nextInt(4) - rand.nextInt(4), rand.nextInt(2) - rand.nextInt(2), rand.nextInt(4) - rand.nextInt(4));
          BlockState blockstate = config.state;
          if (worldIn.isAirBlock(blockpos2) && blockstate.isValidPosition(worldIn, blockpos2)) {
             worldIn.setBlockState(blockpos2, blockstate, 2);

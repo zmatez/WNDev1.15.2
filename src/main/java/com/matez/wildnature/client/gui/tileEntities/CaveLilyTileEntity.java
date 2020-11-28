@@ -48,8 +48,8 @@ public class CaveLilyTileEntity extends TileEntity implements ITickableTileEntit
             double speedYBubble = Utilities.rdoub(0.3,2.2);
             double speedY = Utilities.rdoub(0.03,0.06);
             double speedZ = Utilities.rdoub(-res,res);
-            SteamGeneratorBlock.spawnParticle(world, ParticleTypes.WITCH,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ,0.05);
-            SteamGeneratorBlock.spawnParticle(world, ParticleRegistry.CRYSTAL,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedYBubble,speedZ,0.1);
+            SteamGeneratorBlock.spawnParticle(world, ParticleTypes.WITCH,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
+            SteamGeneratorBlock.spawnParticle(world, ParticleRegistry.CRYSTAL,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedYBubble,speedZ);
 
         }
 

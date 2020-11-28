@@ -121,10 +121,6 @@ public class WNMasuria extends WNBiome {
         WNBiomeFeatures.addTree(this, new wild_cherry3(), 1);
         WNBiomeFeatures.addTree(this, new tree_oak5().setCustomLog(WN.getBlockByID("wildnature:plum_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:mirabelle_plum_leaves"))), 1);
 
-        //TODO BigTree
-        //WNBiomeFeatures.addTree(this, new BigTree(), 3);
-
-
         treeRate = 4;
 
         applyPlants();
