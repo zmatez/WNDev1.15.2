@@ -8,26 +8,36 @@ import java.util.List;
 
 public class GeoConfig {
 
-    public int minLayers;
-    public int maxLayers;
-    public int minDepth;
-    public int maxDepth;
-    public final List<Block> sedimentary;
-    public final List<Block> carbonate;
-    public final FastNoise selectorNoise;
     public final Type type;
-    public final boolean noiseOffset;
+    public final FastNoise selectorNoise;
+    public final List<Block> sedimentary;
+    public int sedimentaryLayers;
+    public int sedimentaryDepth;
+    public int sedimentaryOffset;
+    public final List<Block> carbonate;
+    public int carbonateLayers;
+    public int carbonateDepth;
+    public int carbonateOffset;
 
-    public GeoConfig(int minLayers, int maxLayers, int minDepth, int maxDepth, List<Block> sedimentary, List<Block> carbonate, FastNoise selectorNoise, GeoConfig.Type type, boolean noiseOffset) {
-        this.minLayers = minLayers;
-        this.maxLayers = maxLayers;
-        this.minDepth = minDepth;
-        this.maxDepth = maxDepth;
-        this.sedimentary = sedimentary;
-        this.carbonate = carbonate;
-        this.selectorNoise = selectorNoise;
+    //While configuring make sure:
+    //LayerSize-Offset is not below 0
+    //Depth-Offset is not below 0
+    //SelectorNoise can't fall below 0 if it is used for indexing Lists.
+    public GeoConfig(
+            GeoConfig.Type type, FastNoise selectorNoise,
+            List<Block> sedimentary, int sedimentaryLayers, int sedimentaryDepth, int sedimentaryOffset,
+            List<Block> carbonate, int carbonateLayers, int carbonateDepth, int carbonateOffset
+    ){
         this.type = type;
-        this.noiseOffset = noiseOffset;
+        this.selectorNoise = selectorNoise;
+        this.sedimentary = sedimentary;
+        this.sedimentaryLayers = sedimentaryLayers;
+        this.sedimentaryDepth = sedimentaryDepth;
+        this.sedimentaryOffset = sedimentaryOffset;
+        this.carbonate = carbonate;
+        this.carbonateLayers = carbonateLayers;
+        this.carbonateDepth = carbonateDepth;
+        this.carbonateOffset = carbonateOffset;
     }
 
     public enum Type {
@@ -37,13 +47,7 @@ public class GeoConfig {
     }
 
     public int getLayers(float index) {
-        int range = maxLayers - minLayers;
-        return minLayers + NoiseUtil.round(index * range);
-    }
-
-    public int getDepth(float index) {
-        int range = maxDepth - minDepth;
-        return minDepth + NoiseUtil.round(index * range);
+        return NoiseUtil.round((sedimentaryLayers + index*sedimentaryOffset) + (carbonateLayers + index*carbonateOffset));
     }
 
     public List<Block> getSedimentary(){

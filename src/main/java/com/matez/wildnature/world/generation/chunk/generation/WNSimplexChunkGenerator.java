@@ -4,6 +4,7 @@ package com.matez.wildnature.world.generation.chunk.generation;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.TerrainLandscape;
 import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.geology.GeoManager;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
@@ -252,6 +253,28 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                         chunk.setBlockState(pos, this.settings.getDefaultBlock(), false);
                     }
                 }
+
+                //You need to fetch the correct TerrainClass for the tile that is being rendered for the GeoConfig.
+
+                //Geology Init
+                GeoManager geology = new GeoManager(seed, terrain.getConfig(seed));
+                BlockPos.Mutable pos = new BlockPos.Mutable();
+
+                //Generates the layers
+                geology.applyStrata(x, height, z);
+
+                //reads and applies the strataLayers.
+                for (int iy = height; iy > 0; iy--) {
+                    pos.setY(iy);
+                    if (chunk.getBlockState(pos).isAir(chunk, pos)) {
+                        return;
+                    }
+                    chunk.setBlockState(pos, geology.get(iy), false);
+                }
+
+                //Helping Garbage collection
+                geology.getGenerator().clear();
+
             }
         }
 

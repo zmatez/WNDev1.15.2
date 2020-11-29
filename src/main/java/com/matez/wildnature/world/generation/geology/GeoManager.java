@@ -38,10 +38,6 @@ public class GeoManager {
 
         float index = getIndex(dx, dz);
 
-        if(config.noiseOffset){
-            dy += generator.noiseOffset(index, dy);
-        }
-
         if(config.type == GeoConfig.Type.RANDOM){
             generator.generateRandomLayers(random, index);
         }
@@ -78,5 +74,4 @@ public class GeoManager {
             return Blocks.BEDROCK.getDefaultState();
         }
     }
-
 }

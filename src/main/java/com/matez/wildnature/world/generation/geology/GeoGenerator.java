@@ -1,6 +1,5 @@
 package com.matez.wildnature.world.generation.geology;
 
-import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -38,12 +37,12 @@ public class GeoGenerator {
             if(random.nextInt(layerCount) < li) {
                 int select = random.nextInt(sedimentary.size());
                 BlockState blockState = sedimentary.get(select).getDefaultState();
-                int depth = config.getDepth(random.nextFloat());
+                int depth = NoiseUtil.round(config.sedimentaryDepth+random.nextFloat()*config.sedimentaryOffset);
                 strata.add(new StrataLayer(blockState, depth));
             }else{
                 int select = random.nextInt(carbonate.size());
                 BlockState blockState = carbonate.get(select).getDefaultState();
-                int depth = config.getDepth(random.nextFloat());
+                int depth = NoiseUtil.round(config.carbonateDepth+random.nextFloat()*config.carbonateOffset);
                 strata.add(new StrataLayer(blockState, depth));
             }
 
@@ -66,12 +65,12 @@ public class GeoGenerator {
             if(NoiseUtil.round(index * layerCount) < li) {
                 int select = NoiseUtil.round(index * random.nextInt(sedimentary.size()));
                 BlockState blockState = sedimentary.get(select).getDefaultState();
-                int depth = config.getDepth(index);
+                int depth = NoiseUtil.round(config.sedimentaryDepth+random.nextFloat()*config.sedimentaryOffset);
                 strata.add(new StrataLayer(blockState, depth));
             }else{
                 int select = NoiseUtil.round(index * random.nextInt(carbonate.size()));
                 BlockState blockState = carbonate.get(select).getDefaultState();
-                int depth = config.getDepth(index);
+                int depth = NoiseUtil.round(config.sedimentaryDepth+random.nextFloat()*config.sedimentaryOffset);
                 strata.add(new StrataLayer(blockState, depth));
             }
 
@@ -90,13 +89,13 @@ public class GeoGenerator {
         int layerSize = dy / layerCount;
 
         //Making sure Carbonate rocks have a good change to dominate mountain tops roughly simulating irl strata movement.
-        if(dy > 80+NoiseUtil.round(index*70)){
+        if(dy > 80+NoiseUtil.round(index*layerCount)){
             //add the layers to the strata list
             for(int li = 0; li < layerSize; li++){
 
                 int select = NoiseUtil.round(index * random.nextInt(carbonate.size()));
                 BlockState blockState = carbonate.get(select).getDefaultState();
-                int depth = layerSize + random.nextInt(config.getDepth(index));
+                int depth = layerSize + random.nextInt(config.carbonateDepth);
                 strata.add(new StrataLayer(blockState, depth));
 
             }
@@ -108,14 +107,14 @@ public class GeoGenerator {
 
                     int select = random.nextInt(sedimentary.size());
                     BlockState blockState = sedimentary.get(select).getDefaultState();
-                    int depth = dy / config.getDepth(index);
+                    int depth = NoiseUtil.round(dy / (config.sedimentaryDepth+index*config.sedimentaryOffset));
                     strata.add(new StrataLayer(blockState, depth));
 
                 }else{
 
                     int select = NoiseUtil.round(index * random.nextInt(carbonate.size()));
                     BlockState blockState = carbonate.get(select).getDefaultState();
-                    int depth = dy / config.getDepth(index);
+                    int depth = NoiseUtil.round(dy / (config.carbonateDepth+index*config.carbonateOffset));
                     strata.add(new StrataLayer(blockState, depth));
 
                 }
@@ -126,7 +125,6 @@ public class GeoGenerator {
 
         //fallback
         if(strata.size() < 1) {
-            WN.LOGGER.error("Preset error");
             strata.add(new StrataLayer(sedimentary.get(random.nextInt(sedimentary.size())).getDefaultState(), layerSize));
         }
 
@@ -144,7 +142,6 @@ public class GeoGenerator {
 
             //returns when we don't need more data to fill the column;
             if(blockState.size() > dy){
-                //Akuiria.LOGGER.debug("return list");
                 break;
             }
 
@@ -165,11 +162,6 @@ public class GeoGenerator {
                 blockState.add(fallback);
             }
         }
-
-        /**
-        Interesting logger name Matez - Sipke
-         */
-        //Akuiria.LOGGER.debug("statesize: " + blockState.size() + " dy: " + dy);
 
     }
 
