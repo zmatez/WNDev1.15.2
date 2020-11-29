@@ -30,7 +30,7 @@ public class IslandTransformer extends BiomeTransformer {
     protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
         if(!islandBiomes.isEmpty()) {
             Random random = new Random((long) ((type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity) * 1000000));
-            if (Utilities.rint(0, IslandBiome.RARITY, random) == 0) {
+            if ((type == IslandBiome.IslandType.BIG && Utilities.rint(0, IslandBiome.RARITY_BIG, random) == 0) || (type == IslandBiome.IslandType.SMALL && Utilities.rint(0, IslandBiome.RARITY_SMALL, random) == 0)) {
                 ArrayList<BiomeGroup> passingBiomeGroups = new ArrayList<>();
                 for (IslandBiome islandBiome : islandBiomes) {
                     boolean passing = false;

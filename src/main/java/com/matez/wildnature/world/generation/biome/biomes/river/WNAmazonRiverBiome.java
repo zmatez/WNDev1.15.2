@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.biomes.land;
+package com.matez.wildnature.world.generation.biome.biomes.river;
 
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import com.matez.wildnature.init.WN;
@@ -15,8 +15,8 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
-public class WNRiverBiome extends WNBiome {
-    public WNRiverBiome(String name) {
+public class WNAmazonRiverBiome extends WNBiome {
+    public WNAmazonRiverBiome(String name) {
         super(name, (new WNBiomeBuilder())
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN)
@@ -25,10 +25,10 @@ public class WNRiverBiome extends WNBiome {
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
                 .depth(CommonConfig.riverDepth.get().floatValue())
                 .scale(0.03F)
-                .temperature(0.5F)
+                .temperature(0.8F)
                 .downfall(0.5F)
-                .waterColor(4159204)
-                .waterFogColor(329011)
+                .waterColor(0xC9E465)
+                .waterFogColor(0x332506)
                 .logTypes(LogType.RIVER_TREE)
                 .parent(null));
 
@@ -46,22 +46,23 @@ public class WNRiverBiome extends WNBiome {
         WNBiomeFeatures.addOres(this);
         WNBiomeFeatures.addSedimentDisks(this);
         WNBiomeFeatures.addDefaultFlowers(this);
-        WNBiomeFeatures.addGrass(this, 18);
 
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);
         WNBiomeFeatures.addSeagrass(this,48);
 
         WNBiomeFeatures.addPlant(this, WNBlocks.WATER_WEED.getDefaultState(), 4);
-        WNBiomeFeatures.addPlant(this, WNBlocks.OAR_WEED.getDefaultState(), 1);
+        WNBiomeFeatures.addPlant(this, WNBlocks.OAR_WEED.getDefaultState(), 4);
         WNBiomeFeatures.addPlant(this, WNBlocks.ALGAE.getDefaultState(), 4);
 
         applyPlants();
-        plantRate = 4;
+        plantRate = 6;
 
-        WNBiomeFeatures.addWaterlilies(this, WNBlocks.DUCKWEED, 1);
-        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_WHITE, 1);
-        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_YELLOW, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.DUCKWEED, 2);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.GREEN_WATERLILY, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.RED_WATERLILY, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.LOTUS_LIGHT_PINK, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.LOTUS_PINK, 1);
 
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SQUID, 2, 1, 4));
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SALMON, 5, 1, 5));

@@ -10,6 +10,6 @@ import java.util.Arrays;
 public class MainBiomeTransformer extends BiomeTransformer {
     @Override
     protected BiomeGroup bgApply(TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
-        return getBiomeGroup(Arrays.asList(terrain.getWeightedBiomeGroups()), identity);
+        return getBiomeGroup(getBiomesByTemperatureAndMoisture(terrain,tempCategory,wetCategory), identity);
     }
 }

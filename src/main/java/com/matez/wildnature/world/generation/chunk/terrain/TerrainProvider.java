@@ -7,7 +7,6 @@ import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.highlan
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.lowlands.LowlandTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.midlands.MidlandTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.mountains.MountainTerrain;
-import com.matez.wildnature.world.generation.chunk.terrain.terrains.land.shores.ShoresTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.DeepOceanTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.oceans.OceanTerrain;
 import com.matez.wildnature.world.generation.chunk.terrain.terrains.seas.SeaTerrain;
@@ -36,7 +35,6 @@ public class TerrainProvider {
         register(new DeepOceanTerrain());
         register(new OceanTerrain());
         register(new SeaTerrain());
-        register(new ShoresTerrain());
         register(new LowlandTerrain());
         register(new MidlandTerrain());
         register(new HighlandTerrain());
@@ -71,17 +69,15 @@ public class TerrainProvider {
     }
     
     public static Terrain.Category getCategoryFromContinent(float cellContinent){
-        if (cellContinent >= 0.95F) {
+        if (cellContinent >= 0.85F) {
             return Terrain.Category.MOUNTAINS;
-        } else if (cellContinent >= 0.88F && cellContinent < 0.95F) {
+        } else if (cellContinent >= 0.65F && cellContinent < 0.85F) {
             return Terrain.Category.HIGHLANDS;
-        } else if (cellContinent >= 0.53F && cellContinent < 0.88F) {
+        } else if (cellContinent >= 0.4F && cellContinent < 0.65F) {
             return Terrain.Category.MIDLANDS;
-        } else if (cellContinent >= 0.30F && cellContinent < 0.53F) {
+        } else if (cellContinent >= 0.15F && cellContinent < 0.4F) {
             return Terrain.Category.LOWLANDS;
-        } else if (cellContinent >= 0.15F && cellContinent < 0.3F) {
-            return Terrain.Category.SHORE;
-        } else if (cellContinent >= 0.1F && cellContinent < 0.15F) {
+        }else if (cellContinent >= 0.1F && cellContinent < 0.15F) {
             return Terrain.Category.SEA;
         } else if(cellContinent >= 0.05F && cellContinent < 0.1F){
             return Terrain.Category.OCEAN;

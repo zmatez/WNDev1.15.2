@@ -195,28 +195,6 @@ public class BiomeGroup {
         return groups.toArray(new BiomeGroup[0]);
     }
 
-    private static float getDepthByCategory(Terrain.Category category){
-        float biomeDepth = 0;
-        if(category == Terrain.Category.DEEP_OCEAN){
-            biomeDepth = -1.8F;
-        }else if(category == Terrain.Category.OCEAN){
-            biomeDepth = -1.2F;
-        }else if(category == Terrain.Category.SEA){
-            biomeDepth = -0.4F;
-        }else if(category == Terrain.Category.SHORE){
-            biomeDepth = 0.0F;
-        }else if(category == Terrain.Category.LOWLANDS){
-            biomeDepth = 0.3F;
-        }else if(category == Terrain.Category.MIDLANDS){
-            biomeDepth = 0.7F;
-        }else if(category == Terrain.Category.HIGHLANDS){
-            biomeDepth = 1.1F;
-        }else if(category == Terrain.Category.MOUNTAINS){
-            biomeDepth = 1.8F;
-        }
-        return biomeDepth;
-    }
-
     private static Terrain.Category getCategoryByDepth(float depth){
         if(depth < -1.2F){
             return Terrain.Category.DEEP_OCEAN;
@@ -224,9 +202,7 @@ public class BiomeGroup {
             return Terrain.Category.OCEAN;
         }else if(depth < 0.0F){
             return Terrain.Category.SEA;
-        }else if (depth < 0.3F) {
-            return Terrain.Category.SHORE;
-        }else if(depth < 0.7){
+        }else if(depth < 0.3){
             return Terrain.Category.LOWLANDS;
         }else if(depth < 1.1F){
             return Terrain.Category.MIDLANDS;

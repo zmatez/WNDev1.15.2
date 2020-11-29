@@ -15,17 +15,17 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
-public class WNFrozenRiverBiome extends WNBiome {
-    public WNFrozenRiverBiome(String name) {
+public class WNNileRiverBiome extends WNBiome {
+    public WNNileRiverBiome(String name) {
         super(name, (new WNBiomeBuilder())
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN)
                 .category(Category.RIVER)
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
-                .depth(CommonConfig.riverDepth.get().floatValue())
+                .depth(CommonConfig.riverDepth.get().floatValue() / 1.5f)
                 .scale(0.03F)
-                .temperature(-0.1F)
+                .temperature(1F)
                 .downfall(0.5F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
@@ -51,10 +51,14 @@ public class WNFrozenRiverBiome extends WNBiome {
         WNBiomeFeatures.addSprings(this);
         WNBiomeFeatures.addSeagrass(this,48);
 
+        WNBiomeFeatures.addPlant(this, WNBlocks.RED_ALGAE.getDefaultState(), 6);
         WNBiomeFeatures.addPlant(this, WNBlocks.ALGAE.getDefaultState(), 4);
 
         applyPlants();
-        plantRate = 2;
+        plantRate = 4;
+
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.DUCKWEED, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_YELLOW, 1);
 
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SQUID, 2, 1, 4));
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SALMON, 5, 1, 5));

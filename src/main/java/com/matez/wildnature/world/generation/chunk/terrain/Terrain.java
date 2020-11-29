@@ -5,6 +5,9 @@ import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public abstract class Terrain {
     private final String name;
@@ -14,6 +17,7 @@ public abstract class Terrain {
     public float temparature; //used nowhere
     public float moisture; //used nowhere
     public BiomeGroup[] weightedBiomeGroups;
+    public LinkedHashMap<BiomeTransformer.TempCategory, LinkedHashMap<BiomeTransformer.WetCategory, List<BiomeGroup>>> climaticBiomeGroups = new LinkedHashMap<>();
 
     public Terrain(String name, TerrainBuilder builder){
         this.name = name;
@@ -27,6 +31,7 @@ public abstract class Terrain {
      */
     public void init(){
         initWeightedBiomeGroups();
+        initClimaticBiomeGroups();
     }
 
     public String getName() {
@@ -66,7 +71,24 @@ public abstract class Terrain {
             }
         }
         weightedBiomeGroups = biomeGroups.toArray(new BiomeGroup[0]);
-        WN.LOGGER.debug("Inited: " + weightedBiomeGroups.hashCode());
+        WN.LOGGER.debug("Initialized terrain weighted biome groups: " + weightedBiomeGroups.hashCode());
+    }
+
+    private void initClimaticBiomeGroups(){
+        WN.LOGGER.debug("Init climatic biome groups");
+        for (BiomeTransformer.TempCategory tempValue : BiomeTransformer.TempCategory.values()) {
+            LinkedHashMap<BiomeTransformer.WetCategory, List<BiomeGroup>> wetGroups = new LinkedHashMap<>();
+            for (BiomeTransformer.WetCategory wetValue : BiomeTransformer.WetCategory.values()) {
+                List<BiomeGroup> biomeGroups = BiomeTransformer.getBiomesByTemperatureAndMoisture(Arrays.asList(getWeightedBiomeGroups()),getTerrainCategory(),tempValue,wetValue);
+                wetGroups.put(wetValue,biomeGroups);
+            }
+            climaticBiomeGroups.put(tempValue,wetGroups);
+        }
+        WN.LOGGER.debug("Initialized terrain weighted biome groups for category: " + getTerrainCategory().getName());
+    }
+
+    public List<BiomeGroup> getClimaticBiomeGroups(BiomeTransformer.TempCategory tempCategory, BiomeTransformer.WetCategory wetCategory){
+        return climaticBiomeGroups.get(tempCategory).get(wetCategory);
     }
 
     /**
@@ -120,11 +142,10 @@ public abstract class Terrain {
         DEEP_OCEAN("deep_ocean",0),
         OCEAN("ocean",1),
         SEA("sea",2),
-        SHORE("shore",3),
-        LOWLANDS("lowlands",4),
-        MIDLANDS("midlands",5),
-        HIGHLANDS("highlands",6),
-        MOUNTAINS("mountains",7);
+        LOWLANDS("lowlands",3),
+        MIDLANDS("midlands",4),
+        HIGHLANDS("highlands",5),
+        MOUNTAINS("mountains",6);
 
         private String name;
         private int index;

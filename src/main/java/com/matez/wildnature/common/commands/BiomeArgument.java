@@ -234,8 +234,7 @@ public class BiomeArgument implements ArgumentType<Biome>
         return lookForBiomeAsap(world,b,startX,startZ,player);
     }
 
-    public static BiomePos lookForBiomeAsap(ServerWorld world, Biome biomeToFind, int startX, int startZ, PlayerEntity player)
-    {
+    public static BiomePos lookForBiomeAsap(ServerWorld world, Biome biomeToFind, int startX, int startZ, PlayerEntity player) {
         player.sendStatusMessage(new StringTextComponent(TextFormatting.YELLOW+"Unable to find the nearest biome. Searching ignoring distance..."),true);
 
         int sampleSpace = 4 << 12;
@@ -254,9 +253,8 @@ public class BiomeArgument implements ArgumentType<Biome>
             dist = a * rootN;
             x = startX + (dist * Math.sin(b * rootN));
             z = startZ + (dist * Math.cos(b * rootN));
-            Biome[] biomesAtSample = chunkManager.getBiomes((int)x/4, 1, (int)z/4, 1).toArray(new Biome[0]);
-            if (biomesAtSample[0] == biomeToFind)
-            {
+            Biome biomeSample = Utilities.getBiomeOnPos(chunkManager,(int)x,(int)z);
+            if (biomeSample == biomeToFind){
                 return new BiomePos(new BlockPos((int)x, 0, (int)z),biomeToFind);
             }
             if(n>=250000){

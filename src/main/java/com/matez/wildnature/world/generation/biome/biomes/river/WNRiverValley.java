@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.biome.biomes.land;
+package com.matez.wildnature.world.generation.biome.biomes.river;
 
 import com.matez.wildnature.common.blocks.FloweringBushBase;
 import com.matez.wildnature.util.lists.WNBlocks;
@@ -46,7 +46,6 @@ public class WNRiverValley extends WNBiome {
         WNBiomeFeatures.addOres(this);
         WNBiomeFeatures.addSedimentDisks(this);
         WNBiomeFeatures.addDefaultFlowers(this);
-        WNBiomeFeatures.addGrass(this, 18);
 
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);

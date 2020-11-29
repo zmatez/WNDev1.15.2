@@ -13,11 +13,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class GetFiles {
-
-
     private int maxPages;
     private PlayerEntity entity;
-    private ArrayList list;
+    private ArrayList<String> list;
     public GetFiles(PlayerEntity entity){
         this.list=getFiles();
         int i = list.size()/5;
@@ -28,9 +26,7 @@ public class GetFiles {
             maxPages++;
         }
 
-
         this.entity=entity;
-
     }
 
     public int showPage(int page){

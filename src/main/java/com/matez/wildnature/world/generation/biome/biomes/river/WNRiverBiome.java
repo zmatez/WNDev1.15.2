@@ -15,8 +15,8 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 
-public class WNFrozenRiverBiome extends WNBiome {
-    public WNFrozenRiverBiome(String name) {
+public class WNRiverBiome extends WNBiome {
+    public WNRiverBiome(String name) {
         super(name, (new WNBiomeBuilder())
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN)
@@ -25,10 +25,10 @@ public class WNFrozenRiverBiome extends WNBiome {
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
                 .depth(CommonConfig.riverDepth.get().floatValue())
                 .scale(0.03F)
-                .temperature(-0.1F)
+                .temperature(0.5F)
                 .downfall(0.5F)
-                .waterColor(4159204)
-                .waterFogColor(329011)
+                .waterColor(0x3F76E4)
+                .waterFogColor(0x050533)
                 .logTypes(LogType.RIVER_TREE)
                 .parent(null));
 
@@ -51,10 +51,16 @@ public class WNFrozenRiverBiome extends WNBiome {
         WNBiomeFeatures.addSprings(this);
         WNBiomeFeatures.addSeagrass(this,48);
 
+        WNBiomeFeatures.addPlant(this, WNBlocks.WATER_WEED.getDefaultState(), 4);
+        WNBiomeFeatures.addPlant(this, WNBlocks.OAR_WEED.getDefaultState(), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.ALGAE.getDefaultState(), 4);
 
         applyPlants();
-        plantRate = 2;
+        plantRate = 4;
+
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.DUCKWEED, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_WHITE, 1);
+        WNBiomeFeatures.addWaterlilies(this, WNBlocks.WATER_LILY_YELLOW, 1);
 
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SQUID, 2, 1, 4));
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SALMON, 5, 1, 5));

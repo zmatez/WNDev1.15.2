@@ -11,11 +11,13 @@ import com.matez.wildnature.world.generation.biome.biomes.lake.WNWarmLake;
 import com.matez.wildnature.world.generation.biome.biomes.land.*;
 import com.matez.wildnature.world.generation.biome.biomes.ocean.WNDeepJellyOcean;
 import com.matez.wildnature.world.generation.biome.biomes.river.*;
+import com.matez.wildnature.world.generation.biome.biomes.river.edge.*;
 import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.BiomeGroups;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.EnumBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.*;
 import com.matez.wildnature.world.generation.manager.WNBiomeManager;
+import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.BiomeDictionary;
@@ -55,13 +57,18 @@ public class WNBiomes {
     public static Biome RiverValleySmooth = new WNRiverValley("river_valley_smooth");
 
     public static Biome River = new WNRiverBiome("river");
-    public static Biome FrozenRiver = new WNFrozenRiverBiome();
-    public static Biome AmazonRiver = new WNAmazonRiver();
-    public static Biome NileRiver = new WNNileRiver();
+    public static Biome FrozenRiver = new WNFrozenRiverBiome("frozen_river");
+    public static Biome AmazonRiver = new WNAmazonRiverBiome("amazon_river");
+    public static Biome NileRiver = new WNNileRiverBiome("nile_river");
     public static Biome CanyonRiver = new WNCanyonRiver();
     public static Biome IcelandRiver = new WNIcelandRiver();
     public static Biome DaintreeRiver = new WNDaintreeRiver();
     public static Biome TatraStream = new WNTatraStream();
+
+    public static BiomeGroup RIVER = BiomeGroup.SingleBuilder.configure("river",River);
+    public static BiomeGroup FROZEN_RIVER = BiomeGroup.SingleBuilder.configure("frozen_river",FrozenRiver);
+    public static BiomeGroup AMAZON_RIVER = BiomeGroup.SingleBuilder.configure("amazon_river",AmazonRiver);
+    public static BiomeGroup NILE_RIVER = BiomeGroup.SingleBuilder.configure("nile_river",NileRiver);
 
     //-----------------------------------------------------
 
@@ -1252,6 +1259,7 @@ public class WNBiomes {
     public static void register(BiomeGroup group, BiomeDictionary.Type... types) {
         putToRegistry(group);
         BiomeTerrain.register(group, types);
+        WN.LOGGER.info("Registered BiomeGroup " + group.getName() + " (baseBiome: " + group.getBaseBiome().getRegistryName() + ") --- T: " + BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1,group.getBaseBiome().getDefaultTemperature()) + ", M: " + BiomeTransformer.WetCategory.getFromMoisture(0,1,group.getBaseBiome().getDownfall()));
     }
 
     public static void register(BiomeGroup group, boolean canGuess) {

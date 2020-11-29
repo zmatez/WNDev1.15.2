@@ -10,6 +10,7 @@ import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import com.matez.wildnature.world.generation.provider.WNWorldType;
+import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import com.mojang.brigadier.context.CommandContext;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -74,6 +75,10 @@ public class TestCommand {
             log(entity, "Continent Value: " + cell.continentValue);
             log(entity, "Cell Continent: " + cell.cellContinent);
             log(entity, "Category: " + terrain.getTerrainCategory().name());
+            log(entity, "Current TempCategory: " + BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1,biome.getDefaultTemperature()).getName());
+            log(entity, "Current WetCategory: " + BiomeTransformer.WetCategory.getFromMoisture(0f,1,biome.getDownfall()).getName());
+            log(entity,"Cell TempCategory: " + BiomeTransformer.TempCategory.getFromTemperature(-1, 1, cell.cellTemparature).getName());
+            log(entity,"Cell WetCategory: " + BiomeTransformer.WetCategory.getFromMoisture(-1, 1, cell.cellMoisture).getName());
             log(entity, "Biome/4: " + biome.getRegistryName());
             log(entity, "Biome>>2: " + biome2.getRegistryName());
             log(entity, "BiomeCF: " + biome3.getRegistryName());

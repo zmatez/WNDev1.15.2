@@ -13,20 +13,23 @@ import net.minecraftforge.common.BiomeDictionary;
 
 public class RiverTransformer extends BiomeTransformer {
 
-    public static BiomeGroup rivers = BiomeGroup.SingleBuilder.configure("river", WNBiomes.River);
-
     @Override
     protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
         if(category != Terrain.Category.OCEAN && category != Terrain.Category.DEEP_OCEAN && category != Terrain.Category.SEA){
-            if(tempCategory == TempCategory.WARM || tempCategory == TempCategory.HOT){
-                if(oldBiomeGroup.getBaseBiome().getCategory() == Biome.Category.JUNGLE){
-                    return WNBiomes.TROPICAL_BEACH;
-                }
-                return WNBiomes.WARM_BEACH;
-            }
-
             if (RiverGenerator.isRiver(cell)) {
-                return rivers;
+                if(tempCategory == TempCategory.WARM || tempCategory == TempCategory.HOT){
+                    if(oldBiomeGroup.getBaseBiome().getCategory() == Biome.Category.JUNGLE){
+                        return WNBiomes.AMAZON_RIVER;
+                    }else if(oldBiomeGroup.getBaseBiome().getCategory() == Biome.Category.DESERT && wetCategory == WetCategory.DRY || wetCategory == WetCategory.TEMPERATE){
+                        return WNBiomes.NILE_RIVER;
+                    }
+                }
+
+                if(tempCategory == TempCategory.ICY){
+                    return WNBiomes.FROZEN_RIVER;
+                }
+
+                return WNBiomes.RIVER;
             }
         }
         return oldBiomeGroup;
