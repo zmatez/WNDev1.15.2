@@ -37,7 +37,7 @@ public class BiomeVariants {
     public static BiomeVariants LAND = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAND);
     public static BiomeVariants RIVER = new BiomeVariants(SmallGroup.RIVER,LargeGroup.RIVER);
     public static BiomeVariants LAKE = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAKE);
-    public static BiomeVariants SHORE = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAND);
+    public static BiomeVariants SHORE = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
     public static BiomeVariants OCEAN = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
 
     //custom

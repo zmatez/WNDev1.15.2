@@ -2,13 +2,13 @@ package com.matez.wildnature.world.generation.biome.registry;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.world.generation.biome.biomes.*;
 import com.matez.wildnature.world.generation.biome.biomes.beach.*;
 import com.matez.wildnature.world.generation.biome.biomes.island.*;
 import com.matez.wildnature.world.generation.biome.biomes.lake.WNColdLake;
 import com.matez.wildnature.world.generation.biome.biomes.lake.WNDriedLake;
 import com.matez.wildnature.world.generation.biome.biomes.lake.WNFrozenLake;
 import com.matez.wildnature.world.generation.biome.biomes.lake.WNWarmLake;
+import com.matez.wildnature.world.generation.biome.biomes.land.*;
 import com.matez.wildnature.world.generation.biome.biomes.ocean.WNDeepJellyOcean;
 import com.matez.wildnature.world.generation.biome.biomes.river.*;
 import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
