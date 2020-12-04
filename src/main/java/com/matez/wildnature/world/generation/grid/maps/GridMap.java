@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.grid.maps;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.domain.Warp;
 import com.matez.wildnature.util.noise.func.DistanceFunc;
 import com.matez.wildnature.util.noise.func.EdgeFunc;
@@ -63,6 +64,7 @@ public abstract class GridMap{
         this.warpY = getWarpY();
 
         this.warp = new Warp(warpX, warpY, 64); //Warping too intense will bring back your old lerping issue as blobs off cells will be placed in other cells.
+        WN.LOGGER.debug("Loaded GridMap " + this.getClass().getSimpleName() + " with seed " + this.seed);
     }
 
     public GridMap(long seed, int gridScale){

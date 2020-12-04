@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.biome.setup.grid;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class BiomeGroup {
+    private int id;
     private String name;
     private int weight;
     private Biome baseBiome;
@@ -27,10 +28,19 @@ public class BiomeGroup {
         this.baseBiome = baseBiome;
         this.subBiomes = subBiomes;
         this.weightedBiomes = initWeightedBiomes();
+        this.setID(++BiomeTerrain.ids);
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Biome getBaseBiome() {
@@ -100,6 +110,10 @@ public class BiomeGroup {
         return result;
     }
 
+    public static BiomeGroup[] guess(Terrain.Category category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes){
+        return guess(category,allowedTypes,deniedTypes, false);
+    }
+
     /**
      * Guesses BiomeGroups for certain terrain type. For example for LOWLANDS will be guessed only BiomeGroups with certain depth
      * However if some of BiomeGroups subbiome matches one terrain category more or less, then it starts being biome group baseBiome (basically switches baseBiome with matching biome).
@@ -109,7 +123,7 @@ public class BiomeGroup {
      * @param deniedTypes denied types. BaseBiome from group cannot contain *any* of them in order to be passed.
      * @return guessed biome groups
      */
-    public static BiomeGroup[] guess(Terrain.Category category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes){
+    public static BiomeGroup[] guess(Terrain.Category category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes, boolean ignoreOceans){
         ArrayList<BiomeGroup> groups = new ArrayList<>();
         //Terrain.Category categoryBefore = category.getIndex() == 0 ? category : Terrain.Category.getByIndex(category.getIndex() - 1);
         //Terrain.Category categoryAfter = category.getIndex() == Terrain.Category.values().length-1 ? category : Terrain.Category.getByIndex(category.getIndex() + 1);
@@ -137,10 +151,15 @@ public class BiomeGroup {
                     continue;
                 }
             }
+            if(ignoreOceans){
+                if(group.getBaseBiome().getCategory() == Biome.Category.OCEAN){
+                    continue;
+                }
+            }
 
             BiomeGroup newGroup = null;
             float baseBiomeDepth = group.baseBiome.getDepth();
-            Terrain.Category depthCategory = getCategoryByDepth(baseBiomeDepth);
+            Terrain.Category depthCategory = getCategoryByDepth(baseBiomeDepth, ignoreOceans);
             SubBiome maxBiome = null;
             float maxBiomeDepth = 0;
             Terrain.Category maxBiomeCategory = null;
@@ -152,12 +171,12 @@ public class BiomeGroup {
                 if(depth > maxBiomeDepth || maxBiome == null){
                     maxBiomeDepth = depth;
                     maxBiome = subBiome;
-                    maxBiomeCategory = getCategoryByDepth(maxBiomeDepth);
+                    maxBiomeCategory = getCategoryByDepth(maxBiomeDepth, ignoreOceans);
                 }
                 if(depth < minBiomeDepth || minBiome == null){
                     minBiomeDepth = depth;
                     minBiome = subBiome;
-                    minBiomeCategory = getCategoryByDepth(minBiomeDepth);
+                    minBiomeCategory = getCategoryByDepth(minBiomeDepth, ignoreOceans);
                 }
             }
 
@@ -175,6 +194,7 @@ public class BiomeGroup {
                     continue;
                 }
                 newGroup = new BiomeGroup(group.getName(), weight, maxBiome.getBiome(), subBiomes.toArray(new SubBiome[0]));
+                newGroup.setID(group.getId());
             }else if(minBiomeCategory == category){
                 subBiomes.remove(minBiome);
                 subBiomes.add(new SubBiome(group.getBaseBiome(),minBiome.getWeight()));
@@ -185,6 +205,7 @@ public class BiomeGroup {
                     continue;
                 }
                 newGroup = new BiomeGroup(group.getName(), weight, minBiome.getBiome(), subBiomes.toArray(new SubBiome[0]));
+                newGroup.setID(group.getId());
             }
 
             if(newGroup != null){
@@ -195,13 +216,13 @@ public class BiomeGroup {
         return groups.toArray(new BiomeGroup[0]);
     }
 
-    private static Terrain.Category getCategoryByDepth(float depth){
+    private static Terrain.Category getCategoryByDepth(float depth, boolean ignoreOceans){
         if(depth < -1.2F){
-            return Terrain.Category.DEEP_OCEAN;
+            return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.DEEP_OCEAN;
         }else if(depth < -0.4){
-            return Terrain.Category.OCEAN;
+            return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.OCEAN;
         }else if(depth < 0.0F){
-            return Terrain.Category.SEA;
+            return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.SEA;
         }else if(depth < 0.3){
             return Terrain.Category.LOWLANDS;
         }else if(depth < 1.1F){

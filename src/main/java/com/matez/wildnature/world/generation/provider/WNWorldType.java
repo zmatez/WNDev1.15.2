@@ -54,6 +54,7 @@ public class WNWorldType extends WorldType {
             genSettings.setDefaultFluid(Blocks.WATER.getDefaultState());
 
             WNWorldContext context = new WNWorldContext(world.getSeed());
+            WN.LOGGER.info("Seed set to " + context.getSeed());
 
             BiomeProviderType<OverworldBiomeProviderSettings, WNGridBiomeProvider> bpt = WNBiomeProviderType.WILDNATURE_GRID;
 

@@ -183,6 +183,7 @@ public class WN {
         LOGGER.info("Setup...");
         RockGen.setupRocks();
         MinecraftForge.EVENT_BUS.addListener(new ParticleFactoryEvent()::registerParticles);
+        MinecraftForge.EVENT_BUS.addListener(new TreeBreakEvent()::treeEvent);
         dataFixer.registerDataFixer();
 
         ArgumentTypes.register("biome_argument", BiomeArgument.class, new ArgumentSerializer<>(BiomeArgument::createArgument));

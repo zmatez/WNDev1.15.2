@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wildnature:stone_trapdoor",
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:marble"
+    }
+  },
+  "result": {
+    "item": "wildnature:marble_trapdoor",
+    "count": 2
+  }
+}

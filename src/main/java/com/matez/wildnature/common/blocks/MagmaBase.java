@@ -53,7 +53,7 @@ public class MagmaBase extends BlockBase {
         return true;
     }
 
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         BubbleColumnBlock.placeBubbleColumn(worldIn, pos.up(), true);
     }
 

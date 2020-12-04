@@ -37,7 +37,7 @@ public class WNGrasslands extends WNBiome {
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/plains/town_centers", 6);
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addCarvers(this);
         WNBiomeFeatures.addStructures(this);
         WNBiomeFeatures.addLakes(this);

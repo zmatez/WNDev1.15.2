@@ -30,7 +30,7 @@ public class WNTintedDesertHills extends WNBiome {
                 .logTypes(LogType.NONE)
                 .parent(null));//-7052122241400916496 -346 101 943
 
-
+        WNBiomeFeatures.addDesertPyramids(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         //WNBiomeFeatures.addVillages(this, "village/desert/town_centers", 6);

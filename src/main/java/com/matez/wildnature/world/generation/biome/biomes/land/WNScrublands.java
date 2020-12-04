@@ -33,7 +33,7 @@ public class WNScrublands extends WNBiome {
                 .logTypes(LogType.SMALL_OAK)
                 .parent(null));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.removeAllDefaultFlowers(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);

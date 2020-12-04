@@ -33,6 +33,7 @@ public class WNFarmlands extends WNBiome {
 
 
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);
         WNBiomeFeatures.addStructures(this);

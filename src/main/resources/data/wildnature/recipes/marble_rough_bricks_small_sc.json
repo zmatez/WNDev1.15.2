@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:marble_rough_bricks"
+  },
+  "result": "wildnature:marble_rough_bricks_small",
+  "count": 1
+}

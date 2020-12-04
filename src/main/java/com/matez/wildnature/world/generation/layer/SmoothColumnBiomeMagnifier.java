@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.layer;
 
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import net.minecraft.util.FastRandom;

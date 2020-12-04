@@ -46,6 +46,12 @@ public class Cell {
     public float biomeCellEdge;
     public float biomeCellIdentity;
 
+    //undergroundBiomeGroups
+    public int undergroundBiomeCellX;
+    public int undergroundBiomeCellZ;
+    public float undergroundBiomeCellEdge;
+    public float undergroundBiomeCellIdentity;
+
     //subBiomeGroups
     public int subBiomeCellX;
     public int subBiomeCellZ;
@@ -89,6 +95,11 @@ public class Cell {
         cell.biomeCellZ = biomeCellZ;
         cell.biomeCellEdge = biomeCellEdge;
         cell.biomeCellIdentity = biomeCellIdentity;
+
+        cell.undergroundBiomeCellX = undergroundBiomeCellX;
+        cell.undergroundBiomeCellZ = undergroundBiomeCellZ;
+        cell.undergroundBiomeCellEdge = undergroundBiomeCellEdge;
+        cell.undergroundBiomeCellIdentity = undergroundBiomeCellIdentity;
 
         cell.subBiomeCellX = subBiomeCellX;
         cell.subBiomeCellZ = subBiomeCellZ;

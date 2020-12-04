@@ -48,7 +48,7 @@ public class WNRoofedForest extends WNBiome {
                 .logTypes(LogType.DOUBLE_DARK_OAK,LogType.ROOFED,LogType.ROWAN,LogType.FORSYTHIA)
                 .parent(null));
 
-
+        WNBiomeFeatures.addWoodlandMansions(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

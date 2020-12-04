@@ -26,7 +26,7 @@ public class WNHighlands extends WNBiome {
                 .category(Category.TAIGA)
                 .topography(WNBiomeBuilder.Topography.HIGHLANDS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_COOL)
-                .depth(4F)
+                .depth(1.7F)
                 .scale(0.5F)
                 .temperature(0.3F)
                 .downfall(0.4F)
@@ -35,7 +35,7 @@ public class WNHighlands extends WNBiome {
                 .logTypes(LogType.SPRUCE,LogType.FIR)
                 .parent(null));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/taiga/town_centers", 6);

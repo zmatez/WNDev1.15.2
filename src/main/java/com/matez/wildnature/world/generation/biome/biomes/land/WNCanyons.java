@@ -23,7 +23,7 @@ public class WNCanyons extends WNBiome {
                 .category(Category.MESA)
                 .topography(WNBiomeBuilder.Topography.HIGHLANDS)
                 .climate(WNBiomeBuilder.Climate.DRY_SUBTROPICAL)
-                .depth(2.1F)
+                .depth(1.6F)
                 .scale(0.2F)
                 .temperature(0.9F)
                 .downfall(0.1F)

@@ -2,7 +2,7 @@ package com.matez.wildnature.world.generation.transformer.transformers;
 
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.modules.RiverGenerator;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
@@ -18,7 +18,7 @@ public class RiverValleyTransformer extends BiomeTransformer {
             if (RiverGenerator.isRiverValleySmooth(cell)) {
                 return riverValleySmooth;
             }else if (RiverGenerator.isRiverValleySharp(cell)) {
-                return riverValleySharp;
+                return riverValleySmooth;
             }
         }
         return oldBiomeGroup;

@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.heightmap.modules;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.domain.Warp;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.grid.Cell;
@@ -11,6 +12,7 @@ public class RiverGenerator {
     public static float meanderThreshold = 0.2f, streamMeanderThreshold = 0.1f;
     public Warp meanderWarp;
     public RiverGenerator(int seed){
+        WN.LOGGER.info("Created RiverGenerator with seed " + seed + "/" + (int) seed);
         this.mainRiverNoise = new FastNoise(seed);
         this.mainRiverNoise.SetFractalType(FastNoise.FractalType.RigidMulti);
         this.mainRiverNoise.SetFrequency(0.00005F);
@@ -28,13 +30,14 @@ public class RiverGenerator {
         this.meanderNoise = new FastNoise(seed);
         this.meanderNoise.SetFrequency(0.0005F);
 
-        FastNoise warpX = new FastNoise();
+        FastNoise warpX = new FastNoise(seed);
         warpX.SetNoiseType(FastNoise.NoiseType.Simplex);
         warpX.SetFrequency(0.01f);
 
-        FastNoise warpZ = new FastNoise();
+        FastNoise warpZ = new FastNoise(seed);
         warpZ.SetNoiseType(FastNoise.NoiseType.Simplex);
         warpZ.SetFrequency(0.01f);
+
         this.meanderWarp = new Warp(warpX,warpZ,64);
     }
 

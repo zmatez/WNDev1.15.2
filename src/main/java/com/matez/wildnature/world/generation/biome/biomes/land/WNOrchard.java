@@ -38,7 +38,7 @@ public class WNOrchard extends WNBiome {
                 .logTypes(LogType.OAK,LogType.APPLE,LogType.PEAR)
                 .parent(null));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

@@ -55,20 +55,20 @@ public class MagmaPadBlock extends LavalilyBase {
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        super.tick(state, world, pos, random);
-        if(world.getBlockState(pos).get(CRACK)){
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+        super.tick(state, worldIn, pos, random);
+        if(worldIn.getBlockState(pos).get(CRACK)){
             Predicate<LivingEntity> predicate = new Predicate<LivingEntity>() {
                 @Override
                 public boolean test(LivingEntity entity) {
                     return (entity.getPosition().getY()>=pos.getY() && entity.getPosition().getY()<pos.getY()+4 && entity.getPosition().getX()==pos.getX() && entity.getPosition().getZ()==pos.getZ());
                 }
             };
-            ArrayList<LivingEntity> entities = new ArrayList<>(world.getEntitiesWithinAABB(LivingEntity.class,new AxisAlignedBB(pos),predicate));
+            ArrayList<LivingEntity> entities = new ArrayList<>(worldIn.getEntitiesWithinAABB(LivingEntity.class,new AxisAlignedBB(pos),predicate));
             if(!entities.isEmpty()) {
-                world.destroyBlock(pos, false);
+                worldIn.destroyBlock(pos, false);
             }else{
-                world.setBlockState(pos,world.getBlockState(pos).with(CRACK,false));
+                worldIn.setBlockState(pos,worldIn.getBlockState(pos).with(CRACK,false));
             }
         }
     }

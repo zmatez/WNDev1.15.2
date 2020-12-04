@@ -3,10 +3,9 @@ package com.matez.wildnature.world.generation.transformer;
 import com.google.common.collect.ArrayListMultimap;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.NoiseUtil;
-import com.matez.wildnature.util.other.Pair;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
@@ -39,6 +38,16 @@ public abstract class BiomeTransformer {
         return bgApply(oldBiomeGroup, TempCategory.getFromTemperature(-0.1f, 1, oldBiomeGroup.getBaseBiome().getDefaultTemperature()), WetCategory.getFromMoisture(0, 1, oldBiomeGroup.getBaseBiome().getDownfall()), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
     }
     protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
+        return oldBiomeGroup;
+    }
+
+    /**
+     * For lake biomes
+     */
+    public BiomeGroup bgApply(int x, int z, BiomeGroup oldBiomeGroup, Cell cell, Terrain terrain) {
+        return bgApply(x,z,oldBiomeGroup, TempCategory.getFromTemperature(-0.1f, 1, oldBiomeGroup.getBaseBiome().getDefaultTemperature()), WetCategory.getFromMoisture(0, 1, oldBiomeGroup.getBaseBiome().getDownfall()), cell, terrain, terrain.getTerrainCategory(), cell.subBiomeCellIdentity);
+    }
+    protected BiomeGroup bgApply(int x, int z, BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
         return oldBiomeGroup;
     }
 
@@ -260,14 +269,13 @@ public abstract class BiomeTransformer {
             WetCategory biomeWetCategory = WetCategory.getFromMoisture(0f, 1f, biomeGroup.getBaseBiome().getDownfall());
             int tempDistance = Math.abs(Math.min(tempCategory.ordinal(),biomeTempCategory.ordinal()) - Math.max(tempCategory.ordinal(),biomeTempCategory.ordinal()));
             int wetDistance = Math.abs(Math.min(wetCategory.ordinal(),biomeWetCategory.ordinal()) - Math.max(wetCategory.ordinal(),biomeWetCategory.ordinal()));
-            multimap.put(tempDistance + wetDistance * 2,biomeGroup);
+            multimap.put(tempDistance + wetDistance,biomeGroup);
         }
 
 
         return multimap;
     }
 
-    public static ArrayList<Pair<TempCategory, WetCategory>> notEnough = new ArrayList<>();
     /**
      * Gets a valid biome list by a temp category
      *

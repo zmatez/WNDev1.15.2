@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "wildnature:marble_smooth_polished"
+  },
+  "result": "wildnature:marble_smooth_half_stairs_polished",
+  "count": 2
+}

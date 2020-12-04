@@ -1,8 +1,10 @@
 package com.matez.wildnature.world.generation.undergroundBiomes.setup;
 
+import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.util.other.WeightedList;
 import com.matez.wildnature.world.generation.noise.sponge.module.source.Voronoi;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.undergroundBiomes.biomes.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
@@ -12,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class URBiomeManager {
-    public static Voronoi biomeNoise = new Voronoi();
     public static WeightedList<URBiome> riverBiomes = new WeightedList<>();
     public static ArrayList<URBiomeEntry> riverBiomesCategorized = new ArrayList<>();
 
@@ -39,7 +40,7 @@ public class URBiomeManager {
                 ICY_RIVER
         };
 
-        biomeNoise.setFrequency(0.004);
+
 
         for (Biome.TempCategory tempCategory : Biome.TempCategory.values()) {
             for (Biome.Category value : Biome.Category.values()) {
@@ -76,7 +77,7 @@ public class URBiomeManager {
         return biome;
     }
 
-    public static URBiome getBiomeAt(IChunk chunk, BlockPos pos, long seed){
+    public static URBiome getBiomeAt(IChunk chunk, BlockPos pos, long seed, float identity){
         Biome.Category category = Utilities.getBiomeOnPos(chunk.getBiomes(),pos.getX(),pos.getZ()).getCategory();
         Biome.TempCategory tempCategory = Utilities.getBiomeOnPos(chunk.getBiomes(),pos.getX(),pos.getZ()).getTempCategory();
         URBiomeEntry entry = null;
@@ -90,14 +91,12 @@ public class URBiomeManager {
         if(entry==null || entry.list.isEmpty()){
             return STONE_RIVER;
         }
-        biomeNoise.setSeed((int)seed);
-        URBiome biome = (URBiome)Utilities.getWeightedEntry(entry.list,new Random(seed+(int)(biomeNoise.getValue(pos.getX(),pos.getY(),pos.getZ())*1000)));
+
+        URBiome biome = (URBiome)Utilities.getWeightedEntry(entry.list,new Random(seed+(int)(identity*100_000_000)));
         return biome;
     }
 
-
     public static class URBiomeEntry{
-
         private Biome.Category category;
         private Biome.TempCategory tempCategory;
         private WeightedList<URBiome> list;

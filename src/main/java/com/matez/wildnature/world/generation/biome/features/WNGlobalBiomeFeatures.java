@@ -85,6 +85,12 @@ public class WNGlobalBiomeFeatures {
             if(CommonConfig.generateBeehives.get()){
                 WNBiomeFeatures.addBeehives(biome);
             }
+            if(CommonConfig.generateQuicksand.get()){
+                WNBiomeFeatures.addQuicksand(biome);
+            }
+            if(CommonConfig.generateMud.get()){
+                WNBiomeFeatures.addMud(biome);
+            }
 
             WNBiomeFeatures.addRiverFeatures(biome);
 

@@ -2,8 +2,8 @@ package com.matez.wildnature.world.generation.transformer.transformers;
 
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
-import com.matez.wildnature.world.generation.chunk.terrain.TerrainProvider;
+import com.matez.wildnature.world.generation.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.TerrainProvider;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import net.minecraft.world.biome.Biome;

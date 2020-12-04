@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.grid.maps;
 
+import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.noise.domain.Warp;
 import com.matez.wildnature.util.noise.func.DistanceFunc;
 import com.matez.wildnature.util.noise.func.EdgeFunc;
@@ -35,7 +36,7 @@ Idea for GridMap comes from TerraForged. However it was bit modified, still, app
  */
 public class TerrainMap extends GridMap{
     public TerrainMap(long seed) {
-        super(seed, 2500);
+        super(seed, CommonConfig.terrainMapSize.get());
     }
 
     @Override

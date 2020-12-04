@@ -35,7 +35,7 @@ public class WNDarkMirkwood extends WNBiome {
                 .logTypes(LogType.SPOOKY)
                 .parent(null));
 
-
+        WNBiomeFeatures.addWoodlandMansions(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addSwampHuts(this);

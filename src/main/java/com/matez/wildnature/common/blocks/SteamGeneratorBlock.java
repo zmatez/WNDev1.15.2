@@ -71,14 +71,14 @@ public class SteamGeneratorBlock extends BlockBase {
     }
 
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isRemote) {
             if (state.get(POWERED) && !worldIn.isBlockPowered(pos)) {
                 worldIn.setBlockState(pos, worldIn.getBlockState(pos).cycle(POWERED).with(STEAM,0).with(RUNNING,false), 2);
             }
             steam(state,(ServerWorld)worldIn,pos,random);
         }
-
     }
 
     @Override

@@ -21,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.*;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
@@ -55,7 +56,7 @@ public class ParticleGeneratorBlock extends BlockBase {
       }
    }
 
-   public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+   public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
       if (!worldIn.isRemote) {
          if (state.get(POWERED) && !worldIn.isBlockPowered(pos)) {
             worldIn.setBlockState(pos, state.cycle(POWERED), 2);

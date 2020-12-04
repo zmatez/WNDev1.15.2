@@ -39,6 +39,7 @@ public class WNWetlands extends WNBiome {
                 .parent(null));
 
 
+        WNBiomeFeatures.addSwampHuts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/plains/town_centers", 6);

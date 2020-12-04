@@ -31,6 +31,7 @@ public class WNFrozenLake extends WNBiome {
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addSeagrass(this);
         DefaultBiomeFeatures.addExtraKelp(this);
+        DefaultBiomeFeatures.addFreezeTopLayer(this);
         WNBiomeFeatures.addWaterlilies(this, Blocks.LILY_PAD, 15);
         WNBiomeFeatures.addSeagrass(this, 48);
         this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(EntityType.SQUID, 2, 1, 4));

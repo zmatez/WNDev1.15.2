@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_halfstairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:marble_rough_slab_bricks_cracked"
+    }
+  },
+  "result": {
+    "item": "wildnature:marble_rough_half_stairs_bricks_cracked",
+    "count": 6
+  }
+}

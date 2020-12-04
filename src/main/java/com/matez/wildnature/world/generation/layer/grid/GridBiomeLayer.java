@@ -1,13 +1,17 @@
 package com.matez.wildnature.world.generation.layer.grid;
 
+import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.biome.setup.grid.IslandBiome;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import com.matez.wildnature.world.generation.transformer.transformers.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.Heightmap;
 
 public class GridBiomeLayer {
     private WNGridBiomeProvider provider;
@@ -39,7 +43,10 @@ public class GridBiomeLayer {
         Cell northCell = provider.getNoiseCell(x + directionMove, z).copy(), southCell = provider.getNoiseCell(x - directionMove, z).copy(), eastCell = provider.getNoiseCell(x, z + directionMove).copy(), westCell = provider.getNoiseCell(x, z - directionMove).copy();
         Terrain northTerrain = provider.getNoiseTerrain(northCell, x + directionMove, z), southTerrain = provider.getNoiseTerrain(southCell, x - directionMove, z), eastTerrain = provider.getNoiseTerrain(eastCell, x, z + directionMove), westTerrain = provider.getNoiseTerrain(westCell, x, z - directionMove);
 
-        Biome biome = applyTransformers(x, z, cell, northCell, southCell, eastCell, westCell, terrain, northTerrain, southTerrain, eastTerrain, westTerrain,fakeBiomes);
+        Cell bigIslandOldCenterCell = provider.getNoiseCell(cell.bigIslandCellX,cell.bigIslandCellZ).copy(), smallIslandOldCenterCell = provider.getNoiseCell(cell.smallIslandCellX,cell.smallIslandCellZ).copy();
+        Terrain bigIslandOldCenterTerrain = provider.getNoiseTerrain(bigIslandOldCenterCell), smallIslandOldCenterTerrain = provider.getNoiseTerrain(smallIslandOldCenterCell);
+
+        Biome biome = applyTransformers(x, z, cell, northCell, southCell, eastCell, westCell, bigIslandOldCenterCell, smallIslandOldCenterCell, terrain, northTerrain, southTerrain, eastTerrain, westTerrain, bigIslandOldCenterTerrain, smallIslandOldCenterTerrain,fakeBiomes);
 
         return biome;
     }
@@ -59,9 +66,8 @@ public class GridBiomeLayer {
      *
      * @return final biome
      */
-    public Biome applyTransformers(int x, int z, Cell cell, Cell northCell, Cell southCell, Cell eastCell, Cell westCell, Terrain terrain, Terrain northTerrain, Terrain southTerrain, Terrain eastTerrain, Terrain westTerrain, boolean fakeBiomes) {
-        BiomeGroup biomeGroup = null, northBiomeGroup, southBiomeGroup, westBiomeGroup, eastBiomeGroup;
-
+    public Biome applyTransformers(int x, int z, Cell cell, Cell northCell, Cell southCell, Cell eastCell, Cell westCell, Cell bigIslandOldCenterCell, Cell smallIslandOldCenterCell, Terrain terrain, Terrain northTerrain, Terrain southTerrain, Terrain eastTerrain, Terrain bigIslandOldCenterTerrain, Terrain smallIslandOldCenterTerrain, Terrain westTerrain, boolean fakeBiomes) {
+        BiomeGroup biomeGroup = null, northBiomeGroup, southBiomeGroup, westBiomeGroup, eastBiomeGroup, bigIslandCenterBiomeGroup, smallIslandCenterBiomeGroup;
         //Gets BiomeGroup (so baseBiome + all subbiomes) to filter terrain later. Uses BiomeMap. BiomeGroups are registered in WNBiomes by BiomeTerrain.
         biomeGroup = mainBiomeTransformer.bgApply(cell, terrain);
 
@@ -85,9 +91,19 @@ public class GridBiomeLayer {
         } else {
             westBiomeGroup = mainBiomeTransformer.bgApply(westCell, westTerrain);
         }
+        if (bigIslandOldCenterCell == cell && bigIslandOldCenterTerrain == terrain) {
+            bigIslandCenterBiomeGroup = biomeGroup;
+        } else {
+            bigIslandCenterBiomeGroup = mainBiomeTransformer.bgApply(bigIslandOldCenterCell, bigIslandOldCenterTerrain);
+        }
+        if (smallIslandOldCenterCell == cell && smallIslandOldCenterTerrain == terrain) {
+            smallIslandCenterBiomeGroup = biomeGroup;
+        } else {
+            smallIslandCenterBiomeGroup = mainBiomeTransformer.bgApply(smallIslandOldCenterCell, smallIslandOldCenterTerrain);
+        }
 
-        biomeGroup = smallIslandTransformer.bgApply(biomeGroup, cell, terrain);
-        biomeGroup = bigIslandTransformer.bgApply(biomeGroup, cell, terrain);
+        biomeGroup = smallIslandTransformer.bgApply(smallIslandCenterBiomeGroup, cell, terrain);
+        biomeGroup = bigIslandTransformer.bgApply(bigIslandCenterBiomeGroup, cell, terrain);
 
         if (biomeGroup != northBiomeGroup) {
             northBiomeGroup = smallIslandTransformer.bgApply(northBiomeGroup, northCell, northTerrain);
@@ -124,5 +140,25 @@ public class GridBiomeLayer {
 
     public Biome get(int x, int z, Cell cell, Terrain terrain, boolean fakeBiomes) {
         return filterBiomes(x, z, cell.copy(), terrain, fakeBiomes);
+    }
+
+    public static Biome applyHeightmapBiome(Biome biome, BlockPos pos, IWorld world, int div){
+        if(biome.getDepth() > 0){
+            if(world.getChunk(pos).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG,pos.getX()/div,pos.getZ()/div)+2<world.getSeaLevel()){
+                BiomeTransformer.TempCategory category = BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,biome.getDefaultTemperature());
+                if(category == BiomeTransformer.TempCategory.ICY){
+                    return WNBiomes.FrozenLake;
+                }else if(category == BiomeTransformer.TempCategory.COLD){
+                    return WNBiomes.ColdLake;
+                }else if(category == BiomeTransformer.TempCategory.TEMPERATE){
+                    return WNBiomes.WarmLake;
+                }else if(category == BiomeTransformer.TempCategory.WARM){
+                    return WNBiomes.WarmLake;
+                }else if(category == BiomeTransformer.TempCategory.HOT){
+                    return WNBiomes.WarmLake;
+                }
+            }
+        }
+        return biome;
     }
 }

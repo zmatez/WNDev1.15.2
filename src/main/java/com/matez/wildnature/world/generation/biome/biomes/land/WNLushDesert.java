@@ -37,6 +37,7 @@ public class WNLushDesert extends WNBiome{
                 .parent(null));
 
 
+        WNBiomeFeatures.addDesertPyramids(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         //WNBiomeFeatures.addVillages(this, "village/desert/town_centers", 6);

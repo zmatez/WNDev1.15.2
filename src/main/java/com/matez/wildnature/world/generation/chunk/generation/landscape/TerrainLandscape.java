@@ -2,8 +2,7 @@ package com.matez.wildnature.world.generation.chunk.generation.landscape;
 
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
-import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessors;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;

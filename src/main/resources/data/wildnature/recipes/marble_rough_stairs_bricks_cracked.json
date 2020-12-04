@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:cracked_bricks_stairs",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:marble_rough_bricks_cracked"
+    }
+  },
+  "result": {
+    "item": "wildnature:marble_rough_stairs_bricks_cracked",
+    "count": 4
+  }
+}

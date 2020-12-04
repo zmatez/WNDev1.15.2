@@ -22,7 +22,7 @@ public class WNIcelands extends WNBiome {
                 .category(Category.ICY)
                 .topography(WNBiomeBuilder.Topography.HIGHLANDS)
                 .climate(WNBiomeBuilder.Climate.DRY_SUBTROPICAL)
-                .depth(4F)
+                .depth(2F)
                 .scale(0.4F)
                 .temperature(-0.9F)
                 .downfall(1F)

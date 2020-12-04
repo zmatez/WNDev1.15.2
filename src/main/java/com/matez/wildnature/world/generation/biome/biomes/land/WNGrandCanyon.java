@@ -23,7 +23,7 @@ public class WNGrandCanyon extends WNBiome {
                 .category(Category.MESA)
                 .topography(WNBiomeBuilder.Topography.HIGHLANDS)
                 .climate(WNBiomeBuilder.Climate.DRY_SUBTROPICAL)
-                .depth(4F)
+                .depth(2F)
                 .scale(0.4F)
                 .temperature(0.9F)
                 .downfall(0.1F)

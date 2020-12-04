@@ -1,7 +1,8 @@
 package com.matez.wildnature.world.generation.heightmap;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.chunk.terrain.TerrainProvider;
+import com.matez.wildnature.world.generation.terrain.TerrainProvider;
 import com.matez.wildnature.world.generation.grid.maps.*;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.modules.ContinentGenerator;
@@ -43,6 +44,7 @@ public class WNHeightMap {
     //maps
     public final GridMap terrainMap;
     public final GridMap biomeMap;
+    public final GridMap undergroundBiomeMap;
     public final GridMap subBiomeMap;
     public final GridMap smallIslandMap;
     public final GridMap bigIslandMap;
@@ -59,12 +61,15 @@ public class WNHeightMap {
 
         this.terrainMap = new TerrainMap(seed);
         this.biomeMap = new BiomeMap(seed);
+        this.undergroundBiomeMap = new UndergroundBiomeMap(seed);
         this.subBiomeMap = new SubBiomeMap(seed);
         this.smallIslandMap = new SmallIslandMap(seed);
         this.bigIslandMap = new BigIslandMap(seed);
 
         this.terrainProvider = context.getTerrainProvider();
         this.climateMap = new ClimateMap();
+
+        WN.LOGGER.debug("Created heightMap with seed " + (int)seed);
     }
 
     public void applyContinent(Cell cell, int dx, int dz) {
@@ -73,7 +78,7 @@ public class WNHeightMap {
     }
 
     public void applyClimate(Cell cell, float x, float z) {
-        climateMap.apply(cell, x, z);
+        climateMap.apply(seed, cell, x, z);
     }
 
     public void applyRiver(Cell cell, int x, int z) {
@@ -87,6 +92,7 @@ public class WNHeightMap {
     public void apply(Cell cell, int dx, int dz) {
         terrainMap.apply(cell, dx, dz);
         biomeMap.apply(cell, dx, dz);
+        undergroundBiomeMap.apply(cell, dx, dz);
         subBiomeMap.apply(cell, dx, dz);
         smallIslandMap.apply(cell,dx,dz);
         bigIslandMap.apply(cell,dx,dz);

@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "wildnature:backpack_small",
+        "count": 1
+    },
+    "pattern": [
+        "ABA",
+        "DAD",
+        "ACA"
+    ],
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "A": {"item": "minecraft:leather"},
+        "B": {"item": "wildnature:bronze_ingot"},
+        "C": {"item": "minecraft:tripwire_hook"},
+        "D": {"item": "minecraft:string"}
+    }
+}

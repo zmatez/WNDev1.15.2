@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "wildnature:blocks/rainbow_eucalyptus/rainbow_eucalyptus_door_item"
+        "layer0": "wildnature:blocks/eucalyptus/rainbow_eucalyptus_door_item"
     }
 }

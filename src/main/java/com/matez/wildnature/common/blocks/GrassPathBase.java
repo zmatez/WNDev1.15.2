@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.loot.LootContext;
 
 public class GrassPathBase extends GrassPathBlock implements IRenderLayer {
@@ -58,7 +59,7 @@ public class GrassPathBase extends GrassPathBlock implements IRenderLayer {
         return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         FarmlandBase.turnToDirt(state, worldIn, pos);
     }
 

@@ -33,7 +33,7 @@ public class WNFlowerField extends WNBiome {
                 .logTypes(LogType.SMALL_OAK)
                 .parent(null));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/plains/town_centers", 6);

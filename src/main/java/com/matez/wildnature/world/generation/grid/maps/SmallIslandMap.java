@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.grid.maps;
 
+import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 
 /*
@@ -29,7 +30,7 @@ Idea for GridMap comes from TerraForged. However it was bit modified, still, app
  */
 public class SmallIslandMap extends GridMap {
     public SmallIslandMap(long seed) {
-        super(seed, 250);
+        super(seed, CommonConfig.smallIslandMapSize.get());
     }
 
     @Override

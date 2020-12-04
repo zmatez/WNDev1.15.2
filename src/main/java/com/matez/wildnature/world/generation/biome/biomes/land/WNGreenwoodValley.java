@@ -38,7 +38,7 @@ public class WNGreenwoodValley extends WNBiome {
                 .logTypes(LogType.DOUBLE_DARK_OAK)
                 .parent(null));
 
-
+        WNBiomeFeatures.addWoodlandMansions(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

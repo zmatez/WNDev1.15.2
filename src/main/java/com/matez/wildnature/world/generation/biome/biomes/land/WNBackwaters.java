@@ -32,7 +32,7 @@ public class WNBackwaters extends WNBiome {
                 .logTypes(LogType.WILLOW)
                 .parent(null));
 
-
+        WNBiomeFeatures.addSwampHuts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

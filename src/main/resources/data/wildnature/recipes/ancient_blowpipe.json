@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " @$",
+    "@#@",
+    "#@ "
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:handle_leather"
+    },
+    "@": {
+      "item": "minecraft:red_dye"
+    },
+    "$": {
+      "tag": "wildnature:redwood_logs"
+    }
+  },
+  "result": {
+    "item": "wildnature:ancient_blowpipe",
+    "count": 1
+  }
+}

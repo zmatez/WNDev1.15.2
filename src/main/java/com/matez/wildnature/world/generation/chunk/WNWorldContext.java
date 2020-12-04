@@ -1,6 +1,6 @@
 package com.matez.wildnature.world.generation.chunk;
 
-import com.matez.wildnature.world.generation.chunk.terrain.TerrainProvider;
+import com.matez.wildnature.world.generation.terrain.TerrainProvider;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.WNHeightMap;
 import net.minecraft.world.storage.WorldInfo;
@@ -38,12 +38,14 @@ public class WNWorldContext {
         this.seed = seed;
         this.cell = new Cell();
         this.terrainProvider = new TerrainProvider(this);
+        terrainProvider.init(seed);
         this.heightmap = new WNHeightMap(this);
     }
 
     public WNWorldContext(WorldInfo info){
         this.cell = new Cell();
         this.terrainProvider = new TerrainProvider(this);
+        terrainProvider.init(seed);
         this.heightmap = new WNHeightMap(this);
     }
 

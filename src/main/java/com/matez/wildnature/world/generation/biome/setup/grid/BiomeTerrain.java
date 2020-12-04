@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BiomeTerrain {
+    public static int ids = 0;
     /**
      * Terrain registry
      */

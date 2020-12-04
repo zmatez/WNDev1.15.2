@@ -56,7 +56,7 @@ public class WNHornbeamHills extends WNBiome {
                 .logTypes(LogType.HORNBEAM,LogType.BIRCH,LogType.ROWAN,LogType.HAZEL,LogType.SMALL_BIRCH,LogType.WEEPING_CEDAR,LogType.MAGNOLIA,LogType.FORSYTHIA)
                 .parent(null));
 
-
+        WNBiomeFeatures.addWoodlandMansions(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

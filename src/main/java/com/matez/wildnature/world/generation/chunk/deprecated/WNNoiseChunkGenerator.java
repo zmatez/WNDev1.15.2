@@ -2,6 +2,7 @@ package com.matez.wildnature.world.generation.chunk.deprecated;
 
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.generators.carves.PathGenerator;
+import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
 import com.matez.wildnature.world.generation.undergroundBiomes.setup.URBiome;
 import com.matez.wildnature.world.generation.undergroundBiomes.setup.URBiomeManager;
 import com.matez.wildnature.world.generation.noise.sponge.module.source.Perlin;
@@ -62,15 +63,10 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
    private final INoiseGenerator surfaceDepthNoise;
    protected final BlockState defaultBlock;
    protected final BlockState defaultFluid;
-   private double frequency = CommonConfig.pathFrequency.get();
-
-   private final RidgedMulti ridgedMultiNoise;
-   private static RidgedMulti ridgedMultiNoiseCopy;
-   private final Perlin perlinNoise, biomeNoise;
-   private double latestBiomeNoise = -1;
 
    //GENERATORS
    private final PathGenerator pathGenerator;
+   private final UndergroundRiverGenerator undergroundRiverGenerator;
 
 
    public WNNoiseChunkGenerator(IWorld worldIn, BiomeProvider biomeProviderIn, int p_i49931_3_, int p_i49931_4_, int p_i49931_5_, T p_i49931_6_, boolean usePerlin) {
@@ -87,30 +83,10 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
       this.field_222569_p = new OctavesNoiseGenerator(this.randomSeed, 16,0);
       this.field_222570_q = new OctavesNoiseGenerator(this.randomSeed, 8,0);
       this.surfaceDepthNoise = (INoiseGenerator)(usePerlin ? new PerlinNoiseGenerator(this.randomSeed, 4,0) : new OctavesNoiseGenerator(this.randomSeed, 4,0));
-      this.ridgedMultiNoise =new RidgedMulti();
-      ridgedMultiNoise.setSeed((int)worldIn.getSeed());
-      ridgedMultiNoise.setFrequency(0.005);
-      ridgedMultiNoise.setOctaveCount(1);
-      ridgedMultiNoise.setLacunarity(0.0);
-      ridgedMultiNoiseCopy = ridgedMultiNoise;
-      this.perlinNoise = new Perlin();
-      perlinNoise.setSeed((int)worldIn.getSeed());
-      perlinNoise.setFrequency(0.1);
-      perlinNoise.setOctaveCount(2);
-      perlinNoise.setLacunarity(0.0);
-      perlinNoise.setPersistence(-0.4);
-      this.biomeNoise = new Perlin();
-      biomeNoise.setSeed((int)worldIn.getSeed());
-      biomeNoise.setFrequency(0.002);
-      biomeNoise.setOctaveCount(2);
-      biomeNoise.setLacunarity(0.0);
-      biomeNoise.setPersistence(0.0);
+
 
       pathGenerator = new PathGenerator(worldIn);
-   }
-
-   public static RidgedMulti getCaveNoise(){
-      return ridgedMultiNoiseCopy;
+      undergroundRiverGenerator = new UndergroundRiverGenerator(worldIn);
    }
 
    private double calcNoiseColumn(int p_222552_1_, int p_222552_2_, int p_222552_3_, double coordScale, double heightScale, double p_222552_8_, double p_222552_10_) {
@@ -251,180 +227,11 @@ public abstract class WNNoiseChunkGenerator<T extends GenerationSettings> extend
 
 
             pathGenerator.generate(x,startHeight,z,biome,chunkIn);
-
-            //underwaterRivers
-            if(CommonConfig.generateUndergroundRivers.get()) {
-               URBiome riverBiome = URBiomeManager.getBiomeAt(chunkIn,new BlockPos(x,1,z),world.getSeed());
-
-               double vnoise = ridgedMultiNoise.getValue(x, 1, z);
-               if (vnoise >= 0.60 && vnoise <= 2) {
-                  BlockPos pos = new BlockPos(x, 13, z);
-                  int height = riverBiome.getNoiseHeight(vnoise, 0.60,  0.625,1, 10,17,0.63,random,seed,pos);
-                  if(height==10 || height==9){
-                     double pnoise = perlinNoise.getValue(x, 1, z);
-                     if(pnoise>=0.3){
-                        height=height+1;
-                        if(pnoise>=0.38){
-                           height=height+1;
-                        }
-                     }else if(pnoise<0.16){
-                        height=height-1;
-                     }
-                  }
-                  int startPointY = -(int) height / 2;//pos.y - startPointY -> block being set
-                  for (int a = pos.getY() - startPointY; a > pos.getY() - height; a--) {
-                     if (a > 10) {
-                        chunkIn.setBlockState(new BlockPos(pos.getX(), a, pos.getZ()), Blocks.CAVE_AIR.getDefaultState(), false);
-                     } else {
-                        chunkIn.setBlockState(new BlockPos(pos.getX(), a, pos.getZ()), Blocks.WATER.getDefaultState(), false);
-
-                     }
-
-                  }
-               }
-
-               if (vnoise >= 0.58 && vnoise <= 2) {
-                  BlockPos pos = new BlockPos(x, 13, z);
-                  if((riverBiome.getElevationBlock(seed,random,pos).getBlock()!=Blocks.STONE || riverBiome.getUnderwaterBlock(seed,random,pos).getBlock()!=Blocks.STONE)) {
-
-                     int height = riverBiome.getNoiseHeight(vnoise, 0.59, 0.635, 1, 13,17,0.64,random,seed,pos);
-                     int startPointY = -(int) height / 2;//pos.y - startPointY -> block being set
-                     for (int a = pos.getY() - startPointY; a > pos.getY() - height; a--) {
-                        riverBiome.elevate(pos,a,chunkIn,random,seed);
-                     }
-                  }
-               }
-            }
+            //undergroundRiverGenerator.generate(x,startHeight,z,biome,chunkIn);
          }
       }
 
       this.makeBedrock(chunkIn, sharedseedrandom);
-   }
-
-
-
-   private int getMaxHeightNearPathBlock(int x, int y, int z, IChunk chunk){
-      int highest = 0;
-      int terrainPosDiffCheck = 4;
-      for(int i = 0; i < 4; i++){
-         int xChange = 0;
-         int zChange = 0;
-
-         if(i ==0){
-            xChange = terrainPosDiffCheck;
-         }else if(i == 1){
-            xChange = -terrainPosDiffCheck;
-         }else if(i == 2){
-            zChange = terrainPosDiffCheck;
-         }else {
-            zChange = -terrainPosDiffCheck;
-         }
-         int rx = x + xChange;
-         int rz = z + zChange;
-
-         if(ridgedMultiNoise.getValue(rx, 1, rz) >= 0.62 && ridgedMultiNoise.getValue(rx, 1, rz) <= 0.65) {
-
-            if (rx >= chunk.getPos().getXStart() && rz >= chunk.getPos().getZStart() && rx < chunk.getPos().getXStart() + 16 && rx < chunk.getPos().getZStart() + 16) {
-               for (int ty = (highest == 0 ? y : highest); ty > 0 && ty <= 256; ty++) {
-                  if (chunk.getBlockState(new BlockPos(rx, ty, rz)).isSolid()) {
-                     if (ty > highest) {
-                        highest = ty;
-                        break;
-                     }
-                  }
-               }
-            }
-         }
-      }
-      return highest == 0 ? y : highest;
-   }
-
-   private int getMinHeightNearPathBlock(int x, int y, int z, IChunk chunk){
-      int lowest = 256;
-      int terrainPosDiffCheck = 4;
-      for(int i = 0; i < 4; i++){
-         int xChange = 0;
-         int zChange = 0;
-
-         if(i ==0){
-            xChange = terrainPosDiffCheck;
-         }else if(i == 1){
-            xChange = -terrainPosDiffCheck;
-         }else if(i == 2){
-            zChange = terrainPosDiffCheck;
-         }else {
-            zChange = -terrainPosDiffCheck;
-         }
-         int rx = x + xChange;
-         int rz = z + zChange;
-         if(ridgedMultiNoise.getValue(rx, 1, rz) >= 0.62 && ridgedMultiNoise.getValue(rx, 1, rz) <= 0.65) {
-
-            if (rx >= chunk.getPos().getXStart() && rz >= chunk.getPos().getZStart() && rx < chunk.getPos().getXStart() + 16 && rx < chunk.getPos().getZStart() + 16) {
-               for (int ty = (lowest == 256 ? y : lowest); ty > 0 && ty <= 256; ty--) {
-                  if (chunk.getBlockState(new BlockPos(rx, ty, rz)).isSolid() && chunk.getBlockState(new BlockPos(rx, ty + 1, rz)).isAir()) {
-                     if (ty < lowest) {
-                        lowest = ty;
-                        break;
-                     }
-                  }
-               }
-            }
-         }
-      }
-      return lowest == 256 ? y : lowest;
-   }
-
-   /**
-    *
-    * @param noise actual noise, example: 29.23141283 (?%)
-    * @param minNoise minimal noise, example: 28.0 (its 0%)
-    * @param maxNoise maximal noise, example: 29.999999 (its 100%)
-    * @param minHeight min height example: 1
-    * @param maxHeight max height example: 6
-    * @return
-    */
-   private int calculateHeight(double noise, double minNoise, double maxNoise, int minHeight, int maxHeight){
-      double maxNoiseCalc = maxNoise-minNoise;//1.999999
-      double noiseCalc = noise-minNoise;//1.23141283
-      double noisePercent = noiseCalc/maxNoiseCalc;//0.61(%)
-
-      int maxHeightCalc = maxHeight-minHeight;//5
-      double height = maxHeightCalc*noisePercent;//3.05
-
-      return (int)Math.round(height)+minHeight;//4.05 - returns 4
-   }
-
-   /**
-    *
-    * @param noise actual noise, example: 29.23141283 (?%)
-    * @param minNoise minimal noise, example: 28.0 (its 0%)
-    * @param maxNoise maximal noise, example: 29.999999 (its 100%)
-    * @param minHeight min height example: 1
-    * @param maxHeight max height example: 6
-    * @return
-    */
-   private int calculateHeightByCenter(double noise, double minNoise, double maxNoise, int minHeight, int maxHeight){
-      double noiseCenter = ((maxNoise-minNoise)/2)+minNoise;//28.99999995
-      double noisePercent = 0;
-
-      if(noiseCenter>noise) {
-         noisePercent = calculatePercent(noise, minNoise, noiseCenter);
-      }else if(noiseCenter<noise){
-         noisePercent = calculatePercent(noise, maxHeight, noiseCenter);
-      }else{
-         noisePercent = 1;
-      }
-
-      int maxHeightCalc = maxHeight-minHeight;//5
-      double height = maxHeightCalc*noisePercent;//3.05
-
-      return (int)Math.round(height)+minHeight;//4.05 - returns 4
-   }
-
-   private double calculatePercent(double noise, double minNoise, double maxNoise) {
-      double maxNoiseCalc = maxNoise - minNoise;//1.999999
-      double noiseCalc = noise - minNoise;//1.23141283
-      return noiseCalc / maxNoiseCalc;//0.61(%)
    }
 
    protected void makeBedrock(IChunk chunkIn, Random rand) {

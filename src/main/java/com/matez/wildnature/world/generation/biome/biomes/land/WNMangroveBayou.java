@@ -32,7 +32,7 @@ public class WNMangroveBayou extends WNBiome {
                 .logTypes(LogType.MANGROVE)
                 .parent(null));
 
-
+        WNBiomeFeatures.addSwampHuts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

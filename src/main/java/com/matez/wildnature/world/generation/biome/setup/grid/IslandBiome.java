@@ -15,6 +15,12 @@ public class IslandBiome {
         WNBiomes.register(islandBiome,false,types);
     }
 
+    public static void register(BiomeGroup islandBiome, int weight, Biome[] oceans, BiomeDictionary.Type... types){
+        islandBiomes.add(new IslandBiome(islandBiome,weight,IslandType.BIG,oceans));
+        islandBiomes.add(new IslandBiome(islandBiome,weight,IslandType.SMALL,oceans));
+        WNBiomes.register(islandBiome,false,types);
+    }
+
     public static ArrayList<IslandBiome> getIslandBiomes() {
         return islandBiomes;
     }

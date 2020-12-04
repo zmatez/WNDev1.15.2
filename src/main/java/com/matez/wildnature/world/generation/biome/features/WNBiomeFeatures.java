@@ -362,6 +362,17 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
         }
     }
 
+    public static void addQuicksand(Biome biomeIn){
+        if(biomeIn.getTempCategory() == Biome.TempCategory.WARM && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SANDY) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DRY) && biomeIn.getCategory() == Biome.Category.DESERT) {
+            addBlobWithCountRangePlacement(biomeIn, WNBlocks.QUICKSAND.getDefaultState(), 5, true, true, 3, 63, 72);
+        }
+    }
+
+    public static void addMud(Biome biomeIn){
+        if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.LUSH) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SWAMP) && biomeIn.getCategory() == Biome.Category.SWAMP) {
+            addBlobWithCountRangePlacement(biomeIn, WNBlocks.MUD.getDefaultState(), 5, true, true, 3, 50, 72);
+        }
+    }
 
 
     public static void addCarvers(Biome biomeIn) {
@@ -588,7 +599,8 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addRiverFeatures(Biome biomeIn){
-        if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.RIVER)) {
+        if(biomeIn == Biomes.RIVER || biomeIn == Biomes.FROZEN_RIVER
+        || biomeIn == WNBiomes.River || biomeIn == WNBiomes.AmazonRiver || biomeIn == WNBiomes.FrozenRiver || biomeIn == WNBiomes.NileRiver) {
             biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.RIVER_ROCK_FEATURE.withConfiguration(new CountConfig(32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(2, 60, 0, 72))));
             biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.RIVER_LILY_FEATURE.withConfiguration(new CountConfig(32)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(7, 60, 0, 72))));
         }

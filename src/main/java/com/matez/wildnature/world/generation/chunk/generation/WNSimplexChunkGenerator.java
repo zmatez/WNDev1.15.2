@@ -1,9 +1,13 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
 
+import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.TerrainLandscape;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
+import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
@@ -16,6 +20,7 @@ import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
+import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
@@ -23,9 +28,12 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.crash.ReportedException;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.village.VillageSiege;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
@@ -52,6 +60,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
+    private int threadCount = CommonConfig.generatorThreads.get();
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
     protected IChunk chunk = null;
 
@@ -78,7 +87,9 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     private SharedSeedRandom randomSeed;
     private WNWorldContext context;
 
-    private PathGenerator pathGenerator;
+    private final PathGenerator pathGenerator;
+    private final UndergroundRiverGenerator undergroundRiverGenerator;
+
     private final WNGridBiomeProvider gridProvider;
 
 
@@ -102,9 +113,14 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.surfaceDepthNoise = new PerlinNoiseGenerator(this.randomSeed, 3, 0);
 
         this.pathGenerator = new PathGenerator(worldIn);
+        this.undergroundRiverGenerator = new UndergroundRiverGenerator(worldIn);
 
         thermalErosionProcessor.init(this, this.seed);
         thermalErosionTestProcessor.init(this, this.seed);
+    }
+
+    public WNWorldContext getContext() {
+        return context;
     }
 
     public WNGridBiomeProvider getGridProvider() {
@@ -138,20 +154,42 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 int z = zChunkPos + relativeZ;
                 int startHeight = chunkIn.getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, relativeX, relativeZ) + 1;
                 double noise = surfaceDepthNoise.noiseAt((double)x * 0.0625, (double)z * 0.0625, 0.0625, (double)startHeight * 0.0625) * 15;
-                Biome biome = worldGenRegion.getBiome(blockpos$mutable.setPos(xChunkPos + relativeX, startHeight, zChunkPos + relativeZ));
-
-                if(x==0 && z==0){
-                    //riverGenerator.generate(0,startHeight,0,biome,chunkIn);
-                }
-
+                Biome biome = worldGenRegion.getBiome(blockpos$mutable.setPos(x, startHeight, z));
+                Cell cell = gridProvider.getNoiseCell(x,z);
+                biome = GridBiomeLayer.applyHeightmapBiome(biome,blockpos$mutable,worldGenRegion,1);
 
                 biome.buildSurface(sharedseedrandom, chunkIn, x, z, startHeight, noise, this.getSettings().getDefaultBlock(), this.getSettings().getDefaultFluid(), this.getSeaLevel(), this.world.getSeed());
 
                 pathGenerator.generate(x,startHeight,z,biome,chunkIn);
+                undergroundRiverGenerator.generate(x,startHeight,z,cell,biome,chunkIn);
             }
         }
 
         this.makeBedrock(chunkIn, sharedseedrandom);
+    }
+
+    public void decorate(WorldGenRegion region) {
+        int i = region.getMainChunkX();
+        int j = region.getMainChunkZ();
+        int k = i * 16;
+        int l = j * 16;
+        BlockPos blockpos = new BlockPos(k, 0, l);
+        Biome biome = this.getBiome(region.getBiomeManager(), blockpos.add(8, 8, 8));
+        biome = GridBiomeLayer.applyHeightmapBiome(biome,blockpos,region,16);
+
+        SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
+        long i1 = sharedseedrandom.setDecorationSeed(region.getSeed(), k, l);
+
+        for(GenerationStage.Decoration generationstage$decoration : GenerationStage.Decoration.values()) {
+            try {
+                biome.decorate(generationstage$decoration, this, region, i1, sharedseedrandom, blockpos);
+            } catch (Exception exception) {
+                CrashReport crashreport = CrashReport.makeCrashReport(exception, "Biome decoration");
+                crashreport.makeCategory("Generation").addDetail("CenterX", i).addDetail("CenterZ", j).addDetail("Step", generationstage$decoration).addDetail("Seed", i1).addDetail("Biome", Registry.BIOME.getKey(biome));
+                throw new ReportedException(crashreport);
+            }
+        }
+
     }
 
     protected void makeBedrock(IChunk chunkIn, Random rand) {
@@ -237,8 +275,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-
-
                 int height = (int) noise[(x * 16) + z];
 
                 for (int y = 0; y < 256; y++) {
@@ -289,7 +325,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         int[] vals = new int[256];
 
         // useNoise(vals, pos, 0, 16);
-        int threads = 1;
+        int threads = threadCount;
 
         CompletableFuture<?>[] futures = new CompletableFuture[threads];
         for (int i = 0; i < threads; i++) {
@@ -383,11 +419,16 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                     ChunkArraySampler.reduceGroupedWeightMap(weightMap4, weightMap16, variantAccessor.andThen(BiomeVariants::getLargeGroup), BiomeVariants.LargeGroup.SIZE);
                     ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
 
-                    return getTerrainHeight((chunkX * 16) + x, (chunkZ * 16) + z, weightMap1, variantAccessor) + 1;
+                    int height = getTerrainHeight((chunkX * 16) + x, (chunkZ * 16) + z, weightMap1, variantAccessor) + 1;
+                    if(height <= getSeaLevel()){
+                        return getSeaLevel() + 1;
+                    }else{
+                        return height;
+                    }
                 }
             }
         }
-        return -1;
+        return getSeaLevel()+1;
     }
 
     public void spawnMobs(WorldGenRegion region) {

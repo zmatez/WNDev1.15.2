@@ -89,7 +89,7 @@ public class WNBeechGrove extends WNBiome {
         WNBiomeFeatures.addTree(this, new thick_beech4().setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PURPLE_BEECH_LEAVES)), 1);
 
         WNBiomeFeatures.addTree(this, new shrub1(), 3);
-
+        WNBiomeFeatures.addWisterias(this, 3);
         treeRate = 20;
 
         applyPlants();

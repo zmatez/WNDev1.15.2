@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        //classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -37,7 +37,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
+            //arg "-mixin.config=" + archivesBaseName + ".mixins.json"
 
 
             // Recommended logging level for the console
@@ -52,7 +52,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
+            //arg "-mixin.config=" + archivesBaseName + ".mixins.json"
 
 
             // Recommended logging level for the console
@@ -92,7 +92,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.31'
 
-    compile 'org.spongepowered:mixin:0.8'
+    // compile 'org.spongepowered:mixin:0.8'
     compile 'javax.vecmath:vecmath:1.5.2'
 
     // You may put jars on which you depend on in ./libs or you may define them like so..

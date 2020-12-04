@@ -37,6 +37,7 @@ public class WNOasis extends WNBiome {
                 .parent(null));
 
 
+        WNBiomeFeatures.addJungleTemples(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

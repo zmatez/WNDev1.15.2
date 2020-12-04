@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.provider;
 
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import net.minecraft.world.biome.Biome;
@@ -50,15 +50,15 @@ public class WNGridBiomeProvider extends BiomeProvider {
     }
 
     public Terrain getNoiseTerrain(int x, int z){
-        return context.getTerrainProvider().get(getNoiseCell(x,z).terrainCellIdentity);
+        return context.getTerrainProvider().get(context.getSeed(),getNoiseCell(x,z).terrainCellIdentity);
     }
 
     public Terrain getNoiseTerrain(Cell cell, int x, int z){
-        return context.getTerrainProvider().get(cell.terrainCellIdentity);
+        return context.getTerrainProvider().get(context.getSeed(),cell.terrainCellIdentity);
     }
 
     public Terrain getNoiseTerrain(Cell cell){
-        return context.getTerrainProvider().get(cell.terrainCellIdentity);
+        return context.getTerrainProvider().get(context.getSeed(),cell.terrainCellIdentity);
     }
 
     public Biome getNoiseBiome(int x, int y, int z, boolean fakeBiomes) {

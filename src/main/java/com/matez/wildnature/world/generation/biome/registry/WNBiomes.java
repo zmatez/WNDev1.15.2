@@ -314,6 +314,7 @@ public class WNBiomes {
     //MEADOWS
     public static Biome Meadow = new WNMeadow("meadow");
     public static Biome WoodedMeadow = new WNWoodedMeadow("wooded_meadow");
+    public static Biome WoodedJacarandaMeadow = new WNWoodedJacarandaMeadow("wooded_jacaranda_meadow");
 
     //SAHARA
     public static Biome Sahara = new WNSahara("sahara");
@@ -417,6 +418,11 @@ public class WNBiomes {
     public static Biome ChristmasIsland = new WNChristmasIsland("christmas_island");
     public static Biome Madagascar = new WNMadagascar("madagascar");
     public static Biome MadagascarValley = new WNMadagascarValley("madagascar_valley");
+    public static Biome ParadiseIsland = new WNParadiseIsland("paradise_island");
+
+    public static Biome Island = new WNIsland("island");
+    public static Biome ForestedIsland = new WNForestedIsland("forested_island");
+    public static Biome SnowyIsland = new WNSnowyIsland("snowy_island");
 
     //BEACHES
     public static Biome Beach = new WNBeach("beach");
@@ -424,7 +430,7 @@ public class WNBiomes {
     public static Biome WhiteBeach = new WNWhiteBeach("white_beach");
     public static Biome WhitePalmBeach = new WNWhitePalmBeach("white_palm_beach");
     public static Biome BeachDunes = new WNDuneBeach("dune_beach");
-    public static Biome ColdBeach = new WNWhiteBeach("cold_beach");
+    public static Biome ColdBeach = new WNColdBeach("cold_beach");
     public static Biome StoneShore = new WNStoneShore("stone_shore");
     public static Biome ColdStoneShore = new WNColdStoneShore("cold_stone_shore");
 
@@ -607,7 +613,7 @@ public class WNBiomes {
                 Type.PLAINS, Type.SANDY, Type.MESA, Type.DRY);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(10, WNBiomes.TatraMountains,
+                                        .configure("tatras",10, WNBiomes.TatraMountains,
                                 new SubBiome(WNBiomes.TatraLowerForest, 4, Type.FOREST),
                                 new SubBiome(WNBiomes.TatraUpperForest, 3, Type.FOREST),
                                 new SubBiome(WNBiomes.TatraGreenedPeak,6),
@@ -616,11 +622,11 @@ public class WNBiomes {
                                 new SubBiome(WNBiomes.ChocholowskaGlade, 3, Type.PLAINS),
                                 new SubBiome(WNBiomes.FireweedValley, 4, Type.PLAINS),
                                 new SubBiome(WNBiomes.Giewont,2)
-                        ), false,
+                        ),
                 Type.MOUNTAIN);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(10, WNBiomes.SnowyTatraMountains,
+                        .configure("snowy_tatras",10, WNBiomes.SnowyTatraMountains,
                                 new SubBiome(WNBiomes.SnowyTatraLowerForest, 4, Type.FOREST),
                                 new SubBiome(WNBiomes.SnowyTatraUpperForest, 3, Type.FOREST),
                                 new SubBiome(WNBiomes.SnowyTatraKasprowyPeak,3, Type.COLD),
@@ -628,7 +634,7 @@ public class WNBiomes {
                                 new SubBiome(WNBiomes.SnowyFireweedValley, 4, Type.PLAINS),
                                 new SubBiome(WNBiomes.SnowyGiewont,2),
                                 new SubBiome(WNBiomes.Rysy,1, Type.RARE)
-                        ), false,
+                        ),
                 Type.MOUNTAIN, Type.SNOWY);
 
         register(BiomeGroup.SingleBuilder
@@ -714,7 +720,7 @@ public class WNBiomes {
                 Type.FOREST, Type.CONIFEROUS, Type.SNOWY);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(10, WNBiomes.Taiga,
+                        .configure("taiga",10, WNBiomes.Taiga,
                                 new SubBiome(WNBiomes.TaigaHills, 5, Type.HILLS),
                                 new SubBiome(WNBiomes.TaigaValley, 3, Type.PLAINS),
                                 new SubBiome(WNBiomes.TaigaClearing,3, Type.PLAINS),
@@ -722,11 +728,11 @@ public class WNBiomes {
                                 new SubBiome(WNBiomes.TaigaMarsh, 2, Type.WET, Type.LUSH, Type.SWAMP),
                                 new SubBiome(WNBiomes.BerryTaiga, 2, Type.RARE),
                                 new SubBiome(WNBiomes.RockyTaiga,4, Type.HILLS)
-                        ), false,
+                        ),
                 Type.FOREST, Type.DENSE, Type.CONIFEROUS);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(10, WNBiomes.ColdTaiga,
+                        .configure("cold_taiga",10, WNBiomes.ColdTaiga,
                                 new SubBiome(WNBiomes.ColdTaigaHills, 5, Type.HILLS),
                                 new SubBiome(WNBiomes.ColdTaigaValley, 3, Type.PLAINS),
                                 new SubBiome(WNBiomes.ColdTaigaClearing,3, Type.PLAINS),
@@ -734,7 +740,7 @@ public class WNBiomes {
                                 new SubBiome(WNBiomes.ColdTaigaMarsh, 2, Type.WET, Type.LUSH, Type.SWAMP),
                                 new SubBiome(WNBiomes.ColdBerryTaiga, 2, Type.RARE),
                                 new SubBiome(WNBiomes.ColdRockyTaiga,4, Type.HILLS)
-                        ), false,
+                        ),
                 Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.COLD, Type.SNOWY);
 
         register(BiomeGroup.SingleBuilder
@@ -881,7 +887,8 @@ public class WNBiomes {
 
         register(BiomeGroup.SingleBuilder
                         .configure(10, WNBiomes.Meadow,
-                                new SubBiome(WNBiomes.WoodedMeadow, 5, Type.FOREST)
+                                new SubBiome(WNBiomes.WoodedMeadow, 7, Type.FOREST),
+                                new SubBiome(WNBiomes.WoodedJacarandaMeadow, 4, Type.FOREST, Type.RARE)
                         ),
                 Type.PLAINS);
 
@@ -978,9 +985,9 @@ public class WNBiomes {
                         .configure(3, WNBiomes.Icelands),
                 Type.MOUNTAIN, Type.COLD);
 
-        register(BiomeGroup.SingleBuilder
+        /*register(BiomeGroup.SingleBuilder
                         .configure(3, WNBiomes.Masuria),
-                Type.FOREST, Type.RIVER, Type.WATER, Type.LUSH);
+                Type.FOREST, Type.RIVER, Type.WATER, Type.LUSH);*/
 
         register(BiomeGroup.SingleBuilder
                         .configure(8, WNBiomes.Wetlands),
@@ -1052,13 +1059,6 @@ public class WNBiomes {
         registerNonSpawn(FrozenLake, Type.RIVER, Type.WET, Type.COLD, Type.SNOWY, Type.WATER, Type.OVERWORLD);
         registerNonSpawn(ColdLake, Type.RIVER, Type.WET, Type.COLD, Type.WATER, Type.OVERWORLD);
 
-        //islands
-        registerNonSpawn(ChristmasIsland, Type.SNOWY, Type.COLD, Type.MAGICAL, Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(EasterIsland, Type.PLAINS, Type.WASTELAND, Type.MAGICAL, Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(TropicalIsland, Type.HOT, Type.WET, Type.FOREST, Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(Madagascar, Type.HOT, Type.WET, Type.FOREST, Type.RARE, Type.OVERWORLD);
-        registerNonSpawn(MadagascarValley, Type.HOT, Type.WET, Type.PLAINS, Type.RARE, Type.OVERWORLD);
-
         BiomeGroups.register();
     }
 
@@ -1097,7 +1097,7 @@ public class WNBiomes {
                 Type.FOREST, Type.CONIFEROUS);
 
         register(BiomeGroup.SingleBuilder
-                        .configure(10, Biomes.SWAMP,
+                        .configure("swamp",10, Biomes.SWAMP,
                                 new SubBiome(Biomes.SWAMP_HILLS,4, Type.HILLS)
                         ),
                 Type.SWAMP, Type.WET);
@@ -1199,6 +1199,10 @@ public class WNBiomes {
         BiomeGroup jungleEdge = BiomeGroup.SingleBuilder.configure("jungle_edge",Biomes.JUNGLE_EDGE);
         EdgeBiome.register(jungleEdge,BiomeTerrain.getGroupByName("jungle"));
         EdgeBiome.register(jungleEdge,BiomeTerrain.getGroupByName("bamboo_jungle"));
+        BiomeGroup tatraFoothills = BiomeGroup.SingleBuilder.configure("tatra_foothills",WNBiomes.TatraFoothills);
+        BiomeGroup snowyTatraFoothills = BiomeGroup.SingleBuilder.configure("snowy_tatra_foothills",WNBiomes.SnowyTatraFoothills);
+        EdgeBiome.register(tatraFoothills,BiomeTerrain.getGroupByName("tatras"));
+        EdgeBiome.register(snowyTatraFoothills,BiomeTerrain.getGroupByName("snowy_tatras"));
     }
 
     private static void registerIslands(){
@@ -1211,6 +1215,24 @@ public class WNBiomes {
         Biome[] temperate_deep_oceans = new Biome[]{
                 Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_COLD_OCEAN
         };
+        Biome[] temperate_oceans = new Biome[]{
+                Biomes.LUKEWARM_OCEAN, Biomes.OCEAN, Biomes.COLD_OCEAN
+        };
+        Biome[] cold_oceans = new Biome[]{
+                Biomes.COLD_OCEAN, Biomes.FROZEN_OCEAN
+        };
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure("island", WNBiomes.Island), 6, IslandBiome.IslandType.SMALL, temperate_oceans, Type.PLAINS, Type.WATER
+        );
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure("forested_island", WNBiomes.ForestedIsland), 4, IslandBiome.IslandType.SMALL, temperate_oceans, Type.FOREST, Type.WATER
+        );
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure("snowy_island", WNBiomes.SnowyIsland), 6, IslandBiome.IslandType.SMALL, cold_oceans, Type.PLAINS, Type.COLD, Type.SNOWY, Type.WATER
+        );
 
         IslandBiome.register(
                 BiomeGroup.SingleBuilder.configure("easter_island", WNBiomes.EasterIsland), 2, IslandBiome.IslandType.BIG, temperate_deep_oceans, Type.PLAINS, Type.RARE, Type.WATER
@@ -1219,7 +1241,11 @@ public class WNBiomes {
         IslandBiome.register(
                 BiomeGroup.SingleBuilder.configure("tropical_island",WNBiomes.TropicalIsland,
                     new SubBiome(WNBiomes.TropicalCliffs,4,Type.HILLS)
-                ), 5, IslandBiome.IslandType.BIG, hot_deep_oceans, Type.JUNGLE, Type.LUSH, Type.WET, Type.RARE, Type.WATER
+                ), 5, hot_deep_oceans, Type.JUNGLE, Type.LUSH, Type.WET, Type.RARE, Type.WATER
+        );
+
+        IslandBiome.register(
+                BiomeGroup.SingleBuilder.configure("paradise_island",WNBiomes.ParadiseIsland), 1, IslandBiome.IslandType.SMALL, temperate_deep_oceans, Type.FOREST, Type.PLAINS, Type.LUSH, Type.WET, Type.RARE, Type.WATER
         );
 
         IslandBiome.register(

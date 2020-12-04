@@ -1,0 +1,18 @@
+{
+  "group": "wildnature:stone_slab_vertical",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:marble_smooth_slab_polished"
+    }
+  },
+  "result": {
+    "item": "wildnature:marble_smooth_vertical_slab_polished",
+    "count": 3
+  }
+}

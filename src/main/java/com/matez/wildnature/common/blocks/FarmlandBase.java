@@ -8,6 +8,7 @@ import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
@@ -25,6 +26,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.loot.LootContext;
 
 public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
@@ -57,16 +59,30 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
       BlockState plant = plantable.getPlant(world, pos.offset(facing));
       net.minecraftforge.common.PlantType type = plantable.getPlantType(world, pos.offset(facing));
       try {
-         if (plant.getBlock() instanceof BushBlock && Utilities.isValidGroundFor(plant,Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,state.get(MOISTURE)), world, pos)) {
+         if ((plant.getBlock() instanceof BushBlock || plant.getBlock() instanceof CropsBlock) && Utilities.isValidGroundFor(plant,Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,state.get(MOISTURE)), world, pos)) {
             return true;
          }
       }catch (Exception e){
       }
 
 
+      switch (type) {
+         case Desert: return this.getBlock() == Blocks.SAND || this.getBlock() == Blocks.TERRACOTTA || this.getBlock() instanceof GlazedTerracottaBlock;
+         case Nether: return this.getBlock() == Blocks.SOUL_SAND;
+         case Crop:   return this.getBlock() instanceof FarmlandBase;
+         case Cave:   return Block.hasSolidSide(state, world, pos, Direction.UP);
+         case Plains: return this.getBlock() == Blocks.GRASS_BLOCK || net.minecraftforge.common.Tags.Blocks.DIRT.contains(this) || this.getBlock()  instanceof FarmlandBase;
+         case Water:  return state.getMaterial() == Material.WATER; //&& state.getValue(BlockLiquidWrapper)
+         case Beach:
+            boolean isBeach = this.getBlock() == Blocks.GRASS_BLOCK || net.minecraftforge.common.Tags.Blocks.DIRT.contains(this) || this.getBlock() == Blocks.SAND;
+            boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
+                    world.getBlockState(pos.west()).getMaterial() == Material.WATER ||
+                    world.getBlockState(pos.north()).getMaterial() == Material.WATER ||
+                    world.getBlockState(pos.south()).getMaterial() == Material.WATER);
+            return isBeach && hasWater;
+      }
 
-
-      return false;
+      return super.canSustainPlant(state,world,pos,facing,plantable);
    }
 
    /**
@@ -100,7 +116,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
       return SHAPE;
    }
 
-   public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+   public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
       if (!state.isValidPosition(worldIn, pos)) {
          turnToDirt(state, worldIn, pos);
       } else {
@@ -126,7 +142,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
          turnToDirt(worldIn.getBlockState(pos), worldIn, pos);
       }
 
-      super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+      entityIn.onLivingFall(fallDistance, 1.0F);//super
    }
 
    public String getDirt() {

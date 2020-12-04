@@ -23,7 +23,7 @@ public class OreRegistry {
                 WNBlocks.AMBER_ORE= new BlockBase(Block.Properties.create(Material.ROCK).harvestTool(ToolType.SHOVEL).hardnessAndResistance(1.5F,0.5F).harvestLevel(CommonConfig.amberOreHarvestLevel.get()).sound(SoundType.SAND),new Item.Properties().group(WNTabs.CAVES), ("wildnature:amber_shard"),1,3,15, WN.RegistryEvents.location("amber_ore")),
                 WNBlocks.SALT_ORE= new SaltOreBlock(Block.Properties.create(Material.ROCK),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("salt_ore")),
 
-                WNBlocks.TIN_ORE= new BlockBase(Block.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).hardnessAndResistance(3F).harvestLevel(CommonConfig.tinOreHarvestLevel.get()),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("tin_ore")),
+                WNBlocks.TIN_ORE= new BlockBase(Block.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).hardnessAndResistance(3F).harvestLevel(CommonConfig.tinOreHarvestLevel.get()),new Item.Properties().group(WNTabs.CAVES), "wildnature:tin_raw",1,1,3, WN.RegistryEvents.location("tin_ore")),
                 WNBlocks.COPPER_ORE= new BlockBase(Block.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).hardnessAndResistance(3F).harvestLevel(CommonConfig.copperOreHarvestLevel.get()),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("copper_ore")),
                 WNBlocks.SILVER_ORE= new BlockBase(Block.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).hardnessAndResistance(3F).harvestLevel(CommonConfig.silverOreHarvestLevel.get()),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("silver_ore")),
 

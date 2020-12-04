@@ -26,8 +26,8 @@ public class WNLavenderGarden extends WNBiome {
                 .category(Category.FOREST)
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
-                .depth(0.1F)
-                .scale(0.00F)
+                .depth(0.25F)
+                .scale(0.05F)
                 .temperature(0.6F)
                 .downfall(0.8F)
                 .waterColor(4159204)
@@ -54,14 +54,15 @@ public class WNLavenderGarden extends WNBiome {
         WNBiomeFeatures.addLavender(this);
 
 
-        WNBiomeFeatures.addTree(this, new jacaranda1().setCustomLog(WN.getBlockByID("wildnature:jacaranda_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:jacaranda_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new jacaranda2().setCustomLog(WN.getBlockByID("wildnature:jacaranda_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:jacaranda_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new jacaranda3().setCustomLog(WN.getBlockByID("wildnature:jacaranda_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:jacaranda_leaves"))), 1);
-        WNBiomeFeatures.addTree(this, new jacaranda4().setCustomLog(WN.getBlockByID("wildnature:jacaranda_log").getDefaultState()).setCustomLeaf(tree_birch1.notDecayingLeaf(WN.getBlockByID("wildnature:jacaranda_leaves"))), 1);
+        WNBiomeFeatures.addTree(this, new jacaranda1(), 1);
+        WNBiomeFeatures.addTree(this, new jacaranda2(), 1);
+        WNBiomeFeatures.addTree(this, new jacaranda3(), 1);
+        WNBiomeFeatures.addTree(this, new jacaranda4(), 1);
 
 
-        plantRate = 4;
-        treeRate = 1;
+        plantRate = 3;
+        treeRate = 0;
+        treeExtra = 1;
 
         applyPlants();
         applyTrees();
@@ -86,7 +87,7 @@ public class WNLavenderGarden extends WNBiome {
 
     @OnlyIn(Dist.CLIENT)
     public int getGrassColor(BlockPos pos) {
-        return 0x76D51A;
+        return 0x89C13D;
     }
 
 

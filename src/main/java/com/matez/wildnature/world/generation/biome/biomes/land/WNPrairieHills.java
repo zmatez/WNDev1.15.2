@@ -33,7 +33,7 @@ public class WNPrairieHills extends WNBiome {
                 .logTypes(LogType.NONE)
                 .parent(null));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/plains/town_centers", 6);

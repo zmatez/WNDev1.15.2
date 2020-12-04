@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "wildnature:tin_ore"
   },
-  "result": "wildnature:tin_ingot",
+  "result": "wildnature:tin_raw",
   "experience": 1.0,
-  "cookingtime": 200
+  "cookingtime": 100
 }

@@ -1,21 +1,15 @@
 package com.matez.wildnature.world.generation.chunk.generation.landscape;
 
-import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessors;
-import com.matez.wildnature.world.generation.chunk.generation.noise.ScaleNoiseProcessor;
-import com.matez.wildnature.world.generation.chunk.generation.noise.TestNoiseProcessor;
-import com.matez.wildnature.world.generation.chunk.generation.noise.config.NoiseProcessorConfig;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
 import com.matez.wildnature.world.generation.grid.Cell;
-import com.matez.wildnature.world.generation.noise.OctaveNoiseSampler;
-import com.matez.wildnature.world.generation.noise.OpenSimplexNoise;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
@@ -47,6 +41,8 @@ public class ChunkLandscape {
     protected ArrayList<NoiseProcessor> noiseProcessors = new ArrayList<>();
     protected ArrayList<NoiseProcessor> validNoiseProcessors = new ArrayList<>();
 
+    private final FastNoise worldLimitNoise;
+
     public ChunkLandscape(Cell cell, Terrain terrain, int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.cell = cell;
         this.terrain = terrain;
@@ -61,6 +57,8 @@ public class ChunkLandscape {
         this.random = new Random(seed);
         this.seed = seed;
         this.sealevel = sealevel;
+        this.worldLimitNoise = new FastNoise((int)seed);
+        this.worldLimitNoise.SetFrequency(0.005f);
 
         //PROCESSORS - here add noise processors
         addNoiseProcessor(NoiseProcessors.SCALE);
@@ -111,7 +109,8 @@ public class ChunkLandscape {
 
         //limiter
         if(noise > 230){
-            return 230;
+            int limitNoise = Math.round(Utilities.scaleBetween(worldLimitNoise.GetSimplex(x,z),-5,5,-1,1));
+            return 230 + limitNoise;
         }
 
 
@@ -119,7 +118,7 @@ public class ChunkLandscape {
         return noise;
     }
 
-    private double sampleNoise(Cell cell, int x, int z, double height, double scale, boolean rawCoords) {
+    public double sampleNoise(Cell cell, int x, int z, double height, double scale, boolean rawCoords) {
         double output = 0;
         double d = 0;
         double f = Utilities.scaleBetween(cell.biomeCellEdge,0,1,0,0.1);

@@ -4,7 +4,7 @@ import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.biome.setup.grid.IslandBiome;
-import com.matez.wildnature.world.generation.chunk.terrain.Terrain;
+import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import net.minecraft.world.biome.Biome;
@@ -24,6 +24,7 @@ public class IslandTransformer extends BiomeTransformer {
                 }
             }
         }
+        WN.LOGGER.debug("Added island biomes for island type " + type.name() + ": " + islandBiomes.toString());
     }
 
     @Override

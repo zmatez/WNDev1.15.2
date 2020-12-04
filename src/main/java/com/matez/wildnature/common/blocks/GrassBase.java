@@ -191,12 +191,10 @@ public class GrassBase extends GrassBlock implements IRenderLayer {
         return true;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isRemote) {
             Block dirtBlock = WN.getBlockByID(dirt);
-            if(dirtBlock==Blocks.COBBLESTONE){
-                dirtBlock=Blocks.STONE;
-            }
             if (!worldIn.isAreaLoaded(pos, 3)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             if (!func_220257_b(state, worldIn, pos)) {
                 worldIn.setBlockState(pos, dirtBlock.getDefaultState());

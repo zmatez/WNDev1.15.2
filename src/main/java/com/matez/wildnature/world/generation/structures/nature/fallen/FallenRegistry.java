@@ -48,7 +48,6 @@ import com.matez.wildnature.world.generation.structures.nature.fallen.hornbeam.f
 import com.matez.wildnature.world.generation.structures.nature.fallen.jacaranda.fallen_jacaranda1;
 import com.matez.wildnature.world.generation.structures.nature.fallen.jacaranda.fallen_jacaranda2;
 import com.matez.wildnature.world.generation.structures.nature.fallen.jacaranda.fallen_jacaranda3;
-import com.matez.wildnature.world.generation.structures.nature.fallen.jacaranda.fallen_jacaranda4;
 import com.matez.wildnature.world.generation.structures.nature.fallen.jungle.fallen_jungle_1;
 import com.matez.wildnature.world.generation.structures.nature.fallen.jungle.fallen_jungle_2;
 import com.matez.wildnature.world.generation.structures.nature.fallen.jungle.fallen_jungle_3;
@@ -412,6 +411,11 @@ public class FallenRegistry {
                 new fallen_thick_pine3(),
                 new fallen_thick_pine4());
 
+        register(LogType.PARADISE_APPLE,
+                new fallen_paradise_apple_1(),
+                new fallen_paradise_apple_2(),
+                new fallen_paradise_apple_3());
+
         register(LogType.APPLE,
                 new fallen_apple_1(),
                 new fallen_apple_2(),
@@ -443,7 +447,10 @@ public class FallenRegistry {
                 new fallen_cherry_white1(),
                 new fallen_cherry_white3(),
                 new fallen_cherry_white4());
-        register(LogType.SAKURA);//TODO sakura fallen
+        register(LogType.SAKURA,
+                new fallen_sakura1(),
+                new fallen_sakura2(),
+                new fallen_sakura3());
         register(LogType.WILD_CHERRY,
                 new fallen_wild_cherry1(),
                 new fallen_wild_cherry2(),
@@ -461,9 +468,7 @@ public class FallenRegistry {
         register(LogType.JACARANDA,
                 new fallen_jacaranda1(),
                 new fallen_jacaranda2(),
-                new fallen_jacaranda3(),
-                new fallen_jacaranda4());
-
+                new fallen_jacaranda3());
         register(LogType.ROWAN,
                 new fallen_rowan1(),
                 new fallen_rowan2(),

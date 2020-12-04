@@ -13,13 +13,16 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
@@ -30,6 +33,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class GeyserBlock extends BlockBase implements IRenderLayer {
     public static final IntegerProperty STEAM = IntegerProperty.create("steam",0,25);
@@ -41,14 +45,13 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        List<VoxelShape> shapes = new ArrayList<>();
-        shapes.add(Block.makeCuboidShape(0.062, 0, 0.062, 0.938, 0.125, 0.938)); // ELEMENT
-        shapes.add(Block.makeCuboidShape(0.188, 0.125, 0.188, 0.812, 0.312, 0.375)); // ELEMENT
-        shapes.add(Block.makeCuboidShape(0.188, 0.125, 0.625, 0.812, 0.312, 0.812)); // ELEMENT
-        shapes.add(Block.makeCuboidShape(0.188, 0.125, 0.375, 0.375, 0.312, 0.625)); // ELEMENT
-        shapes.add(Block.makeCuboidShape(0.625, 0.125, 0.375, 0.812, 0.312, 0.625)); // ELEMENT
-
-        return IBoundingBox.result(shapes);
+        return Stream.of(
+                Block.makeCuboidShape(10, 2, 6, 13, 5, 10),
+                Block.makeCuboidShape(1, 0, 1, 15, 2, 15),
+                Block.makeCuboidShape(3, 2, 3, 13, 5, 6),
+                Block.makeCuboidShape(3, 2, 10, 13, 5, 13),
+                Block.makeCuboidShape(3, 2, 6, 6, 5, 10)
+        ).reduce((v1, v2) -> {return VoxelShapes.combineAndSimplify(v1, v2, IBooleanFunction.OR);}).get();
     }
 
     @Override
@@ -107,13 +110,13 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
         return this.getDefaultState().with(RUNNING,false).with(LOAD,0);
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if(!worldIn.isRemote()) {
             if (state.get(RUNNING)) {
                 steam(state, (ServerWorld)worldIn, pos, random);
             }
         }
-
     }
 
     @Override
@@ -160,6 +163,9 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
         double z = (double) pos.getZ() + 0.5D;
         for(int i = 0; i < Utilities.rint(0,2*stateIn.get(LOAD),rand); i++) {
             worldIn.addParticle(ParticleRegistry.GEYSER, x, y, z, (float) Utilities.rdoub(-0.05,0.05), (float) Utilities.rdoub(0.07,0.13), (float) Utilities.rdoub(-0.05,0.05));
+            if(stateIn.get(LOAD)>=4){
+                worldIn.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, (float) Utilities.rdoub(-0.3,0.3), (float) Utilities.rdoub(0.5,2.5), (float) Utilities.rdoub(-0.3,0.3));
+            }
         }
         if(stateIn.get(LOAD)!=0) {
             worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 0.4F, (float) Utilities.rdoub(1.1D, 1.5D), false);

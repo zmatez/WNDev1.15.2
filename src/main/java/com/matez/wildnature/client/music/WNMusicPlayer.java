@@ -157,7 +157,6 @@ public class WNMusicPlayer extends MusicTicker {
             stop();
         }
         if (event != null) {
-            WN.LOGGER.debug("Playing " + event.getName());
             play(type, event, repeatDelay, volume);
         }
     }

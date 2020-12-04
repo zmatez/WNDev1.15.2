@@ -44,7 +44,7 @@ public class WNBog extends WNBiome {
                 .logTypes(LogType.SMALL_PINE,LogType.PINE_THICK,LogType.BIRCH_THICK)
                 .parent(null));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);

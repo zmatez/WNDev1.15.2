@@ -26,7 +26,7 @@ public class CommonConfig {
     public static ForgeConfigSpec.BooleanValue generateUndergroundPlants;
     public static ForgeConfigSpec.BooleanValue generateRiverCanes;
     public static ForgeConfigSpec.BooleanValue generatePoisonIves,generateCrystals,generateStalagmites,generatePebbles,generateCobweb,generateRockFormations,generateFruitBushes,generateVegeCrops,generateVines,generateSmallCacti,generateShells,generateMoss,generateFallenTrees;
-    public static ForgeConfigSpec.BooleanValue generateBeehives;
+    public static ForgeConfigSpec.BooleanValue generateBeehives, generateQuicksand, generateMud;
     public static ForgeConfigSpec.IntValue beehiveRarity;
     public static ForgeConfigSpec.DoubleValue ambientSoundsVolume;
     public static ForgeConfigSpec.BooleanValue waterLakeGeneration,lavaLakeGeneration,waterSpringGeneration,lavaSpringGeneration;
@@ -49,6 +49,8 @@ public class CommonConfig {
     public static ForgeConfigSpec.BooleanValue vegeFarmFence;
     public static ForgeConfigSpec.BooleanValue generatePaths, generateUndergroundRivers;
     public static ForgeConfigSpec.DoubleValue pathFrequency;
+    public static ForgeConfigSpec.IntValue generatorThreads;
+    public static ForgeConfigSpec.IntValue terrainMapSize, biomeMapSize, subbiomeMapSize, undergroundMapSize, smallIslandMapSize, bigIslandMapSize;
 
     public static ForgeConfigSpec.IntValue tinOreHarvestLevel, copperOreHarvestLevel, amethystOreHarvestLevel, sapphireOreHarvestLevel, malachiteOreHarvestLevel, silverOreHarvestLevel, amberOreHarvestLevel, rubyOreHarvestLevel;
     public static ForgeConfigSpec.BooleanValue vegeGrassSpawn;
@@ -120,13 +122,40 @@ public class CommonConfig {
         generatorType = builder
                 .comment("Generator version. \nAccepted Values: new | old").define("generatorType", "new");
 
+        generatorThreads = builder
+                .comment("Generator Threads. Set to 1 if your world load will freeze. It's experimental!\nDefault: 2")
+                .defineInRange("generatorThreads",2, 1, 16);
+
+        terrainMapSize = builder
+                .comment("Terrain map size\nDefault: 2500")
+                .defineInRange("size.terrain",2500, 10, 24000);
+
+        biomeMapSize = builder
+                .comment("Biome map size\nDefault: 750")
+                .defineInRange("size.biome",750, 10, 24000);
+
+        subbiomeMapSize = builder
+                .comment("SubBiome map size\nDefault: 250")
+                .defineInRange("size.subBiome",250, 10, 24000);
+
+        undergroundMapSize = builder
+                .comment("Underground map size\nDefault: 1000")
+                .defineInRange("size.undergroundBiome",1000, 10, 24000);
+
+        bigIslandMapSize = builder
+                .comment("Big Island map size\nDefault: 500")
+                .defineInRange("size.bigIsland",500, 10, 24000);
+
+        smallIslandMapSize = builder
+                .comment("Small Island map size\nDefault: 75")
+                .defineInRange("size.smallIsland",75, 10, 24000);
 
         biomeSize = builder
-                .comment("Biome Size\nDefault: 5")
+                .comment("Biome Size //deprecated\nDefault: 5")
                 .defineInRange("biomeSize",5, 1, 20);
 
         riverSize = builder
-                .comment("River Size\nDefault: 4")
+                .comment("River Size //deprecated\nDefault: 4")
                 .defineInRange("riverSize",4, 1, 20);
 
         generateOres = builder
@@ -332,6 +361,14 @@ public class CommonConfig {
                 .comment("Should generate fallen trees?\nDefault: 64")
                 .defineInRange("biome.feature.beehiveRarity",256,0,500);
 
+        generateQuicksand = builder
+                .comment("Should generate quicksand?\nDefault: true")
+                .define("biome.feature.quicksand",true);
+
+        generateMud = builder
+                .comment("Should generate mud?\nDefault: true")
+                .define("biome.feature.mud",true);
+
         vegeFarmFence = builder
                 .comment("Should generate fences near wild farms?\nDefault: true")
                 .define("biome.feature.vege_farm_fence",true);
@@ -357,12 +394,12 @@ public class CommonConfig {
                 .defineInRange("biome.feature.ivy_rarity",2, 0, 500);
 
         riverCaneRarity = builder
-                .comment("River cane rarity\nSmaller = more rare\nDefault: 50")
-                .defineInRange("biome.feature.river_cane_rarity",50, 0, 500);
+                .comment("River cane rarity\nSmaller = more rare\nDefault: 10")
+                .defineInRange("biome.feature.river_cane_rarity",10, 0, 500);
 
         riverCaneDensity = builder
-                .comment("River cane density\nSmaller = less\nDefault: 50")
-                .defineInRange("biome.feature.river_cane_density",64, 0, 500);
+                .comment("River cane density\nSmaller = less\nDefault: 10")
+                .defineInRange("biome.feature.river_cane_density",10, 0, 500);
 
         smallCactiRarity = builder
                 .comment("Small cacti rarity\nSmaller = more rare\nDefault: 5")

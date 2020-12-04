@@ -41,7 +41,7 @@ public class WNErodedFields extends WNBiome {
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/plains/town_centers", 6);
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addCarvers(this);
         WNBiomeFeatures.addStructures(this);
         WNBiomeFeatures.addLakes(this);

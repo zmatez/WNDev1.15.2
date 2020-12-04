@@ -33,7 +33,7 @@ public class WNForestedGrasslands extends WNBiome {
                 .logTypes(LogType.SMALL_OAK)
                 .parent("wildnature:grasslands"));
 
-
+        WNBiomeFeatures.addPillagerOutposts(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/plains/town_centers", 6);

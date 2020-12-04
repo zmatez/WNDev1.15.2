@@ -41,7 +41,7 @@ public class WNSakuraJungle extends WNBiome {
                 .logTypes(LogType.SAKURA, LogType.JUNGLE_SMALL, LogType.JUNGLE_MEDIUM, LogType.JUNGLE_BIG)
                 .parent(null));
 
-
+        WNBiomeFeatures.addJungleTemples(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addCarvers(this);
