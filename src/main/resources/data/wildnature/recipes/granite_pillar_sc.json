@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:polished_granite"
+    "item": "wildnature:granite_bricks"
   },
   "result": "wildnature:granite_pillar",
   "count": 1

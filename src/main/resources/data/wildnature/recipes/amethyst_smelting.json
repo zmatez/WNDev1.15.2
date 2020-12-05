@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:amethyst_raw"
+  },
+  "result": "wildnature:amethyst_ingot",
+  "experience": 6.0,
+  "cookingtime": 200
+}

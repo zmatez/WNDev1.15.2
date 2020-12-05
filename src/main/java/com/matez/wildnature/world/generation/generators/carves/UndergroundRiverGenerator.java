@@ -13,6 +13,7 @@ import com.matez.wildnature.world.generation.undergroundBiomes.setup.URBiomeMana
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
@@ -76,10 +77,11 @@ public class UndergroundRiverGenerator {
                 }
                 int startPointY = -(int) height / 2;//pos.y - startPointY -> block being set
                 for (int a = pos.getY() - startPointY; a > pos.getY() - height; a--) {
+                    BlockPos placePos = new BlockPos(pos.getX(), a, pos.getZ());
                     if (a > 10) {
-                        chunkIn.setBlockState(new BlockPos(pos.getX(), a, pos.getZ()), Blocks.CAVE_AIR.getDefaultState(), false);
+                        chunkIn.setBlockState(placePos, Blocks.CAVE_AIR.getDefaultState(), false);
                     } else {
-                        chunkIn.setBlockState(new BlockPos(pos.getX(), a, pos.getZ()), Blocks.WATER.getDefaultState(), false);
+                        chunkIn.setBlockState(placePos, Blocks.WATER.getDefaultState(), false);
 
                     }
 

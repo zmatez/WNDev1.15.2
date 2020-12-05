@@ -93,9 +93,4 @@ public class WNSnowyIsland extends WNBiome {
         double noise = INFO_NOISE.noiseAt((double) pos.getX() * 0.0225D, (double) pos.getZ() * 0.0225D, false);
         return customColor(noise, -0.1D, 0x81C259, 0x76B84E);
     }
-
-    @Override
-    public int getSkyColor() {
-        return 0x7EF8F3;
-    }
 }

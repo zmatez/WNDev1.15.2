@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "wildnature:basalt_polished"
+    "item": "wildnature:basalt_bricks"
   },
   "result": "wildnature:basalt_pillar",
   "count": 1

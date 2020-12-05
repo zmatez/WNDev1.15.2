@@ -32,15 +32,16 @@ public class FormationVerticalBase extends FormationBase {
     }
 
 
-    @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        if(state.get(FACING)==Direction.UP){
-            return box.getUpShape();
-        }else if(state.get(FACING)==Direction.DOWN){
-            return box.getDownShape();
-        }
 
-        return null;
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        switch(state.get(FACING).getIndex()) {
+            case 0://down
+                return DOWN;
+            case 1://up
+                return UP;
+        }
+        //System.out.println("FACING: " + state.get(FACING).getIndex());
+        return DOWN;
     }
 
     @Override

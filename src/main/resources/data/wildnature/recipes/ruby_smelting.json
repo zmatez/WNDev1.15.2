@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:ruby_raw"
+  },
+  "result": "wildnature:ruby_ingot",
+  "experience": 3.0,
+  "cookingtime": 200
+}

@@ -266,7 +266,13 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
         springBiomes.add(p_222337_0_);
     }
 
+    public static void addJellyIslands(Biome biomeIn){
+        biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.JELLY_ISLAND_FEATURE.withConfiguration(new NoFeatureConfig()).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 25, 0, 43))));
+    }
 
+    public static void addJellies(Biome biomeIn){
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.JELLY_FEATURE.withConfiguration(new NoFeatureConfig()).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(20, 20, 0, 50))));
+    }
 
     public static void addGrass(Biome biomeIn, int rate) {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.GRASS.withConfiguration(new BlockFeatureConfig(Blocks.GRASS.getDefaultState())).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(rate))));
@@ -364,13 +370,13 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
 
     public static void addQuicksand(Biome biomeIn){
         if(biomeIn.getTempCategory() == Biome.TempCategory.WARM && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SANDY) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DRY) && biomeIn.getCategory() == Biome.Category.DESERT) {
-            addBlobWithCountRangePlacement(biomeIn, WNBlocks.QUICKSAND.getDefaultState(), 5, true, true, 3, 63, 72);
+            biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.QUICKSAND_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
         }
     }
 
     public static void addMud(Biome biomeIn){
         if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.LUSH) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SWAMP) && biomeIn.getCategory() == Biome.Category.SWAMP) {
-            addBlobWithCountRangePlacement(biomeIn, WNBlocks.MUD.getDefaultState(), 5, true, true, 3, 50, 72);
+            biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.MUD_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
         }
     }
 

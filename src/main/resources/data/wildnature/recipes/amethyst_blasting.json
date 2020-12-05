@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "wildnature:amethyst_raw"
+  },
+  "result": "wildnature:amethyst_ingot",
+  "experience": 7.0,
+  "cookingtime": 100
+}

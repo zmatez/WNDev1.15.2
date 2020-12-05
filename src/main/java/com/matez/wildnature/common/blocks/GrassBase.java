@@ -177,7 +177,11 @@ public class GrassBase extends GrassBlock implements IRenderLayer {
             if(WNLoot.isSilkTouch(builder)){
                 list.add(new ItemStack(Item.getItemFromBlock(this), 1));
             }else {
-                list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID(dirt)), 1));
+                if(dirt.equals("minecraft:stone")){
+                    list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID("minecraft:cobblestone")), 1));
+                }else {
+                    list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID(dirt)), 1));
+                }
             }
         }
 

@@ -921,11 +921,11 @@ public class WNBiomes {
                         .configure(8, WNBiomes.DeadDesolation),
                 Type.PLAINS, Type.DEAD, Type.DRY);
 
-        register(BiomeGroup.SingleBuilder
+        /*register(BiomeGroup.SingleBuilder
                         .configure(6, WNBiomes.Canyons,
                                 new SubBiome(WNBiomes.GrandCanyon, 4, Type.MOUNTAIN)
                         ),
-                Type.MESA, Type.SANDY, Type.HILLS);
+                Type.MESA, Type.SANDY, Type.HILLS);*/
 
         register(BiomeGroup.SingleBuilder
                         .configure(10, WNBiomes.DeciduousForest,
@@ -981,9 +981,9 @@ public class WNBiomes {
                         .configure(10, WNBiomes.Steppe),
                 Type.PLAINS, Type.DRY);
 
-        register(BiomeGroup.SingleBuilder
+        /*register(BiomeGroup.SingleBuilder
                         .configure(3, WNBiomes.Icelands),
-                Type.MOUNTAIN, Type.COLD);
+                Type.MOUNTAIN, Type.COLD);*/
 
         /*register(BiomeGroup.SingleBuilder
                         .configure(3, WNBiomes.Masuria),
@@ -1015,11 +1015,11 @@ public class WNBiomes {
                         ),
                 Type.FOREST, Type.LUSH, Type.JUNGLE);
 
-        register(BiomeGroup.SingleBuilder
+        /*register(BiomeGroup.SingleBuilder
                         .configure(3, WNBiomes.DaintreeCliffs,
                                 new SubBiome(WNBiomes.DaintreeForest,2)
                         ),
-                Type.FOREST, Type.LUSH, Type.JUNGLE, Type.HILLS);
+                Type.FOREST, Type.LUSH, Type.JUNGLE, Type.HILLS);*/
 
         register(BiomeGroup.SingleBuilder
                         .configure(4, WNBiomes.BananaThicket),

@@ -1704,8 +1704,8 @@
   "block.wildnature.silver_ore": "Silver Ore",
   "block.wildnature.silver_block": "Silver Block",
 
-  "item.wildnature.sapphire_raw": "Sapphire",
-  "item.wildnature.sapphire_ingot": "Sapphire Gem",
+  "item.wildnature.sapphire_raw": "Sapphire Gem",
+  "item.wildnature.sapphire_ingot": "Sapphire",
   "item.wildnature.sapphire_sword": "Sapphire Sword",
   "item.wildnature.sapphire_pickaxe": "Sapphire Pickaxe",
   "item.wildnature.sapphire_axe": "Sapphire Axe",
@@ -2518,6 +2518,9 @@
   "biome.wildnature.poplar_forest": "Poplar Forest",
   "biome.wildnature.poplar_forest_valley": "Poplar Valley",
   "biome.wildnature.poplar_forest_hills": "Poplar Hills",
+  "biome.wildnature.autumnal_poplar_forest": "Autumnal Poplar Forest",
+  "biome.wildnature.autumnal_poplar_forest_valley": "Autumnal Poplar Valley",
+  "biome.wildnature.autumnal_poplar_forest_hills": "Autumnal Poplar Hills",
 
   "biome.wildnature.aspen_grove": "Aspen Grove",
   "biome.wildnature.snowy_aspen_grove": "Snowy Aspen Grove",
@@ -2650,6 +2653,10 @@
   "biome.wildnature.baobab_savanna": "Baobab Savanna",
   "biome.wildnature.giant_savanna": "Giant Savanna",
 
+  "biome.wildnature.caatinga_scrubs": "Caatinga Scrubs",
+  "biome.wildnature.caatinga_hills": "Caatinga Hills",
+
+
   "biome.wildnature.redwood_forest": "Redwood Forest",
   "biome.wildnature.redwood_hills": "Redwood Hills",
   "biome.wildnature.old_redwood_forest": "Old Redwood Forest",
@@ -2660,7 +2667,12 @@
   "biome.wildnature.sequoia_forest": "Sequoia Forest",
   "biome.wildnature.sequoia_hills": "Sequoia Hills",
   "biome.wildnature.sequoia_valley": "Sequoia Valley",
-
+  "biome.wildnature.temperate_sequoia_rainforest": "Temperate Sequoia Rainforest",
+  "biome.wildnature.temperate_sequoia_rainforest_hills": "Temperate Sequoia Rainforest Hills",
+  "biome.wildnature.temperate_sequoia_rainforest_valley": "Temperate Sequoia Rainforest Valley",
+  "biome.wildnature.autumnal_sequoia_rainforest": "Autumnal Sequoia Rainforest",
+  "biome.wildnature.autumnal_sequoia_rainforest_hills": "Autumnal Sequoia Rainforest Hills",
+  "biome.wildnature.autumnal_sequoia_rainforest_valley": "Autumnal Sequoia Rainforest Valley",
 
   "biome.wildnature.cypress_fields": "Cypress Fields",
   "biome.wildnature.cypress_hills": "Cypress Hills",
@@ -2690,6 +2702,7 @@
   "biome.wildnature.marigold_fields": "Marigold Fields",
   "biome.wildnature.meadow": "Meadow",
   "biome.wildnature.wooded_meadow": "Wooded Meadow",
+  "biome.wildnature.wooded_jacaranda_meadow": "Wooded Jacaranda Meadow",
 
 
   "biome.wildnature.sahara": "Sahara",
@@ -2737,6 +2750,8 @@
   "biome.wildnature.backwaters": "Backwaters",
 
   "biome.wildnature.eucalyptus_forest": "Eucalyptus Forest",
+  "biome.wildnature.giant_eucalyptus_forest": "Giant Eucalyptus Forest",
+
   "biome.wildnature.daintree_forest": "Daintree Forest",
   "biome.wildnature.daintree_plateau": "Daintree Plateau",
   "biome.wildnature.daintree_cliffs": "Daintree Cliffs",
@@ -2755,6 +2770,8 @@
 
   "biome.wildnature.thuja_shield": "Thuja Shield",
 
+  "biome.wildnature.deep_jelly_ocean": "Deep Jelly Ocean",
+
   "biome.wildnature.warm_lake": "Warm Lake",
   "biome.wildnature.cold_lake": "Cold Lake",
   "biome.wildnature.tropical_lake": "Tropical Lake",
@@ -2768,11 +2785,27 @@
   "biome.wildnature.christmas_island": "Christmas Island",
   "biome.wildnature.madagascar": "Madagascar",
   "biome.wildnature.madagascar_valley": "Madagascar Valley",
+
+  "biome.wildnature.island": "Island",
+  "biome.wildnature.paradise_island": "Paradise Island",
+  "biome.wildnature.forested_island": "Forested Island",
+  "biome.wildnature.snowy_island": "Snowy Island",
+
+
+  "biome.wildnature.beach": "Beach",
+  "biome.wildnature.palm_beach": "Palm Beach",
   "biome.wildnature.white_beach": "White Beach",
+  "biome.wildnature.white_palm_beach": "White Palm Beach",
+  "biome.wildnature.cold_beach": "Cold Beach",
+  "biome.wildnature.stone_shore": "Stone Shore",
+  "biome.wildnature.cold_stone_shore": "Cold Stone Shore",
+
 
   "biome.wildnature.beech_forest": "Beech Forest",
   "biome.wildnature.beech_hills": "Beech Hills",
   "biome.wildnature.beech_valley": "Beech Valley",
+  "biome.wildnature.beech_tall_forest": "Tall Beech Forest",
+  "biome.wildnature.beech_grove": "Beech Grove",
   "biome.wildnature.purple_woodland": "Purple Woodland",
 
   "biome.wildnature.oaklands": "Oaklands",
@@ -2786,5 +2819,8 @@
   "biome.wildnature.high_forest_valley": "High Forest Valley",
 
   "biome.wildnature.mahogany_cliffs": "Mahogany Cliffs",
-  "biome.wildnature.forested_cliffs": "Forested Cliffs"
+  "biome.wildnature.forested_cliffs": "Forested Cliffs",
+
+  "biome.wildnature.river_valley_smooth": "River Smooth Valley (fake biome)",
+  "biome.wildnature.river_valley_sharp": "River Sharp Valley (fake biome)"
 }

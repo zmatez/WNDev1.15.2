@@ -9,6 +9,7 @@ import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.palm.*;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Blocks;
@@ -33,7 +34,7 @@ public class WNOasis extends WNBiome {
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.PALM)
+                .logTypes(LogType.PALM, LogType.JUNGLE_SMALL, LogType.JUNGLE_MEDIUM)
                 .parent(null));
 
 
@@ -80,8 +81,14 @@ public class WNOasis extends WNBiome {
         WNBiomeFeatures.addTree(this, new tree_palm15().setCustomLog(WN.getBlockByID("wildnature:palm_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WN.getBlockByID("wildnature:palm_leaves"))), 2);
         WNBiomeFeatures.addTree(this, new tree_palm16().setCustomLog(WN.getBlockByID("wildnature:palm_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WN.getBlockByID("wildnature:palm_leaves"))), 2);
         WNBiomeFeatures.addTree(this, new tree_palm17().setCustomLog(WN.getBlockByID("wildnature:palm_log").getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WN.getBlockByID("wildnature:palm_leaves"))), 2);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(),2);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(),2);
+        WNBiomeFeatures.addTree(this, new jungle_medium3(),2);
+        WNBiomeFeatures.addTree(this, new jungle_small1(),1);
+        WNBiomeFeatures.addTree(this, new jungle_small2(),1);
+        WNBiomeFeatures.addTree(this, new jungle_small3(),1);
+        WNBiomeFeatures.addBamboo(this);
 
-        WNBiomeFeatures.addBambooJungleVegetation(this);
 
         plantRate = 2;
         treeRate = 2;

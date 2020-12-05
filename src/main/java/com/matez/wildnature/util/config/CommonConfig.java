@@ -51,6 +51,8 @@ public class CommonConfig {
     public static ForgeConfigSpec.DoubleValue pathFrequency;
     public static ForgeConfigSpec.IntValue generatorThreads;
     public static ForgeConfigSpec.IntValue terrainMapSize, biomeMapSize, subbiomeMapSize, undergroundMapSize, smallIslandMapSize, bigIslandMapSize;
+    public static ForgeConfigSpec.IntValue bigIslandRarity, smallIslandRarity;
+
 
     public static ForgeConfigSpec.IntValue tinOreHarvestLevel, copperOreHarvestLevel, amethystOreHarvestLevel, sapphireOreHarvestLevel, malachiteOreHarvestLevel, silverOreHarvestLevel, amberOreHarvestLevel, rubyOreHarvestLevel;
     public static ForgeConfigSpec.BooleanValue vegeGrassSpawn;
@@ -147,8 +149,16 @@ public class CommonConfig {
                 .defineInRange("size.bigIsland",500, 10, 24000);
 
         smallIslandMapSize = builder
-                .comment("Small Island map size\nDefault: 75")
-                .defineInRange("size.smallIsland",75, 10, 24000);
+                .comment("Small Island map size\nDefault: 130")
+                .defineInRange("size.smallIsland",130, 10, 24000);
+
+        bigIslandRarity = builder
+                .comment("Big Island rarity\nSmaller = more common\nDefault: 7")
+                .defineInRange("rarity.bigIsland",7, 1, 24000);
+
+        smallIslandRarity = builder
+                .comment("Small Island rarity\nSmaller = more common\nDefault: 7")
+                .defineInRange("rarity.smallIsland",7, 1, 24000);
 
         biomeSize = builder
                 .comment("Biome Size //deprecated\nDefault: 5")
@@ -532,11 +542,11 @@ public class CommonConfig {
 
         malachiteOreHarvestLevel = builder
                 .comment("Malachite ore harvest level\nDefault: 4 - silver+")
-                .defineInRange("ore.malachiteOreHarvestLevel",3,0,100);
+                .defineInRange("ore.malachiteOreHarvestLevel",4,0,100);
 
         amethystOreHarvestLevel = builder
                 .comment("Amethyst ore harvest level\nDefault: 5 - ruby+/sapphire+/malachite+")
-                .defineInRange("ore.amethystOreHarvestLevel",2,0,100);
+                .defineInRange("ore.amethystOreHarvestLevel",5,0,100);
 
         vegeGrassSpawn = builder
                 .comment("Can all veggies normally spawn on normal grass?\nDefault: false")

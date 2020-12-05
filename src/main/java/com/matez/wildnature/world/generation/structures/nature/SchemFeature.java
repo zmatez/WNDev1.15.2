@@ -52,7 +52,8 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
     public int rotation;
     public boolean canGenerate = true;
     public boolean virtualPlace = false;
-    public net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable) net.minecraft.block.Blocks.OAK_SAPLING;
+    public boolean waterTree = false;
+    public static net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable) net.minecraft.block.Blocks.OAK_SAPLING;
 
     public SchemFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactoryIn) {
         super(configFactoryIn);
@@ -63,7 +64,6 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         BRANCH = LEAVES;
         schemFeatures.put(this.getClass().getSimpleName().toLowerCase(), this);
     }
-
 
     public SchemFeature() {
         this(NoFeatureConfig::deserialize);
@@ -90,6 +90,11 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
     public SchemFeature setCustomLeaf(BlockState leaf) {
         LEAVES = leaf;
         BRANCH = LEAVES;
+        return this;
+    }
+
+    public SchemFeature waterTree(){
+        waterTree = true;
         return this;
     }
 
@@ -154,13 +159,17 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
                 return false;
             }
 
-            int x = 0;
-            while (isWater(worldIn, soilPos)) {
-                soilPos = soilPos.down();
-                x++;
-            }
-            if (x >= 15) {
-                return false;
+            if(!waterTree) {
+                int x = 0;
+                while (isWater(worldIn, soilPos)) {
+                    soilPos = soilPos.down();
+                    x++;
+                }
+                if (x >= 15) {
+                    return false;
+                }
+            }else{
+                return isWater(worldIn, soilPos);
             }
         }
 

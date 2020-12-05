@@ -32,19 +32,20 @@ public class FormationWallBase extends FormationBase {
     }
 
 
-    @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        if(state.get(FACING)==Direction.NORTH){
-            return box.getNorthShape();
-        }else if(state.get(FACING)==Direction.SOUTH){
-            return box.getSouthShape();
-        }else if(state.get(FACING)==Direction.EAST){
-            return box.getEastShape();
-        }else if(state.get(FACING)==Direction.WEST){
-            return box.getWestShape();
-        }
 
-        return null;
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        switch(state.get(FACING).getIndex()) {
+            case 2://north
+                return NORTH;
+            case 3://south
+                return SOUTH;
+            case 4://west
+                return WEST;
+            case 5://east
+                return EAST;
+        }
+        //System.out.println("FACING: " + state.get(FACING).getIndex());
+        return DOWN;
     }
 
     @Override

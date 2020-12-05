@@ -39,6 +39,7 @@ public class BiomeVariants {
     public static BiomeVariants LAKE = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAKE);
     public static BiomeVariants SHORE = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
     public static BiomeVariants OCEAN = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
+    public static BiomeVariants SMALL_ISLAND = new BiomeVariants(SmallGroup.RIVER,LargeGroup.OCEAN);
 
     //custom
     public static BiomeVariants PATH = new BiomeVariants(SmallGroup.RIVER,LargeGroup.RIVER);
@@ -48,6 +49,9 @@ public class BiomeVariants {
             return SHORE;
         }else if(biome == WNBiomes.RiverValleySmooth){
             return LAND;
+        }
+        if(biome == WNBiomes.Island || biome == WNBiomes.ForestedIsland || biome == WNBiomes.SnowyIsland || biome == WNBiomes.ParadiseIsland){
+            return SMALL_ISLAND;
         }
 
         if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN)){

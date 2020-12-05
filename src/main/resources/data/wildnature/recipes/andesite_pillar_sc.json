@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:polished_andesite"
+    "item": "wildnature:andesite_bricks"
   },
   "result": "wildnature:andesite_pillar",
   "count": 1

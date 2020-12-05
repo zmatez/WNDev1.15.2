@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "wildnature:gneiss_polished"
+    "item": "wildnature:gneiss_bricks"
   },
   "result": "wildnature:gneiss_pillar",
   "count": 1

@@ -63,9 +63,9 @@ public class WNParadiseIsland extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.MARIGOLD_WHITE.getDefaultState().with(DoubleBushBaseFlowering.FLOWERING, true), 1);
         WNBiomeFeatures.addPlant(this, WNBlocks.HOLLYHOCK_RED.getDefaultState().with(DoubleBushBaseFlowering.FLOWERING, true), 2);
 
-        WNBiomeFeatures.addTree(this, new oak1().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new oak2().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)), 1);
-        WNBiomeFeatures.addTree(this, new oak3().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)), 1);
+        WNBiomeFeatures.addTree(this, new oak1().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)), 1);
+        WNBiomeFeatures.addTree(this, new oak2().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)), 1);
+        WNBiomeFeatures.addTree(this, new oak3().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)), 1);
 
         WNBiomeFeatures.addTree(this, new tree_oak5(), 5);
         WNBiomeFeatures.addTree(this, new pointy_oak_1(), 1);
@@ -108,10 +108,5 @@ public class WNParadiseIsland extends WNBiome {
     public int getFoliageColor(BlockPos pos) {
         double noise = INFO_NOISE.noiseAt((double) pos.getX() * 0.0225D, (double) pos.getZ() * 0.0225D, false);
         return customColor(noise, -0.1D, 0x71B83F, 0x8BCC4F);
-    }
-
-    @Override
-    public int getSkyColor() {
-        return 0x7EF8F3;
     }
 }

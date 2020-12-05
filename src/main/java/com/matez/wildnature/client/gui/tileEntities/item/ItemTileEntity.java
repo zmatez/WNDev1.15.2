@@ -145,11 +145,12 @@ public class ItemTileEntity extends TileEntity implements ITickableTileEntity{
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
+        super.write(compound);
         if(hasPlacedStack()){
             Utilities.saveItem(compound,placedStack);
         }
         compound.putInt("facing",facing.getHorizontalIndex());
-        return super.write(compound);
+        return compound;
     }
 
 }

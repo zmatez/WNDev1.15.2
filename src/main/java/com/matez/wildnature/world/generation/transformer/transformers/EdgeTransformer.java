@@ -12,7 +12,7 @@ public class EdgeTransformer extends BiomeTransformer {
         for (EdgeBiome edgeBiome : EdgeBiome.getEdgeBiomes()) {
             for (BiomeGroup matchingBiome : edgeBiome.getMatchingBiomes()) {
                 if(northBiomeGroup.getId() == matchingBiome.getId() || southBiomeGroup.getId() == matchingBiome.getId() || eastBiomeGroup.getId() == matchingBiome.getId() || westBiomeGroup.getId() == matchingBiome.getId()){
-                    if(oldBiomeGroup != matchingBiome){
+                    if(oldBiomeGroup.getId() != matchingBiome.getId()){
                         return edgeBiome.getEdge();
                     }
                 }

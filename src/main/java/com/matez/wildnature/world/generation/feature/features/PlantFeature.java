@@ -35,7 +35,7 @@ public class PlantFeature extends Feature<BlockWeightListConfig> {
             }
 
             int i = 0;
-            boolean waterPlant = state.getBlock() instanceof UnderwaterBushBase || state.getBlock() == Blocks.SEAGRASS || state.getBlock() == Blocks.TALL_SEAGRASS || state.getBlock() == Blocks.SEA_PICKLE || state.getBlock() == Blocks.KELP_PLANT;
+            boolean waterPlant = state.getBlock() instanceof UnderwaterBushBase || state.getBlock() instanceof UnderwaterDoubleBushBase || state.getBlock() == Blocks.SEAGRASS || state.getBlock() == Blocks.TALL_SEAGRASS || state.getBlock() == Blocks.SEA_PICKLE || state.getBlock() == Blocks.KELP_PLANT;
 
             for (int j = 0; j < 128; ++j) {
                 BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));

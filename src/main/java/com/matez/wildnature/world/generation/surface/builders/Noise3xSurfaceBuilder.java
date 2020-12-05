@@ -21,7 +21,7 @@ public class Noise3xSurfaceBuilder extends SurfaceBuilder<Noise3SurfaceBuilderCo
         if (noise > 1.75D) {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, config.getConfig1());
 
-        } else if (noise > -0.95D) {
+        } else if (noise > 0D) {
             SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, config.getConfig2());
 
         }

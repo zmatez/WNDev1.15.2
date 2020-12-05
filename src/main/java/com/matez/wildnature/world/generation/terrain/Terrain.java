@@ -169,6 +169,11 @@ public abstract class Terrain {
         return weightedBiomeGroups;
     }
 
+    protected void unload(){
+        this.weightedBiomeGroups = null;
+        this.climaticBiomeGroups = null;
+    }
+
     /**
      * TerrainBuilder - used for constructing each terrain class
      * note: tempCategory and wetCategory are deprecated atm, they do nothing

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "minecraft:polished_diorite"
+    "item": "wildnature:diorite_bricks"
   },
   "result": "wildnature:diorite_pillar",
   "count": 1

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "wildnature:marble_rough_polished"
+    "item": "wildnature:marble_rough_bricks"
   },
   "result": "wildnature:marble_rough_pillar",
   "count": 1

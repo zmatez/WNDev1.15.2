@@ -22,23 +22,24 @@ import com.matez.wildnature.world.generation.processors.ThermalErosionTestProces
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
-import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.*;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.ReportedException;
 import net.minecraft.util.SharedSeedRandom;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.VillageSiege;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.*;
 import net.minecraft.world.gen.Heightmap.Type;
@@ -60,6 +61,16 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
+    private static final float[] field_222561_h = Util.make(new float[13824], (p_222557_0_) -> {
+        for(int i = 0; i < 24; ++i) {
+            for(int j = 0; j < 24; ++j) {
+                for(int k = 0; k < 24; ++k) {
+                    p_222557_0_[i * 24 * 24 + j * 24 + k] = (float)func_222554_b(j - 12, k - 12, i - 12);
+                }
+            }
+        }
+
+    });
     private int threadCount = CommonConfig.generatorThreads.get();
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
     protected IChunk chunk = null;
@@ -267,25 +278,66 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
+        int[] heights = this.getHeightsInChunk(chunkpos, worldIn);
+        this.generateTerrain(worldIn, chunkIn, heights);
 
-
-        this.generateTerrain(worldIn, chunkIn, this.getHeightsInChunk(chunkpos, worldIn));
-    }
-
-    public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
+                mutable.setPos(x,0,z);
+                int rX = chunkStartX + x;
+                int rZ = chunkStartZ + z;
+                int height = (int) heights[(x * 16) + z];
+                for (AbstractVillagePiece piece : structurePieces) {
+                    MutableBoundingBox boundingBox = piece.getBoundingBox();
+                    int minX = boundingBox.minX - 1;
+                    int minZ = boundingBox.minZ - 1;
+                    int maxX = boundingBox.maxX + 1;
+                    int maxZ = boundingBox.maxZ + 1;
+
+                    if(rX >= minX && rX <= maxX && rZ >= minZ && rZ <= maxZ){
+                        int structureY = boundingBox.minY;
+                        if(structureY > height) {
+                            int minXDist = rX - minX;
+                            int minZDist = rZ - minZ;
+                            int maxXDist = maxX - rX;
+                            int maxZDist = maxZ - rZ;
+
+                            int xDist = Math.min(minXDist,maxXDist);
+                            int zDist = Math.min(minZDist,maxZDist);
+
+                            int dist = Math.min(xDist,zDist);
+                            for(int l = structureY; l > structureY - dist; l--){
+                                mutable.setY(l-1);
+                                chunk.setBlockState(mutable, this.settings.getDefaultBlock(), false);
+                            }
+                        }
+                    }
+
+                }
+
+                //TODO JigsawJunction
+            }
+        }
+    }
+
+
+    public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
+                mutable.setPos(x,0,z);
                 int height = (int) noise[(x * 16) + z];
 
                 for (int y = 0; y < 256; y++) {
-                    BlockPos pos = new BlockPos(x, y, z);
+                    mutable.setY(y);
 
                     if (y > height) {
                         if (y < this.getSeaLevel()) {
-                            chunk.setBlockState(pos, this.settings.getDefaultFluid(), false);
+                            chunk.setBlockState(mutable, this.settings.getDefaultFluid(), false);
                         }
                     } else {
-                        chunk.setBlockState(pos, this.settings.getDefaultBlock(), false);
+                        chunk.setBlockState(mutable, this.settings.getDefaultBlock(), false);
                     }
                 }
 
@@ -421,14 +473,14 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
                     int height = getTerrainHeight((chunkX * 16) + x, (chunkZ * 16) + z, weightMap1, variantAccessor) + 1;
                     if(height <= getSeaLevel()){
-                        return getSeaLevel() + 1;
+                        return getSeaLevel();
                     }else{
                         return height;
                     }
                 }
             }
         }
-        return getSeaLevel()+1;
+        return getSeaLevel();
     }
 
     public void spawnMobs(WorldGenRegion region) {
@@ -447,4 +499,27 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.siegeSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
     }
 
+    private static double func_222556_a(int p_222556_0_, int p_222556_1_, int p_222556_2_) {
+        int i = p_222556_0_ + 12;
+        int j = p_222556_1_ + 12;
+        int k = p_222556_2_ + 12;
+        if (i >= 0 && i < 24) {
+            if (j >= 0 && j < 24) {
+                return k >= 0 && k < 24 ? (double)field_222561_h[k * 24 * 24 + i * 24 + j] : 0.0D;
+            } else {
+                return 0.0D;
+            }
+        } else {
+            return 0.0D;
+        }
+    }
+
+    private static double func_222554_b(int p_222554_0_, int p_222554_1_, int p_222554_2_) {
+        double d0 = (double)(p_222554_0_ * p_222554_0_ + p_222554_2_ * p_222554_2_);
+        double d1 = (double)p_222554_1_ + 0.5D;
+        double d2 = d1 * d1;
+        double d3 = Math.pow(Math.E, -(d2 / 16.0D + d0 / 16.0D));
+        double d4 = -d1 * MathHelper.fastInvSqrt(d2 / 2.0D + d0 / 2.0D) / 2.0D;
+        return d4 * d3;
+    }
 }

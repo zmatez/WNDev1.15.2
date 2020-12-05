@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "wildnature:malachite_raw"
+  },
+  "result": "wildnature:malachite_ingot",
+  "experience": 3.0,
+  "cookingtime": 200
+}

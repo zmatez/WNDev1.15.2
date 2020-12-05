@@ -91,15 +91,15 @@ public class TerrainProvider {
                 });
             }));
         }
-        WN.LOGGER.info("--- BIOME ERRORS: ");
+        WN.LOGGER.debug("--- BIOME ERRORS: ");
         for (Biome biome : Registry.BIOME) {
             if(!spawnBiomes.contains(biome)){
                 BiomeTransformer.TempCategory tempCategory = BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,biome.getDefaultTemperature());
                 BiomeTransformer.WetCategory wetCategory = BiomeTransformer.WetCategory.getFromMoisture(0,1f,biome.getDownfall());
-                WN.LOGGER.warn("--- " + biome.getRegistryName() + " never gonna spawn - " + tempCategory.getName() + ":" + wetCategory.getName());
+                WN.LOGGER.debug("--- " + biome.getRegistryName() + " never gonna spawn - " + tempCategory.getName() + ":" + wetCategory.getName());
             }
         }
-        WN.LOGGER.info("------------------");
+        WN.LOGGER.debug("------------------");
 
         spawnBiomes.clear();
     }
@@ -149,6 +149,15 @@ public class TerrainProvider {
 
     public TerrainProvider create() {
         return new TerrainProvider(context);
+    }
+
+    public void unload(){
+        for (Terrain terrain : terrains) {
+            WN.LOGGER.info("Unloading " + terrain.getName() + "...");
+            terrain.unload();
+            WN.LOGGER.info("Successfully unloaded " + terrain.getName());
+        }
+        terrains.clear();
     }
 
 }

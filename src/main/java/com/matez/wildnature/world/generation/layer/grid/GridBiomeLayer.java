@@ -43,10 +43,11 @@ public class GridBiomeLayer {
         Cell northCell = provider.getNoiseCell(x + directionMove, z).copy(), southCell = provider.getNoiseCell(x - directionMove, z).copy(), eastCell = provider.getNoiseCell(x, z + directionMove).copy(), westCell = provider.getNoiseCell(x, z - directionMove).copy();
         Terrain northTerrain = provider.getNoiseTerrain(northCell, x + directionMove, z), southTerrain = provider.getNoiseTerrain(southCell, x - directionMove, z), eastTerrain = provider.getNoiseTerrain(eastCell, x, z + directionMove), westTerrain = provider.getNoiseTerrain(westCell, x, z - directionMove);
 
-        Cell bigIslandOldCenterCell = provider.getNoiseCell(cell.bigIslandCellX,cell.bigIslandCellZ).copy(), smallIslandOldCenterCell = provider.getNoiseCell(cell.smallIslandCellX,cell.smallIslandCellZ).copy();
-        Terrain bigIslandOldCenterTerrain = provider.getNoiseTerrain(bigIslandOldCenterCell), smallIslandOldCenterTerrain = provider.getNoiseTerrain(smallIslandOldCenterCell);
+        //Cell bigIslandOldCenterCell = provider.getNoiseCell(cell.bigIslandCellX,cell.bigIslandCellZ).copy(), smallIslandOldCenterCell = provider.getNoiseCell(cell.smallIslandCellX,cell.smallIslandCellZ).copy();
+        //Terrain bigIslandOldCenterTerrain = provider.getNoiseTerrain(bigIslandOldCenterCell), smallIslandOldCenterTerrain = provider.getNoiseTerrain(smallIslandOldCenterCell);
+        //TODO make islands have only one biome on each
 
-        Biome biome = applyTransformers(x, z, cell, northCell, southCell, eastCell, westCell, bigIslandOldCenterCell, smallIslandOldCenterCell, terrain, northTerrain, southTerrain, eastTerrain, westTerrain, bigIslandOldCenterTerrain, smallIslandOldCenterTerrain,fakeBiomes);
+        Biome biome = applyTransformers(x, z, cell, northCell, southCell, eastCell, westCell, terrain, northTerrain, southTerrain, eastTerrain, westTerrain,fakeBiomes);
 
         return biome;
     }
@@ -66,8 +67,8 @@ public class GridBiomeLayer {
      *
      * @return final biome
      */
-    public Biome applyTransformers(int x, int z, Cell cell, Cell northCell, Cell southCell, Cell eastCell, Cell westCell, Cell bigIslandOldCenterCell, Cell smallIslandOldCenterCell, Terrain terrain, Terrain northTerrain, Terrain southTerrain, Terrain eastTerrain, Terrain bigIslandOldCenterTerrain, Terrain smallIslandOldCenterTerrain, Terrain westTerrain, boolean fakeBiomes) {
-        BiomeGroup biomeGroup = null, northBiomeGroup, southBiomeGroup, westBiomeGroup, eastBiomeGroup, bigIslandCenterBiomeGroup, smallIslandCenterBiomeGroup;
+    public Biome applyTransformers(int x, int z, Cell cell, Cell northCell, Cell southCell, Cell eastCell, Cell westCell, Terrain terrain, Terrain northTerrain, Terrain southTerrain, Terrain eastTerrain, Terrain westTerrain, boolean fakeBiomes) {
+        BiomeGroup biomeGroup = null, northBiomeGroup, southBiomeGroup, westBiomeGroup, eastBiomeGroup;
         //Gets BiomeGroup (so baseBiome + all subbiomes) to filter terrain later. Uses BiomeMap. BiomeGroups are registered in WNBiomes by BiomeTerrain.
         biomeGroup = mainBiomeTransformer.bgApply(cell, terrain);
 
@@ -91,7 +92,8 @@ public class GridBiomeLayer {
         } else {
             westBiomeGroup = mainBiomeTransformer.bgApply(westCell, westTerrain);
         }
-        if (bigIslandOldCenterCell == cell && bigIslandOldCenterTerrain == terrain) {
+
+        /*if (bigIslandOldCenterCell == cell && bigIslandOldCenterTerrain == terrain) {
             bigIslandCenterBiomeGroup = biomeGroup;
         } else {
             bigIslandCenterBiomeGroup = mainBiomeTransformer.bgApply(bigIslandOldCenterCell, bigIslandOldCenterTerrain);
@@ -100,27 +102,19 @@ public class GridBiomeLayer {
             smallIslandCenterBiomeGroup = biomeGroup;
         } else {
             smallIslandCenterBiomeGroup = mainBiomeTransformer.bgApply(smallIslandOldCenterCell, smallIslandOldCenterTerrain);
-        }
+        }*/
 
-        biomeGroup = smallIslandTransformer.bgApply(smallIslandCenterBiomeGroup, cell, terrain);
-        biomeGroup = bigIslandTransformer.bgApply(bigIslandCenterBiomeGroup, cell, terrain);
+        biomeGroup = smallIslandTransformer.bgApply(biomeGroup, cell, terrain);
+        biomeGroup = bigIslandTransformer.bgApply(biomeGroup, cell, terrain);
 
-        if (biomeGroup != northBiomeGroup) {
-            northBiomeGroup = smallIslandTransformer.bgApply(northBiomeGroup, northCell, northTerrain);
-            northBiomeGroup = bigIslandTransformer.bgApply(northBiomeGroup, northCell, northTerrain);
-        }
-        if (biomeGroup != southBiomeGroup) {
-            southBiomeGroup = smallIslandTransformer.bgApply(southBiomeGroup, southCell, southTerrain);
-            southBiomeGroup = bigIslandTransformer.bgApply(southBiomeGroup, southCell, southTerrain);
-        }
-        if (biomeGroup != eastBiomeGroup) {
-            eastBiomeGroup = smallIslandTransformer.bgApply(eastBiomeGroup, eastCell, eastTerrain);
-            eastBiomeGroup = bigIslandTransformer.bgApply(eastBiomeGroup, eastCell, eastTerrain);
-        }
-        if (biomeGroup != westBiomeGroup) {
-            westBiomeGroup = smallIslandTransformer.bgApply(westBiomeGroup, westCell, westTerrain);
-            westBiomeGroup = bigIslandTransformer.bgApply(westBiomeGroup, westCell, westTerrain);
-        }
+        northBiomeGroup = smallIslandTransformer.bgApply(northBiomeGroup, northCell, northTerrain);
+        northBiomeGroup = bigIslandTransformer.bgApply(northBiomeGroup, northCell, northTerrain);
+        southBiomeGroup = smallIslandTransformer.bgApply(southBiomeGroup, southCell, southTerrain);
+        southBiomeGroup = bigIslandTransformer.bgApply(southBiomeGroup, southCell, southTerrain);
+        eastBiomeGroup = smallIslandTransformer.bgApply(eastBiomeGroup, eastCell, eastTerrain);
+        eastBiomeGroup = bigIslandTransformer.bgApply(eastBiomeGroup, eastCell, eastTerrain);
+        westBiomeGroup = smallIslandTransformer.bgApply(westBiomeGroup, westCell, westTerrain);
+        westBiomeGroup = bigIslandTransformer.bgApply(westBiomeGroup, westCell, westTerrain);
 
         biomeGroup = edgeTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell,terrain);
         biomeGroup = shoreTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell,terrain);
@@ -143,8 +137,10 @@ public class GridBiomeLayer {
     }
 
     public static Biome applyHeightmapBiome(Biome biome, BlockPos pos, IWorld world, int div){
-        if(biome.getDepth() > 0){
-            if(world.getChunk(pos).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG,pos.getX()/div,pos.getZ()/div)+2<world.getSeaLevel()){
+        if(biome.getDepth() > 0 &&
+        biome.getCategory() != Biome.Category.BEACH &&
+        biome.getCategory() != Biome.Category.SWAMP){
+            if(world.getChunk(pos).getTopBlockY(Heightmap.Type.OCEAN_FLOOR_WG,pos.getX()/div,pos.getZ()/div)<(world.getSeaLevel()-2)){
                 BiomeTransformer.TempCategory category = BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,biome.getDefaultTemperature());
                 if(category == BiomeTransformer.TempCategory.ICY){
                     return WNBiomes.FrozenLake;

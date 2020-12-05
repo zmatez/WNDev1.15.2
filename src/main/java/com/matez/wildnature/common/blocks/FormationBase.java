@@ -28,25 +28,29 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.storage.loot.LootContext;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FormationBase extends BlockBase {
-    public IBoundingBox box = new FormationBig();
     public static final EnumProperty<FormationType> TYPE = EnumProperty.create("type", FormationType.class);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public final int bigRarity;
+    protected static final VoxelShape UP = Block.makeCuboidShape(2.0D, 0D, 2.0D, 14.0D, 8.0D, 14.0D);
+    protected static final VoxelShape DOWN = Block.makeCuboidShape(2.0D, 8.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+    protected static final VoxelShape NORTH = Block.makeCuboidShape(2.0D, 2.0D, 8.0D, 14.0D, 14.0D, 16.0D);
+    protected static final VoxelShape SOUTH = Block.makeCuboidShape(2.0D, 2.0D, 0.0D, 14.0D, 14.0D, 8.0D);
+    protected static final VoxelShape EAST = Block.makeCuboidShape(8.0D, 2.0D, 2.0D, 0.0D, 14.0D, 14.0D);
+    protected static final VoxelShape WEST = Block.makeCuboidShape(8.0D, 2.0D, 2.0D, 16.0D, 14.0D, 14.0D);
 
     public FormationBase(Properties properties, Item.Properties builder, ResourceLocation regName, int bigRarity) {
         super(properties.notSolid(), builder, regName);
         this.setDefaultState(this.getStateContainer().getBaseState().with(TYPE,FormationType.SMALL).with(WATERLOGGED,false));
-        this.box.SHAPE = box.generateShape();
         this.bigRarity = bigRarity;
     }
 
     public FormationBase(Properties properties, ResourceLocation regName, int bigRarity) {
         super(properties.notSolid(), regName);
         this.setDefaultState(this.getStateContainer().getBaseState().with(TYPE,FormationType.SMALL).with(WATERLOGGED,false));
-        this.box.SHAPE = box.generateShape();
         this.bigRarity = bigRarity;
     }
 
@@ -63,7 +67,6 @@ public class FormationBase extends BlockBase {
         this.expSmall = expSmall;
         this.expBig = expBig;
         this.setDefaultState(this.getStateContainer().getBaseState().with(TYPE,FormationType.SMALL).with(WATERLOGGED,false));
-        this.box.SHAPE = box.generateShape();
         this.bigRarity = bigRarity;
     }
 
@@ -71,6 +74,7 @@ public class FormationBase extends BlockBase {
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return getShape(state,worldIn,pos,context);
     }
+
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         super.fillStateContainer(builder);
@@ -108,39 +112,43 @@ public class FormationBase extends BlockBase {
         return bigRarity == 0 ? baseState.with(TYPE,FormationType.SMALL) : (Utilities.rint(0,bigRarity) == 0 ? baseState.with(TYPE,FormationType.BIG) : baseState.with(TYPE,FormationType.SMALL));
     }
 
+    //TODO drops not when broken block behind
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        if(drop!=null){
-            List<ItemStack> list = new ArrayList<>();
-            if(WNLoot.isSilkTouch(builder)){
-                ItemStack stack = new ItemStack(Item.getItemFromBlock(this), 1);
-                stack.getOrCreateTag().putString("formationType",state.get(TYPE).getName());
-                list.add(stack);
-            }else {
-                int min = 0;
-                int max = 0;
-                String drop = "";
-                if(state.get(TYPE) == FormationType.SMALL){
-                    min = minSmall;
-                    max = maxSmall;
-                    drop = dropSmall;
-                }else{
-                    min = minBig;
-                    max = maxBig;
-                    drop = dropBig;
+        if(WNLoot.isBrokenByPickaxe(builder)) {
+            if (drop != null) {
+                List<ItemStack> list = new ArrayList<>();
+                if (WNLoot.isSilkTouch(builder)) {
+                    ItemStack stack = new ItemStack(Item.getItemFromBlock(this), 1);
+                    stack.getOrCreateTag().putString("formationType", state.get(TYPE).getName());
+                    list.add(stack);
+                } else {
+                    int min = 0;
+                    int max = 0;
+                    String drop = "";
+                    if (state.get(TYPE) == FormationType.SMALL) {
+                        min = minSmall;
+                        max = maxSmall;
+                        drop = dropSmall;
+                    } else {
+                        min = minBig;
+                        max = maxBig;
+                        drop = dropBig;
+                    }
+                    list.add(new ItemStack(WN.getItemByID(drop), Utilities.rint(min, max) + Utilities.rint(0, WNLoot.getFortune(builder))));
                 }
-                list.add(new ItemStack(WN.getItemByID(drop), Utilities.rint(min,max) + Utilities.rint(0, WNLoot.getFortune(builder))));
-            }
-            return list;
-        }else {
-            boolean silkTouch = false;
-            List<ItemStack> list = super.getDrops(state, builder);
-            if (list.isEmpty() && !silkTouch) {
-                list.add(new ItemStack(item, 1));
-            }
+                return list;
+            } else {
+                boolean silkTouch = false;
+                List<ItemStack> list = super.getDrops(state, builder);
+                if (list.isEmpty() && !silkTouch) {
+                    list.add(new ItemStack(item, 1));
+                }
 
-            return list;
+                return list;
+            }
         }
+        return Collections.emptyList();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.common.damage.WNDamageSource;
+import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -21,9 +23,13 @@ public class MudBlock extends BlockBase {
     }
 
     @Override
-    public void onEntityCollision(BlockState blockState, World world, BlockPos pos, Entity entity) {
-        entity.setMotionMultiplier(blockState, new Vec3d(0.7D, (double) -0.05F, 0.7D));
-
+    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn){
+        if(entityIn.getHeight() + entityIn.getPosition().getY() < pos.getY() + 1){
+            if(Utilities.rint(0,8)==0){
+                entityIn.attackEntityFrom(WNDamageSource.MUD, (float) (0.5F));
+            }
+        }
+        entityIn.setMotionMultiplier(state, new Vec3d(0.25D, (double)0.05F, 0.25D));
     }
 
     public VoxelShape getCollisionShape(BlockState p_220071_1_, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {

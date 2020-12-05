@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.biome.setup.grid;
 
+import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -7,8 +8,8 @@ import net.minecraftforge.common.BiomeDictionary;
 import java.util.ArrayList;
 
 public class IslandBiome {
-    public static int RARITY_BIG = 4;
-    public static int RARITY_SMALL = 2;
+    public static int RARITY_BIG = CommonConfig.bigIslandRarity.get();
+    public static int RARITY_SMALL = CommonConfig.smallIslandRarity.get();
     private static ArrayList<IslandBiome> islandBiomes = new ArrayList<>();
     public static void register(BiomeGroup islandBiome, int weight, IslandType type, Biome[] oceans, BiomeDictionary.Type... types){
         islandBiomes.add(new IslandBiome(islandBiome,weight,type,oceans));

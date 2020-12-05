@@ -1,12 +1,15 @@
 package com.matez.wildnature.world.generation.biome.biomes.ocean;
 
+import com.matez.wildnature.common.blocks.JellyBlock;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
+import com.matez.wildnature.world.generation.structures.nature.woods.jelly.*;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import com.matez.wildnature.world.generation.surface.configs.Noise3SurfaceBuilderConfig;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -25,7 +28,7 @@ public class WNDeepJellyOcean extends WNBiome {
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
                 .depth(-1.8f)
-                .scale(0.2f)
+                .scale(0.05f)
                 .temperature(0.5F)
                 .downfall(0.5f)
                 .waterColor(4566514)
@@ -53,18 +56,18 @@ public class WNDeepJellyOcean extends WNBiome {
         WNBiomeFeatures.addKelp(this);
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);
+        WNBiomeFeatures.addJellies(this);
+        WNBiomeFeatures.addJellyIslands(this);
 
-        //WNBiomeFeatures.addTree(this, );
         WNBiomeFeatures.addPlant(this, WNBlocks.CRAB_CORAL.getDefaultState(),2);
         WNBiomeFeatures.addPlant(this, WNBlocks.GLOW_RIBBON.getDefaultState(),2);
         WNBiomeFeatures.addPlant(this, WNBlocks.DEEP_SEA_NIGHT_SHADE.getDefaultState(),1);
         WNBiomeFeatures.addPlant(this, WNBlocks.GLOWING_SEA_BANANA.getDefaultState(),2);
         WNBiomeFeatures.addPlant(this, WNBlocks.SHRIMP_TUBE.getDefaultState(),2);
 
-        plantRate = 2;
+        plantRate = 3;
 
         applyPlants();
-        applyTrees();
 
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.SQUID, 10, 1, 2));
         this.addSpawn(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(EntityType.COD, 15, 3, 6));

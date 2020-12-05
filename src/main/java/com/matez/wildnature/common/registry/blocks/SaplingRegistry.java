@@ -10,6 +10,10 @@ import com.matez.wildnature.world.generation.structures.nature.SchemTree;
 import com.matez.wildnature.world.generation.structures.nature.fallen.citrus.grapefruit1;
 import com.matez.wildnature.world.generation.structures.nature.fallen.citrus.grapefruit2;
 import com.matez.wildnature.world.generation.structures.nature.fallen.citrus.grapefruit3;
+import com.matez.wildnature.world.generation.structures.nature.woods.another_spruce.tree_spruce_big1;
+import com.matez.wildnature.world.generation.structures.nature.woods.another_spruce.tree_spruce_big2;
+import com.matez.wildnature.world.generation.structures.nature.woods.another_spruce.tree_spruce_big3;
+import com.matez.wildnature.world.generation.structures.nature.woods.another_spruce.tree_spruce_big4;
 import com.matez.wildnature.world.generation.structures.nature.woods.aspen.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.baobab.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.beech.*;
@@ -76,9 +80,9 @@ public class SaplingRegistry {
         weighList.add(new apple3(),10);
         SchemTree appleTrees = new SchemTree(weighList);
         weighList = new TreeWeighList();
-        weighList.add(new oak1().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
-        weighList.add(new oak2().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
-        weighList.add(new oak3().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
+        weighList.add(new oak1().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
+        weighList.add(new oak2().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
+        weighList.add(new oak3().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
         SchemTree paradiseAppleTrees = new SchemTree(weighList);
         weighList = new TreeWeighList();
 
@@ -303,12 +307,16 @@ public class SaplingRegistry {
         SchemTree pearTrees = new SchemTree(weighList);
 
         weighList = new TreeWeighList();
-        weighList.add(new tree_pine1().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),10);
-        weighList.add(new tree_pine2().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),10);
-        weighList.add(new tree_pine3().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),10);
-        weighList.add(new tree_pine4().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),10);
-        weighList.add(new tree_pine5().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),10);
-        weighList.add(new tree_pine6().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),10);
+        weighList.add(new tree_pine1().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),3);
+        weighList.add(new tree_pine2().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),3);
+        weighList.add(new tree_pine3().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),3);
+        weighList.add(new tree_pine4().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),3);
+        weighList.add(new tree_pine5().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),3);
+        weighList.add(new tree_pine6().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),3);
+        weighList.add(new tree_spruce_big1().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),6);
+        weighList.add(new tree_spruce_big2().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),6);
+        weighList.add(new tree_spruce_big3().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),6);
+        weighList.add(new tree_spruce_big4().setCustomLog(WNBlocks.PINE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PINE_LEAVES)),6);
         SchemTree pineTrees = new SchemTree(weighList);
 
         weighList = new TreeWeighList();

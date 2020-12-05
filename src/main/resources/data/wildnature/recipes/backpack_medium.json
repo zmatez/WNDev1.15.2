@@ -4,15 +4,13 @@
         "count": 1
     },
     "pattern": [
-        "ABA",
-        "DAD",
-        "ACA"
+        "LLL",
+        "LPL",
+        "LLL"
     ],
     "type": "minecraft:crafting_shaped",
     "key": {
-        "A": {"item": "minecraft:leather"},
-        "B": {"item": "wildnature:bronze_block"},
-        "C": {"item": "minecraft:tripwire_hook"},
-        "D": {"item": "minecraft:string"}
+        "L": {"item": "minecraft:leather"},
+        "P": {"item": "wildnature:backpack_small"}
     }
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "wildnature:sapphire_raw"
+  },
+  "result": "wildnature:sapphire_ingot",
+  "experience": 3.0,
+  "cookingtime": 100
+}

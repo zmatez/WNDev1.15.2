@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "wildnature:quartzite_polished"
+    "item": "wildnature:quartzite_bricks"
   },
   "result": "wildnature:quartzite_pillar",
   "count": 1

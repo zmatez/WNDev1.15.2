@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "wildnature:slate_purple_polished"
+    "item": "wildnature:slate_purple_bricks"
   },
   "result": "wildnature:slate_purple_pillar",
   "count": 1

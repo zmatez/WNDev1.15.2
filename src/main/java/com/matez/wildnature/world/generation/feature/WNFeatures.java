@@ -59,6 +59,8 @@ public class WNFeatures {
     public static Feature<CountConfig> MOSS_FEATURE;
     public static Feature<CountConfig> LICHEN_FEATURE;
     public static Feature<WNOreFeatureConfig> ORE_FEATURE;
+    public static Feature<CountConfig> QUICKSAND_FEATURE;
+    public static Feature<CountConfig> MUD_FEATURE;
     public static Feature<BlockFeatureConfig> SCATTERED_PLANT_FEATURE;
     public static Feature<BlockFeatureConfig> TREE_VINES_FEATURE;
     public static Feature<NoFeatureConfig> VEGE_FEATURE;
@@ -66,6 +68,8 @@ public class WNFeatures {
     public static Feature<CountConfig> WATER_FEATURE;
     public static Feature<BlockFeatureConfig> WILD_FARM_FEATURE;
     public static Feature<BlockFeatureConfig> WISTERIA_FEATURE;
+    public static Feature<NoFeatureConfig> JELLY_ISLAND_FEATURE;
+    public static Feature<NoFeatureConfig> JELLY_FEATURE;
 
     private static Feature<?>[] features = new Feature<?>[]{
             BEEHIVE_FEATURE = new WNBeehiveFeature(CountConfig::deserialize),
@@ -117,13 +121,18 @@ public class WNFeatures {
             MOSS_FEATURE = new WNMossFeature(CountConfig::deserialize),
             LICHEN_FEATURE = new WNLichenFeature(CountConfig::deserialize),
             ORE_FEATURE = new WNOreFeature(WNOreFeatureConfig::deserialize),
+            QUICKSAND_FEATURE = new QuicksandFeature(CountConfig::deserialize),
+            MUD_FEATURE = new MudFeature(CountConfig::deserialize),
             SCATTERED_PLANT_FEATURE = new WNScatteredPlantFeature(BlockFeatureConfig::deserialize),
             TREE_VINES_FEATURE = new WNTreeVinesFeature(BlockFeatureConfig::deserialize),
             VEGE_FEATURE = new WNVegeFeature(NoFeatureConfig::deserialize),
             VINES_FEATURE = new WNVinesFeature(BlockFeatureConfig::deserialize),
             WATER_FEATURE = new WNWaterFeature(CountConfig::deserialize),
             WILD_FARM_FEATURE = new WNWildFarmFeature(BlockFeatureConfig::deserialize),
-            WISTERIA_FEATURE = new WNWisteriaFeature(BlockFeatureConfig::deserialize)
+            WISTERIA_FEATURE = new WNWisteriaFeature(BlockFeatureConfig::deserialize),
+            JELLY_ISLAND_FEATURE = new JellyIslandFeature(NoFeatureConfig::deserialize),
+            JELLY_FEATURE = new JellyFeature(NoFeatureConfig::deserialize),
+
     };
 
     public static void registerAll(final RegistryEvent.Register<Feature<?>> event) {

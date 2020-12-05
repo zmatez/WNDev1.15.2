@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.structures.nature.fallen;
 
+import com.google.gson.annotations.Expose;
 import com.matez.wildnature.common.blocks.FloweringLeaves;
 import com.matez.wildnature.common.blocks.FruitableLeaves;
 import com.matez.wildnature.util.lists.WNBlocks;
@@ -13,10 +14,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.IWorldGenerationReader;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FallenSchemFeature extends SchemFeature {
     private final int maxFall = 25;
+    @Expose
+    public ArrayList<BlockPos> vineBlocks = new ArrayList<>();
 
     @Override
     protected boolean place(IWorldGenerationReader worldIn, Random rand, BlockPos position, boolean isNaturalPlace) {
@@ -42,9 +46,22 @@ public class FallenSchemFeature extends SchemFeature {
         rotation = Utilities.rint(1, 4, rand);
         canGenerate = true;
         addedBlocks.clear();
+        vineBlocks.clear();
         virtualPlace = false;
         setBlocks();
+        checkVines();
+        addedBlocks.clear();
+        vineBlocks.clear();
         return true;
+    }
+
+    private void checkVines(){
+        for (BlockPos vineBlock : vineBlocks) {
+            BlockState state = world.getBlockState(vineBlock);
+            if(!state.isValidPosition(world,vineBlock)){
+                world.setBlockState(vineBlock,Blocks.AIR.getDefaultState(),2);
+            }
+        }
     }
 
     @Override
@@ -106,6 +123,9 @@ public class FallenSchemFeature extends SchemFeature {
         }
         if ((isLeaf(state.getBlock()) && !world.getBlockState(pos).isSolid()) || !isLeaf(state.getBlock())) {
             addedBlocks.add(pos);
+            if(state.getBlock() instanceof VineBlock){
+                vineBlocks.add(pos);
+            }
         }
 
     }

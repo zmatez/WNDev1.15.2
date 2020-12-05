@@ -62,7 +62,7 @@ public class ChunkLandscape {
 
         //PROCESSORS - here add noise processors
         addNoiseProcessor(NoiseProcessors.SCALE);
-        addNoiseProcessor(NoiseProcessors.MOUNTAIN_RANGE);
+        //addNoiseProcessor(NoiseProcessors.MOUNTAIN_RANGE);
         //
         initNoiseProcessors();
     }
@@ -111,6 +111,9 @@ public class ChunkLandscape {
         if(noise > 230){
             int limitNoise = Math.round(Utilities.scaleBetween(worldLimitNoise.GetSimplex(x,z),-5,5,-1,1));
             return 230 + limitNoise;
+        }else if(noise < 25){
+            int limitNoise = Math.round(Utilities.scaleBetween(worldLimitNoise.GetSimplex(x,z),-5,5,-1,1));
+            return 25 + limitNoise;
         }
 
 
