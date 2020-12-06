@@ -1,0 +1,20 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "block/cobblestone",
+		"texture": "block/cobblestone"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 10],
+			"to": [14, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 12, 16]},
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#texture"},
+				"east": {"uv": [0, 0, 6, 16], "texture": "#texture"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#texture"},
+				"west": {"uv": [10, 0, 16, 16], "texture": "#texture"}
+			}
+		}
+	]
+}

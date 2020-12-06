@@ -1,7 +1,7 @@
 {
-  "parent": "wildnature:block/castle/pillar_bottom",
+  "parent": "wildnature:block/castle/pillar_simple_bottom",
   "textures": {
-    "particle": "minecraft:block/stone_bricks",
-    "texture": "minecraft:block/stone_bricks"
+    "particle": "block/stone_bricks",
+    "texture": "block/stone_bricks"
   }
 }

@@ -31,14 +31,6 @@ public class NoiseUtil {
     public static final int X_PRIME = 1619;
     public static final int Y_PRIME = 31337;
 
-    public static final float CUBIC_2D_BOUNDING = 1 / (float) (1.5 * 1.5);
-    public static final float PI2 = (float) (Math.PI * 2.0);
-    public static final float SQRT2 = (float) Math.sqrt(2);
-
-    private static final int SIN_BITS, SIN_MASK, SIN_COUNT;
-    private static final float radFull, radToIndex;
-    private static final float degFull, degToIndex;
-
     public static final Vec2f[] GRAD_2D = {
             new Vec2f(-1, -1), new Vec2f(1, -1), new Vec2f(-1, 1), new Vec2f(1, 1),
             new Vec2f(0, -1), new Vec2f(-1, 0), new Vec2f(0, 1), new Vec2f(1, 0),
@@ -114,8 +106,6 @@ public class NoiseUtil {
             new Vec2f(0.1198188883f, -0.4337550392f), new Vec2f(-0.243590703f, 0.3783696201f), new Vec2f(0.2958191174f, -0.3391033025f), new Vec2f(-0.1164007991f, 0.4346847754f), new Vec2f(0.1274037151f, -0.4315881062f), new Vec2f(0.368047306f, 0.2589231171f), new Vec2f(0.2451436949f, 0.3773652989f), new Vec2f(-0.4314509715f, 0.12786735f),
     };
 
-    private static final float[] SIN;
-
     public static float map(float value, float min, float max, float range) {
         float dif = clamp(value, min, max) - min;
         if (dif > range) {
@@ -147,10 +137,6 @@ public class NoiseUtil {
 
     public static int floor(float f) {
         return (f >= 0 ? (int) f : (int) f - 1);
-    }
-
-    public static float div(int num, int denom) {
-        return (float) num / denom;
     }
 
     public static int round(float f) {
@@ -193,29 +179,6 @@ public class NoiseUtil {
         x *= x;
         x *= x;
         return x;
-    }
-
-    public static float pow(float value, int power) {
-        if (power == 0) {
-            return 1;
-        }
-        if (power == 1) {
-            return value;
-        }
-        if (power == 2) {
-            return value * value;
-        }
-        if (power == 3) {
-            return value * value * value;
-        }
-        if (power == 4) {
-            return value * value * value * value;
-        }
-        float result = 1;
-        for (int i = 0; i < power; i++) {
-            result *= value;
-        }
-        return result;
     }
 
     public static int hash(int x, int y) {
@@ -278,41 +241,6 @@ public class NoiseUtil {
 
     public static float pow(float value, float power) {
         return (float) FastMath.pow(value, power);
-    }
-
-    public static float sin(float r) {
-        int index = (int) (r * radToIndex) & SIN_MASK;
-        return SIN[index];
-    }
-
-    public static float cos(float r) {
-        return sin(r + 1.5708F);
-    }
-
-    public static long seed(int x, int z) {
-        return (long) x & 4294967295L | ((long) z & 4294967295L) << 32;
-    }
-
-    static {
-        SIN_BITS = 12;
-        SIN_MASK = ~(-1 << SIN_BITS);
-        SIN_COUNT = SIN_MASK + 1;
-
-        radFull = (float) (Math.PI * 2.0);
-        degFull = (float) (360.0);
-        radToIndex = SIN_COUNT / radFull;
-        degToIndex = SIN_COUNT / degFull;
-
-        SIN = new float[SIN_COUNT];
-
-        for (int i = 0; i < SIN_COUNT; i++) {
-            SIN[i] = (float) Math.sin((i + 0.5f) / SIN_COUNT * radFull);
-        }
-
-        // Four cardinal directions (credits: Nate)
-        for (int i = 0; i < 360; i += 90) {
-            SIN[(int) (i * degToIndex) & SIN_MASK] = (float) Math.sin(i * Math.PI / 180.0);
-        }
     }
 
 }

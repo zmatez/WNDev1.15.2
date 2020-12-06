@@ -52,7 +52,6 @@ public abstract class Terrain {
     public void init(long seed){
         initWeightedBiomeGroups();
         initClimaticBiomeGroups();
-        //initGeology(seed);
     }
 
     public String getName() {
@@ -100,52 +99,6 @@ public abstract class Terrain {
         }
         WN.LOGGER.debug("Initialized terrain weighted biome groups for terrain: " + getName());
     }
-
-    /*private void initGeology(long seed){
-        WN.LOGGER.debug("Init geology for terrain: " + getName());
-        geoManager = new GeoManager(seed, getGeoConfig(seed));
-        WN.LOGGER.debug("Initialized geology for terrain: " + getName());
-    }
-
-    private GeoConfig getGeoConfig(long seed){
-        List<Block> sedimentary = Arrays.asList(
-                WNBlocks.LIMESTONE,
-                WNBlocks.MARBLE,
-                WNBlocks.GNEISS,
-                Blocks.STONE,
-                Blocks.STONE,
-                Blocks.STONE,
-                Blocks.STONE,
-                Blocks.DIORITE
-        );
-
-        List<Block> carbonate = Arrays.asList(
-                WNBlocks.BASALT,
-                Blocks.DIORITE,
-                Blocks.GRANITE,
-                Blocks.STONE,
-                Blocks.STONE,
-                Blocks.STONE,
-                Blocks.STONE,
-                WNBlocks.GNEISS
-        );
-
-        FastNoise selectorNoise = new FastNoise((int)seed);
-
-        return new GeoConfig(
-                GeoConfig.Type.RANDOM, selectorNoise,
-                sedimentary, 5, 4, 4,
-                carbonate, 33, 8, 30
-        );
-    }
-
-    public GeoConfig getGeoConfig() {
-        return geoConfig;
-    }
-
-    public GeoManager getGeoManager() {
-        return geoManager;
-    }*/
 
     public List<BiomeGroup> getClimaticBiomeGroups(BiomeTransformer.TempCategory tempCategory, BiomeTransformer.WetCategory wetCategory){
         return climaticBiomeGroups.get(tempCategory).get(wetCategory);

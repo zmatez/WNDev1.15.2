@@ -1,5 +1,5 @@
 {
-  "parent": "wildnature:block/castle/arrowslit_bottom",
+  "parent": "minecraft:block/snow_height6",
   "textures": {
     "particle": "block/stone_bricks",
     "texture": "block/stone_bricks"

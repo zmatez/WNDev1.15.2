@@ -1,5 +1,5 @@
 {
-  "parent": "wildnature:block/castle/arrowslit_bottom",
+  "parent": "wildnature:block/castle/machicolations_bottom",
   "textures": {
     "particle": "block/stone_bricks",
     "texture": "block/stone_bricks"
