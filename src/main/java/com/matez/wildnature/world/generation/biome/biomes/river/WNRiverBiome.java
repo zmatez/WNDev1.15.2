@@ -39,7 +39,6 @@ public class WNRiverBiome extends WNBiome {
 
         WNBiomeFeatures.addCarvers(this);
         WNBiomeFeatures.addStructures(this);
-        WNBiomeFeatures.addLakes(this);
         WNBiomeFeatures.addMonsterRooms(this);
         WNBiomeFeatures.addDoubleFlowers(this);
         WNBiomeFeatures.addStoneVariants(this);

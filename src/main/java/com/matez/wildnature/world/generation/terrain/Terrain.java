@@ -25,12 +25,8 @@
 package com.matez.wildnature.world.generation.terrain;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
-import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 
 import java.util.ArrayList;
 import java.util.Arrays;

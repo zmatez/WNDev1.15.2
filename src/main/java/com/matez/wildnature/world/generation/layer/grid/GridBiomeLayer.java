@@ -13,11 +13,25 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 
+import java.util.ArrayList;
+
 public class GridBiomeLayer {
+    public static ArrayList<BiomeGroup> OCEANS;
     private WNGridBiomeProvider provider;
 
     public GridBiomeLayer(WNGridBiomeProvider provider) {
         this.provider = provider;
+        OCEANS = new ArrayList<>();
+        OCEANS.add(WNBiomes.OCEAN);
+        OCEANS.add(WNBiomes.COLD_OCEAN);
+        OCEANS.add(WNBiomes.FROZEN_OCEAN);
+        OCEANS.add(WNBiomes.LUKEWARM_OCEAN);
+        OCEANS.add(WNBiomes.WARM_OCEAN);
+        OCEANS.add(WNBiomes.DEEP_OCEAN);
+        OCEANS.add(WNBiomes.DEEP_COLD_OCEAN);
+        OCEANS.add(WNBiomes.DEEP_FROZEN_OCEAN);
+        OCEANS.add(WNBiomes.DEEP_LUKEWARM_OCEAN);
+        OCEANS.add(WNBiomes.DEEP_WARM_OCEAN);
     }
 
     /**

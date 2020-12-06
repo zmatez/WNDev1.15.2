@@ -56,8 +56,9 @@ public class WNHeightMap {
         this.context = context;
         this.seed = context.getSeed();
         this.cell = context.getCell();
+        WN.LOGGER.debug("Created WNHeightMap with seed " + seed);
         this.continentGenerator = new ContinentGenerator(seed);
-        this.riverGenerator = new RiverGenerator((int)seed);
+        this.riverGenerator = new RiverGenerator(seed);
 
         this.terrainMap = new TerrainMap(seed);
         this.biomeMap = new BiomeMap(seed);
@@ -67,7 +68,7 @@ public class WNHeightMap {
         this.bigIslandMap = new BigIslandMap(seed);
 
         this.terrainProvider = context.getTerrainProvider();
-        this.climateMap = new ClimateMap();
+        this.climateMap = new ClimateMap(seed);
 
         WN.LOGGER.debug("Created heightMap with seed " + (int)seed);
     }
@@ -78,7 +79,7 @@ public class WNHeightMap {
     }
 
     public void applyClimate(Cell cell, float x, float z) {
-        climateMap.apply(seed, cell, x, z);
+        climateMap.apply(cell, x, z);
     }
 
     public void applyRiver(Cell cell, int x, int z) {

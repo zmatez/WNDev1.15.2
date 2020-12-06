@@ -126,7 +126,7 @@ public class CommonConfig {
 
         generatorThreads = builder
                 .comment("Generator Threads. Set to 1 if your world load will freeze. It's experimental!\nDefault: 2")
-                .defineInRange("generatorThreads",2, 1, 16);
+                .defineInRange("generatorThreads",1, 1, 16);
 
         terrainMapSize = builder
                 .comment("Terrain map size\nDefault: 2500")

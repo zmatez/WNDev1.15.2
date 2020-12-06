@@ -6,50 +6,60 @@ import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
 
+import java.util.Random;
+
 public class RiverGenerator {
     public FastNoise mainRiverNoise,streamRiverNoise;
     public FastNoise meanderNoise;
     public static float meanderThreshold = 0.2f, streamMeanderThreshold = 0.1f;
     public Warp meanderWarp;
-    public RiverGenerator(int seed){
+    private int xMove, zMove;
+
+    public RiverGenerator(long seed){
         WN.LOGGER.info("Created RiverGenerator with seed " + seed + "/" + (int) seed);
-        this.mainRiverNoise = new FastNoise(seed);
+        this.mainRiverNoise = new FastNoise((int) seed);
         this.mainRiverNoise.SetFractalType(FastNoise.FractalType.RigidMulti);
         this.mainRiverNoise.SetFrequency(0.00005F);
         this.mainRiverNoise.SetFractalOctaves(1);
         this.mainRiverNoise.SetFractalLacunarity(0);
         this.mainRiverNoise.SetFractalGain(0f);
 
-        this.streamRiverNoise = new FastNoise(seed + 1);
+        this.streamRiverNoise = new FastNoise((int) seed + 1);
         this.streamRiverNoise.SetFractalType(FastNoise.FractalType.RigidMulti);
         this.streamRiverNoise.SetFrequency(0.0005F);
         this.streamRiverNoise.SetFractalOctaves(1);
         this.streamRiverNoise.SetFractalLacunarity(0);
         this.streamRiverNoise.SetFractalGain(0f);
 
-        this.meanderNoise = new FastNoise(seed);
+        this.meanderNoise = new FastNoise((int) seed);
         this.meanderNoise.SetFrequency(0.0005F);
 
-        FastNoise warpX = new FastNoise(seed);
+        FastNoise warpX = new FastNoise((int) seed);
         warpX.SetNoiseType(FastNoise.NoiseType.Simplex);
         warpX.SetFrequency(0.01f);
 
-        FastNoise warpZ = new FastNoise(seed);
+        FastNoise warpZ = new FastNoise((int) seed);
         warpZ.SetNoiseType(FastNoise.NoiseType.Simplex);
         warpZ.SetFrequency(0.01f);
 
         this.meanderWarp = new Warp(warpX,warpZ,64);
+
+        Random random = new Random(seed);
+        xMove = Utilities.rint(-100_000,100_000,random);
+        zMove = Utilities.rint(-100_000,100_000,random);
     }
 
     public void generate(Cell cell, int x, int z){
-        float meanders = meanderNoise.GetValue(x,z);
+        int dx = xMove + x;
+        int dz = zMove + z;
+        float meanders = meanderNoise.GetValue(dx,dz);
         float scaledMeanders = 0.05f;
         if(meanders > meanderThreshold){
             scaledMeanders = Utilities.scaleBetween(meanders,0.05f,0.5f,meanderThreshold,1);
         }
 
-        float wx = x+(meanderWarp.getOffsetX(x,z) * scaledMeanders);
-        float wz = z+(meanderWarp.getOffsetZ(x,z) * scaledMeanders);
+        float wx = dx+(meanderWarp.getOffsetX(dx,dz) * scaledMeanders);
+        float wz = dz+(meanderWarp.getOffsetZ(dx,dz) * scaledMeanders);
 
         cell.mainRiverValue = mainRiverNoise.GetSimplexFractal(wx,wz);
 
@@ -58,8 +68,8 @@ public class RiverGenerator {
             scaledLandscapeMeanders = Utilities.scaleBetween(meanders,0.03f,0.25f,meanderThreshold,1);
         }
 
-        float wlx = x+(meanderWarp.getOffsetX(x,z) * scaledLandscapeMeanders);
-        float wlz = z+(meanderWarp.getOffsetZ(x,z) * scaledLandscapeMeanders);
+        float wlx = dx+(meanderWarp.getOffsetX(dx,dz) * scaledLandscapeMeanders);
+        float wlz = dz+(meanderWarp.getOffsetZ(dx,dz) * scaledLandscapeMeanders);
 
         cell.mainRiverLandscapeValue = mainRiverNoise.GetSimplexFractal(wlx,wlz);
 
@@ -69,8 +79,8 @@ public class RiverGenerator {
             scaledMeanders = Utilities.scaleBetween(meanders,0.15f,0.3f,streamMeanderThreshold,1);
         }
 
-        float swx = x+(meanderWarp.getOffsetX(x,z) * scaledMeanders);
-        float swz = z+(meanderWarp.getOffsetZ(x,z) * scaledMeanders);
+        float swx = dx+(meanderWarp.getOffsetX(dx,dz) * scaledMeanders);
+        float swz = dz+(meanderWarp.getOffsetZ(dx,dz) * scaledMeanders);
 
         cell.streamRiverValue = streamRiverNoise.GetSimplexFractal(swx,swz);
 
@@ -79,8 +89,8 @@ public class RiverGenerator {
             scaledLandscapeMeanders = Utilities.scaleBetween(meanders,0.15f,0.25f,streamMeanderThreshold,1);
         }
 
-        float swlx = x+(meanderWarp.getOffsetX(x,z) * scaledLandscapeMeanders);
-        float swlz = z+(meanderWarp.getOffsetZ(x,z) * scaledLandscapeMeanders);
+        float swlx = dx+(meanderWarp.getOffsetX(dx,dz) * scaledLandscapeMeanders);
+        float swlz = dz+(meanderWarp.getOffsetZ(dx,dz) * scaledLandscapeMeanders);
         cell.streamRiverLandscapeValue = streamRiverNoise.GetSimplexFractal(swlx,swlz);
 
     }

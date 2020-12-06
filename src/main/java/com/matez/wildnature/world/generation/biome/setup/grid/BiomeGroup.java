@@ -223,14 +223,12 @@ public class BiomeGroup {
             return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.OCEAN;
         }else if(depth < 0.0F){
             return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.SEA;
-        }else if(depth < 0.3){
+        }else if(depth < 0.55){
             return Terrain.Category.LOWLANDS;
         }else if(depth < 1.1F){
             return Terrain.Category.MIDLANDS;
-        }else if(depth < 1.5F){
-            return Terrain.Category.HIGHLANDS;
         }else{
-            return Terrain.Category.MOUNTAINS;
+            return Terrain.Category.HIGHLANDS;
         }
     }
 

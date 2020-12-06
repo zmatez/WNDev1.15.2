@@ -32,7 +32,6 @@ import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.terrain.terrains.land.highlands.HighlandTerrain;
 import com.matez.wildnature.world.generation.terrain.terrains.land.lowlands.LowlandTerrain;
 import com.matez.wildnature.world.generation.terrain.terrains.land.midlands.MidlandTerrain;
-import com.matez.wildnature.world.generation.terrain.terrains.land.mountains.MountainTerrain;
 import com.matez.wildnature.world.generation.terrain.terrains.oceans.DeepOceanTerrain;
 import com.matez.wildnature.world.generation.terrain.terrains.oceans.OceanTerrain;
 import com.matez.wildnature.world.generation.terrain.terrains.seas.SeaTerrain;
@@ -66,7 +65,6 @@ public class TerrainProvider {
         register(new LowlandTerrain());
         register(new MidlandTerrain());
         register(new HighlandTerrain());
-        register(new MountainTerrain());
     }
 
     private void register(Terrain terrain){
@@ -121,11 +119,9 @@ public class TerrainProvider {
     }
     
     public static Terrain.Category getCategoryFromContinent(float cellContinent){
-        if (cellContinent >= 0.85F) {
-            return Terrain.Category.MOUNTAINS;
-        } else if (cellContinent >= 0.65F && cellContinent < 0.85F) {
+        if (cellContinent >= 0.75F) {
             return Terrain.Category.HIGHLANDS;
-        } else if (cellContinent >= 0.4F && cellContinent < 0.65F) {
+        } else if (cellContinent >= 0.4F && cellContinent < 0.75F) {
             return Terrain.Category.MIDLANDS;
         } else if (cellContinent >= 0.15F && cellContinent < 0.4F) {
             return Terrain.Category.LOWLANDS;

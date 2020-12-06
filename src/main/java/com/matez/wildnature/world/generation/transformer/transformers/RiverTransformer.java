@@ -2,6 +2,7 @@ package com.matez.wildnature.world.generation.transformer.transformers;
 
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
+import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.modules.RiverGenerator;
@@ -12,7 +13,7 @@ public class RiverTransformer extends BiomeTransformer {
 
     @Override
     protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
-        if(category != Terrain.Category.OCEAN && category != Terrain.Category.DEEP_OCEAN && category != Terrain.Category.SEA){
+        if(!isOcean(oldBiomeGroup)){
             if (RiverGenerator.isRiver(cell)) {
                 if(tempCategory == TempCategory.WARM || tempCategory == TempCategory.HOT){
                     if(oldBiomeGroup.getBaseBiome().getCategory() == Biome.Category.JUNGLE){
@@ -30,5 +31,13 @@ public class RiverTransformer extends BiomeTransformer {
             }
         }
         return oldBiomeGroup;
+    }
+    private boolean isOcean(BiomeGroup oldBiomeGroup){
+        for (BiomeGroup ocean : GridBiomeLayer.OCEANS) {
+            if(oldBiomeGroup.getId() == ocean.getId()){
+                return true;
+            }
+        }
+        return false;
     }
 }

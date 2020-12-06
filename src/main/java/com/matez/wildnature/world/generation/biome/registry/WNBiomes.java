@@ -446,6 +446,7 @@ public class WNBiomes {
     public static BiomeGroup ICY_BEACH = BiomeGroup.SingleBuilder.configure("cold_beach",10,ColdBeach);
     public static BiomeGroup STONE_SHORE = BiomeGroup.SingleBuilder.configure("stone_shore",10,StoneShore);
     public static BiomeGroup COLD_STONE_SHORE = BiomeGroup.SingleBuilder.configure("cold_stone_shore",10,ColdStoneShore);
+    public static BiomeGroup MUSHROOM_FIELD_SHORE = BiomeGroup.SingleBuilder.configure("mushroom_field_shore",10,Biomes.MUSHROOM_FIELD_SHORE);
 
     public static void registerAllBiomes(){
         registerWildNature();
