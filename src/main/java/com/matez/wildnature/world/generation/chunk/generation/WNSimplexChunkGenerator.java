@@ -3,10 +3,8 @@ package com.matez.wildnature.world.generation.chunk.generation;
 
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.chunk.generation.landscape.TerrainLandscape;
 import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
 import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
@@ -426,15 +424,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         Cell cell = gridProvider.getNoiseCell(x >> 2,z >> 2);
-        Terrain terrain = gridProvider.getNoiseTerrain(cell);
-        Biome biome = gridProvider.getNoiseBiome(cell,terrain,x >> 2, 1, z >> 2,true);
-        ChunkLandscape chunkLandscape = ChunkLandscape.getOrCreate(cell,terrain,x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
+        Biome biome = gridProvider.getNoiseBiome(cell,x >> 2, 1, z >> 2,true);
+        ChunkLandscape chunkLandscape = ChunkLandscape.getOrCreate(cell,x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
-        double biomeHeight = chunkLandscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
-
-        TerrainLandscape terrainLandscape = TerrainLandscape.getOrCreate(cell,terrain,x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
-
-        return (int) terrainLandscape.editHeightmap(biomeHeight,biomeProvider);
+        return (int) chunkLandscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
     }
 
     //getHeight

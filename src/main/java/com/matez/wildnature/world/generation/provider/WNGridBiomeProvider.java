@@ -1,7 +1,6 @@
 package com.matez.wildnature.world.generation.provider;
 
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import net.minecraft.world.biome.Biome;
@@ -49,28 +48,16 @@ public class WNGridBiomeProvider extends BiomeProvider {
         }
     }
 
-    public Terrain getNoiseTerrain(int x, int z){
-        return context.getTerrainProvider().get(context.getSeed(),getNoiseCell(x,z).terrainCellIdentity);
-    }
-
-    public Terrain getNoiseTerrain(Cell cell, int x, int z){
-        return context.getTerrainProvider().get(context.getSeed(),cell.terrainCellIdentity);
-    }
-
-    public Terrain getNoiseTerrain(Cell cell){
-        return context.getTerrainProvider().get(context.getSeed(),cell.terrainCellIdentity);
-    }
-
     public Biome getNoiseBiome(int x, int y, int z, boolean fakeBiomes) {
         return layer.getBiome(x,z,fakeBiomes);
     }
 
-    public Biome getNoiseBiome(Cell cell, Terrain terrain, int x, int y, int z) {
-        return layer.getBiome(cell, terrain, x,z,false);
+    public Biome getNoiseBiome(Cell cell, int x, int y, int z) {
+        return layer.getBiome(cell, x,z,false);
     }
 
-    public Biome getNoiseBiome(Cell cell, Terrain terrain, int x, int y, int z, boolean fakeBiomes) {
-        return layer.getBiome(cell, terrain, x,z,fakeBiomes);
+    public Biome getNoiseBiome(Cell cell, int x, int y, int z, boolean fakeBiomes) {
+        return layer.getBiome(cell, x,z,fakeBiomes);
     }
 
     @Override

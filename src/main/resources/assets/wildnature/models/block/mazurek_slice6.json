@@ -3,7 +3,9 @@
         "particle": "wildnature:blocks/cakes/mazurek_side",
         "bottom": "block/cake_bottom",
         "top": "wildnature:blocks/cakes/mazurek_top",
-        "side": "wildnature:blocks/cakes/mazurek_side"
+        "side": "wildnature:blocks/cakes/mazurek_side",
+        "inside": "wildnature:blocks/cakes/mazurek_inner"
+
     },
     "elements": [
         {   "from": [ 13, 0, 1 ],

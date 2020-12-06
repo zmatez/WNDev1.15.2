@@ -2,17 +2,16 @@ package com.matez.wildnature.world.generation.transformer.transformers;
 
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
-import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.modules.RiverGenerator;
+import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import net.minecraft.world.biome.Biome;
 
 public class RiverTransformer extends BiomeTransformer {
 
     @Override
-    protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
+    protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, MainBiomeTransformer.TerrainCategory category, float identity) {
         if(!isOcean(oldBiomeGroup)){
             if (RiverGenerator.isRiver(cell)) {
                 if(tempCategory == TempCategory.WARM || tempCategory == TempCategory.HOT){

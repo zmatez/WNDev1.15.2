@@ -153,12 +153,12 @@ public class CommonConfig {
                 .defineInRange("size.smallIsland",130, 10, 24000);
 
         bigIslandRarity = builder
-                .comment("Big Island rarity\nSmaller = more common\nDefault: 7")
-                .defineInRange("rarity.bigIsland",7, 1, 24000);
+                .comment("Big Island rarity\nSmaller = more common\nDefault: 12")
+                .defineInRange("rarity.bigIsland",12, 1, 24000);
 
         smallIslandRarity = builder
-                .comment("Small Island rarity\nSmaller = more common\nDefault: 7")
-                .defineInRange("rarity.smallIsland",7, 1, 24000);
+                .comment("Small Island rarity\nSmaller = more common\nDefault: 15")
+                .defineInRange("rarity.smallIsland",15, 1, 24000);
 
         biomeSize = builder
                 .comment("Biome Size //deprecated\nDefault: 5")

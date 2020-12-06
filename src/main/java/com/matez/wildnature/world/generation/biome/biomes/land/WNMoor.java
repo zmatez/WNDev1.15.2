@@ -41,8 +41,8 @@ public class WNMoor extends WNBiome {
                 .scale(0.03F)
                 .temperature(0.25F)
                 .downfall(0.7F)
-                .waterColor(4159204)
-                .waterFogColor(329011)
+                .waterColor(0x1753BF)
+                .waterFogColor(0x030A2A)
                 .logTypes(LogType.PINE,LogType.BIRCH_THICK,LogType.WILLOW)
                 .parent(null));
 

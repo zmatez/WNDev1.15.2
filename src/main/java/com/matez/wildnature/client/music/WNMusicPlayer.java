@@ -48,48 +48,48 @@ public class WNMusicPlayer extends MusicTicker {
 
     @Override
     public void tick() {
-        updateVariables();
+        if(updateVariables()) {
+            MusicTicker.MusicType musicticker$musictype = this.client.getAmbientMusicType();
+            if (this.currentMusic != null) {
+                if (!musicticker$musictype.getSound().getName().equals(this.currentMusic.getSoundLocation()) && !playingWNMusic) {
+                    this.client.getSoundHandler().stop(this.currentMusic);
+                    this.timeUntilNextMusic = MathHelper.nextInt(this.random, 0, musicticker$musictype.getMinDelay() / 2);
+                }
 
-        MusicTicker.MusicType musicticker$musictype = this.client.getAmbientMusicType();
-        if (this.currentMusic != null) {
-            if (!musicticker$musictype.getSound().getName().equals(this.currentMusic.getSoundLocation()) && !playingWNMusic) {
-                this.client.getSoundHandler().stop(this.currentMusic);
-                this.timeUntilNextMusic = MathHelper.nextInt(this.random, 0, musicticker$musictype.getMinDelay() / 2);
-            }
-
-            if (!this.client.getSoundHandler().isPlaying(this.currentMusic)) {
-                this.currentMusic = null;
-                this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.random, musicticker$musictype.getMinDelay(), musicticker$musictype.getMaxDelay()), this.timeUntilNextMusic);
-            }
-        }
-
-        this.timeUntilNextMusic = Math.min(this.timeUntilNextMusic, musicticker$musictype.getMaxDelay());
-        if (this.currentMusic == null && this.timeUntilNextMusic-- <= 0) {
-            playingWNMusic = Utilities.rint(0,1,random) == 0;
-
-            if(playingWNMusic){
-                WNMusic.MusicType typeToPlay = getValidSound();
-                if(typeToPlay != null){
-                    ArrayList<SoundEvent> soundEvents = typeToPlay.getSoundEvents();
-                    SoundEvent soundEvent = null;
-                    if(!soundEvents.isEmpty()){
-                        if(soundEvents.size() == 1){
-                            soundEvent = soundEvents.get(0);
-                        }else{
-                            Random random = new Random(musicSeed);
-                            soundEvent = soundEvents.get(Utilities.rint(0,soundEvents.size()-1, random));
-                        }
-                        stopAndPlay(typeToPlay, soundEvent,0,1);
-                        playingWNMusic = true;
-                    }else{
-                        playingWNMusic = false;
-                    }
-                }else{
-                    playingWNMusic = false;
+                if (!this.client.getSoundHandler().isPlaying(this.currentMusic)) {
+                    this.currentMusic = null;
+                    this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.random, musicticker$musictype.getMinDelay(), musicticker$musictype.getMaxDelay()), this.timeUntilNextMusic);
                 }
             }
-            if(!playingWNMusic) {
-                this.play(musicticker$musictype);
+
+            this.timeUntilNextMusic = Math.min(this.timeUntilNextMusic, musicticker$musictype.getMaxDelay());
+            if (this.currentMusic == null && this.timeUntilNextMusic-- <= 0) {
+                playingWNMusic = Utilities.rint(0, 1, random) == 0;
+
+                if (playingWNMusic) {
+                    WNMusic.MusicType typeToPlay = getValidSound();
+                    if (typeToPlay != null) {
+                        ArrayList<SoundEvent> soundEvents = typeToPlay.getSoundEvents();
+                        SoundEvent soundEvent = null;
+                        if (!soundEvents.isEmpty()) {
+                            if (soundEvents.size() == 1) {
+                                soundEvent = soundEvents.get(0);
+                            } else {
+                                Random random = new Random(musicSeed);
+                                soundEvent = soundEvents.get(Utilities.rint(0, soundEvents.size() - 1, random));
+                            }
+                            stopAndPlay(typeToPlay, soundEvent, 0, 1);
+                            playingWNMusic = true;
+                        } else {
+                            playingWNMusic = false;
+                        }
+                    } else {
+                        playingWNMusic = false;
+                    }
+                }
+                if (!playingWNMusic) {
+                    this.play(musicticker$musictype);
+                }
             }
         }
     }
@@ -104,27 +104,31 @@ public class WNMusicPlayer extends MusicTicker {
 
     }
 
-    private void updateVariables(){
-        if(!(world.getDayTime() >= 13800 && world.getDayTime() < 22500)){
-            //day
-            currentDayTime = WNMusic.DayTime.DAY;
-        }else{
-            //night
-            currentDayTime = WNMusic.DayTime.NIGHT;
-        }
-
-        currentDimension = world.getDimension().getType();
-        currentBiome = world.getBiome(player.getPosition());
-
-        if(player.getPosition().getY() > world.getSeaLevel() - 5){
-            currentMusicPosition = WNMusic.MusicPosition.SURFACE;
-        }else{
-            if(BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.OCEAN)){
-                currentMusicPosition = WNMusic.MusicPosition.UNDERWATER;
-            }else{
-                currentMusicPosition = WNMusic.MusicPosition.UNDERGROUND;
+    private boolean updateVariables(){
+        if(client.player!=null && world != null && player != null) {
+            if (!(world.getDayTime() >= 13800 && world.getDayTime() < 22500)) {
+                //day
+                currentDayTime = WNMusic.DayTime.DAY;
+            } else {
+                //night
+                currentDayTime = WNMusic.DayTime.NIGHT;
             }
+
+            currentDimension = world.getDimension().getType();
+            currentBiome = world.getBiome(player.getPosition());
+
+            if (player.getPosition().getY() > world.getSeaLevel() - 5) {
+                currentMusicPosition = WNMusic.MusicPosition.SURFACE;
+            } else {
+                if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.OCEAN)) {
+                    currentMusicPosition = WNMusic.MusicPosition.UNDERWATER;
+                } else {
+                    currentMusicPosition = WNMusic.MusicPosition.UNDERGROUND;
+                }
+            }
+            return true;
         }
+        return false;
     }
 
     public WNMusic.MusicType getValidSound() {

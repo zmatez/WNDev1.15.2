@@ -163,7 +163,7 @@ public class WisteriaBlock extends DirectionalBlock implements IRenderLayer {
 
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        if(Utilities.rint(0,5,rand) == 0){
+        if(Utilities.rint(0,15,rand) == 0){
             worldIn.addParticle(ParticleRegistry.WISTERIA_PINK, pos.getX() + 0.5 + Utilities.rdoub(-0.3,0.3), pos.getY() + Utilities.rdoub(-1,1), pos.getZ() + 0.5 + Utilities.rdoub(-0.3,0.3), 0.01, 0.01, 0.01);
         }
     }

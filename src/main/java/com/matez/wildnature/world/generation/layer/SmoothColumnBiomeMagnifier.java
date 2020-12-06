@@ -1,6 +1,5 @@
 package com.matez.wildnature.world.generation.layer;
 
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import net.minecraft.util.FastRandom;
@@ -65,7 +64,7 @@ public class SmoothColumnBiomeMagnifier implements IBiomeMagnifier {
         return biomeReader.getNoiseBiome((index & 2) == 0 ? coordX : coordX + 1, 0, (index & 1) == 0 ? coordZ : coordZ + 1, fakeBiomes);
     }
 
-    public Biome getBiome(long seed, int x, int y, int z, Cell cell, Terrain terrain, WNGridBiomeProvider biomeReader, boolean fakeBiomes) {
+    public Biome getBiome(long seed, int x, int y, int z, Cell cell, WNGridBiomeProvider biomeReader, boolean fakeBiomes) {
         int offsetX = x - 2;
         int offsetZ = z - 2;
         int coordX = offsetX >> 2;
@@ -84,7 +83,7 @@ public class SmoothColumnBiomeMagnifier implements IBiomeMagnifier {
             }
         }
 
-        return biomeReader.getNoiseBiome(cell,terrain, (index & 2) == 0 ? coordX : coordX + 1, 0, (index & 1) == 0 ? coordZ : coordZ + 1, fakeBiomes);
+        return biomeReader.getNoiseBiome(cell, (index & 2) == 0 ? coordX : coordX + 1, 0, (index & 1) == 0 ? coordZ : coordZ + 1, fakeBiomes);
     }
 
     private double distanceToCorner(long seed, int coordX, int coordZ, double localX, double localZ) {

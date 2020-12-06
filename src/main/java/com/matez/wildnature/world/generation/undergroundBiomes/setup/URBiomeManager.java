@@ -1,10 +1,7 @@
 package com.matez.wildnature.world.generation.undergroundBiomes.setup;
 
-import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.util.other.WeightedList;
-import com.matez.wildnature.world.generation.noise.sponge.module.source.Voronoi;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.undergroundBiomes.biomes.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;

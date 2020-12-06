@@ -4,7 +4,6 @@ import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.biome.setup.grid.IslandBiome;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import net.minecraft.world.biome.Biome;
@@ -28,7 +27,7 @@ public class IslandTransformer extends BiomeTransformer {
     }
 
     @Override
-    protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, Terrain terrain, Terrain.Category category, float identity) {
+    protected BiomeGroup bgApply(BiomeGroup oldBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, MainBiomeTransformer.TerrainCategory category, float identity) {
         if(!islandBiomes.isEmpty()) {
             Random random = new Random((long) ((type == IslandBiome.IslandType.SMALL ? cell.smallIslandCellIdentity : cell.bigIslandCellIdentity) * 1000000));
             if ((type == IslandBiome.IslandType.BIG && Utilities.rint(0, IslandBiome.RARITY_BIG, random) == 0) || (type == IslandBiome.IslandType.SMALL && Utilities.rint(0, IslandBiome.RARITY_SMALL, random) == 0)) {

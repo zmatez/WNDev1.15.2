@@ -34,12 +34,6 @@ public class Cell {
     public float cellContinent; // the continent height indentity
     public float continentValue; // the continent height tile value
 
-    //terrain
-    public int terrainCellX;
-    public int terrainCellZ;
-    public float terrainCellEdge;
-    public float terrainCellIdentity;
-
     //biomeGroups
     public int biomeCellX;
     public int biomeCellZ;
@@ -85,11 +79,6 @@ public class Cell {
         cell.value = value;
         cell.cellContinent = cellContinent;
         cell.continentValue = continentValue;
-        
-        cell.terrainCellX = terrainCellX;
-        cell.terrainCellZ = terrainCellZ;
-        cell.terrainCellEdge = terrainCellEdge;
-        cell.terrainCellIdentity = terrainCellIdentity;
 
         cell.biomeCellX = biomeCellX;
         cell.biomeCellZ = biomeCellZ;

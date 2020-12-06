@@ -8,7 +8,6 @@ import com.matez.wildnature.world.generation.biome.setup.grid.BiomeTerrain;
 import com.matez.wildnature.world.generation.biome.setup.grid.SubBiome;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.provider.WNWorldType;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.registry.Registry;
@@ -121,50 +120,9 @@ public class BiomeListCommand {
 
             BiomeTransformer.TempCategory category = BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,biome.getDefaultTemperature());
             BiomeTransformer.WetCategory moisture = BiomeTransformer.WetCategory.getFromMoisture(0f,1f,biome.getDownfall());
-            ArrayList<Terrain> terrains = new ArrayList<>();
-            ArrayList<Terrain> realTerrains = new ArrayList<>();
-            if(WNWorldType.generator != null){
-                WNWorldContext context = WNWorldType.generator.getContext();
-                for (Terrain terrain : context.getTerrainProvider().getTerrains()) {
-                    for (BiomeGroup group : terrain.getBiomeGroups()) {
-                        if(group.getBaseBiome() == biome){
-                            terrains.add(terrain);
-                            break;
-                        }
-                        for (SubBiome subBiome : group.getSubBiomes()) {
-                            if(subBiome.getBiome() == biome){
-                                terrains.add(terrain);
-                                break;
-                            }
-                        }
-                    }
-                    terrain.getClimaticBiomeGroups().forEach(((tempCategory, wetCategoryListLinkedHashMap) -> {
-                        wetCategoryListLinkedHashMap.forEach((wetCategory, biomeGroups) -> {
-                            for (BiomeGroup group : biomeGroups) {
-                                if(group.getBaseBiome() == biome){
-                                    realTerrains.add(terrain);
-                                    break;
-                                }
-                                for (SubBiome subBiome : group.getSubBiomes()) {
-                                    if(subBiome.getBiome() == biome){
-                                        realTerrains.add(terrain);
-                                        break;
-                                    }
-                                }
-                            }
-                        });
-                    }));
-                }
-            }
+
             String terrainString = "";
             String realTerrainString = "";
-            for (Terrain terrain : realTerrains) {
-                terrainString += " - "+terrain.getName() + " : " + terrain.getTerrainCategory().getName() + "\n";
-            }
-            for (Terrain terrain : terrains) {
-                realTerrainString += " - "+terrain.getName() + " : " + terrain.getTerrainCategory().getName() + "\n";
-            }
-
 
             StringTextComponent infocomponent = new StringTextComponent(t + new TranslationTextComponent(biome.getTranslationKey()).getFormattedText());
             infocomponent.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new StringTextComponent(TextFormatting.GOLD+"--- INFORMATION ---")

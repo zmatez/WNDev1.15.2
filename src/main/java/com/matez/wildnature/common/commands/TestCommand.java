@@ -1,20 +1,22 @@
 package com.matez.wildnature.common.commands;
 
+import com.matez.wildnature.common.blocks.WisteriaBlock;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.event.PlayerEventHandler;
+import com.matez.wildnature.world.generation.biome.biomes.land.WNBialowiezaForest;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
+import com.matez.wildnature.world.generation.biome.setup.grid.IslandBiome;
 import com.matez.wildnature.world.generation.chunk.generation.ChunkArraySampler;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.BiomeBlender;
-import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
-import com.matez.wildnature.world.generation.terrain.Terrain;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.SmoothColumnBiomeMagnifier;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import com.matez.wildnature.world.generation.provider.WNWorldType;
 import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
+import com.matez.wildnature.world.generation.transformer.transformers.IslandTransformer;
 import com.matez.wildnature.world.generation.transformer.transformers.MainBiomeTransformer;
 import com.matez.wildnature.world.generation.transformer.transformers.ShoreTransformer;
 import com.mojang.brigadier.context.CommandContext;
@@ -55,6 +57,8 @@ public class TestCommand {
     }
     private final BiomeTransformer mainBiomeTransformer = new MainBiomeTransformer();
     private final BiomeTransformer shoreTransformer = new ShoreTransformer();
+    private final BiomeTransformer smallIslandTransformer = new IslandTransformer(IslandBiome.IslandType.SMALL);
+    private final BiomeTransformer bigIslandTransformer = new IslandTransformer(IslandBiome.IslandType.BIG);
     private void execute(PlayerEntity entity){
         World worldIn = entity.getEntityWorld();
         ChunkPos pos = worldIn.getChunkAt(entity.getPosition()).getPos();
@@ -64,43 +68,45 @@ public class TestCommand {
             int ry = entity.getPosition().getY();
             int rz = entity.getPosition().getZ();
             Cell cell = provider.getNoiseCell(rx / 4, rz / 4);
-            Terrain terrain = provider.getNoiseTerrain(cell, rx / 4, rz / 4);
             Biome biome = provider.getNoiseBiome(rx / 4, ry, rz / 4);
             Biome biome2 = provider.getNoiseBiome(rx >> 2, ry, rz >> 2);
             Biome biome3 = ColumnFuzzedBiomeMagnifier.INSTANCE.getBiome(worldIn.getSeed(),rx,0,rz,worldIn);
             Biome biome4 = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(),rx,0,rz,worldIn);
-            ChunkLandscape landscape = ChunkLandscape.getOrCreate(cell, terrain, rx, rz, worldIn.getSeed(), worldIn.getSeaLevel(),biome,worldIn.getChunk(pos.x,pos.z));
-
+            ChunkLandscape landscape = ChunkLandscape.getOrCreate(cell, rx, rz, worldIn.getSeed(), worldIn.getSeaLevel(),biome,worldIn.getChunk(pos.x,pos.z));
             //
             int directionMove = 16;
             Cell northCell = provider.getNoiseCell((rx/4) + directionMove, (rz/4)).copy();
             Cell southCell = provider.getNoiseCell((rx/4) - directionMove, (rz/4) ).copy();
             Cell eastCell = provider.getNoiseCell((rx/4), (rz/4)  + directionMove).copy();
             Cell westCell = provider.getNoiseCell((rx/4), (rz/4) - directionMove).copy();
-            Terrain northTerrain = provider.getNoiseTerrain(northCell, (rx/4) + directionMove, (rz/4));
-            Terrain southTerrain = provider.getNoiseTerrain(southCell, (rx/4) - directionMove, (rz/4));
-            Terrain eastTerrain = provider.getNoiseTerrain(eastCell, (rx/4), (rz/4)  + directionMove);
-            Terrain westTerrain = provider.getNoiseTerrain(westCell, (rx/4), (rz/4)  - directionMove);
 
-            BiomeGroup centerBG = mainBiomeTransformer.bgApply(cell, terrain), northBiomeGroup, eastBiomeGroup, southBiomeGroup, westBiomeGroup, shoreBiomeGroup;
+            BiomeGroup centerBG = mainBiomeTransformer.bgApply(cell), northBiomeGroup, eastBiomeGroup, southBiomeGroup, westBiomeGroup, shoreBiomeGroup;
 
-            northBiomeGroup = mainBiomeTransformer.bgApply(northCell, northTerrain);
-            southBiomeGroup = mainBiomeTransformer.bgApply(southCell, southTerrain);
-            eastBiomeGroup = mainBiomeTransformer.bgApply(eastCell, eastTerrain);
-            westBiomeGroup = mainBiomeTransformer.bgApply(westCell, westTerrain);
-            shoreBiomeGroup = shoreTransformer.apply(centerBG,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell,terrain);
+            northBiomeGroup = mainBiomeTransformer.bgApply(northCell);
+            southBiomeGroup = mainBiomeTransformer.bgApply(southCell);
+            eastBiomeGroup = mainBiomeTransformer.bgApply(eastCell);
+            westBiomeGroup = mainBiomeTransformer.bgApply(westCell);
+
+            centerBG = smallIslandTransformer.bgApply(centerBG, cell);
+            centerBG = bigIslandTransformer.bgApply(centerBG, cell);
+
+            northBiomeGroup = smallIslandTransformer.bgApply(northBiomeGroup, northCell);
+            northBiomeGroup = bigIslandTransformer.bgApply(northBiomeGroup, northCell);
+            southBiomeGroup = smallIslandTransformer.bgApply(southBiomeGroup, southCell);
+            southBiomeGroup = bigIslandTransformer.bgApply(southBiomeGroup, southCell);
+            eastBiomeGroup = smallIslandTransformer.bgApply(eastBiomeGroup, eastCell);
+            eastBiomeGroup = bigIslandTransformer.bgApply(eastBiomeGroup, eastCell);
+            westBiomeGroup = smallIslandTransformer.bgApply(westBiomeGroup, westCell);
+            westBiomeGroup = bigIslandTransformer.bgApply(westBiomeGroup, westCell);
+
+            shoreBiomeGroup = shoreTransformer.apply(centerBG,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell);
             //
 
-            log(entity, "Terrain identity: " + cell.terrainCellIdentity);
             log(entity, "Biome identity: " + cell.biomeCellIdentity);
             log(entity, "NBiome identity: " + northCell.biomeCellIdentity);
             log(entity, "SBiome identity: " + southCell.biomeCellIdentity);
             log(entity, "EBiome identity: " + eastCell.biomeCellIdentity);
             log(entity, "WBiome identity: " + westCell.biomeCellIdentity);
-            log(entity, "NTerrain: " + northCell.terrainCellIdentity + ": " +northTerrain.getName());
-            log(entity, "STerrain: " + southCell.terrainCellIdentity + ": " +southTerrain.getName());
-            log(entity, "ETerrain: " + eastCell.terrainCellIdentity + ": " +eastTerrain.getName());
-            log(entity, "WTerrain: " + westCell.terrainCellIdentity + ": " +westTerrain.getName());
             log(entity, "SubBiome identity: " + cell.subBiomeCellIdentity);
             log(entity, "SmallIsland identity: " + cell.smallIslandCellIdentity);
             log(entity, "BigIsland identity: " + cell.bigIslandCellIdentity);
@@ -110,7 +116,7 @@ public class TestCommand {
             log(entity, "Cell Moisture: " + cell.cellMoisture);
             log(entity, "Continent Value: " + cell.continentValue);
             log(entity, "Cell Continent: " + cell.cellContinent);
-            log(entity, "Category: " + terrain.getTerrainCategory().name());
+            log(entity, "Category: " + BiomeTransformer.getCategoryFromContinent(cell.continentValue));
             log(entity, "Current TempCategory: " + BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1,biome.getDefaultTemperature()).getName());
             log(entity, "Current WetCategory: " + BiomeTransformer.WetCategory.getFromMoisture(0f,1,biome.getDownfall()).getName());
             log(entity,"Cell TempCategory: " + BiomeTransformer.TempCategory.getFromTemperature(-1, 1, cell.cellTemparature).getName());

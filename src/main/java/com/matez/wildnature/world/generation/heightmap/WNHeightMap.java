@@ -2,7 +2,6 @@ package com.matez.wildnature.world.generation.heightmap;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.terrain.TerrainProvider;
 import com.matez.wildnature.world.generation.grid.maps.*;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.modules.ContinentGenerator;
@@ -42,14 +41,12 @@ public class WNHeightMap {
     private final Cell cell;
 
     //maps
-    public final GridMap terrainMap;
     public final GridMap biomeMap;
     public final GridMap undergroundBiomeMap;
     public final GridMap subBiomeMap;
     public final GridMap smallIslandMap;
     public final GridMap bigIslandMap;
 
-    private final TerrainProvider terrainProvider;
     private final ClimateMap climateMap;
 
     public WNHeightMap(WNWorldContext context) {
@@ -60,14 +57,12 @@ public class WNHeightMap {
         this.continentGenerator = new ContinentGenerator(seed);
         this.riverGenerator = new RiverGenerator(seed);
 
-        this.terrainMap = new TerrainMap(seed);
         this.biomeMap = new BiomeMap(seed);
         this.undergroundBiomeMap = new UndergroundBiomeMap(seed);
         this.subBiomeMap = new SubBiomeMap(seed);
         this.smallIslandMap = new SmallIslandMap(seed);
         this.bigIslandMap = new BigIslandMap(seed);
 
-        this.terrainProvider = context.getTerrainProvider();
         this.climateMap = new ClimateMap(seed);
 
         WN.LOGGER.debug("Created heightMap with seed " + (int)seed);
@@ -75,7 +70,7 @@ public class WNHeightMap {
 
     public void applyContinent(Cell cell, int dx, int dz) {
         cell.continentValue = continentGenerator.generateContinent(dx, dz);
-        cell.cellContinent = continentGenerator.generateContinent(cell.terrainCellX, cell.terrainCellZ);
+        cell.cellContinent = continentGenerator.generateContinent(cell.biomeCellX, cell.biomeCellZ);
     }
 
     public void applyClimate(Cell cell, float x, float z) {
@@ -91,7 +86,6 @@ public class WNHeightMap {
      * Applies identifies in cell for all specified maps.
      */
     public void apply(Cell cell, int dx, int dz) {
-        terrainMap.apply(cell, dx, dz);
         biomeMap.apply(cell, dx, dz);
         undergroundBiomeMap.apply(cell, dx, dz);
         subBiomeMap.apply(cell, dx, dz);

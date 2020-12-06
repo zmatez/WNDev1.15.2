@@ -1,7 +1,7 @@
 package com.matez.wildnature.world.generation.biome.setup.grid;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.world.generation.terrain.Terrain;
+import com.matez.wildnature.world.generation.transformer.transformers.MainBiomeTransformer;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
@@ -110,7 +110,7 @@ public class BiomeGroup {
         return result;
     }
 
-    public static BiomeGroup[] guess(Terrain.Category category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes){
+    public static BiomeGroup[] guess(MainBiomeTransformer.TerrainCategory category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes){
         return guess(category,allowedTypes,deniedTypes, false);
     }
 
@@ -123,7 +123,7 @@ public class BiomeGroup {
      * @param deniedTypes denied types. BaseBiome from group cannot contain *any* of them in order to be passed.
      * @return guessed biome groups
      */
-    public static BiomeGroup[] guess(Terrain.Category category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes, boolean ignoreOceans){
+    public static BiomeGroup[] guess(MainBiomeTransformer.TerrainCategory category, BiomeDictionary.Type[] allowedTypes, BiomeDictionary.Type[] deniedTypes, boolean ignoreOceans){
         ArrayList<BiomeGroup> groups = new ArrayList<>();
         //Terrain.Category categoryBefore = category.getIndex() == 0 ? category : Terrain.Category.getByIndex(category.getIndex() - 1);
         //Terrain.Category categoryAfter = category.getIndex() == Terrain.Category.values().length-1 ? category : Terrain.Category.getByIndex(category.getIndex() + 1);
@@ -159,13 +159,13 @@ public class BiomeGroup {
 
             BiomeGroup newGroup = null;
             float baseBiomeDepth = group.baseBiome.getDepth();
-            Terrain.Category depthCategory = getCategoryByDepth(baseBiomeDepth, ignoreOceans);
+            MainBiomeTransformer.TerrainCategory depthCategory = getCategoryByDepth(baseBiomeDepth, ignoreOceans);
             SubBiome maxBiome = null;
             float maxBiomeDepth = 0;
-            Terrain.Category maxBiomeCategory = null;
+            MainBiomeTransformer.TerrainCategory maxBiomeCategory = null;
             SubBiome minBiome = null;
             float minBiomeDepth = 0;
-            Terrain.Category minBiomeCategory = null;
+            MainBiomeTransformer.TerrainCategory minBiomeCategory = null;
             for (SubBiome subBiome : group.getSubBiomes()) {
                 float depth = subBiome.getBiome().getDepth();
                 if(depth > maxBiomeDepth || maxBiome == null){
@@ -216,19 +216,17 @@ public class BiomeGroup {
         return groups.toArray(new BiomeGroup[0]);
     }
 
-    private static Terrain.Category getCategoryByDepth(float depth, boolean ignoreOceans){
+    private static MainBiomeTransformer.TerrainCategory getCategoryByDepth(float depth, boolean ignoreOceans){
         if(depth < -1.2F){
-            return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.DEEP_OCEAN;
+            return ignoreOceans ? MainBiomeTransformer.TerrainCategory.LOWLANDS : MainBiomeTransformer.TerrainCategory.DEEP_OCEAN;
         }else if(depth < -0.4){
-            return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.OCEAN;
-        }else if(depth < 0.0F){
-            return ignoreOceans ? Terrain.Category.LOWLANDS : Terrain.Category.SEA;
-        }else if(depth < 0.55){
-            return Terrain.Category.LOWLANDS;
-        }else if(depth < 1.1F){
-            return Terrain.Category.MIDLANDS;
+            return ignoreOceans ? MainBiomeTransformer.TerrainCategory.LOWLANDS : MainBiomeTransformer.TerrainCategory.OCEAN;
+        }else if(depth < 0){
+            return MainBiomeTransformer.TerrainCategory.LOWLANDS;
+        }else if(depth < 1F){
+            return MainBiomeTransformer.TerrainCategory.MIDLANDS;
         }else{
-            return Terrain.Category.HIGHLANDS;
+            return MainBiomeTransformer.TerrainCategory.HIGHLANDS;
         }
     }
 

@@ -26,7 +26,7 @@ public class WNRainforestHills extends WNBiome {
                 .category(Category.FOREST)
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.MOIST_TROPICAL)
-                .depth(0.7F)
+                .depth(0.8F)
                 .scale(0.5F)
                 .temperature(0.6F)
                 .downfall(0.9F)
