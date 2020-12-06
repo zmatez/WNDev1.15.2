@@ -1,0 +1,45 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "akuiria:block/rocks/marble/marble_grey_polished",
+		"texture": "akuiria:block/rocks/marble/marble_grey_polished"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 4, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11, 8, 6]},
+			"faces": {
+				"north": {"uv": [4, 12, 12, 16], "texture": "#texture"},
+				"east": {"uv": [4, 12, 12, 16], "texture": "#texture"},
+				"south": {"uv": [4, 12, 12, 16], "texture": "#texture"},
+				"west": {"uv": [4, 12, 12, 16], "texture": "#texture"},
+				"up": {"uv": [4, 4, 12, 12], "texture": "#texture"},
+				"down": {"uv": [4, 4, 12, 12], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [6, 8, 6],
+			"to": [10, 16, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11, 16, 6]},
+			"faces": {
+				"north": {"uv": [6, 4, 10, 12], "texture": "#texture"},
+				"east": {"uv": [6, 4, 10, 12], "texture": "#texture"},
+				"south": {"uv": [6, 4, 10, 12], "texture": "#texture"},
+				"west": {"uv": [6, 4, 10, 12], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [5, 4, 5],
+			"to": [11, 8, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11, 12, 6]},
+			"faces": {
+				"north": {"uv": [5, 8, 11, 12], "texture": "#texture"},
+				"east": {"uv": [5, 8, 11, 12], "texture": "#texture"},
+				"south": {"uv": [5, 8, 11, 12], "texture": "#texture"},
+				"west": {"uv": [5, 8, 11, 12], "texture": "#texture"},
+				"up": {"uv": [5, 5, 11, 11], "texture": "#texture"}
+			}
+		}
+	]
+}

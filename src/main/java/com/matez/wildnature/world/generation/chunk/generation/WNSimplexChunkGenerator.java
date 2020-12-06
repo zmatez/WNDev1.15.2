@@ -2,7 +2,6 @@ package com.matez.wildnature.world.generation.chunk.generation;
 
 
 import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.TerrainLandscape;
 import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
@@ -20,7 +19,6 @@ import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
-import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.*;
 import net.minecraft.block.BlockState;

@@ -39,9 +39,18 @@ public class GridBiomeLayer {
     }
 
     public Biome filterBiomes(int x, int z, Cell cell, Terrain terrain, boolean fakeBiomes) {
-        int directionMove = 20;
-        Cell northCell = provider.getNoiseCell(x + directionMove, z).copy(), southCell = provider.getNoiseCell(x - directionMove, z).copy(), eastCell = provider.getNoiseCell(x, z + directionMove).copy(), westCell = provider.getNoiseCell(x, z - directionMove).copy();
-        Terrain northTerrain = provider.getNoiseTerrain(northCell, x + directionMove, z), southTerrain = provider.getNoiseTerrain(southCell, x - directionMove, z), eastTerrain = provider.getNoiseTerrain(eastCell, x, z + directionMove), westTerrain = provider.getNoiseTerrain(westCell, x, z - directionMove);
+
+        int directionMove = 16;
+
+        Cell northCell = provider.getNoiseCell(x + directionMove, z).copy();
+        Cell southCell = provider.getNoiseCell(x - directionMove, z).copy();
+        Cell eastCell = provider.getNoiseCell(x, z + directionMove).copy();
+        Cell westCell = provider.getNoiseCell(x, z - directionMove).copy();
+
+        Terrain northTerrain = provider.getNoiseTerrain(northCell, x + directionMove, z);
+        Terrain southTerrain = provider.getNoiseTerrain(southCell, x - directionMove, z);
+        Terrain eastTerrain = provider.getNoiseTerrain(eastCell, x, z + directionMove);
+        Terrain westTerrain = provider.getNoiseTerrain(westCell, x, z - directionMove);
 
         //Cell bigIslandOldCenterCell = provider.getNoiseCell(cell.bigIslandCellX,cell.bigIslandCellZ).copy(), smallIslandOldCenterCell = provider.getNoiseCell(cell.smallIslandCellX,cell.smallIslandCellZ).copy();
         //Terrain bigIslandOldCenterTerrain = provider.getNoiseTerrain(bigIslandOldCenterCell), smallIslandOldCenterTerrain = provider.getNoiseTerrain(smallIslandOldCenterCell);

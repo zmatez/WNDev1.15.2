@@ -2498,4 +2498,9 @@ public class WNBlocks {
 
     public static Block HYDROTHERMAL_VENT;
 
+    //TEST DUNGEON DECO
+    public static Block TEST_STONE_BRICKS_ARROWSLIT;
+    public static Block TEST_STONE_BRICKS_PILLAR;
+    public static Block TEST_STONE_BRICKS_THIN_PILLAR;
+
 }

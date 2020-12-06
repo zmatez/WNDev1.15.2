@@ -14,6 +14,7 @@ import com.matez.wildnature.common.compatibility.WNMobSpawnFix;
 import com.matez.wildnature.common.compatibility.WNMobSpawning;
 import com.matez.wildnature.common.effect.WNEffects;
 import com.matez.wildnature.common.items.blowpipe.BlowpipeAmmo;
+import com.matez.wildnature.common.registry.DungeonDecoRegistry;
 import com.matez.wildnature.network.packet.WNPackets;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.config.WNConfig;
@@ -157,6 +158,9 @@ public class WN {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dedicatedServerSetup);
 
 
+        //Used deferred since I don't follow your registering system/habit. Contains only test blocks for Rhino and Cosmic so I leave it up to you where to register it. ;)
+        DungeonDecoRegistry.init();
+
         File f = new File(FMLPaths.GAMEDIR.get().resolve("wildnature/").toString());
         if (!f.exists()) {
             new File(FMLPaths.GAMEDIR.get().resolve("wildnature/").toString()).mkdirs();
@@ -215,6 +219,7 @@ public class WN {
         proxy.init();
         WNPackets.registerAll();
         wnInfo("Setup completed");
+
     }
 
     private void clientRegistries(final FMLClientSetupEvent event) {
@@ -382,8 +387,6 @@ public class WN {
             LOGGER.info("Registering blocks...");
             blockEvent = event;
 
-
-
             WoodRegistry woodRegistry = new WoodRegistry();
             FlowerRegistry flowerRegistry = new FlowerRegistry();
             SaplingRegistry saplingRegistry = new SaplingRegistry();
@@ -392,8 +395,6 @@ public class WN {
             BuildingRegistry buildingRegistry = new BuildingRegistry();
             OtherRegistry otherRegistry = new OtherRegistry();
             OreRegistry oreRegistry = new OreRegistry();
-
-
 
             WNRegistry.registerBlocks(event, woodRegistry.getWoods());
             WNRegistry.registerBlocks(event, furnitureRegistry.getBlock());
