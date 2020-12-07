@@ -47,6 +47,7 @@ public class WNSnowyIsland extends WNBiome {
         WNBiomeFeatures.addSedimentDisks(this);
         WNBiomeFeatures.addDefaultFlowers(this);
         WNBiomeFeatures.addGrass(this, 7);
+        WNBiomeFeatures.addFreezeTopLayer(this);
 
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);

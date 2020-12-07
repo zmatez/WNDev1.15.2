@@ -44,9 +44,8 @@ public class RiverGenerator {
 
         this.meanderWarp = new Warp(warpX,warpZ,64);
 
-        Random random = new Random(seed);
-        xMove = Utilities.rint(-100_000,100_000,random);
-        zMove = Utilities.rint(-100_000,100_000,random);
+        xMove = 0;
+        zMove = 0;
     }
 
     public void generate(Cell cell, int x, int z){

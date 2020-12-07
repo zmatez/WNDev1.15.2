@@ -87,6 +87,9 @@ public class RiverLilyFeature extends Feature<CountConfig> {
                 mutable.move(riverSideDirection,Utilities.rint(1,3,rand));
 
                 try {
+                    if(!worldIn.getWorld().chunkExists(mutable.getX()/4,mutable.getZ()/4)){
+                        break;
+                    }
                     if (worldIn.getFluidState(mutable.down()).getFluid() != Fluids.WATER) {
                         break;
                     }

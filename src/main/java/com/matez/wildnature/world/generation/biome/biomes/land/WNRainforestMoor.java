@@ -1,43 +1,99 @@
 package com.matez.wildnature.world.generation.biome.biomes.land;
 
-import com.matez.wildnature.common.blocks.config.ConfigSettings;
+import com.matez.wildnature.common.blocks.FloweringBushBase;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.world.generation.biome.features.LogType;
+import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
-import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.orange1;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.orange2;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.orange3;
+import com.matez.wildnature.world.generation.structures.nature.woods.ebony.ebony_shrub1;
+import com.matez.wildnature.world.generation.structures.nature.woods.ebony.ebony_shrub2;
+import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
+import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class WNRainforestMoor extends WNBiome {
     public WNRainforestMoor(String name) {
-        super(name, (new WNBiomeBuilder()).surfaceBuilder(SurfaceBuilder.DEFAULT, WNSurfaceBuilders.TROPICAL_CONFIG).precipitation(RainType.RAIN).category(Category.RIVER).depth(ConfigSettings.riverDepth).scale(0.1F).temperature(0.5F).downfall(0.5F).waterColor(ConfigSettings.riverWaterColor).waterFogColor(ConfigSettings.muddyWaterFogColor).logTypes(LogType.NONE).parent(null));
+        super(name, (new WNBiomeBuilder())
+                .surfaceBuilder(SurfaceBuilder.DEFAULT, WNSurfaceBuilders.TROPICAL_CONFIG)
+                .precipitation(RainType.RAIN)
+                .category(Category.JUNGLE)
+                .topography(WNBiomeBuilder.Topography.LOWLANDS)
+                .climate(WNBiomeBuilder.Climate.MOIST_TROPICAL)
+                .depth(0.35F)
+                .scale(0.07F)
+                .temperature(0.7F)
+                .downfall(0.9F)
+                .waterColor(4159204)
+                .waterFogColor(329011)
+                .logTypes(LogType.JUNGLE_SMALL,LogType.JUNGLE_MEDIUM, LogType.SMALL_EBONY, LogType.ORANGE)
+                .parent("minecraft:jungle"));
+
+
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
-        DefaultBiomeFeatures.addCarvers(this);
-        DefaultBiomeFeatures.addStructures(this);
-        DefaultBiomeFeatures.addLakes(this);
-        DefaultBiomeFeatures.addMonsterRooms(this);
-        DefaultBiomeFeatures.addStoneVariants(this);
-        DefaultBiomeFeatures.addOres(this);
-        DefaultBiomeFeatures.addSedimentDisks(this);
-        DefaultBiomeFeatures.addScatteredOakTrees(this);
-        DefaultBiomeFeatures.addDefaultFlowers(this);
-        DefaultBiomeFeatures.addSparseGrass(this);
-        DefaultBiomeFeatures.addMushrooms(this);
-        DefaultBiomeFeatures.addReedsAndPumpkins(this);
-        DefaultBiomeFeatures.addSprings(this);
-        WNBiomeFeatures.addWaterlilies(this, Blocks.LILY_PAD, 15);
-        WNBiomeFeatures.addSeagrass(this, 48);
-        this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(EntityType.SQUID, 2, 1, 4));
-        this.addSpawn(EntityClassification.WATER_CREATURE, new SpawnListEntry(EntityType.SALMON, 5, 1, 5));
+        WNBiomeFeatures.addStrongholds(this);
+        WNBiomeFeatures.addCarvers(this);
+        WNBiomeFeatures.addStructures(this);
+        WNBiomeFeatures.addLakes(this);
+        WNBiomeFeatures.addMonsterRooms(this);
+        WNBiomeFeatures.addDoubleFlowers(this);
+        WNBiomeFeatures.addStoneVariants(this);
+        WNBiomeFeatures.addOres(this);
+        WNBiomeFeatures.addSedimentDisks(this);
+        WNBiomeFeatures.addDefaultFlowers(this);
+        WNBiomeFeatures.addGrass(this, 18);
+        WNBiomeFeatures.addBamboo(this);
+
+        WNBiomeFeatures.addReedsAndPumpkins(this);
+        WNBiomeFeatures.addSprings(this);
+
+        WNBiomeFeatures.addPlant(this, WNBlocks.ANTHURIUM_RED.getDefaultState().with(FloweringBushBase.FLOWERING, true), 2);
+        WNBiomeFeatures.addPlant(this, WNBlocks.CANA_BULB_PINK.getDefaultState().with(FloweringBushBase.FLOWERING, true), 2);
+        WNBiomeFeatures.addPlant(this, WNBlocks.CANA_BULB_RED.getDefaultState().with(FloweringBushBase.FLOWERING, true), 2);
+        WNBiomeFeatures.addPlant(this, WNBlocks.GERANIUM_PINK.getDefaultState().with(FloweringBushBase.FLOWERING, true), 1);
+        WNBiomeFeatures.addPlant(this, WNBlocks.LEAF_PILE.getDefaultState(), 3);
+        WNBiomeFeatures.addPlant(this, WNBlocks.CLOVER.getDefaultState(), 3);
+
+        WNBiomeFeatures.addTree(this, new jungle_small1(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small2(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_small3(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_medium1(), 1);
+        WNBiomeFeatures.addTree(this, new jungle_medium2(), 1);
+        WNBiomeFeatures.addTree(this, new jungle_medium3(), 1);
+        WNBiomeFeatures.addTree(this, new orange1(), 1);
+        WNBiomeFeatures.addTree(this, new orange2(), 1);
+        WNBiomeFeatures.addTree(this, new orange3(), 1);
+        WNBiomeFeatures.addTree(this, new shrub1(), 1);
+        WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(shrub1.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 10);
+        WNBiomeFeatures.addTree(this, new ebony_shrub1(), 1);
+        WNBiomeFeatures.addTree(this, new ebony_shrub2(), 1);
+        plantRate = 4;
+        treeRate = 4;
+
+        WNBiomeFeatures.addBlob(this, Blocks.PODZOL.getDefaultState(), 2, true, false, 8);
+
+        applyPlants();
+        applyTrees();
+
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.PIG, 10, 4, 4));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.CHICKEN, 10, 4, 4));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.PARROT, 40, 1, 2));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.PANDA, 1, 1, 2));
+        this.addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.CHICKEN, 10, 4, 4));
         this.addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(EntityType.BAT, 10, 8, 8));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.SPIDER, 100, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.ZOMBIE, 95, 4, 4));
-        this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.DROWNED, 100, 1, 1));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.SKELETON, 100, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.CREEPER, 100, 4, 4));
@@ -46,4 +102,19 @@ public class WNRainforestMoor extends WNBiome {
         this.addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.WITCH, 5, 1, 1));
 
     }
+
+
+    @OnlyIn(Dist.CLIENT)
+    public int getGrassColor(BlockPos pos) {
+        double noise = INFO_NOISE.noiseAt((double) pos.getX() * 0.0225D, (double) pos.getZ() * 0.0225D, false);
+        return customColor(noise, -0.1D, 6868542, 1630873);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getFoliageColor(BlockPos pos) {
+        double noise = INFO_NOISE.noiseAt((double) pos.getX() * 0.0225D, (double) pos.getZ() * 0.0225D, false);
+        return customColor(noise, -0.1D, 3258892, 3589222);
+    }
+
+
 }

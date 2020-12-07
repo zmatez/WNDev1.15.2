@@ -23,7 +23,7 @@ public class WNMangroveBayou extends WNBiome {
                 .category(Category.FOREST)
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.MOIST_TROPICAL)
-                .depth(-0.2F)
+                .depth(0.2F)
                 .scale(0.1F)
                 .temperature(0.8F)
                 .downfall(0.9F)

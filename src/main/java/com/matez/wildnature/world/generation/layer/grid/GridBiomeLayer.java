@@ -121,20 +121,18 @@ public class GridBiomeLayer {
             smallIslandCenterBiomeGroup = mainBiomeTransformer.bgApply(smallIslandOldCenterCell, smallIslandOldCenterTerrain);
         }*/
 
-        biomeGroup = smallIslandTransformer.bgApply(biomeGroup, cell);
+
         biomeGroup = bigIslandTransformer.bgApply(biomeGroup, cell);
 
-        northBiomeGroup = smallIslandTransformer.bgApply(northBiomeGroup, northCell);
         northBiomeGroup = bigIslandTransformer.bgApply(northBiomeGroup, northCell);
-        southBiomeGroup = smallIslandTransformer.bgApply(southBiomeGroup, southCell);
         southBiomeGroup = bigIslandTransformer.bgApply(southBiomeGroup, southCell);
-        eastBiomeGroup = smallIslandTransformer.bgApply(eastBiomeGroup, eastCell);
         eastBiomeGroup = bigIslandTransformer.bgApply(eastBiomeGroup, eastCell);
-        westBiomeGroup = smallIslandTransformer.bgApply(westBiomeGroup, westCell);
         westBiomeGroup = bigIslandTransformer.bgApply(westBiomeGroup, westCell);
 
         biomeGroup = edgeTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell);
         biomeGroup = shoreTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell);
+
+        biomeGroup = smallIslandTransformer.bgApply(biomeGroup, cell);
 
         if(fakeBiomes) {
             biomeGroup = riverValleyTransformer.bgApply(biomeGroup, cell);
@@ -173,5 +171,9 @@ public class GridBiomeLayer {
             }
         }
         return biome;
+    }
+
+    public BiomeTransformer getMainBiomeTransformer() {
+        return mainBiomeTransformer;
     }
 }

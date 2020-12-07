@@ -127,6 +127,7 @@ public class WNBiomes {
     public static Biome PoldersEdge = new WNPoldersEdge("polders_edge");
     public static Biome Shrublands = new WNShrublands("shrublands");
     public static Biome HillyShrublands = new WNHillyShrublands("hilly_shrublands");
+    public static Biome ShrublandPlateau = new WNShrublandPlateau("shrubland_plateau");
     public static Biome Scrublands = new WNScrublands("scrublands");
     public static Biome HazelFields = new WNHazelFields("hazel_fields");
 
@@ -143,6 +144,7 @@ public class WNBiomes {
     //PRAIRIE
     public static Biome Prairie = new WNPrairie("prairie");
     public static Biome PrairieHills = new WNPrairieHills("prairie_hills");
+    public static Biome PrairiePlateau = new WNPrairiePlateau("prairie_plateau");
     public static Biome RapeseedField = new WNRapeseedField("rapeseed_field");
     public static Biome CornField = new WNCornField("corn_field");
     public static Biome CottonFields = new WNCottonFields("cotton_fields");
@@ -562,7 +564,10 @@ public class WNBiomes {
 
         register(BiomeGroup.SingleBuilder
                         .configure(9, WNBiomes.Shrublands,
-                                new SubBiome(WNBiomes.HillyShrublands, 8, Type.HILLS)
+                                new SubBiome(WNBiomes.Shrublands, 15, Type.HILLS),
+                                new SubBiome(WNBiomes.HillyShrublands, 10, Type.HILLS),
+                                new SubBiome(WNBiomes.ShrublandPlateau, 3, Type.PLATEAU)
+
                         ),
                 Type.PLAINS, Type.PLATEAU);
 
@@ -594,8 +599,11 @@ public class WNBiomes {
 
         register(BiomeGroup.SingleBuilder
                         .configure(10, WNBiomes.Prairie,
-                                new SubBiome(WNBiomes.PrairieHills, 4, Type.HILLS),
-                                new SubBiome(WNBiomes.CottonFields, 1, Type.RARE)
+                                new SubBiome(WNBiomes.Prairie, 14),
+                                new SubBiome(WNBiomes.PrairieHills, 10, Type.HILLS),
+                                new SubBiome(WNBiomes.CottonFields, 1, Type.RARE),
+                                new SubBiome(WNBiomes.PrairiePlateau, 2, Type.PLATEAU)
+
                         ),
                 Type.PLAINS, Type.DRY);
 
@@ -1216,23 +1224,17 @@ public class WNBiomes {
         Biome[] temperate_deep_oceans = new Biome[]{
                 Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_COLD_OCEAN
         };
-        Biome[] temperate_oceans = new Biome[]{
-                Biomes.LUKEWARM_OCEAN, Biomes.OCEAN, Biomes.COLD_OCEAN
-        };
-        Biome[] cold_oceans = new Biome[]{
-                Biomes.COLD_OCEAN, Biomes.FROZEN_OCEAN
-        };
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure("island", WNBiomes.Island), 6, IslandBiome.IslandType.SMALL, temperate_oceans, Type.PLAINS, Type.WATER
+                BiomeGroup.SingleBuilder.configure("island", WNBiomes.Island), 6, IslandBiome.IslandType.SMALL, temperate_deep_oceans, Type.PLAINS, Type.WATER
         );
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure("forested_island", WNBiomes.ForestedIsland), 4, IslandBiome.IslandType.SMALL, temperate_oceans, Type.FOREST, Type.WATER
+                BiomeGroup.SingleBuilder.configure("forested_island", WNBiomes.ForestedIsland), 4, IslandBiome.IslandType.SMALL, temperate_deep_oceans, Type.FOREST, Type.WATER
         );
 
         IslandBiome.register(
-                BiomeGroup.SingleBuilder.configure("snowy_island", WNBiomes.SnowyIsland), 6, IslandBiome.IslandType.SMALL, cold_oceans, Type.PLAINS, Type.COLD, Type.SNOWY, Type.WATER
+                BiomeGroup.SingleBuilder.configure("snowy_island", WNBiomes.SnowyIsland), 6, IslandBiome.IslandType.SMALL, cold_deep_oceans, Type.PLAINS, Type.COLD, Type.SNOWY, Type.WATER
         );
 
         IslandBiome.register(

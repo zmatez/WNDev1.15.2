@@ -2466,10 +2466,10 @@
   "death.attack.poisonIvy": "%1$s tested mother nature's power.",
   "death.attack.thistle": "%1$s was pricked by a thistle.",
   "death.attack.nettle": "%1$s thought it was just a grass...",
-  "death.attack.poisonShroom": "%1$s ",
-  "death.attack.monkshoodBlue": "%1$s sniffed wrong flower.",
+  "death.attack.poison_shroom": "%1$s stepped on a poison shroom",
+  "death.attack.monkshood_blue": "%1$s sniffed wrong flower.",
   "death.attack.belladonna": "%1$s realized those berries were not grapes.",
-  "death.attack.rowanShoot": "%1$s choked on a rowanberry.",
+  "death.attack.rowan_shoot": "%1$s choked on a rowanberry.",
 
   "effect.wildnature.ivy_poison": "Poison Ivy",
   "effect.wildnature.shroom_poison": "Shroom Poison",

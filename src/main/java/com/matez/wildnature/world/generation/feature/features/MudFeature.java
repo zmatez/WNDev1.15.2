@@ -24,7 +24,6 @@ public class MudFeature extends Feature<CountConfig> {
       if(!worldIn.getDimension().isSurfaceWorld()){
          return false;
       }
-      int i = 0;
       int xzDiff = 8;
       int yDiff = 6;
       for(int j = 0; j < config.count; ++j) {
@@ -46,9 +45,10 @@ public class MudFeature extends Feature<CountConfig> {
                   }
                }
             }
+            return true;
          }
       }
 
-      return i > 0;
+      return false;
    }
 }

@@ -3,8 +3,10 @@ package com.matez.wildnature.common.blocks;
 import com.matez.wildnature.client.gui.tileEntities.item.ItemTileEntity;
 import com.matez.wildnature.client.render.IRenderLayer;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -16,7 +18,9 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class TableBase extends HorizontalBase implements IRenderLayer {
+import javax.annotation.Nullable;
+
+public class TableBase extends HorizontalBase implements IRenderLayer, ITileEntityProvider{
     public TableBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(properties, builder, regName);
         ItemTileEntity.SUPPORTED_BLOCKS.add(this);
@@ -75,18 +79,29 @@ public class TableBase extends HorizontalBase implements IRenderLayer {
     }
 
     @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        ItemTileEntity entity = new ItemTileEntity();
-        entity.setFacing(state.get(FACING));
-        return entity;
-    }
-
-    @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         TileEntity entity = worldIn.getTileEntity(pos);
         if(entity!=null && entity instanceof ItemTileEntity){
             ((ItemTileEntity)entity).destroy(worldIn,pos);
         }
         super.onBlockHarvested(worldIn, pos, state, player);
+    }
+
+    public boolean eventReceived(BlockState state, World worldIn, BlockPos pos, int id, int param) {
+        super.eventReceived(state, worldIn, pos, id, param);
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        return tileentity != null && tileentity.receiveClientEvent(id, param);
+    }
+
+    @Nullable
+    public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider)tileentity : null;
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(IBlockReader worldIn) {
+        ItemTileEntity entity = new ItemTileEntity();
+        return entity;
     }
 }

@@ -19,6 +19,7 @@ public class OtherRegistry {
 
     public OtherRegistry(){
         block = new Block[]{
+
                 WNBlocks.GLOWING_CRYSTAL_BLUE = new GlowingCrystalBase(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().harvestTool(ToolType.PICKAXE),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("glowing_crystal_blue")),
                 WNBlocks.GLOWING_CRYSTAL_ORANGE = new GlowingCrystalBase(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().harvestTool(ToolType.PICKAXE),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("glowing_crystal_orange")),
                 WNBlocks.GLOWING_CRYSTAL_RED = new GlowingCrystalBase(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().harvestTool(ToolType.PICKAXE),new Item.Properties().group(WNTabs.CAVES), WN.RegistryEvents.location("glowing_crystal_red")),

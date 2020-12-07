@@ -20,6 +20,7 @@ public class ContinentGenerator {
         Random random = new Random(seed);
         xMove = Utilities.rint(-100_000,100_000,random);
         zMove = Utilities.rint(-100_000,100_000,random);
+        WN.LOGGER.debug("Continent move: " + xMove + " " + zMove);
     }
 
     public float generateContinent(int dx, int dz){

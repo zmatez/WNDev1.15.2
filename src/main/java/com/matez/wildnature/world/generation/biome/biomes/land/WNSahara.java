@@ -23,7 +23,7 @@ public class WNSahara extends WNBiome {
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.DRY_TROPICAL)
                 .depth(0.9F)
-                .scale(1F)
+                .scale(0.7F)
                 .temperature(1F)
                 .downfall(0.0F)
                 .waterColor(4159204)

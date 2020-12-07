@@ -1,5 +1,6 @@
 package com.matez.wildnature.common.registry.blocks;
 
+import com.matez.wildnature.common.blocks.boundingboxes.StoneSpike;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.blocks.*;
 import com.matez.wildnature.client.tabs.WNTabs;
@@ -183,6 +184,8 @@ public class FurnitureRegistry {
                 WNBlocks.LIGHTNING_BUG = new LightningBugBlock(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.1F,0F).doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH).lightValue(5),new Item.Properties().group(WNTabs.SURFACE), WN.RegistryEvents.location("lightning_bug")),
                 WNBlocks.GLOWSHROOM_LANTERN = new ShroomLantern(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(10),new Item.Properties().group(WNTabs.FURNITURE), WN.RegistryEvents.location("glowshroom_lantern")),
                 WNBlocks.ICESHROOM_LANTERN = new ShroomLantern(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(10),new Item.Properties().group(WNTabs.FURNITURE), WN.RegistryEvents.location("iceshroom_lantern")),
+
+                WNBlocks.CHRISTMAS_TREE = new ChristmasTreeBlock(Block.Properties.create(Material.LEAVES).sound(SoundType.SWEET_BERRY_BUSH),new Item.Properties().group(WNTabs.FURNITURE), WN.RegistryEvents.location("christmas_tree")),
 
         };
     }

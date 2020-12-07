@@ -24,6 +24,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
+import net.minecraft.world.biome.Biome;
 
 public class WNCommand {
 
@@ -38,6 +39,15 @@ public class WNCommand {
         }).then(Commands.argument("biome", new BiomeArgument()).executes((context -> {
             ServerPlayerEntity player = context.getSource().asPlayer();
             return BiomeArgument.findTeleportBiome(context.getSource(), player, BiomeArgument.getValue(context, "biome"));
+        })))).then(Commands.literal("info").requires((perm) -> {
+            return perm.hasPermissionLevel(0);
+        }).then(Commands.argument("biome", new BiomeArgument()).executes((context -> {
+            ServerPlayerEntity player = context.getSource().asPlayer();
+            Biome biome = BiomeArgument.getValue(context, "biome");
+            ITextComponent s = new StringTextComponent(TextFormatting.GREEN+"Biome Info "+TextFormatting.GRAY+" - - - "+TextFormatting.LIGHT_PURPLE+" Biome: " + TextFormatting.AQUA  + new TranslationTextComponent(biome.getTranslationKey()).getFormattedText())
+                    .appendSibling(BiomeListCommand.getBiomeInfo(biome));
+            WN.sendChatMessage(player,s);
+            return 1;
         })))).then(Commands.literal("list").then(Commands.argument("page", IntegerArgumentType.integer(1)).executes((context -> {
             return new BiomeListCommand((PlayerEntity) context.getSource().getEntity()).showPage(IntegerArgumentType.getInteger(context, "page"));
         })))).then(Commands.literal("sub").then(Commands.argument("biome", new BiomeArgument()).then(Commands.argument("page", IntegerArgumentType.integer(1)).executes((context -> {

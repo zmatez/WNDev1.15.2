@@ -32,6 +32,9 @@ public class BiomeGroup {
     }
 
     public String getName() {
+        if(name.isEmpty()){
+            return "not named group";
+        }
         return name;
     }
 
@@ -219,9 +222,9 @@ public class BiomeGroup {
     private static MainBiomeTransformer.TerrainCategory getCategoryByDepth(float depth, boolean ignoreOceans){
         if(depth < -1.2F){
             return ignoreOceans ? MainBiomeTransformer.TerrainCategory.LOWLANDS : MainBiomeTransformer.TerrainCategory.DEEP_OCEAN;
-        }else if(depth < -0.4){
+        }else if(depth < -0.3){
             return ignoreOceans ? MainBiomeTransformer.TerrainCategory.LOWLANDS : MainBiomeTransformer.TerrainCategory.OCEAN;
-        }else if(depth < 0){
+        }else if(depth < 0.5){
             return MainBiomeTransformer.TerrainCategory.LOWLANDS;
         }else if(depth < 1F){
             return MainBiomeTransformer.TerrainCategory.MIDLANDS;

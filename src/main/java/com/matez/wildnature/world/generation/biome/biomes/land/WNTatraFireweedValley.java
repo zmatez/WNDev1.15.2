@@ -41,7 +41,6 @@ public class WNTatraFireweedValley extends WNBiome {
                 .parent(null));
 
 
-        WNBiomeFeatures.addFreezeTopLayer(this);
         WNBiomeFeatures.addMineshafts(this, MineshaftStructure.Type.NORMAL);
         WNBiomeFeatures.addStrongholds(this);
         WNBiomeFeatures.addVillages(this, "village/taiga/town_centers", 6);

@@ -16,10 +16,9 @@ import net.minecraft.world.World;
 
 public class MudBlock extends BlockBase {
 
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 
     public MudBlock(Properties properties, Item.Properties builder, ResourceLocation regName) {
-        super(properties, builder, regName);
+        super(properties.doesNotBlockMovement(), builder, regName);
     }
 
     @Override
@@ -32,7 +31,13 @@ public class MudBlock extends BlockBase {
         entityIn.setMotionMultiplier(state, new Vec3d(0.25D, (double)0.05F, 0.25D));
     }
 
-    public VoxelShape getCollisionShape(BlockState p_220071_1_, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {
-        return SHAPE;
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+        return false;
+    }
+
+    @Override
+    public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return 0.2f;
     }
 }

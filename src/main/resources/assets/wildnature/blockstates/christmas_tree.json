@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "wildnature:block/christmas_tree"
+    },
+    "facing=east": {
+      "model": "wildnature:block/christmas_tree",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "wildnature:block/christmas_tree",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "wildnature:block/christmas_tree",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

@@ -1,5 +1,6 @@
 package com.matez.wildnature.world.generation.transformer.transformers;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.grid.Cell;
@@ -30,8 +31,8 @@ public class ShoreTransformer extends BiomeTransformer {
     @Override
     protected BiomeGroup apply(BiomeGroup oldBiomeGroup, BiomeGroup northBiomeGroup, BiomeGroup southBiomeGroup, BiomeGroup eastBiomeGroup, BiomeGroup westBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, MainBiomeTransformer.TerrainCategory category, float identity) {
         for (BiomeGroup ocean : OCEANS) {
-            if (oldBiomeGroup.getId() == ocean.getId()) {
-                if (northBiomeGroup.getId() != ocean.getId() || southBiomeGroup.getId() != ocean.getId() || eastBiomeGroup.getId() != ocean.getId() || westBiomeGroup.getId() != ocean.getId()) {
+            if (northBiomeGroup.getId() == ocean.getId() || southBiomeGroup.getId() == ocean.getId() || eastBiomeGroup.getId() == ocean.getId() || westBiomeGroup.getId() == ocean.getId()) {
+                if (oldBiomeGroup.getId() != ocean.getId()) {
                     if (oldBiomeGroup.getBaseBiome() == Biomes.MUSHROOM_FIELDS) {
                         return WNBiomes.MUSHROOM_FIELD_SHORE;
                     }

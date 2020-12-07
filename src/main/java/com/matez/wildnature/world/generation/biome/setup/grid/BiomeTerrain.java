@@ -61,6 +61,15 @@ public class BiomeTerrain {
         if(types.length == 0){
             WN.LOGGER.warn("No types registered for group " + group.toString());
         }
+
+        BiomeDictionary.addTypes(group.getBaseBiome(),types);
+        for (SubBiome subBiome : group.getSubBiomes()) {
+            ArrayList<BiomeDictionary.Type> typesArraylist = new ArrayList<>();
+            typesArraylist.addAll(Arrays.asList(types));
+            typesArraylist.addAll(Arrays.asList(subBiome.getAddionalTypes()));
+            BiomeDictionary.addTypes(subBiome.getBiome(),typesArraylist.toArray(new BiomeDictionary.Type[0]));
+            typesArraylist.clear();
+        }
     }
 
     public static ArrayList<BiomeTerrain> getTerrains() {

@@ -4,6 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.other.Utilities;
+import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.biome.setup.grid.BiomeGroup;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.transformer.transformers.MainBiomeTransformer;
@@ -23,7 +24,7 @@ public abstract class BiomeTransformer {
      * @return biome group
      */
     public BiomeGroup bgApply(Cell cell) {
-        return bgApply(TempCategory.getFromTemperature(-1, 1, cell.temparature), WetCategory.getFromMoisture(-1, 1, cell.moisture), cell, getCategoryFromContinent(cell.continentValue), cell.biomeCellIdentity);
+        return bgApply(TempCategory.getFromTemperature(-1, 1, cell.cellTemparature), WetCategory.getFromMoisture(-1, 1, cell.cellMoisture), cell, getCategoryFromContinent(cell.cellContinent), cell.biomeCellIdentity);
     }
     protected BiomeGroup bgApply(TempCategory tempCategory, WetCategory wetCategory, Cell cell, MainBiomeTransformer.TerrainCategory category, float identity) {
         return null;
@@ -260,7 +261,7 @@ public abstract class BiomeTransformer {
     public static ArrayListMultimap<Integer, BiomeGroup> getBiomesByTemperatureAndMoisture(List<BiomeGroup> filter, TempCategory tempCategory, WetCategory wetCategory) {
         ArrayListMultimap<Integer, BiomeGroup> multimap = ArrayListMultimap.create();
         for (BiomeGroup biomeGroup : filter) {
-            TempCategory biomeTempCategory = TempCategory.getFromTemperature(-0.1f, 1f, biomeGroup.getBaseBiome().getDownfall());
+            TempCategory biomeTempCategory = TempCategory.getFromTemperature(-0.1f, 1f, biomeGroup.getBaseBiome().getDefaultTemperature());
             WetCategory biomeWetCategory = WetCategory.getFromMoisture(0f, 1f, biomeGroup.getBaseBiome().getDownfall());
             int tempDistance = Math.abs(Math.min(tempCategory.ordinal(),biomeTempCategory.ordinal()) - Math.max(tempCategory.ordinal(),biomeTempCategory.ordinal()));
             int wetDistance = Math.abs(Math.min(wetCategory.ordinal(),biomeWetCategory.ordinal()) - Math.max(wetCategory.ordinal(),biomeWetCategory.ordinal()));
@@ -282,8 +283,40 @@ public abstract class BiomeTransformer {
     public static List<BiomeGroup> getBiomesByTemperatureAndMoisture(List<BiomeGroup> filter, MainBiomeTransformer.TerrainCategory category, TempCategory tempCategory, WetCategory wetCategory) {
         ArrayListMultimap<Integer, BiomeGroup> multimap = getBiomesByTemperatureAndMoisture(filter,tempCategory,wetCategory);
         List<BiomeGroup> groups = new ArrayList<>(multimap.get(0));
-        if (!groups.isEmpty() && (category == MainBiomeTransformer.TerrainCategory.DEEP_OCEAN || category == MainBiomeTransformer.TerrainCategory.OCEAN)) {
-            return groups;
+        if ((category == MainBiomeTransformer.TerrainCategory.DEEP_OCEAN || category == MainBiomeTransformer.TerrainCategory.OCEAN)) {
+            List<BiomeGroup> oceans = new ArrayList<>();
+            if(tempCategory == TempCategory.ICY){
+                if(category == MainBiomeTransformer.TerrainCategory.OCEAN){
+                    oceans.add(WNBiomes.FROZEN_OCEAN);
+                }else {
+                    oceans.add(WNBiomes.DEEP_FROZEN_OCEAN);
+                }
+            }else if(tempCategory == TempCategory.COLD){
+                if(category == MainBiomeTransformer.TerrainCategory.OCEAN){
+                    oceans.add(WNBiomes.COLD_OCEAN);
+                }else {
+                    oceans.add(WNBiomes.DEEP_COLD_OCEAN);
+                }
+            }else if(tempCategory == TempCategory.TEMPERATE){
+                if(category == MainBiomeTransformer.TerrainCategory.OCEAN){
+                    oceans.add(WNBiomes.OCEAN);
+                }else {
+                    oceans.add(WNBiomes.DEEP_OCEAN);
+                }
+            }else if(tempCategory == TempCategory.WARM){
+                if(category == MainBiomeTransformer.TerrainCategory.OCEAN){
+                    oceans.add(WNBiomes.LUKEWARM_OCEAN);
+                }else {
+                    oceans.add(WNBiomes.DEEP_LUKEWARM_OCEAN);
+                }
+            }else {
+                if(category == MainBiomeTransformer.TerrainCategory.OCEAN){
+                    oceans.add(WNBiomes.WARM_OCEAN);
+                }else {
+                    oceans.add(WNBiomes.DEEP_WARM_OCEAN);
+                }
+            }
+            return oceans.isEmpty() ? groups : oceans;
         }
         int i = 0;
         while(groups.size() < Math.min(filter.size(), 5)){

@@ -29,7 +29,7 @@ public class WNWoodedOutback extends WNBiome {
                 .depth(0.15F)
                 .scale(0.03F)
                 .temperature(0.9F)
-                .downfall(0.8F)
+                .downfall(0.3F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
                 .logTypes(LogType.ACACIA,LogType.NUYTSIA)

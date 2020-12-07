@@ -109,11 +109,11 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addBlob(Biome biomeIn, BlockState block, int startRadius, boolean surfaceBlob, boolean undergroundBlob, int frequency){
-        biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(frequency))));
+        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(frequency))));
     }
 
     public static void addBlobWithCountRangePlacement(Biome biomeIn, BlockState block, int startRadius, boolean surfaceBlob, boolean undergroundBlob, int count, int bottom, int top){
-        biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(count,bottom,0,top))));
+        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(count,bottom,0,top))));
     }
 
     public static void addTatraStoneTypes(Biome biomeIn){
@@ -267,7 +267,7 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addJellyIslands(Biome biomeIn){
-        biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.JELLY_ISLAND_FEATURE.withConfiguration(new NoFeatureConfig()).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 25, 0, 43))));
+        biomeIn.addFeature(GenerationStage.Decoration.RAW_GENERATION, WNFeatures.JELLY_ISLAND_FEATURE.withConfiguration(new NoFeatureConfig()).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 25, 0, 43))));
     }
 
     public static void addJellies(Biome biomeIn){
@@ -369,14 +369,14 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addQuicksand(Biome biomeIn){
-        if(biomeIn.getTempCategory() == Biome.TempCategory.WARM && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SANDY) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DRY) && biomeIn.getCategory() == Biome.Category.DESERT) {
-            biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.QUICKSAND_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
+        if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SANDY) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.DRY) && biomeIn.getCategory() == Biome.Category.DESERT) {
+            biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, WNFeatures.QUICKSAND_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(4))));
         }
     }
 
     public static void addMud(Biome biomeIn){
-        if(BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.LUSH) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SWAMP) && biomeIn.getCategory() == Biome.Category.SWAMP) {
-            biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.MUD_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(8))));
+        if((BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.LUSH) && BiomeDictionary.getTypes(biomeIn).contains(BiomeDictionary.Type.SWAMP)) || biomeIn.getCategory() == Biome.Category.SWAMP) {
+            biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, WNFeatures.MUD_FEATURE.withConfiguration(new CountConfig(12)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(3))));
         }
     }
 
@@ -599,7 +599,7 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addShells(Biome biomeIn){
-        if(biomeIn==Biomes.BEACH || biomeIn==WNBiomes.Beach || biomeIn==WNBiomes.WhiteBeach) {
+        if(biomeIn==Biomes.BEACH || biomeIn==WNBiomes.Beach || biomeIn==WNBiomes.WhiteBeach|| biomeIn==WNBiomes.WhitePalmBeach|| biomeIn==WNBiomes.BeachDunes|| biomeIn==WNBiomes.PalmBeach) {
             biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, WNFeatures.SHELL_FEATURE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.shellRarity.get(), 50, 0, 69))));
         }
     }

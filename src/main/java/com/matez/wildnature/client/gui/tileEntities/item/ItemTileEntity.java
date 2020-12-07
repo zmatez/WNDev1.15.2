@@ -1,6 +1,8 @@
 package com.matez.wildnature.client.gui.tileEntities.item;
 
 import com.matez.wildnature.client.gui.initGuis;
+import com.matez.wildnature.common.blocks.TableBase;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,6 +31,9 @@ public class ItemTileEntity extends TileEntity implements ITickableTileEntity{
 
     public ItemTileEntity() {
         super(initGuis.ITEM_TILE_ENTITY);
+        if(this.getBlockState().getBlock() instanceof TableBase){
+            setFacing(this.getBlockState().get(TableBase.FACING));
+        }
     }
 
     public void setFacing(Direction facing) {
@@ -90,6 +95,7 @@ public class ItemTileEntity extends TileEntity implements ITickableTileEntity{
                     placedStack.onItemUseFinish(entity.getEntityWorld(),entity);
                     eatingTime = 0;
                     eatingPlayer = null;
+                    placedStack.shrink(1);
                 }
             }
         }
@@ -137,9 +143,15 @@ public class ItemTileEntity extends TileEntity implements ITickableTileEntity{
     @Override
     public void read(CompoundNBT compound) {
         super.read(compound);
+
         placedStack = Utilities.loadItem(compound);
         if(compound.contains("facing")){
             facing = Direction.byHorizontalIndex(compound.getInt("facing"));
+        }
+        if(placedStack != null) {
+            WN.LOGGER.debug("Reading " + placedStack.getDisplayName().getFormattedText());
+        }else{
+            WN.LOGGER.debug("Reading null");
         }
     }
 
@@ -150,7 +162,13 @@ public class ItemTileEntity extends TileEntity implements ITickableTileEntity{
             Utilities.saveItem(compound,placedStack);
         }
         compound.putInt("facing",facing.getHorizontalIndex());
+        if(placedStack != null) {
+            WN.LOGGER.debug("Writing " + placedStack.getDisplayName().getFormattedText());
+        }else{
+            WN.LOGGER.debug("Writing null");
+        }
         return compound;
     }
+
 
 }

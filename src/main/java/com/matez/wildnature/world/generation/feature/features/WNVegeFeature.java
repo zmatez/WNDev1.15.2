@@ -6,6 +6,7 @@ import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.util.other.WeightedList;
 import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.configs.BlockFeatureConfig;
+import com.matez.wildnature.world.generation.transformer.BiomeTransformer;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -72,66 +73,69 @@ public class WNVegeFeature extends Feature<NoFeatureConfig> {
     }
 
     public static void init(){
-        new BushEntry(WNBlocks.BROCCOLI_PLANT.getDefaultState(), Biome.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CABBAGE_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CAULIFLOWER_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CELERY_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CHIVES_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CUCUMBER_PLANT.getDefaultState(), Biome.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.GARLIC_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.GINGER_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.GREEN_PEPPER_PLANT.getDefaultState(), Biome.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.HORSE_RADISH_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.LEEK_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.LETTUCE_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.ONION_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.PEANUT_PLANT.getDefaultState(), Biome.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.PEA_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.RED_ONION_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.RED_PEPPER_PLANT.getDefaultState(), Biome.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.RHUBARB_PLANT.getDefaultState(), Biome.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.RICE_PLANT.getDefaultState(), Biome.TempCategory.WARM,5,false, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
-        new BushEntry(WNBlocks.TOMATO_PLANT.getDefaultState(), Biome.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.TURNIP_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,4, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.GREEN_BEANS_BUSH.getDefaultState(), Biome.TempCategory.MEDIUM,4,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.GREEN_BEANS_BUSH.getDefaultState(), Biome.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.EGGPLANT_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,3, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.EGGPLANT_PLANT.getDefaultState(), Biome.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CORN_BUSH.getDefaultState(), Biome.TempCategory.MEDIUM,4,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.CORN_BUSH.getDefaultState(), Biome.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.BROCCOLI_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CABBAGE_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CAULIFLOWER_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CELERY_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CHIVES_PLANT.getDefaultState(), BiomeTransformer.TempCategory.COLD,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CUCUMBER_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.GARLIC_PLANT.getDefaultState(), BiomeTransformer.TempCategory.COLD,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.GINGER_PLANT.getDefaultState(), BiomeTransformer.TempCategory.COLD,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.GREEN_PEPPER_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.HORSE_RADISH_PLANT.getDefaultState(), BiomeTransformer.TempCategory.COLD,5,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.LEEK_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.LETTUCE_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.ONION_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.PEANUT_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,3, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.PEA_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.RED_ONION_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.RED_PEPPER_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.RHUBARB_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.RICE_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,5,false, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.WET);
+        new BushEntry(WNBlocks.TOMATO_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,5, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.TURNIP_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,4, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.GREEN_BEANS_BUSH.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,4,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.GREEN_BEANS_BUSH.getDefaultState(), BiomeTransformer.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.EGGPLANT_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,3, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.EGGPLANT_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,3, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CORN_BUSH.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,4,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.CORN_BUSH.getDefaultState(), BiomeTransformer.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
 
-        new BushEntry(WNBlocks.PINEAPPLE_PLANT.getDefaultState(), Biome.TempCategory.WARM,4,false, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.PINEAPPLE_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,4,false, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.PINEAPPLE_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,4,false, BiomeDictionary.Type.JUNGLE);
+
+        new BushEntry(WNBlocks.BASIL_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.MARJORAM_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.PARSLEY_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.SAGE_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.TURMERIC_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.CURRY_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.ROSEMARY_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,1, BiomeDictionary.Type.JUNGLE);
 
 
-        new BushEntry(WNBlocks.BASIL_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
-        new BushEntry(WNBlocks.MARJORAM_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
-        new BushEntry(WNBlocks.PARSLEY_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
-        new BushEntry(WNBlocks.SAGE_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
-        new BushEntry(WNBlocks.TURMERIC_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
-        new BushEntry(WNBlocks.CURRY_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
-        new BushEntry(WNBlocks.ROSEMARY_PLANT.getDefaultState(), Biome.TempCategory.WARM,1, BiomeDictionary.Type.JUNGLE);
+        new BushEntry(WNBlocks.BLACK_TEA_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,3,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.GREEN_TEA_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,2,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.MELISSA_PLANT.getDefaultState(),  BiomeTransformer.TempCategory.TEMPERATE,3,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.MELISSA_PLANT.getDefaultState(),  BiomeTransformer.TempCategory.WARM,3,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.MINT_PLANT.getDefaultState(), BiomeTransformer.TempCategory.COLD,4,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.MINT_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,4,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.MINT_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,4,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.WHITE_TEA.getDefaultState(), BiomeTransformer.TempCategory.HOT,1,false, BiomeDictionary.Type.PLAINS);
 
+        new BushEntry(WNBlocks.BLACK_PEPPER_PLANT.getDefaultState(), BiomeTransformer.TempCategory.HOT,2, BiomeDictionary.Type.JUNGLE);
 
-        new BushEntry(WNBlocks.BLACK_TEA_PLANT.getDefaultState(), Biome.TempCategory.WARM,3,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.GREEN_TEA_PLANT.getDefaultState(), Biome.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.MELISSA_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,3,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.MINT_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,4,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.WHITE_TEA.getDefaultState(), Biome.TempCategory.WARM,1,false, BiomeDictionary.Type.PLAINS);
-
-        new BushEntry(WNBlocks.BLACK_PEPPER_PLANT.getDefaultState(), Biome.TempCategory.WARM,2, BiomeDictionary.Type.JUNGLE);
-
-        new BushEntry(WNBlocks.COTTON_PLANT.getDefaultState(), Biome.TempCategory.MEDIUM,3,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.COTTON_PLANT.getDefaultState(), Biome.TempCategory.COLD,2,false, BiomeDictionary.Type.PLAINS);
-        new BushEntry(WNBlocks.COTTON_PLANT.getDefaultState(), Biome.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.COTTON_PLANT.getDefaultState(), BiomeTransformer.TempCategory.COLD,3,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.COTTON_PLANT.getDefaultState(), BiomeTransformer.TempCategory.TEMPERATE,2,false, BiomeDictionary.Type.PLAINS);
+        new BushEntry(WNBlocks.COTTON_PLANT.getDefaultState(), BiomeTransformer.TempCategory.WARM,2,false, BiomeDictionary.Type.PLAINS);
     }
 
     public static class BushEntry{
         private BlockState bush;
-        private Biome.TempCategory category;
+        private BiomeTransformer.TempCategory category;
         private BiomeDictionary.Type[] types;
         private int rarity;
         private boolean needsFarmland = true;
-        public BushEntry(BlockState bush, Biome.TempCategory tempCategory, int rarity, BiomeDictionary.Type... types){
+        public BushEntry(BlockState bush, BiomeTransformer.TempCategory tempCategory, int rarity, BiomeDictionary.Type... types){
             this.bush=bush;
             this.category=tempCategory;
             this.types=types;
@@ -139,7 +143,7 @@ public class WNVegeFeature extends Feature<NoFeatureConfig> {
             entries.add(this,rarity);
         }
 
-        public BushEntry(BlockState bush, Biome.TempCategory tempCategory, int rarity, boolean needsFarmland, BiomeDictionary.Type... types){
+        public BushEntry(BlockState bush, BiomeTransformer.TempCategory tempCategory, int rarity, boolean needsFarmland, BiomeDictionary.Type... types){
             this.bush=bush;
             this.category=tempCategory;
             this.types=types;
@@ -160,7 +164,7 @@ public class WNVegeFeature extends Feature<NoFeatureConfig> {
             return needsFarmland;
         }
 
-        public Biome.TempCategory getCategory() {
+        public BiomeTransformer.TempCategory getCategory() {
             return category;
         }
 
@@ -170,7 +174,7 @@ public class WNVegeFeature extends Feature<NoFeatureConfig> {
 
         public boolean canSpawnHere(BlockPos pos, IWorld world){
             Biome b = world.getBiome(pos);
-            if(getTempCategory(b)==category){
+            if(BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,b.getDefaultTemperature())==category){
                 for(BiomeDictionary.Type t : types){
                     if(BiomeDictionary.getTypes(b).contains(t)){
                         return true;
@@ -178,16 +182,6 @@ public class WNVegeFeature extends Feature<NoFeatureConfig> {
                 }
             }
             return false;
-        }
-
-        public Biome.TempCategory getTempCategory(Biome b) {
-            if (b.getCategory() == Biome.Category.OCEAN) {
-                return Biome.TempCategory.OCEAN;
-            } else if ((double)b.getDefaultTemperature() < 0.2D) {
-                return Biome.TempCategory.COLD;
-            } else {
-                return (double)b.getDefaultTemperature() < 0.5D ? Biome.TempCategory.MEDIUM : Biome.TempCategory.WARM;
-            }
         }
     }
 

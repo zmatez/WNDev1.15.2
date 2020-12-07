@@ -6,6 +6,11 @@ import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.biome.setup.WNBiomeBuilder;
 import com.matez.wildnature.world.generation.biome.features.WNBiomeFeatures;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.orange1;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.orange2;
+import com.matez.wildnature.world.generation.structures.nature.woods.citrus.orange3;
+import com.matez.wildnature.world.generation.structures.nature.woods.ebony.ebony_shrub1;
+import com.matez.wildnature.world.generation.structures.nature.woods.ebony.ebony_shrub2;
 import com.matez.wildnature.world.generation.structures.nature.woods.jungle.*;
 import com.matez.wildnature.world.generation.structures.nature.woods.shrubs.shrub1;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
@@ -23,16 +28,16 @@ public class WNRainforest extends WNBiome {
         super(name, (new WNBiomeBuilder())
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, WNSurfaceBuilders.TROPICAL_CONFIG)
                 .precipitation(RainType.RAIN)
-                .category(Category.FOREST)
+                .category(Category.JUNGLE)
                 .topography(WNBiomeBuilder.Topography.LOWLANDS)
                 .climate(WNBiomeBuilder.Climate.MOIST_TROPICAL)
                 .depth(0.35F)
                 .scale(0.07F)
-                .temperature(0.6F)
+                .temperature(0.7F)
                 .downfall(0.9F)
                 .waterColor(4159204)
                 .waterFogColor(329011)
-                .logTypes(LogType.JUNGLE_BIG,LogType.JUNGLE_MEDIUM)
+                .logTypes(LogType.JUNGLE_BIG,LogType.JUNGLE_MEDIUM, LogType.SMALL_EBONY, LogType.ORANGE)
                 .parent("minecraft:jungle"));
 
 
@@ -48,6 +53,7 @@ public class WNRainforest extends WNBiome {
         WNBiomeFeatures.addSedimentDisks(this);
         WNBiomeFeatures.addDefaultFlowers(this);
         WNBiomeFeatures.addGrass(this, 18);
+        WNBiomeFeatures.addBamboo(this);
 
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);
@@ -59,17 +65,23 @@ public class WNRainforest extends WNBiome {
         WNBiomeFeatures.addPlant(this, WNBlocks.LEAF_PILE.getDefaultState(), 3);
         WNBiomeFeatures.addPlant(this, WNBlocks.CLOVER.getDefaultState(), 3);
 
-        WNBiomeFeatures.addTree(this, new jungle_big1(), 3);
-        WNBiomeFeatures.addTree(this, new jungle_big2(), 3);
-        WNBiomeFeatures.addTree(this, new jungle_big3(), 3);
+        WNBiomeFeatures.addTree(this, new jungle_big1(), 5);
+        WNBiomeFeatures.addTree(this, new jungle_big2(), 5);
+        WNBiomeFeatures.addTree(this, new jungle_big3(), 5);
         WNBiomeFeatures.addTree(this, new jungle_medium1(), 3);
         WNBiomeFeatures.addTree(this, new jungle_medium2(), 3);
         WNBiomeFeatures.addTree(this, new jungle_medium3(), 3);
+        WNBiomeFeatures.addTree(this, new orange1(), 1);
+        WNBiomeFeatures.addTree(this, new orange2(), 1);
+        WNBiomeFeatures.addTree(this, new orange3(), 1);
         WNBiomeFeatures.addTree(this, new shrub1(), 1);
-        WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(shrub1.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 1);
-
+        WNBiomeFeatures.addTree(this, new shrub1().setCustomLog(Blocks.JUNGLE_LOG.getDefaultState()).setCustomLeaf(shrub1.notDecayingLeaf(Blocks.JUNGLE_LEAVES)), 5);
+        WNBiomeFeatures.addTree(this, new ebony_shrub1(), 1);
+        WNBiomeFeatures.addTree(this, new ebony_shrub2(), 1);
         plantRate = 4;
-        treeRate = 70;
+        treeRate = 13;
+
+        WNBiomeFeatures.addBlob(this, Blocks.PODZOL.getDefaultState(), 2, true, false, 8);
 
         applyPlants();
         applyTrees();

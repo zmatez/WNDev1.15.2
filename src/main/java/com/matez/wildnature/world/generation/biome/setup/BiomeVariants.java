@@ -35,9 +35,10 @@ public class BiomeVariants {
     }
 
     public static BiomeVariants LAND = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAND);
+    public static BiomeVariants PLATEAU = new BiomeVariants(SmallGroup.RIVER,LargeGroup.LAND);
     public static BiomeVariants RIVER = new BiomeVariants(SmallGroup.RIVER,LargeGroup.RIVER);
     public static BiomeVariants LAKE = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAKE);
-    public static BiomeVariants SHORE = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
+    public static BiomeVariants SHORE = new BiomeVariants(SmallGroup.BODY,LargeGroup.LAKE);
     public static BiomeVariants OCEAN = new BiomeVariants(SmallGroup.BODY,LargeGroup.OCEAN);
     public static BiomeVariants SMALL_ISLAND = new BiomeVariants(SmallGroup.RIVER,LargeGroup.OCEAN);
 
@@ -63,6 +64,9 @@ public class BiomeVariants {
         }else if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.RIVER)){
             return RIVER;
         }else{
+            if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLATEAU)){
+                return PLATEAU;
+            }
             return LAND;
         }
     }

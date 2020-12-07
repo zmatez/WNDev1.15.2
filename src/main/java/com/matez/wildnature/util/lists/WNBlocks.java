@@ -2289,6 +2289,8 @@ public class WNBlocks {
     public static Block FOREST_SAND;
     public static Block QUICKSAND;
 
+    public static Block CHRISTMAS_TREE;
+
     //FURNITURE
     public static Block ANDIRONS, ANVIL, CHAIR, HALFTABLE, HANGINGSHELF, SHELF, SMALLTABLE, STOOL, WEAPONSRACK;
     public static Block PLATE_QUARTZ, BOWL_QUARTZ, CUP_QUARTZ, PLATE_WOOD, BOWL_WOOD, CUP_WOOD, PLATE_DARK_WOOD, BOWL_DARK_WOOD, CUP_DARK_WOOD;

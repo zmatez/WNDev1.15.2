@@ -23,6 +23,10 @@ public class WNGridBiomeProvider extends BiomeProvider {
         this.layer = new GridBiomeLayer(this);
     }
 
+    public GridBiomeLayer getLayer() {
+        return layer;
+    }
+
     public void setContext(WNWorldContext context) {
         this.context = context;
     }

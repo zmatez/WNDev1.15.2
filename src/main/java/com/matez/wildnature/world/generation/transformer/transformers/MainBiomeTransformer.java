@@ -57,7 +57,7 @@ public class MainBiomeTransformer extends BiomeTransformer {
                     WNBiomes.WARM_OCEAN
             };
         }else{
-            return BiomeGroup.guess(category,new BiomeDictionary.Type[]{}, new BiomeDictionary.Type[]{}, true);
+            return BiomeGroup.guess(category,new BiomeDictionary.Type[]{}, new BiomeDictionary.Type[]{}, false);
         }
     }
 
@@ -67,12 +67,14 @@ public class MainBiomeTransformer extends BiomeTransformer {
     private void initClimaticBiomeGroups(){
         WN.LOGGER.debug("Init climatic biome groups... ");
         for (TerrainCategory value : TerrainCategory.values()) {
+            WN.LOGGER.debug("--- initializing " + value.getName());
             LinkedHashMap<TempCategory, LinkedHashMap<BiomeTransformer.WetCategory, List<BiomeGroup>>> tempGroups = new LinkedHashMap<>();
             for (BiomeTransformer.TempCategory tempValue : BiomeTransformer.TempCategory.values()) {
                 LinkedHashMap<BiomeTransformer.WetCategory, List<BiomeGroup>> wetGroups = new LinkedHashMap<>();
                 for (BiomeTransformer.WetCategory wetValue : BiomeTransformer.WetCategory.values()) {
                     List<BiomeGroup> biomeGroups = BiomeTransformer.getBiomesByTemperatureAndMoisture(Arrays.asList(weightedBiomeGroups.get(value)),value,tempValue,wetValue);
                     wetGroups.put(wetValue,biomeGroups);
+                    WN.LOGGER.debug("----- adding " + biomeGroups.size() + " biomes with temp " + tempValue.getName() + " and moist " + wetValue.getName());
                 }
                 tempGroups.put(tempValue,wetGroups);
             }
