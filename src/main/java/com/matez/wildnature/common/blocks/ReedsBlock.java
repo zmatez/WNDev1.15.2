@@ -1,6 +1,8 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.lists.WNBlocks;
+import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,6 +14,7 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
@@ -28,11 +31,14 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReedsBlock extends BushBase implements IWaterLoggable {
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
@@ -194,6 +200,21 @@ public class ReedsBlock extends BushBase implements IWaterLoggable {
     @OnlyIn(Dist.CLIENT)
     public long getPositionRandom(BlockState state, BlockPos pos) {
         return MathHelper.getCoordinateRandom(pos.getX(), pos.down(state.get(REED_HALF) == REEDS_HALF.BOTTOM ? 0 : 1).getY(), pos.getZ());
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        ArrayList<ItemStack> l = new ArrayList<>();
+        if(Utilities.rint(0, CommonConfig.flowerDropChance.get())==0){
+            l.add(new ItemStack(getItem(),1));
+            return l;
+        }else if(Utilities.rint(0, 7)==0){
+            l.add(new ItemStack(Items.SUGAR_CANE,Utilities.rint(1,2)));
+            return l;
+        }else{
+            l.add(new ItemStack(Items.STICK,Utilities.rint(1,2)));
+            return l;
+        }
     }
 
     public enum REEDS_HALF implements IStringSerializable {

@@ -102,7 +102,7 @@ public class RiverCaneBush extends BushBase implements IWaterLoggable {
             l.add(new ItemStack(getItem(),1));
             return l;
         }else{
-            l.add(new ItemStack(Items.STICK,Utilities.rint(0,2)));
+            l.add(new ItemStack(Items.STICK,Utilities.rint(1,2)));
             return l;
         }
     }

@@ -136,7 +136,7 @@ public class FallenSchemFeature extends SchemFeature {
             if (mutable.down().getY() <= 5) {
                 return mutable;
             }
-            if (!world.getBlockState(mutable.down()).isSolid()) {
+            if (!world.getBlockState(mutable.down()).isSolid() || world.getBlockState(mutable.down()).getBlock() instanceof SnowBlock) {
                 mutable.setY(mutable.getY() - 1);
             } else {
                 break;

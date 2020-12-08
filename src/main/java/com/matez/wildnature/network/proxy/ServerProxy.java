@@ -1,6 +1,6 @@
 package com.matez.wildnature.network.proxy;
 
-import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
+import com.matez.wildnature.common.tileentity.DungeonCommanderTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;

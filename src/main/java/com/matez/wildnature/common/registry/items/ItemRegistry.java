@@ -38,9 +38,9 @@ public class ItemRegistry {
                 WNItems.POT_WATER = new CookingItem(new Item.Properties().group(WNTabs.FOOD).maxStackSize(1), CookingToolType.POT).setRegistryName(location("pot_water")),
                 WNItems.CAKE_PAN = new CookingItem(new Item.Properties().group(WNTabs.FOOD).maxStackSize(1), CookingToolType.CAKE_PAN).setRegistryName(location("cake_pan")),
                 //XMAS
-                WNItems.GIFT_1 = new GiftItem(new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.CYAN_RED).setRegistryName(location("gift_1")),
-                WNItems.GIFT_2 = new GiftItem(new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.RED_YELLOW).setRegistryName(location("gift_2")),
-                WNItems.GIFT_3 = new GiftItem(new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.BLUE_PINK).setRegistryName(location("gift_3")),
+                WNItems.GIFT_1 = new GiftItem(getBlockByID("wildnature:present_1"),new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.CYAN_RED).setRegistryName(location("gift_1")),
+                WNItems.GIFT_2 = new GiftItem(getBlockByID("wildnature:present_2"),new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.RED_YELLOW).setRegistryName(location("gift_2")),
+                WNItems.GIFT_3 = new GiftItem(getBlockByID("wildnature:present_3"),new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.BLUE_PINK).setRegistryName(location("gift_3")),
                 WNItems.XMAS_PAPER_1 = new WrappingPaperItem(new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.CYAN_RED).setRegistryName(location("xmas_paper_1")),
                 WNItems.XMAS_PAPER_2 = new WrappingPaperItem(new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.RED_YELLOW).setRegistryName(location("xmas_paper_2")),
                 WNItems.XMAS_PAPER_3 = new WrappingPaperItem(new Item.Properties().group(WNTabs.EQUIPMENT), GiftItem.GiftColor.BLUE_PINK).setRegistryName(location("xmas_paper_3")),

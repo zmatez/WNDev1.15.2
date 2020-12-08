@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.client.gui.tileEntities.GravityShroomTileEntity;
+import com.matez.wildnature.common.tileentity.GravityShroomTileEntity;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
 import net.minecraft.block.Block;

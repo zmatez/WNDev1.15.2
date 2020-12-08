@@ -125,8 +125,8 @@ public class CommonConfig {
                 .comment("Generator version. \nAccepted Values: new | old").define("generatorType", "new");
 
         generatorThreads = builder
-                .comment("Generator Threads. Set to 1 if your world load will freeze. It's experimental!\nDefault: 2")
-                .defineInRange("generatorThreads",1, 1, 16);
+                .comment("Generator Threads. Set to 8 if your world load will freeze. It's experimental!\nDefault: 2")
+                .defineInRange("generatorThreads",8, 1, 16);
 
         terrainMapSize = builder
                 .comment("Terrain map size\nDefault: 2500")
@@ -153,12 +153,12 @@ public class CommonConfig {
                 .defineInRange("size.smallIsland",130, 10, 24000);
 
         bigIslandRarity = builder
-                .comment("Big Island rarity\nSmaller = more common\nDefault: 12")
-                .defineInRange("rarity.bigIsland",12, 1, 24000);
+                .comment("Big Island rarity\nSmaller = more common\nDefault: 10")
+                .defineInRange("rarity.bigIsland",10, 1, 24000);
 
         smallIslandRarity = builder
-                .comment("Small Island rarity\nSmaller = more common\nDefault: 15")
-                .defineInRange("rarity.smallIsland",15, 1, 24000);
+                .comment("Small Island rarity\nSmaller = more common\nDefault: 16")
+                .defineInRange("rarity.smallIsland",16, 1, 24000);
 
         biomeSize = builder
                 .comment("Biome Size //deprecated\nDefault: 5")

@@ -127,7 +127,6 @@ public class WNBiomes {
     public static Biome PoldersEdge = new WNPoldersEdge("polders_edge");
     public static Biome Shrublands = new WNShrublands("shrublands");
     public static Biome HillyShrublands = new WNHillyShrublands("hilly_shrublands");
-    public static Biome ShrublandPlateau = new WNShrublandPlateau("shrubland_plateau");
     public static Biome Scrublands = new WNScrublands("scrublands");
     public static Biome HazelFields = new WNHazelFields("hazel_fields");
 
@@ -177,7 +176,7 @@ public class WNBiomes {
     public static Biome SnowyTatraKasprowyPeak = new WNSnowyTatraKasprowyPeak("snowy_tatra_kasprowy_peak");
 
     public static Biome SnowyChocholowskaGlade = new WNSnowyTatraChocholowskaGlade("snowy_tatra_chocholowska_glade");
-    public static Biome SnowyFireweedValley = new WNTatraFireweedValley("snowy_tatra_fireweed_valley");
+    public static Biome SnowyFireweedValley = new WNSnowyTatraFireweedValley("snowy_tatra_fireweed_valley");
     public static Biome SnowyCracowGorge = new WNSnowyCracowGorge("snowy_cracow_gorge");
     public static Biome FrozenMorskieOko = new WNFrozenMorskieOko("frozen_morskie_oko");
     public static Biome SnowyGiewont = new WNSnowyGiewont("snowy_giewont");
@@ -240,6 +239,8 @@ public class WNBiomes {
     public static Biome ColdBerryTaiga = new WNColdBerryTaiga("cold_berry_taiga");
     public static Biome ColdRockyTaiga = new WNColdRockyTaiga("cold_rocky_taiga");
 
+    public static Biome Silverlands = new WNSilverlands("silverlands");
+    public static Biome ColdSilverlands = new WNSilverlands("cold_silverlands");
 
     //HIGHLANDS
     public static Biome Highlands = new WNHighlands("highlands");
@@ -564,10 +565,8 @@ public class WNBiomes {
 
         register(BiomeGroup.SingleBuilder
                         .configure(9, WNBiomes.Shrublands,
-                                new SubBiome(WNBiomes.Shrublands, 15, Type.HILLS),
-                                new SubBiome(WNBiomes.HillyShrublands, 10, Type.HILLS),
-                                new SubBiome(WNBiomes.ShrublandPlateau, 3, Type.PLATEAU)
-
+                                new SubBiome(WNBiomes.Shrublands, 15),
+                                new SubBiome(WNBiomes.HillyShrublands, 10, Type.HILLS)
                         ),
                 Type.PLAINS, Type.PLATEAU);
 
@@ -753,8 +752,16 @@ public class WNBiomes {
                 Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.COLD, Type.SNOWY);
 
         register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.Silverlands),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
+                        .configure(3, WNBiomes.ColdSilverlands),
+                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.SNOWY, Type.RARE);
+
+        register(BiomeGroup.SingleBuilder
                         .configure(10, WNBiomes.Highlands),
-                Type.FOREST, Type.DENSE, Type.CONIFEROUS, Type.HILLS);
+                Type.PLAINS, Type.DENSE, Type.CONIFEROUS, Type.HILLS);
 
         register(BiomeGroup.SingleBuilder
                         .configure(10, WNBiomes.Rainforest,

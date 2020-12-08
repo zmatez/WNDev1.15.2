@@ -85,12 +85,21 @@ public class ShellBlock extends BushBase implements IWaterLoggable {
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(player.getHeldItem(handIn).isEmpty()){
-            worldIn.setBlockState(pos,Blocks.AIR.getDefaultState());
+            if(state.get(WATERLOGGED)){
+                worldIn.setBlockState(pos,Blocks.WATER.getDefaultState());
+            }else{
+                worldIn.setBlockState(pos,Blocks.AIR.getDefaultState());
+            }
+
             player.setHeldItem(handIn,new ItemStack(Item.getItemFromBlock(state.getBlock())));
             return ActionResultType.SUCCESS;
         }
         if(player.getHeldItem(handIn).getItem()==Item.getItemFromBlock(state.getBlock()) && player.getHeldItem(handIn).getCount()<getItem().getMaxStackSize()){
-            worldIn.setBlockState(pos,Blocks.AIR.getDefaultState());
+            if(state.get(WATERLOGGED)){
+                worldIn.setBlockState(pos,Blocks.WATER.getDefaultState());
+            }else{
+                worldIn.setBlockState(pos,Blocks.AIR.getDefaultState());
+            }
             ItemStack s = player.getHeldItem(handIn);
             s.grow(1);
             player.setHeldItem(handIn,s);

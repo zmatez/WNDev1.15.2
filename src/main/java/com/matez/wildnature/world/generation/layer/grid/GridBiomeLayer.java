@@ -10,6 +10,7 @@ import com.matez.wildnature.world.generation.transformer.transformers.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.Heightmap;
 
 import java.util.ArrayList;
@@ -42,8 +43,9 @@ public class GridBiomeLayer {
      */
     public Biome getBiome(int x, int z, boolean fakeBiomes) {
         Cell cell = provider.getNoiseCell(x, z);
-
-        return get(x, z, cell, fakeBiomes);
+        Biome b = get(x, z, cell, fakeBiomes);
+        cell = null;
+        return b;
     }
 
     public Biome getBiome(Cell cell, int x, int z, boolean fakeBiomes) {
@@ -66,6 +68,10 @@ public class GridBiomeLayer {
 
         Biome biome = applyTransformers(x, z, cell, northCell, southCell, eastCell, westCell,fakeBiomes);
 
+        northCell = null;
+        southCell = null;
+        eastCell = null;
+        westCell = null;
         return biome;
     }
 
@@ -152,10 +158,14 @@ public class GridBiomeLayer {
     }
 
     public static Biome applyHeightmapBiome(Biome biome, BlockPos pos, IWorld world, int div){
+        return applyHeightmapBiome(biome,pos,world.getChunk(pos),world.getSeaLevel(),div);
+    }
+
+    public static Biome applyHeightmapBiome(Biome biome, BlockPos pos, IChunk chunk, int seaLevel, int div){
         if(biome.getDepth() > 0 &&
         biome.getCategory() != Biome.Category.BEACH &&
         biome.getCategory() != Biome.Category.SWAMP){
-            if(world.getChunk(pos).getTopBlockY(Heightmap.Type.OCEAN_FLOOR_WG,pos.getX()/div,pos.getZ()/div)<(world.getSeaLevel()-2)){
+            if(chunk.getTopBlockY(Heightmap.Type.OCEAN_FLOOR_WG,pos.getX()/div,pos.getZ()/div)<(seaLevel-2)){
                 BiomeTransformer.TempCategory category = BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,biome.getDefaultTemperature());
                 if(category == BiomeTransformer.TempCategory.ICY){
                     return WNBiomes.FrozenLake;

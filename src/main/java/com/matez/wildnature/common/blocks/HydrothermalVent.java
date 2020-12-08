@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.client.gui.tileEntities.HydrothermalVentTileEntity;
+import com.matez.wildnature.common.tileentity.HydrothermalVentTileEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;

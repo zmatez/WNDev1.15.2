@@ -1,6 +1,6 @@
 package com.matez.wildnature.client.gui.screen;
 
-import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
+import com.matez.wildnature.common.tileentity.DungeonCommanderTileEntity;
 import com.matez.wildnature.common.commands.DungeonCommanderLogic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;

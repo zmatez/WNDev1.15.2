@@ -186,6 +186,9 @@ public class FurnitureRegistry {
                 WNBlocks.ICESHROOM_LANTERN = new ShroomLantern(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(10),new Item.Properties().group(WNTabs.FURNITURE), WN.RegistryEvents.location("iceshroom_lantern")),
 
                 WNBlocks.CHRISTMAS_TREE = new ChristmasTreeBlock(Block.Properties.create(Material.LEAVES).sound(SoundType.SWEET_BERRY_BUSH),new Item.Properties().group(WNTabs.FURNITURE), WN.RegistryEvents.location("christmas_tree")),
+                WNBlocks.PRESENT_1 = new PresentBase(Block.Properties.create(Material.WOOL).sound(SoundType.SCAFFOLDING), WN.RegistryEvents.location("present_1")),
+                WNBlocks.PRESENT_2 = new PresentBase(Block.Properties.create(Material.WOOL).sound(SoundType.SCAFFOLDING), WN.RegistryEvents.location("present_2")),
+                WNBlocks.PRESENT_3 = new PresentBase(Block.Properties.create(Material.WOOL).sound(SoundType.SCAFFOLDING), WN.RegistryEvents.location("present_3")),
 
         };
     }

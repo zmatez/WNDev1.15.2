@@ -7,7 +7,7 @@ import com.matez.wildnature.common.entity.render.misc.blowpipe.RowanBlowdartRend
 import com.matez.wildnature.common.entity.render.monster.GoblinRender;
 import com.matez.wildnature.common.entity.render.tileentity.ItemTileEntityRender;
 import com.matez.wildnature.client.gui.initGuis;
-import com.matez.wildnature.client.gui.tileEntities.seat.SeatEntityRenderer;
+import com.matez.wildnature.common.tileentity.seat.SeatEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.ClientRegistry;

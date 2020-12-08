@@ -1,4 +1,4 @@
-package com.matez.wildnature.client.gui.tileEntities;
+package com.matez.wildnature.common.tileentity;
 
 import com.matez.wildnature.common.blocks.GravityShroom;
 import com.matez.wildnature.common.blocks.SteamGeneratorBlock;

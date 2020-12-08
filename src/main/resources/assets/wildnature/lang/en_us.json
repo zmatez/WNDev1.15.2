@@ -776,8 +776,7 @@
   "block.wildnature.redwood_vertical_slab": "Redwood Vertical Slab",
   "block.wildnature.redwood_parquet_vertical_slab": "Redwood Parquet Vertical Slab",
 
-  "block.wildnature.rowan_leaves_red": "Red Rowan Leaves",
-  "block.wildnature.rowan_leaves_orange": "Orange Rowan Leaves",
+  "block.wildnature.rowan_leaves": "Rowan Leaves",
   "block.wildnature.rowan_sapling_red": "Red Rowanberry Cluster",
   "block.wildnature.rowan_sapling_orange": "Orange Rowanberry Cluster",
   "item.wildnature.rowanberry_red": "Red Rowanberry",
@@ -1580,13 +1579,13 @@
 
 
 
-  "item.wildnature.xmas_sock": "Christmas Sock",
   "item.wildnature.xmas_paper_1": "Wrapping Paper",
   "item.wildnature.xmas_paper_2": "Wrapping Paper",
   "item.wildnature.xmas_paper_3": "Wrapping Paper",
-  "item.wildnature.gift_1": "Gift",
-  "item.wildnature.gift_2": "Gift",
-  "item.wildnature.gift_3": "Gift",
+  "block.wildnature.present_1": "Present",
+  "block.wildnature.present_2": "Present",
+  "block.wildnature.present_3": "Present",
+  "block.wildnature.christmas_tree": "Christmas Tree",
 
 
 
@@ -2555,6 +2554,7 @@
 
   "biome.wildnature.prairie": "Prairie",
   "biome.wildnature.prairie_hills": "Prairie Hills",
+  "biome.wildnature.prairie_plateau": "Prairie Plateau",
   "biome.wildnature.rapeseed_field": "Rapeseed Field",
   "biome.wildnature.corn_field": "Corn Fields",
   "biome.wildnature.cotton_fields": "Cotton Fields",
@@ -2640,6 +2640,9 @@
   "biome.wildnature.cold_taiga_marsh": "Cold Taiga Marsh",
   "biome.wildnature.cold_berry_taiga": "Cold Berry Taiga",
   "biome.wildnature.cold_rocky_taiga": "Cold Rocky Taiga",
+
+  "biome.wildnature.silverlands": "Silverlands",
+  "biome.wildnature.cold_silverlands": "Cold Silverlands",
 
 
   "biome.wildnature.highlands": "Highlands",

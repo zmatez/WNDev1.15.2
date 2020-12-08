@@ -85,7 +85,7 @@ public class WNHeightMap {
     /**
      * Applies identifies in cell for all specified maps.
      */
-    public void apply(Cell cell, int dx, int dz) {
+    public Cell apply(Cell cell, int dx, int dz) {
         biomeMap.apply(cell, dx, dz);
         undergroundBiomeMap.apply(cell, dx, dz);
         subBiomeMap.apply(cell, dx, dz);
@@ -95,6 +95,7 @@ public class WNHeightMap {
         applyContinent(cell, dx, dz);
         applyClimate(cell, dx, dz);
         applyRiver(cell,dx,dz);
+        return cell;
     }
 
     public ClimateMap getClimateMap() {

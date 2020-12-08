@@ -112,7 +112,6 @@ public class FormationBase extends BlockBase {
         return bigRarity == 0 ? baseState.with(TYPE,FormationType.SMALL) : (Utilities.rint(0,bigRarity) == 0 ? baseState.with(TYPE,FormationType.BIG) : baseState.with(TYPE,FormationType.SMALL));
     }
 
-    //TODO drops not when broken block behind
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         if(WNLoot.isBrokenByPickaxe(builder)) {

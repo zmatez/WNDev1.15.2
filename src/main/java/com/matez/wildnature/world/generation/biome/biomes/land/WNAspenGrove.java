@@ -34,7 +34,7 @@ public class WNAspenGrove extends WNBiome {
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_WARM)
                 .depth(0.15F)
                 .scale(0.05F)
-                .temperature(0.6F)
+                .temperature(0.4F)
                 .downfall(0.8F)
                 .waterColor(4159204)
                 .waterFogColor(329011)

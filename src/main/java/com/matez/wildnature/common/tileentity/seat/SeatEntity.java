@@ -1,4 +1,4 @@
-package com.matez.wildnature.client.gui.tileEntities.seat;
+package com.matez.wildnature.common.tileentity.seat;
 
 import java.util.HashMap;
 

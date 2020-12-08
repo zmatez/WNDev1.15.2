@@ -21,11 +21,6 @@ public class BasicSquareTable extends TableBase {
         super(properties, builder, regName);
     }
 
-    public BasicSquareTable(Properties properties, Item.Properties builder, String drop, int min, int max, int exp, ResourceLocation regName) {
-        super(properties, builder, drop, min, max, exp, regName);
-    }
-
-
     public VoxelShape result(List<VoxelShape> shapes){
         VoxelShape result = VoxelShapes.empty();
         int x=0;

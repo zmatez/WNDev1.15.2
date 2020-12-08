@@ -1,4 +1,4 @@
-package com.matez.wildnature.client.gui.tileEntities.seat;
+package com.matez.wildnature.common.tileentity.seat;
 
 import com.matez.wildnature.common.blocks.BasicBench;
 import com.matez.wildnature.common.blocks.BasicChair;

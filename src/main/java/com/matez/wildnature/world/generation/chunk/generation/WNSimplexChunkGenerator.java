@@ -3,6 +3,8 @@ package com.matez.wildnature.world.generation.chunk.generation;
 
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
+import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
+import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessors;
 import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
 import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import com.matez.wildnature.world.generation.grid.Cell;
@@ -33,6 +35,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.village.VillageSiege;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeManager;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.ChunkSection;
@@ -46,6 +49,7 @@ import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
 import net.minecraft.world.gen.feature.structure.StructureStart;
+import net.minecraft.world.gen.feature.template.TemplateManager;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.spawner.CatSpawner;
 import net.minecraft.world.spawner.PatrolSpawner;
@@ -124,6 +128,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         thermalErosionProcessor.init(this, this.seed);
         thermalErosionTestProcessor.init(this, this.seed);
+
+        NoiseProcessors.init(getSeed(),randomSeed,ChunkLandscape.octaves);
     }
 
     public WNWorldContext getContext() {
@@ -169,6 +175,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
                 pathGenerator.generate(x,startHeight,z,biome,chunkIn);
                 undergroundRiverGenerator.generate(x,startHeight,z,cell,biome,chunkIn);
+                cell = null;
             }
         }
 
@@ -194,6 +201,29 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 CrashReport crashreport = CrashReport.makeCrashReport(exception, "Biome decoration");
                 crashreport.makeCategory("Generation").addDetail("CenterX", i).addDetail("CenterZ", j).addDetail("Step", generationstage$decoration).addDetail("Seed", i1).addDetail("Biome", Registry.BIOME.getKey(biome));
                 throw new ReportedException(crashreport);
+            }
+        }
+
+    }
+
+    public void generateStructures(BiomeManager p_227058_1_, IChunk chunk, ChunkGenerator<?> p_227058_3_, TemplateManager p_227058_4_) {
+        for(Structure<?> structure : Feature.STRUCTURES.values()) {
+            if (p_227058_3_.getBiomeProvider().hasStructure(structure)) {
+                StructureStart structurestart = chunk.getStructureStart(structure.getStructureName());
+                int i = structurestart != null ? structurestart.getRefCount() : 0;
+                SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
+                ChunkPos chunkpos = chunk.getPos();
+                StructureStart structurestart1 = StructureStart.DUMMY;
+                BlockPos biomePos = new BlockPos(chunkpos.getXStart() + 9, 0, chunkpos.getZStart() + 9);
+                Biome biome = p_227058_1_.getBiome(biomePos);
+                biome = GridBiomeLayer.applyHeightmapBiome(biome,biomePos,chunk,getSeaLevel(),1);
+                if (structure.canBeGenerated(p_227058_1_, p_227058_3_, sharedseedrandom, chunkpos.x, chunkpos.z, biome)) {
+                    StructureStart structurestart2 = structure.getStartFactory().create(structure, chunkpos.x, chunkpos.z, MutableBoundingBox.getNewBoundingBox(), i, p_227058_3_.getSeed());
+                    structurestart2.init(this, p_227058_4_, chunkpos.x, chunkpos.z, biome);
+                    structurestart1 = structurestart2.isValid() ? structurestart2 : StructureStart.DUMMY;
+                }
+
+                chunk.putStructureStart(structure.getStructureName(), structurestart1);
             }
         }
 
@@ -425,9 +455,11 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     public int getTerrainHeight(int x, int z, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         Cell cell = gridProvider.getNoiseCell(x >> 2,z >> 2);
         Biome biome = gridProvider.getNoiseBiome(cell,x >> 2, 1, z >> 2,true);
-        ChunkLandscape chunkLandscape = ChunkLandscape.getOrCreate(cell,x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
+        ChunkLandscape chunkLandscape = ChunkLandscape.getOrCreate(x, z, this.seed, this.getSeaLevel(), biome, this.chunk);
 
-        return (int) chunkLandscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
+        int height =  (int) chunkLandscape.generateHeightmap(biomeProvider,weightMap1,variantAccessor);
+        cell = null;
+        return height;
     }
 
     //getHeight

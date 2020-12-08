@@ -2290,6 +2290,7 @@ public class WNBlocks {
     public static Block QUICKSAND;
 
     public static Block CHRISTMAS_TREE;
+    public static Block PRESENT_1, PRESENT_2, PRESENT_3;
 
     //FURNITURE
     public static Block ANDIRONS, ANVIL, CHAIR, HALFTABLE, HANGINGSHELF, SHELF, SMALLTABLE, STOOL, WEAPONSRACK;

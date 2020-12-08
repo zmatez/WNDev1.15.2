@@ -2,7 +2,7 @@ package com.matez.wildnature.common.blocks;
 
 import java.util.Random;
 
-import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
+import com.matez.wildnature.common.tileentity.DungeonCommanderTileEntity;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.commands.DungeonCommanderLogic;
 import com.matez.wildnature.util.lists.WNBlocks;

@@ -30,11 +30,11 @@ public class ReedsFeature extends Feature<NoFeatureConfig> {
       int yDiff = 6;
       for(int j = 0; j < CommonConfig.riverCaneDensity.get(); ++j) {
          BlockPos blockpos = pos.add(rand.nextInt(xzDiff) - rand.nextInt(xzDiff), rand.nextInt(yDiff) - rand.nextInt(yDiff), rand.nextInt(xzDiff) - rand.nextInt(xzDiff));
-         if ((worldIn.getBlockState(blockpos).getBlock()==Blocks.WATER ||
+         if ((worldIn.getBlockState(blockpos).getBlock()==Blocks.WATER && (
                  worldIn.getBlockState(blockpos.down().north()).getBlock()==Blocks.WATER ||
                  worldIn.getBlockState(blockpos.down().east()).getBlock()==Blocks.WATER ||
                  worldIn.getBlockState(blockpos.down().south()).getBlock()==Blocks.WATER ||
-                 worldIn.getBlockState(blockpos.down().west()).getBlock()==Blocks.WATER) && WNBlocks.REEDS.isValidPosition(WNBlocks.REEDS.getDefaultState(),worldIn,blockpos)) {
+                 worldIn.getBlockState(blockpos.down().west()).getBlock()==Blocks.WATER)) && WNBlocks.REEDS.isValidPosition(WNBlocks.REEDS.getDefaultState(),worldIn,blockpos)) {
             ((ReedsBlock)WNBlocks.REEDS).placeAt(worldIn,blockpos,2);
             ++i;
          }

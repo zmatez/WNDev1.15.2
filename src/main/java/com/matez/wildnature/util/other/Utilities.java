@@ -276,6 +276,16 @@ public class Utilities {
         return stack;
     }
 
+    //uses changed item 'id' tag to not override TileEntity id
+    public static CompoundNBT saveItemTile(CompoundNBT nbt, ItemStack stack){
+        stack.write(nbt);
+        return nbt;
+    }
+    public static ItemStack loadItemTile(CompoundNBT nbt){
+        ItemStack stack = ItemStack.read(nbt);
+        return stack;
+    }
+
     public static CompoundNBT saveItems(CompoundNBT nbt, ArrayList<ItemStack> stack){
         if(nbt.contains("Items")){
             nbt.remove("Items");

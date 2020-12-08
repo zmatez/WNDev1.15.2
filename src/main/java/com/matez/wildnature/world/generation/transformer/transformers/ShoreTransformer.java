@@ -32,7 +32,13 @@ public class ShoreTransformer extends BiomeTransformer {
     protected BiomeGroup apply(BiomeGroup oldBiomeGroup, BiomeGroup northBiomeGroup, BiomeGroup southBiomeGroup, BiomeGroup eastBiomeGroup, BiomeGroup westBiomeGroup, TempCategory tempCategory, WetCategory wetCategory, Cell cell, MainBiomeTransformer.TerrainCategory category, float identity) {
         for (BiomeGroup ocean : OCEANS) {
             if (northBiomeGroup.getId() == ocean.getId() || southBiomeGroup.getId() == ocean.getId() || eastBiomeGroup.getId() == ocean.getId() || westBiomeGroup.getId() == ocean.getId()) {
-                if (oldBiomeGroup.getId() != ocean.getId()) {
+                boolean isOceanCenter = true;
+                for (BiomeGroup oc2 : OCEANS) {
+                    if(oldBiomeGroup.getId() == oc2.getId()){
+                        isOceanCenter = false;
+                    }
+                }
+                if (isOceanCenter) {
                     if (oldBiomeGroup.getBaseBiome() == Biomes.MUSHROOM_FIELDS) {
                         return WNBiomes.MUSHROOM_FIELD_SHORE;
                     }

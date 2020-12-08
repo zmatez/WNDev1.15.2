@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.client.gui.tileEntities.ParticleGeneratorTileEntity;
+import com.matez.wildnature.common.tileentity.ParticleGeneratorTileEntity;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.block.Block;

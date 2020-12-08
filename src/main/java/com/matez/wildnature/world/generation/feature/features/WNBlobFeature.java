@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.block.GrassBlock;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
@@ -61,7 +62,7 @@ public class WNBlobFeature extends Feature<WNBlobConfig> {
                                 if(canPlace) {
                                     if (world.getBlockState(blockPos).isSolid()) {
                                         if (!config.undergroundBlob) {
-                                            if (!world.getBlockState(blockPos.up()).isSolid() && !(world.getBlockState(blockPos.up()).getBlock() instanceof FarmlandBlock) && world.getBlockState(blockPos.up()).getBlock() != Blocks.WATER) {
+                                            if (!world.getBlockState(blockPos.up()).isSolid() && !(world.getBlockState(blockPos.up()).getBlock() instanceof FarmlandBlock) && world.getBlockState(blockPos.up()).getBlock() != Blocks.WATER&& world.getBlockState(blockPos.up()).getBlock() != Blocks.LAVA && !world.getBlockState(blockPos).getBlock().isIn(BlockTags.LOGS)&& !world.getBlockState(blockPos).getBlock().isIn(BlockTags.LEAVES)) {
                                                 world.setBlockState(blockPos, config.state, 4);
                                                 world.setBlockState(blockPos.up(), Blocks.AIR.getDefaultState(), 4);
                                                 filledBlocks.add(blockPos);
@@ -82,7 +83,7 @@ public class WNBlobFeature extends Feature<WNBlobConfig> {
                                 boolean canPlace = !config.flatInTerrain || !Utilities.isBlockNear(world, blockPos, Blocks.AIR);
                                 if(canPlace) {
                                     if (!config.undergroundBlob) {
-                                        if (!world.getBlockState(blockPos.up()).isSolid() && !(world.getBlockState(blockPos.up()).getBlock() instanceof FarmlandBlock) && world.getBlockState(blockPos.up()).getBlock() != Blocks.WATER) {
+                                        if (!world.getBlockState(blockPos.up()).isSolid() && !(world.getBlockState(blockPos.up()).getBlock() instanceof FarmlandBlock) && world.getBlockState(blockPos.up()).getBlock() != Blocks.WATER && world.getBlockState(blockPos.up()).getBlock() != Blocks.LAVA && !world.getBlockState(blockPos).getBlock().isIn(BlockTags.LOGS)&& !world.getBlockState(blockPos).getBlock().isIn(BlockTags.LEAVES)) {
                                             world.setBlockState(blockPos, config.state, 4);
                                             world.setBlockState(blockPos.up(), Blocks.AIR.getDefaultState(), 4);
                                             filledBlocks.add(blockPos);

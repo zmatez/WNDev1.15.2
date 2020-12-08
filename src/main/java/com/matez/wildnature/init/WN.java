@@ -3,28 +3,23 @@ package com.matez.wildnature.init;
 import com.matez.wildnature.client.gui.container.BackpackBigContainer;
 import com.matez.wildnature.client.gui.container.BackpackMediumContainer;
 import com.matez.wildnature.client.gui.container.BackpackSmallContainer;
-import com.matez.wildnature.client.gui.tileEntities.*;
+import com.matez.wildnature.client.gui.container.PouchContainer;
+import com.matez.wildnature.client.gui.initGuis;
+import com.matez.wildnature.client.particles.*;
+import com.matez.wildnature.client.render.WNBlockRenderLayer;
+import com.matez.wildnature.client.sounds.SoundRegistry;
+import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import com.matez.wildnature.common.colors.WNBlockColors;
 import com.matez.wildnature.common.colors.WNItemColors;
-import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import com.matez.wildnature.common.commands.BiomeArgument;
 import com.matez.wildnature.common.commands.WNCommand;
 import com.matez.wildnature.common.compatibility.WNMinecraftCopatibility;
 import com.matez.wildnature.common.compatibility.WNMobSpawnFix;
 import com.matez.wildnature.common.compatibility.WNMobSpawning;
 import com.matez.wildnature.common.effect.WNEffects;
-import com.matez.wildnature.common.items.blowpipe.BlowpipeAmmo;
-import com.matez.wildnature.common.registry.DungeonDecoRegistry;
-import com.matez.wildnature.network.packet.WNPackets;
-import com.matez.wildnature.util.config.CommonConfig;
-import com.matez.wildnature.util.config.WNConfig;
 import com.matez.wildnature.common.entity.EntityRegistry;
 import com.matez.wildnature.common.entity.render.RenderRegistry;
-import com.matez.wildnature.util.dataFixer.WNDataFixer;
-import com.matez.wildnature.util.event.*;
-import com.matez.wildnature.client.gui.container.PouchContainer;
-import com.matez.wildnature.client.gui.initGuis;
-import com.matez.wildnature.client.gui.tileEntities.item.ItemTileEntity;
+import com.matez.wildnature.common.items.blowpipe.BlowpipeAmmo;
 import com.matez.wildnature.common.items.recipes.DyeableRecipe;
 import com.matez.wildnature.common.items.recipes.GiftCrafting;
 import com.matez.wildnature.common.items.recipes.KnifeCrafting;
@@ -33,11 +28,7 @@ import com.matez.wildnature.common.items.recipes.cooking.CraftingTweaker;
 import com.matez.wildnature.common.items.recipes.cooking.WNCookingRecipe;
 import com.matez.wildnature.common.items.recipes.cooking.WNCookingRecipeSerializer;
 import com.matez.wildnature.common.items.recipes.cooking.WNCookingSmelting;
-import com.matez.wildnature.util.lists.WNBlocks;
-import com.matez.wildnature.client.particles.*;
-import com.matez.wildnature.network.proxy.ClientProxy;
-import com.matez.wildnature.network.proxy.IProxy;
-import com.matez.wildnature.network.proxy.ServerProxy;
+import com.matez.wildnature.common.registry.DungeonDecoRegistry;
 import com.matez.wildnature.common.registry.WNRegistry;
 import com.matez.wildnature.common.registry.blocks.*;
 import com.matez.wildnature.common.registry.items.FoodRegistry;
@@ -45,8 +36,18 @@ import com.matez.wildnature.common.registry.items.GemRegistry;
 import com.matez.wildnature.common.registry.items.ItemRegistry;
 import com.matez.wildnature.common.registry.items.WaterlilyRegistry;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
-import com.matez.wildnature.client.render.WNBlockRenderLayer;
-import com.matez.wildnature.client.sounds.SoundRegistry;
+import com.matez.wildnature.common.tileentity.*;
+import com.matez.wildnature.common.tileentity.item.ItemTileEntity;
+import com.matez.wildnature.common.tileentity.present.PresentTileEntity;
+import com.matez.wildnature.network.packet.WNPackets;
+import com.matez.wildnature.network.proxy.ClientProxy;
+import com.matez.wildnature.network.proxy.IProxy;
+import com.matez.wildnature.network.proxy.ServerProxy;
+import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.util.config.WNConfig;
+import com.matez.wildnature.util.datafixer.WNDataFixer;
+import com.matez.wildnature.util.event.*;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.carver.CarverRegistry;
 import com.matez.wildnature.world.generation.chunk.type.WNChunkGeneratorType;
@@ -54,10 +55,11 @@ import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.features.RockGen;
 import com.matez.wildnature.world.generation.provider.WNBiomeProviderType;
 import com.matez.wildnature.world.generation.provider.WNWorldType;
-import com.matez.wildnature.world.generation.structures.nature.fallen.FallenRegistry;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
+import com.matez.wildnature.world.generation.structures.nature.fallen.FallenRegistry;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.arguments.ArgumentSerializer;
 import net.minecraft.command.arguments.ArgumentTypes;
@@ -121,6 +123,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @Mod("wildnature")
@@ -144,7 +147,7 @@ public class WN {
     public static boolean canShowAdvancedTooltip = false;
     public static World runningWorld;
     public static WNDataFixer dataFixer;
-    
+
     public WN() {
         LOGGER.info("Initializing WildNature mod");
         instance = this;
@@ -214,6 +217,55 @@ public class WN {
 
         EntityRegistry.registerEntitySpawns();
 
+        for (WorldCarver<?> worldCarver : Registry.CARVER) {
+            LOGGER.debug("Injecting new carvable blocks to " + worldCarver.getRegistryName());
+            worldCarver.carvableBlocks = new LinkedHashSet<>();
+            worldCarver.carvableBlocks.addAll(Arrays.asList(
+                    Blocks.STONE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.GRASS_BLOCK, Blocks.TERRACOTTA, Blocks.WHITE_TERRACOTTA, Blocks.ORANGE_TERRACOTTA, Blocks.MAGENTA_TERRACOTTA, Blocks.LIGHT_BLUE_TERRACOTTA, Blocks.YELLOW_TERRACOTTA, Blocks.LIME_TERRACOTTA, Blocks.PINK_TERRACOTTA, Blocks.GRAY_TERRACOTTA, Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.CYAN_TERRACOTTA, Blocks.PURPLE_TERRACOTTA, Blocks.BLUE_TERRACOTTA, Blocks.BROWN_TERRACOTTA, Blocks.GREEN_TERRACOTTA, Blocks.RED_TERRACOTTA, Blocks.BLACK_TERRACOTTA, Blocks.SANDSTONE, Blocks.RED_SANDSTONE, Blocks.MYCELIUM, Blocks.SNOW, Blocks.PACKED_ICE,
+                    Blocks.GRASS_PATH,
+                    WNBlocks.ALGAE_BLOCK,
+
+                    WNBlocks.BROWN_GRASS_BLOCK,
+                    WNBlocks.BROWN_DIRT,
+                    WNBlocks.BROWN_GRASS_PATH,
+                    WNBlocks.BROWN_MYCELIUM,
+                    WNBlocks.BROWN_PODZOL,
+                    WNBlocks.BROWN_FARMLAND,
+
+                    WNBlocks.MOLD_GRASS_BLOCK,
+                    WNBlocks.MOLD_DIRT,
+                    WNBlocks.MOLD_GRASS_PATH,
+                    WNBlocks.MOLD_FARMLAND,
+
+                    WNBlocks.DRIED_GRASS_BLOCK,
+                    WNBlocks.DRIED_DIRT,
+                    WNBlocks.DRIED_GRASS_PATH,
+                    WNBlocks.DRIED_FARMLAND,
+
+                    WNBlocks.DESERT_GRASS_BLOCK,
+                    WNBlocks.DESERT_DIRT,
+                    WNBlocks.DESERT_GRASS_PATH,
+                    WNBlocks.DESERT_FARMLAND,
+
+                    WNBlocks.TROPICAL_GRASS_BLOCK,
+                    WNBlocks.TROPICAL_DIRT,
+                    WNBlocks.TROPICAL_GRASS_PATH,
+                    WNBlocks.TROPICAL_FARMLAND,
+
+                    WNBlocks.OVERGROWN_STONE,
+
+                    WNBlocks.BASALT,
+                    WNBlocks.GNEISS,
+                    WNBlocks.MARBLE,
+                    WNBlocks.LIMESTONE,
+                    WNBlocks.SLATE_BLUE,
+                    WNBlocks.SLATE_PURPLE,
+                    WNBlocks.QUARTZITE,
+                    WNBlocks.BASALT_MAGMA,
+
+                    WNBlocks.WHITE_SANDSTONE
+            ));
+        }
 
         WNBiomes.unregisterBlacklisted();
         proxy.init();
@@ -444,8 +496,6 @@ public class WN {
             type = ParticleRegistry.CRYSTAL_SPARK;
             type = ParticleRegistry.GEYSER;
             type = ParticleRegistry.STEAM;
-
-
         }
 
         @SubscribeEvent
@@ -454,6 +504,7 @@ public class WN {
             TileEntityType<CustomPistonTileEntity> piston_type = TileEntityType.Builder.create(CustomPistonTileEntity::new, WNBlocks.RS_PISTON1_MOVING).build(null);
             piston_type.setRegistryName("wildnature", "rs_piston1");
             evt.getRegistry().register(piston_type);
+
             initGuis.PISTON_TYPE = piston_type;
 
             TileEntityType<DungeonCommanderTileEntity> dungeonCommander = TileEntityType.Builder.create(DungeonCommanderTileEntity::new, WNBlocks.DUNGEON_COMMANDER).build(null);
@@ -481,6 +532,11 @@ public class WN {
             itemTile.setRegistryName("wildnature", "item_tile_entity");
             evt.getRegistry().register(itemTile);
             initGuis.ITEM_TILE_ENTITY = itemTile;
+
+            TileEntityType<PresentTileEntity> presentTile = TileEntityType.Builder.create(PresentTileEntity::new, PresentTileEntity.SUPPORTED_BLOCKS.toArray(new Block[0])).build(null);
+            presentTile.setRegistryName("wildnature", "present_tile_entity");
+            evt.getRegistry().register(presentTile);
+            initGuis.PRESENT_TILE_ENTITY = presentTile;
         }
 
         private static final List<ContainerType<?>> CONTAINER_TYPES = new ArrayList<>();

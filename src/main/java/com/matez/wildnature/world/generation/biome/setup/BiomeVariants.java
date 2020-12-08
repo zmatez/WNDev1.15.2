@@ -57,7 +57,7 @@ public class BiomeVariants {
 
         if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN)){
             return OCEAN;
-        }else if(biome == WNBiomes.ColdLake || biome == WNBiomes.DriedLake || biome == WNBiomes.FrozenLake || biome == WNBiomes.TropicalLake || biome == WNBiomes.WarmLake){
+        }else if(biome == WNBiomes.ColdLake || biome == WNBiomes.DriedLake || biome == WNBiomes.FrozenLake || biome == WNBiomes.TropicalLake || biome == WNBiomes.WarmLake|| biome == WNBiomes.MorskieOko|| biome == WNBiomes.FrozenMorskieOko){
             return LAKE;
         }else if(BiomeDictionary.hasType(biome, BiomeDictionary.Type.BEACH)){
             return SHORE;

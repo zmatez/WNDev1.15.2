@@ -80,9 +80,9 @@ public class SaplingRegistry {
         weighList.add(new apple3(),10);
         SchemTree appleTrees = new SchemTree(weighList);
         weighList = new TreeWeighList();
-        weighList.add(new oak1().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
-        weighList.add(new oak2().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
-        weighList.add(new oak3().setCustomLog(Blocks.OAK_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
+        weighList.add(new oak1().setCustomLog(WNBlocks.ROSACEAE_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
+        weighList.add(new oak2().setCustomLog(WNBlocks.ROSACEAE_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
+        weighList.add(new oak3().setCustomLog(WNBlocks.ROSACEAE_LOG.getDefaultState()).setCustomLeafOverride(SchemFeature.notDecayingLeaf(WNBlocks.PARADISE_APPLE_LEAVES)),10);
         SchemTree paradiseAppleTrees = new SchemTree(weighList);
         weighList = new TreeWeighList();
 

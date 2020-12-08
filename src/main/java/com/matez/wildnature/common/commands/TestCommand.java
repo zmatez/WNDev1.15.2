@@ -72,7 +72,7 @@ public class TestCommand {
             Biome biome2 = provider.getNoiseBiome(rx >> 2, ry, rz >> 2);
             Biome biome3 = ColumnFuzzedBiomeMagnifier.INSTANCE.getBiome(worldIn.getSeed(),rx,0,rz,worldIn);
             Biome biome4 = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(),rx,0,rz,worldIn);
-            ChunkLandscape landscape = ChunkLandscape.getOrCreate(cell, rx, rz, worldIn.getSeed(), worldIn.getSeaLevel(),biome,worldIn.getChunk(pos.x,pos.z));
+            ChunkLandscape landscape = ChunkLandscape.getOrCreate(rx, rz, worldIn.getSeed(), worldIn.getSeaLevel(),biome,worldIn.getChunk(pos.x,pos.z));
             //
             int directionMove = 16;
             Cell northCell = provider.getNoiseCell((rx/4) + directionMove, (rz/4)).copy();
@@ -161,7 +161,7 @@ public class TestCommand {
                         ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
                         double[] values = smoothLerp(entity, (pos.x * 16) + x, (pos.z * 16) + z, biome, weightMap1, variantAccessor);
                         log(entity, "Height: " + values[0]);
-                        log(entity, "Sample noise: " + landscape.sampleNoise(cell,rx,rz,values[0],values[1],true));
+                        log(entity, "Sample noise: " + landscape.sampleNoise(rx,rz,values[0],values[1],true));
                     }
                 }
             }

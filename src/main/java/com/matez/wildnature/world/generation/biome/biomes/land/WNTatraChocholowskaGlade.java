@@ -30,7 +30,7 @@ public class WNTatraChocholowskaGlade extends WNBiome {
                 .category(Category.EXTREME_HILLS)
                 .topography(WNBiomeBuilder.Topography.HIGH_MOUNTAINS)
                 .climate(WNBiomeBuilder.Climate.CONTINENTAL_COOL)
-                .depth(1.7F)
+                .depth(1.5F)
                 .scale(0.3F)
                 .temperature(0.25F)
                 .downfall(0.8F)

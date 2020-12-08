@@ -1,7 +1,8 @@
 package com.matez.wildnature.common.blocks;
 
-import com.matez.wildnature.client.gui.tileEntities.item.ItemTileEntity;
+import com.matez.wildnature.common.tileentity.item.ItemTileEntity;
 import com.matez.wildnature.client.render.IRenderLayer;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.client.renderer.RenderType;
@@ -20,14 +21,9 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class TableBase extends HorizontalBase implements IRenderLayer, ITileEntityProvider{
+public class TableBase extends HorizontalContainerBase implements IRenderLayer{
     public TableBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(properties, builder, regName);
-        ItemTileEntity.SUPPORTED_BLOCKS.add(this);
-    }
-
-    public TableBase(Properties properties, Item.Properties builder, String drop, int min, int max, int exp, ResourceLocation regName) {
-        super(properties, builder, drop, min, max, exp, regName);
         ItemTileEntity.SUPPORTED_BLOCKS.add(this);
     }
 
@@ -47,27 +43,24 @@ public class TableBase extends HorizontalBase implements IRenderLayer, ITileEnti
                 if(itemEntity.hasPlacedStack()){
                     if(!player.isSneaking() && itemEntity.getPlacedStack().getItem().isFood()){
                         itemEntity.eat(player);
-                        return ActionResultType.SUCCESS;
                     }else {
                         player.setHeldItem(handIn, itemEntity.getPlacedStack());
                         itemEntity.removeItemStack();
-                        return ActionResultType.SUCCESS;
                     }
+                    return ActionResultType.SUCCESS;
                 }else{
                     return ActionResultType.PASS;
                 }
             }else{
-                if(itemEntity.hasPlacedStack()){
-                    return ActionResultType.PASS;
-                }else{
-                    if(!player.isSneaking()) {
+                if (!itemEntity.hasPlacedStack()) {
+                    if (!player.isSneaking()) {
                         itemEntity.setFacing(player.getHorizontalFacing());
                         itemEntity.addItemStack(worldIn, pos, heldItem);
                         player.setHeldItem(handIn, ItemStack.EMPTY);
                         return ActionResultType.SUCCESS;
                     }
-                    return ActionResultType.PASS;
                 }
+                return ActionResultType.PASS;
             }
         }
         return ActionResultType.FAIL;
@@ -87,16 +80,9 @@ public class TableBase extends HorizontalBase implements IRenderLayer, ITileEnti
         super.onBlockHarvested(worldIn, pos, state, player);
     }
 
-    public boolean eventReceived(BlockState state, World worldIn, BlockPos pos, int id, int param) {
-        super.eventReceived(state, worldIn, pos, id, param);
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        return tileentity != null && tileentity.receiveClientEvent(id, param);
-    }
-
-    @Nullable
-    public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider)tileentity : null;
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override

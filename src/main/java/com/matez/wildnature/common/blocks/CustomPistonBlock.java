@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.client.gui.tileEntities.CustomPistonTileEntity;
+import com.matez.wildnature.common.tileentity.CustomPistonTileEntity;
 import com.matez.wildnature.util.other.CustomPistonBlockStructureHelper;
 import com.matez.wildnature.client.sounds.SoundRegistry;
 import net.minecraft.block.*;

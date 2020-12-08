@@ -6,8 +6,11 @@ import com.matez.wildnature.util.noise.func.DistanceFunc;
 import com.matez.wildnature.util.noise.func.EdgeFunc;
 import com.matez.wildnature.util.noise.NoiseUtil;
 import com.matez.wildnature.util.noise.Vec2f;
+import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
+
+import java.util.Random;
 
 /*
 Idea for GridMap comes from TerraForged. However it was bit modified, still, apply method is the same
@@ -46,6 +49,9 @@ public abstract class GridMap{
     private final FastNoise warpY;
     private final Warp warp;
 
+    private int xMove, zMove;
+
+
     /**
      * Used to produce terrains
      * @param seed world seed
@@ -64,7 +70,12 @@ public abstract class GridMap{
         this.warpY = getWarpY();
 
         this.warp = new Warp(warpX, warpY, 64); //Warping too intense will bring back your old lerping issue as blobs off cells will be placed in other cells.
-        WN.LOGGER.debug("Loaded GridMap " + this.getClass().getSimpleName() + " with seed " + this.seed);
+        Random random = new Random(seed);
+        xMove = Utilities.rint(-100_000,100_000,random);
+        zMove = Utilities.rint(-100_000,100_000,random);
+        WN.LOGGER.debug("Continent move: " + xMove + " " + zMove);
+        WN.LOGGER.debug("Loaded GridMap " + this.getClass().getSimpleName() + " with seed " + this.seed + " and move " + xMove + " " + zMove);
+
     }
 
     public GridMap(long seed, int gridScale){
@@ -78,11 +89,11 @@ public abstract class GridMap{
     public abstract CellValues applyOutput();
 
     public void apply(Cell cell, float x, float z) {
-        float ox = warp.getOffsetX(x, z);
-        float oz = warp.getOffsetZ(x, z);
+        float ox = warp.getOffsetX(xMove + x, zMove + z);
+        float oz = warp.getOffsetZ(xMove + x, zMove + z);
 
-        float px = x + ox;
-        float py = z + oz;
+        float px = xMove + x + ox;
+        float py = zMove + z + oz;
 
         px *= frequency;
         py *= frequency;

@@ -6,7 +6,7 @@ import com.matez.wildnature.common.entity.render.layer.blowdarts.RowanBlowdartLa
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.common.entity.render.layer.cape.WNCapeLayer;
-import com.matez.wildnature.client.gui.tileEntities.DungeonCommanderTileEntity;
+import com.matez.wildnature.common.tileentity.DungeonCommanderTileEntity;
 import com.matez.wildnature.client.gui.initGuis;
 import com.matez.wildnature.client.music.WNMusic;
 import net.minecraft.client.Minecraft;

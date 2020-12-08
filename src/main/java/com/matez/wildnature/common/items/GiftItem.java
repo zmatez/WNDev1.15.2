@@ -1,12 +1,17 @@
 package com.matez.wildnature.common.items;
 
+import com.matez.wildnature.common.tileentity.present.PresentTileEntity;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Utilities;
+import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -18,24 +23,24 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class GiftItem extends Item {
+public class GiftItem extends BlockItem {
     private GiftColor color;
-    public GiftItem(Properties properties, GiftColor color) {
-        super(properties.maxStackSize(1));
+    public GiftItem(Block block, Properties properties, GiftColor color) {
+        super(block, properties.maxStackSize(1));
         this.color=color;
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
-        ItemStack i = context.getPlayer().getHeldItem(context.getHand());
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack i = playerIn.getHeldItem(handIn);
         ItemStack gift = Utilities.loadItem(i.getTag());
 
         if(gift.isEmpty()) {
-            return ActionResultType.PASS;
+            return super.onItemRightClick(worldIn,playerIn,handIn);
         }else{
-            context.getPlayer().setHeldItem(context.getHand(),gift);
-            context.getWorld().playSound(context.getPlayer(),context.getPlayer().getPosition(),SoundEvents.ENTITY_PLAYER_LEVELUP,SoundCategory.MASTER,0.8F,1.1F);
-            return ActionResultType.SUCCESS;
+            playerIn.setHeldItem(handIn,gift);
+            worldIn.playSound(playerIn,playerIn.getPosition(),SoundEvents.ENTITY_PLAYER_LEVELUP,SoundCategory.MASTER,0.8F,1.1F);
+            return ActionResult.resultSuccess(playerIn.getHeldItem(handIn));
         }
     }
 
@@ -78,7 +83,6 @@ public class GiftItem extends Item {
         if(stack.getOrCreateTag().contains("owner")){
             tooltip.add(new StringTextComponent(TextFormatting.GRAY+"from " + TextFormatting.DARK_PURPLE+stack.getOrCreateTag().getString("owner")));
         }else {
-
             if (color == GiftItem.GiftColor.CYAN_RED) {
                 tooltip.add(new StringTextComponent(TextFormatting.DARK_AQUA + I18n.format("color.minecraft.cyan") + TextFormatting.GRAY + " & " + TextFormatting.RED + I18n.format("color.minecraft.red")));
             }

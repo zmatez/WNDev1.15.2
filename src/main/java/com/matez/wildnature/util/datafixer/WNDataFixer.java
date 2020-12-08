@@ -1,13 +1,11 @@
-package com.matez.wildnature.util.dataFixer;
+package com.matez.wildnature.util.datafixer;
 
-import com.matez.wildnature.util.event.DataFixEvent;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.lists.WNItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 
 import java.util.LinkedHashMap;
 

@@ -22,7 +22,6 @@ import java.util.function.Function;
 public class ChunkLandscape {
     public static HashMap<String, Class<? extends ChunkLandscape>> landscapeCache = new HashMap<String, Class<? extends ChunkLandscape>>();
 
-    protected Cell cell;
     protected int x;
     protected int z;
 
@@ -32,7 +31,7 @@ public class ChunkLandscape {
 
     protected float depth;
     protected float scale;
-    protected int octaves = 11;
+    public static int octaves = 11;
     public long seed;
     public int sealevel;
 
@@ -41,8 +40,7 @@ public class ChunkLandscape {
 
     private final FastNoise worldLimitNoise;
 
-    public ChunkLandscape(Cell cell, int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
-        this.cell = cell;
+    public ChunkLandscape(int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.x = x;
         this.z = z;
         this.biome = biome;
@@ -75,7 +73,6 @@ public class ChunkLandscape {
     public void initNoiseProcessors(){
         for (NoiseProcessor noiseProcessor : noiseProcessors) {
             if(noiseProcessor.canProcess(biome)){
-                noiseProcessor.init(seed, random,octaves);
                 validNoiseProcessors.add(noiseProcessor);
             }
         }
@@ -94,11 +91,11 @@ public class ChunkLandscape {
         double height = output[0];
         double scale = output[1];
 
-        double noise = sampleNoise(cell,x, z, height, scale,true);
-        noise += sampleNoise(cell,x + 4, z, height, scale,false);
-        noise += sampleNoise(cell,x - 4, z, height, scale,false);
-        noise += sampleNoise(cell,x, z + 4, height, scale,false);
-        noise += sampleNoise(cell,x, z - 4, height, scale,false);
+        double noise = sampleNoise(x, z, height, scale,true);
+        noise += sampleNoise(x + 4, z, height, scale,false);
+        noise += sampleNoise(x - 4, z, height, scale,false);
+        noise += sampleNoise(x, z + 4, height, scale,false);
+        noise += sampleNoise(x, z - 4, height, scale,false);
         noise *= 0.2;
 
         //80 means 69Y, 100 means 92Y as base height
@@ -118,11 +115,11 @@ public class ChunkLandscape {
         return noise;
     }
 
-    public double sampleNoise(Cell cell, int x, int z, double height, double scale, boolean rawCoords) {
+    public double sampleNoise(int x, int z, double height, double scale, boolean rawCoords) {
         double output = 0;
         double d = 0;
-        double f = Utilities.scaleBetween(cell.biomeCellEdge,0,1,0,0.1);
-        double factor = cell.biomeCellEdge > 0.1 ? 1 : f;
+
+        double factor = 0;
         for (NoiseProcessor noiseProcessor : validNoiseProcessors) {
             double noise = noiseProcessor.getProcessedNoise(x,z,biome,height,scale,rawCoords);
             if(noiseProcessor.smoothedOnBorders()){
@@ -156,16 +153,16 @@ public class ChunkLandscape {
     }
 
     // This way, if we have a biome that would require different terrain we can create a class that extends ChunkLandscape and add it by calling "ChunkLandscape.addLandscape(WNBiomes.THE_BIOME, THE_CHUNK_LANDSCAPE.class);"
-    public static ChunkLandscape getOrCreate(Cell cell,  int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
+    public static ChunkLandscape getOrCreate(int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
         Class<? extends ChunkLandscape> landscape = landscapeCache.get(biome.getRegistryName().getPath());
         if (landscape != null) {
             try {
-                return landscape.getDeclaredConstructor(Cell.class, int.class, int.class, long.class, int.class, Biome.class, IChunk.class).newInstance(cell, x, z, seed, sealevel, biome, chunkIn);
+                return landscape.getDeclaredConstructor(int.class, int.class, long.class, int.class, Biome.class, IChunk.class).newInstance(x, z, seed, sealevel, biome, chunkIn);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
 
-        return new ChunkLandscape(cell, x, z, seed,sealevel, biome, chunkIn);
+        return new ChunkLandscape(x, z, seed,sealevel, biome, chunkIn);
     }
 }

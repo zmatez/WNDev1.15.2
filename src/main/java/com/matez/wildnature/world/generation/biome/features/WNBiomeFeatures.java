@@ -109,11 +109,11 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
     }
 
     public static void addBlob(Biome biomeIn, BlockState block, int startRadius, boolean surfaceBlob, boolean undergroundBlob, int frequency){
-        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(frequency))));
+        biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.FOREST_ROCK.configure(new FrequencyConfig(frequency))));
     }
 
     public static void addBlobWithCountRangePlacement(Biome biomeIn, BlockState block, int startRadius, boolean surfaceBlob, boolean undergroundBlob, int count, int bottom, int top){
-        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(count,bottom,0,top))));
+        biomeIn.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, WNFeatures.BLOB_FEATURE.withConfiguration(new WNBlobConfig(block,startRadius,surfaceBlob,undergroundBlob)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(count,bottom,0,top))));
     }
 
     public static void addTatraStoneTypes(Biome biomeIn){
@@ -443,9 +443,11 @@ public class WNBiomeFeatures extends DefaultBiomeFeatures {
 
         }
 
-
-        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, WNBlocks.SILVER_ORE.getDefaultState(), 6)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.silverRarity.get(), 20, 0, 35))));
-
+        if(biomeIn == WNBiomes.Silverlands || biomeIn == WNBiomes.ColdSilverlands){
+            biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, WNBlocks.SILVER_ORE.getDefaultState(), 6)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig((int)(CommonConfig.silverRarity.get() * 2), 20, 0, 35))));
+        }else {
+            biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, WNBlocks.SILVER_ORE.getDefaultState(), 6)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(CommonConfig.silverRarity.get(), 20, 0, 35))));
+        }
     }
 
     public static void addRockFormations(Biome biomeIn){

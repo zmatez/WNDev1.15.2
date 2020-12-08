@@ -5,18 +5,15 @@
     },
     "facing=east": {
       "model": "wildnature:block/christmas_tree",
-      "y": 90,
-      "uvlock": true
+      "y": 90
     },
     "facing=south": {
       "model": "wildnature:block/christmas_tree",
-      "y": 180,
-      "uvlock": true
+      "y": 180
     },
     "facing=west": {
       "model": "wildnature:block/christmas_tree",
-      "y": 270,
-      "uvlock": true
+      "y": 270
     }
   }
 }

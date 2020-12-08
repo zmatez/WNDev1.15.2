@@ -1,11 +1,12 @@
-package com.matez.wildnature.client.gui.tileEntities;
+package com.matez.wildnature.common.tileentity;
 
+import com.matez.wildnature.common.blocks.CaveFloweringBushBase;
 import com.matez.wildnature.common.blocks.SteamGeneratorBlock;
 import com.matez.wildnature.client.gui.initGuis;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
 import net.minecraft.block.BlockState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -16,10 +17,10 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class HydrothermalVentTileEntity extends TileEntity implements ITickableTileEntity {
+public class CaveLilyTileEntity extends TileEntity implements ITickableTileEntity {
     private Random rand = new Random();
-    public HydrothermalVentTileEntity() {
-        super(initGuis.HYDROTHERMAL_VENT_TILE_ENTITY);
+    public CaveLilyTileEntity() {
+        super(initGuis.CAVE_LILY_TILE_ENTITY);
     }
 
 
@@ -27,8 +28,8 @@ public class HydrothermalVentTileEntity extends TileEntity implements ITickableT
     public void tick() {
         if(world!=null) {
             if (!world.isRemote) {
-                if (world.getFluidState(pos.up()).getFluid() == Fluids.WATER && world.getFluidState(pos.up(5)).getFluid() == Fluids.WATER) {
-                    steamParticle(pos, world.getBlockState(pos), (ServerWorld) world, rand);
+                if (world.getBlockState(pos).getBlock() == WNBlocks.CAVE_LILY_FLOWER && world.getBlockState(pos).get(CaveFloweringBushBase.FLOWERING)) {
+                    //world.getClosestEntity(world.getEntit)
                 }
             }
         }
@@ -47,8 +48,8 @@ public class HydrothermalVentTileEntity extends TileEntity implements ITickableT
             double speedYBubble = Utilities.rdoub(0.3,2.2);
             double speedY = Utilities.rdoub(0.03,0.06);
             double speedZ = Utilities.rdoub(-res,res);
-            SteamGeneratorBlock.spawnParticle(world, ParticleRegistry.THERMAL_SMOKE,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
-            SteamGeneratorBlock.spawnParticle(world, ParticleTypes.BUBBLE,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedYBubble,speedZ);
+            SteamGeneratorBlock.spawnParticle(world, ParticleTypes.WITCH,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedY,speedZ);
+            SteamGeneratorBlock.spawnParticle(world, ParticleRegistry.CRYSTAL,X+0.5, Y+0.5, Z+0.5, 1,speedX,speedYBubble,speedZ);
 
         }
 

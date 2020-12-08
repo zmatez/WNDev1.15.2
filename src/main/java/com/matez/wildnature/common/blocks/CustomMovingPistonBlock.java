@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import com.matez.wildnature.client.gui.tileEntities.CustomPistonTileEntity;
+import com.matez.wildnature.common.tileentity.CustomPistonTileEntity;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

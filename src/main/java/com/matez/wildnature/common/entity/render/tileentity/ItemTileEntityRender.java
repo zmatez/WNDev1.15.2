@@ -1,6 +1,6 @@
 package com.matez.wildnature.common.entity.render.tileentity;
 
-import com.matez.wildnature.client.gui.tileEntities.item.ItemTileEntity;
+import com.matez.wildnature.common.tileentity.item.ItemTileEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;

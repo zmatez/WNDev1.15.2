@@ -23,6 +23,11 @@ public class HorizontalBase extends BlockBase{
         this.setDefaultState((BlockState)((BlockState)this.getStateContainer().getBaseState()).with(FACING, Direction.NORTH));
     }
 
+    public HorizontalBase(Properties properties, ResourceLocation regName) {
+        super(properties, regName);
+        this.setDefaultState((BlockState)((BlockState)this.getStateContainer().getBaseState()).with(FACING, Direction.NORTH));
+    }
+
     public HorizontalBase(Properties properties, Item.Properties builder, String drop, int min, int max, int exp, ResourceLocation regName) {
         super(properties, builder, drop, min, max, exp, regName);
         this.setDefaultState((BlockState)((BlockState)this.getStateContainer().getBaseState()).with(FACING, Direction.NORTH));

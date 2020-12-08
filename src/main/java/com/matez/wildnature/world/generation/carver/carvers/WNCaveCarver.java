@@ -1,6 +1,9 @@
 package com.matez.wildnature.world.generation.carver.carvers;
 
+import com.google.common.collect.ImmutableSet;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.mojang.datafixers.Dynamic;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
@@ -16,6 +19,8 @@ public class WNCaveCarver extends WorldCarver<ProbabilityConfig> {
     public WNCaveCarver(Function<Dynamic<?>, ? extends ProbabilityConfig> p_i49929_1_, int p_i49929_2_) {
         super(p_i49929_1_, p_i49929_2_);
         setRegistryName("wildnature", "cave_carver");
+
+
     }
 
     @Override
