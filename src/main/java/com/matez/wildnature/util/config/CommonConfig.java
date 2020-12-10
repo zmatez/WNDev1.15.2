@@ -16,11 +16,11 @@ public class CommonConfig {
     public static ForgeConfigSpec.ConfigValue<String> currentVersion;
     public static ForgeConfigSpec.BooleanValue changePanorama, newLoadingWorldScreen, generateOnlyWildNature;
     public static ForgeConfigSpec.BooleanValue useWNOnServer;
-    public static ForgeConfigSpec.BooleanValue generatorWarning;
     public static ForgeConfigSpec.DoubleValue riverDepth;
     public static ForgeConfigSpec.BooleanValue messageOnJoin;
     public static ForgeConfigSpec.BooleanValue effectOnJoin;
     public static ForgeConfigSpec.BooleanValue renderCapes;
+    public static ForgeConfigSpec.BooleanValue playWildNatureMusic;
     public static ForgeConfigSpec.BooleanValue playAmbientSounds;
     public static ForgeConfigSpec.BooleanValue replaceDefaultTrees;
     public static ForgeConfigSpec.BooleanValue generateUndergroundPlants;
@@ -88,12 +88,9 @@ public class CommonConfig {
 
         currentVersion = builder
                 .comment("Installed mod version. Please do not change this.").define("system.version", "");
-        generatorWarning = builder
-                .comment("Installed mod version. Please do not change this.")
-                .define("system.genWarning",false);
         maxSearchRadius = builder
-                .comment("Max *nearest* biome search radius. After exceeding this number, WildNature will search for biome ignoring radius.\nDefault: 15000")
-                .defineInRange("system.max_search_radius", 15000,10,100000000);
+                .comment("Max *nearest* biome search radius. After exceeding this number, WildNature will search for biome ignoring radius.\nDefault: 25000")
+                .defineInRange("system.max_search_radius", 25000,10,100000000);
         useWNOnServer = builder
                 .comment("Always use WN World Generator on server?\nDefault:true")
                 .define("system.wn_server_gen",true);
@@ -112,7 +109,6 @@ public class CommonConfig {
         newLoadingWorldScreen = builder
                 .comment("Use new world loading screen?\nDefault:true")
                 .define("system.worldLoadScreen",true);
-
         builder.pop();
     }
 
@@ -122,7 +118,7 @@ public class CommonConfig {
         builder.push("generator");
 
         generatorType = builder
-                .comment("Generator version. \nAccepted Values: new | old").define("generatorType", "new");
+                .comment("Generator version. \nAccepted Values: new | old\nWarning: old isn't supported anymore and will be deleted soon").define("generatorTypeX", "new");
 
         generatorThreads = builder
                 .comment("Generator Threads. Set to 8 if your world load will freeze. It's experimental!\nDefault: 2")
@@ -153,12 +149,12 @@ public class CommonConfig {
                 .defineInRange("size.smallIsland",130, 10, 24000);
 
         bigIslandRarity = builder
-                .comment("Big Island rarity\nSmaller = more common\nDefault: 10")
-                .defineInRange("rarity.bigIsland",10, 1, 24000);
+                .comment("Big Island rarity\nSmaller = more common\nDefault: 18")
+                .defineInRange("rarity.bigIsland",18, 1, 24000);
 
         smallIslandRarity = builder
-                .comment("Small Island rarity\nSmaller = more common\nDefault: 16")
-                .defineInRange("rarity.smallIsland",16, 1, 24000);
+                .comment("Small Island rarity\nSmaller = more common\nDefault: 24")
+                .defineInRange("rarity.smallIsland",24, 1, 24000);
 
         biomeSize = builder
                 .comment("Biome Size //deprecated\nDefault: 5")
@@ -205,11 +201,11 @@ public class CommonConfig {
                 .define("rocks.define.slate_purple",false);
 
         rockChance = builder
-                .comment("Chance of rock generation\nDefault: 33")
-                .defineInRange("rocks.chance",33, 0, 100);
+                .comment("Chance of rock generation\nDefault: 10")
+                .defineInRange("rocks.chance",4, 0, 100);
 
         rockSize = builder
-                .comment("Rock deposit size\nDefault: 10")
+                .comment("Rock deposit size\nDefault: 33")
                 .defineInRange("rocks.size",10, 0, 100);
 
         riverDepth=builder
@@ -469,6 +465,9 @@ public class CommonConfig {
     {
         builder.push("sound");
 
+        playWildNatureMusic = builder
+                .comment("[W.I.P] Play WildNature music?")
+                .define("play_music",false);
         playAmbientSounds = builder
                 .comment("[W.I.P] Play ambient sounds on biomes?")
                 .define("play_ambient",true);

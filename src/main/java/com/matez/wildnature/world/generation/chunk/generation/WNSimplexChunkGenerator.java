@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
@@ -214,9 +215,14 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
                 ChunkPos chunkpos = chunk.getPos();
                 StructureStart structurestart1 = StructureStart.DUMMY;
+
                 BlockPos biomePos = new BlockPos(chunkpos.getXStart() + 9, 0, chunkpos.getZStart() + 9);
+                //WN.LOGGER.debug("Locating at " + biomePos + " / " + (biomePos.getX() & 15) + ":"+ (biomePos.getZ() & 15));
                 Biome biome = p_227058_1_.getBiome(biomePos);
-                biome = GridBiomeLayer.applyHeightmapBiome(biome,biomePos,chunk,getSeaLevel(),1);
+                /*WN.LOGGER.debug("biome found " + biome.getRegistryName());
+                biome = GridBiomeLayer.applyHeightmapBiome(Heightmap.Type.OCEAN_FLOOR_WG,biome,chunk,getSeaLevel(),biomePos.getX(), biomePos.getZ());
+                WN.LOGGER.debug("biome fix " + biome.getRegistryName());*/
+                //TODO Villages not spawn on lake biomes
                 if (structure.canBeGenerated(p_227058_1_, p_227058_3_, sharedseedrandom, chunkpos.x, chunkpos.z, biome)) {
                     StructureStart structurestart2 = structure.getStartFactory().create(structure, chunkpos.x, chunkpos.z, MutableBoundingBox.getNewBoundingBox(), i, p_227058_3_.getSeed());
                     structurestart2.init(this, p_227058_4_, chunkpos.x, chunkpos.z, biome);

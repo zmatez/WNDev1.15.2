@@ -29,7 +29,7 @@ Thanks to our Patrons for supporting us!
 And to our awesome community too :)
 ''' #optional
 # A text field displayed in the mod UI
-authors="matez_, S1pke, ids_nl, mesaacr, Skidush, ZippyMagician, Bonniethebunny, IHaveABed, RhinoW, Cosmic, TheCrimsonPinch, MarshmallowQuokka, Chalkjr, SundaddyCutetail" #optional
+authors="matez_, S1pke, ids_nl, mesaacr, Skidush, ZippyMagician, Bonniethebunny, IHaveABed, RhinoW, Cosmic, TheCrimsonPinch, MarshmallowQuokka, Chalkjr, SundaddyCutetail, Merpala" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 A Wilder Experience

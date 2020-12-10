@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#|#",
+    "#|#",
+    "R|G"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:leaves"
+    },
+    "|": {
+      "tag": "minecraft:logs"
+    },
+    "R": {
+      "item": "minecraft:red_wool"
+    },
+    "G": {
+      "item": "minecraft:green_wool"
+    }
+  },
+  "result": {
+    "item": "wildnature:christmas_tree",
+    "count": 1
+  }
+}

@@ -91,8 +91,7 @@ public class MainBiomeTransformer extends BiomeTransformer {
         DEEP_OCEAN("deep_ocean",0),
         OCEAN("ocean",1),
         LOWLANDS("lowlands",2),
-        MIDLANDS("midlands",3),
-        HIGHLANDS("highlands",4);
+        HIGHLANDS("highlands",3);
 
         private String name;
         private int index;

@@ -25,8 +25,8 @@ public class GeyserFeature extends Feature<NoFeatureConfig> {
        if(!worldIn.getDimension().isSurfaceWorld()){
            return false;
        }
-       if(worldIn.getBlockState(pos.up()).isAir() && (worldIn.getBlockState(pos).isSolid() || worldIn.getBlockState(pos.down()).isSolid())) {
-           worldIn.setBlockState(pos.down(3), WNBlocks.GEYSER.getDefaultState().with(GeyserBlock.RUNNING,false).with(GeyserBlock.LOAD, Utilities.rint(1,4)), 2);
+       if(worldIn.getBlockState(pos.up()).isAir() && ((worldIn.getBlockState(pos).isSolid() || worldIn.getBlockState(pos.down()).isSolid())) && worldIn.getBlockState(pos.down().north()).isSolid() && worldIn.getBlockState(pos.down().south()).isSolid() && worldIn.getBlockState(pos.down().east()).isSolid() && worldIn.getBlockState(pos.down().west()).isSolid()) {
+           worldIn.setBlockState(pos.down(3), WNBlocks.GEYSER.getDefaultState().with(GeyserBlock.RUNNING,false).with(GeyserBlock.LOAD, Utilities.rint(1,4)).with(GeyserBlock.WATERLOGGED,true), 2);
            worldIn.setBlockState(pos.down(2), Blocks.WATER.getDefaultState(), 2);
            worldIn.setBlockState(pos.down(1), Blocks.WATER.getDefaultState(), 2);
 

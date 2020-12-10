@@ -1,15 +1,16 @@
 package com.matez.wildnature.common.blocks;
 
 import com.matez.wildnature.client.render.IRenderLayer;
-import com.matez.wildnature.common.blocks.boundingboxes.IBoundingBox;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.common.registry.particles.ParticleRegistry;
 import com.matez.wildnature.client.sounds.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.IWaterLoggable;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.IBooleanFunction;
@@ -24,6 +26,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -35,10 +38,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
-public class GeyserBlock extends BlockBase implements IRenderLayer {
+public class GeyserBlock extends BlockBase implements IRenderLayer, IWaterLoggable {
     public static final IntegerProperty STEAM = IntegerProperty.create("steam",0,25);
     public static final BooleanProperty RUNNING = BooleanProperty.create("running");
     public static final IntegerProperty LOAD = IntegerProperty.create("load",0,5);
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public GeyserBlock(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(properties.notSolid(), builder, regName);
     }
@@ -107,7 +111,9 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
 
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(RUNNING,false).with(LOAD,0);
+        BlockPos blockpos = context.getPos();
+        IFluidState ifluidstate = context.getWorld().getFluidState(blockpos);
+        return this.getDefaultState().with(RUNNING,false).with(LOAD,0).with(WATERLOGGED, Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));
     }
 
     @Override
@@ -173,7 +179,7 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(STEAM,LOAD,RUNNING);
+        builder.add(STEAM,LOAD,RUNNING,WATERLOGGED);
     }
 
 
@@ -188,5 +194,18 @@ public class GeyserBlock extends BlockBase implements IRenderLayer {
         }
 
         return l;
+    }
+
+
+    public IFluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+    }
+
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (stateIn.get(WATERLOGGED)) {
+            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+        }
+
+        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 }

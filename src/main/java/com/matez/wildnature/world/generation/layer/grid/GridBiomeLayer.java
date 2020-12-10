@@ -138,14 +138,12 @@ public class GridBiomeLayer {
         biomeGroup = edgeTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell);
         biomeGroup = shoreTransformer.apply(biomeGroup,northBiomeGroup,southBiomeGroup,eastBiomeGroup,westBiomeGroup,cell);
 
-        biomeGroup = smallIslandTransformer.bgApply(biomeGroup, cell);
-
         if(fakeBiomes) {
             biomeGroup = riverValleyTransformer.bgApply(biomeGroup, cell);
         }
         biomeGroup = riverTransformer.bgApply(biomeGroup,cell);
 
-
+        biomeGroup = smallIslandTransformer.bgApply(biomeGroup, cell);
 
 
         //Gets final Biome from transformed BiomeGroup. Uses SubbiomeMap
@@ -158,14 +156,14 @@ public class GridBiomeLayer {
     }
 
     public static Biome applyHeightmapBiome(Biome biome, BlockPos pos, IWorld world, int div){
-        return applyHeightmapBiome(biome,pos,world.getChunk(pos),world.getSeaLevel(),div);
+        return applyHeightmapBiome(Heightmap.Type.OCEAN_FLOOR_WG,biome,world.getChunk(pos),world.getSeaLevel(),pos.getX()/div,pos.getZ()/div);
     }
 
-    public static Biome applyHeightmapBiome(Biome biome, BlockPos pos, IChunk chunk, int seaLevel, int div){
+    public static Biome applyHeightmapBiome(Heightmap.Type type, Biome biome, IChunk chunk, int seaLevel, int x, int z){
         if(biome.getDepth() > 0 &&
         biome.getCategory() != Biome.Category.BEACH &&
         biome.getCategory() != Biome.Category.SWAMP){
-            if(chunk.getTopBlockY(Heightmap.Type.OCEAN_FLOOR_WG,pos.getX()/div,pos.getZ()/div)<(seaLevel-2)){
+            if(chunk.getTopBlockY(type,x,z)<(seaLevel-2)){
                 BiomeTransformer.TempCategory category = BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1f,biome.getDefaultTemperature());
                 if(category == BiomeTransformer.TempCategory.ICY){
                     return WNBiomes.FrozenLake;

@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
-public class CampfireBase extends CampfireBlock implements IRenderLayer {
+public class CampfireBase extends FixedCampfireBlock implements IRenderLayer {
     public Item item;
     public CampfireBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(properties.lightValue(15).tickRandomly().notSolid());

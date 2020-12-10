@@ -90,11 +90,9 @@ public abstract class BiomeTransformer {
 
 
     public static MainBiomeTransformer.TerrainCategory getCategoryFromContinent(float cellContinent){
-        if (cellContinent >= 0.75F) {
+        if (cellContinent >= 0.6F) {
             return MainBiomeTransformer.TerrainCategory.HIGHLANDS;
-        } else if (cellContinent >= 0.5F && cellContinent < 0.75F) {
-            return MainBiomeTransformer.TerrainCategory.MIDLANDS;
-        } else if (cellContinent >= 0.2F && cellContinent < 0.5F) {
+        }else if (cellContinent >= 0.2F && cellContinent < 0.6F) {
             return MainBiomeTransformer.TerrainCategory.LOWLANDS;
         } else if(cellContinent >= 0.15F && cellContinent < 0.2F){
             return MainBiomeTransformer.TerrainCategory.OCEAN;

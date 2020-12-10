@@ -171,12 +171,12 @@ public class BiomeGroup {
             MainBiomeTransformer.TerrainCategory minBiomeCategory = null;
             for (SubBiome subBiome : group.getSubBiomes()) {
                 float depth = subBiome.getBiome().getDepth();
-                if(depth > maxBiomeDepth || maxBiome == null){
+                if((depth > maxBiomeDepth || maxBiome == null) && (Math.max(depth, group.getBaseBiome().getDepth()) - Math.min(depth, group.getBaseBiome().getDepth()) > 0.6f)){
                     maxBiomeDepth = depth;
                     maxBiome = subBiome;
                     maxBiomeCategory = getCategoryByDepth(maxBiomeDepth, ignoreOceans);
                 }
-                if(depth < minBiomeDepth || minBiome == null){
+                if((depth < minBiomeDepth || minBiome == null) && (Math.max(depth, group.getBaseBiome().getDepth()) - Math.min(depth, group.getBaseBiome().getDepth()) < 0.6f)){
                     minBiomeDepth = depth;
                     minBiome = subBiome;
                     minBiomeCategory = getCategoryByDepth(minBiomeDepth, ignoreOceans);
@@ -224,11 +224,9 @@ public class BiomeGroup {
             return ignoreOceans ? MainBiomeTransformer.TerrainCategory.LOWLANDS : MainBiomeTransformer.TerrainCategory.DEEP_OCEAN;
         }else if(depth < -0.3){
             return ignoreOceans ? MainBiomeTransformer.TerrainCategory.LOWLANDS : MainBiomeTransformer.TerrainCategory.OCEAN;
-        }else if(depth < 0.5){
+        }else if(depth < 0.45){
             return MainBiomeTransformer.TerrainCategory.LOWLANDS;
-        }else if(depth < 1F){
-            return MainBiomeTransformer.TerrainCategory.MIDLANDS;
-        }else{
+        }else {
             return MainBiomeTransformer.TerrainCategory.HIGHLANDS;
         }
     }

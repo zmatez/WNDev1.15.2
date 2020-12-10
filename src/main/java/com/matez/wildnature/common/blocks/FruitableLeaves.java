@@ -26,6 +26,7 @@ public class FruitableLeaves extends LeavesBase {
     public static IntegerProperty STAGE = IntegerProperty.create("stage", 0, 6);
     private final ArrayList<StageFruit> stageFruits;
     private boolean hasFlowers = false;
+    private boolean canDegrade = true;
 
     public FruitableLeaves(Properties properties, Item.Properties builder, ResourceLocation regName, ArrayList<StageFruit> stageFruits) {
         super(properties, builder, regName);
@@ -65,9 +66,9 @@ public class FruitableLeaves extends LeavesBase {
     public boolean ticksRandomly(BlockState state) {
         int stage = state.get(getStage());
         if(this.hasFlowers){
-            return stage==0 || stage==1;
+            return stage==0 || stage==1 || canDegrade;
         }
-        return stage==0;
+        return stage==0 || canDegrade;
     }
 
     @Override
@@ -92,9 +93,16 @@ public class FruitableLeaves extends LeavesBase {
 
         if(c==0 || (hasFlowers && c==1)) {
             world.setBlockState(pos, state.with(getStage(), Utilities.rint(0, getMaxStages())));
+            return;
         }
 
-
+        if(canDegrade) {
+            if ((c > 0 && !hasFlowers) || (hasFlowers && c > 1)) {
+                if (Utilities.rint(0, 2) == 0) {
+                    world.setBlockState(pos,state.with(getStage(),0));
+                }
+            }
+        }
     }
 
     @Override

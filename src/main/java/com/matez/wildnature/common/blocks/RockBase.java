@@ -18,8 +18,8 @@ public class RockBase extends BlockBase{
     //2 - skały metamorficzne (30-55)
     //3 - skały magmowe (5-30)
     private int type;
-    private int size = CommonConfig.rockChance.get();
-    private int count = CommonConfig.rockSize.get();
+    private int size = CommonConfig.rockSize.get();
+    private int count = CommonConfig.rockChance.get();
     private ResourceLocation regName;
     private static Properties Properties(Properties properties, int type){
         properties.sound(SoundType.STONE);

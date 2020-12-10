@@ -210,18 +210,6 @@ public class Utilities {
         return sum;
     }
 
-    // function to Check if a large number
-// is divisible by 2, 3 and 5 or not
-    public static boolean isDivisible(String str,
-                             int n)
-    {
-        if (SumOfDigits(str, n) % 3 == 0 &&
-                str.charAt(n - 1) == '0')
-            return true;
-
-        return false;
-    }
-
     public static boolean isStringEqual(String s, String... strings){
         ArrayList sar = new ArrayList(Arrays.asList(strings));
         for (int i = 0; i<sar.size(); i++){
@@ -439,25 +427,29 @@ public class Utilities {
         return false;
     }
 
-    public static boolean isValidGroundFor(BlockState plant, BlockState placeState, @Nullable IBlockReader world, @Nullable BlockPos pos) throws Exception{
-        if (plant.getBlock() instanceof BushBlock){
-            Class clazz = plant.getBlock().getClass();
-            Class superclass = clazz;
-            Method method=null;
-            while(superclass!=null){
-                try {
-                    method = superclass.getDeclaredMethod("func_200014_a_", BlockState.class, IBlockReader.class, BlockPos.class);
-                    break;
-                }catch (Exception e){
-                    superclass=superclass.getSuperclass();
-                }
+    public static boolean isValidGroundFor(BlockState plant, BlockState placeState, @Nullable IBlockReader world, @Nullable BlockPos pos){
+        try {
+            if (plant.getBlock() instanceof BushBlock) {
+                Class clazz = plant.getBlock().getClass();
+                Class superclass = clazz;
+                Method method = null;
+                while (superclass != null) {
+                    try {
+                        method = superclass.getDeclaredMethod("func_200014_a_", BlockState.class, IBlockReader.class, BlockPos.class);
+                        break;
+                    } catch (Exception e) {
+                        superclass = superclass.getSuperclass();
+                    }
 
+                }
+                if (method != null) {
+                    method.setAccessible(true);
+                    return (boolean) method.invoke(plant.getBlock(), placeState, world, pos);
+                }
+                return false;
             }
-            if(method!=null) {
-                method.setAccessible(true);
-                return (boolean) method.invoke(plant.getBlock(), placeState, world, pos);
-            }
-            return false;
+        }catch (Exception e){
+
         }
         return false;
     }

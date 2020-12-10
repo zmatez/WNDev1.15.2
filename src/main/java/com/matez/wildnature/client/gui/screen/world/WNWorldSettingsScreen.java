@@ -29,7 +29,7 @@ public class WNWorldSettingsScreen extends Screen {
 
 
     private String header = TextFormatting.BOLD + "WildNature Terrain Generator";
-    private String version = "Version 0.1 --- WORK IN PROGRESSS";
+    private String version = "Version 0.1 --- " + TextFormatting.RED + " WORK IN PROGRESS - press ESC to exit";
 
     private Button saveButton, cancelButton, savePresetButton;
 

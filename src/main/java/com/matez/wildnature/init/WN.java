@@ -8,6 +8,7 @@ import com.matez.wildnature.client.gui.initGuis;
 import com.matez.wildnature.client.particles.*;
 import com.matez.wildnature.client.render.WNBlockRenderLayer;
 import com.matez.wildnature.client.sounds.SoundRegistry;
+import com.matez.wildnature.common.blocks.FixedCampfireBlock;
 import com.matez.wildnature.common.blocks.config.ConfigSettings;
 import com.matez.wildnature.common.colors.WNBlockColors;
 import com.matez.wildnature.common.colors.WNItemColors;
@@ -60,6 +61,9 @@ import com.matez.wildnature.world.generation.structures.nature.fallen.FallenRegi
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.arguments.ArgumentSerializer;
 import net.minecraft.command.arguments.ArgumentTypes;
@@ -131,7 +135,7 @@ public class WN {
     public static WN instance;
 
     public static final String modid = "wildnature";
-    public static final String version = "3.0-EA3";
+    public static final String version = "3.0";
 
     public static final Logger LOGGER = LogManager.getLogger(modid);
     public static final String WildNaturePrefix = TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "[" + TextFormatting.GREEN.toString() + TextFormatting.BOLD.toString() + "WN" + TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "] " + TextFormatting.AQUA.toString();
@@ -147,6 +151,7 @@ public class WN {
     public static boolean canShowAdvancedTooltip = false;
     public static World runningWorld;
     public static WNDataFixer dataFixer;
+    public static Block FIXED_CAMPFIRE = new FixedCampfireBlock(Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0F).sound(SoundType.WOOD).lightValue(15).tickRandomly().notSolid());
 
     public WN() {
         LOGGER.info("Initializing WildNature mod");
@@ -178,6 +183,7 @@ public class WN {
         WNConfig.register(ModLoadingContext.get());
         ConfigSettings.applyCfgs();
         MinecraftForge.EVENT_BUS.register(this);
+
 
         WNPrefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD + "WildNature " + TextFormatting.LIGHT_PURPLE + version)));
         WNPrefix.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://wildnaturemod.com"));
@@ -348,7 +354,7 @@ public class WN {
         if (CommonConfig.useWNOnServer.get()) {
             wnInfo("Using WildNature generator on server.");
             LOGGER.info(String.format("Using WildNature on server. Original value: %s", serverProperties.worldType.getName()));
-            serverProperties.serverProperties.setProperty("level-type", "wildnature");
+            serverProperties.serverProperties.setProperty("level-name", "wildnature");
             serverProperties.worldType = WN.WNWorldType;
         } else {
             wnInfo("WN Server Generator disabled");

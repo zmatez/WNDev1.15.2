@@ -36,7 +36,7 @@ public class GemFormationFeature extends Feature<BlockVeinFeatureConfig> {
          return false;
       }
       if(config.state.getBlock() instanceof FormationBase) {
-         if(Utilities.rint(0,2,rand)==0) {
+         if(Utilities.rint(0,1,rand)==0) {
             if (worldIn.getBlockState(pos).isAir() || worldIn.getBlockState(pos).getBlock() == Blocks.WATER) {
                boolean waterlogged = worldIn.getFluidState(pos).getFluid() == Fluids.WATER || worldIn.getFluidState(pos).getFluid() == Fluids.FLOWING_WATER;
                if (config.state.getBlock() instanceof FormationVerticalBase) {

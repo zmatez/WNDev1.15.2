@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class FloweringLeaves extends LeavesBase{
     public static final BooleanProperty FLOWERING = BooleanProperty.create("flowering");
-    private boolean canDegrade = false;
+    private boolean canDegrade = true;
     public FloweringLeaves(Properties properties, Item.Properties builder, ResourceLocation regName) {
         super(properties, builder, regName);
         setDefaultState(this.getDefaultState().with(FLOWERING,false));

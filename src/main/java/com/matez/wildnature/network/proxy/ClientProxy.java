@@ -54,7 +54,9 @@ public class ClientProxy implements IProxy {
         });*/
 
         music = new WNMusic();
-        MinecraftForge.EVENT_BUS.addListener(WNMusicPlayer::playerTick);
+        if(CommonConfig.playWildNatureMusic.get()) {
+            MinecraftForge.EVENT_BUS.addListener(WNMusicPlayer::playerTick);
+        }
     }
 
     public void openDungeonCommander(DungeonCommanderTileEntity entity){

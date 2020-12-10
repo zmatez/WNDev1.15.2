@@ -177,7 +177,7 @@ public class WNCommand {
         StringTextComponent s5 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "Language: " + language + "\n");
         StringTextComponent s6 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.GREEN + "Official Page & wiki: " + TextFormatting.AQUA + "www.wildnaturemod.com" + "\n");
         StringTextComponent s7 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "CurseForge: " + TextFormatting.DARK_AQUA + "bit.ly/wildnature-mod" + "\n");
-        StringTextComponent s8 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "Discord: " + TextFormatting.DARK_AQUA + "bit.ly/wildnature-discord" + "\n");
+        StringTextComponent s8 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "Discord: " + TextFormatting.DARK_AQUA + "discord.com/invite/dazHZJE" + "\n");
         StringTextComponent s9 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "GitHub: " + TextFormatting.DARK_AQUA + "github.com/zmatez/wildnature" + "\n");
         StringTextComponent s10 = new StringTextComponent(TextFormatting.AQUA + "" + TextFormatting.BOLD + "-> " + TextFormatting.YELLOW + "Patreon: " + TextFormatting.DARK_AQUA + "patreon.com/wildnature" + TextFormatting.LIGHT_PURPLE + "  [capes]" + "\n");
         StringTextComponent s11 = new StringTextComponent(TextFormatting.GOLD + "" + TextFormatting.BOLD + TextFormatting.STRIKETHROUGH + "---------------------------------");
@@ -191,7 +191,7 @@ public class WNCommand {
         s6.getStyle().setHoverEvent(click);
         s7.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://bit.ly/wildnature-mod"));
         s7.getStyle().setHoverEvent(click);
-        s8.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://bit.ly/wildnature-discord"));
+        s8.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.com/invite/dazHZJE"));
         s8.getStyle().setHoverEvent(click);
         s9.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://bit.ly/wildnature-github"));
         s9.getStyle().setHoverEvent(click);

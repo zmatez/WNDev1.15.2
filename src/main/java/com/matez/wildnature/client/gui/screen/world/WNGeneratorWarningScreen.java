@@ -84,7 +84,6 @@ public class WNGeneratorWarningScreen extends Screen {
 
     private void action(boolean clickedNew){
         CommonConfig.generatorType.set(clickedNew ? "new" : "old");
-        CommonConfig.generatorWarning.set(true);
         onClose();
     }
 
