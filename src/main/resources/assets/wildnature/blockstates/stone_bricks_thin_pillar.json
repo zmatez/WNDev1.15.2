@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "part=single": {
+      "model": "wildnature:block/castle/stone_bricks_thin_pillar_single"
+    },
+    "part=top": {
+      "model": "wildnature:block/castle/stone_bricks_thin_pillar_top"
+    },
+    "part=middle": {
+      "model": "wildnature:block/castle/stone_bricks_thin_pillar_middle"
+    },
+    "part=bottom": {
+      "model": "wildnature:block/castle/stone_bricks_thin_pillar_bottom"
+    }
+  }
+}

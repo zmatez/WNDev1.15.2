@@ -1,12 +1,13 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
-
-import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
-import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessors;
 import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
+import com.matez.wildnature.world.generation.geology.GeologyGenerator;
+import com.matez.wildnature.world.generation.geology.GeoGeneratorConfig;
+import com.matez.wildnature.world.generation.geology.GeoLayerConfig;
 import com.matez.wildnature.world.generation.layer.grid.GridBiomeLayer;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.layer.ColumnBiomeContainer;
@@ -16,6 +17,7 @@ import com.matez.wildnature.world.generation.biome.setup.WNGenSettings;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.generators.carves.PathGenerator;
 import com.matez.wildnature.world.generation.generators.functions.interpolation.LerpConfiguration;
+import com.matez.wildnature.world.generation.noise.fastNoise.FastNoiseLite;
 import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
@@ -39,7 +41,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeManager;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.*;
 import net.minecraft.world.gen.Heightmap.Type;
@@ -118,9 +119,9 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         this.verticalNoiseResolution = 8;
         this.horizontalNoiseResolution = 4;
-        this.noiseSizeX = 16 / this.horizontalNoiseResolution;
-        this.noiseSizeY = 256 / this.verticalNoiseResolution;
-        this.noiseSizeZ = 16 / this.horizontalNoiseResolution;
+        this.noiseSizeX = 4;
+        this.noiseSizeY = 32;
+        this.noiseSizeZ = noiseSizeX;
 
         this.surfaceDepthNoise = new PerlinNoiseGenerator(this.randomSeed, 3, 0);
 
@@ -139,6 +140,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     public WNGridBiomeProvider getGridProvider() {
         return gridProvider;
+    }
+
+    public WNSimplexChunkGenerator getGenerator() {
+        return this;
     }
 
     public void setContext(WNWorldContext context){
@@ -161,7 +166,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         int zChunkPos = chunkpos.getZStart();
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
-
         for (int relativeX = 0; relativeX < 16; ++relativeX) {
             for (int relativeZ = 0; relativeZ < 16; ++relativeZ) {
                 int x = xChunkPos + relativeX;
@@ -180,7 +184,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        this.makeBedrock(chunkIn, sharedseedrandom);
+        //this.makeBedrock(chunkIn, sharedseedrandom);
     }
 
     public void decorate(WorldGenRegion region) {
@@ -310,16 +314,83 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        int[] heights = this.getHeightsInChunk(chunkpos, worldIn);
-        this.generateTerrain(worldIn, chunkIn, heights);
+        int[] chunkHeights = this.getHeightsInChunk(chunkpos, worldIn);
+
+        /**
+         *
+         Geo Start
+
+         */
+
+
+        //Temp Config Start
+
+        FastNoiseLite noise = new FastNoiseLite();
+        noise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
+        noise.SetCellularDistanceFunction(FastNoiseLite.CellularDistanceFunction.Euclidean);
+        noise.SetCellularReturnType(FastNoiseLite.CellularReturnType.Distance2);
+        noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
+        noise.SetDomainWarpAmp(64);
+
+        List<GeoLayerConfig> soil = new ArrayList<>();
+        soil.add(new GeoLayerConfig(Blocks.SAND, 5, 3, 2));
+        soil.add(new GeoLayerConfig(Blocks.DIRT, 2, 1, 5));
+
+        List<GeoLayerConfig> sedimentary = new ArrayList<>();
+        sedimentary.add(new GeoLayerConfig(WNBlocks.LIMESTONE, 20, 18, 8));
+        sedimentary.add(new GeoLayerConfig(Blocks.SANDSTONE, 5, 4, 4));
+        sedimentary.add(new GeoLayerConfig(Blocks.RED_SANDSTONE, 3, 2, 1));
+
+        List<GeoLayerConfig> carbonate = new ArrayList<>();
+        carbonate.add(new GeoLayerConfig(WNBlocks.MARBLE, 20, 15, 2));
+        carbonate.add(new GeoLayerConfig(WNBlocks.GNEISS, 4, 3, 4));
+        carbonate.add(new GeoLayerConfig(WNBlocks.SLATE_BLUE, 15, 8, 8));
+        carbonate.add(new GeoLayerConfig(WNBlocks.SLATE_PURPLE, 2, 1, 3));
+
+         GeoGeneratorConfig geologyConfig = new GeoGeneratorConfig(
+            GeoGeneratorConfig.Type.basic,
+            noise,
+            soil,
+            sedimentary,
+            carbonate
+         );
+
+        //Temp Config End
+
+         GeologyGenerator manager = new GeologyGenerator(seed);
+
+         //Creating BlockPos Instance.
+         BlockPos.Mutable blockPos = new BlockPos.Mutable();
+
+         for (int x = 0; x < 16; x++) {
+             for (int z = 0; z < 16; z++) {
+
+                blockPos.setPos(x,0,z);
+
+                int height = chunkHeights[(x * 16) + z];
+
+                manager.generateTile(geologyConfig, chunkStartX + x, height, chunkStartZ + z);
+
+                manager.applyTile(chunk, blockPos, height);
+
+            }
+         }
+
+         /**
+          *
+         *Geo End
+          *
+         */
+
 
         BlockPos.Mutable mutable = new BlockPos.Mutable();
+
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 mutable.setPos(x,0,z);
                 int rX = chunkStartX + x;
                 int rZ = chunkStartZ + z;
-                int height = (int) heights[(x * 16) + z];
+                int height = chunkHeights[(x * 16) + z];
                 for (AbstractVillagePiece piece : structurePieces) {
                     MutableBoundingBox boundingBox = piece.getBoundingBox();
                     int minX = boundingBox.minX - 1;
@@ -354,14 +425,17 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
     }
 
 
-    public void generateTerrain(IWorld world, IChunk chunk, int[] noise) {
+    public void generateTerrain(IChunk chunk, int[] noiseY) {
+
         BlockPos.Mutable mutable = new BlockPos.Mutable();
+
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 mutable.setPos(x,0,z);
-                int height = (int) noise[(x * 16) + z];
+                int height = noiseY[(x * 16) + z];
 
                 for (int y = 0; y < 256; y++) {
+
                     mutable.setY(y);
 
                     if (y > height) {
