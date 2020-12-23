@@ -46,7 +46,7 @@ import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.zip.ZipInputStream;
 
-public abstract class WNAbstractStructure {
+public abstract class WNAbstractStructure{
     private final ResourceLocation path;
     private final ArrayList<BlockData> blockData = new ArrayList<>();
     private final StructurePlacement placement;
@@ -250,6 +250,11 @@ public abstract class WNAbstractStructure {
         return this;
     }
 
+    public WNAbstractStructure clearBlockReplacements(){
+        blockReplacements.clear();
+        return this;
+    }
+
     private BlockState replaceBlock(BlockState blockState) {
         Block block = blockState.getBlock();
         for (BlockReplacement blockReplacement : blockReplacements) {
@@ -367,12 +372,13 @@ public abstract class WNAbstractStructure {
     public boolean generate(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos) {
         if(worldIn instanceof WorldGenRegion){
             IChunk currentChunk = worldIn.getChunk(pos);
-            int minChunkX = (min.getX() << 4) - 1 + currentChunk.getPos().x;
-            int minChunkZ = (min.getZ() << 4) - 1 + currentChunk.getPos().z;
-            int maxChunkX = (max.getX() << 4) - 1 + currentChunk.getPos().x;
-            int maxChunkZ = (max.getZ() << 4) - 1 + currentChunk.getPos().z;
+            int minChunkX = (min.getX() >> 4) - 1 + currentChunk.getPos().x;
+            int minChunkZ = (min.getZ() >> 4) - 1 + currentChunk.getPos().z;
+            int maxChunkX = (max.getX() >> 4) + 1 + currentChunk.getPos().x;
+            int maxChunkZ = (max.getZ() >> 4) + 1 + currentChunk.getPos().z;
 
             if(!((WorldGenRegion)worldIn).chunkExists(minChunkX, minChunkZ) || !((WorldGenRegion)worldIn).chunkExists(maxChunkX, maxChunkZ)){
+                WN.LOGGER.debug("WorldGenRegion at" + currentChunk.getPos().x + " " + currentChunk.getPos().z + " does not exist");
                 return false;
             }
         }

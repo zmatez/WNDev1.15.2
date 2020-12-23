@@ -17,13 +17,13 @@ public class WNStructures {
 
     //AMBIENT
     //--- sea caves
-    public static final WNSeaCaveStructure SEA_CAVE_1 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave1"), StructurePlacement.SURFACE, Direction.WEST);
-    public static final WNSeaCaveStructure SEA_CAVE_2 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave2"), StructurePlacement.SURFACE, Direction.WEST);
-    public static final WNSeaCaveStructure SEA_CAVE_3 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave3"), StructurePlacement.SURFACE, Direction.WEST);
-    public static final WNSeaCaveStructure SEA_CAVE_4 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave4"), StructurePlacement.SURFACE, Direction.WEST);
-    public static final WNSeaCaveStructure SEA_CAVE_5 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave5"), StructurePlacement.SURFACE, Direction.WEST);
-    public static final WNSeaCaveStructure SEA_CAVE_6 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave6"), StructurePlacement.SURFACE, Direction.WEST);
-    public static final WNSeaCaveStructure SEA_CAVE_7 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave7"), StructurePlacement.SURFACE, Direction.SOUTH);
+    public static final WNSeaCaveStructure SEA_CAVE_1 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave1"), StructurePlacement.SURFACE, Direction.WEST,3);
+    public static final WNSeaCaveStructure SEA_CAVE_2 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave2"), StructurePlacement.SURFACE, Direction.WEST,3);
+    public static final WNSeaCaveStructure SEA_CAVE_3 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave3"), StructurePlacement.SURFACE, Direction.WEST,3);
+    public static final WNSeaCaveStructure SEA_CAVE_4 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave4"), StructurePlacement.SURFACE, Direction.WEST,3);
+    public static final WNSeaCaveStructure SEA_CAVE_5 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave5"), StructurePlacement.SURFACE, Direction.WEST,3);
+    public static final WNSeaCaveStructure SEA_CAVE_6 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave6"), StructurePlacement.SURFACE, Direction.WEST,3);
+    public static final WNSeaCaveStructure SEA_CAVE_7 = new WNSeaCaveStructure(loc("ambient/sea_caves/sea_cave7"), StructurePlacement.SURFACE, Direction.NORTH, 9);
 
 
 

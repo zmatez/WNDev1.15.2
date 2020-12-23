@@ -1,0 +1,9 @@
+{
+  "group": "wildnature:mc_cobble",
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:diorite"
+  },
+  "result": "wildnature:diorite_cobble",
+  "count": 1
+}

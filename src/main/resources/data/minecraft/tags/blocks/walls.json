@@ -65,7 +65,10 @@
     "wildnature:marble_rough_wall_bricks_mossy",
     "wildnature:marble_smooth_wall_bricks_mossy",
     "wildnature:quartzite_wall_bricks_mossy",
-    "wildnature:slate_blue_wall_bricks_mossy"
+    "wildnature:slate_blue_wall_bricks_mossy",
+
+
+    "wildnature:white_sandstone_wall"
 
   ]
 }

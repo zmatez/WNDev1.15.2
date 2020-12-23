@@ -1423,14 +1423,6 @@ public class WNBlocks {
     public static Block DRIED_DIRT;
 
     public static Block SOIL;
-    public static Block BROWN_SOIL;
-    public static Block MOLD_SOIL;
-    public static Block TROPICAL_SOIL;
-    public static Block DESERT_SOIL;
-    public static Block DRIED_SOIL;
-    public static Block STONE_SOIL;
-    public static Block SANDSTONE_SOIL;
-    public static Block WHITE_SANDSTONE_SOIL;
 
     public static Block BROWN_FARMLAND;
     public static Block MOLD_FARMLAND;

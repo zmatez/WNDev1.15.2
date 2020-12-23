@@ -167,11 +167,16 @@ public class TestCommand {
                         ChunkArraySampler.reduceGroupedWeightMap(weightMap1, weightMap4, variantAccessor.andThen(BiomeVariants::getSmallGroup), BiomeVariants.SmallGroup.SIZE);
                         double[] values = BiomeBlender.smoothLerp( (pos.x * 16) + x,(pos.z * 16) + z,landscape, weightMap1, variantAccessor);
                         log(entity, "Height: " + values[0]);
-                        log(entity, "FreqMin: " + values[3] + " FreqMax: " + values[4]);
+                        log(entity, "Freq: " + values[3] + " Hilliness: " + values[4]);
+
+                        log(entity, "FreqMin: " + values[6] + " FreqMax: " + values[5]);
                         log(entity, "Sample noise: " + landscape.sampleNoise(rx,rz,values[0],values[1],values[2],true));
                     }
                 }
             }
+
+            WNWorldType.generator.debug = !WNWorldType.generator.debug;
+            log(entity,"Debug mode: " + TextFormatting.RED + WNWorldType.generator.debug);
         }
     }
 

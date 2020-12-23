@@ -196,29 +196,10 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
             setBlocks();
         }
 
-        Block dirt = world.getBlockState(startBlockPos.down(terrainIncrease + 1)).getBlock();
-        Block soil = WNBlocks.SOIL;
-        if(dirt == WNBlocks.BROWN_DIRT || dirt == WNBlocks.BROWN_GRASS_BLOCK){
-            soil = WNBlocks.BROWN_SOIL;
-        }else if(dirt == WNBlocks.MOLD_DIRT || dirt == WNBlocks.MOLD_GRASS_BLOCK){
-            soil = WNBlocks.MOLD_SOIL;
-        }else if(dirt == WNBlocks.TROPICAL_DIRT || dirt == WNBlocks.TROPICAL_GRASS_BLOCK){
-            soil = WNBlocks.TROPICAL_SOIL;
-        }else if(dirt == WNBlocks.DRIED_DIRT || dirt == WNBlocks.DRIED_GRASS_BLOCK){
-            soil = WNBlocks.DRIED_SOIL;
-        }else if(dirt == WNBlocks.DESERT_DIRT || dirt == WNBlocks.DESERT_GRASS_BLOCK){
-            soil = WNBlocks.DESERT_SOIL;
-        }else if(dirt.getTags().contains(new ResourceLocation("forge","stone")) || dirt == WNBlocks.OVERGROWN_STONE){
-            soil = WNBlocks.STONE_SOIL;
-        }else if((dirt.getTags().contains(new ResourceLocation("forge","sand")) || dirt.getTags().contains(new ResourceLocation("forge","sandtone"))) && dirt != WNBlocks.WHITE_SAND && dirt != WNBlocks.WHITE_SANDSTONE){
-            soil = WNBlocks.SANDSTONE_SOIL;
-        }else if(dirt == WNBlocks.WHITE_SAND || dirt == WNBlocks.WHITE_SANDSTONE){
-            soil = WNBlocks.WHITE_SANDSTONE_SOIL;
-        }
 
         if(!addedBlocks.isEmpty()) {
             if(leafBlock != null) {
-                worldIn.setBlockState(startBlockPos.down(terrainIncrease + 1), soil.getDefaultState(), 19);
+                worldIn.setBlockState(startBlockPos.down(terrainIncrease + 1), WNBlocks.SOIL.getDefaultState(), 19);
                 TileEntity entity = ((IWorld) worldIn).getTileEntity(soilPos.down());
                 if (entity instanceof TreeTileEntity) {
                     if (min != null && max != null && leafBlock.getBlock().getRegistryName() != null) {

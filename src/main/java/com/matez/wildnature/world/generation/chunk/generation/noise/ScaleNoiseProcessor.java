@@ -59,16 +59,7 @@ public class ScaleNoiseProcessor extends NoiseProcessor {
     public double processNoise(int x, int z, Biome biome, double height, double scale, double freqModifier, double hilliness, double frequencyMin, double frequencyMax, double[] args, boolean rawNoise) {
         double frequency = this.scaleNoise.sampleCustom(x, z, hilliness, frequencyMin, frequencyMax, 2);
 
-        double noise = this.heightNoise.sampleCustom(x,  z, freqModifier, frequency, frequency, octaves);
-        /*double cliffNoise = this.cliffNoise.GetNoise(x,z);
-        double cliffNoiseMask = this.cliffNoiseMask.GetNoise(x,z);
-        if(cliffNoise > 0.6F){
-            double cliffFactor = Utilities.scaleBetween(cliffNoise,0,1,0.6,0.63);
-            double cliffMaskFactor = Utilities.scaleBetween(cliffNoiseMask,0,1,0.5,0.7);
-            double factor = scale * 20;
-            double newNoise = ((int)(noise/factor))*factor;
-            noise = Math.max(noise, (newNoise * cliffFactor) * cliffMaskFactor);
-        }*/
+        double noise = this.heightNoise.sampleCustom(x, z, freqModifier, frequency, frequency, octaves);
 
         return noise;
     }

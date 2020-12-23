@@ -129,11 +129,11 @@ public class CommonConfig {
                 .defineInRange("size.terrain", 2500, 10, 24000);
 
         biomeMapSize = builder
-                .comment("Biome map size\nDefault: 750")
-                .defineInRange("size.biome", 750, 10, 24000);
+                .comment("Biome map size\nDefault: 600")
+                .defineInRange("size.biome", 600, 10, 24000);
 
         subbiomeMapSize = builder
-                .comment("SubBiome map size\nDefault: 250")
+                .comment("SubBiome map size\nDefault: 200")
                 .defineInRange("size.subBiome", 250, 10, 24000);
 
         undergroundMapSize = builder

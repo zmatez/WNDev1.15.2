@@ -2,6 +2,7 @@ package com.matez.wildnature.common.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ILiquidContainer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
@@ -19,7 +20,12 @@ import javax.annotation.Nullable;
 
 public class UnderwaterVineBase extends VineBase implements ILiquidContainer, IShearable {
     public UnderwaterVineBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
-        super(properties, builder, regName);
+        super(properties.notSolid(), builder, regName);
+    }
+
+    @Override
+    public RenderType getRenderLayer() {
+        return RenderType.getCutoutMipped();
     }
 
     @Nullable

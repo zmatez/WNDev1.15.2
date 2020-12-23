@@ -1,0 +1,9 @@
+{
+  "group": "wildnature:mc_cobble",
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:granite"
+  },
+  "result": "wildnature:granite_cobble",
+  "count": 1
+}

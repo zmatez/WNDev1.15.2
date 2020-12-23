@@ -37,7 +37,7 @@ public class BananaFruitBlock extends Block implements IRenderLayer {
 
 
     public BananaFruitBlock(Properties properties) {
-        super(properties);
+        super(properties.notSolid());
     }
 
     @Override

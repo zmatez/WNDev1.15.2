@@ -29,8 +29,6 @@ public class WNOvergrownCliffs extends WNBiome {
                 .waterColor(4159204)
                 .waterFogColor(329011)
                 .logTypes(LogType.NONE)
-                .freqModifier(2.5F)
-                .hilliness(0.025F)
                 .parent(null));
 
 

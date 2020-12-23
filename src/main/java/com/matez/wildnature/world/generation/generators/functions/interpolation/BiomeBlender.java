@@ -72,7 +72,7 @@ public class BiomeBlender {
             totalFrequencyMax += frequencyMax;
         }
 
-        return new double[]{totalHeight, totalScale, totalNoiseFactor, totalFreqModifier, totalHilliness, Math.min(totalFrequencyMin,totalFrequencyMax), Math.max(totalFrequencyMin,totalFrequencyMax)};
+        return new double[]{totalHeight, totalScale, totalNoiseFactor, totalFreqModifier, totalHilliness, totalFrequencyMin, totalFrequencyMax};
     }
 
     private static double lerp(double a, double b, double alpha) {

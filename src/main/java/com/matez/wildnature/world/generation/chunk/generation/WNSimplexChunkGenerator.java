@@ -71,6 +71,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> implements IWNChunkGenerator{
+    public boolean debug = false;
     private int threadCount = CommonConfig.generatorThreads.get();
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
     protected IChunk chunk = null;
@@ -202,6 +203,8 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
 
         for(GenerationStage.Decoration generationstage$decoration : GenerationStage.Decoration.values()) {
             try {
+                ArrayList<CompletableFuture<?>> futures = new ArrayList<>();
+
                 biome.decorate(generationstage$decoration, this, region, i1, sharedseedrandom, blockpos);
 
                 StructureCache structureCache = StructureCache.get(new ChunkPos(i,j));
@@ -317,6 +320,11 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
 
     @Override
     public void makeBase(IWorld worldIn, IChunk chunkIn) {
+        if(debug){
+            WN.LOGGER.debug("------ Debugging chunk at " + chunkIn.getPos());
+        }
+        long timeStart = System.nanoTime();
+        long timeTotal = timeStart;
         this.chunk = chunkIn;
         ObjectList<AbstractVillagePiece> structurePieces = new ObjectArrayList<>(10);
         ObjectList<JigsawJunction> jigsaws = new ObjectArrayList<>(32);
@@ -357,8 +365,15 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
             }
         }
 
+        if(debug) {
+            WN.LOGGER.debug("Start took " + (System.nanoTime() - timeStart) + "ns");
+            timeStart = System.nanoTime();
+        }
         int[] chunkHeights = this.getHeightsInChunk(chunkpos, worldIn);
-
+        if(debug) {
+            WN.LOGGER.debug("Heights took " + (System.nanoTime() - timeStart) + "ns");
+            timeStart = System.nanoTime();
+        }
         /**
          *
          Geo Start
@@ -426,7 +441,10 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
          */
 
         runGenerateTerrain(chunkIn,0,16,chunkHeights);
-
+        if(debug) {
+            WN.LOGGER.debug("Placing took " + (System.nanoTime() - timeStart) + "ns");
+            timeStart = System.nanoTime();
+        }
 
         BlockPos.Mutable mutable = new BlockPos.Mutable();
 
@@ -466,6 +484,11 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
 
                 //TODO JigsawJunction
             }
+        }
+        if(debug) {
+            WN.LOGGER.debug("Fixing took " + (System.nanoTime() - timeStart) + "ns");
+            timeTotal = System.nanoTime() - timeTotal;
+            WN.LOGGER.debug("--- Total time: " + timeTotal + "ns = " + (timeTotal / 1_000_000) + "ms");
         }
     }
 
@@ -552,7 +575,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
         for (int i = 0; i < threads; i++) {
             int positionX = i;
 
-            futuresX[i] = CompletableFuture.runAsync(() -> useNoiseX(threads,vals, pos, positionX * 16 / threads,16 / threads, worldIn, sampledBiomes16,sampledBiomes4,sampledBiomes1));
+            futuresX[i] = CompletableFuture.runAsync(() -> useNoise(vals, pos, positionX * 16 / threads,16 / threads, 0,16, worldIn, sampledBiomes16.clone(),sampledBiomes4.clone(),sampledBiomes1.clone()));
         }
 
         for (CompletableFuture<?> x : futuresX) {

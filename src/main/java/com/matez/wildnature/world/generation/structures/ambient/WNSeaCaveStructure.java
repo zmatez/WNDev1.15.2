@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.structures.ambient;
 
 import com.matez.wildnature.init.WN;
+import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Pair;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.structures.WNAbstractStructure;
@@ -25,9 +26,11 @@ public class WNSeaCaveStructure extends WNAbstractStructure {
     private Direction facing;
     private Direction[] directions = new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
     private int displacement = 5, displacementMove = 4;
-    public WNSeaCaveStructure(ResourceLocation path, StructurePlacement placement, Direction facing) {
+    private int offset = 0;
+    public WNSeaCaveStructure(ResourceLocation path, StructurePlacement placement, Direction facing, int offset) {
         super(path, placement);
         this.facing = facing;
+        this.offset = offset;
     }
 
     @Override
@@ -48,62 +51,42 @@ public class WNSeaCaveStructure extends WNAbstractStructure {
     @Override
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos) {
         Rotation rot = null;
-        WN.LOGGER.debug("Starting at " + pos);
+        this.clearBlockReplacements();
 
-        /*BlockPos.Mutable fixedBPos = new BlockPos.Mutable(pos);
-        boolean isValid = false;
-        for(int i = 0; i < 24; i++){
-            ArrayList<Pair<BlockPos, Direction>> seaDirections = new ArrayList<>();
-            for (Direction direction : directions) {
-                for(int j = displacement; j < (displacement * 4); j+=displacement) {
-                    BlockPos bPos = fixedBPos.offset(direction, j);
-                    if (worldIn.getBlockState(new BlockPos(bPos.getX(), 62, bPos.getZ())).getFluidState().getFluid() == Fluids.WATER) {
-                        seaDirections.add(new Pair<>(new BlockPos(fixedBPos.getX(),fixedBPos.getY(),fixedBPos.getZ()).offset(direction,j - displacement),direction));
-                    }
-                }
-            }
-
-            if(seaDirections.isEmpty()){
-                fixedBPos.move(Utilities.rint(-displacementMove,displacementMove,rand), 0, Utilities.rint(-displacementMove,displacementMove,rand));
-                fixedBPos.setY(getStructureY(fixedBPos.getX(),fixedBPos.getZ(),worldIn,worldIn.getChunk(fixedBPos),generator,rand));
-                continue;
-            }
-
-            Pair<BlockPos, Direction> blockPosDirectionPair = seaDirections.get(Utilities.rint(0,seaDirections.size() - 1,rand));
-            rot = applyRotation(facing, blockPosDirectionPair.getValue());
-            fixedBPos = new BlockPos.Mutable(blockPosDirectionPair.getKey());
-            isValid = true;
-            break;
-        }
-
-        if(!isValid){
-            return false;
-        }
-
-        placeBlocks(fixedBPos, worldIn, rot, rand);*/
-
+        Block sandBlock = Blocks.SAND;
         BlockPos.Mutable mutable = new BlockPos.Mutable();
-        for(int x = getMin().getX() - (int)(getMin().getX() / 1.5); x < getMax().getX() + (int)(getMax().getX() / 1.5); x++){
-            for(int z = getMin().getZ() - (int)(getMin().getZ() / 1.5); z < getMax().getZ() + (int)(getMax().getZ() / 1.5); z++){
+        for(int x = -25; x < 25; x++){
+            for(int z = -25; z < 25; z++){
                 mutable.setPos(pos.getX() + x,0,pos.getZ() + z);
                 mutable.setY(getStructureY(x,z,worldIn,worldIn.getChunk(mutable),generator,rand));
 
                 BlockState downState = worldIn.getBlockState(mutable.down());
                 Block block = downState.getBlock();
                 if(block == Blocks.WATER){
-                    WN.LOGGER.debug("Water at " + mutable);
                     BlockPos.Mutable landPos = new BlockPos.Mutable(mutable.down());
+                    boolean found = false;
                     for (Direction direction : directions) {
                         BlockState landState = worldIn.getBlockState(landPos.offset(direction,displacementMove));
-                        if(landState.isSolid()){
-                            WN.LOGGER.debug("Found at " + landPos.offset(direction,displacement));
-                            mutable.setPos(landPos.offset(direction,displacement));
-                            mutable.setY(getStructureY(x,z,worldIn,worldIn.getChunk(mutable),generator,rand));
-                            rot = applyRotation(facing,direction);
-                            break;
+                        if(landState.isIn(BlockTags.SAND)){
+                            boolean isWater = false;
+                            for(int i = 0; i < 15; i+=5){
+                                BlockState waterCheck = worldIn.getBlockState(landPos.offset(direction,i));
+                                if(waterCheck.getBlock() == Blocks.WATER){
+                                    isWater = true;
+                                    break;
+                                }
+                            }
+                            if(!isWater) {
+                                sandBlock = landState.getBlock();
+                                mutable.setPos(landPos.offset(direction, displacement + offset));
+                                mutable.setY(getStructureY(x, z, worldIn, worldIn.getChunk(mutable), generator, rand));
+                                rot = applyRotation(facing, direction);
+                                found = true;
+                                break;
+                            }
                         }
                     }
-                    if(rot != null){
+                    if(found){
                         break;
                     }
                 }
@@ -117,7 +100,12 @@ public class WNSeaCaveStructure extends WNAbstractStructure {
 
         mutable.setY(62);
 
-        WN.LOGGER.debug("Placing blocks at " + mutable);
+        if(sandBlock == WNBlocks.WHITE_SAND || sandBlock == WNBlocks.WHITE_SANDSTONE){
+                    addBlockReplacement(Blocks.SAND, WNBlocks.WHITE_SAND);
+                    addBlockReplacement(Blocks.SANDSTONE, WNBlocks.WHITE_SANDSTONE);
+                    addBlockReplacement(Blocks.SMOOTH_SANDSTONE, WNBlocks.SMOOTH_WHITE_SANDSTONE);
+        }
+
         placeBlocks(mutable,worldIn,rot,rand);
         return true;
     }
