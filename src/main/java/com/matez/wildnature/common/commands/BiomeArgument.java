@@ -37,22 +37,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
-public class BiomeArgument implements ArgumentType<Biome>
-{
-    private static int radius = -1, quality = 10,maxRadius = 10000;
+public class BiomeArgument implements ArgumentType<Biome> {
+    private static int radius = -1, quality = 10, maxRadius = 10000;
     private static boolean speedSearch = false;
     public static final DynamicCommandExceptionType INVALID_BIOME_EXCEPTION = new DynamicCommandExceptionType((biome) -> {
         return new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "This biome is invalid."));
     });
 
-    public static BiomeArgument createArgument()
-    {
+    public static BiomeArgument createArgument() {
         return new BiomeArgument();
     }
 
     @Override
-    public Biome parse(StringReader reader) throws CommandSyntaxException
-    {
+    public Biome parse(StringReader reader) throws CommandSyntaxException {
         ResourceLocation location = ResourceLocation.read(reader);
         return Registry.BIOME.getValue(location).orElseThrow(() ->
         {
@@ -60,55 +57,50 @@ public class BiomeArgument implements ArgumentType<Biome>
         });
     }
 
-    public static Biome getValue(CommandContext<CommandSource> context, String name) throws CommandSyntaxException
-    {
+    public static Biome getValue(CommandContext<CommandSource> context, String name) throws CommandSyntaxException {
         return context.getArgument(name, Biome.class);
     }
 
 
     @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder suggestionsBuilder)
-    {
+    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder suggestionsBuilder) {
         return ISuggestionProvider.suggestIterable(Registry.BIOME.keySet(), suggestionsBuilder);
     }
 
-    public static int findTeleportBiome(CommandSource cs, ServerPlayerEntity player, Biome... biome)
-    {
+    public static int findTeleportBiome(CommandSource cs, ServerPlayerEntity player, Biome... biome) {
         ArrayList<Biome> biomes = new ArrayList<>(Arrays.asList(biome));
 
 
         StringTextComponent s2;
-        if(biomes.size()==1){
-            if(CommonConfig.blacklistedBiomes.contains(biome)){
+        if (biomes.size() == 1) {
+            if (CommonConfig.blacklistedBiomes.contains(biome)) {
                 StringTextComponent sx = new StringTextComponent(TextFormatting.RED + "This biome is blacklisted.");
                 WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
                 return 0;
             }
-            s2 = new StringTextComponent(TextFormatting.AQUA + "Trying to find " + TextFormatting.GOLD + new TranslationTextComponent(biomes.get(0).getTranslationKey()).getFormattedText() + TextFormatting.AQUA+" biome...");
-        }else{
-            int blacklisted =0;
+            s2 = new StringTextComponent(TextFormatting.AQUA + "Trying to find " + TextFormatting.GOLD + new TranslationTextComponent(biomes.get(0).getTranslationKey()).getFormattedText() + TextFormatting.AQUA + " biome...");
+        } else {
+            int blacklisted = 0;
             for (Biome biome1 : biomes) {
-                if(CommonConfig.blacklistedBiomes.contains(biome1)){
+                if (CommonConfig.blacklistedBiomes.contains(biome1)) {
                     blacklisted++;
                 }
             }
-            if(blacklisted==biomes.size()){
+            if (blacklisted == biomes.size()) {
                 StringTextComponent sx = new StringTextComponent(TextFormatting.RED + "All choosen biomes are blacklisted.");
                 WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
                 return 0;
             }
-            if(blacklisted==1){
-                StringTextComponent sx = new StringTextComponent(TextFormatting.RED +"One " + " of " + biomes.size() + " biomes is blacklisted. Searching still possible");
+            if (blacklisted == 1) {
+                StringTextComponent sx = new StringTextComponent(TextFormatting.RED + "One " + " of " + biomes.size() + " biomes is blacklisted. Searching still possible");
+                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
+            } else if (blacklisted > 1) {
+                StringTextComponent sx = new StringTextComponent(TextFormatting.RED + "" + blacklisted + " of " + biomes.size() + " biomes are blacklisted. Searching still possible");
                 WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
             }
-            else if(blacklisted>1){
-                StringTextComponent sx = new StringTextComponent(TextFormatting.RED +""+ blacklisted + " of " + biomes.size() + " biomes are blacklisted. Searching still possible");
-                WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(sx));
-            }
-            s2 = new StringTextComponent(TextFormatting.AQUA + "Trying to find one of " + TextFormatting.GOLD + biomes.size() + TextFormatting.AQUA+" biomes...");
+            s2 = new StringTextComponent(TextFormatting.AQUA + "Trying to find one of " + TextFormatting.GOLD + biomes.size() + TextFormatting.AQUA + " biomes...");
 
         }
-
 
 
         WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s2));
@@ -119,45 +111,41 @@ public class BiomeArgument implements ArgumentType<Biome>
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                BiomePos biomePos = lookForBiome(world, (int)player.getPosition().getX(), (int)player.getPosition().getZ(),player,biome);
+                BiomePos biomePos = lookForBiome(world, (int) player.getPosition().getX(), (int) player.getPosition().getZ(), player, biome);
 
 
-                if (biomePos != null && biomePos.biome !=null && biomePos.pos!=null)
-                {
+                if (biomePos != null && biomePos.biome != null && biomePos.pos != null) {
                     BlockPos closestBiomePos = biomePos.pos;
-                    double x = (double)closestBiomePos.getX();
+                    double x = (double) closestBiomePos.getX();
                     double y = (double) getTopBlock(world, closestBiomePos.getX(), closestBiomePos.getZ()).getY();
-                    double z = (double)closestBiomePos.getZ();
+                    double z = (double) closestBiomePos.getZ();
 
-                    if (!world.getDimension().isSurfaceWorld())
-                    {
-                        y = (double)getY(world, closestBiomePos).getY();
+                    if (!world.getDimension().isSurfaceWorld()) {
+                        y = (double) getY(world, closestBiomePos).getY();
                     }
 
                     //player.connection.setPlayerLocation(x, y, z, player.rotationYaw, player.rotationPitch);
                     WN.LOGGER.info("Found " + biomePos.biome.getRegistryName() + " biome at " + x + " " + y + " " + z + ". This taken " + radius + " attempts.");
-                    StringTextComponent s3 = new StringTextComponent(TextFormatting.AQUA + "Found " + TextFormatting.LIGHT_PURPLE + new TranslationTextComponent(biomePos.biome.getTranslationKey()).getFormattedText() + TextFormatting.AQUA+" biome at ");
-                    StringTextComponent s4 = new StringTextComponent(TextFormatting.YELLOW + ""+x+" " + y + " " + z);
-                    StringTextComponent s42 = new StringTextComponent(TextFormatting.AQUA + " - " + TextFormatting.GOLD + (int)Utilities.getDistance(new BlockPos(player.getPosition().getX(),player.getPosition().getY(),player.getPosition().getZ()),new BlockPos(x,y,z)) + TextFormatting.AQUA+" blocks away.");
-                    s4.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD+"Click to copy to the command prompt")));
-                    s4.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND,"" + x + " " + y + " " + z));
+                    StringTextComponent s3 = new StringTextComponent(TextFormatting.AQUA + "Found " + TextFormatting.LIGHT_PURPLE + new TranslationTextComponent(biomePos.biome.getTranslationKey()).getFormattedText() + TextFormatting.AQUA + " biome at ");
+                    StringTextComponent s4 = new StringTextComponent(TextFormatting.YELLOW + "" + x + " " + y + " " + z);
+                    StringTextComponent s42 = new StringTextComponent(TextFormatting.AQUA + " - " + TextFormatting.GOLD + (int) Utilities.getDistance(new BlockPos(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ()), new BlockPos(x, y, z)) + TextFormatting.AQUA + " blocks away.");
+                    s4.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD + "Click to copy to the command prompt")));
+                    s4.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "" + x + " " + y + " " + z));
                     WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s3).appendSibling(s4).appendSibling(s42));
                     StringTextComponent s5 = new StringTextComponent(TextFormatting.GREEN + "Click to teleport");
-                    s5.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD+"Click here")));
-                    s5.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/tp " + player.getName().getString() + " " + x + " " + y + " " + z));
+                    s5.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.GOLD + "Click here")));
+                    s5.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tp " + player.getName().getString() + " " + x + " " + y + " " + z));
                     WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s5));
-                    player.sendStatusMessage(new StringTextComponent(TextFormatting.GREEN+"Found biome " + TextFormatting.AQUA+ (int)Utilities.getDistance(new BlockPos(player.getPosition().getX(),player.getPosition().getY(),player.getPosition().getZ()),new BlockPos(x,y,z)) + TextFormatting.GREEN+" blocks away"),true);
+                    player.sendStatusMessage(new StringTextComponent(TextFormatting.GREEN + "Found biome " + TextFormatting.AQUA + (int) Utilities.getDistance(new BlockPos(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ()), new BlockPos(x, y, z)) + TextFormatting.GREEN + " blocks away"), true);
 
-                }
-                else
-                {
-                    if(biomes.size()==1) {
+                } else {
+                    if (biomes.size() == 1) {
                         StringTextComponent s3 = new StringTextComponent(TextFormatting.RED + "Unable to find " + TextFormatting.LIGHT_PURPLE + biomes.get(0).getRegistryName() + TextFormatting.RED + " biome.");
                         player.sendStatusMessage(new StringTextComponent(TextFormatting.RED + "Unable to find biome"), true);
 
                         s3.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.DARK_RED + "Operation Failed :/")));
                         WN.sendChatMessage(player, new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(s3));
-                    }else{
+                    } else {
                         StringTextComponent s3 = new StringTextComponent(TextFormatting.RED + "Unable to find any of " + TextFormatting.LIGHT_PURPLE + biomes.size() + TextFormatting.RED + " biomes.");
                         player.sendStatusMessage(new StringTextComponent(TextFormatting.RED + "Unable to find biomes"), true);
 
@@ -174,20 +162,17 @@ public class BiomeArgument implements ArgumentType<Biome>
         return 1;
     }
 
-    public static BlockPos getY(World world, BlockPos pos)
-    {
+    public static BlockPos getY(World world, BlockPos pos) {
         IChunk chunk = world.getChunk(pos);
         BlockPos blockpos;
         BlockPos blockpos1;
         BlockPos blockpos2 = new BlockPos(pos.getX(), chunk.getTopFilledSegment() + 16, pos.getZ());
 
-        for (blockpos = blockpos2; blockpos.getY() >= 0; blockpos = blockpos1)
-        {
+        for (blockpos = blockpos2; blockpos.getY() >= 0; blockpos = blockpos1) {
             blockpos1 = blockpos.down();
             BlockState state = chunk.getBlockState(blockpos1);
 
-            if (!state.getMaterial().blocksMovement() && !world.isAirBlock(blockpos1.down()) && state.getMaterial() != Material.LEAVES)
-            {
+            if (!state.getMaterial().blocksMovement() && !world.isAirBlock(blockpos1.down()) && state.getMaterial() != Material.LEAVES) {
                 return blockpos1;
             }
         }
@@ -195,30 +180,28 @@ public class BiomeArgument implements ArgumentType<Biome>
         return blockpos2;
     }
 
-    public static BlockPos getTopBlock(IWorld world, int x, int z)
-    {
+    public static BlockPos getTopBlock(IWorld world, int x, int z) {
         IChunk chunk = world.getChunk(x >> 4, z >> 4, ChunkStatus.FULL);
         return new BlockPos(x, chunk.getTopBlockY(Heightmap.Type.MOTION_BLOCKING, x & 15, z & 15), z);
     }
 
-    public static BiomePos lookForBiome(ServerWorld world, int startX, int startZ, PlayerEntity player, Biome... biomeToFind)
-    {
+    public static BiomePos lookForBiome(ServerWorld world, int startX, int startZ, PlayerEntity player, Biome... biomeToFind) {
         ArrayList<Biome> biomes = new ArrayList<>(Arrays.asList(biomeToFind));
-        speedSearch=true;
+        speedSearch = true;
         WN.LOGGER.info("Starting searching for " + biomes.size() + " biomes");
         BiomeProvider chunkManager = world.getChunkProvider().getChunkGenerator().getBiomeProvider();
         int maxDistance = CommonConfig.maxSearchRadius.get();
-        for(int currDist = 0; currDist<maxDistance; currDist= currDist + quality){
-            ArrayList<BlockPos> pos = drawCircle(startX,startZ,currDist);
-            player.sendStatusMessage(new StringTextComponent(TextFormatting.YELLOW+"Searching in radius " + TextFormatting.GOLD + currDist + TextFormatting.YELLOW + "/" + TextFormatting.GOLD + + maxDistance),true);
+        for (int currDist = 0; currDist < maxDistance; currDist = currDist + quality) {
+            ArrayList<BlockPos> pos = drawCircle(startX, startZ, currDist);
+            player.sendStatusMessage(new StringTextComponent(TextFormatting.YELLOW + "Searching in radius " + TextFormatting.GOLD + currDist + TextFormatting.YELLOW + "/" + TextFormatting.GOLD + +maxDistance), true);
 
             int x = 0;
             for (BlockPos vec : pos) {
                 x++;
                 for (Biome biome : biomes) {
-                    if(Utilities.getBiomeOnPos(chunkManager,(int)vec.getX(),(int)vec.getZ())==biome){
+                    if (Utilities.getFakeBiomeOnPos(chunkManager, (int) vec.getX(), (int) vec.getZ()) == biome) {
                         radius = currDist;
-                        return new BiomePos(new BlockPos((int)vec.getX(),0,(int)vec.getZ()),biome);
+                        return new BiomePos(new BlockPos((int) vec.getX(), 0, (int) vec.getZ()), biome);
                     }
                 }
 
@@ -226,16 +209,16 @@ public class BiomeArgument implements ArgumentType<Biome>
 
         }
 
-        Biome b = biomes.get(Utilities.rint(0,biomes.size()-1));
+        Biome b = biomes.get(Utilities.rint(0, biomes.size() - 1));
 
 
-        WN.LOGGER.info("Finding biome on the world, ignoring distance | " +b );
+        WN.LOGGER.info("Finding biome on the world, ignoring distance | " + b);
 
-        return lookForBiomeAsap(world,b,startX,startZ,player);
+        return lookForBiomeAsap(world, b, startX, startZ, player);
     }
 
     public static BiomePos lookForBiomeAsap(ServerWorld world, Biome biomeToFind, int startX, int startZ, PlayerEntity player) {
-        player.sendStatusMessage(new StringTextComponent(TextFormatting.YELLOW+"Unable to find the nearest biome. Searching ignoring distance..."),true);
+        player.sendStatusMessage(new StringTextComponent(TextFormatting.YELLOW + "Unable to find the nearest biome. Searching ignoring distance..."), true);
 
         int sampleSpace = 4 << 12;
         int maxDist = sampleSpace * 100;
@@ -247,17 +230,16 @@ public class BiomeArgument implements ArgumentType<Biome>
         double z = 0;
         double dist = 0;
         int n = 0;
-        for (n = 0; dist < maxDist; ++n)
-        {
+        for (n = 0; dist < maxDist; ++n) {
             double rootN = Math.sqrt(n);
             dist = a * rootN;
             x = startX + (dist * Math.sin(b * rootN));
             z = startZ + (dist * Math.cos(b * rootN));
-            Biome biomeSample = Utilities.getBiomeOnPos(chunkManager,(int)x,(int)z);
-            if (biomeSample == biomeToFind){
-                return new BiomePos(new BlockPos((int)x, 0, (int)z),biomeToFind);
+            Biome biomeSample = Utilities.getFakeBiomeOnPos(chunkManager, (int) x, (int) z);
+            if (biomeSample == biomeToFind) {
+                return new BiomePos(new BlockPos((int) x, 0, (int) z), biomeToFind);
             }
-            if(n>=250000){
+            if (n >= 250000) {
                 return null;
             }
         }
@@ -277,18 +259,19 @@ public class BiomeArgument implements ArgumentType<Biome>
 
             int ElX = (int) Math.round(x + x1);
             int ElY = (int) Math.round(y + y1);
-            pos.add(new BlockPos(ElX,0,ElY));
+            pos.add(new BlockPos(ElX, 0, ElY));
         }
         return pos;
     }
 
-    public static class BiomePos{
+    public static class BiomePos {
         public BlockPos pos;
         public Biome biome;
-        public BiomePos(BlockPos pos, Biome biome){
-            this.pos=pos;
-            this.biome=biome;
+
+        public BiomePos(BlockPos pos, Biome biome) {
+            this.pos = pos;
+            this.biome = biome;
         }
-}
+    }
 
 }

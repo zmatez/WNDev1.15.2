@@ -76,28 +76,12 @@ public class ExportToFile {
 
         if(fullJava){
             start=(
-                    "import com.matez.wildnature.init.Main;\n" +
-                    "import com.matez.wildnature.world.gen.structures.nature.SchemFeature;\n" +
-                    "import com.mojang.datafixers.Dynamic;\n" +
+                    "import com.matez.wildnature.world.generation.structures.nature.SchemFeature;\n" +
                     "import net.minecraft.util.math.BlockPos;\n" +
-                    "import net.minecraft.block.BlockState;\n" +
-                    "import net.minecraft.world.gen.feature.NoFeatureConfig;\n" +
                     "\n" +
-                    "import java.util.Set;\n" +
-                    "import java.util.function.Function;\n" +
+                    "import java.util.Set;" +
                     "\n" +
                     "public class %s% extends SchemFeature {\n" +
-                    "    public %s%(Function<Dynamic<?>, ? extends NoFeatureConfig> config, boolean doBlockNofityOnPlace) {\n" +
-                    "        super(config, doBlockNofityOnPlace);\n" +
-                    "        Main.treesList.add(this);\n" +
-                    "    }\n" +
-                    "\n" +
-                    "    public %s%(Function<Dynamic<?>, ? extends NoFeatureConfig> config, boolean doBlockNofityOnPlace, BlockState log, BlockState leaves) {\n" +
-                    "        super(config, doBlockNofityOnPlace);\n" +
-                    "        Main.treesList.add(this);\n" +
-                    "        LOG = log;\n" +
-                    "        LEAVES =leaves;\n" +
-                    "    }\n" +
                     "\n" +
                     "    @Override\n" +
                     "    public Set<BlockPos> setBlocks() {\n").replace("%s%",name);
@@ -116,7 +100,12 @@ public class ExportToFile {
 
 
 
-        File f = new File(FMLPaths.GAMEDIR.get().resolve("wildnature/export/"+name+".java").toString());
+        File f = null;
+        if(fullJava){
+            f = new File(FMLPaths.GAMEDIR.get().resolve("wildnature/export/"+name+".java").toString());
+        }else{
+            new File(FMLPaths.GAMEDIR.get().resolve("wildnature/export/"+name+".wnstruct").toString());
+        }
 
         if(f.exists()){
             StringTextComponent s4 = new StringTextComponent(TextFormatting.RED + "Cannot export " +TextFormatting.GOLD + name+".java"+ TextFormatting.RED+" - " + "File already exist.");
@@ -127,7 +116,7 @@ public class ExportToFile {
             new File(FMLPaths.GAMEDIR.get().resolve("wildnature/export/").toString()).mkdirs();
             f.createNewFile();
             FileWriter fileWriter = null;
-            fileWriter = new FileWriter(FMLPaths.GAMEDIR.get().resolve("wildnature/export/"+name+".java").toString());
+            fileWriter = new FileWriter(FMLPaths.GAMEDIR.get().resolve("wildnature/export/"+name+(fullJava ? ".java" : ".wnstruct")).toString());
             PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.print(start);
             printWriter.print(export);

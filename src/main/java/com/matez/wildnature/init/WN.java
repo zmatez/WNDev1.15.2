@@ -40,6 +40,7 @@ import com.matez.wildnature.common.registry.particles.ParticleRegistry;
 import com.matez.wildnature.common.tileentity.*;
 import com.matez.wildnature.common.tileentity.item.ItemTileEntity;
 import com.matez.wildnature.common.tileentity.present.PresentTileEntity;
+import com.matez.wildnature.common.tileentity.tree.TreeTileEntity;
 import com.matez.wildnature.network.packet.WNPackets;
 import com.matez.wildnature.network.proxy.ClientProxy;
 import com.matez.wildnature.network.proxy.IProxy;
@@ -56,6 +57,7 @@ import com.matez.wildnature.world.generation.feature.WNFeatures;
 import com.matez.wildnature.world.generation.feature.features.RockGen;
 import com.matez.wildnature.world.generation.provider.WNBiomeProviderType;
 import com.matez.wildnature.world.generation.provider.WNWorldType;
+import com.matez.wildnature.world.generation.structures.WNStructures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import com.matez.wildnature.world.generation.structures.nature.fallen.FallenRegistry;
 import com.matez.wildnature.world.generation.surface.WNSurfaceBuilders;
@@ -105,10 +107,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -135,7 +134,7 @@ public class WN {
     public static WN instance;
 
     public static final String modid = "wildnature";
-    public static final String version = "3.0";
+    public static final String version = "3.0.1";
 
     public static final Logger LOGGER = LogManager.getLogger(modid);
     public static final String WildNaturePrefix = TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "[" + TextFormatting.GREEN.toString() + TextFormatting.BOLD.toString() + "WN" + TextFormatting.GOLD.toString() + TextFormatting.BOLD.toString() + "] " + TextFormatting.AQUA.toString();
@@ -164,6 +163,7 @@ public class WN {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerParticles);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dedicatedServerSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onLoadDone);
 
 
         //Used deferred since I don't follow your registering system/habit. Contains only test blocks for Rhino and Cosmic so I leave it up to you where to register it. ;)
@@ -198,7 +198,12 @@ public class WN {
         MinecraftForge.EVENT_BUS.addListener(new ParticleFactoryEvent()::registerParticles);
         MinecraftForge.EVENT_BUS.addListener(new TreeBreakEvent()::treeEvent);
         MinecraftForge.EVENT_BUS.addListener(new WorldUnloadEvent()::onWorldUnload);
+        MinecraftForge.EVENT_BUS.addListener(new ChunkEvent()::chunkLoad);
+        MinecraftForge.EVENT_BUS.addListener(new ChunkEvent()::chunkSave);
+        MinecraftForge.EVENT_BUS.addListener(new ChunkEvent()::chunkUnload);
         dataFixer.registerDataFixer();
+
+        WNStructures.init();
 
         ArgumentTypes.register("biome_argument", BiomeArgument.class, new ArgumentSerializer<>(BiomeArgument::createArgument));
         WN.LOGGER.info("Using Version " + CommonConfig.currentVersion + " / " + version);
@@ -303,6 +308,11 @@ public class WN {
     @SubscribeEvent
     public void enqueueIMC(InterModEnqueueEvent event) {
         proxy.enqueueIMC(event);
+    }
+
+    @SubscribeEvent
+    public void onLoadDone(FMLLoadCompleteEvent event){
+        WNStructures.finish();
     }
 
     private void addSupportedLanguages() {
@@ -543,6 +553,11 @@ public class WN {
             presentTile.setRegistryName("wildnature", "present_tile_entity");
             evt.getRegistry().register(presentTile);
             initGuis.PRESENT_TILE_ENTITY = presentTile;
+
+            TileEntityType<TreeTileEntity> treeTile = TileEntityType.Builder.create(TreeTileEntity::new, TreeTileEntity.SUPPORTED_BLOCKS.toArray(new Block[0])).build(null);
+            treeTile.setRegistryName("wildnature", "tree_tile_entity");
+            evt.getRegistry().register(treeTile);
+            initGuis.TREE_TILE_ENTITY = treeTile;
         }
 
         private static final List<ContainerType<?>> CONTAINER_TYPES = new ArrayList<>();
@@ -570,10 +585,7 @@ public class WN {
         @SubscribeEvent
         public static void registerSounds(final RegistryEvent.Register<SoundEvent> event) {
             LOGGER.info("Registering sounds...");
-            //event.getRegistry().register(new SoundEvent(new ResourceLocation("wildnature","block/piston/2s_open")));
             event.getRegistry().registerAll(SoundRegistry.register());
-
-
         }
 
 

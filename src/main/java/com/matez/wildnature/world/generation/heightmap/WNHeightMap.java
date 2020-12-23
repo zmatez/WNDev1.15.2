@@ -6,6 +6,7 @@ import com.matez.wildnature.world.generation.grid.maps.*;
 import com.matez.wildnature.world.generation.grid.Cell;
 import com.matez.wildnature.world.generation.heightmap.modules.ContinentGenerator;
 import com.matez.wildnature.world.generation.heightmap.modules.RiverGenerator;
+import com.matez.wildnature.world.generation.heightmap.modules.StreamGenerator;
 import com.matez.wildnature.world.generation.maps.ClimateMap;
 
 /*
@@ -38,6 +39,7 @@ public class WNHeightMap {
     private final long seed;
     private final ContinentGenerator continentGenerator;
     private final RiverGenerator riverGenerator;
+    private final StreamGenerator streamGenerator;
     private final Cell cell;
 
     //maps
@@ -56,6 +58,7 @@ public class WNHeightMap {
         WN.LOGGER.debug("Created WNHeightMap with seed " + seed);
         this.continentGenerator = new ContinentGenerator(seed);
         this.riverGenerator = new RiverGenerator(seed);
+        this.streamGenerator = new StreamGenerator(seed);
 
         this.biomeMap = new BiomeMap(seed);
         this.undergroundBiomeMap = new UndergroundBiomeMap(seed);
@@ -81,6 +84,11 @@ public class WNHeightMap {
         riverGenerator.generate(cell,x,z);
     }
 
+    public void applyStream(Cell cell, int x, int z) {
+        streamGenerator.generate(cell,x,z);
+    }
+
+
 
     /**
      * Applies identifies in cell for all specified maps.
@@ -95,6 +103,7 @@ public class WNHeightMap {
         applyContinent(cell, dx, dz);
         applyClimate(cell, dx, dz);
         applyRiver(cell,dx,dz);
+        //applyStream(cell, dx, dz);
         return cell;
     }
 

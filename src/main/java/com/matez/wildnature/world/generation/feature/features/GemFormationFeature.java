@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 
 import java.util.Random;
@@ -38,27 +39,29 @@ public class GemFormationFeature extends Feature<BlockVeinFeatureConfig> {
       if(config.state.getBlock() instanceof FormationBase) {
          if(Utilities.rint(0,1,rand)==0) {
             if (worldIn.getBlockState(pos).isAir() || worldIn.getBlockState(pos).getBlock() == Blocks.WATER) {
-               boolean waterlogged = worldIn.getFluidState(pos).getFluid() == Fluids.WATER || worldIn.getFluidState(pos).getFluid() == Fluids.FLOWING_WATER;
-               if (config.state.getBlock() instanceof FormationVerticalBase) {
-                  if (worldIn.getBlockState(pos.down()).isSolid() && config.state.getBlock() != WNBlocks.MALACHITE_FORMATION) {
-                     worldIn.setBlockState(pos, config.state.with(FormationBase.WATERLOGGED, waterlogged).with(FormationVerticalBase.FACING,Direction.UP), 2);
-                     return true;
-                  } else if (worldIn.getBlockState(pos.up()).isSolid()) {
-                     worldIn.setBlockState(pos, config.state.with(FormationBase.WATERLOGGED, waterlogged).with(FormationVerticalBase.FACING,Direction.DOWN), 2);
-                     return true;
-                  }
-               } else {
-                  if (config.state.getBlock() instanceof FormationWallBase) {
-                     Direction wall = null;
-                     for (Direction direction : DIRECTIONS) {
-                        if (worldIn.getBlockState(pos.offset(direction)).isSolid()) {
-                           wall = direction.getOpposite();
-                           break;
-                        }
-                     }
-                     if (wall != null) {
-                        worldIn.setBlockState(pos, config.state.with(FormationWallBase.FACING, wall).with(FormationBase.WATERLOGGED, waterlogged), 2);
+               if(worldIn.getChunk(pos).getTopBlockY(Heightmap.Type.OCEAN_FLOOR_WG,pos.getX(),pos.getZ())>pos.getY()) {
+                  boolean waterlogged = worldIn.getFluidState(pos).getFluid() == Fluids.WATER || worldIn.getFluidState(pos).getFluid() == Fluids.FLOWING_WATER;
+                  if (config.state.getBlock() instanceof FormationVerticalBase) {
+                     if (worldIn.getBlockState(pos.down()).isSolid() && config.state.getBlock() != WNBlocks.MALACHITE_FORMATION) {
+                        worldIn.setBlockState(pos, config.state.with(FormationBase.WATERLOGGED, waterlogged).with(FormationVerticalBase.FACING, Direction.UP), 2);
                         return true;
+                     } else if (worldIn.getBlockState(pos.up()).isSolid()) {
+                        worldIn.setBlockState(pos, config.state.with(FormationBase.WATERLOGGED, waterlogged).with(FormationVerticalBase.FACING, Direction.DOWN), 2);
+                        return true;
+                     }
+                  } else {
+                     if (config.state.getBlock() instanceof FormationWallBase) {
+                        Direction wall = null;
+                        for (Direction direction : DIRECTIONS) {
+                           if (worldIn.getBlockState(pos.offset(direction)).isSolid()) {
+                              wall = direction.getOpposite();
+                              break;
+                           }
+                        }
+                        if (wall != null) {
+                           worldIn.setBlockState(pos, config.state.with(FormationWallBase.FACING, wall).with(FormationBase.WATERLOGGED, waterlogged), 2);
+                           return true;
+                        }
                      }
                   }
                }

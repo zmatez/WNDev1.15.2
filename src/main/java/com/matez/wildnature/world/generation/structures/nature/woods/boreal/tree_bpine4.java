@@ -63,9 +63,7 @@ public class tree_bpine4 extends SchemFeature {
         Block(-1, 15, -2, LEAVES);
         Block(-1, 17, -2, LEAVES);
         Block(-1, 21, -2, LEAVES);
-        Block(0, 0, 0, DIRT);
-
-//   wildnature mod 2019/07/30 20:55:28
+        //   wildnature mod 2019/07/30 20:55:28
 //           created by matez 
 //         all rights reserved   
 //     http://bit.ly/wildnature-mod

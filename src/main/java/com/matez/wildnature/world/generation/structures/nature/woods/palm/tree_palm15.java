@@ -91,7 +91,6 @@ public class tree_palm15 extends SchemFeature {
         Block(-1, 12, 7, LEAVES);
         Block(-1, 12, 8, LEAVES);
         Block(-1, 13, 6, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, -2, LOG);
         Block(0, 1, -1, LOG);
         Block(0, 1, 0, LOG);

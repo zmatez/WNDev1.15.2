@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stone_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:bronze_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:steel_axe"
+        }
+      ]
+    }
+  ]
+}

@@ -356,7 +356,6 @@ public class tree_willow5 extends SchemFeature {
         Block(-1, 15, 0, LEAVES);
         Block(-1, 15, 1, LEAVES);
         Block(-1, 16, -1, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 0, LOG);
         Block(0, 1, 1, LOG);
         Block(0, 1, 2, LOG);

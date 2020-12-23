@@ -37,7 +37,6 @@ public class tree_pine1 extends SchemFeature {
         Block(-1, 16, 0, LEAVES);
         Block(-1, 16, 1, LEAVES);
         Block(-1, 17, 0, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 0, LOG);
         Block(0, 2, 0, LOG);
         Block(0, 3, 0, LOG);

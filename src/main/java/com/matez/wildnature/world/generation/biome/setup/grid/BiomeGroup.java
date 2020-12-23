@@ -54,6 +54,10 @@ public class BiomeGroup {
         return subBiomes;
     }
 
+    public void setSubBiomes(SubBiome[] subBiomes) {
+        this.subBiomes = subBiomes;
+    }
+
     public int getWeight() {
         return weight;
     }

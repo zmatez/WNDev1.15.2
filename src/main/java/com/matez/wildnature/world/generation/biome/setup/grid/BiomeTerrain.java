@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.biome.setup.grid;
 
 import com.matez.wildnature.init.WN;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.ArrayList;
@@ -39,6 +40,28 @@ public class BiomeTerrain {
 
     public static void register(BiomeGroup group){
         terrains.add(new BiomeTerrain(group,true,BiomeDictionary.getTypes(group.getBaseBiome()).toArray(new BiomeDictionary.Type[0])));
+    }
+
+    public static void unregister(Biome biome){
+        ArrayList<BiomeTerrain> terrainsToUnregister = new ArrayList<>();
+        for (BiomeTerrain terrain : terrains) {
+            if(terrain.getGroup().getBaseBiome() == biome){
+                terrainsToUnregister.add(terrain);
+            }else{
+                for (SubBiome subBiome : terrain.getGroup().getSubBiomes().clone()) {
+                    if(subBiome.getBiome() == biome){
+                        WN.LOGGER.info("--- Removing blacklisted SubBiome " + biome.getRegistryName() + " from group " + terrain.getGroup().getName() + ":" + terrain.getGroup().getId());
+                        ArrayList<SubBiome> subBiomes = new ArrayList<>(Arrays.asList(terrain.getGroup().getSubBiomes()));
+                        subBiomes.remove(subBiome);
+                        terrain.getGroup().setSubBiomes(subBiomes.toArray(new SubBiome[0]));
+                    }
+                }
+            }
+        }
+        for (BiomeTerrain biomeTerrain : terrainsToUnregister) {
+            WN.LOGGER.info("--- Removing blacklisted Biome " + biome.getRegistryName() + " and the whole group " + biomeTerrain.getGroup().getName() + ":" + biomeTerrain.getGroup().getId());
+            terrains.remove(biomeTerrain);
+        }
     }
 
     public static BiomeGroup getGroupByName(String name){

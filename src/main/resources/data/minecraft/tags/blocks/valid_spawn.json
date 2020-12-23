@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:brown_grass_block",
+    "wildnature:mold_grass_block",
+    "wildnature:tropical_grass_block",
+    "wildnature:dried_grass_block",
+    "wildnature:desert_grass_block",
+
+    "wildnature:brown_podzol"
+  ]
+}

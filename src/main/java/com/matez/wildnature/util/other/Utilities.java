@@ -1,5 +1,6 @@
 package com.matez.wildnature.util.other;
 
+import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -32,7 +33,7 @@ import java.util.*;
 public class Utilities {
     public static int rint(int min, int max) {
 
-        if(min==max){
+        if (min == max) {
             return min;
         }
 
@@ -43,9 +44,10 @@ public class Utilities {
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
     }
+
     public static int rint(int min, int max, Random rand) {
 
-        if(min==max){
+        if (min == max) {
             return min;
         }
 
@@ -56,9 +58,10 @@ public class Utilities {
 
         return rand.nextInt((max - min) + 1) + min;
     }
+
     public static double rdoub(double min, double max) {
 
-        if(min==max){
+        if (min == max) {
             return min;
         }
 
@@ -69,9 +72,10 @@ public class Utilities {
         Random r = new Random();
         return min + (max - min) * r.nextDouble();
     }
+
     public static double rdoub(double min, double max, Random rand) {
 
-        if(min==max){
+        if (min == max) {
             return min;
         }
 
@@ -82,28 +86,30 @@ public class Utilities {
 
         return min + (max - min) * rand.nextDouble();
     }
-    public static boolean iBetween(int rangeMin, int rangeMax, int number){
-        return number>rangeMin&&number<rangeMax;
+
+    public static boolean iBetween(int rangeMin, int rangeMax, int number) {
+        return number > rangeMin && number < rangeMax;
     }
 
-    public static boolean dBetween(double rangeMin, double rangeMax, double number){
-        return number>rangeMin&&number<rangeMax;
+    public static boolean dBetween(double rangeMin, double rangeMax, double number) {
+        return number > rangeMin && number < rangeMax;
     }
 
-    public static boolean chance(double percentChance){
-        double x = rdoub(0,100);
+    public static boolean chance(double percentChance) {
+        double x = rdoub(0, 100);
         //Crack.LOGGER.info("chance: " + percentChance+"/"+x);
-        return percentChance>=x;
-    }
-    public static boolean chance(double percentChance,Random rand){
-        double x = rdoub(0,100,rand);
-        return percentChance<=x;
+        return percentChance >= x;
     }
 
-    public static BlockState getWeighBlock(BlockWeighList list){
-        if(!(list.size()==0)){
+    public static boolean chance(double percentChance, Random rand) {
+        double x = rdoub(0, 100, rand);
+        return percentChance <= x;
+    }
+
+    public static BlockState getWeighBlock(BlockWeighList list) {
+        if (!(list.size() == 0)) {
             ArrayList<BlockState> blockStates = list.getNormalArrayList();
-            int block = rint(0,blockStates.size()-1);
+            int block = rint(0, blockStates.size() - 1);
 
             return blockStates.get(block);
 
@@ -113,10 +119,10 @@ public class Utilities {
         return null;
     }
 
-    public static SchemFeature getWeighTree(TreeWeighList list){
-        if(!(list.size()==0)){
+    public static SchemFeature getWeighTree(TreeWeighList list) {
+        if (!(list.size() == 0)) {
             ArrayList<SchemFeature> trees = list.getNormalArrayList();
-            int block = rint(0,trees.size()-1);
+            int block = rint(0, trees.size() - 1);
 
             return trees.get(block);
 
@@ -126,10 +132,10 @@ public class Utilities {
         return null;
     }
 
-    public static SchemFeature getWeighTree(TreeWeighList list, Random rand){
-        if(!(list.size()==0)){
+    public static SchemFeature getWeighTree(TreeWeighList list, Random rand) {
+        if (!(list.size() == 0)) {
             ArrayList<SchemFeature> trees = list.getNormalArrayList();
-            int block = rint(0,trees.size()-1,rand);
+            int block = rint(0, trees.size() - 1, rand);
 
             return trees.get(block);
 
@@ -140,10 +146,10 @@ public class Utilities {
         return null;
     }
 
-    public static Biome getWeighBiome(BiomeWeighList list,Random rand){
-        if(!(list.size()==0)){
+    public static Biome getWeighBiome(BiomeWeighList list, Random rand) {
+        if (!(list.size() == 0)) {
             ArrayList<Biome> biomes = list.getNormalArrayList();
-            int biome = rint(0,biomes.size()-1,rand);
+            int biome = rint(0, biomes.size() - 1, rand);
 
             return biomes.get(biome);
 
@@ -153,10 +159,10 @@ public class Utilities {
         return null;
     }
 
-    public static Biome getWeighBiome(BiomeWeighList list){
-        if(!(list.size()==0)){
+    public static Biome getWeighBiome(BiomeWeighList list) {
+        if (!(list.size() == 0)) {
             ArrayList<Biome> biomes = list.getNormalArrayList();
-            int biome = rint(0,biomes.size()-1);
+            int biome = rint(0, biomes.size() - 1);
 
             return biomes.get(biome);
 
@@ -167,11 +173,11 @@ public class Utilities {
     }
 
     public static int blockDistance(BlockPos pos1, BlockPos pos2) {
-        return (int)Math.sqrt(Math.pow(pos2.getX()-pos1.getX(),2)+Math.pow(pos2.getY()-pos1.getY(),2)+Math.pow(pos2.getZ()-pos1.getZ(),2));
+        return (int) Math.sqrt(Math.pow(pos2.getX() - pos1.getX(), 2) + Math.pow(pos2.getY() - pos1.getY(), 2) + Math.pow(pos2.getZ() - pos1.getZ(), 2));
     }
 
     public static double blockDistanceDouble(BlockPos pos1, BlockPos pos2) {
-        return Math.sqrt(Math.pow(pos2.getX()-pos1.getX(),2)+Math.pow(pos2.getY()-pos1.getY(),2)+Math.pow(pos2.getZ()-pos1.getZ(),2));
+        return Math.sqrt(Math.pow(pos2.getX() - pos1.getX(), 2) + Math.pow(pos2.getY() - pos1.getY(), 2) + Math.pow(pos2.getZ() - pos1.getZ(), 2));
     }
 
     @Nullable
@@ -180,17 +186,18 @@ public class Utilities {
         double closestDistance = -1D;
         boolean nb = true;
 
-        for(PlayerEntity player : world.getPlayers()){
-            if(!player.isSpectator()){
-                double distance = blockDistanceDouble(new BlockPos(x,y,z),player.getPosition());;
-                if(nb){
-                    entity=player;
-                    closestDistance=distance;
+        for (PlayerEntity player : world.getPlayers()) {
+            if (!player.isSpectator()) {
+                double distance = blockDistanceDouble(new BlockPos(x, y, z), player.getPosition());
+                ;
+                if (nb) {
+                    entity = player;
+                    closestDistance = distance;
                     nb = false;
-                }else{
-                    if(closestDistance>distance){
-                        entity=player;
-                        closestDistance=distance;
+                } else {
+                    if (closestDistance > distance) {
+                        entity = player;
+                        closestDistance = distance;
                     }
                 }
             }
@@ -200,20 +207,19 @@ public class Utilities {
     }
 
     public static int SumOfDigits(String str,
-                           int n)
-    {
+                                  int n) {
         int sum = 0;
 
         for (int i = 0; i < n; i++)
-            sum += (int)(str.charAt(i) - '0');
+            sum += (int) (str.charAt(i) - '0');
 
         return sum;
     }
 
-    public static boolean isStringEqual(String s, String... strings){
+    public static boolean isStringEqual(String s, String... strings) {
         ArrayList sar = new ArrayList(Arrays.asList(strings));
-        for (int i = 0; i<sar.size(); i++){
-            if(s.equals(sar.get(i))){
+        for (int i = 0; i < sar.size(); i++) {
+            if (s.equals(sar.get(i))) {
                 return true;
             }
         }
@@ -224,16 +230,16 @@ public class Utilities {
     // N
     //W E   <---
     // S
-    public static Direction rotateLeft(Direction old){
+    public static Direction rotateLeft(Direction old) {
         Direction newDir;
-        if(old==Direction.NORTH){
-            newDir=Direction.WEST;
-        }else if(old==Direction.WEST){
-            newDir=Direction.SOUTH;
-        }else if(old==Direction.SOUTH){
-            newDir=Direction.EAST;
-        }else{
-            newDir=Direction.NORTH;
+        if (old == Direction.NORTH) {
+            newDir = Direction.WEST;
+        } else if (old == Direction.WEST) {
+            newDir = Direction.SOUTH;
+        } else if (old == Direction.SOUTH) {
+            newDir = Direction.EAST;
+        } else {
+            newDir = Direction.NORTH;
         }
         return newDir;
     }
@@ -241,41 +247,43 @@ public class Utilities {
     // N
     //W E   --->
     // S
-    public static Direction rotateRight(Direction old){
+    public static Direction rotateRight(Direction old) {
         Direction newDir;
-        if(old==Direction.NORTH){
-            newDir=Direction.EAST;
-        }else if(old==Direction.EAST){
-            newDir=Direction.SOUTH;
-        }else if(old==Direction.SOUTH){
-            newDir=Direction.WEST;
-        }else{
-            newDir=Direction.NORTH;
+        if (old == Direction.NORTH) {
+            newDir = Direction.EAST;
+        } else if (old == Direction.EAST) {
+            newDir = Direction.SOUTH;
+        } else if (old == Direction.SOUTH) {
+            newDir = Direction.WEST;
+        } else {
+            newDir = Direction.NORTH;
         }
         return newDir;
     }
 
-    public static CompoundNBT saveItem(CompoundNBT nbt, ItemStack stack){
+    public static CompoundNBT saveItem(CompoundNBT nbt, ItemStack stack) {
         stack.write(nbt);
         return nbt;
     }
-    public static ItemStack loadItem(CompoundNBT nbt){
+
+    public static ItemStack loadItem(CompoundNBT nbt) {
         ItemStack stack = ItemStack.read(nbt);
         return stack;
     }
 
     //uses changed item 'id' tag to not override TileEntity id
-    public static CompoundNBT saveItemTile(CompoundNBT nbt, ItemStack stack){
+    public static CompoundNBT saveItemTile(CompoundNBT nbt, ItemStack stack) {
         stack.write(nbt);
         return nbt;
     }
-    public static ItemStack loadItemTile(CompoundNBT nbt){
+
+    public static ItemStack loadItemTile(CompoundNBT nbt) {
         ItemStack stack = ItemStack.read(nbt);
         return stack;
     }
 
-    public static CompoundNBT saveItems(CompoundNBT nbt, ArrayList<ItemStack> stack){
-        if(nbt.contains("Items")){
+    public static CompoundNBT saveItems(CompoundNBT nbt, ArrayList<ItemStack> stack) {
+        if (nbt.contains("Items")) {
             nbt.remove("Items");
         }
 
@@ -286,14 +294,15 @@ public class Utilities {
             l.add(n);
         }
 
-        nbt.put("Items",l);
+        nbt.put("Items", l);
 
         return nbt;
     }
-    public static ArrayList<ItemStack> loadItems(CompoundNBT nbt){
-        if(nbt.contains("Items")) {
+
+    public static ArrayList<ItemStack> loadItems(CompoundNBT nbt) {
+        if (nbt.contains("Items")) {
             ListNBT l = (ListNBT) nbt.get("Items");
-            assert l!=null;
+            assert l != null;
             ArrayList<ItemStack> stacks = new ArrayList<>();
             for (INBT inbt : l) {
                 ItemStack s = ItemStack.read((CompoundNBT) inbt);
@@ -304,40 +313,40 @@ public class Utilities {
         return new ArrayList<>();
     }
 
-    public static Object getRandomEntry(ArrayList<?> array, Random rand){
-        return array.get(rint(0,array.size()-1,rand));
+    public static Object getRandomEntry(ArrayList<?> array, Random rand) {
+        return array.get(rint(0, array.size() - 1, rand));
     }
 
-    public static Object getWeightedEntry(WeightedList<?> list){
-        if(!(list.size()==0)){
+    public static Object getWeightedEntry(WeightedList<?> list) {
+        if (!(list.size() == 0)) {
             ArrayList<?> objects = list.getSimplifedArray();
-            int x = rint(0,objects.size()-1);
+            int x = rint(0, objects.size() - 1);
 
             return objects.get(x);
         }
         return null;
     }
 
-    public static Object getWeightedEntry(WeightedList<?> list,Random rand){
-        if(!(list.size()==0)){
+    public static Object getWeightedEntry(WeightedList<?> list, Random rand) {
+        if (!(list.size() == 0)) {
             ArrayList<?> objects = list.getSimplifedArray();
-            int x = rint(0,objects.size()-1,rand);
+            int x = rint(0, objects.size() - 1, rand);
 
             return objects.get(x);
         }
         return null;
     }
 
-    public static int countDuplicates(ArrayList<?> list, Object obj){
-        return Collections.frequency(list,obj);
+    public static int countDuplicates(ArrayList<?> list, Object obj) {
+        return Collections.frequency(list, obj);
     }
 
-    public static int getColorValue(int hex){
+    public static int getColorValue(int hex) {
         return hex | -16777216;
     }
 
     public static String blendColors(Color clOne, Color clTwo, float fAmount) {
-        float fInverse = (float)1.0 - fAmount;
+        float fInverse = (float) 1.0 - fAmount;
 
         // I had to look up getting colour components in java.  Google is good :)
         float afOne[] = new float[3];
@@ -358,13 +367,13 @@ public class Utilities {
     }
 
     public static float getDistance(BlockPos pos1, BlockPos pos2) {
-        float f = (float)(pos1.getX() - pos2.getX());
-        float f1 = (float)(pos1.getY() - pos2.getY());
-        float f2 = (float)(pos1.getZ() - pos2.getZ());
+        float f = (float) (pos1.getX() - pos2.getX());
+        float f1 = (float) (pos1.getY() - pos2.getY());
+        float f2 = (float) (pos1.getZ() - pos2.getZ());
         return MathHelper.sqrt(f * f + f1 * f1 + f2 * f2);
     }
 
-    public static boolean isBlockNear(IWorld world, BlockPos pos, Block... blocks){
+    public static boolean isBlockNear(IWorld world, BlockPos pos, Block... blocks) {
         try {
             for (Block block : blocks) {
                 if (world.getBlockState(pos.offset(Direction.NORTH)).getBlock() == block) {
@@ -382,12 +391,12 @@ public class Utilities {
             }
 
             return false;
-        }catch (Exception e){
+        } catch (Exception e) {
             return true;
         }
     }
 
-    public static boolean isUnsolidBlockNear(IWorld world, BlockPos pos){
+    public static boolean isUnsolidBlockNear(IWorld world, BlockPos pos) {
         try {
             if (!world.getBlockState(pos.offset(Direction.NORTH)).isSolid()) {
                 return true;
@@ -403,23 +412,23 @@ public class Utilities {
             }
 
             return false;
-        }catch (Exception e){
+        } catch (Exception e) {
             return true;
         }
     }
 
-    public static boolean isBlockNear(IChunk world, BlockPos pos, Block... blocks){
+    public static boolean isBlockNear(IChunk world, BlockPos pos, Block... blocks) {
         for (Block block : blocks) {
-            if(world.getBlockState(pos.offset(Direction.NORTH)).getBlock()==block){
+            if (world.getBlockState(pos.offset(Direction.NORTH)).getBlock() == block) {
                 return true;
             }
-            if(world.getBlockState(pos.offset(Direction.SOUTH)).getBlock()==block){
+            if (world.getBlockState(pos.offset(Direction.SOUTH)).getBlock() == block) {
                 return true;
             }
-            if(world.getBlockState(pos.offset(Direction.EAST)).getBlock()==block){
+            if (world.getBlockState(pos.offset(Direction.EAST)).getBlock() == block) {
                 return true;
             }
-            if(world.getBlockState(pos.offset(Direction.WEST)).getBlock()==block){
+            if (world.getBlockState(pos.offset(Direction.WEST)).getBlock() == block) {
                 return true;
             }
         }
@@ -427,11 +436,11 @@ public class Utilities {
         return false;
     }
 
-    public static boolean isValidGroundFor(BlockState plant, BlockState placeState, @Nullable IBlockReader world, @Nullable BlockPos pos){
+    public static boolean isValidGroundFor(BlockState plant, BlockState placeState, @Nullable IBlockReader world, @Nullable BlockPos pos) {
         try {
             if (plant.getBlock() instanceof BushBlock) {
-                Class clazz = plant.getBlock().getClass();
-                Class superclass = clazz;
+                Class<?> clazz = plant.getBlock().getClass();
+                Class<?> superclass = clazz;
                 Method method = null;
                 while (superclass != null) {
                     try {
@@ -444,22 +453,33 @@ public class Utilities {
                 }
                 if (method != null) {
                     method.setAccessible(true);
-                    return (boolean) method.invoke(plant.getBlock(), placeState, world, pos);
+                    return (boolean) method.invoke(placeState, world, pos);
                 }
                 return false;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return false;
     }
 
-    public static Biome getBiomeOnPos(BiomeProvider provider, int x, int z){
-        return provider.getNoiseBiome(x/4,0,z/4);
+    public static boolean isValidGround(BlockState plant, BlockState placeState, IBlockReader world, BlockPos pos) {
+        return isValidGroundFor(plant,placeState,world,pos);
     }
 
-    public static Biome getBiomeOnPos(BiomeContainer provider, int x, int z){
-        return provider.getNoiseBiome(x/4,0,z/4);
+    public static Biome getBiomeOnPos(BiomeProvider provider, int x, int z) {
+        return provider.getNoiseBiome(x / 4, 0, z / 4);
+    }
+
+    public static Biome getBiomeOnPos(BiomeContainer provider, int x, int z) {
+        return provider.getNoiseBiome(x / 4, 0, z / 4);
+    }
+
+    public static Biome getFakeBiomeOnPos(BiomeProvider provider, int x, int z) {
+        if (provider instanceof WNGridBiomeProvider) {
+            return ((WNGridBiomeProvider) provider).getNoiseBiome(x / 4, 0, z / 4, true);
+        }
+        return provider.getNoiseBiome(x / 4, 0, z / 4);
     }
 
     public static float scaleBetween(float unscaledNum, float minAllowed, float maxAllowed, float min, float max) {
@@ -474,41 +494,41 @@ public class Utilities {
         return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
     }
 
-    public static PlayerEntity getPlayerByUUID(String uuid, World world){
+    public static PlayerEntity getPlayerByUUID(String uuid, World world) {
         try {
             return world.getPlayerByUuid(UUID.fromString(uuid));
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
-    public static PlayerEntity getPlayerByUUID(String uuid, MinecraftServer server){
+    public static PlayerEntity getPlayerByUUID(String uuid, MinecraftServer server) {
         try {
             return server.getPlayerList().getPlayerByUUID(UUID.fromString(uuid));
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
 
-    public static PlayerEntity getPlayerByUUID(UUID uuid, MinecraftServer server){
+    public static PlayerEntity getPlayerByUUID(UUID uuid, MinecraftServer server) {
         try {
             return server.getPlayerList().getPlayerByUUID(uuid);
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
-    public static boolean canPlantHurt(Entity entity){
-        if(entity instanceof LivingEntity){
-            if(entity instanceof PlayerEntity){
+    public static boolean canPlantHurt(Entity entity) {
+        if (entity instanceof LivingEntity) {
+            if (entity instanceof PlayerEntity) {
                 return true;
             }
-            if(entity.hasCustomName()){
+            if (entity.hasCustomName()) {
                 return false;
             }
-            if(entity instanceof TameableEntity){
-                if(((TameableEntity) entity).isTamed()){
+            if (entity instanceof TameableEntity) {
+                if (((TameableEntity) entity).isTamed()) {
                     return false;
                 }
             }

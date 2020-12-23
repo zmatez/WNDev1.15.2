@@ -94,7 +94,6 @@ public class tree_oak5 extends SchemFeature {
         Block(-1, 10, -1, LEAVES);
         Block(-1, 10, 0, LEAVES);
         Block(-1, 11, -1, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 0, LOG);
         Block(0, 1, 1, LOG);
         Block(0, 2, 0, LOG);

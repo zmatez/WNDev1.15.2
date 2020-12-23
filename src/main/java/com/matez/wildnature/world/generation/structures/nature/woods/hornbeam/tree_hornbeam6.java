@@ -1269,7 +1269,6 @@ public class tree_hornbeam6 extends SchemFeature {
         Block(-1, 32, -4, LEAVES);
         Block(-1, 32, -2, LEAVES);
         Block(-1, 33, -2, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 0, LOG);
         Block(0, 1, 1, LOG);
         Block(0, 1, 2, LOG);

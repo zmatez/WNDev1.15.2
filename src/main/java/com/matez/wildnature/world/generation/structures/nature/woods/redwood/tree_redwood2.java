@@ -195,7 +195,6 @@ public class tree_redwood2 extends SchemFeature {
         Block(-1, 48, 0, LEAVES);
         Block(-1, 48, 1, LEAVES);
         Block(-1, 49, 1, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, -2, LOG);
         Block(0, 1, -1, LOG);
         Block(0, 1, 0, LOG);

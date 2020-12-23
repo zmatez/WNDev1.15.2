@@ -100,6 +100,9 @@ public class WNMinecraftCopatibility {
         if(log==Blocks.AIR){
             return;
         }
+        if(log == WNBlocks.RAINBOW_EUCALYPTUS_LOG || log == WNBlocks.RAINBOW_EUCALYPTUS_WOOD){
+            stripped_log = WNBlocks.EUCALYPTUS_STRIPPED_LOG;
+        }
         AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
         AxeItem.BLOCK_STRIPPING_MAP.put(log, stripped_log);
     }

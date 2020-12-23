@@ -1,0 +1,97 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lily_pad"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:lotus_white"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:lotus_pink"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:water_hyacinth"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:jelly_ball_white"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:jelly_ball_orange"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:shrimp_tube"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:name_tag"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:saddle"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.0,
+                "max": 0.25
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 30,
+              "treasure": true
+            }
+          ],
+          "name": "minecraft:bow"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.0,
+                "max": 0.25
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 30,
+              "treasure": true
+            }
+          ],
+          "name": "minecraft:fishing_rod"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 30,
+              "treasure": true
+            }
+          ],
+          "name": "minecraft:book"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nautilus_shell"
+        }
+      ]
+    }
+  ]
+}

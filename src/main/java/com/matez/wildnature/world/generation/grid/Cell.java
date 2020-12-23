@@ -71,6 +71,8 @@ public class Cell {
 
     public float mainRiverValue;
     public float mainRiverLandscapeValue;
+    public float smallRiverValue;
+    public float smallRiverLandscapeValue;
     public float streamRiverValue;
     public float streamRiverLandscapeValue;
 
@@ -112,6 +114,8 @@ public class Cell {
 
         cell.mainRiverValue = mainRiverValue;
         cell.mainRiverLandscapeValue = mainRiverLandscapeValue;
+        cell.smallRiverValue = smallRiverValue;
+        cell.smallRiverLandscapeValue = smallRiverLandscapeValue;
         cell.streamRiverValue = streamRiverValue;
         cell.streamRiverLandscapeValue = streamRiverLandscapeValue;
         return cell;

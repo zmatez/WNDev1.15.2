@@ -17,7 +17,6 @@ public class tree_hornbeam3 extends SchemFeature {
     public Set<BlockPos> setBlocks() {
 
 
-        Block(-40, 0, 40, DIRT);
         Block(-36, 10, 15, LEAVES);
         Block(-36, 11, 15, LEAVES);
         Block(-36, 11, 16, LEAVES);
@@ -1213,7 +1212,6 @@ public class tree_hornbeam3 extends SchemFeature {
         Block(-20, 19, 15, LEAVES);
         Block(-20, 19, 20, LEAVES);
         Block(-20, 19, 22, LEAVES);
-        Block(-19, 0, 24, DIRT);
         Block(-19, 1, 24, LOG);
         Block(-19, 1, 25, LOG);
         Block(-19, 1, 26, LOG);
@@ -1961,9 +1959,7 @@ public class tree_hornbeam3 extends SchemFeature {
         Block(-5, 7, 27, LEAVES);
         Block(-5, 7, 28, LEAVES);
         Block(-5, 8, 27, LEAVES);
-        Block(0, 0, 0, DIRT);
-
-//   wildnature mod 2019/07/30 20:55:01
+        //   wildnature mod 2019/07/30 20:55:01
 //           created by matez 
 //         all rights reserved   
 //     http://bit.ly/wildnature-mod

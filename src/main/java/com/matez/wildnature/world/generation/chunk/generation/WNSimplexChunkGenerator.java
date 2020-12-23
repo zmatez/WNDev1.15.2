@@ -1,7 +1,10 @@
 package com.matez.wildnature.world.generation.chunk.generation;
 
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.lists.WNBlocks;
+import com.matez.wildnature.util.other.Utilities;
+import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.chunk.WNWorldContext;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessors;
 import com.matez.wildnature.world.generation.generators.carves.UndergroundRiverGenerator;
@@ -22,12 +25,16 @@ import com.matez.wildnature.world.generation.processors.TerrainProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionProcessor;
 import com.matez.wildnature.world.generation.processors.ThermalErosionTestProcessor;
 import com.matez.wildnature.world.generation.provider.WNGridBiomeProvider;
+import com.matez.wildnature.world.generation.structures.WNAbstractStructure;
+import com.matez.wildnature.world.generation.structures.utils.StructureCache;
+import com.matez.wildnature.world.generation.structures.utils.StructureEntry;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.objects.*;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.ReportedException;
+import net.minecraft.network.DebugPacketSender;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -45,6 +52,7 @@ import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.*;
 import net.minecraft.world.gen.Heightmap.Type;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawJunction;
 import net.minecraft.world.gen.feature.jigsaw.JigsawPattern;
 import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
@@ -62,17 +70,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
-public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
-    private static final float[] field_222561_h = Util.make(new float[13824], (p_222557_0_) -> {
-        for(int i = 0; i < 24; ++i) {
-            for(int j = 0; j < 24; ++j) {
-                for(int k = 0; k < 24; ++k) {
-                    p_222557_0_[i * 24 * 24 + j * 24 + k] = (float)func_222554_b(j - 12, k - 12, i - 12);
-                }
-            }
-        }
-
-    });
+public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> implements IWNChunkGenerator{
     private int threadCount = CommonConfig.generatorThreads.get();
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
     protected IChunk chunk = null;
@@ -142,12 +140,15 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         return gridProvider;
     }
 
-    public WNSimplexChunkGenerator getGenerator() {
-        return this;
-    }
-
     public void setContext(WNWorldContext context){
         this.context = context;
+    }
+
+    public boolean hasStructure(Biome biomeIn, WNAbstractStructure structureIn) {
+        if(biomeIn instanceof WNBiome){
+            return ((WNBiome)biomeIn).hasStructure(structureIn);
+        }
+        return false;
     }
 
     @Override
@@ -184,7 +185,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
             }
         }
 
-        //this.makeBedrock(chunkIn, sharedseedrandom);
+        this.makeBedrock(chunkIn, sharedseedrandom);
     }
 
     public void decorate(WorldGenRegion region) {
@@ -202,6 +203,19 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         for(GenerationStage.Decoration generationstage$decoration : GenerationStage.Decoration.values()) {
             try {
                 biome.decorate(generationstage$decoration, this, region, i1, sharedseedrandom, blockpos);
+
+                StructureCache structureCache = StructureCache.get(new ChunkPos(i,j));
+                if(structureCache != null) {
+                    WNAbstractStructure structure = structureCache.getStructure();
+                    if(structure.getPlacement().getGenerationStage() == generationstage$decoration) {
+                        boolean generated = structure.generate(region, this, sharedseedrandom, new BlockPos(k, structureCache.getStructureCenterY(), l));
+                        if(!generated){
+                            WN.LOGGER.debug("Cannot generate structure at " + k + ", " + structureCache.getStructureCenterY() + ", " + l);
+                            structureCache.remove();
+                        }
+                    }
+                }
+
             } catch (Exception exception) {
                 CrashReport crashreport = CrashReport.makeCrashReport(exception, "Biome decoration");
                 crashreport.makeCategory("Generation").addDetail("CenterX", i).addDetail("CenterZ", j).addDetail("Step", generationstage$decoration).addDetail("Seed", i1).addDetail("Biome", Registry.BIOME.getKey(biome));
@@ -211,32 +225,61 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
     }
 
-    public void generateStructures(BiomeManager p_227058_1_, IChunk chunk, ChunkGenerator<?> p_227058_3_, TemplateManager p_227058_4_) {
-        for(Structure<?> structure : Feature.STRUCTURES.values()) {
-            if (p_227058_3_.getBiomeProvider().hasStructure(structure)) {
-                StructureStart structurestart = chunk.getStructureStart(structure.getStructureName());
-                int i = structurestart != null ? structurestart.getRefCount() : 0;
-                SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
-                ChunkPos chunkpos = chunk.getPos();
-                StructureStart structurestart1 = StructureStart.DUMMY;
+    public void generateStructures(BiomeManager biomeManager, IChunk chunk, ChunkGenerator<?> chunkGenerator, TemplateManager templateManager) {
+        ChunkPos chunkpos = chunk.getPos();
+        BlockPos biomePos = new BlockPos(chunkpos.getXStart() + 9, 0, chunkpos.getZStart() + 9);
+        StructureCache structureCache = StructureCache.get(chunkpos);
+        Biome biome = biomeManager.getBiome(biomePos);
+        SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
 
-                BlockPos biomePos = new BlockPos(chunkpos.getXStart() + 9, 0, chunkpos.getZStart() + 9);
-                //WN.LOGGER.debug("Locating at " + biomePos + " / " + (biomePos.getX() & 15) + ":"+ (biomePos.getZ() & 15));
-                Biome biome = p_227058_1_.getBiome(biomePos);
-                /*WN.LOGGER.debug("biome found " + biome.getRegistryName());
-                biome = GridBiomeLayer.applyHeightmapBiome(Heightmap.Type.OCEAN_FLOOR_WG,biome,chunk,getSeaLevel(),biomePos.getX(), biomePos.getZ());
-                WN.LOGGER.debug("biome fix " + biome.getRegistryName());*/
-                //TODO Villages not spawn on lake biomes
-                if (structure.canBeGenerated(p_227058_1_, p_227058_3_, sharedseedrandom, chunkpos.x, chunkpos.z, biome)) {
-                    StructureStart structurestart2 = structure.getStartFactory().create(structure, chunkpos.x, chunkpos.z, MutableBoundingBox.getNewBoundingBox(), i, p_227058_3_.getSeed());
-                    structurestart2.init(this, p_227058_4_, chunkpos.x, chunkpos.z, biome);
-                    structurestart1 = structurestart2.isValid() ? structurestart2 : StructureStart.DUMMY;
+        if(structureCache == null) {
+            boolean hasVanillaStructure = false;
+            for (Structure<?> structure : Feature.STRUCTURES.values()) {
+                if (chunkGenerator.getBiomeProvider().hasStructure(structure)) {
+                    StructureStart structurestart = chunk.getStructureStart(structure.getStructureName());
+                    int i = structurestart != null ? structurestart.getRefCount() : 0;
+                    StructureStart structurestart1 = StructureStart.DUMMY;
+
+                    if (structure.canBeGenerated(biomeManager, chunkGenerator, sharedseedrandom, chunkpos.x, chunkpos.z, biome)) {
+                        StructureStart structurestart2 = structure.getStartFactory().create(structure, chunkpos.x, chunkpos.z, MutableBoundingBox.getNewBoundingBox(), i, chunkGenerator.getSeed());
+                        structurestart2.init(this, templateManager, chunkpos.x, chunkpos.z, biome);
+                        structurestart1 = structurestart2.isValid() ? structurestart2 : StructureStart.DUMMY;
+                    }
+
+                    if(structurestart1 != StructureStart.DUMMY){
+                        hasVanillaStructure = true;
+                    }
+
+                    chunk.putStructureStart(structure.getStructureName(), structurestart1);
                 }
+            }
 
-                chunk.putStructureStart(structure.getStructureName(), structurestart1);
+            if(!hasVanillaStructure && biome instanceof WNBiome){
+                WNBiome wnBiome = (WNBiome)biome;
+                for (StructureEntry structure : wnBiome.getStructures()) {
+                    if(Utilities.rint(0,structure.getSpawnChance())==0){
+                        WNAbstractStructure abstractStructure = structure.getWeightedEntry(sharedseedrandom);
+                        if(abstractStructure.canBeGenerated(biomeManager,chunkGenerator,sharedseedrandom,chunkpos.x,chunkpos.z,biome)){
+                            StructureCache.create(chunkpos.x ,chunkpos.z,abstractStructure.getName(),0);
+                        }
+                    }
+                }
             }
         }
+    }
 
+
+    @Override
+    public void generateStructureStarts(IWorld worldIn, IChunk chunkIn) {
+        super.generateStructureStarts(worldIn,chunkIn);
+        ChunkPos chunkpos = chunkIn.getPos();
+        StructureCache structureCache = StructureCache.get(chunkpos);
+        if(structureCache != null){
+            WNAbstractStructure structure = structureCache.getStructure();
+            BlockPos.Mutable pos = new BlockPos.Mutable(chunkpos.getXStart() + Utilities.rint(0,15), 0, chunkpos.getZStart() + Utilities.rint(0,15));
+            pos.setY(structure.getStructureY(pos.getX(),pos.getZ(),world,chunk,this,randomSeed));
+            structureCache.setStructureCenterY(pos.getY());
+        }
     }
 
     protected void makeBedrock(IChunk chunkIn, Random rand) {
@@ -325,7 +368,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
         //Temp Config Start
 
-        FastNoiseLite noise = new FastNoiseLite();
+        /*FastNoiseLite noise = new FastNoiseLite();
         noise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
         noise.SetCellularDistanceFunction(FastNoiseLite.CellularDistanceFunction.Euclidean);
         noise.SetCellularReturnType(FastNoiseLite.CellularReturnType.Distance2);
@@ -374,13 +417,15 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
                 manager.applyTile(chunk, blockPos, height);
 
             }
-         }
+         }*/
 
          /**
           *
          *Geo End
           *
          */
+
+        runGenerateTerrain(chunkIn,0,16,chunkHeights);
 
 
         BlockPos.Mutable mutable = new BlockPos.Mutable();
@@ -426,18 +471,29 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
 
     public void generateTerrain(IChunk chunk, int[] noiseY) {
+        int threads = threadCount;
 
+        CompletableFuture<?>[] futures = new CompletableFuture[threads];
+        for (int i = 0; i < threads; i++) {
+            int position = i;
+            futures[i] = CompletableFuture.runAsync(() -> runGenerateTerrain(chunk,position * 16 / threads, 16 / threads, noiseY));
+        }
+
+        for (int i = 0; i < futures.length; i++) {
+            futures[i].join();
+        }
+    }
+
+    private void runGenerateTerrain(IChunk chunk,int start, int size, int[] noiseY) {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
 
-        for (int x = 0; x < 16; x++) {
+        for (int x = start; x < start + size; x++) {
             for (int z = 0; z < 16; z++) {
                 mutable.setPos(x,0,z);
                 int height = noiseY[(x * 16) + z];
 
                 for (int y = 0; y < 256; y++) {
-
                     mutable.setY(y);
-
                     if (y > height) {
                         if (y < this.getSeaLevel()) {
                             chunk.setBlockState(mutable, this.settings.getDefaultFluid(), false);
@@ -449,8 +505,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
 
             }
         }
-
-        //erode(world,chunk,noise);
     }
 
     protected void erode(IWorld world, IChunk chunk, int[] noise){
@@ -485,25 +539,6 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         // useNoise(vals, pos, 0, 16);
         int threads = threadCount;
 
-        CompletableFuture<?>[] futures = new CompletableFuture[threads];
-        for (int i = 0; i < threads; i++) {
-            int position = i;
-            futures[i] = CompletableFuture.runAsync(() -> useNoise(vals, pos, position * 16 / threads, 16 / threads, worldIn));
-        }
-
-        for (int i = 0; i < futures.length; i++) {
-            futures[i].join();
-        }
-
-        noiseCache.put(pos.asLong(), vals);
-
-        return vals;
-    }
-
-    public void useNoise(int[] noise, ChunkPos pos, int start, int size, IWorld worldIn) {
-        //Thanks to AlcatrazEscapee for providing this lerp code. See GitHub at: https://github.com/TerraFirmaCraft/TerraFirmaCraft/
-        final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
-
         final ChunkArraySampler.CoordinateAccessor<LerpConfiguration> biomeAccessor = (x, z) -> {
             Biome biome = SmoothColumnBiomeMagnifier.SMOOTH.getBiome(worldIn.getSeed(), (pos.x * 16) + x, 0, (pos.z * 16) + z, gridProvider, true);
             return LerpConfiguration.get(biome);
@@ -513,8 +548,40 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         final LerpConfiguration[] sampledBiomes4 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[13 * 13], biomeAccessor, 2);
         final LerpConfiguration[] sampledBiomes1 = ChunkArraySampler.fillSampledArray(new LerpConfiguration[24 * 24], biomeAccessor);
 
-        for (int x = start; x < start + size; x++) {
-            for (int z = 0; z < 16; z++) {
+        CompletableFuture<?>[] futuresX = new CompletableFuture[threads];
+        for (int i = 0; i < threads; i++) {
+            int positionX = i;
+
+            futuresX[i] = CompletableFuture.runAsync(() -> useNoiseX(threads,vals, pos, positionX * 16 / threads,16 / threads, worldIn, sampledBiomes16,sampledBiomes4,sampledBiomes1));
+        }
+
+        for (CompletableFuture<?> x : futuresX) {
+            x.join();
+        }
+
+        noiseCache.put(pos.asLong(), vals);
+
+        return vals;
+    }
+
+    private void useNoiseX(int threads, int[] noise, ChunkPos pos, int startX, int sizeX, IWorld worldIn,LerpConfiguration[] sampledBiomes16,LerpConfiguration[] sampledBiomes4,LerpConfiguration[] sampledBiomes1){
+        CompletableFuture<?>[] futuresZ = new CompletableFuture[threads];
+        for (int j = 0; j < threads; j++) {
+            int positionZ = j;
+
+            futuresZ[j] = CompletableFuture.runAsync(() -> useNoise(noise, pos, startX, sizeX,positionZ * 16 / threads, 16 / threads, worldIn, sampledBiomes16.clone(),sampledBiomes4.clone(),sampledBiomes1.clone()));
+        }
+        for (CompletableFuture<?> completableFuture : futuresZ) {
+            completableFuture.join();
+        }
+    }
+
+    public void useNoise(int[] noise, ChunkPos pos, int startX, int sizeX, int startZ, int sizeZ, IWorld worldIn,LerpConfiguration[] sampledBiomes16,LerpConfiguration[] sampledBiomes4,LerpConfiguration[] sampledBiomes1) {
+        //Thanks to AlcatrazEscapee for providing this lerp code. See GitHub at: https://github.com/TerraFirmaCraft/TerraFirmaCraft/
+        final Object2DoubleMap<LerpConfiguration> weightMap16 = new Object2DoubleOpenHashMap<>(4), weightMap4 = new Object2DoubleOpenHashMap<>(2), weightMap1 = new Object2DoubleOpenHashMap<>();
+
+        for (int x = startX; x < startX + sizeX; x++) {
+            for (int z = startZ; z < startZ + sizeZ; z++) {
                 // Sample biome weights at different distances
                 ChunkArraySampler.fillSampledWeightMap(sampledBiomes16, weightMap16, 4, x, z);
                 ChunkArraySampler.fillSampledWeightMap(sampledBiomes4, weightMap4, 2, x, z);
@@ -600,29 +667,5 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> {
         this.patrolSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
         this.catSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
         this.siegeSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
-    }
-
-    private static double func_222556_a(int p_222556_0_, int p_222556_1_, int p_222556_2_) {
-        int i = p_222556_0_ + 12;
-        int j = p_222556_1_ + 12;
-        int k = p_222556_2_ + 12;
-        if (i >= 0 && i < 24) {
-            if (j >= 0 && j < 24) {
-                return k >= 0 && k < 24 ? (double)field_222561_h[k * 24 * 24 + i * 24 + j] : 0.0D;
-            } else {
-                return 0.0D;
-            }
-        } else {
-            return 0.0D;
-        }
-    }
-
-    private static double func_222554_b(int p_222554_0_, int p_222554_1_, int p_222554_2_) {
-        double d0 = (double)(p_222554_0_ * p_222554_0_ + p_222554_2_ * p_222554_2_);
-        double d1 = (double)p_222554_1_ + 0.5D;
-        double d2 = d1 * d1;
-        double d3 = Math.pow(Math.E, -(d2 / 16.0D + d0 / 16.0D));
-        double d4 = -d1 * MathHelper.fastInvSqrt(d2 / 2.0D + d0 / 2.0D) / 2.0D;
-        return d4 * d3;
     }
 }

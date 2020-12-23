@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:white_sandstone_slab"
+    }
+  },
+  "result": {
+    "item": "wildnature:chiseled_white_sandstone"
+  }
+}

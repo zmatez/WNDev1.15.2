@@ -112,17 +112,33 @@ public class WNCommand {
                         .then(Commands.literal("files").then(Commands.argument("page", IntegerArgumentType.integer(1)).executes((context -> {
                             return new GetFiles((PlayerEntity) context.getSource().getEntity()).showPage(IntegerArgumentType.getInteger(context, "page"));
                         })))))
+                .then(Commands.literal("schem").requires((perm) -> {
+                    return perm.hasPermissionLevel(2);
+                }).then(Commands.literal("generate").then(Commands.argument("pos", new BlockPosArgument()).then(Commands.argument("name", new SchemArgument()).executes((context -> {
+                    ServerPlayerEntity player = context.getSource().asPlayer();
+                    return SchemArgument.generateStructure(context.getSource(), player, BlockPosArgument.getBlockPos(context, "pos"), SchemArgument.getValue(context, "name"));
+                })))))
+                        .then(Commands.literal("list").then(Commands.argument("page", IntegerArgumentType.integer(1)).executes((context -> {
+                            return new SchemListCommand((PlayerEntity) context.getSource().getEntity()).showPage(IntegerArgumentType.getInteger(context, "page"));
+                        }))).executes(context -> {
+                            return new SchemListCommand((PlayerEntity) context.getSource().getEntity()).showPage(1);
+                        })))
                 .then(Commands.literal("structure").requires((perm) -> {
                     return perm.hasPermissionLevel(2);
-                }).then(Commands.literal("generate").then(Commands.argument("pos", new BlockPosArgument()).then(Commands.argument("name", new StructureArgument()).executes((context -> {
+                }).then(Commands.literal("generate").then(Commands.argument("pos", new BlockPosArgument()).then(Commands.argument("name", new GenerateStructure()).executes((context -> {
                     ServerPlayerEntity player = context.getSource().asPlayer();
-                    return StructureArgument.generateStructure(context.getSource(), player, BlockPosArgument.getBlockPos(context, "pos"), StructureArgument.getValue(context, "name"));
+                    return GenerateStructure.generateStructure(context.getSource(), player, BlockPosArgument.getBlockPos(context, "pos"), GenerateStructure.getValue(context, "name"),false);
                 })))))
                         .then(Commands.literal("list").then(Commands.argument("page", IntegerArgumentType.integer(1)).executes((context -> {
                             return new StructureListCommand((PlayerEntity) context.getSource().getEntity()).showPage(IntegerArgumentType.getInteger(context, "page"));
                         }))).executes(context -> {
                             return new StructureListCommand((PlayerEntity) context.getSource().getEntity()).showPage(1);
-                        }))));
+                        })).then(Commands.literal("locate").requires((perm) -> {
+                            return perm.hasPermissionLevel(2);
+                        }).then(Commands.argument("structure", new LocateStructure()).executes((context -> {
+                            ServerPlayerEntity player = context.getSource().asPlayer();
+                            return LocateStructure.findTeleportStructure(context.getSource(), player, LocateStructure.getValue(context, "structure"));
+                        }))))));
     }
 
 

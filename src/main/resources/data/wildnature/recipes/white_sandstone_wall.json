@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wildnature:white_sandstone"
+    }
+  },
+  "result": {
+    "item": "wildnature:white_sandstone_wall",
+    "count": 6
+  }
+}

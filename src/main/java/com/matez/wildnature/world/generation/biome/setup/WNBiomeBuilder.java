@@ -43,6 +43,15 @@ public class WNBiomeBuilder extends Biome.Builder {
     private String parent;
     @Nullable
     private final ArrayList<LogType> treeLogTypes = new ArrayList<>();
+    @Nullable
+    private Float freqModifier;
+    @Nullable
+    private Float hilliness;
+    @Nullable
+    private Float frequencyMin;
+    @Nullable
+    private Float frequencyMax;
+
 
     public Biome.Builder getBiomeBuilder(){
         return new Biome.Builder()
@@ -98,6 +107,28 @@ public class WNBiomeBuilder extends Biome.Builder {
 
     public WNBiomeBuilder scale(float scaleIn) {
         this.scale = scaleIn;
+        return this;
+    }
+
+    public WNBiomeBuilder freqModifier(float freqModifier){
+        this.freqModifier = freqModifier;
+        return this;
+    }
+
+    public WNBiomeBuilder hilliness(float hilliness){
+        this.hilliness = hilliness;
+        return this;
+    }
+
+    public WNBiomeBuilder frequency(float avgFrequency){
+        this.frequencyMin = -avgFrequency;
+        this.frequencyMin = avgFrequency;
+        return this;
+    }
+
+    public WNBiomeBuilder frequency(float frequencyMin, float frequencyMax){
+        this.frequencyMin = Math.min(frequencyMin,frequencyMax);
+        this.frequencyMax = Math.max(frequencyMin,frequencyMax);
         return this;
     }
 
@@ -281,5 +312,25 @@ public class WNBiomeBuilder extends Biome.Builder {
 
     public Topography getUnknownTopography(){
         return Topography.LOWLANDS;
+    }
+
+    @Nullable
+    public Float getFreqModifier() {
+        return freqModifier;
+    }
+
+    @Nullable
+    public Float getHilliness() {
+        return hilliness;
+    }
+
+    @Nullable
+    public Float getFrequencyMax() {
+        return frequencyMax;
+    }
+
+    @Nullable
+    public Float getFrequencyMin() {
+        return frequencyMin;
     }
 }

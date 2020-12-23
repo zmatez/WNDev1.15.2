@@ -25,7 +25,7 @@ public class TestNoiseProcessor extends NoiseProcessor {
     }
 
     @Override
-    public double processNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise) {
+    public double processNoise(int x, int z, Biome biome, double height, double scale, double freqModifier, double hilliness, double frequencyMin, double frequencyMax, double[] args, boolean rawNoise) {
         return noise.GetSimplexFractal(x,z);
     }
 

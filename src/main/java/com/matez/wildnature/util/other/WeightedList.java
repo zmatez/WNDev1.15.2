@@ -1,6 +1,7 @@
 package com.matez.wildnature.util.other;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.function.Consumer;
 
 public class WeightedList<T> {
@@ -77,4 +78,23 @@ public class WeightedList<T> {
         objects.forEach(action);
     }
 
+    public T getWeightedEntry(){
+        if(!(size()==0)){
+            ArrayList<T> objects = getSimplifedArray();
+            int x = Utilities.rint(0,objects.size()-1);
+
+            return objects.get(x);
+        }
+        return null;
+    }
+
+    public T getWeightedEntry(Random rand){
+        if(!(size()==0)){
+            ArrayList<T> objects = getSimplifedArray();
+            int x = Utilities.rint(0,objects.size()-1,rand);
+
+            return objects.get(x);
+        }
+        return null;
+    }
 }

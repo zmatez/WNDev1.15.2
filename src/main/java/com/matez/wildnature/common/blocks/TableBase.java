@@ -18,8 +18,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootContext;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class TableBase extends HorizontalContainerBase implements IRenderLayer{
     public TableBase(Properties properties, Item.Properties builder, ResourceLocation regName) {
@@ -89,5 +91,15 @@ public class TableBase extends HorizontalContainerBase implements IRenderLayer{
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
         ItemTileEntity entity = new ItemTileEntity();
         return entity;
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        List<ItemStack> list = super.getDrops(state, builder);
+        if (list.isEmpty()) {
+            list.add(new ItemStack(item, 1));
+        }
+
+        return list;
     }
 }

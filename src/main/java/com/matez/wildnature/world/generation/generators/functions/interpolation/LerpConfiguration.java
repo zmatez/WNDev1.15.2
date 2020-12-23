@@ -30,6 +30,11 @@ public class LerpConfiguration {
         cache.put(biome,this);
     }
 
+    public LerpConfiguration(Biome biome, boolean custom) {
+        this.biome = biome;
+        cache.put(biome,this);
+    }
+
     public Biome getBiome() {
         return biome;
     }
@@ -59,5 +64,19 @@ public class LerpConfiguration {
 
     public BiomeVariants getBiomeVariants() {
         return customVariantsApplied ? customVariants : BiomeVariants.getVariantsFor(biome);
+    }
+
+    public LerpConfiguration clone(){
+        LerpConfiguration configuration = new LerpConfiguration(this.getBiome(),true);
+        if(this.customVariantsApplied){
+            configuration.setCustomVariants(this.getBiomeVariants());
+        }
+        if(this.customScaleApplied){
+            configuration.setCustomScale(this.getScale());
+        }
+        if(this.customDepthApplied){
+            configuration.setCustomDepth(this.getDepth());
+        }
+        return configuration;
     }
 }

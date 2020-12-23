@@ -4,6 +4,7 @@ import com.matez.wildnature.client.gui.container.*;
 import com.matez.wildnature.common.tileentity.*;
 import com.matez.wildnature.common.tileentity.item.ItemTileEntity;
 import com.matez.wildnature.common.tileentity.present.PresentTileEntity;
+import com.matez.wildnature.common.tileentity.tree.TreeTileEntity;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
@@ -22,6 +23,8 @@ public class initGuis {
     public static TileEntityType<ItemTileEntity> ITEM_TILE_ENTITY;
     @ObjectHolder("wildnature:present_tile_entity")
     public static TileEntityType<PresentTileEntity> PRESENT_TILE_ENTITY;
+    @ObjectHolder("wildnature:tree_tile_entity")
+    public static TileEntityType<TreeTileEntity> TREE_TILE_ENTITY;
 
     @ObjectHolder("wildnature:rs_piston1")
     public static TileEntityType<CustomPistonTileEntity> PISTON_TYPE;

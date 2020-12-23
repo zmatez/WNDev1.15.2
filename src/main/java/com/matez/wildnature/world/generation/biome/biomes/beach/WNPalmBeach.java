@@ -58,7 +58,6 @@ public class WNPalmBeach extends WNBiome {
         WNBiomeFeatures.addTree(this, new tree_palm9().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);
         WNBiomeFeatures.addTree(this, new tree_palm10().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);
         WNBiomeFeatures.addTree(this, new tree_palm11().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);
-        WNBiomeFeatures.addTree(this, new tree_palm12().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);
         WNBiomeFeatures.addTree(this, new tree_palm13().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);
         WNBiomeFeatures.addTree(this, new tree_palm14().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);
         WNBiomeFeatures.addTree(this, new tree_palm15().setCustomLog(WNBlocks.PALM_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.PALM_LEAVES)),2);

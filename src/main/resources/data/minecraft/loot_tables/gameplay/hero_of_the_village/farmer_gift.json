@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bread"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pumpkin_pie"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cookie"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:bread_roll"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:lemon_meringue_pie"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:strawberry_rhubarb_pie"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:bagel_poppy_seed"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:banana_bread"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:french_toast"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:rice_veggie_curry_bowl"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:vegetable_salad"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "wildnature:onion_salad"
+        }
+      ]
+    }
+  ]
+}

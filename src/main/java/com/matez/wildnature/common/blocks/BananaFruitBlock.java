@@ -1,11 +1,13 @@
 package com.matez.wildnature.common.blocks;
 
+import com.matez.wildnature.client.render.IRenderLayer;
 import com.matez.wildnature.util.config.CommonConfig;
 import com.matez.wildnature.util.lists.WNItems;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
@@ -25,7 +27,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class BananaFruitBlock extends Block {
+public class BananaFruitBlock extends Block implements IRenderLayer {
     public static IntegerProperty STAGE = IntegerProperty.create("stage", 0, 2);
 
     protected static final VoxelShape WEST_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 1.0D, 16.0D, 16.0D);
@@ -41,6 +43,11 @@ public class BananaFruitBlock extends Block {
     @Override
     public boolean ticksRandomly(BlockState p_149653_1_) {
         return true;
+    }
+
+    @Override
+    public RenderType getRenderLayer() {
+        return RenderType.getCutout();
     }
 
     @Override

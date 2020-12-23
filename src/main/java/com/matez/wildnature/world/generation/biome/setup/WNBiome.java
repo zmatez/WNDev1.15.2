@@ -1,6 +1,7 @@
 package com.matez.wildnature.world.generation.biome.setup;
 
 import com.matez.wildnature.init.WN;
+import com.matez.wildnature.util.other.WeightedList;
 import com.matez.wildnature.world.generation.biome.features.LogType;
 import com.matez.wildnature.world.generation.biome.registry.WNBiomes;
 import com.matez.wildnature.world.generation.feature.WNFeatures;
@@ -8,9 +9,13 @@ import com.matez.wildnature.world.generation.feature.configs.BlockWeightListConf
 import com.matez.wildnature.world.generation.feature.configs.TreeWeightListConfig;
 import com.matez.wildnature.util.other.BlockWeighList;
 import com.matez.wildnature.util.other.TreeWeighList;
+import com.matez.wildnature.world.generation.structures.WNAbstractStructure;
+import com.matez.wildnature.world.generation.structures.utils.StructureEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -21,11 +26,15 @@ public class WNBiome extends Biome {
     public WNBiomeBuilder wnBiomeBuilder;
 
     public BlockWeighList plants = new BlockWeighList();
-    public int plantRate = 1;
     public TreeWeighList trees = new TreeWeighList();
+    public ArrayList<StructureEntry> structures = new ArrayList<>();
+
+    public int plantRate = 1;
     public int treeRate = 6;
     public float treeExtraChance = 0.1F;
     public int treeExtra = 1;
+    public double freqModifier, hilliness;
+    public double frequencyMin, frequencyMax;
 
     public final ArrayList<LogType> logTypes;
 
@@ -67,6 +76,55 @@ public class WNBiome extends Biome {
         WNBiomes.registerBiomes.add(this);
         WNBiomes.biomesString.add(getRegistryName().getPath());
         logTypes = biomeBuilder.getLogTypes();
+        if(biomeBuilder.getFrequencyMin()==null){
+            this.frequencyMin = -getScale();
+        }else{
+            this.frequencyMin = biomeBuilder.getFrequencyMin();
+        }
+        if(biomeBuilder.getFrequencyMax()==null){
+            this.frequencyMax = getScale();
+        }else{
+            this.frequencyMax = biomeBuilder.getFrequencyMax();
+        }
+        if(biomeBuilder.getFreqModifier()==null){
+            this.freqModifier = 1;
+        }else{
+            this.freqModifier = biomeBuilder.getFreqModifier();
+        }
+        if(biomeBuilder.getHilliness()==null){
+            this.hilliness = 1;
+        }else{
+            this.hilliness = biomeBuilder.getHilliness();
+        }
+    }
+
+    public <C extends IFeatureConfig> boolean hasStructure(WNAbstractStructure structureIn) {
+        for (StructureEntry structure : structures) {
+            if(structure.hasStructure(structureIn)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<StructureEntry> getStructures() {
+        return structures;
+    }
+
+    public double getFrequencyMin() {
+        return frequencyMin;
+    }
+
+    public double getFrequencyMax() {
+        return frequencyMax;
+    }
+
+    public double getHilliness() {
+        return hilliness;
+    }
+
+    public double getFreqModifier() {
+        return freqModifier;
     }
 
     public ArrayList<LogType> getLogTypes() {

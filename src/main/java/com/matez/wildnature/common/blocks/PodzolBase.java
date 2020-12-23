@@ -22,7 +22,7 @@ public class PodzolBase extends BlockBase {
     private String dirt;
 
     public PodzolBase(Properties properties, Item.Properties builder, ResourceLocation regName, String dirt) {
-        super(properties,builder,regName);
+        super(properties, builder, regName);
     }
 
     public Item getItem() {
@@ -41,20 +41,19 @@ public class PodzolBase extends BlockBase {
         BlockState plant = plantable.getPlant(world, pos.offset(facing));
         net.minecraftforge.common.PlantType type = plantable.getPlantType(world, pos.offset(facing));
         try {
-            if (plant.getBlock() instanceof BushBlock && Utilities.isValidGroundFor(plant,Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
+            if (plant.getBlock() instanceof BushBlock && Utilities.isValidGround(plant, Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
                 return true;
             }
-            if (plant.getBlock() instanceof CropBase && Utilities.isValidGroundFor(plant,Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
-                return true;
-            }
-        }catch (Exception e){
+        } catch (Exception e) {
         }
 
-        if(plant.getBlock() instanceof WildBlueberryPlant || plant.getBlock() instanceof WildRosePlant || plant.getBlock() instanceof WildStrawberryPlant || plant.getBlock() instanceof CurrantPlant ||
-                plant.getBlock() instanceof QuincePlant || plant.getBlock() instanceof BlackberryPlant || plant.getBlock() instanceof BlackLilacPlant || plant.getBlock() instanceof CranberryPlant)
+        if (plant.getBlock() instanceof WildBlueberryPlant || plant.getBlock() instanceof WildRosePlant || plant.getBlock() instanceof WildStrawberryPlant || plant.getBlock() instanceof CurrantPlant ||
+                plant.getBlock() instanceof QuincePlant || plant.getBlock() instanceof BlackberryPlant || plant.getBlock() instanceof BlackLilacPlant || plant.getBlock() instanceof CranberryPlant) {
+            return true;
+        }
 
-            if (plant.getBlock() == Blocks.CACTUS)
-                return this.getBlock() == Blocks.CACTUS || this.getBlock() == Blocks.SAND || this.getBlock() == Blocks.RED_SAND;
+        if (plant.getBlock() == Blocks.CACTUS)
+            return this.getBlock() == Blocks.CACTUS || this.getBlock() == Blocks.SAND || this.getBlock() == Blocks.RED_SAND;
 
         if (plant.getBlock() == Blocks.SUGAR_CANE && this == Blocks.SUGAR_CANE)
             return true;
@@ -63,12 +62,18 @@ public class PodzolBase extends BlockBase {
             return true;
 
         switch (type) {
-            case Desert: return this.getBlock() == Blocks.SAND || this.getBlock() == Blocks.TERRACOTTA || this.getBlock() instanceof GlazedTerracottaBlock;
-            case Nether: return this.getBlock() == Blocks.SOUL_SAND;
-            case Crop:   return this.getBlock() == Blocks.FARMLAND;
-            case Cave:   return Block.hasSolidSide(state, world, pos, Direction.UP);
-            case Plains: return this.getBlock() == Blocks.GRASS_BLOCK || isDirt(this) || this.getBlock() instanceof FarmlandBlock;
-            case Water:  return state.getMaterial() == Material.WATER; //&& state.getValue(BlockLiquidWrapper)
+            case Desert:
+                return this.getBlock() == Blocks.SAND || this.getBlock() == Blocks.TERRACOTTA || this.getBlock() instanceof GlazedTerracottaBlock;
+            case Nether:
+                return this.getBlock() == Blocks.SOUL_SAND;
+            case Crop:
+                return this.getBlock() == Blocks.FARMLAND;
+            case Cave:
+                return Block.hasSolidSide(state, world, pos, Direction.UP);
+            case Plains:
+                return this.getBlock() == Blocks.GRASS_BLOCK || isDirt(this) || this.getBlock() instanceof FarmlandBlock;
+            case Water:
+                return state.getMaterial() == Material.WATER; //&& state.getValue(BlockLiquidWrapper)
             case Beach:
                 boolean isBeach = this.getBlock() == Blocks.GRASS_BLOCK || isDirt(this) || this.getBlock() == Blocks.SAND;
                 boolean hasWater = (world.getBlockState(pos.east()).getMaterial() == Material.WATER ||
@@ -77,7 +82,6 @@ public class PodzolBase extends BlockBase {
                         world.getBlockState(pos.south()).getMaterial() == Material.WATER);
                 return isBeach && hasWater;
         }
-
 
 
         return false;
@@ -91,7 +95,7 @@ public class PodzolBase extends BlockBase {
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         boolean silkTouch = false;
         List<ItemStack> list = super.getDrops(state, builder);
-        if(list.isEmpty() && !silkTouch){
+        if (list.isEmpty() && !silkTouch) {
             list.add(new ItemStack(Item.getItemFromBlock(WN.getBlockByID(dirt)), 1));
         }
 

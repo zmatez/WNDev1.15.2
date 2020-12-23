@@ -62,7 +62,6 @@ public class tree_palm6 extends SchemFeature {
         Block(-1, 17, 2, LEAVES);
         Block(-1, 17, 3, LEAVES);
         Block(-1, 18, 2, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 0, LOG);
         Block(0, 2, 0, LOG);
         Block(0, 3, 0, LOG);

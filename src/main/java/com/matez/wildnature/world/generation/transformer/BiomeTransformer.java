@@ -77,6 +77,18 @@ public abstract class BiomeTransformer {
     }
 
     /**
+     * Used for Streams
+     *
+     * @return Biome
+     */
+    public Biome apply(Biome oldBiome, Cell cell) {
+        return apply(oldBiome, TempCategory.getFromTemperature(-0.1f, 1, oldBiome.getDefaultTemperature()), WetCategory.getFromMoisture(0, 1, oldBiome.getDownfall()), cell, getCategoryFromContinent(cell.continentValue), cell.subBiomeCellIdentity);
+    }
+    protected Biome apply(Biome oldBiome, TempCategory tempCategory, WetCategory wetCategory, Cell cell, MainBiomeTransformer.TerrainCategory category, float identity) {
+        return oldBiome;
+    }
+
+    /**
      * Used for shores
      *
      * @return

@@ -32,7 +32,7 @@ public class LichenBlock extends EndRodBlock implements IRenderLayer {
     private Item item;
 
     public LichenBlock(Properties properties, Item.Properties builder, ResourceLocation regName) {
-        super(properties.hardnessAndResistance(1.4F,0.4F).sound(SoundType.SWEET_BERRY_BUSH).lightValue(8));
+        super(properties.hardnessAndResistance(1.4F,0.4F).sound(SoundType.SWEET_BERRY_BUSH));
 
 
         this.setRegistryName(regName);

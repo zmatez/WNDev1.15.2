@@ -66,4 +66,5 @@ public class PresentBase extends HorizontalContainerBase {
             ((PresentTileEntity)entity).setGift(stack.copy());
         }
     }
+
 }

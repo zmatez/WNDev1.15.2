@@ -255,7 +255,6 @@ public class tree_taiga25 extends SchemFeature {
         Block(-1, 22, 2, LEAVES);
         Block(-1, 22, 3, LEAVES);
         Block(-1, 26, 0, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, -2, LOG);
         Block(0, 1, -1, LOG);
         Block(0, 1, 0, LOG);

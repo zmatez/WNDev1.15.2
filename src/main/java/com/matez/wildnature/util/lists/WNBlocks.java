@@ -1422,6 +1422,16 @@ public class WNBlocks {
     public static Block DESERT_DIRT;
     public static Block DRIED_DIRT;
 
+    public static Block SOIL;
+    public static Block BROWN_SOIL;
+    public static Block MOLD_SOIL;
+    public static Block TROPICAL_SOIL;
+    public static Block DESERT_SOIL;
+    public static Block DRIED_SOIL;
+    public static Block STONE_SOIL;
+    public static Block SANDSTONE_SOIL;
+    public static Block WHITE_SANDSTONE_SOIL;
+
     public static Block BROWN_FARMLAND;
     public static Block MOLD_FARMLAND;
     public static Block TROPICAL_FARMLAND;
@@ -1431,6 +1441,18 @@ public class WNBlocks {
     public static Block MUD;
 
     public static Block SANDSTONE_BRICKS, SANDSTONE_ANCIENT_BRICKS;
+    public static Block WHITE_SANDSTONE;
+    public static Block WHITE_SANDSTONE_SLAB;
+    public static Block WHITE_SANDSTONE_STAIRS;
+    public static Block WHITE_SANDSTONE_WALL;
+    public static Block SMOOTH_WHITE_SANDSTONE;
+    public static Block SMOOTH_WHITE_SANDSTONE_SLAB;
+    public static Block SMOOTH_WHITE_SANDSTONE_STAIRS;
+    public static Block CUT_WHITE_SANDSTONE;
+    public static Block CUT_WHITE_SANDSTONE_SLAB;
+    public static Block CHISELED_WHITE_SANDSTONE;
+    public static Block WHITE_SANDSTONE_BRICKS, WHITE_SANDSTONE_ANCIENT_BRICKS;
+
     public static Block CANVAS;
 
     public static Block GLOWING_CRYSTAL_BLUE;
@@ -2285,7 +2307,6 @@ public class WNBlocks {
     public static Block CRACKED_SANDSTONE;
     public static Block SALT_BLOCK;
     public static Block WHITE_SAND;
-    public static Block WHITE_SANDSTONE;
     public static Block FOREST_SAND;
     public static Block QUICKSAND;
 

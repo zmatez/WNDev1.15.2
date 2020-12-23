@@ -84,6 +84,8 @@ public class GridBiomeLayer {
     private final BiomeTransformer bigIslandTransformer = new IslandTransformer(IslandBiome.IslandType.BIG);
     private final BiomeTransformer riverTransformer = new RiverTransformer();
     private final BiomeTransformer riverValleyTransformer = new RiverValleyTransformer();
+    private final BiomeTransformer streamTransformer = new StreamTransformer();
+    private final BiomeTransformer streamValleyTransformer = new StreamValleyTransformer();
     /**
      * Used to apply biomes from biome/subbiome maps
      * Directional Cells are used to determine nearby biomes. For example for edge transformers (to produce Beaches)
@@ -148,6 +150,12 @@ public class GridBiomeLayer {
 
         //Gets final Biome from transformed BiomeGroup. Uses SubbiomeMap
         Biome biome = mainSubBiomeTransformer.apply(biomeGroup, cell);
+
+        if(fakeBiomes){
+            //biome = streamValleyTransformer.apply(biome,cell);
+        }
+        //biome = streamTransformer.apply(biome,cell);
+
         return biome;
     }
 

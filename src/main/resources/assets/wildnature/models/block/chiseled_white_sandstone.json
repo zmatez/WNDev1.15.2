@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "wildnature:blocks/block/white_sandstone_top",
+        "side": "wildnature:blocks/block/chiseled_white_sandstone"
+    }
+}

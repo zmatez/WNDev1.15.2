@@ -148,7 +148,10 @@ public class ItemTileEntity extends TileEntity implements ITickableTileEntity {
     public void read(CompoundNBT compound) {
         super.read(compound);
 
-        placedStack = Utilities.loadItems(compound).get(0);
+        ArrayList<ItemStack> readStack = Utilities.loadItems(compound);
+        if(!readStack.isEmpty()) {
+            placedStack = readStack.get(0);
+        }
         if (compound.contains("facing")) {
             facing = Direction.byHorizontalIndex(compound.getInt("facing"));
         }

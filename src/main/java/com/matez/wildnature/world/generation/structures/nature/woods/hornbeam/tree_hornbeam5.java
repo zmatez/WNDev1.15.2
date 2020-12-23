@@ -885,7 +885,6 @@ public class tree_hornbeam5 extends SchemFeature {
         Block(-1, 19, -3, LEAVES);
         Block(-1, 19, 0, LEAVES);
         Block(-1, 19, 7, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, -1, LOG);
         Block(0, 1, 0, LOG);
         Block(0, 1, 1, LOG);

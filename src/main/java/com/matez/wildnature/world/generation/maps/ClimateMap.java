@@ -30,8 +30,8 @@ public class ClimateMap {
         moistNoise.SetNoiseType(FastNoise.NoiseType.Simplex);
         moistNoise.SetFrequency(0.0003F);
 
-        cell.cellTemparature = Utilities.scaleBetween(tempNoise.GetSimplex((float)cell.biomeCellX/4,cell.biomeCellZ),1f,-1f,-0.8f,0.8f);
-        cell.temparature = Utilities.scaleBetween(tempNoise.GetSimplex((float)dx/4,dz),1f,-1f,-0.8f,0.8f);
+        cell.cellTemparature = Utilities.scaleBetween(tempNoise.GetSimplex((float)cell.biomeCellX/4,cell.biomeCellZ),1f,-1f,-0.6f,0.6f);
+        cell.temparature = Utilities.scaleBetween(tempNoise.GetSimplex((float)dx/4,dz),1f,-1f,-0.6f,0.6f);
         cell.cellMoisture = Utilities.scaleBetween(moistNoise.GetSimplex(cell.biomeCellX, cell.biomeCellZ),1f,-1f,-0.6f,0.6f);
         cell.moisture = Utilities.scaleBetween(moistNoise.GetSimplex(dx, dz),1f,-1f,-0.6f,0.6f);
     }

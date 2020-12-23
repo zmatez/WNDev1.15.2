@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:smooth_sandstone"
+  },
+  "result": "wildnature:sandstone_ancient_bricks",
+  "count": 1
+}

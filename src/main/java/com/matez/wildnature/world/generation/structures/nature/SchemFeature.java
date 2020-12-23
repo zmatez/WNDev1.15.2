@@ -4,6 +4,8 @@ import com.google.common.collect.Sets;
 import com.google.gson.annotations.Expose;
 import com.matez.wildnature.common.blocks.FloweringLeaves;
 import com.matez.wildnature.common.blocks.FruitableLeaves;
+import com.matez.wildnature.common.tileentity.tree.TreeTileEntity;
+import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
 import com.matez.wildnature.util.other.Utilities;
 import com.mojang.brigadier.StringReader;
@@ -12,7 +14,9 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.*;
 import net.minecraft.command.arguments.BlockStateArgument;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
@@ -54,6 +58,8 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
     public boolean virtualPlace = false;
     public boolean waterTree = false;
     public static net.minecraftforge.common.IPlantable sapling = (net.minecraftforge.common.IPlantable) net.minecraft.block.Blocks.OAK_SAPLING;
+    public BlockPos.Mutable min, max;
+    public BlockState leafBlock;
 
     public SchemFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactoryIn) {
         super(configFactoryIn);
@@ -176,6 +182,9 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         this.world = (IWorld) worldIn;
         this.startBlockPos = soilPos.up(terrainIncrease);
         this.random = rand;
+        this.min = new BlockPos.Mutable(startBlockPos);
+        this.max = new BlockPos.Mutable(startBlockPos);
+        this.leafBlock = null;
         rotation = Utilities.rint(1, 4, rand);
         canGenerate = true;
         addedBlocks.clear();
@@ -186,7 +195,41 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         if (canGenerate) {
             setBlocks();
         }
-        return true;
+
+        Block dirt = world.getBlockState(startBlockPos.down(terrainIncrease + 1)).getBlock();
+        Block soil = WNBlocks.SOIL;
+        if(dirt == WNBlocks.BROWN_DIRT || dirt == WNBlocks.BROWN_GRASS_BLOCK){
+            soil = WNBlocks.BROWN_SOIL;
+        }else if(dirt == WNBlocks.MOLD_DIRT || dirt == WNBlocks.MOLD_GRASS_BLOCK){
+            soil = WNBlocks.MOLD_SOIL;
+        }else if(dirt == WNBlocks.TROPICAL_DIRT || dirt == WNBlocks.TROPICAL_GRASS_BLOCK){
+            soil = WNBlocks.TROPICAL_SOIL;
+        }else if(dirt == WNBlocks.DRIED_DIRT || dirt == WNBlocks.DRIED_GRASS_BLOCK){
+            soil = WNBlocks.DRIED_SOIL;
+        }else if(dirt == WNBlocks.DESERT_DIRT || dirt == WNBlocks.DESERT_GRASS_BLOCK){
+            soil = WNBlocks.DESERT_SOIL;
+        }else if(dirt.getTags().contains(new ResourceLocation("forge","stone")) || dirt == WNBlocks.OVERGROWN_STONE){
+            soil = WNBlocks.STONE_SOIL;
+        }else if((dirt.getTags().contains(new ResourceLocation("forge","sand")) || dirt.getTags().contains(new ResourceLocation("forge","sandtone"))) && dirt != WNBlocks.WHITE_SAND && dirt != WNBlocks.WHITE_SANDSTONE){
+            soil = WNBlocks.SANDSTONE_SOIL;
+        }else if(dirt == WNBlocks.WHITE_SAND || dirt == WNBlocks.WHITE_SANDSTONE){
+            soil = WNBlocks.WHITE_SANDSTONE_SOIL;
+        }
+
+        if(!addedBlocks.isEmpty()) {
+            if(leafBlock != null) {
+                worldIn.setBlockState(startBlockPos.down(terrainIncrease + 1), soil.getDefaultState(), 19);
+                TileEntity entity = ((IWorld) worldIn).getTileEntity(soilPos.down());
+                if (entity instanceof TreeTileEntity) {
+                    if (min != null && max != null && leafBlock.getBlock().getRegistryName() != null) {
+                        ((TreeTileEntity) entity).setData(new BlockPos(min), new BlockPos(max), leafBlock.getBlock().getRegistryName().toString());
+                    }
+                }
+            }
+
+            return true;
+        }
+        return false;
     }
 
     public boolean canGrowTree(IWorldGenerationReader world, BlockPos pos, net.minecraftforge.common.IPlantable sapling) {
@@ -247,6 +290,32 @@ public class SchemFeature extends Feature<NoFeatureConfig> {
         }
         if ((isLeaf(state.getBlock()) && !world.getBlockState(pos).isSolid()) || !isLeaf(state.getBlock())) {
             addedBlocks.add(pos);
+        }
+
+        if(virtualPlace){
+            if (pos.getX() < min.getX()) {
+                min.setX(pos.getX());
+            }
+            if (pos.getY() < min.getY()) {
+                min.setY(pos.getY());
+            }
+            if (pos.getZ() < min.getZ()) {
+                min.setZ(pos.getZ());
+            }
+
+            if (pos.getX() > max.getX()) {
+                max.setX(pos.getX());
+            }
+            if (pos.getY() > max.getY()) {
+                max.setY(pos.getY());
+            }
+            if (pos.getZ() > max.getZ()) {
+                max.setZ(pos.getZ());
+            }
+
+            if(isLeaf(state.getBlock())){
+                this.leafBlock = state;
+            }
         }
 
     }

@@ -31,6 +31,7 @@ public class WNSurfaceBuilders {
     public static CustomSurfaceBuilderConfig BROWN_PODZOL_GRAVEL = new CustomSurfaceBuilderConfig(new CustomSurfaceBuilder.BlockCfg(WNSurfaceBuilders.BROWN_CONFIG, 17), new CustomSurfaceBuilder.BlockCfg(WNSurfaceBuilders.BROWN_PODZOL_CONFIG, 6), new CustomSurfaceBuilder.BlockCfg(SurfaceBuilder.GRAVEL_CONFIG, 1));
     public static SurfaceBuilderConfig ALGAE_CONFIG = new SurfaceBuilderConfig(WNBlocks.ALGAE_BLOCK.getDefaultState(), Blocks.GRAVEL.getDefaultState(), WN.getBlockByID("minecraft:gravel").getDefaultState());
 
+    public static SurfaceBuilder<SurfaceBuilderConfig> STREAM_SURFACE_BUILDER;
     public static SurfaceBuilder<SurfaceBuilderConfig> CANYON_RIVER_SURFACE_BUILDER;
     public static SurfaceBuilder<CanyonSurfaceBuilderConfig> CANYON_SURFACE_BUILDER;
     public static SurfaceBuilder<SurfaceBuilderConfig> CRACKED_SURFACE_BUILDER;
@@ -57,6 +58,7 @@ public class WNSurfaceBuilders {
     public static SurfaceBuilder<SurfaceBuilderConfig> CHRISTMAS_SURFACE_BUILDER;
 
     private static SurfaceBuilder<? extends ISurfaceBuilderConfig>[] surfaceBuilders = new SurfaceBuilder<?>[]{
+            STREAM_SURFACE_BUILDER = new StreamSurfaceBuilder(SurfaceBuilderConfig::deserialize),
             CANYON_RIVER_SURFACE_BUILDER = new CanyonRiverSurfaceBuilder(SurfaceBuilderConfig::deserialize),
             CANYON_SURFACE_BUILDER = new CanyonSurfaceBuilder(CanyonSurfaceBuilderConfig::deserialize),
             CRACKED_SURFACE_BUILDER = new CrackedSurfaceBuilder(SurfaceBuilderConfig::deserialize),

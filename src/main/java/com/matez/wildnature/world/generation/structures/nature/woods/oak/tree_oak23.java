@@ -817,7 +817,6 @@ public class tree_oak23 extends SchemFeature {
         Block(-1, 21, 2, LEAVES);
         Block(-1, 21, 4, LEAVES);
         Block(-1, 22, 4, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, -4, LOG);
         Block(0, 1, -3, LOG);
         Block(0, 1, 3, LOG);

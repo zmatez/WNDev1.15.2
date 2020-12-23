@@ -2,7 +2,7 @@
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
 "ambientocclusion": false,
     "textures": {
-        "particle": "blocks/block/repeater",
+        "particle": "block/repeater",
         "0": "block/smooth_stone",
         "1": "wildnature:blocks/redstone/rs_delay/rs_delay1",
         "2": "block/redstone_torch_off"

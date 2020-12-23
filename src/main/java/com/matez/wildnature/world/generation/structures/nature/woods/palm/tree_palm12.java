@@ -9,6 +9,7 @@ import net.minecraftforge.common.IPlantable;
 
 import java.util.Set;
 
+@Deprecated
 public class tree_palm12 extends SchemFeature {
     public tree_palm12() {
         super();

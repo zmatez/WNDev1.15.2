@@ -59,7 +59,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
       BlockState plant = plantable.getPlant(world, pos.offset(facing));
       net.minecraftforge.common.PlantType type = plantable.getPlantType(world, pos.offset(facing));
       try {
-         if ((plant.getBlock() instanceof BushBlock || plant.getBlock() instanceof CropsBlock) && Utilities.isValidGroundFor(plant,Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,state.get(MOISTURE)), world, pos)) {
+         if ((plant.getBlock() instanceof BushBlock && Utilities.isValidGround(plant,Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,state.get(MOISTURE)), world, pos))) {
             return true;
          }
       }catch (Exception e){

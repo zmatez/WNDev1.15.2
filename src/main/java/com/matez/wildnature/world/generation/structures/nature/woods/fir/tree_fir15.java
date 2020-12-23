@@ -237,7 +237,6 @@ public class tree_fir15 extends SchemFeature {
         Block(-1, 31, 2, LEAVES);
         Block(-1, 32, 2, LEAVES);
         Block(-1, 33, 2, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, -3, LOG);
         Block(0, 1, -2, LOG);
         Block(0, 1, -1, LOG);

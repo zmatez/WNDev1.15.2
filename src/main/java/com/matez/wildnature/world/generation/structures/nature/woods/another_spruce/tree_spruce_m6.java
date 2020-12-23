@@ -36,7 +36,6 @@ public class tree_spruce_m6 extends SchemFeature {
         Block(-1, 9, 0, BRANCH);
         Block(-1, 9, 1, LEAVES);
         Block(-1, 10, 0, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 0, LOG);
         Block(0, 2, -2, LEAVES);
         Block(0, 2, -1, BRANCH);

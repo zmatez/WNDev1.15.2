@@ -12,6 +12,8 @@ import com.matez.wildnature.world.generation.biome.biomes.land.*;
 import com.matez.wildnature.world.generation.biome.biomes.ocean.WNDeepJellyOcean;
 import com.matez.wildnature.world.generation.biome.biomes.river.*;
 import com.matez.wildnature.world.generation.biome.biomes.river.edge.*;
+import com.matez.wildnature.world.generation.biome.biomes.streams.WNStream;
+import com.matez.wildnature.world.generation.biome.biomes.streams.WNStreamValley;
 import com.matez.wildnature.world.generation.biome.features.WNGlobalBiomeFeatures;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.BiomeGroups;
 import com.matez.wildnature.world.generation.biome.setup.deprecated.EnumBiomes;
@@ -23,6 +25,7 @@ import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.*;
 
@@ -69,6 +72,11 @@ public class WNBiomes {
     public static BiomeGroup FROZEN_RIVER = BiomeGroup.SingleBuilder.configure("frozen_river",FrozenRiver);
     public static BiomeGroup AMAZON_RIVER = BiomeGroup.SingleBuilder.configure("amazon_river",AmazonRiver);
     public static BiomeGroup NILE_RIVER = BiomeGroup.SingleBuilder.configure("nile_river",NileRiver);
+
+    //STREAMS
+    //lowlands
+    //public static Biome STREAM_LOWLAND = new WNStream("stream_lowland",0.1f,0f);
+    //public static Biome STREAM_LOWLAND_VALLEY = new WNStreamValley("stream_lowland_valley",0.1f,0.05f);
 
     //-----------------------------------------------------
 
@@ -1287,6 +1295,19 @@ public class WNBiomes {
         registerNonSpawn(WNBiomes.DeepJellyOcean, Type.OCEAN, Type.WATER, Type.MAGICAL, Type.RARE);
     }
 
+    public static void registerCustom(){
+        for (Biome biome : ForgeRegistries.BIOMES) {
+            if(biome.getRegistryName()!=null) {
+                if (!biome.getRegistryName().getPath().equals("minecraft") && !biome.getRegistryName().getPath().equals("wildnature")){
+                    boolean isRare = BiomeDictionary.hasType(biome, Type.RARE);
+                    registerCustom(BiomeGroup.SingleBuilder
+                                    .configure(isRare ? 10 : 3, biome)
+                    );
+                }
+            }
+        }
+    }
+
     public static void register(BiomeGroup group, boolean canGuess, BiomeDictionary.Type... types) {
         putToRegistry(group);
         BiomeTerrain.register(group, canGuess, types);
@@ -1296,6 +1317,11 @@ public class WNBiomes {
         putToRegistry(group);
         BiomeTerrain.register(group, types);
         WN.LOGGER.info("Registered BiomeGroup " + group.getName() + " (baseBiome: " + group.getBaseBiome().getRegistryName() + ") --- T: " + BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1,group.getBaseBiome().getDefaultTemperature()) + ", M: " + BiomeTransformer.WetCategory.getFromMoisture(0,1,group.getBaseBiome().getDownfall()));
+    }
+
+    public static void registerCustom(BiomeGroup group) {
+        BiomeTerrain.register(group, new BiomeDictionary.Type[0]);
+        WN.LOGGER.info("Registered Custom BiomeGroup " + group.getName() + " (baseBiome: " + group.getBaseBiome().getRegistryName() + ") --- T: " + BiomeTransformer.TempCategory.getFromTemperature(-0.1f,1,group.getBaseBiome().getDefaultTemperature()) + ", M: " + BiomeTransformer.WetCategory.getFromMoisture(0,1,group.getBaseBiome().getDownfall()));
     }
 
     public static void register(BiomeGroup group, boolean canGuess) {
@@ -1358,21 +1384,16 @@ public class WNBiomes {
     }
 
     public static void unregisterBlacklisted() {
+        WN.LOGGER.info("------------ BIOME BLACKLIST START ------------");
         ArrayList<BiomeManager.BiomeEntry> b = new ArrayList<>();
         try {
             b.addAll(Objects.requireNonNull(WNBiomeManager.getBiomes(BiomeManager.BiomeType.ICY)));
             b.addAll(Objects.requireNonNull(WNBiomeManager.getBiomes(BiomeManager.BiomeType.COOL)));
             b.addAll(Objects.requireNonNull(WNBiomeManager.getBiomes(BiomeManager.BiomeType.WARM)));
             b.addAll(Objects.requireNonNull(WNBiomeManager.getBiomes(BiomeManager.BiomeType.DESERT)));
-            WN.LOGGER.debug(" -------------------------------------------------------------- ");
-            b.forEach(biomeEntry -> {
-                WN.LOGGER.debug("entry: " + biomeEntry.biome.getRegistryName());
-            });
-            WN.LOGGER.debug("entries: " + b.size());
-            WN.LOGGER.debug(" -------------------------------------------------------------- ");
             for (BiomeManager.BiomeEntry biomeEntry : b) {
                 if (CommonConfig.blacklistedBiomes.contains(biomeEntry.biome)) {
-                    WN.LOGGER.info("Removed blacklisted " + biomeEntry.biome.getRegistryName() + " biome from generation.");
+                    WN.LOGGER.info("--- Removed blacklisted " + biomeEntry.biome.getRegistryName() + " biome from Vanilla generation.");
                     WNBiomeManager.removeSpawnBiome(biomeEntry.biome);
                     WNBiomeManager.removeBiome(BiomeManager.BiomeType.ICY, biomeEntry);
                     WNBiomeManager.removeBiome(BiomeManager.BiomeType.COOL, biomeEntry);
@@ -1381,8 +1402,15 @@ public class WNBiomes {
                 }
             }
         } catch (Exception e) {
-            WN.LOGGER.warn("Unable to unregister blacklisted biomes. " + e.getLocalizedMessage());
+            WN.LOGGER.warn("Unable to unregister blacklisted biomes from Vanilla Generation " + e.getLocalizedMessage());
         }
+
+        for (Biome biome : ForgeRegistries.BIOMES) {
+            if(CommonConfig.blacklistedBiomes.contains(biome)) {
+                BiomeTerrain.unregister(biome);
+            }
+        }
+        WN.LOGGER.info("------------ BIOME BLACKLIST FINISH ------------");
     }
 
     public static class BiomeToRegister {

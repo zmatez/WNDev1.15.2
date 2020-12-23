@@ -112,7 +112,6 @@ public class tree_willow11 extends SchemFeature {
         Block(-1, 9, 2, LOG);
         Block(-1, 10, 2, LOG);
         Block(-1, 11, 3, LEAVES);
-        Block(0, 0, 0, DIRT);
         Block(0, 1, 1, LOG);
         Block(0, 1, 2, LEAVES);
         Block(0, 2, 1, LOG);

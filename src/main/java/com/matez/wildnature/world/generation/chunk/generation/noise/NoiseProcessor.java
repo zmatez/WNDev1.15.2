@@ -7,7 +7,6 @@ import java.util.Random;
 public abstract class NoiseProcessor {
     protected double lerpFactor = 0;
 
-
     public double getLerpFactor(){
         return lerpFactor;
     }
@@ -30,9 +29,9 @@ public abstract class NoiseProcessor {
 
     public abstract void init(long seed, Random random, int octaves);
 
-    protected abstract double processNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise);
+    protected abstract double processNoise(int x, int z, Biome biome, double height, double scale,double freqModifier, double hilliness, double frequencyMin, double frequencyMax, double[] args, boolean rawNoise);
 
-    public double getProcessedNoise(int x, int z, Biome biome, double height, double scale, boolean rawNoise){
-        return processNoise(x,z,biome,height,scale,rawNoise) * mixFactor();
+    public double getProcessedNoise(int x, int z, Biome biome, double height, double scale, double freqModifier, double hilliness, double frequencyMin, double frequencyMax, double[] args, boolean rawNoise){
+        return processNoise(x,z,biome,height,scale,freqModifier,hilliness,frequencyMin, frequencyMax,args,rawNoise) * mixFactor();
     }
 }

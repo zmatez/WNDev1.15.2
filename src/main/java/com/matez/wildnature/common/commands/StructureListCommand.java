@@ -2,6 +2,8 @@ package com.matez.wildnature.common.commands;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.other.Pair;
+import com.matez.wildnature.world.generation.structures.WNAbstractStructure;
+import com.matez.wildnature.world.generation.structures.WNStructures;
 import com.matez.wildnature.world.generation.structures.nature.SchemFeature;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.text.ITextComponent;
@@ -18,21 +20,21 @@ public class StructureListCommand {
 
     private int maxPages;
     private final PlayerEntity entity;
-    private final ArrayList<Pair<String, SchemFeature>> schemFeatures = new ArrayList<>();
+    private final ArrayList<Pair<String, WNAbstractStructure>> structures = new ArrayList<>();
     public StructureListCommand(PlayerEntity entity){
         int a = 0;
-        while(a< SchemFeature.schemFeatures.size()){
+        while(a< WNStructures.getRegistry().size()){
             a=a+10;
             maxPages++;
         }
 
-        SchemFeature.schemFeatures.forEach((key,value)-> {
-            schemFeatures.add(new Pair<>(key,value));
+        WNStructures.getRegistry().forEach((key,value)-> {
+            structures.add(new Pair<>(key,value));
         });
 
-        schemFeatures.sort(new Comparator<Pair<String, SchemFeature>>() {
+        structures.sort(new Comparator<Pair<String, WNAbstractStructure>>() {
             @Override
-            public int compare(Pair<String, SchemFeature> o1, Pair<String, SchemFeature> o2) {
+            public int compare(Pair<String, WNAbstractStructure> o1, Pair<String, WNAbstractStructure> o2) {
                 return o1.getKey().compareTo(o2.getKey());
             }
         });
@@ -46,7 +48,7 @@ public class StructureListCommand {
             return 0;
         }
         StringTextComponent s = new StringTextComponent(TextFormatting.GREEN+"Structure List "+TextFormatting.GRAY+" - - - "+TextFormatting.LIGHT_PURPLE+" page " + TextFormatting.AQUA + page + TextFormatting.DARK_AQUA + "/"+TextFormatting.AQUA+maxPages);
-        ITextComponent hovermsg = new StringTextComponent(TextFormatting.GRAY + "Showing " + TextFormatting.DARK_AQUA+ SchemFeature.schemFeatures.size() + TextFormatting.GRAY+" structures");
+        ITextComponent hovermsg = new StringTextComponent(TextFormatting.GRAY + "Showing " + TextFormatting.DARK_AQUA+ structures.size() + TextFormatting.GRAY+" structures");
 
 
         s.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,hovermsg));

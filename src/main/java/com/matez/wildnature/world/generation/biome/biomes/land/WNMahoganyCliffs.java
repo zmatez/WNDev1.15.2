@@ -36,6 +36,7 @@ public class WNMahoganyCliffs extends WNBiome {
                 .waterColor(4159204)
                 .waterFogColor(329011)
                 .logTypes(LogType.MAHOGANY,LogType.POMEGRANATE,LogType.ORANGE)
+                .frequency(-0.5f,5f)
                 .parent(null));
 
 

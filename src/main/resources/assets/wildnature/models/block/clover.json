@@ -1,7 +1,8 @@
 {
   "ambientocclusion": false,
   "textures": {
-    "texture": "wildnature:blocks/flowers/clover"
+    "texture": "wildnature:blocks/flowers/clover",
+    "particle": "wildnature:blocks/flowers/clover"
   },
   "elements": [
     {   "from": [ 0, 0.015625, 0 ],

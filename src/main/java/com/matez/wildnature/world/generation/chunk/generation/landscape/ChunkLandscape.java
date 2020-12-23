@@ -39,6 +39,7 @@ public class ChunkLandscape {
     protected ArrayList<NoiseProcessor> validNoiseProcessors = new ArrayList<>();
 
     private final FastNoise worldLimitNoise;
+    private static final double[] EMPTY_ARGS = new double[]{};
 
     public ChunkLandscape(int x, int z, long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.x = x;
@@ -83,19 +84,24 @@ public class ChunkLandscape {
     }
 
     public double generateHeightmap(BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
-        return (sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor)));//remove applyRiver to get not bugged world for now
+        return (sigmoid(sampleArea(x, z, biomeProvider,weightMap1,variantAccessor)));
     }
 
     private double sampleArea(int x, int z, BiomeProvider biomeProvider, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         double[] output = BiomeBlender.smoothLerp(x, z, this, weightMap1,variantAccessor);
         double height = output[0];
         double scale = output[1];
+        double noiseFactor = output[2];
+        double freqModifier = output[3];
+        double hilliness = output[4];
+        double frequencyMin = output[5];
+        double frequencyMax = output[6];
 
-        double noise = sampleNoise(x, z, height, scale,true);
-        noise += sampleNoise(x + 4, z, height, scale,false);
-        noise += sampleNoise(x - 4, z, height, scale,false);
-        noise += sampleNoise(x, z + 4, height, scale,false);
-        noise += sampleNoise(x, z - 4, height, scale,false);
+        double noise = sampleNoise(x, z, height, scale,freqModifier,hilliness,frequencyMin,frequencyMax,EMPTY_ARGS,noiseFactor,true);
+        noise += sampleNoise(x + 4, z, height, scale,freqModifier,hilliness,frequencyMin,frequencyMax,EMPTY_ARGS,noiseFactor,false);
+        noise += sampleNoise(x - 4, z, height, scale,freqModifier,hilliness,frequencyMin,frequencyMax,EMPTY_ARGS,noiseFactor,false);
+        noise += sampleNoise(x, z + 4, height, scale,freqModifier,hilliness,frequencyMin,frequencyMax,EMPTY_ARGS,noiseFactor,false);
+        noise += sampleNoise(x, z - 4, height, scale,freqModifier,hilliness,frequencyMin,frequencyMax,EMPTY_ARGS,noiseFactor,false);
         noise *= 0.2;
 
         //80 means 69Y, 100 means 92Y as base height
@@ -110,21 +116,39 @@ public class ChunkLandscape {
             return 25 + limitNoise;
         }
 
-
-        //double noise = ((output.getFactorFor(NoiseProcessors.TEST)) * 50) + 65;
         return noise;
     }
 
-    public double sampleNoise(int x, int z, double height, double scale, boolean rawCoords) {
+    public double sampleNoise(int x, int z, double height, double scale, double freqModifier, double hilliness, double frequencyMin, double frequencyMax, double[] args, double noiseFactor, boolean rawCoords) {
         double output = 0;
         double d = 0;
 
-        double factor = 0;
         for (NoiseProcessor noiseProcessor : validNoiseProcessors) {
-            double noise = noiseProcessor.getProcessedNoise(x,z,biome,height,scale,rawCoords);
+            double noise = noiseProcessor.getProcessedNoise(x,z,biome,height,scale,freqModifier,hilliness,frequencyMin,frequencyMax,args,rawCoords);
             if(noiseProcessor.smoothedOnBorders()){
-                output += noise * factor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
-                d += factor;
+                output += noise * noiseFactor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
+                d += noiseFactor;
+            }else{
+                output += noise;
+                d++;
+            }
+        }
+        if(d==0){
+            return output;
+        }
+        return output / d;
+    }
+
+    @Deprecated
+    public double sampleNoise(int x, int z, double height, double scale, double noiseFactor, boolean rawCoords) {
+        double output = 0;
+        double d = 0;
+
+        for (NoiseProcessor noiseProcessor : validNoiseProcessors) {
+            double noise = noiseProcessor.getProcessedNoise(x,z,biome,height,scale,1,1,scale,scale,EMPTY_ARGS,rawCoords);
+            if(noiseProcessor.smoothedOnBorders()){
+                output += noise * noiseFactor;//factor 0 on biome borders, otherwise 1 (it's smoothed)
+                d += noiseFactor;
             }else{
                 output += noise;
                 d++;
@@ -140,7 +164,7 @@ public class ChunkLandscape {
         return validNoiseProcessors;
     }
 
-    public ChunkLandscape applyValues(Cell cell, int x, int z, Long seed, int sealevel, Biome biome, IChunk chunkIn) {
+    public ChunkLandscape applyValues(int x, int z, Long seed, int sealevel, Biome biome, IChunk chunkIn) {
         this.x = x;
         this.z = z;
         this.random.setSeed(seed);

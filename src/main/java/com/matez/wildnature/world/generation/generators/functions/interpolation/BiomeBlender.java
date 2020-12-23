@@ -2,6 +2,7 @@ package com.matez.wildnature.world.generation.generators.functions.interpolation
 
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.world.generation.biome.setup.BiomeVariants;
+import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.chunk.generation.landscape.ChunkLandscape;
 import com.matez.wildnature.world.generation.chunk.generation.noise.NoiseProcessor;
 import com.matez.wildnature.world.generation.noise.fastNoise.FastNoise;
@@ -28,12 +29,13 @@ public class BiomeBlender {
 
     public static double[] smoothLerp(int x, int z, ChunkLandscape landscape, Object2DoubleMap<LerpConfiguration> weightMap1, Function<LerpConfiguration, BiomeVariants> variantAccessor) {
         // Based on total weight of all biomes included, calculate heights of a couple important groups
-        double totalHeight = 0, shoreHeight = 0;
-        double shoreWeight = 0;
+        double totalHeight = 0;
         double totalScale = 0;
-        double maxNormalWeight = 0, maxShoreWeight = 0;
-
-        Biome normalBiomeAt = null, shoreBiomeAt = null;
+        double totalNoiseFactor = 0;
+        double totalFreqModifier = 0;
+        double totalHilliness = 0;
+        double totalFrequencyMin = 0;
+        double totalFrequencyMax = 0;
 
         //Thanks to AlcatrazEscapee for providing this code. See GitHub at: https://github.com/TerraFirmaCraft/TerraFirmaCraft/
         for (Object2DoubleMap.Entry<LerpConfiguration> entry : weightMap1.object2DoubleEntrySet()) {
@@ -44,39 +46,33 @@ public class BiomeBlender {
             double weight = entry.getDoubleValue();
             double height = weight * getDepth(configuration.getDepth());
             double scale = weight * getScale(configuration.getScale());
-
-            /*if (variants == BiomeVariants.SHORE) {
-                shoreHeight += height;
-                shoreWeight += weight;
-                if (maxShoreWeight < weight) {
-                    shoreBiomeAt = biome;
-                    maxShoreWeight = weight;
-                }
-            }else if (maxNormalWeight < weight) {
-                maxNormalWeight = weight;
-            }*/
+            double noiseFactor = weight * (biome == landscape.biome ? 1 : 0);
+            double freqModifier = 0;
+            double hilliness = 0;
+            double frequencyMin = 0;
+            double frequencyMax = 0;
+            if(biome instanceof WNBiome){
+                frequencyMin = weight * ((WNBiome)biome).getFrequencyMin();
+                frequencyMax = weight * ((WNBiome)biome).getFrequencyMax();
+                freqModifier = weight * ((WNBiome)biome).getFreqModifier();
+                hilliness = weight * ((WNBiome)biome).getHilliness();
+            }else{
+                frequencyMin = weight * (-biome.getScale() * 0.6);
+                frequencyMax = weight * (biome.getScale() * 1.3);
+                freqModifier = weight * 1;
+                hilliness = weight * 1;
+            }
 
             totalHeight += height;
             totalScale += scale;
-
-            /*double actualHeight = totalHeight;
-
-            if ((shoreWeight > 0.6 || maxShoreWeight > maxNormalWeight) && shoreBiomeAt != null) {
-                // Flatten beaches above a threshold, creates cliffs where the beach ends
-                double aboveWaterDelta = actualHeight - shoreHeight / shoreWeight;
-                if (aboveWaterDelta > 0) {
-                    if (aboveWaterDelta > 20) {
-                        aboveWaterDelta = 20;
-                    }
-                    double adjustedAboveWaterDelta = 0.02 * aboveWaterDelta * (40 - aboveWaterDelta) - 0.48;
-                    actualHeight = shoreHeight / shoreWeight + adjustedAboveWaterDelta;
-                }
-            }
-
-            totalHeight = actualHeight;*/
+            totalNoiseFactor += noiseFactor;
+            totalFreqModifier += freqModifier;
+            totalHilliness += hilliness;
+            totalFrequencyMin += frequencyMin;
+            totalFrequencyMax += frequencyMax;
         }
 
-        return new double[]{totalHeight, totalScale};
+        return new double[]{totalHeight, totalScale, totalNoiseFactor, totalFreqModifier, totalHilliness, Math.min(totalFrequencyMin,totalFrequencyMax), Math.max(totalFrequencyMin,totalFrequencyMax)};
     }
 
     private static double lerp(double a, double b, double alpha) {

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "wildnature:brown_dirt",
+    "wildnature:mold_dirt",
+    "wildnature:tropical_dirt",
+    "wildnature:dried_dirt",
+    "wildnature:desert_dirt",
+    "wildnature:brown_podzol"
+  ]
+}

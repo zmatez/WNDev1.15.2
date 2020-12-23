@@ -24,14 +24,14 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class StructureArgument implements ArgumentType<SchemFeature> {
+public class SchemArgument implements ArgumentType<SchemFeature> {
 
     public static final DynamicCommandExceptionType INVALID_STRUCTURE_EXCEPTION = new DynamicCommandExceptionType((biome) -> {
         return new StringTextComponent("").appendSibling(WN.WNPrefix).appendSibling(new StringTextComponent(TextFormatting.RED + "This structure does not exist."));
     });
 
-    public static StructureArgument createArgument() {
-        return new StructureArgument();
+    public static SchemArgument createArgument() {
+        return new SchemArgument();
     }
 
     @Override

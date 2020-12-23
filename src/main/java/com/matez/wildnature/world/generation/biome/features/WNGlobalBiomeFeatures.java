@@ -1,8 +1,10 @@
 package com.matez.wildnature.world.generation.biome.features;
 
 import com.matez.wildnature.util.config.CommonConfig;
+import com.matez.wildnature.world.generation.biome.setup.WNBiome;
 import com.matez.wildnature.world.generation.feature.features.WNFruitFeature;
 import com.matez.wildnature.world.generation.feature.features.WNVegeFeature;
+import com.matez.wildnature.world.generation.structures.WNStructures;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -91,6 +93,9 @@ public class WNGlobalBiomeFeatures {
             if(CommonConfig.generateMud.get()){
                 WNBiomeFeatures.addMud(biome);
             }
+            if(CommonConfig.generateSeaCaverns.get()){
+                WNBiomeFeatures.addSeaCaverns(biome);
+            }
 
             WNBiomeFeatures.addRiverFeatures(biome);
 
@@ -98,9 +103,6 @@ public class WNGlobalBiomeFeatures {
             if(CommonConfig.generateUndergroundRivers.get()){
                 //biome.addCarver(GenerationStage.Carving.LIQUID,Biome.createCarver(new RiverCarver(null,256),new EmptyCarverConfig()));
             }
-
-
-
         });
 
         for (Biome biome : WNBiomeFeatures.lakeBiomes) {
