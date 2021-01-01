@@ -88,7 +88,7 @@ public class WNErodedHills extends WNBiome {
         WNBiomeFeatures.addTree(this, new tree_fir4().setCustomLog(Blocks.SPRUCE_LOG.getDefaultState()).setCustomLeaf(SchemFeature.notDecayingLeaf(WNBlocks.FIR_LEAVES)), 3);
 
         WNBiomeFeatures.addBigRocks(this);
-
+        WNBiomeFeatures.addGeysers(this, 10);
         plantRate = 1;
         treeRate = 0;
         treeExtra = 1;

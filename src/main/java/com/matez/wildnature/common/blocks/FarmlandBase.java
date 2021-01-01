@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.util.lists.WNBlocks;
+import com.matez.wildnature.util.other.ServerUtils;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
 import net.minecraft.block.*;
@@ -59,7 +60,7 @@ public class FarmlandBase extends FarmlandBlock implements IRenderLayer {
       BlockState plant = plantable.getPlant(world, pos.offset(facing));
       net.minecraftforge.common.PlantType type = plantable.getPlantType(world, pos.offset(facing));
       try {
-         if ((plant.getBlock() instanceof BushBlock && Utilities.isValidGround(plant,Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,state.get(MOISTURE)), world, pos))) {
+         if ((plant.getBlock() instanceof BushBlock && ServerUtils.isValidGround(plant,Blocks.FARMLAND.getDefaultState().with(FarmlandBlock.MOISTURE,state.get(MOISTURE)), world, pos))) {
             return true;
          }
       }catch (Exception e){

@@ -96,11 +96,11 @@ public class RiverGenerator {
     }
 
     public static boolean isRiverValleySharp(Cell cell){
-        return cell.mainRiverLandscapeValue  > scaleSize(0.984f, cell.continentValue) || cell.smallRiverLandscapeValue > scaleSize(0.9837f, cell.continentValue);
+        return cell.mainRiverLandscapeValue  > scaleSize(0.983f, cell.continentValue) || cell.smallRiverLandscapeValue > scaleSize(0.9837f, cell.continentValue);
     }
 
     public static boolean isRiverValleySmooth(Cell cell){
-        return cell.mainRiverLandscapeValue  > scaleSize(0.988f, cell.continentValue) || cell.smallRiverLandscapeValue > scaleSize(0.99f, cell.continentValue);
+        return cell.mainRiverLandscapeValue  > scaleSize(0.99f, cell.continentValue) || cell.smallRiverLandscapeValue > scaleSize(0.99f, cell.continentValue);
     }
 
     private static float scaleSize(float max, float continent){

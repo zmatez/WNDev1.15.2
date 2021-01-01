@@ -56,7 +56,7 @@ public class WNDeepJellyOcean extends WNBiome {
         WNBiomeFeatures.addKelp(this);
         WNBiomeFeatures.addReedsAndPumpkins(this);
         WNBiomeFeatures.addSprings(this);
-        WNBiomeFeatures.addJellies(this);
+        //WNBiomeFeatures.addJellies(this);
         WNBiomeFeatures.addJellyIslands(this);
 
         WNBiomeFeatures.addPlant(this, WNBlocks.CRAB_CORAL.getDefaultState(),2);

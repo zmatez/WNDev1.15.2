@@ -62,28 +62,18 @@ public class WNSeaCaveStructure extends WNAbstractStructure {
 
                 BlockState downState = worldIn.getBlockState(mutable.down());
                 Block block = downState.getBlock();
-                if(block == Blocks.WATER){
+                if(block == Blocks.WATER || block == Blocks.ICE){
                     BlockPos.Mutable landPos = new BlockPos.Mutable(mutable.down());
                     boolean found = false;
                     for (Direction direction : directions) {
                         BlockState landState = worldIn.getBlockState(landPos.offset(direction,displacementMove));
                         if(landState.isIn(BlockTags.SAND)){
-                            boolean isWater = false;
-                            for(int i = 0; i < 15; i+=5){
-                                BlockState waterCheck = worldIn.getBlockState(landPos.offset(direction,i));
-                                if(waterCheck.getBlock() == Blocks.WATER){
-                                    isWater = true;
-                                    break;
-                                }
-                            }
-                            if(!isWater) {
-                                sandBlock = landState.getBlock();
-                                mutable.setPos(landPos.offset(direction, displacement + offset));
-                                mutable.setY(getStructureY(x, z, worldIn, worldIn.getChunk(mutable), generator, rand));
-                                rot = applyRotation(facing, direction);
-                                found = true;
-                                break;
-                            }
+                            sandBlock = landState.getBlock();
+                            mutable.setPos(landPos.offset(direction, offset));
+                            mutable.setY(getStructureY(x, z, worldIn, worldIn.getChunk(mutable), generator, rand));
+                            rot = applyRotation(facing, direction);
+                            found = true;
+                            break;
                         }
                     }
                     if(found){

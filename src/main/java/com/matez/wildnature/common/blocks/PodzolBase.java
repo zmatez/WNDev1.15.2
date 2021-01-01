@@ -1,6 +1,7 @@
 package com.matez.wildnature.common.blocks;
 
 import com.matez.wildnature.init.WN;
+import com.matez.wildnature.util.other.ServerUtils;
 import com.matez.wildnature.util.other.Utilities;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -41,7 +42,7 @@ public class PodzolBase extends BlockBase {
         BlockState plant = plantable.getPlant(world, pos.offset(facing));
         net.minecraftforge.common.PlantType type = plantable.getPlantType(world, pos.offset(facing));
         try {
-            if (plant.getBlock() instanceof BushBlock && Utilities.isValidGround(plant, Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
+            if (plant.getBlock() instanceof BushBlock && ServerUtils.isValidGround(plant, Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
                 return true;
             }
         } catch (Exception e) {

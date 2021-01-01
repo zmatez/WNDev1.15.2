@@ -15,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.placement.CountConfig;
 
@@ -49,13 +50,14 @@ public class RiverLilyFeature extends Feature<CountConfig> {
         BlockPos startPos = null;
         Direction riverSideDirection = null;
         for(int i = 0; i < config.count; i++){
-            BlockPos blockpos = pos.add(rand.nextInt(xzDiff) - rand.nextInt(xzDiff), rand.nextInt(yDiff) - rand.nextInt(yDiff), rand.nextInt(xzDiff) - rand.nextInt(xzDiff));
-            if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(blockpos.down()).isSolid()){
+            BlockPos.Mutable blockpos = new BlockPos.Mutable(pos.add(rand.nextInt(xzDiff) - rand.nextInt(xzDiff), 0, rand.nextInt(xzDiff) - rand.nextInt(xzDiff)));
+            blockpos.setY(worldIn.getChunk(blockpos).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG,blockpos.getX(),blockpos.getZ()));
+            if (worldIn.getBlockState(blockpos).getFluidState().getFluid()==Fluids.WATER){
                 for(int j = 0; j < 4; j++){
                     Direction direction = Direction.byHorizontalIndex(j);
-                    if(worldIn.getBlockState(blockpos.down().offset(direction,3)).getFluidState().getFluid()==Fluids.WATER){
-                        startPos = blockpos.down().offset(direction,2);
-                        riverSideDirection = direction;
+                    if(worldIn.isAirBlock(blockpos.offset(direction,3).up(2)) && worldIn.getBlockState(blockpos.offset(direction,3)).isSolid()){
+                        startPos = blockpos.down().offset(direction,2).up();
+                        riverSideDirection = direction.getOpposite();
                         break;
                     }
                 }
@@ -77,6 +79,10 @@ public class RiverLilyFeature extends Feature<CountConfig> {
 
             BlockPos.Mutable mutable = new BlockPos.Mutable(startPos);
             for(int i = 0; i < 100; i++){
+                if (worldIn.getFluidState(mutable.down()).getFluid() != Fluids.WATER) {
+                    continue;
+                }
+
                 BlockPos.Mutable blockMutable = new BlockPos.Mutable(mutable);
                 BlockState state = Utilities.rint(0,2) == 0 ? WNBlocks.GREEN_WATERLILY.getDefaultState() : Blocks.LILY_PAD.getDefaultState();
                 for(int j = 0; j < Utilities.rint(0,5,rand); j++){
@@ -87,10 +93,7 @@ public class RiverLilyFeature extends Feature<CountConfig> {
                 mutable.move(riverSideDirection,Utilities.rint(1,3,rand));
 
                 try {
-                    if(!worldIn.getWorld().chunkExists(mutable.getX()/4,mutable.getZ()/4)){
-                        break;
-                    }
-                    if (worldIn.getFluidState(mutable.down()).getFluid() != Fluids.WATER) {
+                    if(!worldIn.getWorld().chunkExists(mutable.getX() >> 4,mutable.getZ() >> 4)){
                         break;
                     }
                 }catch (RuntimeException e){

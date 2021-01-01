@@ -6,6 +6,7 @@ import java.util.Random;
 import com.matez.wildnature.init.WN;
 import com.matez.wildnature.common.compatibility.WNLoot;
 import com.matez.wildnature.util.lists.WNBlocks;
+import com.matez.wildnature.util.other.ServerUtils;
 import com.matez.wildnature.util.other.Utilities;
 import com.matez.wildnature.client.render.IRenderLayer;
 import net.minecraft.block.*;
@@ -49,7 +50,7 @@ public class GrassBase extends GrassBlock implements IRenderLayer {
         BlockState plant = plantable.getPlant(world, pos.offset(facing));
         net.minecraftforge.common.PlantType type = plantable.getPlantType(world, pos.offset(facing));
         try {
-            if (plant.getBlock() instanceof BushBlock && Utilities.isValidGround(plant,Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
+            if (plant.getBlock() instanceof BushBlock && ServerUtils.isValidGround(plant,Blocks.GRASS_BLOCK.getDefaultState(), world, pos)) {
                 return true;
             }
         }catch (Exception e){
