@@ -374,48 +374,39 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
             WN.LOGGER.debug("Heights took " + (System.nanoTime() - timeStart) + "ns");
             timeStart = System.nanoTime();
         }
+
         /**
          *
          Geo Start
-
          */
-
 
         //Temp Config Start
 
-        /*FastNoiseLite noise = new FastNoiseLite();
+        FastNoiseLite noise = new FastNoiseLite();
         noise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
         noise.SetCellularDistanceFunction(FastNoiseLite.CellularDistanceFunction.Euclidean);
         noise.SetCellularReturnType(FastNoiseLite.CellularReturnType.Distance2);
         noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
         noise.SetDomainWarpAmp(64);
 
-        List<GeoLayerConfig> soil = new ArrayList<>();
-        soil.add(new GeoLayerConfig(Blocks.SAND, 5, 3, 2));
-        soil.add(new GeoLayerConfig(Blocks.DIRT, 2, 1, 5));
-
-        List<GeoLayerConfig> sedimentary = new ArrayList<>();
-        sedimentary.add(new GeoLayerConfig(WNBlocks.LIMESTONE, 20, 18, 8));
-        sedimentary.add(new GeoLayerConfig(Blocks.SANDSTONE, 5, 4, 4));
-        sedimentary.add(new GeoLayerConfig(Blocks.RED_SANDSTONE, 3, 2, 1));
-
-        List<GeoLayerConfig> carbonate = new ArrayList<>();
-        carbonate.add(new GeoLayerConfig(WNBlocks.MARBLE, 20, 15, 2));
-        carbonate.add(new GeoLayerConfig(WNBlocks.GNEISS, 4, 3, 4));
-        carbonate.add(new GeoLayerConfig(WNBlocks.SLATE_BLUE, 15, 8, 8));
-        carbonate.add(new GeoLayerConfig(WNBlocks.SLATE_PURPLE, 2, 1, 3));
+        List<GeoLayerConfig> geoLayers = new ArrayList<>();
+        geoLayers.add(new GeoLayerConfig(WNBlocks.LIMESTONE, 20, 18, 8));
+        geoLayers.add(new GeoLayerConfig(Blocks.SANDSTONE, 5, 4, 4));
+        geoLayers.add(new GeoLayerConfig(Blocks.RED_SANDSTONE, 3, 2, 1));
+        geoLayers.add(new GeoLayerConfig(WNBlocks.MARBLE, 20, 15, 2));
+        geoLayers.add(new GeoLayerConfig(WNBlocks.GNEISS, 4, 3, 4));
+        geoLayers.add(new GeoLayerConfig(WNBlocks.SLATE_BLUE, 15, 8, 8));
+        geoLayers.add(new GeoLayerConfig(WNBlocks.SLATE_PURPLE, 2, 1, 3));
 
          GeoGeneratorConfig geologyConfig = new GeoGeneratorConfig(
             GeoGeneratorConfig.Type.basic,
             noise,
-            soil,
-            sedimentary,
-            carbonate
+            geoLayers
          );
 
         //Temp Config End
 
-         GeologyGenerator manager = new GeologyGenerator(seed);
+         GeologyGenerator geologyGenerator = new GeologyGenerator(seed);
 
          //Creating BlockPos Instance.
          BlockPos.Mutable blockPos = new BlockPos.Mutable();
@@ -427,12 +418,12 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
 
                 int height = chunkHeights[(x * 16) + z];
 
-                manager.generateTile(geologyConfig, chunkStartX + x, height, chunkStartZ + z);
+                 geologyGenerator.generateTile(geologyConfig, chunkStartX + x, height, chunkStartZ + z);
 
-                manager.applyTile(chunk, blockPos, height);
+                 geologyGenerator.applyTile(chunk, blockPos, height);
 
             }
-         }*/
+         }
 
          /**
           *
@@ -440,7 +431,7 @@ public class WNSimplexChunkGenerator extends ChunkGenerator<WNGenSettings> imple
           *
          */
 
-        runGenerateTerrain(chunkIn,0,16,chunkHeights);
+        //runGenerateTerrain(chunkIn,0,16,chunkHeights);
         if(debug) {
             WN.LOGGER.debug("Placing took " + (System.nanoTime() - timeStart) + "ns");
             timeStart = System.nanoTime();

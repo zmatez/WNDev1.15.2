@@ -1,10 +1,10 @@
 package com.matez.wildnature.world.generation.geology;
 
 import com.matez.wildnature.init.WN;
-import com.matez.wildnature.world.generation.geology.generators.BasicGenerator;
-import com.matez.wildnature.world.generation.geology.generators.BedrockGenerator;
-import com.matez.wildnature.world.generation.geology.generators.RandomGenerator;
-import com.matez.wildnature.world.generation.geology.generators.SurfaceGenerator;
+import com.matez.wildnature.world.generation.geology.strata.BasicGenerator;
+import com.matez.wildnature.world.generation.geology.strata.BedrockGenerator;
+import com.matez.wildnature.world.generation.geology.strata.RandomGenerator;
+import com.matez.wildnature.world.generation.geology.strata.SurfaceGenerator;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -16,35 +16,33 @@ import java.util.Random;
 
 public class GeologyGenerator {
 
+    private Classification classification;
     private long seed;
     private Random random;
-    private ArrayList<BlockState> strata;
-    private List<GeoLayerConfig> soilWeight;
-    private List<GeoLayerConfig> sediWeight;
-    private List<GeoLayerConfig> carboWeight;
+    private ArrayList<BlockState> tile;
+    private List<GeoLayerConfig> strata;
 
     public GeologyGenerator(long seed){
+        this.classification = new Classification();
         this.seed = seed;
         this.random = new Random(seed);
+        this.tile = new ArrayList<>();
         this.strata = new ArrayList<>();
-        this.soilWeight = new ArrayList<>();
-        this.sediWeight = new ArrayList<>();
-        this.carboWeight = new ArrayList<>();
     }
 
     public void generateTile(GeoGeneratorConfig config, int dx, int dy, int dz){
 
-        initWeightedLists(config);
+        initWeightedList(config);
 
         if(config.type == GeoGeneratorConfig.Type.basic){
-            new BasicGenerator(config, sediWeight, carboWeight, strata).apply(random, dx, dy, dz);
+            new BasicGenerator(classification, config, strata, tile).apply(random, dx, dy, dz);
+        }if(config.type == GeoGeneratorConfig.Type.random){
+            new RandomGenerator(classification, config, strata, tile).apply(random, dx, dy, dz);
         }
-        if(config.type == GeoGeneratorConfig.Type.random){
-            new RandomGenerator(config, sediWeight, carboWeight, strata).apply(random, dx, dy, dz);
-        }
+        //ToDo: Mountain, fix random, filter types of rock.
 
-        new BedrockGenerator().apply((int) config.noise.Get(dx,dz, 2, 4), strata);
-        new SurfaceGenerator().apply(dy, random, strata);
+        new BedrockGenerator().apply((int) config.noise.Get(dx,dz, 2, 4), tile);
+        new SurfaceGenerator().apply(dy, random, tile);
 
     }
 
@@ -60,50 +58,33 @@ public class GeologyGenerator {
         }
 
         //fallback
-        if(strata.size() < dy){
+        if(tile.size() < dy){
             WN.LOGGER.debug("strata iteration issues");
-            for (int fallback = strata.size(); fallback <= dy; ++fallback){
-                strata.add(Blocks.STONE.getDefaultState());
+            for (int fallback = tile.size(); fallback <= dy; ++fallback){
+                tile.add(Blocks.STONE.getDefaultState());
             }
         }
 
         for(int iy = 0; iy < dy; ++iy){
             blockPos.setY(iy);
-            chunk.setBlockState(blockPos, strata.get(iy), false);
+            chunk.setBlockState(blockPos, tile.get(iy), false);
         }
 
         clear();
 
     }
 
-    private void initWeightedLists(GeoGeneratorConfig config){
-        //Create SOIL weighted selection
-        for(GeoLayerConfig layerConfig : config.soil){
+    private void initWeightedList(GeoGeneratorConfig config){
+        for(GeoLayerConfig layerConfig : config.geoLayers){
             for(int i = 0; i < layerConfig.weight; i++) {
-                soilWeight.add(layerConfig);
-            }
-        }
-
-        //Create SEDIMENTARY weighted selection
-        for(GeoLayerConfig layerConfig : config.sedimentary){
-            for(int i = 0; i < layerConfig.weight; i++) {
-                sediWeight.add(layerConfig);
-            }
-        }
-
-        //Create CARBONATE weighted selection
-        for(GeoLayerConfig layerConfig : config.carbonate){
-            for(int i = 0; i < layerConfig.weight; i++) {
-                carboWeight.add(layerConfig);
+                strata.add(layerConfig);
             }
         }
     }
 
     private void clear(){
+        tile.clear();
         strata.clear();
-        soilWeight.clear();
-        sediWeight.clear();
-        carboWeight.clear();
     }
 
 }

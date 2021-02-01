@@ -1,4 +1,4 @@
-package com.matez.wildnature.world.generation.geology.generators;
+package com.matez.wildnature.world.generation.geology.strata;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,7 +11,7 @@ public class SurfaceGenerator {
     public void apply(int iy, Random random, ArrayList<BlockState> strata){
 
         //This is a temp fix for keeping the vanilla surface generator working.
-        //Intend to replace that with the weightedSoil list.
+        //Preferably this will replace vanilla surfacegen in the future or replace it.
 
         int depth = 1 + random.nextInt(2);
 
